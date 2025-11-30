@@ -1,0 +1,125 @@
+logfilename log\esnap_options.log
+logfileon
+;_________
+osmode
+0
+;_______end
+esnap
+end
+(if (/= (getvar "osmode") 1) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______mid
+esnap
+mid
+(if (/= (getvar "osmode") 2) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______int
+esnap
+int
+(if (/= (getvar "osmode") 32) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______ext_plan
+esnap
+pla
+(if (/= (getvar "osmode") 4096) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______app_no_sup
+;esnap
+;app
+;(if (/= (getvar "osmode") 2048) (alert "esnap did not work!"))
+;esnap
+;NON
+;(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______cen
+esnap
+cen
+(if (/= (getvar "osmode") 4) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______node
+esnap
+nod
+(if (/= (getvar "osmode") 8) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______quadrant
+esnap
+qua
+(if (/= (getvar "osmode") 16) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______ins
+esnap
+ins
+(if (/= (getvar "osmode") 64) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______per
+esnap
+per
+(if (/= (getvar "osmode") 128) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______tan
+esnap
+tan
+(if (/= (getvar "osmode") 256) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______nea
+esnap
+nea
+(if (/= (getvar "osmode") 512) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______par_nosup
+;esnap
+;par
+;(if (/= (getvar "osmode") 8192) (alert "esnap did not work!"))
+;esnap
+;NON
+;(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______qui
+esnap
+qui,end
+(if (/= (getvar "osmode") 1025) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______non
+esnap
+non
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+esnap
+NON
+(if (/= (getvar "osmode") 0) (alert "esnap did not work!"))
+;_______on
+esnap
+NON
+esnap
+end
+esnap
+off
+esnap
+on
+(if (/= (getvar "osmode") 1) (alert "esnap did not work!"))
+;_________
+dxfout output_dxf\esnap_options.dxf
+6
+quit
+y

@@ -1,0 +1,7 @@
+	(defun onemaxp1real ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (member '9.9e308 '(1 9.9e308)))
+		(loglist errloc rc)
+		(setq *error* prverr)
+	)

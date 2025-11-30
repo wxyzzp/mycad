@@ -1,0 +1,27 @@
+logfilename log\78700.log
+logfileon
+;_____line_____
+line
+1,1
+4,4
+
+;_____line______
+line
+4,1
+1,2
+
+;_____break______
+break
+1,1
+intersection
+3,3
+;____________
+(setq en nil)
+(setq en (entsel))
+2.3,2.3
+(if (/= en nil)(alert"ERROR"))
+;_________________
+dxfout output_dxf\78700.dxf
+6
+quit
+y

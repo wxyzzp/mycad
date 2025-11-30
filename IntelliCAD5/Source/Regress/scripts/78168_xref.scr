@@ -1,0 +1,88 @@
+logfilename log\78168_xref.log
+logfileon
+;____________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+(setvar "useri2" (getvar "expert"))
+expert
+5
+;_________________attach
+xref
+a dwg\dwg with space.DWG
+0,0
+
+
+
+;_________________bind
+xref
+b dwg with space  
+;_______
+erase
+all
+
+purge
+a
+
+a
+;_________________attach
+xref
+a dwg\dwg with space.DWG
+0,1
+
+
+
+;_________________insert
+xref
+i dwg with space
+;_______
+erase
+all
+
+purge
+a
+
+a
+;_________________attach
+xref
+a dwg\dwg with space.DWG
+0,1
+
+
+
+;_________________detach
+xref
+d dwg with space   
+;_________________attach
+xref
+a dwg\dwg with space.DWG
+0,1
+
+
+
+;_________________path
+xref
+p dwg with space   
+dwg\dwg with   more   space.DWG
+;_________________reload
+xref
+r   dwg\dwg with space   
+;_________________unload
+;xref
+;u
+;xref_options_1
+;_________________overlay
+xref
+o dwg\dwg with space.DWG
+0,1
+
+
+
+;_________________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;____________
+dxfout output_dxf\78168_xref.dxf
+6
+quit
+y

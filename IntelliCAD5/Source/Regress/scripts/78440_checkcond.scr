@@ -1,0 +1,9 @@
+;_This_Script_is_created_by_Srinivas_on_4/14/2003_testing_Bugzilla_no_78440
+logfilename log\78440_checkcond.log
+logfileon
+;________
+(load "lisp\checkcond.lsp")
+(checkcond "icad.exe")
+;________
+quit
+y

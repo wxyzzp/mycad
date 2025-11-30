@@ -1,0 +1,29 @@
+logfilename log\menuload_options.log
+logfileon
+;__________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+;________
+menuload
+dwg\mnu1.mnu
+;________
+toolbar
+all
+h
+toolbar
+tool1
+s
+toolbar
+tool2
+s
+toolbar
+tool3
+s
+;__________
+(setvar "filedia" (getvar "useri1"))
+;___________
+dxfout output_dxf\menuload_options.dxf
+6
+quit
+y

@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78135_1.txt
+Date:		29-04-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78135
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/DimStyle.cpp
+Description:	ICAD  Crash for command  Dimstyle> variable> ~standard
+Comments:	TaL78135.
+File by File:	
+		* CvsHist:Source/prj/lib/CMDS/DimStyle.cpp
+		 There was a crash occuring because the code for diffrence of two styles 
+		(~ style )was not changed after the change of storing DIMLDRBLK in rlname
+		instead of rstring and also storing "" for ClosedFilled leader block.
+
+		In case of Variables option Icad was accepting non existent dimstyles and
+		displaying there status, now changed this
+
+		The last change is the location where the status  of all varables is 
+		printed in case of "Variables " option from command prompt. A wrong resbuff
+		was being used to check for "restype" leading to a crash.
+		
+
+--------------------------------------------------------------------------------

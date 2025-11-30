@@ -1,0 +1,15 @@
+----------------------------------------------------------------------------------------------
+File:		CYB_78110.txt
+Date:           17-06-2002
+Developer:      Mohit Mehta
+Company:        Cybage Software
+Reference:      BugZilla:78110
+Affected files: 
+                CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+Description:    Linear dimension drawn using only keyboard input is affected by mouse motion.
+Comments:       TaL78110
+File by File:
+     *          CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+		Firstly,sinofdeg and cosofdeg could get values near to zero and since they were 			not zero, they would behave differently. Now they are compared with CMD_FUZZ in 			CMD_real_equal() to make it excatly 0.0.
+		The previous code for deciding the linearangle is commented out and a new logic 			is added which is similar but slighly modified.This takes care the problem 				mentioned in 78110 of bugzilla.Some modification include addition of CMD_FUZZ 				factor while comparing values in old logic.
+----------------------------------------------------------------------------------------------

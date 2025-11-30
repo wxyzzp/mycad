@@ -1,0 +1,435 @@
+
+	interface IIcadDocument;
+	interface IIcadWindow;
+	interface IIcadApplicationPreferences;
+	interface IIcadWorkspace;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDocs
+	
+	[	object
+		, uuid(8011c102-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDocuments
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDocuments : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of documents in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent (application) object.")]
+		HRESULT Parent([out, retval] IIcadApplication** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Creates a new document and adds it to the collection.")]
+		HRESULT Add([out, retval] IIcadDocument** ppDocument);
+
+		[helpstring("Closes all documents in the collection and removes them from the collection.")]
+		HRESULT CloseAll ([in, optional, defaultvalue(TRUE)] VARIANT_BOOL AskSave);
+
+		[id(0), helpstring("Given the index, returns one of the documents in the collection")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadDocument** ppItem);
+
+		[helpstring("Opens an existing document and add it to the collection.")]
+		HRESULT Open([in] BSTR File, [in, optional, defaultvalue(FALSE)] VARIANT_BOOL ReadOnly, [out, retval] IIcadDocument** ppDocument);
+
+		[helpstring("Saves all documents in the collection.")]
+		HRESULT SaveAll ();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoWnds
+
+	[	object
+		, uuid(8011c104-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadWindows
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadWindows : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of windows in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the Document object.")]
+		HRESULT Parent([out, retval] IIcadApplication** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Creates a Window object and adds it to the Windows collection.")]
+		HRESULT Add ([out, retval] IIcadWindow **ppWindow);
+
+		[helpstring("Arranges the windows in the collection.")]
+		HRESULT Arrange([in] ArrangeStyle Style);
+
+		[helpstring("Closes all Windows in the collection and removes them from the collection.")]	
+		HRESULT CloseAll ();
+
+		[id(0), helpstring("Given the index, returns one of the windows in the collection")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadWindow** ppItem);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoWnd
+	
+	[	object
+		, uuid(8011c105-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadWindow
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadWindow : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]  
+		HRESULT Application([out,retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the document associated with the window.")]  
+		HRESULT Document([out,retval] IIcadDocument** ppDoc);
+
+		[propget, helpstring("Returns the window's parent object.")]
+		HRESULT Parent([out, retval] IIcadWindows** ppParent);
+
+		[propget, helpstring("Returns the text for the title bar of the window.")]
+		HRESULT Caption([out, retval] BSTR* pCaption);
+
+		[propget, helpstring("Sets or returns whether the window is visible.")]
+		HRESULT Visible([out, retval] VARIANT_BOOL* pVisible);
+		[propput]
+		HRESULT Visible([in] VARIANT_BOOL Visible);
+
+		[propget, helpstring("Returns the handle of the window.")]
+		HRESULT WindowHandle32 ([out, retval] long *pHandle);
+
+		[propget, helpstring("Sets or returns the state of the window.")]
+		HRESULT WindowState ([out, retval] WindowState *pState);
+		[propput]
+		HRESULT WindowState ([in] WindowState State);
+
+		//**Methods
+		[helpstring("Activates the window")]
+		HRESULT Activate();
+
+		[helpstring("Closes the window and removes it from the Windows collection.")]
+		HRESULT Close();
+
+		[helpstring("Gets the size and position of the client area of the window.")]
+		HRESULT GetWindowRect ([in, out] long *Left, [in, out] long *Top, [in, out] long *Width, [in, out] long *Height);
+
+		[helpstring("Gets the size and position of the client area of the window.")]
+		HRESULT SetWindowRect ([in] long Left, [in] long Top, [in] long Width, [in] long Height);
+
+		[helpstring("Scrolls the window horizontally, vertically or both.")]
+		HRESULT Scroll([in] ScrollFlagsX FlagsX, [in] ScrollFlagsY FlagsY);
+
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoApp
+
+	[	object
+		, uuid(8011c101-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadApplication
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadApplication : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the active document object.")]  
+		HRESULT ActiveDocument([out,retval] IIcadDocument** ppDoc);
+
+		[propget, helpstring("Returns the active window object.")]
+		HRESULT ActiveWindow([out, retval] IIcadWindow** ppWindow);
+
+		[propget, helpstring("Returns the application object.")]  
+		HRESULT Application([out,retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the text for the title bar of the application window.")]
+		HRESULT Caption([out, retval] BSTR* pCaption);
+
+		[propget, helpstring("Sets or returns the default path used for opening files.")]
+		HRESULT DefaultFilePath([out, retval] BSTR* pDefFilePath);
+		[propput]
+		HRESULT DefaultFilePath([in] BSTR DefFilePath);
+
+		[propget, helpstring("Returns the collection of document objects.")]  
+		HRESULT Documents([out, retval] IIcadDocuments** ppDocs);
+
+		[propget, helpstring("Returns the full path of the application EXE.")]
+		HRESULT FullName([out, retval] BSTR* pFullAppName);
+
+		[propget, helpstring("Sets or returns the height of the application window.")]
+		HRESULT Height([out, retval] long* pHeight);
+		[propput]
+		HRESULT Height([in] long Height);
+
+		[propget, helpstring("Returns a long value that contains the Locale identification of the user.")]
+		HRESULT LocaleID ([out, retval] long* pLocaleId);
+
+		[propget, helpstring("Sets or returns the distance between the left edge of the screen and the left edge of the application window.")]
+		HRESULT Left([out, retval] long* pLeft);
+		[propput]
+		HRESULT Left([in] long Left);
+
+		[propget, helpstring("Returns the library object.")]  
+		HRESULT Library([out,retval] IIcadLibrary** ppLibrary);
+
+		[propget, helpstring("Returns the name of the application.")]
+		HRESULT Name([out, retval] BSTR* pstrAppName);
+
+		[propget, helpstring("Returns the parent of the object.")]
+		HRESULT Parent([out, retval] IIcadApplication** ppParent);
+
+		[propget, helpstring("Returns the path of application's EXE.")]
+		HRESULT Path([out, retval] BSTR* pstrPath);
+
+		[propget, helpstring("Returns the application's PlotManager that controls the Plot settings.")]
+		HRESULT PlotManager ([out, retval] IIcadPlotManager **ppPlotManager);
+
+		[propget, helpstring("Returns the Application level user Preferences object.")]
+		HRESULT Preferences([out, retval] IIcadApplicationPreferences** ppPreferences);
+
+		[propget, helpstring("Sets or returns the text displayed in the status bar.")]
+		HRESULT StatusBar([out, retval] BSTR* pstrStatusText);
+		[propput]
+		HRESULT StatusBar([in] BSTR StatusText);
+
+		[propget, helpstring("Sets or returns the distance between the top of the screen and the top edge of the application window.")]
+		HRESULT Top([out, retval] long* pTop);
+		[propput]
+		HRESULT Top([in] long Top);
+
+		[propget, helpstring("Returns the Visual Basic for Applications editor object.")]
+		HRESULT VBE([out, retval] IDispatch** ppVBE);
+
+		[propget, helpstring("Returns the version of the application as a string.")]
+		HRESULT Version ([out, retval] BSTR* pstrVersion);
+
+		[propget, helpstring("Sets or returns whether the main window is visible.")]
+		HRESULT Visible([out, retval] VARIANT_BOOL* pVisible);
+		[propput]
+		HRESULT Visible([in] VARIANT_BOOL Visible);
+
+		[propget, helpstring("Sets or returns the width of the application window.")]
+		HRESULT Width([out, retval] long* pWidth);
+		[propput]
+		HRESULT Width([in] long Width);
+
+		[propget, helpstring("Returns the window collection object.")]
+		HRESULT Windows([out, retval] IIcadWindows** ppWindows);
+
+		[propget, helpstring("Returns the workspace object.")]
+		HRESULT Workspace ([out, retval] IIcadWorkspace** ppWorkspace);
+
+		// *** Methods
+		[helpstring("Adds a macro to the IntelliCAD command list, similar to (defun c:cmd) in lisp.")]
+		HRESULT DefineFunction([in] BSTR FunctionName, [in] VARIANT FunctionPointer);
+
+		[helpstring("Removes a previously defined VBA macro from the IntelliCAD command list.")]
+		HRESULT UndefineFunction([in] BSTR FunctionName);
+
+		[helpstring("Displays help information. HelpCommand is defined in winuser.h and can be HELP_CONTENTS, HELP_HELPONHELP or HELP_PARTIALKEY")]
+		HRESULT Help([in] BSTR HelpFile,[in, optional] BSTR HelpTopic,[in, optional] long HelpCommand);
+
+		[helpstring("Closes the drawing file and exits the application.")]
+		HRESULT Quit();
+
+		[helpstring("Returns a list of the loaded SDS applications.")]
+		HRESULT ListSDS	([out, retval] VARIANT *ListOfSDSApps);
+
+		[helpstring("Loads a specified SDS application")]
+		HRESULT LoadSDS	([in] BSTR ApplicationName);
+
+		[helpstring("Unloads a specified SDS application")]
+		HRESULT UnloadSDS([in] BSTR ApplicationName);
+
+		[helpstring("Loads a specified LISP application")]
+		HRESULT LoadLISP ([in] BSTR ApplicationName);
+
+		[helpstring("Executes the command as if it were typed on the command line.")]
+		HRESULT RunCommand ([in] BSTR Command);
+
+		[helpstring("Runs a specified script file")]
+		HRESULT RunScript ([in] BSTR ScriptName);
+
+		[helpstring("Creates the object specified by the ProgID and returns its Dispatch interface pointer.")]
+		HRESULT GetInterfaceObject ([in] BSTR ProgID, [out, retval] IDispatch **ppObject);
+
+		[helpstring("Returns TRUE if the function is loaded and FALSE if not.")]
+		HRESULT IsFunctionLoaded ([in] BSTR FunctionName, [out, retval] VARIANT_BOOL *Loaded);
+
+	}
+
+
+	[	object,
+		uuid(8011c1c0-7e36-11d1-bc5a-0060089608a4),		// *** IID_IIcadWorkspace
+		nonextensible,
+		dual,
+		helpstring("Workspace Primary Interface"),
+		pointer_default(unique)
+	]
+	interface IIcadWorkspace : IDispatch
+	{
+		[propget, helpstring ("Returns the application object.")] 
+		HRESULT Application([out,retval] IIcadApplication** ppReturn);
+
+		[propget, helpstring ("Returns the application object.")] 
+		HRESULT Parent([out,retval] IIcadApplication** ppReturn);
+
+		[propget, helpstring ("Returns the active document object.")] 
+		HRESULT ActiveDocument([out,retval] IIcadDocument** Document);
+
+		[propget,helpstring ("Sets or returns the application name.")] 
+		HRESULT Name([out,retval] BSTR* pReturn);
+		[propput] 
+		HRESULT Name([in] BSTR Value);
+	}
+
+
+
+	[	uuid(8011c1d1-7e36-11d1-bc5a-0060089608a4)	// *** DIID__IcadWorkspaceEvents
+		, helpstring("Visio IntelliCAD Workspace Event Interface")
+	]
+	dispinterface _IcadWorkspaceEvents
+	{
+		properties:
+		methods:
+		[id(DISPID_WS_STARTUP), helpstring("Occurs when the application is starting up.")] 
+		HRESULT Startup();
+
+		[id(DISPID_WS_NEWDOC), helpstring("Occurs when a new drawing has been created.")] 
+		HRESULT New([in] IIcadDocument* NewDocument);
+
+		[id(DISPID_WS_OPENDOC), helpstring("Occurs after a drawing has been opened.")] 
+		HRESULT Open([in] IIcadDocument* Document);
+
+		[id(DISPID_WS_SAVEDOC), helpstring("Occurs when a drawing is about to be saved.")] 
+		HRESULT Save([in] IIcadDocument* Document);
+
+		[id(DISPID_WS_CLOSEDOC), helpstring("Occurs when a drawing is about to be closed.")] 
+		HRESULT Close([in] IIcadDocument* Document);
+
+		[id(DISPID_WS_BEFOREEXIT), helpstring("Occurs when the application starts to shut down.  Returning False will terminate the shutdown.")] 
+		HRESULT BeforeExit([out,retval] VARIANT_BOOL* Cancel);
+
+		[id(DISPID_WS_EXIT), helpstring("Occurs when the application is about to exit.")] 
+		HRESULT Exit();
+
+		[id(DISPID_WS_ADDINRUN), helpstring("Occurs when the user has run an addin from the command line.")] 
+		HRESULT AddinRun([in] BSTR AddinFunctionName);
+
+		[id(DISPID_WS_REINIT), helpstring("Occurs when the defined functions need to be reinitialized.")] 
+		HRESULT Reinitialize();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoApplicationPreferences
+	
+	[	object
+		, uuid(8011c10e-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadApplicationPreferences
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadApplicationPreferences : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** Application);
+
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Parent([out, retval] IIcadApplication** Application);
+
+		[propget, helpstring("Sets or returns cursor crosshairs size as a percentage of the total screen.")]  
+		HRESULT CursorSize ([out, retval] int *Size);
+		[propput]  
+		HRESULT CursorSize ([in] int Size);
+
+		[propget, helpstring("Sets or returns the color of the X axis of the cursor crosshairs.")]  
+		HRESULT CursorXColor([out,retval] Colors * pColor);
+		[propput]  
+		HRESULT CursorXColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the color of the Y axis of the cursor crosshairs.")]  
+		HRESULT CursorYColor([out,retval] Colors * pColor);
+		[propput]  
+		HRESULT CursorYColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the color of the Z axis of the cursor crosshairs.")]  
+		HRESULT CursorZColor([out,retval] Colors * pColor);
+		[propput]  
+		HRESULT CursorZColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns whether the bottom and right scroll bars are visible.")]
+		HRESULT DisplayScrollBars ([out, retval] VARIANT_BOOL* Visible);
+		[propput]
+		HRESULT DisplayScrollBars([in] VARIANT_BOOL Visible);
+
+		[propget, helpstring("Sets or returns the number of lines of text displayed in the command window.")]  
+		HRESULT DockedVisibleLines ([out, retval] int *NumberOfLines);
+		[propput]  
+		HRESULT DockedVisibleLines ([in] int NumberOfLines);
+
+		[propget, helpstring("Sets or returns the background color of the graphics window.")]  
+		HRESULT GraphicsWinBackgrndColor([out,retval] Colors * pColor);
+		[propput]  
+		HRESULT GraphicsWinBackgrndColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the number of lines in the text window that is kept in history.")]  
+		HRESULT HistoryLines ([out, retval] int *NumberOfLines);
+		[propput]  
+		HRESULT HistoryLines ([in] int NumberOfLines);
+
+		[propget, helpstring("Sets or returns whether the IntelliCAD window should be maximized on startup.")]
+		HRESULT MaxIntelliCADWindow ([out, retval] VARIANT_BOOL* Maximize);
+		[propput]
+		HRESULT MaxIntelliCADWindow([in] VARIANT_BOOL Maximize);
+
+		[propget, helpstring("Sets or returns the automatic save time interval in minutes.")]  
+		HRESULT AutoSaveInterval ([out,retval] int* Interval);
+		[propput]  
+		HRESULT AutoSaveInterval ([in] int Interval);
+
+		[propget, helpstring("Sets or returns the log file name.")]  
+		HRESULT LogFileName ([out,retval] BSTR *LogFileName);
+		[propput]  
+		HRESULT LogFileName ([in] BSTR LogFileName);
+
+		[propget, helpstring("Sets or returns whether the commands are logged to a file.")]
+		HRESULT LogFileOn ([out, retval] VARIANT_BOOL* On);
+		[propput]
+		HRESULT LogFileOn([in] VARIANT_BOOL On);
+
+		[propget, helpstring("Sets or returns the alternat font file to be used.")]  
+		HRESULT AltFontFile ([out,retval] BSTR *AltFontFileName);
+		[propput]  
+		HRESULT AltFontFile ([in] BSTR AltFontFileName);
+
+		// *** Methods
+	}
+
+

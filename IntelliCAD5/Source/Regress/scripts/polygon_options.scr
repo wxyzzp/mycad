@@ -1,0 +1,10 @@
+logfilename log\polygons_options.log
+logfileon
+;____________
+(load "lisp\polygons_options.lsp")
+(load "lisp\polygons_options_1.lsp")
+;___________
+dxfout output_dxf\polygons_options.scr
+6
+quit
+y

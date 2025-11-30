@@ -1,0 +1,21 @@
+Logfilename log\spline_trim.log
+logfileon
+;_____________
+spline
+1,1
+3,3
+3,1
+1,3
+
+1,1
+1,3
+trim
+
+1,1
+3,3
+
+;_______
+Dxfout output_dxf\spline_trim.dxf
+6
+exit
+y

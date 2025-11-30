@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_29092002_1.txt
+Date:		29-09-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/DB/setfont.cpp
+		Source/prj/lib/DB/oldvars.cpp
+ 
+Deleted files:	
+		None
+
+Description:	Memory bugs fixed.
+Comments:	This submission fixes some memory issues in Icad. In db_setfont() in file db/setfont.cpp, initialised local variable st_tolfont to NULL
+		before it is used. In GetSysvarFromObjects() in file db/oldvars.cpp, called db_mstrncpy() intead of db_strncpy() for the
+		resbuf -- this string is free'ed later instead of deleted'd.
+		
+
+File by File:	
+		Source/prj/lib/DB/setfont.cpp			Version: 1.7.6.1
+			In db_setfont() initialised local variable st_tolfont to NULL before it is used. 
+		Source/prj/lib/DB/oldvars.cpp			Version: 1.15.6.1
+			In GetSysvarFromObjects() called db_mstrncpy() intead of db_strncpy() for the
+		resbuf -- this string is free'ed later instead of deleted'd.
+
+
+-----------------------------------------------------------------------------

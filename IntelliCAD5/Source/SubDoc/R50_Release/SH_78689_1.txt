@@ -1,0 +1,43 @@
+Document Title:  SH_78689_1.txt	
+Product Version: ICAD 4.0
+Date:  8/8/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/offset.cpp
+
+3. Overview:
+
+This submission fixes the bug #78689 - "Offset of the Polyline entity is created 
+on wrong side". The problem was the algorithm used to determine the side to place 
+the offset curve was incorrect for the case the pick point lying on the extension 
+line of the linear segment of a polyline. This problem is corrected.
+
+4.  Notes to Developers:
+
+5.  Notes to QA:
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:
+	Name of Script file: 78689.scr
+
+8.  Notes to Localization:
+
+
+
+

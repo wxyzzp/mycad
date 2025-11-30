@@ -1,0 +1,31 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78102_2.txt
+Date:		14-04-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78102
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimAng.cpp
+		Source/prj/lib/CMDS/DimAngA3P.cpp
+Description:	Dimension text not shown at the default position. Implemented code-review suggestions.
+Comments:		TaL78102
+Problem Analysis:
+		Implementing code-review suggestions.
+Proposed Solution:
+		1) Renaming temppoint variable
+		2) Formatting in accordance with ITC coding style
+		3) Code optimization
+File by File:	
+*		Source/prj/lib/CMDS/DimAng.cpp
+		temppoint changed to prvTextMidPoint. Code formatted in accordance with ITC coding style. 
+*		Source/prj/lib/CMDS/DimAngA3P.cpp
+		Optimized the if-else condition.	
+--------------------------------------------------------------------------------
+
+
+

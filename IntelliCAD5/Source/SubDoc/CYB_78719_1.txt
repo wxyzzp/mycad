@@ -1,0 +1,434 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78719_1.txt	
+Product Version:	ICAD 4
+Date:			09/02/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/icadplotcfg.cpp		==>AutoDLL
+Source/prj/ICAD/printdialog.cpp		==> ICAD
+Source/prj/ICAD/printpenmaptab.cpp	==> ICAD
+Source/prj/ICAD/penmaplistctrl.cpp	==> ICAD
+Source/prj/ICAD/penmaplistctrl.h	==> ICAD
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78719: Inaccuracy in line width on 
+conversion of units from mm to inches and back to mm.
+
+
+Problem Analysis:
+-----------------
+There is an inaccuracy in the calculation of line width on conversion of 
+units from mm to inches and back to mm.
+
+Please see the steps to produce this bug in Bugzilla.
+
+Problem Analysis:
+-----------------
+The problem here is that currently, the linewidth is calculated on the 
+fly for each item in the list. This line width is restricted to a 
+precision of 3 decimal places.
+
+Lets take the first color Red for example.
+Suppose the linewidth is initially in inches, for example: 0.010.
+Now if you convert this in MM by selecting the "millimetres" option
+in 'Scale/View' tab, you will see it converted to 0.254, which is all 
+right. Now edit this value and give it say 0.35. 
+Come back to 'Scale/View' tab and select the "inches" option. Go back 
+to "Penmap/Width" Tab. We see the color has a line-width of 0.014 which
+is the rounded-off value of "0.013779527559055". 
+Now if you convert this in MM by selecting the "millimetres" option
+in 'Scale/View' tab, you will see it converted to 0.356, because the 
+conversion is applied to 0.014 and not to "0.013779527559055".
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+The conversion happens in the File:Source\prj\ICAD\printPenMapTab.cpp
+in the function PrintPenMapTab::SetUnits(int units). The loop which does 
+the conversion is as follows:
+
+	double width;
+	CString widthStr;
+	for (int i = 1; i < 256; i++)
+	{
+		width = atof(m_penList->GetItemText(i - 1, 2)) * conversionFactor;
+		widthStr.Format("%.3f", width);
+		m_penList->SetItemText(i - 1, 2, widthStr);
+	}
+
+As seen above the width gets calculated all right, but when it is converted 
+to string in formatted form it gets rounded. The same function is called  
+both times when the user selects either the "Millimeters" or "Inches"
+radio button.
+
+At first the easy solution might seem to just give the default format as 
+follows:
+
+		widthStr.Format("%f", width);
+
+But still there is a round off error, because while formatting even with no 
+precision, the maximum value will be stored upto 7 digits after the decimal 
+point. In this case also we might loose some accuracy.
+
+Therefore the best part is to have an actual float value associated with every 
+item, and use it for conversion purposes. The ListControl gives a facility 
+to store a User-Defined Data with each item as a DWORD value.
+
+For this purpose I have encapsulated this process in the "PenMapListCtrl"
+class, in the following files:
+	Source/prj/ICAD/penmaplistctrl.cpp
+	Source/prj/ICAD/penmaplistctrl.h
+
+
+File: Source/prj/ICAD/penmaplistctrl.h
+--------------------------------------
+"class PenMapListCtrl" now contains an inner structure as follows:
+
+	// inner Structure definition
+	struct SListItemData
+	{
+		double ActualWidth;
+		
+		// Any other item specific values can be added here...
+		//...
+		//...
+		//...
+
+	};
+Currently this structure holds only one double value, but in the future it 
+may be modified to include other items as well.
+
+This class also contains 3 over-ridden methods of CListCtrl, viz:
+	1. InsertItem : First calls the default implementation of CListCtrl
+					and then allocates a new value of type "SListItemData"
+					and assigns the address of this value to the 
+					corresponding ItemData.
+	2. DeleteAllItems : First frees the memory occupied by all the User
+						Data items for each and every item in the list.
+						Then calls the default implementation of CListCtrl.
+	3. OnDestroy: First calls "DeleteAllItems" to ensure that the proper 
+				  cleanup has been performed, then calls the default 
+				  implementation of CListCtrl. For this I have also 
+				  mapped the message macro "ON_WM_DESTROY" in the CPP file.
+
+
+Further it contains the functions "GetActualWidth" and "SetActualWidth"
+that are called from various appropriate places in the 
+file "Source/prj/ICAD/printpenmaptab.cpp".
+
+Also like AutoCAD, the list will display the value upto 4 decimal places.
+
+The next major modification I have done is in the 
+"File: Source\prj\lib\AUTO\IcadPlotConfig.cpp". The reason is that while storing the 
+values in the registry, it is written as follows in the function 
+"PlotCfg::writePlotConfigToReg()":
+
+    for(int i = 1; i < IC_PENSBUF; i++) {
+        sprintf(key, "%s-%d", "Color", i);
+        sprintf(tmpBuffer, "%d %d %d %d %f"/*DNT*/, pens[i].color, pens[i].number, pens[i].linetype, pens[i].speed, pens[i].weight);
+		RegSetValueEx(hKey,key,0,REG_SZ  ,(const unsigned char *)tmpBuffer,strlen(tmpBuffer) + 1);
+    }
+
+As seen above the sprintf function also approximates the double value to 
+7 decimal places.
+I have modified this part too to store the value upto 15 decimal places, by changing 
+the precision upto 15 decimal places as follows:
+
+    for(int i = 1; i < IC_PENSBUF; i++) {
+        sprintf(key, "%s-%d", "Color", i);
+        sprintf(tmpBuffer, "%d %d %d %d %.15f"/*DNT*/, pens[i].color, pens[i].number, pens[i].linetype, pens[i].speed, pens[i].weight);
+		RegSetValueEx(hKey,key,0,REG_SZ  ,(const unsigned char *)tmpBuffer,strlen(tmpBuffer) + 1);
+    }
+
+
+
+Please find my modifications in the following files:
+	Source/prj/lib/icadplotcfg.cpp		
+	Source/prj/ICAD/printdialog.cpp		
+	Source/prj/ICAD/printpenmaptab.cpp	
+	Source/prj/ICAD/penmaplistctrl.cpp	
+	Source/prj/ICAD/penmaplistctrl.h	
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> Yes, 
+==> all the linewidths for the color vlaues in he following key:
+	HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot.
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be checked for the following cases:
+1. The PenMap List should display the Line Widths upto 4 digits after the 
+   decimal point. Compare the behavior with AutoCAD.
+2. The PenMap List should display the values of line-width as they are 
+   when the user had specified them before the conversion.
+3. Points 1 & 2 should also be true, after modifying the entries, then 
+   closing the application and re-opening the application.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

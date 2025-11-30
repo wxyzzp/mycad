@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+File:		CYB_60619_1.txt
+Date:		17-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:60619
+Affected files:			
+		CvsHist:Source/prj/lib/CMDS/stretch.cpp
+Description: 	Stretching w/ Crossing window on vertex pt. of angular dim. doesn't update 				dimension.
+Comments:	TaL60619
+
+File By File :
+	*	CvsHist:Source/prj/lib/CMDS/stretch.cpp
+		Some entities might be crossing but fence might not return them in ss3 and hence
+		such entities will not be deleted from ss1. We must delete such entities from 
+		ss1 otherwise these entities will be considered as completely selected in the 
+		crossing polygon and will be moved instead of being stretched. 
+		Eg. dimagular dimension drawn in 'V' shaped line is being stretched.	
+		So considering this as a special case, dimangular dimension, we have checked its 		points in or out of the selected polygon.
+
+-------------------------------------------------------------------------------

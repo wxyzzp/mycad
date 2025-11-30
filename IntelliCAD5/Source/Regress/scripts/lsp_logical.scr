@@ -1,0 +1,10 @@
+Logfilename log\lsp_logical.log
+Logfileon
+(princ "logior 5 10")
+(princ (logior 5 10))
+(princ "logand 5 10")
+(princ (logand 5 10))
+Dxfout output_dxf\lsp_logical.dxf
+6
+Quit
+y

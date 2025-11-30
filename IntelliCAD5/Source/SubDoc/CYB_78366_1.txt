@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78366_1.txt
+Date:		03-03-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78366
+Added files:     	
+Affected files:	
+		Source/prj/ICAD/icadview.cpp
+Description:	Flyover snaps are active even if Entity Snap is Off.
+Comments:		TaL78366
+Problem Analysis:
+		processPoint( ) for OsnapManager was getting called even if Entity Snap is Off.
+Proposed Solution:
+		processPoint( ) should not get called when Entity Snap is Off.
+File by File:	
+*		Source/prj/ICAD/icadview.cpp
+		Before calling processPoint( ) checked the value of Osmode and ascertained that it is not "off". 
+--------------------------------------------------------------------------------
+
+
+

@@ -1,0 +1,51 @@
+Document Title:  SH_131004_1.txt	
+Product Version: ICAD 5.0
+Date:  13/10/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/cmds4.cpp:     Replaced HIT_TOLERANCE in cmd_trim_object() and 
+                                      cmd_extend_object() with a HitTolerance and added
+                                      CmdGetHitTolerance() to set the value of HitTolerance
+                                      based on the size of the crossing box in UCS.
+   
+3. Overview:
+
+Trim/Extend commands do not work for large drawing views when projmode == 1 or 2. The reason
+is that a constant tolerance value is used for performing ray-hit test to select the trimmed 
+entities, which is fine for small drawings but is too tight for the large drawing view so that
+the trimmed entities are not found in those cases. Using the fixed value as ray-hit test 
+tolerance is not appropriate because the project ratio between screen coordinate system 
+and UCS is varied with the drawing view size so the same distance between pick point and 
+a candidate entity on the screen can be very different in UCS for the different sizes of 
+drawing view. This submission fix the problem by changing t static toelrance value to a 
+dynamic value.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

@@ -1,0 +1,49 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_03132003.txt
+Date:		03-13-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/CMDS/CmdQueryTools.cpp?rev=1.5.6.7
+		Source/prj/lib/CMDS/CmdQueryTools.h?rev=1.4.6.7
+		Source/prj/lib/CMDS/CmdQueryTools.tpl?rev=1.4.6.2
+		Source/prj/lib/ACIS/AsTools.h?rev=1.7.6.3
+		Source/prj/lib/ACIS/AsTools.cpp?rev=1.9.6.5
+		Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.6.6
+		Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.10
+		Eng-us/icad.rc2?rev=1.63.4.18
+
+Description:	This submission makes the following changes to fix all known problems
+                of the solidedit command:
+
+                1) The TCmdQuerySubents, CCmdQueryFaces, and CCmdQueryEdges classes
+                   were implemented to ask users to select ACIS solids first before
+                   they select FACE and EDGE sub-entities. This behaviors is 
+                   inconsistent with AutoCAD, which doesn't require the users to 
+                   select the solids before select the sub-entities. This 
+                   submission changes the implementation to be consistent with 
+                   AutoCAD.
+                   
+                2) Changed the CAsModeler::pickFace() to do ray and body bounding
+                   box test and add checks to eliminate the back planar faces before 
+                   perform ray-face tests to improve the performance of face selection.
+                   
+                3) Changed TCmdQuerySubents and CCmdQueryFaces classes to select
+                   all adjacent faces when users pick an edge. 
+                   
+               	4) Changed TCmdQuerySubents class to unhighlight selected edges or 
+               	   faces when user cancel selection.
+               	   
+               	5) Changed the query() of TCmdQuerySubents class to prevent users
+               	   to select the sub entities on different solids.
+
+Comments        None.
+

@@ -1,0 +1,103 @@
+Document Title:  SD_06AUG04.txt	
+Product Version: ICAD 5
+Date:  06 August 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+
+3.  Overview:
+
+	Please refer the Submission Doc CYB_78721_1.txt. This contains the overview of the Bugzilla::78721.
+
+	Later there was a mail from Ron related to DCL and ArcHT that was broken. The issue was 
+	related to "fixed_width = true" case.
+
+		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		ArchT dialogs that would work with Build_40 do not work with Build_44
+		because of an apparent problem with the "fixed_width = true;" attribute
+
+		1. Attached is records.dcl from ArchT
+		2. Use code similar to the following to load and test the dialogs
+		(defun C:TEST ()
+		(setq PATH "\\Arch-T\\archt-intellicad\\Dev\\Support\\DclsIcad\\")
+		(setq DLCID (load_dialog (strcat PATH "records.dcl")))
+		(new_dialog "record_add" DLCID)
+		(start_DIALOG)
+		)
+		Result: improper argument
+		3. Make the following changes to the record_add dialog
+		: row {
+		: text {
+		key = "text1";
+		width = 60;
+		// fixed_width = true;//Autodsys 042104 Remove this and it works
+		4. Run the "TEST" command again
+		Result: The dialog displays.  However when you cancel it switches focus to
+		the last app and the menus in IntelliCAD are no longer accessible.  This
+		does not happen if the dialog loads correctly the first time.
+		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+	Therefore Dave later put back the "else condition" for the assignment for 
+	"nHeight = nParentHeight;", that had been removed by me for fixing this bug.
+		
+	But this opened Bugzilla::78721 again. 
+	Later on after looking at the code, I came up to the same question that:
+why for all childs the height is supposed to be "nActualChildHeight" 
+but for last one it is "nParentHeight"? Logically the assignment of nParentHeight 
+to only last child seems wrong. 
+	Therefore I modified that statement to:
+
+	"nHeight = ptrThisNode->m_Tile.get_ListOfAttributes()->get_Height();"
+
+	Now we have both the issues solved.
+
+
+
+4.  Notes to Docs: Y.
+Please refer the Submission Doc CYB_78721_1.txt.
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: Bugzilla::78721	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/ThirdParty/DCL_Components/Source/Tree.cpp?rev=1.2.8.3.2.1
+Description: 
+	ArchT Affected: DCL horizontal radio rows do not display correctly.
+Reviewer's Name and Comments: Dave Lorenzo
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be checked for the following cases:
+1. For "boxed_radio_row", the radio buttons should be present at the same level.
+2. For "radio_row", the radio buttons should be present at the same level.
+
+
+
+9.  Installation Issues:
+
+
+
+

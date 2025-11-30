@@ -1,0 +1,163 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_3252002_1.txt
+Date:		25-03-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		Source/prj/lib/CMDS/cmds4.cpp
+		Source/prj/lib/CMDS/cmdssDimVars.cpp
+		Source/prj/lib/CMDS/dimensions.cpp
+		Source/prj/lib/CMDS/DimStyle.cpp
+Deleted files:	
+		None
+
+Description:	This submission fixes memory problems in dimension portion of ICAD.
+Comments:	This submission fixes memory problems identified when I ran Boundschecker against
+		dimensioning scripts created by Cybage. There are two types of error -- one was writing
+		beyond the bounds of an array and the second was mismatch of malloc/calloc/free and new/delete
+		calls.
+
+		Writing beyond the array bounds occured when a new string is created to keep a copy of an existing
+		string but the allocation fails to allocate an extra space to store the trailing EOS character.
+
+		Memory mismatches occur when memory is allocated by malloc or calloc and freed by delete and memory allocated
+		by new freed by a call to free. This leads to undefined behavior.
+
+		For these scripts, I created the base file by running against the current source and compared them against
+		the results after the change. One script file (DimUpdateAll.scr) shows some differences. Cybage QA 
+		should look at this.
+
+
+File by File:	
+		Source/prj/lib/CMDS/cmds4.cpp 			New Rev. 1.20
+
+			Fixed memory mismatch. String has to be malloced as it is freed later.		
+
+		Source/prj/lib/CMDS/cmdssDimVars.cpp		New Rev. 1.9
+
+			This file has a structure plinkvar which for string system variables stores the sysvar information.
+			This buffer comes from SDS_getvar() which calls malloc and other calls in the file change this buffer.
+			The change functionality uses new and we have a big mismatch. What call do you use to free this buffer
+			delete or free? In some cases the buffer was allocated by malloc and in some cases the same buffer
+			was reallocated using new. Given the large number of calls to new to set plinkvar, I did not change 
+			them. Instead, I changed the initial set of these buffers by using new. A new function copyStrToPlinkVar()
+			copies the resbuf values to a new buffer allocated by new and frees the resbuf buffer.
+
+			Did the same for layername though this variable is present as an extern in multiple files.
+
+		Source/prj/lib/CMDS/dimensions.cpp 		New Rev. 1.34
+
+			In cmd_doverride(), buffer allocated by new has to be released by call to delete.
+
+		Source/prj/lib/CMDS/DimStyle.cpp		New Rev. 1.5
+
+			layername is an extern char* variable declared in cmdDimVars.cpp This memory location is released
+			by a call to delete and we have to call new when setting a value in cmd_DimStyleFunc(). 
+
+			The buffer allocated to store the layername and DB_QCLAYER should have an extra character to store
+			trailing EOS.
+
+Notes to QA:
+
+6.410000 sec.     	Processing file C:\IntelliCAD_src\IntelliCAD\Source\Regress\scripts\DimUpdateAll.scr 
+5306c5306
+< 147.1035
+---
+> 146.271
+5352c5352
+< 143.55175
+---
+> 143.1355
+5364c5364
+< \A1;30.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";p<>s{\o\l\H0.600000;]}
+---
+> \A1;30.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";{\o\l\H0.600000;]}
+5572c5572
+< 99.6035
+---
+> 98.771
+5618c5618
+< 96.05175
+---
+> 95.6355
+5632c5632
+< \A1;30.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";p<>s{\o\l\H0.600000;]}
+---
+> \A1;30.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";{\o\l\H0.600000;]}
+5698c5698
+< \A1;210.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";p<>s{\o\l\H0.600000;]}
+---
+> \A1;210.0000\S+0.00000^ -0.02300; {\o\l\H0.600000;[}0.0000"\S+0.0000"^ -0.6072";{\o\l\H0.600000;]}
+6210c6210
+< 348.436853
+---
+> 347.975065
+6212c6212
+< 137.655279
+---
+> 136.962597
+6256c6256
+< 346.141503
+---
+> 345.910609
+6258c6258
+< 134.212255
+---
+> 133.865914
+6270c6270
+< \A1;36.0600\S+0.00000^ -0.02300; {\o\l\H0.600000;[}79'-3.8655"\S+0.0000"^ -0.6072";p<>s{\o\l\H0.600000;]}
+---
+> \A1;36.0600\S+0.00000^ -0.02300; {\o\l\H0.600000;[}79'-3.8655"\S+0.0000"^ -0.6072";{\o\l\H0.600000;]}
+8582c8582
+< 143.55175
+---
+> 143.1355
+8616,8619d8615
+<      4
+< 1000
+< p<>s
+< 1070
+8742c8738
+< 96.05175
+---
+> 95.6355
+8774,8777d8769
+<      4
+< 1000
+< p<>s
+< 1070
+8930,8933d8921
+<      4
+< 1000
+< p<>s
+< 1070
+9098,9101d9085
+<      4
+< 1000
+< p<>s
+< 1070
+9224c9208
+< 346.141503
+---
+> 345.910609
+9226c9210
+< 134.212255
+---
+> 133.865914
+9257,9260d9240
+< 1070
+<      4
+< 1000
+< p<>s
+
+------------------------------------------------------------------------------

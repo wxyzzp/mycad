@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78248_1.txt
+Date:		26-08-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78248
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/dxfInOut.cpp
+Description: 	The options for dxfout version save in Icad does not support version strings.
+Comments:	TaL78248
+File by File:	
+*		Source/prj/lib/CMDS/dxfInOut.cpp
+		Changed the initget string. Used sds_getkword instead of sds_getint and depending upon the result set the version.
+--------------------------------------------------------------------------------
+

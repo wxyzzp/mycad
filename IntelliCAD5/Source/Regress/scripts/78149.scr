@@ -1,0 +1,23 @@
+logfilename log\78149.log
+logfileon
+color
+1
+dim
+ANgular
+
+2.3800,4.2842
+6.4376,7.5216
+6.9124,3.5072
+7.6031,4.3273
+
+
+'color
+3
+COntinue
+7.0635,1.6727
+Baseline
+6.9556,0.5935
+DOne
+dxfout output_dxf\78149.dxf
+6
+exit y

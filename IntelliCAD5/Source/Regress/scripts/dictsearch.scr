@@ -1,0 +1,15 @@
+logfilename log\dictsearch.log
+logfileon
+;___________
+(setq dictionary (list '(0 . "DICTIONARY") '(100 . "AcDbDictionary")))
+(setq xname (entmakex dictionary))
+(setq newdict (dictadd (namedobjdict) "MY_WAY_COOL_DICTIONARY" xname))
+(setq datalist (append (list '(0 . "XRECORD") '(100 . "AcDbXrecord")) '((1 . "This is my data") (10 1. 2. 3.) (70 . 33))))
+(setq xname (entmakex datalist))
+(dictadd newdict "DATA_RECORD_1" xname)
+(setq newdictlist (dictsearch (namedobjdict) "my_way_cool_dictionary"))
+;___________
+dxfout output_dxf\dictsearch.dxf
+6
+quit
+y

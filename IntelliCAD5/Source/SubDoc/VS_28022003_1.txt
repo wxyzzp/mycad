@@ -1,0 +1,44 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_28022003_1.txt
+Date:		28-02-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/GR/2D.CPP?rev=1.1.4.1.2.2
+		Source/prj/lib/GR/coordconvert.CPP?rev=1.7.8.2
+ 
+Deleted files:	
+		None
+
+Description:	This submission fixes an infinite loop in the display code and merges one change from R40_dev to R40_from_11.
+Comments:	In this submission the following change from R40_Dev is merged into R40_from_11. Also fixed an infinite loop
+		in gr_clip_vector().
+
+		In gr_clip_vector() the input is a clip rectangle and 4 values represnting the 2 end points of the line
+		to be clipped. It is possible that the data for a line segment being clipped could have invalid values (QNAN).
+		An example of how this can be generated is when user creates a line, and invokes F8 when a point is
+		requested. The presence of a NAN makes the gr_clip_vector() go into an infinite loop. The fix was to have a
+		counter which keeps track of the number of times the input line segment is clipped against the window. If the
+		counter reaches 5, the loop exits and returns 1 (to signify the line was outside the clip rectangle). In the normal
+		case, we can clip a line max. of 4 times against the clip rectange.
+
+		Date:		28-02-2003
+		Developer:	DenisPetrov
+		Company:	ITC
+		Affected files:	
+			Source/prj/lib/GR/2D.CPP 
+		Description:	Fixed method of rect class for checking intersections.
+
+
+
+-----------------------------------------------------------------------------

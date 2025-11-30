@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78464
+Affected files:			
+		Source/prj/lib/SDS/sds_get.cpp?rev=1.40.6.4 
+Description:	ICAD hangs on pressing F8 key during Pline command with some input at the prompt.
+		e.g Pline > Select > 2'_orthogonal
+Comments:	TaL78464
+
+Problem analysis:	IntelliCAD hangs because IntelliCAD could not process 2'_orthogonal input. This case occurs like user is giving input for a point and then without completing the input tries to ON the orthogonal setting by pressing F8. Now the input becomes something like 2'_orthogonal and since its neither a number nor an transperant command, IntelliCAD does not process it.
+
+Proposed Solution: Check for the transparent command in the input buffer by searching for " '_  " character and the processing the transparent command if found and setting the unprocessed input back to the input buffer.
+
+File By File :
+		Source/prj/lib/SDS/sds_get.cpp?rev=1.40.6.4 
+Get the input string from the CommandQueue and check for the " '_  ". Special case of direct distance entry should be considered here as the input for point can be @1<45d1'34". So to check the transparent command we need to check for ' ' ' ( apostrophe ) character along with '_'  character. Once the transparent command is found, check if the apostrophe character is not the first character. In this case we need not do anything. If we get the transparent command, we store the input buffer before the transparent command in PendingBuffer and process the transparent command. After processing tranparent command we set the unprocessed input stored in PendingBuffer back the input buffer - SDS_cmdcharbuf. and also print it on the command prompt
+--------------------------------------------------------------------------------

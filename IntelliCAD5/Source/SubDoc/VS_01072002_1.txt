@@ -1,0 +1,54 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_01072002_1.txt
+Date:		01-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Regress Script application/reg.vbp
+		CvsHist:Source/Regress_apps/Regress Script application/reg.frm
+		CvsHist:Source/Regress_apps/Regress Script application/Global.bas
+		CvsHist:Source/Regress_apps/Regress Script application/frmOptions.frm
+		CvsHist:Source/Regress_apps/Regress Script application/reg.exe
+		CvsHist:Source/Regress_apps/Regress Script application/frmOptions.frx
+
+Changed files:	
+		None
+
+Deleted files:	
+		None
+
+Description:	New regress application.
+Comments:	This submission adds a new regress application to run regress scripts. This is a GUI version
+		of regress_scr.exe. The user can now choose the ICAD executable to run regress with as well as the
+		location of the directory where the scripts are present. 
+
+		This executable has a timer to kill ICAD if it takes more than 5 minutes to run. To change this intreval,
+		go to Option->Set to change the intreval. The fact that the scr was killed is logged to the log file.
+
+		This application logs the kernel and user time spent in running the script as well as memory used by the
+		application.
+
+File by File:	
+		CvsHist:Source/Regress_apps/Regress Script application/reg.vbp
+			Project file.
+		CvsHist:Source/Regress_apps/Regress Script application/reg.frm
+			Main form to process regress functinality. This runs the regress on the selected directory as 
+			well as code to kill long running scripts. Memory and time logging is also performed by this
+			module.
+		CvsHist:Source/Regress_apps/Regress Script application/Global.bas
+			Module for global variables.
+		CvsHist:Source/Regress_apps/Regress Script application/frmOptions.frm
+			Form to set the options (max. script run time), type of processing (None for normal run,
+			purift for purify run, etc.)
+		CvsHist:Source/Regress_apps/Regress Script application/reg.exe
+			Executable for this application
+		CvsHist:Source/Regress_apps/Regress Script application/frmOptions.frx
+			COmpiled version of a form.
+-----------------------------------------------------------------------------

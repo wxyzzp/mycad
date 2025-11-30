@@ -1,0 +1,9 @@
+logfilename log\ezoom_ellipse.log
+logfileon
+(Load "lisp\ezoom_ellipse.lsp")
+ezoom_ellipse
+dxfout output_dxf\ezoom_ellipse.dxf
+6
+close y
+exit
+

@@ -1,0 +1,67 @@
+Document Title:		MB_DWGdirect-89.txt
+Product Version:	ICAD 5
+Date:  				09/01/2004 16:42pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & Icad_cee
+
+2.  Modules Affected : 
+	API
+	ACAD
+	DWGdirect
+	GR
+
+3.  Overview:
+This submission fixes a couple of sever memory problems I introduced. I was
+deleting the same memory pointers twice in proxy entities, and in the vector
+generation code. This was in turn causeing big problems in greedy heap.
+
+In addition, I have submitted a submission test regression .lst file.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/api/sds/sds.h
+                    source/prj/icad/icadapp.cpp
+                    source/prj/icad/icadentityrenderer.cpp
+                    source/prj/lib/db/acad_proxy_entity.cpp
+                    source/prj/lib/drw/utilities.cpp
+                    source/prj/lib/drw/giworlddrawvectors.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/giworlddrawvectors.h
+                    source/prj/lib/gr/dodef.cpp
+                    source/prj/lib/gr/mtextgen.cpp
+                    source/regress/scripts/checkintest_std.lst
+                    source/subdoc/R50_Release/MB_DWGdirect-89.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+Notes to Developers:
+Using regression.exe, all developers SHOULD run checkintest_std.lst as a pre-checkin step.
+This file will eventually contain less and less files as the scripts that are either very
+time consuming or redundant are commente out from the file. This will eventually lead to 
+a regression run that is resonable from a time standpoint. Currently it contains 640
+scripts, and on my 3.2GHz machine takes about 45 minutes to run. Hopefully this will become
+more like 20 minutes as the number of scripts are reduced. 
+This should be treated as the minimum regression test for submitting code.
+

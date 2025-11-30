@@ -1,0 +1,41 @@
+(defun comparelist(explist actlist)
+	(Setq i 1)
+	(while (<= i (length explist))
+		(if (equal (nth i explist) (nth i actlist) 0.00001) (princ i) (alert "ERR"))
+		(setq i (1+ i))
+ 	)
+)
+
+(defun checkCoordList (explist)
+  (setq le (entget (entlast)))
+  (setq entcoords nil)
+  (foreach co le
+;  (princ co)
+    (progn (if (= (car co) 10)
+		(progn
+;		    (princ (cadr co))
+;		    (princ (caddr co))
+;		    (setq entcoords (append entcoords (cadr co)))
+		    (setq entcoords (append entcoords (list (cadr co) (caddr co))))
+
+		)
+	   )
+    )
+  )
+	(princ entcoords)
+(comparelist explist entcoords)
+)
+;___________multiple__________
+(command "polygon" "m" "4" "0,0" "i" "1,1" "1,1" "")
+(checkcoordlist (list 2.0 2.0 0.0 2.0 0.0 0.0 2.0 0.0))
+;____________width_________________
+(command "polygon" "w" "1.11" "4" "1,1" "c" "2,2")
+(if (/= (cdr (assoc 41 (entget (entlast)))) 1.11) (alert "WIDTH ERR"))
+(checkcoordlist (list 1.0 3.0 -1.0 1.0 1.0 -1.0 3.0 1.0))
+(command "polygon" "w" "0" "4" "E" "2,2" "0,2")
+(if (/= (cdr (assoc 41 (entget (entlast)))) 0.0) (alert "WIDTH ERR"))
+(checkcoordlist (list 2.0 2.0 0.0 2.0 0.0 0.0 2.0 0.0))
+;___________width_multiple______
+;(command "polygon" "w" "0.1" "m" "4" "E" "0,2" "-2,0" "1,3")
+;(checkcoordlist (list 1.0 3.0 -1.0 1.0 1.0 -1.0 3.0 1.0))
+;(if (/= (cdr (assoc 41 (entget (entlast)))) 0.1) (alert "WIDTH ERR"))

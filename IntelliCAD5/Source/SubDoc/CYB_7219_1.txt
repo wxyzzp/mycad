@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------
+Date:		07-10-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:7219
+Affected files:			
+		Eng-us/IcadRes.rc
+		Source/prj/ICAD/IcadRes.h
+		Source/prj/ICAD/IcadEntPropMain.cpp
+		Source/prj/ICAD/IcadEntPropTabs.cpp
+		Source/prj/ICAD/IcadEntPropTabs.h
+Description:	No text shows up in DIMTEXT field of DDMODIFY/ENTPROP dialog when 					picking dimension. Dependant on bug fix BugZilla:78310. Used DXF 42 of DIMENSION 			entity.
+		1. Confusion with previous "DIMENSION Text" field. Now made it "Override 				   Text".
+		2. Added a field for "Measurement" which actaully stores the dimension 					   measurement.
+Comments:	TaL7219
+File_by_File:
+	*	Eng-us/IcadRes.rc
+		Added a new filed called "Measurement" to store the measurement of dimension 				entity. This field is readonly. It will have value of DXF 42 of dimension 				entity.Also modified the field "DIMENSION TExT" to "Override Text" to avoid the 			confusion for IntelliCAD users.It has value of DXF 1 of dimension entity.
+
+	*	Source/prj/ICAD/IcadRes.h
+		Added #define for 
+		#define DIM_MEASUREMENT                 
+		#define DIM_TYPE		
+
+	*	Source/prj/ICAD/IcadEntPropMain.cpp
+		#include "dimensions.h" for #defines 				"DIM_TEXT_MOVED","DIM_BIT_6","DIM_ANGULAR","DIM_ANGULAR3P"
+
+		Added enteries in ent_DlgItems[] for DXF 70 ( Dimension Type ) and DXF 42 ( 				Dimension Measurement). Please note that this two enteries should be 				consecutive. This is assumed in code.
+
+		Added "case DIME_TYPE:","case DIM_MEASURE:" for filling the ent_DlgItems[]. In 		"case DIME_TYPE:" we store the dimension type in checkbits and this is used in 		"case DIM_MEASURE" to distinguish between angular dimension and other dimensions.
+
+	*	Source/prj/ICAD/IcadEntPropTabs.cpp
+		Added a case "case DIM_MEASURE" in ent_DIM_TAB::DoDataExchange() for setting the 		display value in dimension entity tab.
+
+	*	Source/prj/ICAD/IcadEntPropTabs.h
+		Added two #defines for ent_DlgItems[]
+		#define DIM_MEASURE	65
+		#define DIME_TYPE	66
+	
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,90 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4212002_1.txt
+Date:		21-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Regress_scr/regress.cpp
+		CvsHist:Source/Regress_apps/Regress_scr/regress.h
+		CvsHist:Source/Regress_apps/Regress_scr/regress_scr.dsp
+		CvsHist:Source/Regress_apps/Regress_scr/StdAfx.h
+		CvsHist:Source/Regress_apps/Regress_scr/StdAfx.cpp
+
+Changed files:	
+		None
+
+Deleted files:	
+		None
+
+Description:	This submission adds the source for regress_scr application.
+Comments:	There are two regress applications. The first regress application runs the regress suite
+		consisting of scr files. The executable (regress_scr.exe) is placed in the Regress directory.
+		Under the Regress directory are the following directories :-
+		
+		scripts -- this directory stored the scr files to run regress. Each scr file will load lsp files and/or
+			   run commands directly. The last steps in the scr file are to write out a dxf file with the same
+			   prefix name as the scr file in the output_dxf directory follwed by a quit command. This way each
+			   scr file will automatically exit.
+		LISP -- this directory and its child directories stores LSP files which the scr files load and run.
+			Since the scr files are run from the parent directory (which is Regress), scr files should do
+			(load "Regress/aaa.lsp") to load aaa.lsp file.
+		output_dxf -- Each scr file will write a dxf file to this directory.
+		base -- The base dxf files for comparison are placed here.
+		results -- The regress_scr can run Purify, Boundschecker, TrueTime and TrueCoverage builds. The output
+			   files from these progra,s are placed here.
+		log -- Each scr file will write a log file saved to this directory. This facility doesn't work properly.
+
+		Required system variables :-
+
+		ICAD_REGRESS_EXE_PATH -- This has the complete path (including icad.exe) to the icad executable.
+		The following are optional --
+		TT_EXE -- True Time executable
+		ICAD_TT_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueTime.
+		BC_EXE -- Boundschecker executable.
+		TC_EXE -- Truecoverage executable.
+		ICAD_COV_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueCoverage.
+		PURIFY_EXE -- Purify executable.
+		ICAD_PURIFY_EXE -- Icad executable instrumented by Purify.
+
+		Output file :-
+
+		icadregress.log
+
+		
+		The regress_scr.exe processes all scr files in the scripts directory. After the scr file completes, it modifies
+		some of the output lines in the dxf file written out to the output_dxf directory to set variables like 
+		TD_CREATE, $TDUPDATE, $TDINDWG and $TDUSRTIMER to 0.0. Then this dxf file is compared to a base dxf file and 
+		differences (if any) are logged to a log file. The log file also has the time spent in running each scr file and 
+		the total time spent to run regress.
+
+
+File by File:	
+		CvsHist:Source/Regress_apps/Regress_scr/regress.cpp	
+			
+			This file contains the source for the regress_scr application.
+
+		CvsHist:Source/Regress_apps/Regress_scr/regress.h
+
+			This header file pulls in MFC structures like CString.
+
+		CvsHist:Source/Regress_apps/Regress_scr/regress_scr.dsp
+
+			This is the project file for regress.
+
+		CvsHist:Source/Regress_apps/Regress_scr/StdAfx.h
+
+			This is a placeholder. Nothing much is in here.
+
+		CvsHist:Source/Regress_apps/Regress_scr/StdAfx.cpp
+
+
+			This is a placeholder for future code.
+
+------------------------------------------------------------------------------

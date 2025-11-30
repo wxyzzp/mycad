@@ -1,0 +1,10 @@
+logfilename log\limitoff.log
+logfileon
+;________________
+(load "lisp/limitoff.lsp")
+limitoff
+;_________________
+dxfout output_dxf\crossbreak.dxf
+6
+quit
+y

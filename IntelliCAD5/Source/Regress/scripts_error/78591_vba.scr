@@ -1,0 +1,16 @@
+logfilename log\78591_vba.log
+logfileon
+;_________
+open
+dwg\78591.dwg
+erase
+all
+
+-vbarun
+Module1.Test78591
+;________
+;dxfout output_dxf\78591_vba.dxf
+;6
+;quit
+;y
+;

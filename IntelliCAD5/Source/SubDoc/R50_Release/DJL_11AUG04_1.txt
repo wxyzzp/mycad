@@ -1,0 +1,132 @@
+Document Title:  DJL_11AUG04_1.txt	
+Product Version: ICAD 5
+Date:  August 11, 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N (this feature was already documented but not in the code)
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+Eg: DB, CMDS.  Leave empty if unsure.
+
+3.  Overview:
+I added the ability to set and use a path for template drawings.  This changed affected the following commands:
+	Options->File Paths
+	Layouts->Saveas
+	Layouts->Template
+	New Drawing Wizard
+	sds_findfile
+	SRCHPATHs system variable
+
+I added a new path to the list of paths in Options->File Paths called "Templates".  This is now the path used
+when looking for drawing templates.  Both the layout command and New Drawing Wizard use this path to locate template files.
+
+The new path is also added to the list of paths in the SRCHPATHs system variable, which also affects sds_findfile.
+
+4.  Notes to Docs:
+It was already docuemented that we had a Templates path that could be set in the Options->File Paths dialog, that's why I added it.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+
+Script Change required: N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      DJL_11AUG04_1.txt
+
+Added files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_11AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Eng-us :
+    modified: IcadRes.rc
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/ICAD :
+    modified: IcadNewWiz.cpp
+              IcadNewWiz.h
+              IcadRes.h
+              optionspathstab.cpp
+              optionspathstab.h
+              paths.cpp
+              paths.h
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmdsLayout.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/SDS :
+    modified: sds_get.cpp
+
+Description:
+I added the ability to set and use a path for template drawings.  This changed affected the following commands:
+	Options->File Paths
+	Layouts->Saveas
+	Layouts->Template
+	New Drawing Wizard
+	sds_findfile
+	SRCHPATHs system variable
+
+I added a new path to the list of paths in Options->File Paths called "Templates".  This is now the path used
+when looking for drawing templates.  Both the layout command and New Drawing Wizard use this path to locate template files.
+
+The new path is also added to the list of paths in the SRCHPATHs system variable, which also affects sds_findfile.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_11AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/SDS :
+    modified: sds_get.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    Modified:    DJL_11AUG04_1.txt
+
+Description:
+Fixes regression error: The open command was setting the default browser directory to the template directory
+instead of the drawing directory.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_11AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: paths.cpp
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_11AUG04_1.txt
+
+Description:
+Fixes regression error: The template directory was not being set correctly on initialization.
+Some code was out of order so the buffer with the executable directory was overwritten before
+it was used to set the template path.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+You should be pointed to the new Templates directory location as specified in Options->File Paths when:
+	You browse to open a template file in the New Drawing Wizard
+	You browse to open a template file in the Layout command
+	You browse to save a template file in the Layout command
+
+9.  Installation Issues:
+A new \IntelliCAD 5\Template directory needs to be created and we need to put the icad.dwt file in that directory (this is just
+a copy of icad.dwg renamed to icad.dwt).
+
+
+
+

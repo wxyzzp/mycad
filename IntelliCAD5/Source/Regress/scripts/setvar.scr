@@ -1,0 +1,24 @@
+logfilename log\setvar.log
+logfileon
+;______________
+line
+1,1
+3,3
+
+;____________
+rectangle
+3,3
+6,6
+;___________
+circle
+3,3
+3
+;_______________
+setvar
+?
+*
+;______________
+dxfout output_dxf\setvar.dxf
+6
+quit
+y

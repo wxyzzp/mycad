@@ -1,0 +1,33 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_03072002_1.txt
+Date:		03-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		Source/Regress_apps/Regress Script application/reg.frm
+		Source/Regress_apps/Regress Script application/reg.exe
+
+Deleted files:	
+		None
+
+Description:	Regress application changes -- additional log file created.
+Comments:	The regress application creates an additional log file (the user selected log file with
+		a "_tab" suffix). This contains tab delimited data of scripts that ran along with time and memory
+		usage.
+
+File by File:	
+		Source/Regress_apps/Regress Script application/reg.frm 		Rev 1.3
+			Additional tab delimited log file created.
+		Source/Regress_apps/Regress Script application/reg.exe		Rev 1.3
+			Executable for this application with the above changes.
+-----------------------------------------------------------------------------

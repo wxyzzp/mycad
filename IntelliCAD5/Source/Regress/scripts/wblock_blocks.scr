@@ -1,0 +1,79 @@
+new
+
+expert
+5
+; create layer to save
+layer
+new
+layertosave
+color
+red
+layertosave
+set
+layertosave
+; exit command
+
+; create text style to save
+-style
+tstosave
+arial
+0.8
+; Width factor
+
+; Oblique
+
+; Backward
+
+; Upside-down
+
+polyline
+1,1
+1,5
+5,5
+
+plinetype
+0
+polyline
+8,5
+12,5
+12,1
+
+plinetype
+2
+attdef
+
+attrib1
+prompt1
+deftext1
+4,4
+0.4
+block
+block1
+1,1
+all
+
+circle
+8,4
+4
+attdef
+
+attrib2
+prompt2
+deftext2
+8,4
+0.4
+block
+block2
+8,8
+8,8
+8,4
+
+filedia
+0
+wblock
+output\wblock_blocks.dwg
+&
+block*
+filedia
+1
+exit y

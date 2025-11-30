@@ -1,0 +1,16 @@
+EXPORTS
+	ACIS_CreateSphere
+	ACIS_CreateBlock
+	ACIS_GetSAT
+	ACIS_getdispobjs
+	ACIS_CreateTorus
+	ACIS_CreateWedge
+	ACIS_CreateDish	
+	ACIS_CreateDome	
+	ACIS_CreatePyramid
+	ACIS_CreateCone
+	ACIS_CreateMesh
+	ACIS_FreeObject
+	ACIS_XformObject
+	ACIS_BoolObjects
+	ACIS_CopyObjects

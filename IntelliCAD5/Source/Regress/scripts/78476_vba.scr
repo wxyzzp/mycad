@@ -1,0 +1,12 @@
+logfilename log\78476_vba.log
+logfileon
+;____________
+open
+dwg\78476.dwg
+-vbarun
+Test.Test_78476
+;____________
+dxfout output_dxf\78476_vba.dxf
+6
+quit
+y

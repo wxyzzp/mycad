@@ -1,0 +1,441 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78529_1.txt	
+Product Version:	ICAD 4
+Date:				19/04/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)     
+
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/Prj/LIB/CMDS/cmds3.cpp     ==> CMDS
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================      
+
+	This is related to Bugzilla# 78529: 'AREA'  system variable is not set
+correctly when adding areas.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, the user types 'area' command and selects
+the 'add' mode. After this, the user starts adding the areas either by 
+selecting entities or by entering coordinates to define the regions. 
+	The user then presses 'enter' key twice to end the 'area' command. 
+If the user types (getvar "area") command to get the value of 'AREA' system 
+variable, the user gets the value which is equal to the the area of the last 
+defined area. 
+	This value is wrong as the user should get the value which is equal to 
+the sum of areas of defined regions. 
+ 
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the file "Source/Prj/LIB/CMDS/cmds3.cpp".
+On checking this file, I found that "cmd_area" function calculates the areas of
+defined areas and sets the 'AREA' system variable by invoking "sds_setvar" 
+function. 
+
+So I have modified the file as shown below (modifications are within 
+Bugzilla comments):
+
+FILE: Source/Prj/LIB/CMDS/cmds3.cpp
+---------------------------------------------------------
+short cmd_area(void) 
+	{
+	 if (cmd_iswindowopen() == RTERROR)
+		return RTERROR;
+    ...
+	...
+	...
+	...
+	...
+	cmd_area_display(area,perimeter,&totarea,&totlen,addmode,0);
+			//*** Free the linked list of points.
+			for(tmp=ptsllbeg; tmp!=NULL; tmp=ptsllcur) {
+				ptsllcur=tmp->next;
+				if (ptsllcur!=NULL)sds_grdraw(tmp->pt,ptsllcur->pt,-1,1);
+				IC_FREE(tmp);
+			}
+			ptsllbeg=NULL;
+			//Set Area and Perimeter vars
+			// Part present between Bugzilla comments is not needed
+			// Bugzilla# 78529 Date:15 Apr 2004
+			/* setgetrb.restype=RTREAL;
+			setgetrb.rbnext=NULL;
+			if (area>0.0){
+				//setgetrb.resval.rreal=area;
+				setgetrb.resval.rreal=totarea;*/
+			//	sds_setvar("AREA"/*DNT*/,&setgetrb);
+			/*}
+			if (perimeter>0.0){
+				setgetrb.resval.rreal=perimeter;*/
+				//sds_setvar("PERIMETER"/*DNT*/,&setgetrb);
+			//}
+			// Bugzilla# 78529 Date:15 Apr 2004
+			
+	...
+	...
+	...
+	...
+	...
+	
+	}
+
+	This function is called when the user types 'area' command and selects
+'add' or 'subtract' mode. In this function, the area of defined regions is 
+calculated. This function calls "cmd_area_display" function. 
+	The "cmd_area_display" function shows results like total area, 
+total perimeter etc.and it also adds the areas found in "cmd_area" function. 
+This function also calls "sds_setvar" function which sets the value of 'AREA' 
+system variable.
+	I found that "sds_setvar" function sets the value of 'AREA' system variable 
+two times as it is called at two different locations for the same purpose. 
+	The first time when the "sds_setvar" function is called in 
+"cmd_area_display" function where this function sets the right value of AREA 
+system variable i.e the sum of areas collected in "cmd_area" function. 
+	The second time "sds_setvar" function is called later itself in "cmd_area" 
+function where it sets the wrong value of AREA system variable. 
+	Thus there is no need to call "sds_setvar" later. 
+	
+	This is also applicable to 'PERIMETER' system variable. 
+	Hence I removed these unnecessary system variables settings from this file.
+(which is present between Bugzilla comments, at the moment)
+
+	Please find the related modifications in the following file:
+		==> Source/Prj/LIB/CMDS/cmds3.cpp     
+
+	I found that the function "cmd_area_display" uses the static variable 
+"cmd_perimeter" to store the perimeter of the last found object by cmd_area(). 
+	However, "cmd_area_display" also has "totlen" variable to store the sum of 
+lengths of objects found in cmd_area function. It calls "sds_setvar" with 
+"totlen" variable  to set the value of 'PERIMETER' system variable. 
+	So when the user queries for the system variable 'PERIMETER', he gets the 
+sum of lengths of objects found in "cmd_area" function. This is wrong as he 
+should get perimeter of the last found  object in "cmd_area" function.
+  
+	So I have modified the file as shown below (modifications are within 
+Bugzilla comments):
+
+FILE: Source/Prj/LIB/CMDS/cmds3.cpp
+---------------------------------------------------------
+
+void cmd_area_display(sds_real area, sds_real perimeter, sds_real *totarea, 
+sds_real *totlen,short addmode, short circleflg)
+{
+      
+	 ...
+	...
+	...
+	...
+	... 	
+	static sds_real  cmd_areavar;	// Stores the sum of areas collected in cmd_area().
+	static sds_real  cmd_perimeter; // Stores the perimeter of the object last found by cmd_area().
+	...
+	...
+	...
+	...
+	...
+	// Bugzilla# 78529 Date:15 Apr 2004
+	//setgetrb.resval.rreal=*totlen;
+	setgetrb.resval.rreal=cmd_perimeter;
+	// Bugzilla# 78529 Date:15 Apr 2004
+
+
+}
+
+	This function uses the static variable "cmd_areavar" to store the sum of 
+areas collected in "cmd_area" function. But it also uses "totarea" variable 
+for the same purpose. 
+	I found that "cmd_areavar" variable is not used at all. Its not needed and 
+hence I have removed "cmd_areavar" variable from this function.   
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following steps:
+
+1.  Give the 'area' command.
+2.  Select add mode.
+3.  Give coordinates to define a region or select an entity, which is drawn 
+previously.
+4.  Press 'enter' key and repeat step 3 to add another area. 
+5.  Press 'enter' twice to end the area command.
+6.  Give the command (getvar "area") to read the value of AREA system variable.
+7.  Compare results with AutoCAD
+8.  Results should be same.
+9.  Repeat above steps for subtract mode.
+10. Repeat steps 1 to 5 and give the 'perimeter' command to get the value of 
+'PERIMETER' system variable.  
+11. Compare results with AutoCAD
+12.  Results should be same. 
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+      
+

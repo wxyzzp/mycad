@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78179_1.txt
+Date:		10-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78179
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimTEdit.cpp	
+Description: 	Problem in restoring the text in case of Radial, Diameter, Aligned, Horizontal and Vertical dimensions using the dimtedit command 
+Comments:	TaL78179
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimTEdit.cpp
+		Restored the value of text mid-point even when user selects a keyword. And in case of the user selecting the home or restore option set the textrotation to zero.
+--------------------------------------------------------------------------------
+

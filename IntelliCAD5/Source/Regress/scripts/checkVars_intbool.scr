@@ -1,0 +1,9 @@
+logfilename log/checkvars_intbool.log
+logfileon
+;_____________
+(load "lisp/checkvars_intandbool.lsp")
+;______________
+dxfout output_dxf\checkvars_intbool.dxf
+6
+quit
+y

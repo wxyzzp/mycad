@@ -1,0 +1,56 @@
+Document Title:  SH_78949_1.txt	
+Product Version: ICAD 5.0
+Date:  30/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/Lib/cmds/cmdsLayout.cpp
+   
+3. Overview:
+
+This submissions fixes the bug# 78949 - Entities move when switching between layout views or when 
+performing a pan in PS.
+
+The reason the viewports are moving while switching between layout is the active viewport is not 
+set when the target layout contains any paper space viewport. The bug is fixed by modifying 
+CLayoutManager::setCurrentLayout() to change the code from
+
+ 	// create paper space viewport in empty layout
+ 	if (!m_pDrawing->ret_ntabrecs(DB_VXTAB, 0))
+ 		cmd_pspace();
+
+to 
+ 	// calliing the folling function when switching between layouts to set active viewport
+ 	// if there is one and create a viewport for empty layout. BUG #78949 - SWH, 9/25/2004
+ 	//
+ 	cmd_pspace();
+
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

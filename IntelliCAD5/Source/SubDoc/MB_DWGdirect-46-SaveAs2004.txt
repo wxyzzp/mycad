@@ -1,0 +1,92 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-46-SaveAs2004.txt
+Produce Version		ICAD 4
+Date:				06/04/2004 11:50am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission makes the default ouput file version for IntelliCAD
+version 2004.
+
+Notes to Developers:
+From this point on you MUST set the environment variable USEDWGDIRECT to 
+some value via the control panel/system, to make it globally accessable.
+
+If you do not do this, and do a simple save of the current drawing, you'll
+get the following error in an alert box;
+		Error writing file.
+		Save attempted to incompatible version
+
+This error means that IntelliCAD tried to save a 2004 drawing using the old
+ODT libraries, which fails. Setting USEDWGDIRECT to any value (I suggest 1)
+will cause the DWGdirect code path to be used for all save/saveas/wblock etc
+commands.
+
+Notes to QA:
+Regression;
+
+There will be some instability in regression for a short while. I will be
+making every attempt to fix regression problems promptly.To that end, I
+have created a file called regress.lst which is a file with all the file
+names in \source\regress\scripts piped into this ascii file. I have commented
+out ALL files that I experienced problems with during the running of regress
+with a small note as to why it is commented out. The reasons range from 'stopped
+for user input' to 'displays a dialog' to 'crashes'. My objective is to leave
+only files that run to completion without ANY user intervention.
+
+All the files that have been commented out will need to be address at some time
+or another, with the idea of only uncommenting them when they run to completion,
+without ANY user intervention.
+
+I know this ties regress to regression.exe, but unless the old regress.exe is updated 
+to handle lst files, I don't see another good way to work toward a regression
+process that works. 
+
+The ultimate goal is to make a copy of regress.lst called something like 
+minRegress.lst that has far fewer files, thereby taking a lot less time, hopefully
+not to exceed 30 mins or so for Developers to run prior to submissions. The current
+process of running all 500+ files is simply too time consuming for developers to 
+run. I have been attempting to run it since last October, and have yet to make it
+all the way through with having to intervene in some way, or having a large number
+of scripts time out and be killed.
+
+Rant alert !!!!!!!!!!!!!!!!!!
+I have tracked down one problem that I have been haunted with related to regress
+for a long time. Some where along the line my setting for ATTDIA was set to 1. The
+default is 0. This was causing a dialog to appear for every insert (that had attributes)
+I blew away my HKEY_CURRENT_USER\Software\ITC\IntelliCAD registry key, and MANY (not all)
+but many of my failures went away.
+Then I noticed that none of the scripts that were displaying the dialog were even checking
+the ATTDIA sysvar.
+
+I believe we need a set of rules for writing scripts that address things like this. ALL
+scripts should preserve whatever they change, and reset it on exit. FILEDIA is a perfect 
+example. Mine is pretty much alwas set to 0 after running regress.
+!!!!!!!!!!!!!!!!!!!
+
+Notes to Docs:
+
+Notes to Localization:
+There have been new strings added to the resources.
+
+Files Affected:
+\IntelliCAD\eng-us\IcadRes.rc
+\IntelliCAD\eng-us\Icad.rc2
+\source\prj\icad\res\icadrc2.h
+\source\prj\icad\icadres.h
+\source\prj\icad\icadpromptmenu.cpp
+\source\prj\icad\icaddoc.cpp
+\source\prj\icad\icad.h
+\source\prj\lib\auto\autodoc.cpp
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectConverter.cpp
+\source\prj\lib\drw\dwgdirectReader.cpp
+\source\prj\lib\sds\sds_get.cpp
+
+Files Added:
+\source\regress\scripts\regress.lst

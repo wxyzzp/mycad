@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+File:		CYB_78183_1.txt
+Date:		10-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78183
+Affected files:			
+		CvsHist:Source/Source/prj/lib/SDS/sds_conversion.cpp
+Description: 	Tolerance value is displayed incorrectly when DIMZIN=12
+Comments:	TaL78183
+File by File:
+	*	CvsHist:Source/Source/prj/lib/SDS/sds_conversion.cpp
+
+		When DIMZIN is 12, means suppress trailing and leading zero. There is a special 			case when the value is zero and we have dimzin=12. In this case AutoCAD shows 				+/- 0 for tolerance value of dimension. IntelliCAD shows only +/- which is wrong. 		This special case is handle in sds_conversion.cpp files in 
+
+		static BOOL ConvertStringWithDimzin(	double    dNumber,  
+							const int nPrecision,
+							const int mode,
+							const int dimzin,
+							char*     szNumber
+							)
+-------------------------------------------------------------------------------

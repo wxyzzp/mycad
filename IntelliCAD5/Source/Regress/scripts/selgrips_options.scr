@@ -1,0 +1,25 @@
+logfilename log\selgrips_options.log
+logfileon
+;_____________
+line
+1,1
+2,2
+
+;_______
+line
+1,2
+2,3
+
+;_______
+selgrips
+all
+
+;_______
+erase
+;_______
+(if (/= (entlast) nil) (alert "select err"))
+;__________
+dxfout output_dxf\selgrips_options.dxf
+6
+quit
+y

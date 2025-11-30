@@ -1,0 +1,10 @@
+logfilename log\78395.log
+logfileon
+;_________
+(setvar "area" 2.0)
+(if (/= (getvar "area") 2.0) (princ "OK") (entsel))
+(setvar "perimeter" 2.0)
+(if (/= (getvar "perimeter") 2.0) (princ "OK") (entsel))
+;__________
+quit
+y

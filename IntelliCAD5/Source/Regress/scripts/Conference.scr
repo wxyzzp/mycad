@@ -1,0 +1,20 @@
+logfilename log\conference.log
+logfileon
+Open DWG\Chair.dwg
+viewpoint
+-1,-1,1
+hide
+(Load "lisp\conference.lsp")
+conference
+viewpoint
+0,0,1
+viewpoint
+0,-1,0
+viewpoint
+-1,0,0
+viewpoint
+-1,-1,1
+dxfout output_dxf\Conference.dxf
+6
+close n
+exit

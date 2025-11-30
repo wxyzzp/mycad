@@ -1,0 +1,110 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4212002_4.txt
+Date:		21-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		CvsHist:Source/prj/lib/CMDS/pedit2.cpp
+		CvsHist:Source/prj/lib/CMDS/offset.cpp
+		CvsHist:Source/prj/lib/CMDS/dimension.cpp
+		CvsHist:Source/prj/lib/LISP/table.cpp
+		CvsHist:Source/prj/lib/LISP/system.cpp
+		CvsHist:Source/prj/lib/LISP/interpreter.cpp
+		CvsHist:Source/prj/lib/LISP/freers.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission fixes infinte loop, memory leaks, memory problems and bugs in ICAD.
+Comments:	This submission fixes infinite loop, memory problems and bugs in ICAD.
+		These errors were found when I ran Purify with the new scr files I added to
+		regress. I identified an infinte loop in pedit and multiple types of memory
+		bugs. The memory bugs were mismatched memory operations -- memory allocated in new
+		and deallocated in free and memory allocated by malloc and deallocated by delete.
+		Then there were cases of reading freed memory, deallocating memory twice, freeing
+		invalid memory (literally freeing a random address) and array bound read/write.
+
+		These type of memory problems are serious as ICAD would crash unpredictably. There are
+		still more cases of memory errors which I need to fix -- these are uninitialised memory reads.
+
+		In pedit, if all the vertices of the polyline we select to edit are outside the window, the
+		code in function cmd_pline_editvtx() goes into an infinte loop. The code (in 3 places) tries to
+		find a start vertex for the polyline which lies inside the boundary. It calls function nextvert()
+		but this function loops around to the start vertex if it reaches the end. Result was an infinite loop.
+		The fix was to select the first vertex if this occured.
+
+		Fixed a crash in trim_or_extend(). An index to array onLocal1 was uninitilised. The behavior was
+		unpredicatble and causes crashes. Fixed this by setting the index to 0.
+
+		Fixed memory mismatch in cmd_doverride(). We were leaking memory when a locally allocated resbuf was
+		not freed. Also memory allocated by malloc wes being deallocated by delete. free() is now called instead.
+
+		Fixed bugs in lsp_modify_adslist(). In this function we were deleting a pointer to a locally allocated resbuf
+		instead of calling sds_relrb()> Changed the code to call sds_relrb().
+
+		FIxed a memory mismatch in lsp_getvar(). Here a loccally allocated resbuf gets a string through malloc which
+		was being deallocated by delete. Changed this to free() after veryfing all paths through the code allocated
+		the string by malloc().
+
+		In lsp_1associtem() if the source resbuf holds a string which happens to be empty, the function was trying 
+		to allocate a string by looking at the strlen() of this string. This causes crashes. Fixed this by setting the
+		result resbuf to an empty string if source string was empty.
+
+		A wide range of bugs came due to bugs in lsp_freesuprb() and lsp_freesplrb(). Here resbufs strings and binary
+		data were deallocated but the pointers were not set to NULL. This caused memory to be freed twice, freed memory being 
+		read, etc.
+
+File by File:	
+		Source/prj/lib/CMDS/pedit2.cpp			New Rev. 1.14
+
+		In pedit, if all the vertices of the polyline we select to edit are outside the window, the
+		code in function cmd_pline_editvtx() goes into an infinte loop. The code (in 3 places) tries to
+		find a start vertex for the polyline which lies inside the boundary. It calls function nextvert()
+		but this function loops around to the start vertex if it reaches the end. Result was an infinite loop.
+		The fix was to select the first vertex if this occured.
+
+		Source/prj/lib/CMDS/offset.cpp			New Rev. 1.6
+
+		Fixed a crash in trim_or_extend(). An index to array onLocal1 was uninitilised. The behavior was
+		unpredicatble and causes crashes. Fixed this by setting the index to 0.
+
+		Source/prj/lib/CMDS/dimension.cpp	 			New Rev. 1.38
+
+		Fixed memory mismatch in cmd_doverride(). We were leaking memory when a locally allocated resbuf was
+		not freed. Also memory allocated by malloc wes being deallocated by delete. free() is now called instead.
+
+		Source/prj/lib/LISP/table.cpp	 			New Rev. 1.4
+
+		Fixed bugs in lsp_modify_adslist(). In this function we were deleting a pointer to a locally allocated resbuf
+		instead of calling sds_relrb()> Changed the code to call sds_relrb().
+
+		Source/prj/lib/LISP/system.cpp	 			New Rev. 1.6
+
+		FIxed a memory mismatch in lsp_getvar(). Here a loccally allocated resbuf gets a string through malloc which
+		was being deallocated by delete. Changed this to free() after veryfing all paths through the code allocated
+		the string by malloc().
+
+		Source/prj/lib/LISP/interpreter.cpp	 			New Rev. 1.13
+
+		In lsp_1associtem() if the source resbuf holds a string which happens to be empty, the function was trying 
+		to allocate a string by looking at the strlen() of this string. This causes crashes. Fixed this by setting the
+		result resbuf to an empty string if source string was empty.
+
+
+		Source/prj/lib/LISP/freers.cpp	 			New Rev. 1.4
+
+		A wide range of bugs came due to bugs in lsp_freesuprb() and lsp_freesplrb(). Here resbufs strings and binary
+		data were deallocated but the pointers were not set to NULL. This caused memory to be freed twice, freed memory being 
+		read, etc.
+
+------------------------------------------------------------------------------

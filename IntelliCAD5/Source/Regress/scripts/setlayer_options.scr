@@ -1,0 +1,64 @@
+logfilename log\setlayer_options.log
+logfileon
+;_______a
+-layer
+n
+a
+
+;_______b
+-layer
+m
+b
+
+;_______
+line
+1,1
+2,2
+
+;_______a
+-layer
+s
+a
+
+;_______
+line
+1,2
+2,3
+
+;_______
+-layer
+s
+0
+
+;_______
+line
+1,3
+2,4
+
+;_______
+(if (/= (cdr (assoc 8 (entget (entlast)))) "0") (alert "Err"))
+;_______
+setlayer
+2,3
+;_______
+line
+1,4
+2,5
+
+;_______
+(if (/= (cdr (assoc 8 (entget (entlast)))) "A") (alert "Err"))
+;_______
+setlayer
+2,2
+;_______
+line
+1,5
+2,6
+
+;_______
+(if (/= (cdr (assoc 8 (entget (entlast)))) "B") (alert "Err"))
+;__________
+dxfout output_dxf\setlayer.dxf
+6
+quit
+y

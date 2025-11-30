@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+ File Name:	EBA_5072002_1.txt
+ Date:           07-05-2002
+ Developer:      Chikahiro Masami
+ Company:        Ebatech
+ Reference:      
+ Affected files: 
+                 CvsHist:Source/Eng-us/IcadRes.rc
+                 CvsHist:Source/prj/ICAD/IcadRes.h
+                 CvsHist:Source/prj/lib/SDS/sds_get.cpp
+ Description:    Remove Type button in file dialogbox
+                 saving dwg/dxf file has preview window
+                 When use preview button is clear, preview is also clear.
+                 When use preview button is on, display preview image ASAP.
+ Comments:       TalOpenFileDialog
+--------------------------------------------------------------------------------

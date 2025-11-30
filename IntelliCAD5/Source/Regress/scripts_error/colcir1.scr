@@ -1,0 +1,13 @@
+logfilename log\colcir1.log
+logfileon
+time
+
+open dwg\circles.dwg
+(load "lisp\colcir1.lsp")
+ccol
+dxfout output_dxf\colcir1.dxf
+6
+close n
+time
+
+exit

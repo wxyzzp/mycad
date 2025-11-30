@@ -1,0 +1,451 @@
+; IntelliCAD Linetypes
+;
+; icad.lin
+; Release 1.0   
+; 
+; .............................................................................
+;
+; Copyright (c) 1998 by Visio Corporation.  All rights reserved.
+;
+; The Software is subject to the license agreement that accompanies 
+; or is included with the Software, which specifies the permitted 
+; and prohibited uses of the Software. Any unauthorized duplication 
+; or use of Visio Corporation Software, in whole or in part, in print, 
+; or in any other storage and retrieval system is prohibited.
+; 
+; To the maximum extent permitted by applicable law, Visio Corporation
+; and its suppliers disclaim any and all warranties and conditions,
+; either express or implied, including, without limitation, implied
+; warranties of merchantability, fitness for a particular purpose,
+; title, and non-infringement, and those arising out of usage of trade
+; or course of dealing, concerning these materials.  These materials
+; are provided "as is" without warranty of any kind.
+; .............................................................................
+
+
+
+*BORDER,__ __ . __ __ . __ __ . __ __ . __ __ . __ __ . __ __ . __ __ . 
+A,0.50,-0.250,0.50,-0.250,0,-0.250
+*BORDER2,__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__.__   
+A,0.25,-0.125,0.25,-0.125,0,-0.125
+*BORDERX2,____  ____  .  ____  ____  .  ____  ____  .  ____  ____  .  
+A,1.0,-0.5,1.0,-0.5,0,-0.5
+
+*CENTER,____ _ ____ _ ____ _ ____ _ ____ _ ____ _ ____ _ ____ _ ____ _
+A,1.250,-0.25,0.25,-0.25
+*CENTER2,___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ _
+A,0.75,-0.1250,0.1250,-0.125
+*CENTERX2,________  __  ________  __  ________  __  ________  __  ____
+A,2.5,-0.50,0.50,-0.50
+
+*DASHDOT,__ . __ . __ . __ . __ . __ . __ . __ . __ . __ . __ . __ . _
+A,0.50,-0.250,0,-0.250
+*DASHDOT2,_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.
+A,0.25,-0.125,0,-0.125
+*DASHDOTX2,____  .  ____  .  ____  .  ____  .  ____  .  ____  .  ____ 
+A,1.0,-0.5,0,-0.5
+
+*DASHED,__ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __
+A,0.50,-0.250
+*DASHED2,_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.250,-0.1250
+*DASHEDX2,____  ____  ____  ____  ____  ____  ____  ____  ____  ____  
+A,1.0,-0.5
+
+*DIVIDE,____ . . ____ . . ____ . . ____ . . ____ . . ____ . . ____ . .
+A,0.50,-0.25,0,-0.25,0,-0.25
+*DIVIDE2,__..__..__..__..__..__..__..__..__..__..__..__..__..__..__..__..
+A,0.25,-0.125,0,-0.125,0,-0.125
+*DIVIDEX2,________  .  .  ________  .  .  ________  .  .  ________  .  .
+A,1.0,-0.5,0,-0.5,0,-0.50
+
+*DOT,. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+A,0,-0.25
+*DOT2,................................................................
+A,0,-0.125
+*DOTX2,.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+A,0,-0.5
+
+*HIDDEN,__ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ 
+A,0.250,-0.1250
+*HIDDEN2,_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.125,-0.06250
+*HIDDENX2,____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+A,0.5,-0.25
+
+*PHANTOM,______  __  __  ______  __  __  ______  __  __  ______  __  __
+A,1.25,-0.25,0.250,-0.25,0.25,-0.25
+*PHANTOM2,___ _ _ ___ _ _ ___ _ _ ___ _ _ ___ _ _ ___ _ _ ___ _ _ ___ _ _
+A,0.625,-0.125,0.1250,-0.125,0.125,-0.1250
+*PHANTOMX2,____________    ____    ____    ____________    ____    ____   
+A,2.5,-0.5,0.5,-0.5,0.50,-0.5
+
+*BORDER4,__.__.__.__.__.__._ (1/2 of Border2) _.__.__.__.__.__.__.__.__   
+A,0.125,-0.0625,0.125,-0.0625,0,-0.0625
+
+*CENTER4,___ _ ___ _ ___ _ __ (1/2 of Center2)__ _ ___ _ ___ _ ___ _ _
+A,0.375,-0.0625,0.0625,-0.0625
+*CENTER8,___ _ ___ _ ___ _ __ (1/2 of Center4)__ _ ___ _ ___ _ ___ _ _
+A,0.1875,-0.03125,0.03125,-0.03125
+
+*CENTERF,_____ _ _____ (Finer short dashes than Center) _____
+A,1.25,-0.125,0.125,-0.125
+*CENTERF2,___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ ___ _ _
+A,0.75,-0.0625,0.0625,-0.0625
+;; Auto-Arch additions for finer linetypes.
+*CENTERF4,___ _ ___ _ ___ _ __ (1/2 of CenterF2)__ _ ___ _ ___ _ ___ _ _
+A,0.375,-0.03125,0.03125,-0.03125
+*CENTERF8,___ _ ___ _ ___ _ __ (1/2 of CenterF4)__ _ ___ _ ___ _ ___ _ _
+A,0.1875,-0.0015625,0.0015625,-0.0015625
+
+*DASHED4,_ _ _ _ _ _ _ _ (1/2 of Dashed2)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.125,-0.0625
+*DASHED8,_ _ _ _ _ _ _ _ (1/2 of Dashed4)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.0625,-0.03125
+
+*DEMOx2,____        ____        ____        ____        ____
+A,0.250,-0.5
+*DEMO,__    __    __    __    __    __    __    __    __    __    __
+A,0.125,-0.25
+*DEMO2,_  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _
+A,0.0625,-0.125
+*DEMO4,_  _  _  _  _  _  (1/2 of Demo2) _  _  _  _  _  _  _  _  _  _  _
+A,0.0625,-0.125
+*DEMO8,_  _  _  _  _  _  (1/2 of Demo4) _  _  _  _  _  _  _  _  _  _  _
+A,0.03125,-0.0625
+
+*INVISIBLE,.        (Dot at endpoints only)             .
+A,0,-1000
+
+*DOT4,...................(1/2 of Dot2)................................
+A,0,-0.06125
+*DOT8,...................(1/2 of Dot4)................................
+A,0,-0.03125
+*DOT16,..................(1/2 of Dot8)................................
+A,0,-0.0015625
+
+*HIDDEN4,_ _ _ _ _ _ _ _ (1/2 of Hidden2)_ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.0625,-0.03125
+*HIDDEN8,_ _ _ _ _ _ _ _ (1/2 of Hidden4)_ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.03125,-0.015
+
+*PHANTOM4,___ _ _ ___ _ _ (1/2 of Phantom2)__ _ _ ___ _ _ ___ _ _ ___ _ _
+A,0.3125,-0.0625,0.0625,-0.0625,0.0625,-0.0625
+*PHANTOM8,___ _ _ ___ _ _ (1/2 of Phantom4)__ _ _ ___ _ _ ___ _ _ ___ _ _
+A,0.15625,-0.03125,0.03125,-0.03125,0.03125,-0.03125
+
+*CONTOUR,______  ______  ______  ______  ______  ______  ______  ______
+A,0.375,-0.09375
+*CONTOUR2,____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+A,0.25,-0.0625
+*COLDWR,___ _ ____ _ _____ _ _____ _ _____ _ ____
+A,0.25,-0.075,0.075,-0.075
+*HOTWR,___ _ _ ___ _ _ ___ _ _ ___ _ _ ___ _ _ ___
+A,0.25,-0.075,0.075,-0.075,0.075,-0.075
+*HCW,_____ _ _ _ _____ _ _ _ _____ _ _ _ _____
+A,1,-0.125,0.125,-0.125,0.125,-0.125,0.125,-0.125
+*BOUNDARY,___________  __  __  ___________  __  __  ______ 
+A,1.75,-0.125,0.125,-0.125,0.125,-0.125
+*BOUNDARY2,______ _ _ ______ _ _ ______ _ _ ______ _ _ ______
+A,1,-0.0625,0.0625,-0.0625,0.0625,-0.0625
+*STREAM,_________ . . ___________ . . ___________
+A,1,-0.125,0,-0.125,0,-0.125                                 
+*PNEUM,__ ___ ___ ___ ___ ___ ___ ___ ___ ___ __
+A,0.2,-0.1,0.2,-0.1
+*WASTE,__ __ __ __ __ __ __ __ __ __ __ __ __ __
+A,0.25,-0.125
+*2DASHES,____ _ _ _____ _ _ ____ _ _ ____ _ _ ____
+A,0.75,-0.25,0.1,-0.25,0.1,-0.25
+*EWIREUP,__ . __ . __ . __ . __ . __ . __ . __ .__
+A,0.25,-.075,0,-.075
+*EWCELL,___ ___ . ___ ___ . __ __ . __ __ . __ __
+A,0.25,-0.075,0.25,-.075,0,-.075
+
+*EVENDASH,--  --  --  --  --  --  --  --  --  --  --
+A,0.125,-0.125
+
+;; Additional Plumbing linetypes
+*DCW,Domestic Cold Water ___ _ ______________ _ ____
+A,1.25,-0.06,0.08,-0.06
+*DCW2,Domestic Cold Water __ _ ______ _ _____ _ ____
+A,0.625,-0.03,0.04,-0.03
+*DCWX2,Domestic Cold Water ________  ___  __________
+A,2.5,-0.12,0.16,-0.12
+*DHW,Domestic Hot Water ___ _ _ ___________ _ _ ____
+A,1.25,-0.06,0.08,-0.06,0.08,-0.06
+*DHW2,Domestic Hot Water __ _ _ _____ _ _ ____ _ _ __
+A,0.625,-0.03,0.04,-0.03,0.04,-0.03
+*DHWX2,Domestic Hot Water _____  ___  ___  ___  _____
+A,2.5,-0.12,0.16,-0.12,0.16,-0.12
+*DHWR,Domestic Hot Wtr Return _____ __ __ __ ________
+A,1.25,-0.06,0.08,-0.06,0.08,-0.06,0.08,-0.06
+*DHWR2,Domestic Hot Wtr Return ___ _ _ _ ____________
+A,0.625,-0.03,0.04,-0.03,0.04,-0.03,0.04,-0.03
+*DHWRX2,Domestic Hot Wtr Return ____ ___ ____ ____ ____
+A,2.5,-0.12,0.16,-0.12,0.16,-0.12,0.16,-0.12
+*VENT,Sanitary Vent Pipe __ __ __ __ __ __ __ __ __ __
+A,0.16,-0.08
+*VENT2,Sanitary Vent Pipe _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.08,-0.04
+*VENTX2,Sanitary Vent Pipe ____    ____    ____    ___
+A,0.32,-0.16
+*COND,Steam Condensate __ __ __ __ __ __ __ __ __ __ __
+A,0.16,-0.08
+*COND2,Steam Condensate _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,0.08,-0.04
+*CONDX2,Steam Condensate ____    ____    ____    ____
+A,0.32,-0.16
+
+;;; ISO LINTYPES
+*DaL013,02b013 Dashed line 0.13mm
+A,1.56,-0.39
+*DaSpL013,03b013 Dashed space line 0.13mm
+A,1.56,-2.34
+*LDaDoL013,04b013 Long dashed dotted line 0.13mm 
+A,3.12,-0.39,0.065,-0.39
+*LDaDbDoL,05b013 Long dash double dotted line 0.13mm 
+A,3.12,-0.39,0.065,-0.39,0.065,-0.39
+*LDaTrDoL,06b013 Long dashed triplicate dotted line 0.13mm 
+A,3.12,-0.39,0.065,-0.39,0.065,-0.39,0.065,-0.39
+*DoL013,07b013 Dotted line
+A,0.065,-0.39
+*LDaShDaL013,08b013 Long dashed short dashed line 0.13mm 
+A,3.12,-0.39,0.78,-0.39
+*09b013,Long dashed double-short-dashed line 0.13mm 
+A,3.12,-0.39,0.78,-0.39,0.78,-0.39
+*10b013,Dashed dotted line 0.13mm 
+A,1.56,-0.39,0.065,-0.39
+*11b013,Double-dashed dotted line 0.13mm 
+A,1.56,-0.39,1.56,-0.39,0.065,-0.39
+*12b013,Dashed double-dotted line 0.13mm 
+A,1.56,-0.39,0.065,-0.39,0.065,-0.39
+*13b013,Double-dashed double-dotted line 0.13mm 
+A,1.56,-0.39,1.56,-0.39,0.065,-0.39,0.065,-0.39
+*14b013,Dashed triplicate-dotted line 0.13mm 
+A,1.56,-0.39,0.065,-0.39,0.065,-0.39,0.065,-0.39
+*15b013,Double-dashed triplicate-dotted line 0.13mm 
+A,1.56,-0.39,1.56,-0.39,0.065,-0.39,0.065,-0.39,0.065,-0.39
+*02b018,Dashed line 0.18mm  
+A,2.16,-0.54
+*03b018,Dashed space line 0.18mm 
+A,2.16,-3.24
+*04b018,Long dashed dotted line 0.18mm 
+A,4.32,-0.54,0.09,-0.54
+*05b018,Long dash double dotted line 0.18mm 
+A,4.32,-0.54,0.09,-0.54,0.09,-0.54
+*06b018,Long dashed triplicate dotted line 0.18mm 
+A,4.32,-0.54,0.09,-0.54,0.09,-0.54,0.09,-0.54
+*07b018,Lotted line
+A,0.09,-0.54
+*08b018,Long dashed short dashed line 0.18mm 
+A,4.32,-0.54,1.08,-0.54
+*09b018,Long dashed double-short-dashed line 0.18mm 
+A,4.32,-0.54,1.08,-0.54,1.08,-0.54
+*10b018,Dashed dotted line 0.18mm 
+A,2.16,-0.54,0.09,-0.54
+*11b018,Double-dashed dotted line 0.18mm 
+A,2.16,-0.54,2.16,-0.54,.09,-0.54
+*12b018,Dashed double-dotted line 0.18mm 
+A,2.16,-0.54,0.09,-0.54,0.09,-0.54
+*13b018,Double-dashed double-dotted line 0.18mm 
+A,2.16,-0.54,2.16,-0.54,0.09,-0.54,0.09,-0.54
+*14b018,Dashed triplicate-dotted line 0.18mm 
+A,2.16,-0.54,0.09,-0.54,0.09,-0.54,0.09,-0.54
+*15b018,Double-dashed triplicate-dotted line 0.18mm 
+A,2.16,-0.54,2.16,-0.54,0.09,-0.54,0.09,-0.54,0.09,-0.54
+*02b025,Dashed Line 0.25mm  
+A,3,-0.75
+*03b025,Dashed space line 0.25mm 
+A,3,-4.5
+*04b025,Long dashed dotted line 0.25mm 
+A,6,-0.75,0.125,-0.75
+*05b025,Long dash double dotted line 0.25mm 
+A,6,-0.75,0.125,-0.75,0.125,-0.75
+*06b025,Long dashed triplicate dotted line 0.25mm 
+A,6,-0.75,0.125,-0.75,0.125,-0.75,0.125,-0.75
+*07b025,Dotted line 0.25 mm 
+A,0.125,-0.75
+*08b025,Long dashed short dashed line 0.25mm 
+A,6,-0.75,1.5,-0.75
+*09b025,Long dashed double-short-dashed line 0.25mm 
+A,6,-0.75,1.5,-0.75,1.5,-0.75
+*10b025,Dashed dotted line 0.25mm 
+A,3,-0.75,0.125,-0.75
+*11b025,Double-dashed dotted line 0.25mm 
+A,3,-0.75,3,-0.75,0.125,-0.75
+*12b025,Dashed double-dotted line 0.25mm 
+A,3,-0.75,0.125,-0.75,0.125,-0.75
+*13b025,Double-dashed double-dotted line 0.25mm 
+A,3,-0.75,3,-0.75,0.125,-0.75,0.125,-0.75
+*14b025,Dashed triplicate-dotted line 0.25mm 
+A,3,-0.75,0.125,-0.75,0.125,-0.75,0.125,-0.75
+*15b025,Double-dashed triplicate-dotted line 0.25mm 
+A,3,-0.75,3,-0.75,0.125,-0.75,0.125,-0.75,0.125,-0.75
+*02b035,Dashed line 0.35mm  
+A,4.2,-1.05
+*03b035,Dashed space line 0.35mm 
+A,4.2,-6.3
+*04b035,Long dashed dotted line 0.35mm 
+A,8.4,-1.05,0.175,-1.05
+*05b035,Long dash double dotted line 0.35mm 
+A,8.4,-1.05,0.175,-1.05,0.175,-1.05
+*06b035,Long dashed triplicate dotted line 0.35mm 
+A,8.4,-1.05,.175,-1.05,.175,-1.05,0.175,-1.05
+*07b035,Dotted line 0.35mm 
+A,.175,-1.05
+*08b035,Long dashed short dashed line 0.35mm 
+A,8.4,-1.05,2.1,-1.05
+*09b035,Long dashed double-short-dashed line 0.35mm 
+A,8.4,-1.05,2.1,-1.05,2.1,-1.05
+*10b035,Lashed dotted line 0.35mm 
+A,4.2,-1.05,0.175,-1.05
+*11b035,Double-dashed dotted line 0.35mm 
+A,4.2,-1.05,4.2,-1.05,.175,-1.05
+*12b035,Dashed double-dotted line 0.35mm 
+A,4.2,-1.05,.175,-1.05,.175,-1.05
+*13b035,Double-dashed double-dotted line 0.35mm 
+A,4.2,-1.05,4.2,-1.05,.175,-1.05,.175,-1.05
+*14b035,Dashed triplicate-dotted line 0.35mm 
+A,4.2,-1.05,.175,-1.05,.175,-1.05,.175,-1.05
+*15b035,Double-dashed triplicate-dotted line 0.35mm 
+A,4.2,-1.05,4.2,-1.05,.175,-1.05,.175,-1.05,.175,-1.05
+*02b05,Dashed line 0.5mm  
+A,6,-1.5
+*03b05,Dashed space line 0.5mm 
+A,6,-9
+*04b05,Long dashed dotted line 0.5mm 
+A,12,-1.5,0.25,-1.5
+*05b05,Long dash double dotted line 0.5mm 
+A,12,-1.5,0.25,-1.5,0.25,-1.5
+*06b05,Long dashed triplicate dotted line 0.5mm 
+A,12,-1.5,0.25,-1.5,.25,-1.5,0.25,-1.5
+*07b05,Dotted line 0.5mm 
+A,0.25,-1.5
+*08b05,Long dashed short dashed line 0.5mm 
+A,12,-1.5,3,-1.5
+*09b05,Long dashed double-short-dashed line 0.5mm 
+A,12,-1.5,3,-1.5,3,-1.5
+*10b05,Dashed dotted line 0.5mm 
+A,6,-1.5,0.25,-1.5
+*11b05,Double-dashed dotted line 0.5mm 
+A,6,-1.5,6,-1.5,0.25,-1.5
+*12b05,Dashed double-dotted line 0.5mm 
+A,6,-1.5,.25,-1.5,0.25,-1.5
+*13b05,Double-dashed double-dotted line 0.5mm 
+A,6,-1.5,6,-1.5,0.25,-1.5,0.25,-1.5
+*14b05,Dashed triplicate-dotted line 0.5mm 
+A,6,-1.5,0.25,-1.5,0.25,-1.5,0.25,-1.5
+*15b05,Double-dashed triplicate-dotted line 0.5mm 
+A,6,-1.5,6,-1.5,0.25,-1.5,0.25,-1.5,0.25,-1.5
+*02b07,Dashed Line 0.7mm  
+A,8.4,-2.1
+*03b07,Dashed space line 0.7mm 
+A,8.4,-12.6
+*04b07,Long dashed dotted line 0.7mm 
+A,16.8,-2.1,0.35,-2.1
+*05b07,Long dash double dotted line 0.7mm 
+A,16.8,-2.1,0.35,-2.1,0.35,-2.1
+*06b07,Long dashed triplicate dotted line 0.7mm 
+A,16.8,-2.1,0.35,-2.1,0.35,-2.1,0.35,-2.1
+*07b07,Dotted line 0.7mm 
+A,0.35,-2.1
+*08b07,Long dashed short dashed line 0.7mm 
+A,16.8,-2.1,4.2,-2.1
+*09b07,Long dashed double-short-dashed line 0.7mm 
+A,16.8,-2.1,4.2,-2.1,4.2,-2.1
+*10b07,Dashed dotted line 0.7mm 
+A,8.4,-2.1,0.35,-2.1
+*11b07,Double-dashed dotted line 0.7mm 
+A,8.4,-2.1,8.4,-2.1,0.35,-2.1
+*12b07,Dashed double-dotted line 0.7mm 
+A,8.4,-2.1,0.35,-2.1,0.35,-2.1
+*13b07,Double-dashed double-dotted line 0.7mm 
+A,8.4,-2.1,8.4,-2.1,0.35,-2.1,0.35,-2.1
+*14b07,Dashed triplicate-dotted line 0.7mm 
+A,8.4,-2.1,0.35,-2.1,0.35,-2.1,0.35,-2.1
+*15b07,Double-dashed triplicate-dotted line 0.7mm 
+A,8.4,-2.1,8.4,-2.1,0.35,-2.1,0.35,-2.1,0.35,-2.1
+*02b1,Dashed Line 1mm 
+A,12,-3
+*03b1,Dashed space line 1mm 
+A,12,-18
+*04b1,Long dashed dotted line 1mm 
+A,24,-3,.5,-3
+*05b1,Long dash double dotted line 1mm 
+A,24,-3,.5,-3,.5,-3
+*06b1,Long dashed triplicate dotted line 1mm 
+A,24,-3,.5,-3,.5,-3,.5,-3
+*07b1,Dotted line
+A,.5,-3
+*08b1,Long dashed short dashed line 1mm 
+A,24,-3,6,-3
+*09b1,Long dashed double-short-dashed line 1mm 
+A,24,-3,6,-3,6,-3
+*10b1,Dashed dotted line 1mm 
+A,12,-3,.5,-3
+*11b1,Double-dashed dotted line 1mm 
+A,12,-3,12,-3,0.5,-3
+*12b1,Dashed double-dotted line 1mm 
+A,12,-3,0.5,-3,0.5,-3
+*13b1,Double-dashed double-dotted line 1mm 
+A,12,-3,12,-3,0.5,-3,0.5,-3
+*14b1,Dashed triplicate-dotted line 1mm 
+A,12,-3,0.5,-3,0.5,-3,0.5,-3
+*15b1,Double-dashed triplicate-dotted line 1mm 
+A,12,-3,12,-3,0.5,-3,.5,-3,0.5,-3
+*02b14,Dashed Line 1.4mm  
+A,16.8,-4.2
+*03b14,Dashed space line 1.4mm 
+A,16.8,25.2
+*04b14,Long dashed dotted line 1.4mm 
+A,33.6,-4.2,.7,-4.2
+*05b14,Long dash double dotted line 1.4mm 
+A,33.6,-4.2,.7,-4.2,.7,-4.2
+*06b14,Long dashed triplicate dotted line 1.4mm 
+A,33.6,-4.2,.7,-4.2,.7,-4.2,.7,-4.2
+*07b14,Dotted line 1.4mm 
+A,.7,-4.2
+*08b14,Long dashed short dashed line 1.4mm 
+A,33.6,-4.2,8.4,-4.2
+*09b14,Long dashed double-short-dashed line 1.4mm 
+A,33.6,-4.2,8.4,-4.2,8.4,-4.2
+*10b14,Dashed dotted line 1.4mm 
+A,16.8,-4.2,.7,-4.2
+*11b14,Double-dashed dotted line 1.4mm 
+A,16.8,-4.2,16.8,-4.2,.7,-4.2
+*12b14,Dashed double-dotted line 1.4mm 
+A,16.8,-4.2,.7,-4.2,.7,-4.2
+*13b14,Double-dashed double-dotted line 1.4mm 
+A,16.8,-4.2,16.8,-4.2,.7,-4.2,.7,-4.2
+*14b14,Dashed triplicate-dotted line 1.4mm 
+A,16.8,-4.2,.7,-4.2,.7,-4.2,.7,-4.2
+*15b14,Double-dashed triplicate-dotted line 1.4mm 
+A,16.8,-4.2,16.8,-4.2,.7,-4.2,.7,-4.2,.7,-4.2
+*02b2,Dashed Line 2mm  
+A,24,-6
+*03b2,Dashed space line 2mm 
+A,24,-36
+*04b2,Long dashed dotted line 2mm 
+A,48,-6,1,-6
+*05b2,Long dash double dotted line 2mm 
+A,48,-6,1,-6,1,-6
+*06b2,Long dashed triplicate dotted line 2mm 
+A,48,-6,1,-6,1,-6,1,-6
+*07b2,Dotted line 2mm 
+A,1,-6
+*08b2,Long dashed short dashed line 2mm 
+A,48,-6,12,-6
+*09b2,Long dashed double-short-dashed line 2mm 
+A,48,-6,12,-6,12,-6
+*10b2,Dashed dotted line 2mm 
+A,24,-6,1,-6
+*11b2,Double-dashed dotted line 2mm 
+A,24,-6,24,-6,1,-6
+*12b2,Dashed double-dotted line 2mm 
+A,24,-6,1,-6,1,-6
+*13b2,Double-dashed double-dotted line 2mm 
+A,24,-6,24,-6,1,-6,1,-6
+*14b2,Dashed triplicate-dotted line 2mm 
+A,24,-6,1,-6,1,-6,1,-6
+*15b2,Double-dashed triplicate-dotted line 2mm 
+A,24,-6,24,-6,1,-6,1,-6,1,-6

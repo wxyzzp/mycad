@@ -1,0 +1,25 @@
+logfilename log\Entities.log
+logfileon
+open dwg\Entities.dwg
+insert
+dwg\eblk.dwg
+0,0
+1
+1
+0
+array
+l
+
+r
+15
+15
+0,0
+70,70
+z
+e
+(load "lisp\count.lsp")
+count
+dxfout output_dxf\Entities.dxf
+6
+close n
+exit

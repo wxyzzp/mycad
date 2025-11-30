@@ -1,0 +1,41 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-20.txt
+Produce Version		ICAD 4
+Date:				03/18/2004 11:53am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Finalized round tripping dimassoc. AutoCAD's 2004 associative
+dimensions now round trip correctly.
+
+Note there is a bug in AutoCAD that exhibits strange behavior when one of
+the associated entities is an xref intersected with another entity. 
+This strange behavior is still present and the same when we round trip a dimension.
+
+Notes to Developers:
+
+Notes to QA:
+AutoCAD BUG reproduction steps:
+
+Draw a line, and save it.
+Open a new drawing and xref in the first.
+Draw another line that crosses the line in the xref'd drawing.
+Draw another line somewhere away from the first two.
+Now create an associated dimension using the intersection of first drawn line and the xref,
+and the end of the second drawn line.
+AutoCAD bug. You would expect if you move the intersecting line or the xref, that AutoCAD
+would maintain the dimension from the intersection of the line and xref, but it fails. 
+grip editing either the xref or the line that intersects it has unpredictable results.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp

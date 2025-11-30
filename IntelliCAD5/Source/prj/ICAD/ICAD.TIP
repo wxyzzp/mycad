@@ -1,0 +1,123 @@
+The Tip of the Day introduces you to many useful features of IntelliCAD(r) 2000.\\To make the tips stop appearing, clear the check box. To view tips at any time, from the Help menu, choose Tip of the Day.
+IntelliCAD(r) 2000 provides a dynamic pan and zoom feature using the mouse.\\To pan dynamically, press Ctrl+Shift and hold down the right mouse button. To zoom dynamically, press Ctrl+Shift and hold down the left mouse button.\\To stop panning or zooming, release the mouse button.
+If you prefer to enter commands at the command bar, go to the View menu and choose Command Bar, or press F3.\\You can dock the command bar at the top or bottom of the window or float it anywhere you want.
+You can work on several drawings at once. When you have more than one drawing open, you can copy drawing features such as layers, linetypes, views, and blocks from one drawing to another.
+After you select a command, a prompt box displays that provides options. You can use the mouse to select command options from the prompt boxes.\\You can turn the prompt boxes off. From the Tools menu, choose Options, click the Display tab, and then clear the check box for Display Prompt Boxes.
+You can read through all these tips, and you can add your own. In your IntelliCAD(r) 2000 directory, open the file ICAD.TIP as a text file.
+You can learn about any command on a menu by highlighting it to select it and reading the text in the status bar at the bottom of the main window.
+IntelliCAD(r) 2000 provides an online user's guide; online Help, which gives details about commands, tools, aliases, and system variables; and online developer references for programmers.
+If your mouse has a center wheel, you can specify what it does. By default, it zooms in and out. When the scroll bars are turned on, it also pans up and down.\\To change the action of the center wheel, type the system variable MWHEELUP or MWHEELDN, press Enter, and then type a new command.
+You can press F1 at any time to display IntelliCAD(r) 2000 Help.\\If you are using a command, IntelliCAD displays help for that command.
+If you are accustomed to using the command line in Autodesk AutoCAD, you can still type the same commands and use the same options in IntelliCAD(r) 2000, even if you do not see them on the screen.
+You can set IntelliCAD(r) 2000 to show the tools and menu items appropriate for your experience level. From the Tools menu, choose Options, click the General tab, and choose Beginner, Intermediate, or Advanced.
+You can create blocks, which are combinations of entities that you can use repeatedly in your drawing.\\To create a block, draw something you want to reuse, then go to the Tools menu and choose Create Block.\\To use the block later, go to the Insert menu and choose Insert Block, or select the block in the IntelliCAD Explorer.
+You can move the toolbars and the command bar to any place on the screen by dragging them away from the edge of the window. 
+All the files supplied with IntelliCAD(r) 2000 are available in uncompressed form on your CD.\\If you misplace a file, you do not need to reinstall the program. Just copy the file from the directory on the IntelliCAD 2000 CD named Uncompressed.
+You can change the color of your screen background. From the Tools menu, choose Options, and then click the Display tab. Under Graphics Screen Color, click Color, and then choose the background color you want.
+You can find distances, areas, and exact locations in your drawings using the tools on the Inquiry toolbar.
+You can use any word or symbol to indicate that IntelliCAD(r) 2000 is ready for a command. By default, IntelliCAD displays a colon. You might prefer Ready or OK instead.\\To change what appears in the command bar, type CMDLNTEXT and enter a new word or symbol.
+You can choose any option in a prompt by typing the capital letter(s) in the option description in the command bar. For example, to choose the Length option in the Line command, simply type L at that prompt.
+You can maximize the drawing area on the screen by hiding items you do not need at the moment: toolbars, command bar, or status bar.\\To hide or show elements of the user interface, from the View menu, select or clear the item that you want to hide or show.
+The World Coordinate System (WCS) is the default and the foundation on which user coordinate systems are built.\\You can return to the WCS at any time by entering UCS in the command bar and choosing the World option.
+You can define your own coordinate systems to make specifying points and reading entity information easier.\\From the Settings menu, choose User Coordinate Systems, or create a new UCS in the IntelliCAD Explorer.
+You can create your drawing in any way that is convenient for you in model space (the default), and then arrange it for printing in paper space.\\For more information, refer to online Help and to the online user's guide, Using IntelliCAD(r) 2000, Formatting and Printing Paper Drawings. 
+You can copy anything in the IntelliCAD Explorer from one drawing to another: layers, linetypes, saved views, blocks, text styles, dimension styles, and user coordinate systems.
+If the command bar is not displayed, you can see each step of an active command in the status bar. If you are using the command bar, look there for instructions.
+You can open a drawing, run a script, or load a LISP program by dragging and dropping the file on IntelliCAD(r) 2000.
+Some tools appear recessed to indicate that they are active. These include Grid, Snap, Orthogonal, and all the Entity Snap settings.\\On the menus, a check mark indicates a setting that is in use.
+You can place point entities or blocks at regular intervals along an entity using the Divide and Measure tools.\\Divide marks the entity in a specified number of segments; Measure marks off segments of specified length. Neither command alters the original entity.
+You can make aliases for any of the IntelliCAD(r) 2000 commands. For example, you may prefer "guideline" to "infline."\\To make an alias, go to the Tools menu, select Customize, and then click the Aliases tab.
+You can cut, copy, and paste entities from one drawing to another.\\To copy a set of entities, select them, then go to the Edit menu and choose Copy. Click the destination drawing, go to the Edit menu, and choose Paste.
+After you create a selection set for one command, you can easily recall that same selection set for the next command you use by choosing Previous Selection or by typing P at the Select Entities prompt.
+You can make the tool icons larger to help you recognize them more easily. \\To change to large toolbars, go to the View menu and choose Toolbars, and then select the Large Buttons check box.
+Defining a user coordinate system (UCS) can involve anything from simply shifting the origin (0,0,0) to reorienting the axis so you can easily draw in a different plane.\\You can create as many user coordinate systems as you want, and then save and recall them as you need them.
+You can change the current layer, color, linetype, and other options by double-clicking the item in the status bar at the bottom of the window.
+You can use any drawing you want as the basis for your future drawings. Your template might include borders, title blocks, and your preferred settings.\\To choose a prototype drawing, go to the Tools menu, choose Options, click the Paths/Files tab, and then Browse to select the drawing you want.
+You can resize the command bar. Simply drag it to the middle of the window, change the size, and position it where you want.\\To prevent the command bar from docking, press and hold the Ctrl key as you move it.
+You can drag and drop documents from other programs into your IntelliCAD(r) 2000 drawings. For example, you can include a Visio(r) 2000 Technical Edition diagram or a Microsoft Word document.
+You can draw quickly and precisely by snapping to points on existing entities, such as the end of a line or center of a circle.\\To set Entity Snaps and see their current states, use the Entity Snaps toolbar.
+Coordinates displayed in the status bar and through the List and Distance commands are relative to the current coordinate system, either a user coordinate system (UCS) or the World Coordinate System (WCS).
+You can record command bar entries and mouse coordinate selections in a script file, which you can play back later. Doing this is handy for avoiding repetitive work. Scripts are saved in files with the extension .scr.\\From the Tools menu, choose Record Script. When you have finished, choose Stop Recording.
+You can remove from your toolbars tools that you rarely use. Press the Shift key and drag the tool away from the toolbar.\\For more toolbar customization options or to replace tools you have removed, go to the Tools menu and choose Customize.
+You can use the IntelliCAD Explorer to easily change your layers, linetypes, styles, coordinate systems, views, blocks, and dimension styles.\\From the Tools menu, choose IntelliCAD Explorer. Right-click the item you want to edit, and then choose Properties. 
+You can associate spaces for text, called attributes, with your blocks when you define them.\\Each time you insert the block, you can enter the appropriate information for that instance, such as a part number, price, or supplier.
+You can save your arrangements of menus or you can import menus from Autodesk AutoCAD.\\To import or export menus, go to the Tools menu and choose Customize.
+Some commands are available in menus and toolbars only at the intermediate or advanced experience levels.\\To change your experience level, go to the Tools menu, choose Options, click the General tab, and then select the experience level you want.
+Polylines are sets of line and arc segments handled as a single entity. Polylines can have qualities that ordinary lines cannot, such as width.\\When you move a vertex of a polyline, both adjacent segments move with it.
+To change where prompt boxes appear on the screen, move one to a different location. Future prompt boxes will display in the new position.\\You can also turn prompt boxes off. From the Tools menu, choose Options, click the Display tab, and then clear the Display Prompt Boxes check box.
+When drawing lines, arcs, and polylines, you can use the Follow option to continue drawing from the last point and in the same direction.
+With the IntelliCAD Explorer, you can view blocks before inserting them.\\To see thumbnail views of your blocks, select the Images tool in the IntelliCAD Explorer.
+You can apply the qualities of one entity, including color, linetype, and thickness, directly to other entities.\\From the Standard toolbar, choose the Copy Entity Formatting tool.
+To use the New Drawing wizard, go to the File menu and select New. To open a new drawing without the assistance of the wizard, from the Standard toolbar, select New.
+You can display a reference grid or snap to regularly spaced points on the screen.\\To see all the options, go to the Settings menu, choose Drawing Settings, and then click the Coordinate Input tab. Select the Snap and Grid option.
+The drawing crosshairs use a different color for each axis.\\To select the colors you want, go to the Tools menu and choose Options, then click the Crosshairs tab.
+Several toolbars include flyout toolbars with related commands and options.\\Flyout toolbars are indicated by a small, black triangle in the lower right corner of the tool.
+You can use any sound files (.wav) for your IntelliCAD(r) 2000 startup and warning sounds. From the Microsoft Windows Control Panel, choose Sounds. Find the Icad section, and assign any sounds you want.
+You can replace all of your menus with a new set or append only a few to the existing menus.\\From the Tools menu, choose Customize, and then click the Menus tab. Click Import, and then click the Append To Current Menu check box, as appropriate.
+You can constrain lines and other entities to draw only vertically and horizontally.\\For just a few lines, hold the Shift key down while you draw. To work this way continually, go to the Settings toolbar and click Orthogonal.
+There are hundreds of settings that affect how dimensions are created and displayed. To see how they work and to customize them, go to the Settings menu and choose Dimension Settings.
+You can display as many or as few of the toolbars as you want. From the View menu, choose Toolbars, and then click the check box for the toolbars that you want to display.\\To hide a toolbar, drag it away from the edge of the window, and then click the Close button.
+A donut is a planar, circular entity that has an inside and outside diameter, like a flat washer.\\You can draw donuts by using either the two-point, three-point, or tangent-radius method.
+When you create planar entities using the Plane command, you can constrain the planes to squares, rectangles, and equilateral triangles.
+You can quickly hide or show the command bar by double-clicking in the text area on the left side of the status bar.
+You can customize your menus, toolbars, keyboard shortcuts, and aliases. From the Tools menu, choose Customize, and then make the changes you want.\\To set them back to their original state, click Reset.
+You can use the Explode command to alter various properties of entities as they are broken into their component pieces.\\You can alter layer, color, linetype, and linetype scale. You can use the Pushpin tool in the Properties dialog box of the IntelliCAD Explorer to keep it visible. Click the Pushpin tool again to release the dialog box.
+You can show a shortcut menu of commands to modify specific entities. Select the entities you want, and then right-click to show the shortcut menu.
+You can use the Rectangle command to draw square polylines or rectangles at a specific angle. You can also adjust the width of the polyline.
+LISP is an interpreted programming language invented by John McCarthy in 1958 for work in artificial intelligence.\\You can write your own LISP programs for IntelliCAD(r) 2000 to automate frequent or complex operations.\\See the online IntelliCAD Developer Reference for complete information.
+You can fillet or chamfer selected vertices of a polyline.\\Select two points on the polyline, and all vertices between the selected points will be modified.\\The operation goes in the direction of the polyline, so on closed polylines the order of point selection determines which vertices are modified.
+You can change the units display method by right-clicking the coordinates display in the status bar.
+You can close a dialog box by pressing the Esc key.
+You can display a menu of available toolbars by pointing to the toolbar area and clicking the right mouse button.
+You may be saving blocks that you no longer need. Use the Purge command to clean out any unused blocks.
+You can create regular polygons such as hexagons and pentagons using the Polygon command. All polygons are created as closed polylines.
+You can change many settings directly from the status bar at the bottom of the window.\\Try double-clicking or right-clicking on each of the items in the status bar, such as color, layer, snap, or grid settings.
+You can use the Center entity snap to snap to the center of any two-dimensional closed polyline, including rectangles and polygons.
+You can use the Copy and Move commands between drawings. When prompted for a displacement point, specify a point in the destination drawing.
+You can bisect lines, arcs, and polylines using the Ray command.\\Start the Ray command, select Bisect, and then select Entity.
+You can save a block to a separate drawing file using the IntelliCAD Explorer.\\Select the block to save in its own drawing, and then click the Save Block tool.
+In the IntelliCAD Explorer, you can double-click the name of an item to make it current. For example, to set a layer as the current layer, double-click the name of the layer.
+You can mail a drawing to someone else while working in IntelliCAD(r) 2000. From the File menu, choose Send Mail. Your current drawing is sent as an attachment.
+You can open multiple windows to view your drawing in different ways at the same time. From the Window menu, choose New Window.
+You can explode Traces, Planes, and 3D Faces into their component lines. \\From the Modify menu, choose Explode, and then select the entities to explode. 
+When editing a polyline, you can taper the width of the polyline continuously from start to end. All vertex widths are automatically calculated.\\From the Modify menu, choose Edit Polyline, and then choose Taper.
+You can easily convert an arc into a circle. From the Insert menu, choose Circle. From the prompt box, choose Turn Arc Into Circle.
+A drawing can contain a reference to another drawing, called an external reference, or xref.\\The display of the referenced drawing updates each time the reference is reloaded using the xref command.
+You can see and work with the layers, linetypes, styles, and other elements of external references (xrefs) in the IntelliCAD Explorer.\\To make information from external references available in the IntelliCAD Explorer, simply reload the drawing using the External Reference (xref) command. 
+You can alter the way the Change command affects Rays and Infinite Lines.\\First select the entities to change, and then use the Change command. Choose the Entities option to select No Change, Change Angles, or Change Definition Points.
+You can fillet a polyline, even if the intersection lies on a curved segment.
+Polylines have a direction. To reverse the direction of a polyline, first select it, and then from the Modify menu, choose Edit Polyline. Choose Reverse Direction.
+You can change the included angle of individual polyline segments. From the Modify menu, choose Edit Polyline. Select the entity, and then from the prompt box, choose Edit Vertices. Choose Next Vertex or Previous Vertex to select the vertex, and then choose Angle. 
+You can include IntelliCAD(r) 2000 drawings in your documents in other programs. Simply drag and drop the IntelliCAD drawing onto the document in another program. To edit the drawing in place, double-click it.
+You can straighten a polyline segment. From the Modify menu, choose Edit Polyline. Select the entity, and then from the prompt box, choose Edit Vertices. To select the vertex, choose Next Vertex or Previous Vertex, and then choose Straighten.
+You can snap lines perpendicular or tangent to existing entities. Simply select a point on the entity, and IntelliCAD(r) 2000 adjusts the point so that the line you are drawing is perpendicular or tangent to the entity.
+You can pan horizontally and vertically using the scroll bars at the side and bottom of the drawing window. The size of the scroll boxes are proportional to the view size.
+You can adjust the size of the cursor used for selecting entities. To set the size, go to the Settings menu and choose Drawing Settings. Click the Coordinate Input tab, and in the Change Settings For list, choose Entity Selection.
+You can assign commands to any key on your keyboard or change existing key assignments. You can also use key combinations with Shift, Alt, and Ctrl.\\From the Tools menu, choose Customize, and then click the Keyboard tab.
+When drawing lines, you can specify the angle or length first, and then adjust the other parameter dynamically.
+You can use the Edit Polyline command to specify whether linetypes are broken or continuous across vertices. Select the entity, and from the Modify menu, choose Edit Polyline, and then choose Linetype Mode. From the prompt box, choose Continuous On or Continuous Off.
+You can join colinear lines and coplanar arcs with the same center and radius using the Join command.
+You can use the Plan command to change to the plan view for any user coordinate system or the World Coordinate System. From the View menu, choose Plan View. 
+You can display entity information in the Prompt History window by typing LIST. Follow the prompts to choose how you want information displayed.
+You can use block attribute information in an external drawing database.\\To copy data from the attributes in your drawings, go to the Tools menu and choose Extract Attributes.
+You can set points to be displayed in any of twenty different ways. From the Settings menu, choose Drawing Settings, and then click the Entity Creation tab. Change the settings for points by choosing one of the displayed options.
+You can insert a block or hatch in its exploded form so that it is inserted in pieces rather than as a single unit. To do this, precede the name of the block or hatch pattern with an asterisk.
+You can simultaneously modify the properties of any number of selected entities. From the Modify menu, choose Properties, and then make the changes that you want.
+When using the Polygon command, you can change the line width of the polygon you are drawing.
+Many of the commands in IntelliCAD(r) 2000 can be nested.\\To start a new command while one is in progress, first type an apostrophe, and then enter the new command.\\While the nested command is active, a second angle bracket is displayed in the command prompt.
+If you are drawing in isometric planes and the grid is on, the x-axis grid spacing is automatically adjusted to isometrically match the y-axis spacing.\\To draw isometrically, from the Settings menu, choose Drawing Settings. Click the Coordinate Input tab, and in the Change Settings For list, click Isometric Snap and Grid.
+You can change entities to make them the same length. From the Modify menu, choose Edit Length. From the prompt box, choose Total. Enter the length you want, and then select the entities you want to lengthen.
+There are two ways to chamfer entities: you can specify the distances from the intersection point of each entity, or you can specify the distance on the first entity and an angle for the chamfer line.
+You can create a selection set and add entities to it by their properties, such as layer or color. Type SELECT, and from the prompt box, choose Select By Properties. 
+You can change the hatching style for nested regions to hatch either the outer and inner regions, only the outer region, or all regions.\\To set this variable, from the Settings menu, choose Drawing Settings. Click the Entity Creation tab, and in the Change Settings For list, click Hatches.
+Any LISP function placed in the ICAD.LSP file is automatically loaded each time you start IntelliCAD(r) 2000.
+You can erase the ends of sketches you are drawing using Freehand. In the prompt box, select Delete On and move the cursor to erase. To continue drawing, go back to the prompt box and select Delete Off.
+You can select several entities and change their properties simultaneously. Select the entities, and then right-click to see the shortcut menu. Select Properties, and make the global changes.
+You can right-click different areas of the screen to bring up different shortcut menus. Try doing this on the status bar at the bottom of the window.
+You can use the Flatten command to flatten entities onto the current user coordinate system xy plane. From the Modify menu, choose Flatten.\\You can also specify a different elevation to use for flattening.
+IntelliCAD(r) 2000 automatically saves your work at a time interval you specify. From the Tools menu, choose Options, click the General tab, and then set the Autosave time.
+IntelliCAD(r) 2000 automatically tracks your command history.\\The default number of recorded lines is 256, but you can change the number. From the Tools menu, choose Options, then click the Display tab. Type or select the number of lines you want to track.
+You can customize any toolbar. Simply right-click anywhere in the toolbar area, and from the shortcut menu, choose Toolbars, and then choose Customize.
+You can make a layer current by selecting an entity on that layer. From the Settings menu, choose Set Layer By Entity. Select an entity on the layer you want to make current.
+You can enter a LISP expression in response to a request from a LISP function for input. For example: "Enter circumference: (* 2 3.14 5)."
+

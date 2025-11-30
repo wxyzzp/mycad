@@ -1,0 +1,14 @@
+;_Created_by_Cybage_on_9/17/2002_______
+logfilename log\76526.log
+logfileon
+;_________
+(load "lisp\76526.lsp")
+76526
+;_________
+zoom
+extents
+;_________
+dxfout output_dxf\76526.dxf
+6
+quit
+y

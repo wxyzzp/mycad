@@ -1,0 +1,386 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78592_1.txt	
+Product Version:	ICAD 4
+Date:			19/01/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/AUTO/AutoEntities.cpp
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla::78592 : AddTorus method of 
+modelspace creates torus of half size.
+ 
+Problem Analysis:
+-----------------
+AddTorus method through VBA script creates a Torus of half size. After 
+looking at the code for the function "AUTO_cmd_torus_create" in 
+ICAD\DocAutoSds.cpp, I found that this function expects a Torus Diameter 
+and a Tube Diameter as outlined below: 
+ 
+File: Source\prj\ICAD\DocAutoSds.cpp
+HRESULT CIcadDoc::AUTO_cmd_torus_create (sds_point pt0,sds_real tordia,sds_real tubedia,
+					int torseg,int tubseg, db_handitem **hip)
+
+"AUTO_cmd_torus_create" is called through CAutoEntities::AddTorus in 
+"lib\AUTO\AutoEntities.cpp". But this function takes the TorusRadius and 
+TubeRadius as the arguments and directly passes these to the 
+"AUTO_cmd_torus_create". 
+
+
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+ 
+Problem Solution:
+The solution is straight forward. Convert the two radii into respective 
+diameters before passing them to the function "AUTO_cmd_torus_create". 
+Please find my changes within the Bugzilla comments in the attached 
+File: "Source\prj\lib\AUTO\AutoEntities.cpp" which are as follows:
+ 
+ 
+File: Source\prj\lib\AUTO\AutoEntities.cpp
+------------------------------------------
+ 
+STDMETHODIMP CAutoEntities::AddTorus (IIcadPoint * Center, double TorusRadius, double TubeRadius, IIcadPolygonMesh * * pTorus)
+	{
+	if (pTorus == NULL)
+		return E_POINTER;
+	
+	sds_point pt1;
+	pt1[0] = pt1[1] = pt1[2] = 0.0;
+
+	if (Center)
+		{
+		Center->get_x (&pt1[0]);
+		Center->get_y (&pt1[1]);
+		Center->get_z (&pt1[2]);
+		}
+	
+	db_handitem *hip, *pNewHip;
+	HRESULT hr;
+
+	// Bugzilla::78592;		Date:06Jan2004
+	//-------------------------------------------------------------------------------
+
+	//hr = GetDocument()->AUTO_cmd_torus_create (pt1, TorusRadius, TubeRadius, 16, 16, &hip);
+	hr = GetDocument()->AUTO_cmd_torus_create (pt1, TorusRadius * 2.0, TubeRadius * 2.0, 16, 16, &hip);
+
+	//-------------------------------------------------------------------------------
+	// Bugzilla::78592;		Date:06Jan2004
+
+	if (FAILED(hr))
+		return E_FAIL;
+
+	if (OwnerIsPaperSpace())
+		{
+		setComplexEntitySpaceFlag(hip, TRUE);
+		}
+	else if (OwnerIsModelSpace())
+		{
+		setComplexEntitySpaceFlag(hip, FALSE);
+		}
+	else if (OwnerIsBlock())
+		{
+		pNewHip = hip->newcopy();
+
+		hr = AddItemToDrawing (pNewHip, TRUE);
+		if (FAILED(hr))
+			return E_FAIL;
+
+		GetDocument()->DeleteEntity(hip);
+		hip = pNewHip;
+		}
+
+	CComPtr<IIcadEntity> pEntity;
+	hr = CreateEntityWrapper (hip, &pEntity);
+	if (FAILED(hr))
+		return E_FAIL;
+
+	GetDocument()->SetModifiedFlag(TRUE);
+
+	return pEntity->QueryInterface(pTorus);
+	}
+
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be checked for the following cases:
+	1. AddTorus method of ModelSpace should create torus of normal size.
+	2. AddTorus method of Paperspace should create torus of normal size.
+	
+	This change is related to Professional Version only.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

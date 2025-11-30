@@ -1,0 +1,250 @@
+Attribute VB_Name = "ICAD"
+'
+'
+
+' constant length definitions
+
+Global Const SDS_X           =  0
+Global Const SDS_Y           =  1
+Global Const SDS_Z           =  2
+Global Const SDS_T           =  3
+
+Global Const SDS_TRUE        =  1
+Global Const SDS_FALSE       =  0
+
+Global Const SDS_PAUSE       =  "\\"
+
+Global Const SDS_RSG_NONULL  =  0x01
+Global Const SDS_RSG_NOZERO  =  0x02
+Global Const SDS_RSG_NONEG   =  0x04
+Global Const SDS_RSG_NOLIM   =  0x08
+Global Const SDS_RSG_GETZ    =  0x10
+Global Const SDS_RSG_DASH    =  0x20
+Global Const SDS_RSG_2D      =  0x40
+Global Const SDS_RSG_OTHER   =  0x80
+Global Const SDS_RSG_NOPMENU =  0x100
+
+Global Const SDS_RQSAVE      =  14
+Global Const SDS_RQEND       =  15
+Global Const SDS_RQQUIT      =  16
+Global Const SDS_RQCFG       =  22
+Global Const SDS_RQXLOAD     =  100
+Global Const SDS_RQXUNLD     =  101
+Global Const SDS_RQSUBR      =  102
+Global Const SDS_RQHUP       =  105 
+Global Const SDS_RQXHELP     =  118
+							 
+Global Const SDS_RSRSLT      =  1
+Global Const SDS_RSERR       =  3
+Global Const SDS_RTERROR     =  -5001
+Global Const SDS_RTCAN       =  -5002
+Global Const SDS_RTREJ       =  -5003
+Global Const SDS_RTFAIL      =  -5004
+Global Const SDS_RTKWORD     =  -5005
+Global Const SDS_RTNONE      =  5000
+Global Const SDS_RTREAL      =  5001
+Global Const SDS_RTPOINT     =  5002
+Global Const SDS_RTSHORT     =  5003
+Global Const SDS_RTANG       =  5004
+Global Const SDS_RTSTR       =  5005
+Global Const SDS_RTENAME     =  5006
+Global Const SDS_RTPICKS     =  5007
+Global Const SDS_RTORINT     =  5008
+Global Const SDS_RT3DPOINT   =  5009
+Global Const SDS_RTLONG      =  5010
+Global Const SDS_RTVOID      =  5014
+Global Const SDS_RTLB        =  5016
+Global Const SDS_RTLE        =  5017
+Global Const SDS_RTDOTE      =  5018
+Global Const SDS_RTNIL       =  5019
+Global Const SDS_RTDXF0      =  5020
+Global Const SDS_RTT         =  5021
+Global Const SDS_RTNORM      =  5100
+Global Const SDS_RTBINARY    =  5022
+							 
+Global Const SDS_RTDRAGPT    =  5500
+
+Global Const SDS_CBR_SELECT       = 1
+Global Const SDS_CBR_LOST_FOCUS   = 2
+Global Const SDS_CBR_DRAG         = 3
+Global Const SDS_CBR_DOUBLE_CLICK = 4
+
+Global Const SDS_DLGALLDONE  = -1
+Global Const SDS_DLGCANCEL   =  0
+Global Const SDS_DLGOK       =  1
+Global Const SDS_DLGSTATUS   =  2
+
+Global Const SDS_BGLCOLOR    =  -2
+Global Const SDS_DBGLCOLOR   =  -15
+Global Const SDS_DFGLCOLOR   =  -16
+Global Const SDS_LINELCOLOR  =  -18
+
+Global Const SDS_LIST_CHANGE  = 1
+Global Const SDS_LIST_APPEND  = 2
+Global Const SDS_LIST_NEW     = 3
+
+Global Const SDS_MODE_ENABLE   = 0
+Global Const SDS_MODE_DISABLE  = 1
+Global Const SDS_MODE_SETFOCUS = 2
+Global Const SDS_MODE_SETSEL   = 3
+Global Const SDS_MODE_FLIP     = 4
+
+Global Const SDS_MAX_TILE_STR   = 40
+Global Const SDS_TILE_STR_LIMIT = 255       
+
+
+typedef double   sds_real;
+typedef sds_real sds_point[3];
+typedef long     sds_name[2];
+typedef sds_real sds_matrix[4][4];
+typedef sds_real *sds_pointp;
+typedef long     *sds_namep;
+typedef void     *sds_hdlg;
+typedef void     *sds_htile;
+
+Type sds_callback_packet
+    sds_hdlg  dialog As sds_hdlg;
+    sds_htile tile;
+    char*     value;
+    void*     client_data;
+    int       reason;
+    long      x, y;
+End Type
+
+Type sds_binary 
+    short clen;
+    char *buf;
+End Type
+
+Type sds_u_val {
+   sds_real rreal;
+   sds_real rpoint[3];
+   short rint;
+   char *rstring;
+   long rlname[2];
+   long rlong;
+   struct sds_binary rbinary;
+End Type
+
+struct sds_resbuf {
+    struct sds_resbuf *rbnext;
+    short restype;
+    union sds_u_val resval;
+End Type
+
+Declare Function sds_abort Lib "icad.dll" (String *) As void       
+Declare Function sds_alert Lib "icad.dll" (String *) As Integer    
+Declare Function sds_angle Lib "icad.dll" (sds_point, sds_point) As sds_real   
+Declare Function sds_angtof Lib "icad.dll" (String *, Integer, sds_real *)	As Integer    
+Declare Function sds_angtos Lib "icad.dll" (sds_real, Integer, Integer, String *) As Integer    
+Declare Function *sds_buildlist Lib "icad.dll" (Integer, ...) As sds_resbuf 
+Declare Function sds_cmd Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_command Lib "icad.dll" (Integer, ...) As Integer    
+Declare Function sds_cvunit Lib "icad.dll" (sds_real, String *, String *, sds_real *) As Integer    
+Declare Function sds_defun Lib "icad.dll" (String *, short)	As Integer    
+Declare Function sds_distance Lib "icad.dll" (sds_point, sds_point) As sds_real   
+Declare Function sds_distof Lib "icad.dll" (String *, Integer, sds_real *) As Integer    
+Declare Function sds_draggen Lib "icad.dll" (sds_name, String *, Integer, Integer  Lib "icad.dll" (*scnf) Lib "icad.dll" (sds_point , sds_matrix mt),    sds_point p) As Integer    
+Declare Function sds_entdel Lib "icad.dll" (sds_name) As Integer    
+Declare Function *sds_entget Lib "icad.dll" (sds_name) As sds_resbuf 
+Declare Function *sds_entgetx Lib "icad.dll" (sds_name,  sds_resbuf *) As sds_resbuf 
+Declare Function sds_entlast Lib "icad.dll" (sds_name ) As Integer    
+Declare Function sds_entmake Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_entmod Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_entnext Lib "icad.dll" (sds_name, sds_name) As Integer    
+Declare Function sds_entsel Lib "icad.dll" (String *, sds_name, sds_point) As Integer    
+Declare Function sds_entupd Lib "icad.dll" (sds_name) As Integer    
+Declare Function sds_exit Lib "icad.dll" (Integer) As void       
+Declare Function sds_fail Lib "icad.dll" (String *) As void       
+Declare Function sds_findfile Lib "icad.dll" (String *, String *) As Integer    
+Declare Function sds_getangle Lib "icad.dll" (sds_point , String *, sds_real *) As Integer    
+Declare Function *sds_getargs Lib "icad.dll" (void) As sds_resbuf 
+Declare Function sds_getcorner Lib "icad.dll" (sds_point , String *, sds_point) As Integer    
+Declare Function sds_getdist Lib "icad.dll" (sds_point , String *, sds_real *) As Integer    
+Declare Function sds_getfiled Lib "icad.dll" (String *, String *, String *, Integer, sds_resbuf *) As Integer    
+Declare Function sds_getfuncode Lib "icad.dll" (void) As Integer    
+Declare Function sds_getinput Lib "icad.dll" (String *) As Integer    
+Declare Function sds_getInteger Lib "icad.dll" (String *, Integer *) As Integer    
+Declare Function sds_getkword Lib "icad.dll" (String *, String *) As Integer    
+Declare Function sds_getorient Lib "icad.dll" (sds_point, String *, sds_real *) As Integer    
+Declare Function sds_getpoInteger Lib "icad.dll" (sds_point, String *, sds_point) As Integer    
+Declare Function sds_getreal Lib "icad.dll" (String *, sds_real *) As Integer    
+Declare Function sds_getstring Lib "icad.dll" (Integer, String *, String *) As Integer    
+Declare Function sds_getsym Lib "icad.dll" (String *, sds_resbuf **) As Integer    
+Declare Function sds_getvar Lib "icad.dll" (String *, sds_resbuf *) As Integer    
+Declare Function sds_graphscr Lib "icad.dll" (void) As Integer    
+Declare Function sds_grclear Lib "icad.dll" (void) As Integer    
+Declare Function sds_grdraw Lib "icad.dll" (sds_point, sds_point, Integer, Integer) As Integer    
+Declare Function sds_grread Lib "icad.dll" (Integer, Integer *, sds_resbuf *) As Integer    
+Declare Function sds_grtext Lib "icad.dll" (Integer, String *, Integer) As Integer    
+Declare Function sds_grvecs Lib "icad.dll" ( sds_resbuf *, sds_matrix)	As Integer    
+Declare Function sds_handent Lib "icad.dll" (String *, sds_name) As Integer    
+Declare Function sds_init Lib "icad.dll" (Integer, String *[])	As void       
+Declare Function sds_initget Lib "icad.dll" (Integer, String *) As Integer    
+Declare Function sds_Integerers Lib "icad.dll" (sds_point from1, sds_point to1, sds_point from2, sds_point to2, Integer teston, sds_point ) As Integer
+Declare Function sds_invoke Lib "icad.dll" ( sds_resbuf *, sds_resbuf **)	As Integer    
+Declare Function sds_isalnum Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isalpha Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_iscntrl Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isdigit Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isgraph Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_islower Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isprInteger Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_ispunct Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isspace Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isupper Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_isxdigit Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_link Lib "icad.dll" (Integer) As Integer    
+Declare Function *sds_loaded Lib "icad.dll" (void) As sds_resbuf 
+Declare Function sds_menucmd Lib "icad.dll" (String *) As Integer    
+Declare Function sds_nentsel Lib "icad.dll" (String *, sds_name, sds_point, sds_point[4],  sds_resbuf **) As Integer    
+Declare Function sds_nentselp Lib "icad.dll" (String *, sds_name, sds_point, Integer, sds_matrix, sds_resbuf **) As Integer    
+Declare Function *sds_newrb Lib "icad.dll" (Integer) As sds_resbuf 
+Declare Function sds_osnap Lib "icad.dll" (sds_point, String *, sds_point) As Integer    
+Declare Function sds_polar Lib "icad.dll" (sds_point, sds_real, sds_real, sds_point) As void       
+Declare Function sds_prIntegerf Lib "icad.dll" (String *, ...) As Integer    
+Declare Function sds_prompt Lib "icad.dll" (String *) As Integer    
+Declare Function sds_putsym Lib "icad.dll" (String *,  sds_resbuf *) As Integer    
+Declare Function sds_redraw Lib "icad.dll" (sds_name, Integer) As Integer    
+Declare Function sds_regapp Lib "icad.dll" (String *) As Integer    
+Declare Function sds_regfunc Lib "icad.dll" (Integer  Lib "icad.dll" (*fhdl)  Lib "icad.dll" (void), Integer fcode) As Integer    
+Declare Function sds_relrb Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_retInteger Lib "icad.dll" (Integer) As Integer    
+Declare Function sds_retlist Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_retname Lib "icad.dll" (sds_name, Integer) As Integer    
+Declare Function sds_retnil Lib "icad.dll" (void) As Integer    
+Declare Function sds_retpoInteger Lib "icad.dll" (sds_point) As Integer    
+Declare Function sds_retreal Lib "icad.dll" (sds_real) As Integer    
+Declare Function sds_retstr Lib "icad.dll" (String *) As Integer    
+Declare Function sds_rett Lib "icad.dll" (void) As Integer    
+Declare Function sds_retval Lib "icad.dll" ( sds_resbuf *) As Integer    
+Declare Function sds_retvoid Lib "icad.dll" (void) As Integer    
+Declare Function sds_rtos Lib "icad.dll" (sds_real, Integer, Integer, String *) As Integer    
+Declare Function sds_setvar Lib "icad.dll" (String *, sds_resbuf *) As Integer    
+Declare Function sds_ssadd Lib "icad.dll" (sds_name, sds_name, sds_name)	As Integer    
+Declare Function sds_ssdel Lib "icad.dll" (sds_name, sds_name) As Integer    
+Declare Function sds_ssfree Lib "icad.dll" (sds_name)	As Integer    
+Declare Function sds_ssget Lib "icad.dll" (String *, void *, void *, sds_resbuf *, sds_name)	As Integer    
+Declare Function sds_sslength Lib "icad.dll" (sds_name, Long *) As Integer    
+Declare Function sds_ssmemb Lib "icad.dll" (sds_name, sds_name) As Integer    
+Declare Function sds_ssname Lib "icad.dll" (sds_name, Long, sds_name) As Integer    
+Declare Function sds_tablet  Lib "icad.dll" ( sds_resbuf *,  sds_resbuf **) As Integer    
+Declare Function *sds_tblnext Lib "icad.dll" (String *, Integer) As sds_resbuf 
+Declare Function *sds_tblsearch Lib "icad.dll" (String *, String *, Integer) As sds_resbuf 
+Declare Function sds_textbox Lib "icad.dll" ( sds_resbuf *, sds_point, sds_point) As Integer    
+Declare Function sds_textpage Lib "icad.dll" (void)	As Integer    
+Declare Function sds_textscr Lib "icad.dll" (void) As Integer    
+Declare Function sds_tolower Lib "icad.dll" (Integer)	As Integer    
+Declare Function sds_toupper Lib "icad.dll" (Integer)	As Integer    
+Declare Function sds_trans Lib "icad.dll" (sds_point, sds_resbuf *, sds_resbuf *, Integer, sds_point) As Integer    
+Declare Function sds_undef Lib "icad.dll" (String *, short) As Integer    
+Declare Function sds_usrbrk Lib "icad.dll" (void) As Integer    
+Declare Function sds_vports Lib "icad.dll" ( sds_resbuf **) As Integer    
+Declare Function sds_wcmatch Lib "icad.dll" (String *, String *) As Integer    
+Declare Function sds_xdroom Lib "icad.dll" (sds_name, Long *) As Integer    
+Declare Function sds_xdsize Lib "icad.dll" ( sds_resbuf *, Long *) As Integer    
+Declare Function sds_xformss Lib "icad.dll" (sds_name, sds_matrix) As Integer    
+Declare Function sds_xload Lib "icad.dll" (String *)	As Integer    
+Declare Function sds_xunload Lib "icad.dll" (String *) As Integer    
+                               																											                 
+																																				                 

@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_76186_1.txt
+Date:		09-09-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:76186
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/icadEntPropTabs.cpp
+Description: 	Properties dialog when used with MText or Text shows inappropriate Varies as justification option.
+Comments:	TaL76186
+File by File:	
+*		Source/prj/ICAD/icadEntPropTabs.cpp
+		Traversed the complete list. Compared the dxfs 72 and 73 for all the texts to determine whether the justification is same or different. If it is different then load resource string "varies" else not. For MTEXT compared the Justification and direction before loading the "Varies" string.   
+--------------------------------------------------------------------------------
+

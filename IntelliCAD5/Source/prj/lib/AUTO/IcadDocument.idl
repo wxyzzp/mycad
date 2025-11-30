@@ -1,0 +1,554 @@
+/* INTELLICAD\PRJ\LIB\AUTO\ICADDOCUMENT.IDL
+ * Copyright (C) 1997-1999 Visio Corporation. All rights reserved.
+ * 
+ * Abstract
+ * 
+ * IcadDocument.idl : type library source for Icad Document and related classes
+ * 
+ */ 
+
+// This file will be processed by the MIDL tool to
+// produce the type library (icad.tlb).
+// 208 UUIDs were generated from UUIDGEN for use with the IntelliCAD automation model.  
+// When adding new objects/interfaces to the ICAD Automation Model, search for an 
+// appropriate one in the list at the end of this file, before  generating new ones.
+
+
+	// *** Forward declarations.
+	interface IIcadDocument;
+	interface IIcadWindow;
+	interface IIcadApplication;
+	interface IIcadDocumentPreferences;
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDbItem.  This is the base
+	//	interface for all database items (entities and table records).
+	
+	[	object
+		, uuid(8011c120-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDbItem
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDbItem : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]  
+		HRESULT Application([out,retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the document associated with the object.")]  
+		HRESULT Document([out,retval] IIcadDocument** ppDoc);
+
+		[propget, helpstring("Returns the database item's parent object.")]
+		HRESULT Parent([out, retval] IDispatch** ppParent);
+
+		[id(0), propget, helpstring("Returns the handle of the item.")]  
+		HRESULT Handle([out,retval] BSTR* pstrHandle);
+
+		// ***Methods
+		[helpstring("Private method to get the internal handle item pointer")]
+		HRESULT _handitem ([out, retval] long *pHanditem);
+
+		[helpstring("Returns the extended entity data associated with an entity.")]  
+		HRESULT GetXData ([in] BSTR AppName, [in, out] VARIANT *TypeArray, [in, out] VARIANT *DataArray);
+
+		[helpstring("Sets the extended entity data associated with an entity.")]  
+		HRESULT SetXData ([in] VARIANT TypeArray, [in] VARIANT DataArray);
+
+		[helpstring("Deletes the specified object.")]
+		HRESULT Delete();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// ***  Entity collection interface - 
+
+	[	object
+		, uuid(8011c18e-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadEntities
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadEntities : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of entities in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+			
+		// *** Methods
+		[id(0), helpstring("Given the index, returns one of the entities in the collection")]
+		HRESULT Item([in] long Index, [out, retval] IDispatch** ppItem);
+
+		[helpstring("Adds a 3DFace with four vertices.")]
+		HRESULT	Add3DFace ([in] IIcadPoint *Point1, [in] IIcadPoint *Point2, [in] IIcadPoint *Point3, [in, optional] IIcadPoint *Point4, [out, retval] IIcad3DFace** pp3DFace);
+		
+		[helpstring("Adds a 3DMesh given the coordinates and mesh information.")]
+		HRESULT	Add3DMesh ([in] long M, [in] long N, [in] IIcadPoints *Vertices, [out, retval] IIcadPolygonMesh **ppMesh);
+
+		[helpstring("Adds a 3dPolyline given the vertices as a points collection.")]
+		HRESULT	Add3DPoly ([in] IIcadPoints *Vertices, [out, retval] IIcad3DPoly **pp3DPoly); 
+
+		[helpstring("Adds an Arc given the center, radius, start angle and end angle.")]
+		HRESULT	AddArc ([in] IIcadPoint *Center, [in] double Radius, [in] double StartAngle, [in] double EndAngle, [out, retval] IIcadArc **ppArc);
+
+		[helpstring("Adds an Attribute Definition at the given insertion point and other attribute information.")]
+		HRESULT	AddAttributeDef ([in] double Height, [in, optional] AttributeMode Mode, [in, optional] BSTR Prompt, [in] IIcadPoint *InsertionPoint, [in] BSTR Tag, [in, optional] BSTR Value, [out, retval] IIcadAttributeDef **ppAttribute);
+
+		[helpstring("Adds a Polygon Mesh box given the origin, length, width and height.")]
+		HRESULT	AddBox ([in] IIcadPoint *Origin, [in] double Length, [in] double Width, [in] double Height, [out, retval] IIcadPolygonMesh **ppBox);
+
+		[helpstring("Adds a Circle given the center and radius.")]
+		HRESULT	AddCircle ([in] IIcadPoint *Center, [in] double Radius, [out, retval] IIcadCircle **ppCircle);
+
+		[helpstring("Adds a Polygon Mesh cone given the center, base radius, and height.")]
+		HRESULT	AddCone ([in] IIcadPoint *Center, [in] double BaseRadius, [in] double Height, [out, retval] IIcadPolygonMesh **ppCone);
+
+		[helpstring("Adds a Polygon Mesh cylinder given the center, base radius, and height.")]
+		HRESULT	AddCylinder	([in] IIcadPoint *Center, [in] double Radius, [in] double Height, [out, retval] IIcadPolygonMesh **ppCylinder);
+
+		[helpstring("Adds a 3 Point Angular dimension object.")]
+		HRESULT	AddDim3PointAngular([in] IIcadPoint *AngleVertex, [in] IIcadPoint *FirstEndPoint, [in] IIcadPoint *SecondEndPoint, [in] IIcadPoint *TextLocation, [out, retval] IIcadDim3PointAngular **ppDimension);
+
+		[helpstring("Adds an Aligned dimension object.")]
+		HRESULT	AddDimAligned([in] IIcadPoint *ExtPoint1, [in] IIcadPoint *ExtPoint2, [in] IIcadPoint *TextLocation, [out, retval] IIcadDimAligned **ppDimension);
+
+		[helpstring("Adds an Angular dimension object.")]
+		HRESULT	AddDimAngular([in] IIcadPoint *AngleVertex, [in] IIcadPoint *FirstEndPoint, [in] IIcadPoint *SecondEndPoint, [in] IIcadPoint *TextLocation, [out, retval] IIcadDimAngular **ppDimension);
+
+		[helpstring("Adds a Diameter dimension object.")]
+		HRESULT	AddDimDiametric([in] IIcadPoint *ChordPoint, [in] IIcadPoint *FarChordPoint, [in] double LeaderLength, [out, retval] IIcadDimDiametric **ppDimension);
+
+		[helpstring("Adds an Ordinate dimension object.")]
+		HRESULT	AddDimOrdinate ([in] IIcadPoint *DefintionPoint, [in] IIcadPoint *LeaderEndPoint, [in] VARIANT_BOOL UseXAxis, [out, retval] IIcadDimOrdinate **ppDimension);
+
+		[helpstring("Adds a Radius dimension object.")]
+		HRESULT	AddDimRadial([in] IIcadPoint *Center, [in] IIcadPoint *ChordPoint, [in] double LeaderLength, [out, retval] IIcadDimRadial **ppDimension);
+
+		[helpstring("Adds a Rotated dimension object.")]
+		HRESULT	AddDimRotated([in] IIcadPoint *ExtPoint1, [in] IIcadPoint *ExtPoint2, [in] IIcadPoint *DimLineLocation, [in] double Rotation, [out, retval] IIcadDimRotated **ppDimension);
+
+		[helpstring("Adds an Ellipse given the center, major axis and the radius ratio.")]
+		HRESULT	AddEllipse ([in] IIcadPoint *Center, [in] IIcadVector *MajorAxis, [in] double RadiusRatio, [out, retval] IIcadEllipse **ppEllipse);
+
+		[helpstring("Adds a Hatch entity.")]
+		HRESULT	AddHatch ([in, optional, defaultvalue (vicHatchPatternTypePreDefined)] HatchType PatternType, [in] BSTR PatternName, [in, optional, defaultvalue(TRUE)] VARIANT_BOOL Associativity, [out, retval] IIcadHatch **ppHatch);
+
+		[helpstring("Adds an Image object.")]
+		HRESULT	AddImage ([in] BSTR ImageFile, [in] IIcadPoint *InsertionPoint, [in, optional, defaultvalue(1.0)] double ScaleFactor, [in, optional, defaultvalue(0.0)] double RotationAngle, [out, retval] IIcadImage **ppImage );
+
+		[helpstring("Adds an Infinite Line passing through two given points.")]
+		HRESULT	AddInfiniteLine	([in] IIcadPoint *Point1, [in] IIcadPoint *Point2, [out, retval] IIcadInfiniteLine **ppInfiniteLine);
+
+		[helpstring("Adds a Leader line, given the coordinates of the points.")]
+		HRESULT	AddLeader ([in] IIcadPoints *Points, [in, optional] BSTR Annotation, [in, optional, defaultvalue(vicLineNoArrow)] LeaderType Type, [out, retval] IIcadLeader **ppLeader);
+
+		[helpstring("Adds a Lightweight Polyline object.")]
+		HRESULT	AddLightWeightPolyline ([in] IIcadPoints *Vertices, [out, retval] IIcadLightWeightPolyline **ppLWPolyline);
+
+		[helpstring("Adds a Line passing through two points.")]
+		HRESULT	AddLine	([in] IIcadPoint *StartPoint, [in] IIcadPoint *EndPoint, [out, retval] IIcadLine** ppLine);
+
+		[helpstring("Adds an MText entity in a rectangle defined by the insertion point and width of the text window.")]
+		HRESULT	AddMText ([in] IIcadPoint *InsertionPoint, [in] double Width, [in] BSTR Text, [out, retval] IIcadMText **ppMText);
+
+		[helpstring("Adds a Point entity at a given location.")]
+		HRESULT	AddPointEntity ([in] IIcadPoint *Point, [out, retval] IIcadPointEntity **ppPointEntity);
+
+		[helpstring("Adds a Polyline from a list of vertices.")]
+		HRESULT	AddPolyline	([in] IIcadPoints *Vertices, [out, retval] IIcadPolyline **ppPolyline);
+
+		[helpstring("Adds a Polyface Mesh.")]
+		HRESULT	AddPolyfaceMesh ([in] IIcadPoints *Vertices, [in] VARIANT ListOfFaceIndices, [out, retval] IIcadPolyfaceMesh **ppMesh);
+
+		[helpstring("Adds a Ray passing through two points.")]
+		HRESULT	AddRay	([in] IIcadPoint *Point1, [in] IIcadPoint *Point2, [out, retval] IIcadRay **ppRay);
+
+		[helpstring("Adds a 2 dimensional Solid polygon.")]
+		HRESULT	AddSolid ([in] IIcadPoint *Point1, [in] IIcadPoint *Point2, [in] IIcadPoint *Point3, [in, optional] IIcadPoint *Point4, [out, retval] IIcadSolid **ppSolid);
+
+		[helpstring("Adds a Polygon Mesh sphere at the origin given the center point and radius.")]
+		HRESULT	AddSphere ([in] IIcadPoint *Center, [in] double Radius, [out, retval] IIcadPolygonMesh **ppSphere);
+
+		[helpstring("Adds a Spline given the input coordinates as a points collection.")]
+		HRESULT	AddSpline ([in] IIcadPoints **Points, [in] IIcadVector *StartTangent, [in] IIcadVector *EndTangent, [out, retval] IIcadSpline **ppSpline);
+
+		[helpstring("Adds a Text entity with given height and rotation.")]
+		HRESULT	AddText	([in] BSTR TextString, [in] IIcadPoint *InsertionPoint, [in] double Height, [out, retval] IIcadText **ppText);
+
+		[helpstring("Creates a Tolerance entity.")]
+		HRESULT	AddTolerance ([in] BSTR Text, [in] IIcadPoint *InsertionPoint, [in] IIcadVector *Direction, [out, retval] IIcadTolerance **ppTolerance);
+
+		[helpstring("Adds a Polygon Mesh torus given the location, torus radius and tube radius.")]
+		HRESULT	AddTorus ([in] IIcadPoint *Center, [in] double TorusRadius, [in] double TubeRadius, [out, retval] IIcadPolygonMesh **pTorus);
+
+		[helpstring("Adds a Trace entity given the coordinates as a points collection.")]
+		HRESULT	AddTrace ([in] IIcadPoints *Points, [out, retval] IIcadTrace **ppTrace);
+		
+		[helpstring("Adds a Polygon Mesh wedge given the length, width and height.")]
+		HRESULT	AddWedge ([in] IIcadPoint *Origin, [in] double Length, [in] double Width, [in] double Height, [out, retval] IIcadPolygonMesh **ppWedge);
+
+		[helpstring("Attaches the specified drawing as an ExternalReference.")]
+		HRESULT	AttachExternalReference([in] BSTR PathName, [in, optional] BSTR Name, [in] IIcadPoint *InsertionPoint, [in, optional, defaultvalue(1.0)] double XScale, [in, optional, defaultvalue(1.0)] double YScale, [in, optional, defaultvalue(1.0)] double ZScale, [in, optional, defaultvalue(0.0)] double Rotation, [in, optional, defaultvalue(FALSE)] VARIANT_BOOL bOverlay, [out, retval] IIcadExternalReference** ppXRef);
+
+		[helpstring("Adds a new Block Insert object.")]
+		HRESULT	InsertBlock([in] IIcadPoint *InsertionPoint, [in] BSTR BlockName, [in, optional, defaultvalue(1.0)] double XScale, [in, optional, defaultvalue(1.0)] double YScale, [in, optional, defaultvalue(1.0)] double ZScale, [in, optional, defaultvalue(0.0)] double Rotation, [out, retval] IIcadBlockInsert** ppBlockInsert);
+
+		// EBATECH(CNBR) 2002/4/24 Support SHAPE
+		[helpstring("Adds a Shape entity with given height and rotation.")]
+		HRESULT	AddShape	([in] BSTR Name, [in] IIcadPoint *InsertionPoint, [in, optional, defaultvalue(1.0)] double Height, [in, optional, defaultvalue(0.0)] double Rotation, [out, retval] IIcadShape **ppShape);
+
+	}
+
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// ***  ModelSpace collection interface - 
+
+	[	object
+		, uuid(8011c160-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadModelSpace
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadModelSpace : IIcadEntities
+	{
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// ***  PaperSpace collection interface - 
+
+	[	object
+		, uuid(8011c161-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadPaperSpace
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadPaperSpace : IIcadEntities
+	{
+		// *** Methods
+		[helpstring("Adds a Paperspace Viewport given the center, width and height.")]
+		HRESULT	AddPViewport ([in, optional] IIcadPoint *Center, [in, optional] double Width, [in, optional] double Height, [out, retval] IIcadPViewport **ppViewport);
+
+	}
+
+
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDoc
+	
+	[	object
+		, uuid(8011c103-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDocument
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDocument : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns whether the document is active.")]
+		HRESULT Active ([out, retval] VARIANT_BOOL* Active);
+
+		[propget, helpstring("Sets or returns Current dimstyle.")]  
+		HRESULT ActiveDimStyle ([out, retval] IIcadDimensionStyle **ppDimStyle);
+		[propput]  
+		HRESULT ActiveDimStyle ([in] IIcadDimensionStyle *pDimStyle);
+
+		[propget, helpstring("Sets or returns current layer.")]  
+		HRESULT ActiveLayer ([out, retval] IIcadLayer **ppLayer);
+		[propput]  
+		HRESULT ActiveLayer ([in] IIcadLayer *pLayer);
+
+		[propget, helpstring("Sets or returns Current linetype.")]  
+		HRESULT ActiveLinetype ([out, retval] IIcadLinetype **ppLinetype);
+		[propput]  
+		HRESULT ActiveLinetype ([in] IIcadLinetype *pLinetype);
+
+		[propget, helpstring("Sets or returns which PViewport is active.")]  
+		HRESULT ActivePViewport ([out, retval] IIcadPViewport **ppVPort);
+		[propput]  
+		HRESULT ActivePViewport ([in] IIcadPViewport *pVPort);
+
+		[propget, helpstring("Returns currently active Selection Set.")]  
+		HRESULT ActiveSelectionSet ([out, retval] IIcadSelectionSet **ppSelSet);
+
+		[propget, helpstring("Sets or returns Current space- Model or Paper(toggles between the two).")]  
+		HRESULT ActiveSpace ([out, retval] PMSpace *pSpace);
+		[propput]  
+		HRESULT ActiveSpace ([in] PMSpace Space);
+
+		[propget, helpstring("Sets or returns Current textstyle.")]  
+		HRESULT ActiveTextStyle ([out, retval] IIcadTextStyle **ppTextStyle);
+		[propput]  
+		HRESULT ActiveTextStyle  ([in] IIcadTextStyle *pTextStyle);
+
+		[propget, helpstring("Sets or returns Current UCS.")]  
+		HRESULT ActiveUCS ([out, retval] IIcadUserCoordSystem **ppUCS);
+		[propput]  
+		HRESULT ActiveUCS ([in] IIcadUserCoordSystem *pUCS);
+
+		[propget, helpstring("Sets or returns Current viewport.")]  
+		HRESULT ActiveViewport ([out, retval] IIcadViewport **ppViewport);
+		[propput]  
+		HRESULT ActiveViewport ([in] IIcadViewport *pViewport);
+
+		[propget, helpstring("Returns the block collection object.")]
+		HRESULT Blocks([out, retval] IIcadBlocks** ppBlocks);
+
+		[propget, helpstring("Returns the dimension style collection object.")]
+		HRESULT DimensionStyles([out, retval] IIcadDimensionStyles** ppDimensionStyles);
+
+		[propget, helpstring("Returns the layer collection object.")]
+		HRESULT Layers([out, retval] IIcadLayers** ppLayers);
+
+		[propget, helpstring("Returns the Linetype collection object.")]
+		HRESULT Linetypes([out, retval] IIcadLinetypes** ppLinetypes);
+
+		[propget, helpstring("Returns the application identifier collection object.")]
+		HRESULT RegisteredApplications([out, retval] IIcadRegisteredApplications** ppAppIDs);
+
+		[propget, helpstring("Returns the Selection Sets collection object.")]
+		HRESULT SelectionSets ([out, retval] IIcadSelectionSets** ppSelSets);
+
+		[propget, helpstring("Returns the text style collection object.")]
+		HRESULT TextStyles([out, retval] IIcadTextStyles** ppTextStyles);
+
+		[propget, helpstring("Returns the user coordinate system collection object.")]
+		HRESULT UserCoordinateSystems([out, retval] IIcadUserCoordSystems** ppUserCoordSystems);
+
+		[propget, helpstring("Returns the Viewport collection object.")]
+		HRESULT Viewports([out, retval] IIcadViewports** ppViewports);
+
+		[propget, helpstring("Returns the view collection object.")]
+		HRESULT Views([out, retval] IIcadViews** ppViews);
+
+		[propget, helpstring("Returns the Model Space collection object.")]
+		HRESULT ModelSpace([out, retval] IIcadModelSpace** ppEntities);
+
+		[propget, helpstring("Returns the Paper Space collection object.")]
+		HRESULT PaperSpace([out, retval] IIcadPaperSpace** ppEntities);
+
+		[propget, helpstring("Returns the application object.")]  
+		HRESULT Application([out,retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the parent of the object.")]
+		HRESULT Parent([out, retval] IIcadDocuments** ppParent);
+
+		[propget, helpstring("Returns the Document level user Preferences object.")]
+		HRESULT Preferences([out, retval] IIcadDocumentPreferences** ppPreferences);
+
+		[propget, helpstring("Returns the full pathname of the document.")]
+		HRESULT FullName([out, retval] BSTR* pstrFullAppName);
+
+		[propget, helpstring("Returns the filename of the document (excluding path).")]
+		HRESULT Name([out, retval] BSTR* pAppName);
+
+		[propget, helpstring("Returns the pathname of the document (excluding filename).")]
+		HRESULT Path([out, retval] BSTR* pPath);
+
+		[propget, helpstring("Returns whether the document is read-only.")]
+		HRESULT ReadOnly([out, retval] VARIANT_BOOL* pbReadOnly);
+
+		[propget, helpstring("Returns whether the document has been changed since creation or loading.")]
+		HRESULT Saved([out, retval] VARIANT_BOOL* pbSaved);
+
+		[propget, helpstring("Sets or returns the model space / paper space if tilemode is 0.")]  
+		HRESULT MSpace ([out, retval] VARIANT_BOOL *pSpace);
+		[propput]  
+		HRESULT MSpace ([in] VARIANT_BOOL Space);
+
+		[propget, helpstring("Sets or returns whether object snaps are on.")]  
+		HRESULT ObjectSnapMode ([out, retval] VARIANT_BOOL *SnapMode);
+		[propput]  
+		HRESULT ObjectSnapMode ([in] VARIANT_BOOL SnapMode);
+
+		[propget, helpstring("Sets or returns the model space elevation.")]  
+		HRESULT ElevationModelSpace ([out, retval] double *Elevation);
+		[propput]  
+		HRESULT ElevationModelSpace ([in] double Elevation);
+
+		[propget, helpstring("Sets or returns the paper space elevation.")]  
+		HRESULT ElevationPaperSpace ([out, retval] double *Elevation);
+		[propput]  
+		HRESULT ElevationPaperSpace ([in] double Elevation);
+
+		[propget, helpstring("Sets or returns the drawing limits.")]  
+		HRESULT Limits ([out, retval] IIcadPoints **ppLimits);
+		[propput]  
+		HRESULT Limits ([in] IIcadPoints *Limits);
+
+		[propget, helpstring("Returns the Utility object.")]
+		HRESULT Utility ([out, retval] IIcadUtility ** ppUtility);
+
+		// *** Methods
+		[helpstring("Activates the first window associated with the document.")]
+		HRESULT Activate();
+
+		[helpstring("Closes the document and all associated windows.")]
+		HRESULT Close([in, optional, defaultvalue(TRUE)] VARIANT_BOOL SaveChanges,[in, optional] BSTR File);
+
+		[helpstring("Exports the file to any of the supported formats.  Optionally, pass in a selection set to export only a part of the file.  Format is based on the extension in the FileName (default is the DXF format).")]
+		HRESULT Export ([in] BSTR FileName, [in] BSTR Extension, [in, optional] IIcadSelectionSet* SelectionSet);
+
+		[helpstring("Imports files in DXF and other supported format")]
+		HRESULT Import ([in] BSTR FileName, [in, optional] IIcadPoint *InsertionPoint, [in, optional, defaultvalue(1.0)] double ScaleFactor);
+
+		[helpstring("Creates a new window for the document.")]
+		HRESULT NewWindow();
+
+		[helpstring("Prints the document.")]
+		HRESULT PrintDrawing([in, optional, defaultvalue(1)] short nCopies);
+
+		[helpstring("Previews a document with the current print settings.")]
+		HRESULT PrintPreview();
+
+		[helpstring("Save the document.")]
+		HRESULT Save();
+
+		[helpstring("Save the document to a different name and optionally a different version. The default version is R14.")]
+		HRESULT SaveAs([in] BSTR SaveFile, [in, optional, defaultvalue(vicVersionR14)] FileVersions Version);
+
+		[helpstring("Writes out the block as a drawing file. Pass in a selection set containing the blocks to be written out.")]
+		HRESULT WBlock ([in] BSTR FileName, [in] IIcadSelectionSet* SelectionSet, [in, optional] IIcadPoint* Origin);
+
+		[helpstring("Returns the value of a system variable. ")]
+		HRESULT GetVariable ([in] BSTR Name, [out, retval] VARIANT* pValue);
+
+		[helpstring("Sets the value of the specified system variable. ")]
+		HRESULT SetVariable ([in] BSTR Name, [in] VARIANT Value);
+
+		[helpstring("Returns the value of a LISP variable.")]
+		HRESULT GetLispVariable ([in] BSTR Name, [out, retval] VARIANT* pValue);
+
+		[helpstring("Sets the value of a LISP variable.")]
+		HRESULT SetLispVariable ([in] BSTR Name, [in] VARIANT Value);
+
+		[helpstring("Evaluates a Lisp expression on the command line.")]
+		HRESULT EvaluateLispExpression ([in] BSTR LispExpression, [out, retval] VARIANT *LispResult);  
+
+		[helpstring("Finds an object with the given handle.")]
+		HRESULT HandleToObject ([in] BSTR Handle, [out, retval] IDispatch** pObject);
+
+		[helpstring("Purges the document of all unused table objects.")]
+		HRESULT PurgeAll();
+
+		[helpstring("Purges the document of all unused table objects.")]
+		HRESULT Regen([in, optional, defaultvalue(vicActiveViewport)] WhichViewport Viewports);
+
+		// EBATECH(CNBR) 2002/4/24 Support SHAPE
+		[helpstring("Load shape file and entry text style table as a shape library.")]
+		HRESULT LoadShapeFile ([in] BSTR FileName);
+
+	}
+
+	// For VBA5 to create a main document project item, the document's base class
+	// must support a source interface even if it is empty
+
+	[ uuid(8011c1d0-7e36-11d1-bc5a-0060089608a4)	// *** IID_EIcadDocument
+		, helpstring("Visio IntelliCAD Document Event Interface")
+	]
+
+	dispinterface _EIcadDocument
+	{
+		properties:
+		methods:
+		[id(DISPID_DOC_OPEN), helpstring("Occurs after a drawing has been opened.")] 
+		HRESULT Open();
+
+		[id(DISPID_DOC_SAVE), helpstring("Occurs when a drawing is about to be saved.")] 
+		HRESULT Save();
+
+		[id(DISPID_DOC_CLOSE), helpstring("Occurs when a drawing is about to be closed.")] 
+		HRESULT Close();
+
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDocumentPreferences
+	
+	[	object
+		, uuid(8011c10f-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDocumentPreferences
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDocumentPreferences : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** Application);
+
+		[propget, helpstring("Returns the document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** Document);
+
+		[propget, helpstring("Sets or returns the number of contour lines per surface (ISOLINES).")]  
+		HRESULT ContourLinesPerSurface ([out, retval] int *NumberOfLines);
+		[propput]  
+		HRESULT ContourLinesPerSurface ([in] int NumberOfLines);
+
+		[propget, helpstring("Sets or returns whether the silhouette curves of solids are displayed (DISPSILH).")]
+		HRESULT DisplaySilhouette ([out, retval] VARIANT_BOOL* Visible);
+		[propput]
+		HRESULT DisplaySilhouette([in] VARIANT_BOOL Visible);
+
+		[propget, helpstring("Sets or returns the maximum number of active viewports (MAXACTVP).")]  
+		HRESULT MaxActiveViewports ([out, retval] int *Number);
+		[propput]  
+		HRESULT MaxActiveViewports ([in] int Number);
+
+		[propget, helpstring("Sets or returns the object snap mode (OSMODE).")]  
+		HRESULT ObjectSnapMode ([out, retval] ObjectSnapMode *SnapMode);
+		[propput]  
+		HRESULT ObjectSnapMode ([in] ObjectSnapMode SnapMode);
+
+		[propget, helpstring("Sets or returns the smoothness of shaded objects (FACETRES).")]  
+		HRESULT RenderSmoothness ([out, retval] double *RenderSmoothness);
+		[propput]  
+		HRESULT RenderSmoothness ([in] double RenderSmoothness);
+
+		[propget, helpstring("Sets or returns the number of line segments generated for each polyline (SPLINESEGS).")]  
+		HRESULT SegmentPerPolyline ([out, retval] int *Number);
+		[propput]  
+		HRESULT SegmentPerPolyline ([in] int Number);
+
+		[propget, helpstring("Sets or returns whether traces, solids and hatches are filled in (FILLMODE).")]
+		HRESULT SolidFill ([out, retval] VARIANT_BOOL* SolidFill);
+		[propput]
+		HRESULT SolidFill([in] VARIANT_BOOL SolidFill);
+
+		[propget, helpstring("Sets or returns whether the frame of the text object is displayed instead of the text itself (QTEXTMODE).")]
+		HRESULT TextFrameDisplay ([out, retval] VARIANT_BOOL* TextFrameDisplay);
+		[propput]
+		HRESULT TextFrameDisplay([in] VARIANT_BOOL TextFrameDisplay);
+
+		[propget, helpstring("Sets or returns the visibility of layers in external references (VISRETAIN).")]
+		HRESULT XRefLayerVisibility ([out, retval] VARIANT_BOOL* Visible);
+		[propput]
+		HRESULT XRefLayerVisibility([in] VARIANT_BOOL Visible);
+
+		// *** Methods
+	}
+
+

@@ -1,0 +1,10 @@
+logfilename log\drhatch.log
+logfileon
+open dwg\hatch.dwg
+(load "lisp\drhatch.lsp")
+drf
+dxfout output_dxf\drhatch.dxf
+6
+close
+n
+exit

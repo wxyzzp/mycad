@@ -1,0 +1,8 @@
+Logfilename log\lsp_quit.log
+Logfileon
+(defun c:quittest() (princ "before quit") (quit) (princ "after quit"))
+quittest
+Dxfout output_dxf\lsp_quit.dxf
+6
+Quit
+y

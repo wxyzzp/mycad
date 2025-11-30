@@ -1,0 +1,83 @@
+
+Document Title:  SD_31AUG04.txt	
+Product Version: ICAD 5
+Date:  31 August 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD, Icadlib
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+	This Change provides a way to have seperate settings for Professional 
+and Standard Versions of IntelliCAD 5.0 under different trees in Registry. 
+This will enable the end-user to run both the versions on the same machine 
+without any conflicts.
+	If there were 2 versions viz: Professional and Standard of IntelliCAD 5.0 
+on the same machine, then each one would overwrite the other programs settings
+because both of them wrote at the same tree in Registry.
+	This confusion has now been removed. 
+	The Professional Version will now save its settings under
+"IntelliCAD 5.0 Professional" tree while the  Standard Version will now save 
+its settings under "IntelliCAD 5.0 Standard" tree.
+
+
+
+
+4.  Notes to Docs: N.
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: SD_31Aug04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/lib/ICADLIB/win32misc.cpp?rev=1.7.4.2.2.2
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.26 
+	Source/prj/ICAD/IcadRes.h?rev=1.21.2.16.2.13 
+	Source/prj/ICAD/IcadApp.cpp?rev=1.28.4.21.2.7 
+Description: 
+	Settings for Professional and Standard Versions of IntelliCAD 5.0 
+	are saved under different trees in Registry. 
+Reviewer's Name and Comments:
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be checked for the following cases:
+1. Run the Professional Version of IntelliCAD 5.0.
+2. Hide the LWT Pane on Statusbar and make sure that SNAP Pane is shown.
+3. Close IntelliCAD 5.0
+4. Run the Standard Version of IntelliCAD 5.0.
+5. Hide the SNAP Pane on Statusbar and make sure that LWT Pane is shown.
+6. Close IntelliCAD 5.0
+7. Run the Professional Version of IntelliCAD 5.0.
+8. The LWT Pane should be hidden and SNAP Pane should be visible.
+9. Close IntelliCAD 5.0.
+10. Run the Standard Version of IntelliCAD 5.0.
+11. The SNAP Pane should be hidden and LWT Pane should be visible.
+12. Close IntelliCAD 5.0.
+
+
+
+
+9.  Installation Issues:
+

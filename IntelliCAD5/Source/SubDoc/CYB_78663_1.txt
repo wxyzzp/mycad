@@ -1,0 +1,671 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78663_1.txt	
+Product Version:	ICAD 4
+Date:			10/05/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\LISP\intrepreter.cpp	==> int lsp_setfunhelp(void), int lsp_defatom(…), lsp_findatom(….) 
+Source\prj\ICAD\icadmain.cpp		==> bool CMainWindow::IcadHelp(….)
+Source\prj\lib\SDS\sds_misc.cpp		==> int sdsengine_setfunhelp(….)
+Source\prj\lib\CMDS\todo.cpp		==> short cmd_help(void)
+Source\prj\lib\LISP\LISP.H		 
+Source\prj\lib\LISP\lispvars.h
+Source\prj\lib\LISP\datahome.cpp
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding Bugzilla# 78663; sds_setfunhelp is not implemented.
+
+sds_setfunhelp was not implemented previously, so it was not possible to 
+provide the online help for user defined functiones in lisp and SDS.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+While implementing this unction, the data (function name, hlp file, topic 
+etc.) is saved in a separate list for lisp and for SDS.
+
+1. Lisp Implementation:
+-----------------------
+
+File: Source\prj\lib\LISP\intrepreter.cpp
+-----------------------------------------
+Function: int lsp_setfunhelp(void) 
+-----------------------------------------
+
+This function is implemented ONLY to validate the user input, and to prompt
+the userdefined function name in the form "functionname", if successful.
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+	// check, if function name is in the for "c:function", else error !	
+	if (lsp_argsll->resval.rstring && (!_tcsnicmp(lsp_argsll->resval.rstring, "C:"/*DNT*/, 2) == 0))
+	{
+		cmd_ErrorPrompt(IDC_LISP4_ERRMSG_10, -1);
+		sds_printf(": \"%s\"", lsp_argsll->resval.rstring);
+		return RTERROR;
+	}
+	// last parameter MUST be a string, if yes, return the string to the prompt.
+	if ( lsp_evres.resval.rstring)
+		_tcscpy((char *)lsp_evres.resval.rstring, (char *)lsp_argsll->resval.rstring);
+	else
+	{
+		cmd_ErrorPrompt(IDC_LISP4_ERRMSG_1, -1);
+		return RTERROR;
+	}
+
+	return RTNORM;
+
+	/-----------------------------------------------------------------/
+
+
+
+
+
+File: Source\prj\lib\LISP\intrepreter.cpp
+-----------------------------------------
+Function: int lsp_defatom(const char *name, int id, struct resbuf *valp, int replace, bool LSP_SDS) 
+-----------------------------------------
+
+This function has been changed to handle the lists for lisp and for SDS separately.
+If the call is for lisp function (lsp_setfunhelp() ), then Global 'commandAtomList' 
+and 'commandAtomObjPtrList' are handled and if the call is for SDS function (SDS_setfunhelp() ), 
+'SDS_commandAtomList' and 'SDS_commandAtomObjPtrList' are handled. In this function 
+just pointers are manipulated as per LSP_SDS value. Also changed some coding style and indenting.
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	if (LSP_SDS)
+	{
+		commandAtomList = ::commandAtomList;
+		commandAtomObjPtrList = ::commandAtomObjPtrList;
+	}
+	else
+	{
+		commandAtomList = SDS_commandAtomList;
+		commandAtomObjPtrList = SDS_commandAtomObjPtrList;
+	}
+
+	/-----------------------------------------------------------------/
+
+
+
+
+
+File: Source\prj\lib\LISP\intrepreter.cpp
+-----------------------------------------
+Function: commandAtomObj * lsp_findatom(const TCHAR *key, int mode, DWORD dwThreadId, bool LSP_SDS)
+-----------------------------------------
+
+This function has been changed to handle the lists for lisp and for SDS separately.
+If the call is for lisp function (lsp_setfunhelp() ), then Global 'commandAtomList' 
+and 'commandAtomObjPtrList' are handled and if the call is for SDS function (SDS_setfunhelp() ), 
+'SDS_commandAtomList' and 'SDS_commandAtomObjPtrList' are handled. In this function 
+just pointers are manipulated as per LSP_SDS value. Also changed some coding style and indenting.
+
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	CMapStringToOb *commandAtomList;
+	CMapPtrToPtr   *commandAtomObjPtrList;
+
+	if (LSP_SDS)
+	{
+		commandAtomList = ::commandAtomList;
+		commandAtomObjPtrList = ::commandAtomObjPtrList;
+	}
+	else
+	{
+		commandAtomList = SDS_commandAtomList;
+		commandAtomObjPtrList = SDS_commandAtomObjPtrList;
+	}
+
+	/-----------------------------------------------------------------/
+
+
+
+
+
+File: Source\prj\ICAD\icadmain.cpp
+-----------------------------------------
+Function: bool CMainWindow::IcadHelp( LPCTSTR pszFile, UINT uCommand, DWORD dwData )
+-----------------------------------------
+
+WinHelp() is called with the parameters given in lsp_setfunhelp/SDS_setfunhelp()
+
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	CString	command( "JumpID(\""/*DNT*/);
+	LPTSTR	doubleSlash;
+
+	if (dwData && _tcsnicmp((LPCTSTR)dwData, "C:"/*DNT*/, 2) == 0)
+	{
+		class commandAtomObj * pCommandAtomObj = NULL;
+		struct resbuf *pHelpFunData = NULL;
+		char functionName[IC_ACADBUF];
+
+		strcpy((char *)functionName, (char *)dwData);	  // 'C:FUNCTION'
+		strcpy((char *)functionName, &(functionName[2])); //  FUNCTION; skip 'C:'
+
+		pCommandAtomObj = lsp_findatom(functionName, 4);
+
+		if (pCommandAtomObj->rb.restype == LSP_RTXSUB)
+			pCommandAtomObj = lsp_findatom((LPCTSTR)dwData, 0, 0, false);  // SDS call
+		else
+			pCommandAtomObj = lsp_findatom((LPCTSTR)dwData, 0, 0, true);	// LISP	call		
+
+		if (pCommandAtomObj)
+		{
+			if (pHelpFunData = (resbuf *)pCommandAtomObj->rb.rbnext)
+			{
+			 for (; pHelpFunData && pHelpFunData->restype != RTSTR; pHelpFunData = pHelpFunData->rbnext);
+				for (pHelpFunData = pHelpFunData->rbnext; pHelpFunData != NULL; pHelpFunData = pHelpFunData->rbnext)
+				{
+					ic_getext((char*)pHelpFunData->resval.rstring, ext);
+					if (!strisame(ext, ".hlp"/*DNT*/)) 
+						continue;
+					else
+						break;
+				}
+
+				if (pHelpFunData)
+				{
+					pszFile = pHelpFunData->resval.rstring;
+					pHelpFunData = pHelpFunData->rbnext;
+					
+					strcpy((char *)dwData, (char *) pHelpFunData->resval.rstring);
+					pHelpFunData = pHelpFunData->rbnext;
+						
+					// interpret string if specified
+					if (pHelpFunData->restype EQ RTSTR)
+					{
+						// if 'command' is an empty string, change it to default command
+						if (strisame( pHelpFunData->resval.rstring, ""/*DNT*/))
+							uCommand = HELP_FINDER; //ICADHELP_FINDER;
+						else if (strisame( pHelpFunData->resval.rstring, "HELP_CONTENTS"/*DNT*/))
+							uCommand = HELP_CONTENTS; //ICADHELP_CONTENTS;
+						else if (strisame( pHelpFunData->resval.rstring, "HELP_FINDER"/*DNT*/))
+							uCommand = HELP_FINDER; //ICADHELP_FINDER;
+						else if (strisame( pHelpFunData->resval.rstring, "HELP_HELPONHELP"/*DNT*/))
+							uCommand = HELP_HELPONHELP; //ICADHELP_HELPONHELP;
+						else if (strisame( pHelpFunData->resval.rstring, "HELP_PARTIALKEY"/*DNT*/))
+							uCommand = HELP_PARTIALKEY; //ICADHELP_PARTIALKEY;
+					}
+					else
+					{
+						uCommand = pHelpFunData->resval.rint;
+					}
+					if (!uCommand)
+					{
+						if (strisame((char *) dwData, ""/*DNT*/))
+							uCommand = HELP_FINDER;
+						else
+							uCommand = HELP_COMMAND;
+						doubleSlash = new char[ _tcslen( pszFile) * 2];
+						int i=0, j=0;
+						while (pszFile[i] != '\0') 
+						{
+							if ((pszFile[i] == '\\')) 
+							{
+								doubleSlash[j++] = '\\';
+								doubleSlash[j++] = pszFile[i++];
+							}
+							else
+								doubleSlash[j++] = pszFile[i++];
+						}
+
+						doubleSlash[j] = '\0';
+						command += doubleSlash;
+						delete doubleSlash;
+						doubleSlash = NULL;
+						command += "\",\""/*DNT*/;
+						command += (LPCTSTR)dwData;
+						command += "\")";
+						dwData = (DWORD)(LPCTSTR)command;
+					}
+				}
+			}
+		}
+	}
+
+	/-----------------------------------------------------------------/
+
+
+
+
+
+2. SDS Implementation:
+-----------------------
+
+File: Source\prj\lib\SDS\sds_misc.cpp	
+-----------------------------------------
+Function: int sdsengine_setfunhelp(char *szFunctionName, char *szHelpFile, char *szContextID, int nMapNumber) 
+-----------------------------------------
+Implemented sdsengine_setfunhelp()
+The funtion parameters are converted into a list and saved into global list for SDS.
+
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	if (!_tcsnicmp(szFunctionName, "C:"/*DNT*/, 2) == 0)
+	{
+		cmd_ErrorPrompt(IDC_LISP4_ERRMSG_10, -1);
+		sds_printf(": \"%s\"", szFunctionName);
+		return RTERROR;
+	}
+	
+	LPTSTR strCommand = new char[IC_ACADNMLEN];
+	LPTSTR szHelpFileDoubleSlash = new char[IC_ACADNMLEN];
+
+	CString str("("/*DNT*/);
+
+	if (nMapNumber == HELP_CONTENTS)
+		_tcscpy(strCommand, "HELP_CONTENTS"/*DNT*/);
+	else if (nMapNumber == HELP_FINDER)
+		_tcscpy(strCommand, "HELP_FINDER"/*DNT*/);
+	else if (nMapNumber == HELP_HELPONHELP)
+		_tcscpy(strCommand, "HELP_HELPONHELP"/*DNT*/);
+	else if (nMapNumber == HELP_PARTIALKEY)
+		_tcscpy(strCommand, "HELP_PARTIALKEY"/*DNT*/);
+
+	ktiEscapeSlashDelimStr( szHelpFile, '\\', szHelpFileDoubleSlash);
+
+	str += "\""/*DNT*/;
+	str += szFunctionName;
+	str += "\" \""/*DNT*/;
+	str += szHelpFileDoubleSlash;
+	str += "\" \""/*DNT*/;
+	str += szContextID;
+	str += "\" \""/*DNT*/;
+	str += strCommand;
+	str += "\""/*DNT*/;
+	str += ")"/*DNT*/;
+
+	struct sds_resbuf * rb,rb1,*rb2,*temp=NULL;
+
+	lsp_xstr2xll((LPCTSTR) str ,&rb);
+
+	// make the list as in the lisp.
+	// RTLB->RTNIL->RTLB->LSP_RTSYMB->....Function Data....->RTLE->RTLE
+	
+	rb1.resval.rstring = NULL;
+	rb1.resval.rint = -1;
+	rb1.restype = RTLB;
+	rb1.rbnext = NULL;
+	
+	rb2 = sds_newrb(RTNIL);
+	rb2->resval.rstring = NULL;
+	rb1.rbnext = rb2;
+	rb2->rbnext = NULL;
+
+	rb2->rbnext = sds_newrb(RTLB);
+	rb2 = rb2->rbnext;
+	rb2->resval.rint = -1;
+	rb2->resval.rstring = NULL;
+
+	rb2->rbnext = sds_newrb(LSP_RTXSUB); // SDS function
+	rb2 = rb2->rbnext;
+	rb2->resval.rstring = new char[strlen("SETFUNHELP"/*DNT*/)];
+	strcpy(rb2->resval.rstring,"SETFUNHELP"/*DNT*/);
+				
+	for(temp = rb; temp->rbnext; temp = temp->rbnext);
+	temp->rbnext = sds_newrb(RTLE);
+	temp->resval.rstring = NULL;
+
+	rb2->rbnext = rb->rbnext;
+		
+	lsp_defatom(szFunctionName, -3, &rb1, 1, false); // call from sds
+			
+	delete strCommand;
+	delete szHelpFileDoubleSlash; 
+	return(RTNORM);
+
+	/-----------------------------------------------------------------/
+
+
+
+
+
+
+File: Source\prj\lib\CMDS\todo.cpp	
+-----------------------------------------
+Function: short cmd_help(void)
+-----------------------------------------
+
+Call to IcadHelp() for lsp_setfunhelp/SDS_setfunhelp is added.
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	else if (_tcsnicmp(fcp1, "C:"/*DNT*/, 2) == 0){ 
+		CMainWindow::IcadHelp( fs1,ICADHELP_KEY,(DWORD)fcp1);
+
+	/-----------------------------------------------------------------/
+
+
+Files:	Source\prj\lib\LISP\LISP.H		 
+-----------------------------------------
+bool LSP_SDS added.
+ 
+int lsp_defatom(const char *name, int id, struct resbuf *valp, int replace, bool LSP_SDS = true);
+class commandAtomObj *lsp_findatom(const TCHAR *key, int mode, DWORD dwThreadId = 0, bool LSP_SDS = true);
+
+
+Files:	Source\prj\lib\LISP\lispvars.h
+-----------------------------------------
+Following variables are added:
+
+extern CMapStringToOb *SDS_commandAtomList;
+extern CMapPtrToPtr   *SDS_commandAtomObjPtrList;
+
+
+Files:	Source\prj\lib\LISP\datahome.cpp
+-----------------------------------------
+Following variables are added:
+
+CMapStringToOb* SDS_commandAtomList;
+CMapPtrToPtr* SDS_commandAtomObjPtrList;
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following:
+
+setfunhelp():
+ 1. Call the setfunhelp() function through lisp.
+ 2. First parameter must contain ‘c:’ before function name. Check for the validation.
+ 3. Last parameter should be a string.
+ 4. Check for the possible cases of parameters to be passed.
+ 5. Try giving empty strings.
+ 6. Compare the results with AutoCAD.
+
+sds_setfunhelp():
+ 1. Load 78663.dll.
+ 2. Call ‘functest’.
+ 3. Give the ‘function name’ e.g: ‘c:functest’.
+ 4. Give the ‘help file path’ e.g: ‘c:/ArchT/help/ArchT.hlp’.
+ 5. Give the ‘topic’ e.g: ‘base unit’.
+ 6. Give the flag e.g: HELP_CONTENTS, HELP_FINDER, HELP_HELPONHELP, HELP_PARTIALKEY etc.
+This should show ArchT help file.
+
+This fix is ONLY related to setfunhelp() and sds_setfunhelp() functions.
+
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in progress)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

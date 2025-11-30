@@ -1,0 +1,10 @@
+logfilename log\snaptoggle.log
+logfileon
+;________________
+(load "lisp/snaptoggle.lsp")
+snapoff
+;_________________
+dxfout output_dxf\snaptoggle.dxf
+6
+quit
+y

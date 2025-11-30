@@ -1,0 +1,109 @@
+Document Title:  SH_090704_1.txt	
+Product Version: ICAD 4.0
+Date:  7/9/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : CMDS, GEO, ICADLIB
+
+3. Overview:
+
+This submission implements the projection option of TRIM command (projmode = 1 & 2)
+to trim lines, xlines, rays, arcs/circles, ellipses, splines with lines, xlines, rays,
+arcs, circles, ellipses, lypolylines, polylines, texts, splines. Trimming polylines and 
+light weight polylines are still not supported but they will be implemented in my next 
+submission.
+
+This submission also makes the following changes to low level geometry functions to 
+make the functionality above work:
+
+*  Changed ProjectTo() member function of CCurve, CLine, CRay, CUnboundedLine, CEllipse, 
+   CControlPoints, and CNURBS classes to provide an option to return 2D curves w.r.t. 
+   the coordinate system of the projection plane.
+   
+*  Fixed the problem in CLineEllipArc::Intersect(). The original algorithm implemented 
+   this function for computing the intersection of a 3D line and ellipse had limitation 
+   and did not work in the certain cases.
+   
+*  Fixed the bug in CLineLine::Intersect() function, which did not work correctly in the 
+   certain cases.
+   
+*  Enhanced the algorithm used in CEllipArcEllipArc::Intersect() function to compute the 
+   intersections between two ellipses in order to avoid using numerical method implemented
+   in the base class, which is not reliable for handling the problem of ellipse 
+   intersections.
+
+*  Added the code to verify the intersections of curves because of poor global convergence
+   properties of Newton-Raphson method, which is being used with various correction
+   (line-line, line-arc, arc-arc) to compute the curve intersection in C2CurveSolver. In 
+   certain circumstances, the solver give some incorrect results. Fixed the problem in 
+   CCurvesDistance::CorrectLineLine(), whose implementation was incorrect for quasi linear 
+   NURBS curves.
+   
+*  Added some geometry utilities to CVector, CCompositeCurve, CSurface, and CPlane classes.
+
+*  Modified all member functions of CDWGToGeo class to provide an option to covert DWG 
+   entities to Geo entities w.r.t. world coordinate system.
+   
+For the spline, the projection and TRIM command currently only work if the pick point is 
+exactly on the spline(i.e. the spline is picked by entering the exact coordinates of a
+point on the spline). Using mouse to pick the spline deosn't seem working. This issue will
+be addressed in my next submission that I will implement HitTest() functions for various
+curves to test if a ray hit a curve within a given tolerance).
+   
+
+4.  Notes to Docs: N
+
+5.  Notes for Regress/Benchmarks: N
+
+6.  Change Log: 
+
+Affected files: 
+
+    Source/prj/lib/cmds/cmd4.cpp
+    Source/prj/lib/cmds/GeoConvert.h
+    Source/prj/lib/cmds/GeoConvert.cpp
+    Source/prj/lib/icadlib/EntConversion.h
+    Source/prj/lib/icadlib/EntConversion.cpp    
+    Source/ThirdParty/Geo/2CurveSolver.cpp
+    Source/ThirdParty/Geo/compcrvs.h
+    Source/ThirdParty/Geo/compcrvs.cpp
+    Source/ThirdParty/Geo/crvpair.cpp
+    Source/ThirdParty/Geo/ctrlpts.h
+    Source/ThirdParty/Geo/ctrlpts.cpp
+    Source/ThirdParty/Geo/curve.h
+    Source/ThirdParty/Geo/curve.cpp
+    Source/ThirdParty/Geo/elliparc.h
+    Source/ThirdParty/Geo/elliparc.cpp
+    Source/ThirdParty/Geo/line.h
+    Source/ThirdParty/Geo/line.cpp
+    Source/ThirdParty/Geo/nurbs.h
+    Source/ThirdParty/Geo/nurbs.cpp
+    Source/ThirdParty/Geo/plane.h
+    Source/ThirdParty/Geo/plane.cpp
+    Source/ThirdParty/Geo/PolyLine.h
+    Source/ThirdParty/Geo/PolyLine.cpp
+    Source/ThirdParty/Geo/Surface.h
+    Source/ThirdParty/Geo/Surface.cpp
+    Source/ThirdParty/Geo/trnsform.cpp
+    Source/ThirdParty/Geo/Vector.h
+    Source/ThirdParty/Geo/Vector.cpp
+
+
+7.  System file - Component Changes and Additions: N
+
+8.  Testing Considerations:
+* Unit Test Description: Test TRIM with projmode = 0, 1, and 2.
+* Notes for QA Testing: N
+
+9.  Installation Issues: N.
+
+
+

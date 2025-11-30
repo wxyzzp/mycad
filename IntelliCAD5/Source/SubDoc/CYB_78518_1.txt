@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+File:		CYB_78503_1.txt
+Date:		12-05-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78518
+Affected files:	
+		Source/prj/lib/CMDS/array.cpp
+Description:	Polar array using negative values does not work correctly 
+Comments:	TaL78518
+Problem Analysis:	
+		Wrong function is being called. This was due to changes of progesoft of using orientation.
+		
+Problem Solution:
+		Use the correct function call which fixes the problem.		
+
+File by File:
+	*	Source/prj/lib/CMDS/array.cpp
+		Changed the call from sdsengine_getorient and sds_getangle to SDS to SDS_getorientbig.
+------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+logfilename log\78350.log
+logfileon
+;_______
+wedge
+0,0,0
+2,2,-2
+;_______
+torus
+1,1,0
+0,0,0
+.4
+;_______
+union
+all
+
+;_______
+(entget (car (entsel)))
+2.8,1
+;_______
+dxfout output_dxf\78350.dxf
+6
+quit
+y

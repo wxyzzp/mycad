@@ -1,0 +1,122 @@
+Document Title:  DP_20040901.txt	
+Product Version: ICAD 5
+Date:  01.09.2004
+Engineer: Denis Petrov
+
+1. Process Checklist :
+* Regress run without new failures: Y/N
+* Did you test it? : Y/N
+* Code Reviewed By: 
+* Docs Changes Required: Y/N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+DB
+GR
+
+3.  Overview:
+
+----- Original Message ----- 
+From: "Sachin Dange" <sachin@cybage.com>
+To: "Denis Petrov" <denseness@hotmail.com>; <mohann@cybage.com>
+Cc: <devmanager@intellicad.org>; <jk@cybage.com>
+Sent: Tuesday, August 31, 2004 9:52 AM
+Subject: Re: Changes in memory management functions
+
+
+> Hi Denis,
+> 
+> You can proceed with the changes.
+> Thanks in advance.
+> 
+> With Best Regards,
+> Sachin.
+> 
+> 
+> 
+> ----- Original Message -----
+> From: "Denis Petrov" <denseness@hotmail.com>
+> To: <sachin@cybage.com>; <mohann@cybage.com>
+> Cc: <devmanager@intellicad.org>; <jk@cybage.com>
+> Sent: Sunday, August 29, 2004 9:45 PM
+> Subject: Changes in memory management functions
+> 
+> 
+> > Hi Sachin and Mohan,
+> >
+> > Merging the BricsCAD changes I noticed few mistakes (as I think) made
+> during
+> > changing memory management functions:
+> > 1) Take a look at the function odvm_malloc(unsigned num_bytes) in file
+> > adstream.cpp.
+> > Previously it was defined as:
+> > {
+> > return (AD_VMADDR)malloc( num_bytes);
+> > }
+> > Now it is
+> > {
+> > return (AD_VMADDR ) new AD_VMADDR [num_bytes];
+> > }
+> > The type AD_VMADDR is defined as char* in the file ad2.h. Since this is a
+> > pointer then its size is 4 bytes. Therefore after the changes in memory
+> > management this function allocates 4 times more memory then necessary.
+> > 2) Take a look at the function ttfGetOutlineTextMetrics() in the file
+> > truetypeutils.cpp
+> > Previously it allocated memory as follows:
+> > if(!(pMetrics = (LPOUTLINETEXTMETRIC)malloc(BufSize)))
+> > Now it allocates sizeof(OUTLINETEXTMETRIC) times more memory then
+> necessary:
+> > if(!(pMetrics = new OUTLINETEXTMETRIC[BufSize]))
+> > 3) The same question is regarding the function ttfGetGlyphOutlinesData()
+> in
+> > the file truetypeutils.cpp
+> > Previously it allocated memory as follows:
+> > if(!(*pPolygonHeaderBuffer = (LPTTPOLYGONHEADER)malloc(BufferSize)))
+> > Now it allocates sizeof(TTPOLYGONHEADER) times more memory then necessary:
+> > if(!(*pPolygonHeaderBuffer = new TTPOLYGONHEADER[ BufferSize]))
+> >
+> > Please let me know whether you had any reasons for perfoming the changes
+> as
+> > stated above. If these are mistakes then in my opinion at least last 2
+> > should be corrected ASAP. If you have no time for that now then let me
+> know
+> > and I will do it.
+> >
+> > Regards, Denis.
+> >
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: Y/N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y/N
+File Name       	Sent to buildmanager@intellicad.org
+Name of Script File     Y/N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:        
+Affected files: 
+2004-09-01   07:18   denisp   Source/prj/lib/DB/adstream.cpp?rev=1.3.4.2.2.1 
+2004-09-01   07:19   denisp   Source/prj/lib/GR/truetypeutils.cpp?rev=1.10.4.4.2.1 
+Description:  
+Corrected allocation of memory.
+--------------------------------------------------------------------------------
+
+7.  System file - Component Changes and Additions
+Need any system file changes in icad due to this submission (eg. files added to c:\winnt\system32)?  Please provide detail.
+
+8.  Testing Considerations:
+* Unit Test Description: Describe your unit test and your result so that we know the expected result.
+* Notes for QA Testing: Notes for the QA team.
+
+9.  Installation Issues:
+Anything the members need to be aware of when creating their installers for the product.
+
+
+

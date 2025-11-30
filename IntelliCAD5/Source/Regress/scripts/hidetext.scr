@@ -1,0 +1,14 @@
+logfilename log\hidetext.log
+logfileon
+;___________
+hidetext
+on
+hidetext
+off
+hidetext
+on
+;___________
+dxfout output_dxf\hidetext.dxf
+6
+quit
+y

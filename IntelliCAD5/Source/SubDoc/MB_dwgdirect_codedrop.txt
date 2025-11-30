@@ -1,0 +1,22 @@
+Project IntelliCAD development
+
+
+Document Title		MB_dwgdirect_codedrop.txt
+Produce Version		ICAD 4
+Date:			01/30/2004 06:06am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Update DWGdirect library files to latest version 1.10.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\Licensed\DWGdirect\*.*

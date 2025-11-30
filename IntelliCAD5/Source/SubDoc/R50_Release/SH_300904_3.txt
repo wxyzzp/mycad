@@ -1,0 +1,43 @@
+Document Title:  SH_300904_3.txt	
+Product Version: ICAD 5.0
+Date:  30/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/Icad/IcadDraw.cpp
+   
+3. Overview:
+
+If a paper space viewport creation was UNDOne and then you switch the layout to another an empty layout, 
+you will see the deleted viewports on the original layout are also redrawn on the new viewport once 
+and then are erased. This problem is caused by the code incorrectly draw all viewports pointed by 
+all records including records marked as deleted in VX table. This problem is fixed.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

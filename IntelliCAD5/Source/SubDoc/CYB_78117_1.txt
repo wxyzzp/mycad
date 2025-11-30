@@ -1,0 +1,33 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78117_1.txt
+Date:		22-04-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78117
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/cmdsDim.cpp
+		CvsHist:Eng-us/icad.rc2
+		CvsHist:Source/prj/ICAD/res/icadrc2.h
+		CvsHist:Source/prj/lib/CMDS/cmdsError.cpp
+		CvsHist:Source/prj/lib/CMDS/cmdsError.h
+Description: 	Dimension command prompt is not compatible with ACAD.
+Comments:	TaL78117
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/cmdsDim.cpp
+			Added a boolean variable bAddToLastcmd to check when a command entered by the user should be 							added to the lastcmd array. 
+*		CvsHist:Eng-us/icad.rc2
+			Created a resource string IDC_ERRORPROMPT__EXIT_DONE__305 to display an error message.
+*		CvsHist:Source/prj/ICAD/res/icadrc2.h
+			Assigned an ID IDS_BASE2+658 to the resource IDC_ERRORPROMPT__EXIT_DONE__305			
+*		CvsHist:Source/prj/lib/CMDS/cmdsError.cpp
+			Added a case CMD_ERR_EXITDONE to show the error prompt added.
+*		CvsHist:Source/prj/lib/CMDS/cmdsError.h
+			Defined an ID CMD_ERR_EXITDONE for the error prompt 
+--------------------------------------------------------------------------------
+

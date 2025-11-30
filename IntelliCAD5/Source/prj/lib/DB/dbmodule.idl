@@ -1,0 +1,32 @@
+// dbmodule.idl : IDL source for db.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (dbmodule.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";	  
+#include "dllloadinfo.idl"
+
+
+[
+	uuid(EE82A591-CDCD-11D2-B17B-00104B22E914),
+	version(1.0),
+	helpstring("db 1.0 Type Library")
+]
+library DBMODULELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+	uuid(EE82A59E-CDCD-11D2-B17B-00104B22E914),
+
+	]
+
+	coclass DBDLLLoadInfo
+	{
+		[default] interface IVisioDLLLoadInfo;
+	};
+
+};

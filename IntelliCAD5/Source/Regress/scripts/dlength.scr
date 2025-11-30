@@ -1,0 +1,12 @@
+logfilename log\dlength.log
+logfileon
+(load "lisp/dlength.lsp")
+dlength 6 2 45 3,3
+dlength 7 2 55 3,4
+dlength 8 2 65 3,5
+dlength 9 2 70 3,6
+dlength 1 2 80 3,7
+dlength 2 2 90 3,8
+dxfout output_dxf\dlength.dxf
+6
+quit _y

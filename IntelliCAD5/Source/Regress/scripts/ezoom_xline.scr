@@ -1,0 +1,9 @@
+logfilename log\ezoom_xline.log
+logfileon
+(Load "lisp\ezoom_xline.lsp")
+ezoom_xline
+dxfout output_dxf\ezoom_xline.dxf
+6
+close y
+exit
+

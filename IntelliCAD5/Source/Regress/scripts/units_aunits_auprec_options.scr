@@ -1,0 +1,162 @@
+logfilename log\units_aunits_auprec_options.log
+logfileon
+;________aunits_1_
+units
+
+
+1
+
+
+
+;_________
+(if (/= (getvar "aunits") 0) (alert "aunits 1"))
+;________aunits_2_
+units
+
+
+2
+
+
+
+;_________
+(if (/= (getvar "aunits") 1) (alert "aunits 2"))
+;________aunits_3_
+units
+
+
+3
+
+
+
+;_________
+(if (/= (getvar "aunits") 2) (alert "aunits 3"))
+;________aunits_4_
+units
+
+
+4
+
+
+
+;_________
+(if (/= (getvar "aunits") 3) (alert "aunits 4"))
+;________aunits_5_
+units
+
+
+5
+
+
+
+;_________
+(if (/= (getvar "aunits") 4) (alert "aunits 5"))
+;________aunits_1
+;_auprec_0
+units
+
+
+1
+0
+
+
+;_________
+(if (/= (getvar "auprec") 0) (alert "aunits 1"))
+;_auprec_8
+units
+
+
+1
+8
+
+
+;_________
+(if (/= (getvar "auprec") 8) (alert "aunits 1"))
+;________aunits_2_
+;_auprec_0
+units
+
+
+2
+0
+
+
+;_________
+(if (/= (getvar "auprec") 0) (alert "aunits 1"))
+;_auprec_8
+units
+
+
+2
+8
+
+
+;_________
+(if (/= (getvar "auprec") 8) (alert "aunits 1"))
+;________aunits_3_
+;_auprec_0
+units
+
+
+3
+0
+
+
+;_________
+(if (/= (getvar "auprec") 0) (alert "aunits 1"))
+;_auprec_8
+units
+
+
+3
+8
+
+
+;_________
+(if (/= (getvar "auprec") 8) (alert "aunits 1"))
+;________aunits_4_
+;_auprec_1
+units
+
+
+4
+0
+
+
+;_________
+(if (/= (getvar "auprec") 0) (alert "aunits 1"))
+;_auprec_256
+units
+
+
+4
+8
+
+
+;_________
+(if (/= (getvar "auprec") 8) (alert "aunits 1"))
+;________aunits_5_
+;_auprec_1
+units
+
+
+4
+0
+
+
+;_________
+(if (/= (getvar "auprec") 0) (alert "aunits 1"))
+;_auprec_256
+units
+
+
+4
+8
+
+
+;_________
+(if (/= (getvar "auprec") 8) (alert "aunits 1"))
+;___
+dxfout output_dxf\units_aunits_auprec_options.dxf
+6
+quit
+y

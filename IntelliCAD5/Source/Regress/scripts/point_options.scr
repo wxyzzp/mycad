@@ -1,0 +1,30 @@
+logfilename log\point_options.log
+logfileon
+;____________
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001) (equal (caddr ptAct) (caddr ptExp) 0.00001)))
+pdmode
+99
+;____________
+point
+1,1
+;____________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 1.0 1.0 0.0)) (princ "OK") (alert "Plane error"))
+;____________
+point
+m
+1,0
+0,1
+
+;____________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Plane error"))
+;____________
+erase
+last
+
+;____________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 1.0 0.0 0.0)) (princ "OK") (alert "Plane error"))
+;____________
+dxfout output_dxf\point_options.dxf
+6
+quit
+y

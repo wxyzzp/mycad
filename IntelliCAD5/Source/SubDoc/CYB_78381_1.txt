@@ -1,0 +1,196 @@
+--------------------------------------------------------------------------------
+File:		CYB_78381_1.txt
+Date:		25-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78381
+Added files:
+			Source/res/AC_BWL_ACISIN.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_ACISOUT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BODY_CHECK.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BODY_CLEAN.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BODY_IMPRINT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BODY_SEPARATE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BODY_SHELL.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_BOX.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_CONE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_CYLINDER.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_DISH.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_DOME.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_EDGESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_EDGE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_EDGE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_DELETE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_MOVE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_OFFSET.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_ROTATE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_FACE_TAPER.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_INTERFERE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_INTERSECT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_PYRAMID.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_REGION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_REVOLVE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_REVSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_RULESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_SECTION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_SLICE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_SPHERE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_SUBTRACT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_TABSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_TORUS.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_UNION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWL_WEDGE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_ACISIN.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_ACISOUT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BODY_CHECK.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BODY_CLEAN.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BODY_IMPRINT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BODY_SEPARATE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BODY_SHELL.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_BOX.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_CONE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_CYLINDER.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_DISH.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_DOME.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_EDGESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_EDGE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_EDGE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_DELETE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_MOVE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_OFFSET.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_ROTATE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_FACE_TAPER.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_INTERFERE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_INTERSECT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_PYRAMID.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_REGION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_REVOLVE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_REVSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_RULESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_SECTION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_SLICE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_SPHERE.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_SUBTRACT.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_TABSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_TORUS.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_UNION.bmp?rev=1.1.2.1 
+			Source/res/AC_BWS_WEDGE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_3DCONVERT.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_ACISIN.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_ACISOUT.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BODY_CHECK.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BODY_CLEAN.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BODY_IMPRINT.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BODY_SEPARATE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BODY_SHELL.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_BOX.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_CONE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_CYLINDER.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_DISH.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_DOME.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_EDGESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_EDGE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_EDGE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_DELETE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_MOVE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_OFFSET.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_ROTATE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_FACE_TAPER.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_INTERFERE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_INTERSECT.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_PYRAMID.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_REGION.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_REVOLVE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_REVSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_RULESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_SECTION.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_SLICE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_SPHERE.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_SUBTRACT.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_TABSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_TORUS.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_UNION.bmp?rev=1.1.2.1 
+			Source/res/AC_LG_WEDGE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_3DCONVERT.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_ACISIN.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_ACISOUT.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BODY_CHECK.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BODY_CLEAN.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BODY_IMPRINT.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BODY_SEPARATE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BODY_SHELL.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_BOX.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_CONE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_CYLINDER.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_DISH.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_DOME.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_EDGESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_EDGE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_EDGE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_COLOR.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_COPY.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_DELETE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_EXTRUDE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_MOVE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_OFFSET.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_ROTATE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_FACE_TAPER.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_INTERFERE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_INTERSECT.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_PYRAMID.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_REGION.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_REVOLVE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_REVSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_RULESURF.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_SECTION.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_SLICE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_SPHERE.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_SUBTRACT.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_TABSURF.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_TORUS.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_UNION.bmp?rev=1.1.2.1 
+			Source/res/AC_SM_WEDGE.bmp?rev=1.1.2.1 
+
+
+Affected files:			
+			Source/prj/ICAD/IcadRes.h?rev=1.21.4.4 
+			Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.4 
+			Eng-us/icad.rc2?rev=1.63.4.8 
+			Eng-us/IcadRes.rc?rev=1.28.4.7 
+			Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.4.1
+
+Description:	Implementation of toolbars and Menus for ACIS
+Comments:	TaL78381
+Problem Analysis: 
+		Implementation of Menu and toolbar for ACIS
+Problem Solution:
+		Study the existing menu and toolbar and then implement them for acis.
+File_BY_FILE:
+	*		Source/prj/ICAD/IcadRes.h 
+			Declaration of BITMAP id. 
+
+	*		Source/prj/ICAD/res/icadrc2.h 
+			Declaration of id's used in IcadMenuTBDef.h		
+	
+	*		Eng-us/icad.rc2 
+			Resource Strings for ToolTip and Help String.
+
+	*		Eng-us/IcadRes.rc 
+			Path set for BITMAPS for bitmap ID.
+
+	*		Source/prj/ICAD/IcadMenuTBDef.H
+			Array entires for for Toolbar and menu entry.
+--------------------------------------------------------------------------------

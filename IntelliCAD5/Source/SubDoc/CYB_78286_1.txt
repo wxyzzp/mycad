@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78286_1.txt
+Date:		23-09-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78286
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/printadvancedtab.cpp
+Description: 	Checkbox for Prints upside-down on Print dialog is not reset.
+Comments:	TaL78286
+File by File:	
+*		Source/prj/ICAD/printadvancedtab.cpp
+		Switched off the m_Rotate flag and changed the value of rotation angle to zero. 
+--------------------------------------------------------------------------------

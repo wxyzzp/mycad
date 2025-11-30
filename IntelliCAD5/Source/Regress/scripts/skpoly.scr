@@ -1,0 +1,22 @@
+logfilename log\skpoly.log
+logfileon
+;_____________
+skpoly
+0
+
+1
+
+0
+
+1
+
+0
+
+1
+
+0
+;_______________
+dxfout output_dxf\skpoly.dxf
+6
+quit
+y

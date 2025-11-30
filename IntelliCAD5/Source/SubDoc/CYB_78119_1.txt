@@ -1,0 +1,31 @@
+------------------------------------------------------------------------------
+File Name:	CYB_78119_1.txt
+Date:		22-04-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78119
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/insert.cpp
+		CvsHist:Source/prj/lib/CMDS/read.cpp
+Description:	"Xref" reload causes extra table entries.
+		Extra Table entries being created because "strsame" was failing to check for 
+		the "tableprefix" which was in uppercase.
+		Xref-reload was changing "tableprefix" to uppercase. 
+
+Comments:	TaL78119.
+
+File by File: 
+		* CvsHist:Source/prj/lib/CMDS/insert.cpp
+		
+		Restored the value of strbuff back to the original one, added line
+		CODE [
+		strncpy(strBuff,ic_rbassoc->resval.rstring,sizeof(strBuff)-1);
+		CODE ]
+		conversion to strupr(strbuff) required only so that the following sds_wcmatch gives 
+		proper results
+
+		* CvsHist:Source/prj/lib/CMDS/read.cpp
+
+		Commented out the lines where the blockname was being converted to uppercase 		
+
+------------------------------------------------------------------------------

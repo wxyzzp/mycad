@@ -1,0 +1,39 @@
+line
+1,1
+9,5
+
+layout
+set
+layout1
+
+set
+layout2
+
+set
+model
+
+set
+model
+
+set
+layout1
+
+set
+layout1
+
+set
+layout2
+
+set
+layout2
+tilemode on
+layout
+set
+model
+tilemode off
+layout
+set
+layout2
+dxfout output_dxf\switch_layouts.dxf
+6
+exit y

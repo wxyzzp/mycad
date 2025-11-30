@@ -1,0 +1,85 @@
+Document Title:  SH_260604_1.txt	
+Product Version: ICAD 4.0
+Date:  6/26/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : GEO, ICADLIB
+
+3. Overview:
+
+This submission makes following changes to the low level geometry 
+utility classes in GEO module in order to implement the projection 
+options for TRIM and EXTEND commands and VISIBALE osnap:
+
+* Adds CSurface and CPlane classes for constructing planar geometry.
+* Adds ProjectTo() to CCurve, CLine, CRay, CUnboundedLine, CEllipArc, 
+  CPolyLine, CNURBS/CControlPoints classes to project those curves 
+  along an arbitrary direction onto an arbitrarily oriented plane.
+* Adds ProjIntersect() functions to CCurvePair class to compute the 
+  intersection of curves in an arbitrary direction.
+
+This submission also fixes the problems in AsGeoEllipse() and 
+AsGeoEllipArc() in which the normal of ellipse entities were not 
+taken account when they convert db_circle and db_arc entities to 
+the CEllipse and CEllipArc entities.
+
+4.  Notes to Docs: N
+
+5.  Notes for Regress/Benchmarks: N
+
+6.  Change Log:
+--------------------------------------------------------------------------------
+Reference:      SH_260604_1.txt
+
+Added files:    Source/ThirdParty/geo/surface.h?rev=1.1.4.1
+                Source/ThirdParty/geo/surface.cpp?rev=1.1.4.1
+                Source/ThirdParty/geo/plane.h?rev=1.1.4.1
+                Source/ThirdParty/geo/plane.cpp?rev=1.1.4.1
+                
+Affected files: Source/ThirdParty/geo/PolyLine.h?rev=1.2.8.1.2.1 
+                Source/ThirdParty/geo/PolyLine.cpp?rev=1.2.8.2.2.1 
+                Source/ThirdParty/geo/nurbs.h?rev=1.1.1.1.10.4.2.1 
+                Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.10.5.2.1
+                Source/ThirdParty/geo/line.h?rev=1.2.8.3.2.1
+                Source/ThirdParty/geo/line.cpp?rev=1.2.8.2.2.1 
+                Source/ThirdParty/geo/elliparc.h?rev=1.1.1.1.10.1.2.1 
+                Source/ThirdParty/geo/elliparc.cpp?rev=1.3.8.1.2.1
+                Source/ThirdParty/geo/curve.h?rev=1.1.1.1.10.3.2.1
+                Source/ThirdParty/geo/ctrlpts.h?rev=1.1.1.1.10.2.2.1
+                Source/ThirdParty/geo/ctrlpts.cpp?rev=1.1.1.1.10.2.2.1
+                Source/ThirdParty/geo/vector.h?rev=1.1.4.1.2.1
+                Source/ThirdParty/geo/vector.cpp?rev=1.1.4.2.2.1
+                Source/ThirdParty/geo/trnsform.h?rev=1.1.1.1.10.1.2.1
+                Source/ThirdParty/geo/trnsform.cpp?rev=1.1.1.1.10.1.2.1
+                Source/ThirdParty/geo/crvpair.h?rev=1.2.16.1
+                Source/ThirdParty/geo/crvpair.cpp?rev=1.1.1.1.10.4.2.1
+                Source/prj/lib/ICADLIB/EntConversion.cpp?rev=1.1.4.2.2.1
+                Source/prj/lib/ICADLIB/xformutils.cpp?rev=1.4.10.1.2.1
+                Source/prj/lib/ICADLIB/icadlib.h?rev=1.14.4.8.2.1
+                Source/prj/make/Geo.dsp?rev=1.3.8.4.2.1
+
+Description:    Adds new low level geomtry functionality to project
+                curves along an arbitrary direction to an an arbitrarily 
+                oriented plane.
+Reviewer's Name and Comments:
+--------------------------------------------------------------------------------
+
+7.  System file - Component Changes and Additions
+
+8.  Testing Considerations:
+* Unit Test Description: Tested by using test programs.
+* Notes for QA Testing: QAs can not test those new functions until the projection
+                        of TRIM and EXTEND commands are implemented.
+
+9.  Installation Issues:
+
+
+

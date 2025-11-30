@@ -1,0 +1,42 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_05102002_1.txt
+Date:		05-10-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/DB/reactor.cpp
+ 
+Deleted files:	
+		None
+
+Description:	Fixed crash when entity with a reactor is deleted.
+Comments:	This submission fixes a serious problem in ReactorSubject::BreakAssociation(). The ReactorSubject class has
+		an STL list (m_reactors) that stores ReactorItems. In BreakAssociation(), an STL iterator iterates through all elements in
+		the list. If the handitem is present it calls BreakAssociation() which through other calls ends up calling
+		ReactorSubject::DetachReactor(). Now DetachReactor() ends up removing the current element being processed by
+		BreakAssociation(). This leaves the iterator in BreakAssociation() in an invalid state -- we end up looking at 
+		memory that was just freed which leads to a crash.
+
+		I have fixed this by a kludge -- before BreakAssociation() is called, I store what the iterator's next position and
+		use this for the loop iterator instead of incrementing the iterator after the call to BreakAssociation(). The bigger issue is this is a
+		big design flaw -- if a list is being processed, a function being called in this processing loop shouldn't destroy 
+		the list. If that is the expected behavior then something other than an STL list must be used to store the elements.
+		The outer loop has to be written in a proper manner to handle this and STL list is not the right structure.
+		
+
+File by File:	
+		Source/prj/lib/DB/reactor.cpp			Version: 
+			In ReactorSubject::BreakAssociation() added another LIST_ITER instance. This stores what the iterator's next
+			position and is used in the for loop.
+
+-----------------------------------------------------------------------------

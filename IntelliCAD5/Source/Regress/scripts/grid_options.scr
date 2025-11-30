@@ -1,0 +1,54 @@
+logfilename log\grid_options.log
+logfileon
+;_________1
+grid
+on
+(if (/= (getvar "gridmode") 1) (alert "grid not set correctly"))
+;_________2
+grid
+t
+(if (/= (getvar "gridmode") 0) (alert "grid not set correctly"))
+;_________3
+grid
+t
+(if (/= (getvar "gridmode") 1) (alert "grid not set correctly"))
+;_________4
+grid
+off
+(if (/= (getvar "gridmode") 0) (alert "grid not set correctly"))
+;_________1
+grid
+1
+(if (equal (getvar "gridunit") (list 1.0 1.0)) (princ "OK") (alert "grid not set correctly"))
+;_________2
+grid
+100
+(if (equal (getvar "gridunit") (list 100.0 100.0)) (princ "OK") (alert "grid not set correctly"))
+;_________1
+grid
+a
+100
+1
+(if (equal (getvar "gridunit") (list 100.0 1.0)) (princ "OK") (alert "grid not set correctly"))
+;_________e
+grid
+e
+1
+(if (equal (getvar "gridunit") (list 1.0 1.0)) (princ "OK") (alert "grid not set correctly"))
+;_______2
+grid
+a
+1
+100
+(if (equal (getvar "gridunit") (list 1.0 100.0)) (princ "OK") (alert "grid not set correctly"))
+;_________1
+snapunit
+1.5,.5
+grid
+s
+(if (equal (getvar "snapunit") (list 1.5 0.5)) (princ "OK") (alert "grid not set correctly"))
+;_________
+dxfout output_dxf\grid_options.dxf
+6
+quit
+y

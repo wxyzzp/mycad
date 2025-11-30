@@ -1,0 +1,64 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_12122002_1.txt
+Date:		12-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description: This submission fixes following bugs.
+             
+
+             BUG #78118: ICAD crashes for different selection options at the 
+                         "Chamfer" command
+
+             RESOLUTION: IntelliCAD crashes because the test case uses a 
+                         invalid option to select so an invalid handle
+                         is passed into cmd_chamfer() function. The function
+                         didn't verify the handle and tried to access the 
+                         data the handle pointing to, which caused IntelliCAD
+                         to crash. This is fixed.
+                         
+                         
+             BUG #78191: ICAD crashes on using Backspace after start of script 
+                         recording
+
+             RESOLUTION: The code moves the file pointer back one byte after 
+                         the backspace is used. But it didn't verify if the 
+                         pointer at begin position of the file first so 
+                         IntelliCAD crashed in this case when the file pointer 
+                         was at the begin of the file. This is fixed.
+                         
+                         
+             BUG #78018: ICAD crashes if RTROT command is used after UCS is 
+                         rotated and a circle is drawn.
+
+             RESOLUTION: The value of VIEWCTR was incorrect after the UCS was
+                         rotated about an AXIS 90 degree, which casued ICAD 
+                         crashing at RTROT command when the code tried to 
+                         draw the image of UCSICON outside boundary of 
+                         the image bitmap while the mouse was moving. The reason
+                         VIEWCTR was incorrect becuase the epsilon was not taken
+                         account when it compares a component value of view 
+                         direction vector with 0.0. This is fixed.
+                         
+                
+Changed files:	
+
+
+             Source/Prj/Lib/CMDS/CmdFilletChamfer.cpp:
+             Source/Prj/Lib/DB/Drawing.cpp:
+             Source/Prj/Lib/ICAD/CmdFilletChamfer.cpp:
+             
+
+Comments:    The regression scripts for those bugs are not available.
+             
+             
+
+--------------------------------------------------------------------------------

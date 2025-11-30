@@ -1,0 +1,23 @@
+logfilename log\orthogonal_options.log
+logfileon
+;_________1
+orthogonal
+on
+(if (/= (getvar "orthomode") 1) (alert "orthogonal not set correctly"))
+;_________2
+orthogonal
+t
+(if (/= (getvar "orthomode") 0) (alert "orthogonal not set correctly"))
+;_________3
+orthogonal
+t
+(if (/= (getvar "orthomode") 1) (alert "orthogonal not set correctly"))
+;_________4
+orthogonal
+off
+(if (/= (getvar "orthomode") 0) (alert "orthogonal not set correctly"))
+;_________
+dxfout output_dxf\orthogonal_options.dxf
+6
+quit
+y

@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+File:		CYB_78199_2.txt
+Date:		09-12-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78199
+Affected files:			
+		Source/prj/ICAD/IcadSetVarsDia.cpp
+Description:	ICAD crashes if combined length of  sufix & prefix is greater than  that allowed by Dimapost
+Comments:	TaL78199
+Problem Analyis:
+		In IntelliCAD the size of DIMPOST and DIMAPOST is limited to 16 characters. Out of these 16 characters 1 
+		character will be for '\0' and 2 characters will be for delimiters ( [ ] or < > ) of DIMAPOST or DIMPOST. 
+		So actaully we can have only 13 characters Prefix or Suffix.
+
+
+		The function svar_StrSet() is called on every character type in the edit boxes Of DIMPOST and DIMAPOST. 
+		So whenever the size of DIMPOST exceed its limit there were message boxes on screen stating so. But as this 
+		function is called on evey character, when 2-3 characters we extra there were messages poping 
+		continuosly. This was the problem. To fix this problem in our last fix We had taken a static variable 
+		( bDialogDisplayed ) which will save the state Dialog displayed on screen.
+		
+Proposed Solution:
+		With the help of Denis code-review we have managed to get rid of the static variable and also used svar_StrGet() 
+		to get and set the edit boxes properly.
+
+File by File:
+	*	Source/prj/ICAD/IcadSetVarsDia.cpp
+
+		When ever the length exceed 15, we send message svar_StrGet and update the edit box which is less than 15. We also 
+		set the latest value to DIMPOST / DIMAPOST variable at the end.
+		
+--------------------------------------------------------------------------------

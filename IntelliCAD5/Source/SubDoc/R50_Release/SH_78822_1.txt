@@ -1,0 +1,44 @@
+Document Title:  SH_78822_1.txt	
+Product Version: ICAD 4.0
+Date:  8/8/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected :
+
+   source/prj/lib/cmds/cmds4.cpp
+   
+3. Change Overview:
+
+This submission fixes the bug #78822 - "TRIM of circle/circle silently fails 
+when cutting edge entity is PLINE".
+
+The original code to trim a arc or circle using a polyline with more than one 
+segment crossing the arc or circle is not implemented correctly. This is problem
+is fixed by replacing the code with new implementation that I introduced a few 
+weeks ago.
+
+4.  Notes to Developers:
+
+5.  Notes to QA:
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:
+	Name of Script file: 78822.scr
+
+8.  Notes to Localization:
+
+

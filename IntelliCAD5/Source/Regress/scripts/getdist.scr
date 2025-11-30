@@ -1,0 +1,19 @@
+logfilename log\getdist.log
+logfileon
+;____________________
+(load "lisp\getdist.lsp")
+Testbeam
+15
+10
+5
+5
+5
+5
+1,1
+3,3
+
+;_________
+dxfout output_dxf\getdist.dxf
+6
+quit
+y

@@ -1,0 +1,39 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04122003.txt
+Date:		04-12-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/ThirdParty/geo/nurbs.h?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/knots.h?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/knots.cpp?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/array.h?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/array.cpp?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/trnsform.h?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/trnsform.cpp?rev=1.1.1.1.12.1
+		Source/prj/make/Geo.dsp?rev=1.3.10.3
+
+		
+New files: 	Source/ThirdParty/geo/vector.h?rev=1.1.2.1
+                Source/ThirdParty/geo/vector.cpp?rev=1.1.2.1
+                Source/ThirdParty/geo/Matrix.h?rev=1.1.2.1
+                Source/ThirdParty/geo/matrix.cpp?rev=1.1.2.1
+
+Description:	This submission implements NURBS split function 
+                and adds functionality to the existing geometry 
+                library for implementing missing NURBS 
+                functionality required by SPLINE, SPLINEDIT, 
+                TRIM, BREAK, SNAP, EXTEND, OFFSET commands.
+
+
+Comments        None.
+

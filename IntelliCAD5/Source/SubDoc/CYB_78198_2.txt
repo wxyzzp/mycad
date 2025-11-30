@@ -1,0 +1,24 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78198_2.txt
+Date:		09-12-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78198
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/DimOrdinate.cpp
+Description:	Explode of Ordinate dimension with Dimtad=1 has extra line.
+Comments:		Implemented code review changes as suggested by Denis. 
+Problem Analysis:
+		Optimization required.
+Proposed Solution:
+		Replace for loop by two statements.
+File by File:	
+*		Source/prj/lib/CMDS/DimOrdinate.cpp
+		Removed for loop and wrote two statements instead.
+--------------------------------------------------------------------------------

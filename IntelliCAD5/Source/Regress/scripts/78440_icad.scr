@@ -1,0 +1,24 @@
+;_This_Script_is_created_by_Srinivas_on_4/14/2003_testing_Bugzilla_no_78440
+logfilename log\78440_icad.log
+logfileon
+;________
+(setq fpath (findfile "icad.exe"))
+;_______
+(if (/= (cond ((findfile "icad.exe"))) fpath) (alert "Err"))
+;_______
+(if (/= (cond (T (findfile "icad.exe"))) fpath) (alert "Err"))
+;_______
+(cond ( 0 (princ "Hello") ( findfile "icad.exe")))
+;_______
+(if (/= (cond ( 0 (princ "Hello") ) ( T (findfile "icad.exe"))) "Hello") (alert "Err"))
+;_______
+(if (/= (cond ( T (princ "Hello") ) ( findfile "icad.exe")) "Hello") (alert "Err"))
+;_______
+(cond ( T (princ "Hello") ) ( T (findfile "icad.exe")))
+(defun FILENAME() T)
+(cond ((FILENAME) (findfile "icad.exe")))
+;________
+;dxfout output_dxf\78440_icad.dxf
+;6
+quit
+y

@@ -1,0 +1,40 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-15.txt
+Produce Version		ICAD 4
+Date:				03/04/2004 08:14am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Had to revisit layout export. I had a problem with block
+*Paper_Space having the correct layout at save time.
+
+Minor fix for ellipses.
+Moved some collection class I need into a seperate header file.
+Added code to delay conversion of dimensions and leaders until
+the block they are based on has been converted (import).
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgload.cpp
+\source\prj\make\db.dsp
+
+Files Added:
+\source\prj\lib\drw\collectionclasses.h

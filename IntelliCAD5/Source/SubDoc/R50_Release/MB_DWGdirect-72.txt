@@ -1,0 +1,83 @@
+Engineer(s):		Mark Barrow
+Date:				07/26/2004 07:17am
+Company:			ITC
+References			MB_DWGdirect-72.txt
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    source/licensed/dwgdirect/exservices/exhostappservices.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.h
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/db/reactor.cpp
+                    source/prj/icad/icadapi.cpp
+                    source/prj/icad/icadchildwnd.cpp
+                    source/prj/icad/icadmain.cpp
+                    source/prj/icad/icadtoolbarmain.cpp
+                    source/prj/icad/icadview.cpp
+                    source/prj/icad/resource.hm
+                    source/subdoc/MB_DWGdirect-72.txt
+Change Overview:
+Added DWG,DXF,and DWT to the file types not to assert in findFile. These
+could be xrefs and files that don't need to be translated to icad specific
+versions.
+
+Fixed some shutdown problems I was having by verifying that 
+SDSApplication::GetEngineApplication() was not returning NULL before making
+calls to it.
+
+Commented out a couple of ASSERTS in icadchildwnd.cpp that were just making
+me crazy. The would fire every time I open a drawing with the default empty
+icad drawing open. Calls to OnSize() and or RecalcLayout were being fired 
+because of mouse movements. I have left them in place, and it did no harm
+to comment them out, but if someone has strong feeling about putting them
+back in be my guest.
+
+Hooked up DWF help.
+
+Initialized m_pibCurToolTip to null in the CIcadToolBarMain constructor in icadtoolbarmain.cpp
+to prevent a crash I was experiencing.
+Initialized m_pDocument to null in the CIcadView constructor in icadview.cpp
+to prevent a crash I was experiencing.
+
+Added code to prevent echoing '<RTMotion NO>' to the command line over and over.
+Now the '<RTMotion ?> gets displayed when it actually has something to tell the
+user. Also reformatted a couple of functions in icadview.cpp
+
+Added help index for DWF to resource.hm
+
+In reactor.cpp, I change a call from erase() to remove() to prevent a crash during
+reactor 'breakage'. I'm not entirely confident it was the right move to make, and
+suggest this entire reactor add/remove process be reviewed. 
+
+DWGdirectConverter.cpp
+Stephen pointed out that elliptical arcs were being exported as full ellipses. I 
+have fixed that in this submission.
+Also fixed a problem AUDIT pointed out in that hatch bounaries were sometimes ending
+up with reactors with NULL ids. This submission fixes that.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

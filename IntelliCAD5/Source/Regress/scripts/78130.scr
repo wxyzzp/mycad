@@ -1,0 +1,29 @@
+logfilename log\78130.log
+logfileon
+filedia
+off
+(load "lisp\78130.lsp")
+xref
+Attach
+dwg/78130.dwg
+0,0
+1
+1
+0
+;tbl defined in 78130.lsp
+tbl
+xref
+detach
+78130
+xref
+Attach
+dwg/78130.dwg
+0,0
+1
+1
+0
+;tbl defined in 78130.lsp
+tbl
+dxfout output_dxf\78130.dxf
+6
+exit y

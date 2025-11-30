@@ -1,0 +1,75 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect_ODT_out.txt
+Produce Version		ICAD 4
+Date:				06/08/2004 06:34am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission removes ALL dependancies on the old ODT libraries
+and code, via #ifdefs. 
+
+
+To turn the old ODT back on, do the following.//////////////
+uncomment 
+//IDR_ADINIT		RT_BINDATA	"..\\..\\..\\Licensed\\ODTBIN\\adinit.dat"
+in dbdll.rc2
+
+include ADV6ND.lib in db.dsp project settings in ALL configurations.
+add 'WITHODT' #define to db.dsp
+////////////////////////////////////////////////////////////
+
+Once tested, to completely remove ALL remnents of ODT do the following./////////
+remove these directories from the source tree;
+......\IntelliCAD\Source\prj\lib\MARCOMP
+......\IntelliCAD\Source\Licensed\ODTbin
+remove all code between #ifdef WITHODT and the following #else throughout the
+source code tree.
+////////////////////////////////////////////////////////////
+
+Notes to Developers:
+Once you update to this submission, there is no reason to have the
+USEDWGDIRECT environment variable set on your system. It will be ignored.
+
+Notes to QA:
+As part of my testing, I renamed ......\IntelliCAD\Source\prj\lib\MARCOMP
+and ......\IntelliCAD\Source\Licensed\ODTbin directories and did several 
+full builds.
+
+Note that a problem has cropped up in exporting ACIS entities to 2004 DWG.
+AutoCAD cannot read them. However, AutoCAD can read the DXF files with ACIS
+entities in them. I have refered the problem to the ODT guys for help.
+
+Notes to Docs:
+
+Notes to Localization:
+No impact.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\regress\scripts\regress.lst
+\source\prj\icad\change.cpp
+\source\prj\icad\icadapp.cpp
+\source\prj\icad\icadeditxdata.cpp
+\source\prj\icad\icadapi.cpp
+\source\prj\lib\db\adstream.cpp
+\source\prj\lib\db\db.h
+\source\prj\lib\db\db_util.cpp
+\source\prj\lib\db\dbprotos.h
+\source\prj\lib\db\objects.h
+\source\prj\lib\db\oldvars.h
+\source\prj\lib\db\oldvars.cpp
+\source\prj\lib\db\xrecord.cpp
+\source\prj\lib\db\res\dbdll.rc2
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\drw.h
+\source\prj\lib\drw\drwfns.cpp
+\source\prj\lib\drw\drwprotos.h
+\source\prj\lib\drw\dwgload.cpp
+\source\prj\lib\drw\dwgsave.cpp
+\source\prj\make\db.dsp
+\source\prj\icad\icaddrawbitmap.cpp

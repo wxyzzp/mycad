@@ -1,0 +1,265 @@
+Notes for Build_47:
+
+Build Date: May 07, 2004.
+To reproduce this build, checkout tag Build_47.  This produces a non-committable working area.  If you want to commit changes made to this work area, please update IntelliCAD to R40_Dev (cvs update -cd R40_Dev or refer to checkin_process.doc) and proceed with your checkin process.
+
+CHANGED FILES:
+M	2004-04-27:18:07	denisp	1.25.4.21	IntelliCAD/Source/prj/lib/DB/drawing.cpp
+M	2004-04-27:18:07	denisp	1.7.6.13	IntelliCAD/Source/prj/lib/DB/drawing.h
+M	2004-05-04:19:03	denisp	1.17.6.8	IntelliCAD/Source/prj/lib/CMDS/block.cpp
+M	2004-05-04:19:05	denisp	1.1.2.24	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-05-04:19:05	denisp	1.1.2.9	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+A	2004-04-30:14:43	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-32.txt
+M	2004-04-30:14:43	markba	1.18.6.9	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-04-30:14:43	markba	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/DB/acad_proxy_object.cpp
+M	2004-04-30:14:43	markba	1.13.4.18	IntelliCAD/Source/prj/lib/DB/db_util.cpp
+M	2004-04-30:14:43	markba	1.11.4.11	IntelliCAD/Source/prj/lib/DB/objects.h
+M	2004-04-30:14:43	markba	1.1.2.24	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-30:14:43	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-04-30:14:43	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+M	2004-04-30:14:43	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.h
+M	2004-04-30:14:43	markba	1.1.2.29	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-30:14:43	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-04-30:14:43	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-04-30:14:43	markba	1.1.2.28	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-04-30:14:43	markba	1.1.2.6	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-04-30:14:43	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/Utilities.h
+A	2004-05-06:14:29	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-33.txt
+M	2004-05-06:14:29	markba	1.18.6.10	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-05-06:14:29	markba	1.9.6.7	IntelliCAD/Source/prj/lib/ACIS/AsTools.cpp
+M	2004-05-06:14:29	markba	1.2.6.1	IntelliCAD/Source/prj/lib/DB/acad_proxy_entity.cpp
+M	2004-05-06:14:29	markba	1.1.1.1.14.3	IntelliCAD/Source/prj/lib/DB/acad_proxy_object.cpp
+M	2004-05-06:14:29	markba	1.13.6.20	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-05-06:14:29	markba	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/DB/layer_index.cpp
+M	2004-05-06:14:29	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/object_ptr.cpp
+M	2004-05-06:14:29	markba	1.11.4.12	IntelliCAD/Source/prj/lib/DB/objects.h
+M	2004-05-06:14:29	markba	1.2.4.2	IntelliCAD/Source/prj/lib/DB/spatial_index.cpp
+M	2004-05-06:14:29	markba	1.2.12.2	IntelliCAD/Source/prj/lib/DB/vbaproject.cpp
+M	2004-05-06:14:29	markba	1.1.2.25	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-05-06:14:29	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-05-06:14:29	markba	1.1.2.30	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-05-06:14:29	markba	1.1.2.27	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-06:14:29	markba	1.1.2.29	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-05-06:14:29	markba	1.1.2.7	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-05-06:14:29	markba	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/ICADLIB/Assoc.cpp
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/57674.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/70921.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/70921_1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78167_1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78346d.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78346h.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78393.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78414.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78621.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/Array.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/Circles.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/bhatch_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/bhatch_options_2.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/boundary_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/export_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/linetype_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/list_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/test_array.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/test_array1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/textar.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/57674.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78167_1.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78346d.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78346h.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78393.scr
+A	2004-04-21:06:01	master	1.1.2.1	IntelliCAD/Source/Regress/scripts/78621.scr
+A	2004-04-21:06:01	master	1.2.10.3	IntelliCAD/Source/Regress/scripts/Array.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/boundary_options.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/export_options.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/linetype_options.scr
+A	2004-04-21:06:01	master	1.2.6.3	IntelliCAD/Source/Regress/scripts/test_array.scr
+A	2004-04-21:06:01	master	1.2.6.3	IntelliCAD/Source/Regress/scripts/test_array1.scr
+A	2004-04-21:06:01	master	1.1.10.3	IntelliCAD/Source/Regress/scripts/textar.scr
+M	2004-04-21:06:02	master	1.4.8.53	IntelliCAD/Source/prj/ICAD/blddate.h
+A	2004-04-26:01:05	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_46.txt
+M	2004-05-07:04:47	master	1.4.8.54	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-05-01:05:03	stephenh	1.2.10.1	IntelliCAD/Source/ThirdParty/geo/PolyLine.h
+M	2004-05-01:05:03	stephenh	1.2.10.2	IntelliCAD/Source/ThirdParty/geo/PolyLine.cpp
+M	2004-05-01:05:03	stephenh	1.2.10.3	IntelliCAD/Source/ThirdParty/geo/line.h
+M	2004-05-01:05:03	stephenh	1.2.10.2	IntelliCAD/Source/ThirdParty/geo/line.cpp
+M	2004-05-01:05:03	stephenh	1.1.1.1.12.3	IntelliCAD/Source/ThirdParty/geo/curve.h
+M	2004-05-01:05:03	stephenh	1.1.1.1.12.3	IntelliCAD/Source/ThirdParty/geo/curve.cpp
+M	2004-05-01:05:05	stephenh	1.1.1.1.14.3	IntelliCAD/Source/prj/lib/ICADLIB/Divmeas.cpp
+M	2004-05-01:05:05	stephenh	1.1.2.2	IntelliCAD/Source/prj/lib/ICADLIB/EntConversion.cpp
+M	2004-05-01:05:07	stephenh	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/getendpt.cpp
+M	2004-05-01:05:08	stephenh	1.4.6.1	IntelliCAD/Source/prj/lib/CMDS/divide_and_measure.cpp
+M	2004-05-01:05:09	stephenh	1.5.6.7	IntelliCAD/Source/prj/lib/CMDS/surfaces.cpp
+M	2004-05-01:05:25	stephenh	1.63.4.61	IntelliCAD/Eng-us/icad.rc2
+A	2004-05-01:05:26	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_042104_1.doc
+M	2004-05-01:06:58	stephenh	1.1.1.1.12.7	IntelliCAD/Source/ThirdParty/geo/array.h
+M	2004-05-01:06:59	stephenh	1.1.1.1.12.8	IntelliCAD/Source/ThirdParty/geo/array.cpp
+M	2004-05-01:06:59	stephenh	1.1.1.1.12.6	IntelliCAD/Source/ThirdParty/geo/knots.h
+M	2004-05-01:07:00	stephenh	1.3.6.6	IntelliCAD/Source/prj/lib/GR/gr_splines.cpp
+M	2004-05-01:07:01	stephenh	1.17.6.17	IntelliCAD/Source/prj/lib/CMDS/cmds3.cpp
+A	2004-05-01:07:03	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_042704_1.doc
+CHANGELOG:
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-32.txt
+Date:			04/30/2004 05:41am
+Engineer(s):		Mark Barrow
+Change Description:
+This submission does a lot of cleanup work. In addition, it turns on code for reading the objects that have binary data in them. Reading them seems to work fine, but writing it back out is still waiting on the ODT solution for registering proxy objects in new databases.
+Files Affected:
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\db\acad_proxy_object.cpp
+\source\prj\lib\db\db_util.cpp
+\source\prj\lib\db\objects.h
+--------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-33.txt
+Date:			05/06/2004 06:53am
+Engineer(s):		Mark Barrow
+Change Description:
+This submission is for preparing for the new ODT DWGdirect libraries.
+I have added a few member variables for maintaining proxy class and
+proxy data information.
+Note that proxy objects and proxy entities are still not ready for
+export. The new ODT libraries are specifically to handle that.
+
+Notes to Developers:
+Note that the new ODT libs now have a class to handle the new
+(2005) table entity. IntelliCAD's database will need to be updated
+to handle this new entity.
+
+In addition, I believe I may have submitted my configure.h file which
+has BUILD_WITH_LICENSED_COMPONENTS defined. I am re-submitting it with
+this #define commented out.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\db\spatial_index.cpp
+\source\prj\lib\db\object_ptr.cpp
+\source\prj\lib\db\layer_index.cpp
+\source\prj\lib\db\acad_proxy_object.cpp
+\source\prj\lib\db\acad_proxy_entity.cpp
+\source\prj\lib\db\objects.h
+\source\prj\lib\db\entities.h
+\source\prj\lib\icadlib\assoc.cpp
+\source\prj\lib\acis\astools.cpp
+\source\prj\lib\db\vbaproject.cpp
+\source\prj\icad\configure.h
+------------------------------------------------------------------------------------ 
+Date: 27-04-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/DB/drawing.cpp 
+Source/prj/lib/DB/drawing.h 
+Description: Added one more default paper space layout. 
+Comments: TALLayouts 
+------------------------------------------------------------------------------------ 
+Date: 30-04-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: BugZilla:78691 
+Affected files: 
+Source/ThirdParty/geo/array.h 
+Source/ThirdParty/geo/array.cpp 
+Source/ThirdParty/geo/knots.h 
+Source/prj/lib/GR/gr_splines.cpp 
+Source/prj/lib/CMDS/cmds3.cpp 
+
+Description: This submission fixes the following three problems in SPLINE: 
+
+1) SPLINE command was not able to create closed splines correctly 
+in the case when the end tangent direction was not given.(so 
+called natural end condition). The problem is the algorithm 
+implemented to drive the end condition was incorrect, which 
+incorrectly used the tangent direction computed from a periodic 
+spline as the end condition to fit the desired spline. This 
+problem is fixed by using central difference method to derive 
+the end tangent direction. 
+
+2) Unlike AutoCAD?, the closed spline created by using SPLINE was 
+not periodic in the case when the end tangent direction was 
+given. This problem is fixed by setting the flag to periodic. 
+
+3) The bug #78691 Spline was shown distorted in the attached 
+drawing. The problem only happened in the case the size of 
+knot vector of spline is greater than 40. The problem was 
+caused by incorrect implementation of Heapsort algorithm 
+in CRealArray?::Sort(), which caused the data in the knot vector 
+were not ordered correctly after they were sorted. This problem 
+is fixed. 
+
+Comments: TaL78691 
+------------------------------------------------------------------------------- 
+Date: 30-04-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/ThirdParty/geo/PolyLine.h 
+Source/ThirdParty/geo/PolyLine.cpp 
+Source/ThirdParty/geo/line.h 
+Source/ThirdParty/geo/line.cpp 
+Source/ThirdParty/geo/curve.h 
+Source/ThirdParty/geo/curve.cpp 
+Source/prj/lib/ICADLIB/Divmeas.cpp 
+Source/prj/lib/ICADLIB/EntConversion.cpp 
+Source/prj/lib/DB/getendpt.cpp 
+Source/prj/lib/CMDS/divide_and_measure.cpp 
+Source/prj/lib/CMDS/surfaces.cpp 
+Eng-us/icad.rc2 
+
+Description: This submission adds ellipse and spline supports to DIVIDE, 
+MEASURE, EDGESURF, TABSURF, REVSURF, and RULESURF commands. 
+Comments: SH_042104_1.doc 
+------------------------------------------------------------------------------- 
+Date: 04-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/cmdsLayout.cpp 
+Source/prj/lib/CMDS/cmdsLayout.h 
+Description: Implementation of Copy option for LAYOUT command. 
+Comments: TALLayouts 
+------------------------------------------------------------------------------- 
+Date: 04-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/block.cpp 
+Description: 1) Splitted implementation of BLOCK command. 
+2) Code improvements. 
+Comments: 
+--------------------------------------------------------------------------------
+
+REGRESS:
+The following scripts failed during the regress run (USEDWGDIRECT=0). Running them individually showed no problems(other than for ucs_options).  Please look for performance data on performance.xls at http://www.itcmembers.org/metadot/index.pl?isa=CMSDocument&iid=2720&op=show
+F:\Build-47\IntelliCAD\Source\Regress\scripts\78346d.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\78417_1.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\78621.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\AccTest-cond.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\rotatecrosshair.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+F:\Build-47\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78691

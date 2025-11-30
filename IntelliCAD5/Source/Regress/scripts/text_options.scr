@@ -1,0 +1,71 @@
+logfilename log\text_options.log
+logfileon
+
+color 1
+text
+0,0
+
+
+text1
+;_______style
+-style
+style1
+
+
+
+
+
+
+
+color 2
+text
+s
+style1
+0,0.5
+
+
+text2
+;_______align
+color 3
+text
+a
+0,1
+2,1.5
+text3
+;_______fit
+color 4
+text
+f
+0,1.5
+2,2
+1.5
+text4
+;_______center
+color 5
+text
+c
+2,0
+0.5
+10
+text5
+;_______middle
+color 6
+text
+m
+2,0.5
+0.5
+-10
+text6
+;_______right
+color 7
+text
+r
+3,1
+0.4
+0
+text7
+;__________
+dxfout output_dxf\text_options.dxf
+6
+quit
+y

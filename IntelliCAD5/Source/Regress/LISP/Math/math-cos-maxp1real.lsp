@@ -1,0 +1,7 @@
+	(defun maxp1real ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (cos 9.9e308))
+		(logang errloc rc)
+		(setq *error* prverr)
+	)

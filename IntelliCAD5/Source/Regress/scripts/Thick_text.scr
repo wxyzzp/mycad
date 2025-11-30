@@ -1,0 +1,9 @@
+logfilename log\thick_text.log
+logfileon
+Open Dwg\Thick_text.dwg
+(Load "lisp\thick_text.lsp")
+thick_text
+dxfout output_dxf\text.dxf
+6
+close n
+exit

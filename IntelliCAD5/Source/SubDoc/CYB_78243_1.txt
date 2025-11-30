@@ -1,0 +1,23 @@
+
+
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78243_1.txt
+Date:		05-08-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78243
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/icadview.cpp
+Description:	Zoom distance not retained on save.
+Comments:	TaL78243
+File by File:	
+*		Source/prj/ICAD/icadview.cpp
+		Checked the values for cmd_InsideOpenCommand and cmd_InsideTilemodeCmd to decide if the viewsize should be changed.
+--------------------------------------------------------------------------------
+		

@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------------
+File:		CYB_78255_1.txt
+Date:		05-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78255
+Affected files:			
+		Source/prj/ICAD/IcadDoc.cpp?rev=1.21
+		Source/prj/ICAD/IcadDoc.h
+Description:	Drawing does not reopen if it has inserted objects and active macros
+Comments:	TaL78255
+File_by_File:
+	*	Source/prj/ICAD/IcadDoc.h
+		Added the declaration of following functions
+		void StoreOleClientItem(CObList*& );
+		void ReStoreOleClientItem(CObList*&);
+	*	Source/prj/ICAD/IcadDoc.cpp
+		Added defination for the above function and also used them.
+		Actual problem in this bug was, if there are active macros to save and also at 				the same time there is modification in ole objects ie even ole is to be saved 				then the ole information was being saved in the .vbi file corrupting it. Thus 				when opening the corrupted file, IntelliCAD crashes. Now to avoid IntelliCAD to 			save the ole information of inserted object into the vbi file we are temporarily 			saving the oledocument list to some temp location and removing it from 					oleDocument list ( Storeoleclientitem())  and then saving the vbi part and then 			restoring back the oledocument list to the document object ( 						Restoreoleclientitem()). This solves the problem of corrupting the vbi file.		
+
+--------------------------------------------------------------------------------

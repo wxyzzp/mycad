@@ -1,0 +1,46 @@
+--------------------------------------------------------------------------------
+File:		CYB_78430_1.txt
+Date:		11-01-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78430
+Affected files:			
+		Eng-us/icad.rc2
+		Eng-us/icadRes.rc
+		Source/prj/ICAD/Icadapi.cpp
+		Source/prj/ICAD/IcadMenuTBDef.h
+		Source/prj/ICAD/Icadres.h
+		Source/prj/ICAD/res/icadrc2.h
+		Source/prj/lib/CMDS/cmdsLayout.cpp
+		Source/prj/lib/CMDS/cmdsLayout.h
+Description:	Implementation of ToolBar and Menu for Layouts (reported by Andy, Surya ). Implementation similar to AutoCAD toolbar and 		menu for Layouts.
+		Commands which are not yet supported give "No implementation supported yet".
+Comments:	TaL78430
+File_by_File:
+	*	Eng-us/icad.rc2
+		Resource Strings for Layout ToolTip and Help String.
+		Modification in IDC_LAYOUT_OPTIONS and IDC_LAYOUT_OPTIONSPROMPT for "template" option.
+
+	*	Eng-us/icadRes.rc
+		Path set for BITMAPS for Layout toolbar bitmap ID.( 8 bitmaps)
+
+	*	Source/prj/ICAD/IcadMenuTBDef.h
+		Main code added for Toolbar and menu entry for layout toolbar and Menu
+
+	*	Source/prj/ICAD/IcadRes.h
+		Declaration of BITMAP id. ( 8 ID's )		
+
+	*	Source/prj/ICAD/res/Icadrc2.h
+		Declaration of id's used in IcadMenuTBDef.h
+		defination of CMDSTR_LAYOUTWIZARD for addition of "layoutwizard" command.
+
+	*	Source/prj/ICAD/Icadapi.cpp
+		Addition of "layoutwizard" command in Internal command array.
+
+	*	Source/prj/lib/CMDS/cmdsLayout.cpp
+		Addition of cmd_layoutwiard() to return NOT yet supported message.
+		Modification in options asked for Layout command. Added "template" option there and on selecting "template" option 			command NOT yet supported message at command prompt.
+
+	*	Source/prj/lib/CMDS/cmdsLayout.h
+		declaration of cmd_layoutwiard()
+--------------------------------------------------------------------------------

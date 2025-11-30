@@ -1,0 +1,365 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_74349_1.txt	
+Product Version:	ICAD 4
+Date:			19/04/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/ThirdParty/DCL_Components/Source/ImageButton.cpp	==> DCL
+Source/ThirdParty/DCL_Components/Include/ImageButton.h	==> DCL
+Source/ThirdParty/DCL_Components/Source/Main.cpp ==> DCL
+		
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 74349 : Calling slide_image repeatedly 
+leaks memory horribly and flashes the display
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, when one clicks on the Image Button Tile,
+repeatedly, there is an increase in memory levels and the image button 
+flashes horribly. 
+	There are primarily 2 reasons: 
+	1.	Both the messages were handled viz: BN_CLICKED and WM_LBUTTONDOWN,
+		when actually only one needed to be called. Moreover WM_LBUTTONDOWN
+		called OnClicked which was mapped to BN_CLICKED. 
+		Also Onclicked called Invalidate which is not needed.
+	2.	The drawing operation is a bit slow, because currently, Metafile
+		is used to play the drawing. Thus the dc to draw to is the Metafile 
+		DC.
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	I have changed the following 3 files:
+		Ø Source\ThirdParty\DCL_Components\Source\ImageButton.cpp
+		Ø Source\ThirdParty\DCL_Components\Include\ImageButton.h
+		Ø Source\ThirdParty\DCL_Components\Source\Main.cpp
+ 
+	Following are the major highlights of the changes in ImageButton.cpp 
+	and ImageButton.h:
+		Ø	I have resolved the issue between BN_CLICKED and WM_LBUTTONDOWN 
+			messages. Now BN_CLICKED event has been removed, and only 
+			"OnLButtonDown" is present. Thus the problem of flashing display 
+			is fixed.
+		Ø	I replaced the drawing method of Metafile logic by Bitmap drawing 
+			logic. Thus I fixed the problem of slow drawing display.
+		Ø   I fixed the issue of  "Flip Mode", that was present in earlier 
+			build. 
+		Ø   Made "fill_image", "slide_image" and "vector_image" functions 
+			compatible with Bitmap Logic.
+		Ø   Removed functions that were not used and old unwanted commented 
+			code.
+		Ø   Removed the function "End" for ImageButton implementation since 
+			it will be no longer used. The "Start" function has been used to 
+			initialise the bitmap; and the Bit-Blitting has been done in the 
+			OnDrawItem function.
+		Ø	Cleanup of Bitmap and the related DC is done in the destructor.
+ 
+	The main.cpp contains one modification: 
+		Ø	The removal of the call of End function through the ImageButton variable.
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following cases:
+1.	Run IntelliCAD.
+2.	Run the LISP file "1-74349.lsp".  
+3.	Run the function "testx" in this LISP file.
+4.	In the Dialog that appears, click on the Image Button (White tile). 
+	The image of the slide file "1-74349.lsp", should appear in a flash and 
+	should not flicker vigorously as in the Reference build. Then compare it 
+	with AutoCAD. It should match close to AutoCAD.
+5.	Click on the Image Button a number of times. The image of the slide file 
+	"1-74349.lsp", should appear fast and should not flicker vigorously as in 
+	the previous builds. Then compare it with AutoCAD. It should match close 
+	to AutoCAD.
+6.	Click on the "Flip Mode" Button. The inverse image should be displayed. 
+	Click on this button a number of times. It should toggle between the 
+	original image and inverted image at a fast rate. It should not be slow. 
+	Compare the performance with the earlier build. 
+	Then compare it with AutoCAD.
+7.	Click on the "Flip Mode" Button and ensure that the inverted image is 
+	displayed. Now click on the Image Button Tile. The original image should 
+	appear. This behavior is correct. The earlier behavior in the previous 
+	builds is wrong. Compare this with AutoCAD.
+8.	The first LSP file was to test the functionality of "slide_image". 
+	Now click OK to exit the dialog.
+9.	The second LISP file will test the functionality of "fill_image". 
+	Run the LISP file "tilehist.lsp".
+10.	Run the function "testfill" in this LISP file.
+11.	A Dialog should appear containing a RED box. 
+12.	Click on "Flip Mode" Button. The Red Box should be filled with Blue Color.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

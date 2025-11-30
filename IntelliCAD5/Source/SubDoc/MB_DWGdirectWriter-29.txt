@@ -1,0 +1,46 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-29.txt
+Produce Version		ICAD 4
+Date:				04/08/2004 11:28am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added code to allow export as 2004 from scripts.
+
+NOTE:
+	Currently it is only when 'filedia' is of - i.e. NOT using the 
+	file save dialog box.
+
+	This is to make scripting able to saveas or dxfout as 2004 for 
+	testing.
+
+I'm waiting for the right time to do the same for saving via the
+file save dialog. It's pretty ugly in there and I want to rework
+it because 2005 isn't that far behind, and I'd like to make it 
+easier to add 2005 when it comes.
+
+Notes to Developers:
+Note; NO changes were made to sds_get.cpp. I simply reformated
+SDS_GetFiled() so I could get a better understanding of what it 
+was doing.
+
+
+Notes to QA:
+With 'filedia' off, drawings can be scripted to saveas or dxfout
+as 2004 versions.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\intellicad\eng-us\icadres.rc
+\intellicad\eng-us\icad.rc2
+\source\prj\icad\icaddoc.cpp
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\lib\sds\sds_get.cpp
+

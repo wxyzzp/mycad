@@ -1,0 +1,67 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_260603.txt
+Date:		26/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78551   
+
+Description:	This submission fixes following problems(the first two) reported in
+                the bug report #78551 and another problem(the third one) related
+                to EDGESURF:
+                
+                1) EDGESURF creates planar surfaces as regions rather than bodies.
+                   This problem is fixed by modifying the CAsModeler::createSurfaceCurves()
+                   (the line #1044) in AsModeler.cpp to set the entity type as eBody 
+                   rather than eRegion for planar surfaces.
+                
+                2) EDGESURF doesn't work with 3d polylines. The problem is in pline::extract(),
+                   which loop through completed db_handitem list to add all vertices to the 
+                   point list of geodata::pline even they don't belong to that polyline. This
+                   problem is fix by changing 
+                   
+                        if (pe->ret_type() != DB_VERTEX) 
+                            continue;
+                            
+                   to 
+                   
+			if (pe->ret_type() != DB_VERTEX) {
+				if (!vertexFound)
+				    	continue;
+				else
+					break;		// end case of == DB_VERTEX
+			}
+			else 
+				vertexFound = true;
+				
+		   to detect the end of vertex and prevent to add vertices belong to 
+		   other polylines.
+                
+                3) EDGESURF in ICAD requires to select curves in order but AutoCAD
+                   doesn't so ACAD script may not work in ICAD.
+                   
+                   The original implementation of cmd_edgesurf_acis() tries to detect 
+                   if the selected curves are connected before it prompts users to 
+                   select the next curve. To allow to users to select curves in arbitrary
+                   order in order to be compatible with AutoCAD, I remove the checks in
+                   cmd_edgesurf_acis() and allow users select curves in arbitrary order
+                   and modified createSurfaceCurves() in AsModeler.cpp to sort the curves 
+                   based on the end point connection at the begin of the function.
+                   
+                This submission doesn't try to address other issues that are related to 
+                n-sides patch creation in ACIS and geometry shape etc.
+                
+		
+Added files:    None
+
+Affected files: Source/prj/lib/cmds/surface.cpp:   Modified cmd_edgesurf().
+                Source/prj/lib/db/geodata.cpp:     Modified pline::extract().
+                Source/prj/lib/acis/asmodeler.cpp: Modified createSurfaceCurves().
+
+
+
+                

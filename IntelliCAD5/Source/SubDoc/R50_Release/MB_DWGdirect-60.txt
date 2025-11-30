@@ -1,0 +1,37 @@
+Engineer(s):		Mark Barrow
+Date:			07/01/2004 
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+
+   Source/prj/lib/DRW/DWGdirectConverter.cpp
+   Source/prj/lib/DRW/DWGdirectWriter.cpp
+   Source/prj/lib/DRW/Utilities.cpp
+
+Change Overview:
+	Tweak to layout export.
+
+Notes to Developers:
+
+Notes to QA:
+	
+Notes to Docs:
+	
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

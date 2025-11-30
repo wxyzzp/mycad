@@ -1,0 +1,16 @@
+logfilename log\quick_options.log
+logfileon
+;__________
+osmode
+1
+;__________
+quick
+(if (/= (getvar "osmode") 1025) (alert "quick did not work!"))
+;__________
+quick
+(if (/= (getvar "osmode") 1) (alert "quick did not work!"))
+;__________
+dxfout output_dxf\quick_options.dxf
+6
+quit
+y

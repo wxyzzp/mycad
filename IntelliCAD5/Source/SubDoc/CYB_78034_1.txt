@@ -1,0 +1,40 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78034_1.txt
+Date:		23-12-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78034
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Source/prj/ICAD/mtextrichedit.cpp
+		Source/prj/ICAD/mtextpropsheet.cpp
+		Source/prj/ICAD/mtexttexttab.cpp
+		Source/prj/ICAD/MTextTextTab.h
+		Source/prj/lib/CMDS/cmds3.cpp
+Description:	The text-height using "Mtext" is not same as fixed text-height set while defining the Style.
+Comments:	TaL78034
+Problem Analysis:
+		The height of the current style is not reflected in the Mtext dialog as well as in the Mtext command invoked from the command prompt. Secondly, the height in the combo on the Text tab of the Mtext dialog should be what you have set and not a decimal variation of it. Thirdly, the height combo on the Text tab should reflect the height of the text depending upon the position of the cursor in the edit control. The problem was because of the function ConvertTwipsToTextHeight( ). This function was not returning the exact value of Height that was converted into twips earlier by the function ConvertTextHeightToTwips( ). 
+
+Proposed Solution:
+		See to it that the value of height that you get back is exactly the same value that was converted into twips earlier.				
+File by File:	
+*		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Code change where cf.yHeight was set wrong. Captured the text height where AddString() is called.  
+*		Source/prj/ICAD/mtextrichedit.cpp
+		Commented out ON_WM_KILLFOCUS() as the value of height combo was getting reset. Captured the text height wherever AddString() is called.   	
+*		Source/prj/ICAD/mtextpropsheet.cpp
+		Captured the default text height. Called function GetTextHeightFromTwips() to get the text height from the height in twips.
+*		Source/prj/ICAD/mtexttexttab.cpp
+		Defined a macro DEFAULT_TEXT_HEIGHT. Commented out OnSelendokFontsize() to avoid resetting of the height combo. Captured the height in twips corresponding to the default text height. Called SetItemData() wherever AddString() is called. Defined fuunction GetTextHeightFromTwips()
+*		Source/prj/ICAD/MTextTextTab.h
+		Declared function GetTextHeightFromTwips() and commented OnSelendokFontsize() in the message map.
+*		Source/prj/lib/CMDS/cmds3.cpp
+		Added a function GetStyleHeight() which would get the height corresponding to that of the current text style. If this height is not zero then set it in SDS_mTextDataPtr.rTextHeight.
+--------------------------------------------------------------------------------

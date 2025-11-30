@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+File:		CYB_78163_1.txt
+Date:		20-05-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78163
+Affected files:			
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		CvsHist:Source/Source/prj/ICAD/textstyledlg.cpp
+		CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+Description:	Change button not working properly in Delete Dialog Box for dimension style in 				Icad Explorer
+		a) Change button in Delete Dialog Box does not show list of existing dimstyle.
+		b) Change button in Delete Dialog Box pops up only once. 
+Comments:	TaL78163
+File by File:
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		Added case for dimstyle for "BOOL IEXP_Newdlg::OnInitDialog() " so that existing                 dimstyle get filled up on clicking of change button.
+		If the delete dialog is already exist (already created ) then display it instead 		of returning it.
+	*	CvsHist:Source/Source/prj/ICAD/textstyledlg.cpp
+		If the delete dialog is already exist (already created ) then display it instead 	   	        of returning it.
+	*	CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+		If the delete dialog is already exist (already created ) then display it instead 	   	        of returning it.
+--------------------------------------------------------------------------------

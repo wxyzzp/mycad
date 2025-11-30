@@ -1,0 +1,10 @@
+Logfilename log\lsp_getcorner.log
+Logfileon
+(getcorner '(1.0 1.0))
+3,1
+(getcorner '(2.0 1.5) "Select corner: ")
+2,1
+Dxfout output_dxf\lsp_getcorner.dxf
+6
+Quit
+y

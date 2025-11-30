@@ -1,0 +1,107 @@
+Document Title:  MN_01OCT04.txt	
+Product Version: ICAD 5
+Date:  01 October 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD,Lisp
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+1. Overview of the problem reported by Alan Prat releated to "setfunhelp" crash:
+		Alan Pratt reported the problem related to "setfunhelp". The problem was
+that suppose we had written "(setfunhelp "c:test" "test" "myhelp.hlp")" line in 
+the lisp function and we loaded that LISP file. Then if we made a call to that
+LISP function, ICAD crashed at that time. 
+		This problem was present in the function "lsp_setfunhelp" present in the
+file "interpreter.cpp" in LISP module. This function gets called when we make a
+call to "setfunhelp" through LISP. In this function, help references for the 
+command are stored in respective data members of the object namely 
+"pCommandAtomObj" of "commandAtomObj" class. Sometimes this pointer 
+i.e "pCommandAtomObj" becomes NULL when we do not call "setfunhelp" with proper
+paramaters. So I checked this pointer before we populated its repective data 
+members for storing the help references for the command. I also checked this 
+pointer in the function "IcadHelp" present in the file "IcadMain.cpp" of ICAD 
+module.
+
+2. Overview of the bug reported by Dave releated to "Color Control" :
+		Dave reported one more problem related to "Color Control" of "Entity
+Properties" toolbar. The problem was if we selected the same color over 7(say
+color "240") two times from the "Color Control" of the status bar, the same 
+color (color "240" in this case) was added two times in the "Color Control" drop
+down list. This problem was also produced when we selected the color more than 
+one times from the "Color Control" present on the "Entity Properties" toolbar.
+		This problem was present in the functions namely "OnSelchange" and 
+"UpdateColorList" of "CColorComboBox" class present in the file "ColorComboBox.cpp"
+of ICAD module. In these functions, previously we did not check whether the color
+over 7 we were going to be added in the "Color Control" dropdown list was already
+present or not. I checked this condition using "FindString" function of "CComboBox"
+class. Then depending on the result, I inserted the new color string in the drop down
+list.
+
+
+      
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_01OCT04.txt	
+Engineer: Mohan Nayak.
+Added files:     
+Affected files:
+	Source/prj/lib/LISP/interpreter.cpp?rev=1.14.4.2.2.2 
+	Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.12 
+Description:
+	Applied the fixes to solve the crash problem related to "setfunhelp" reported
+	by Alan Pratt.
+		 
+Reference: MN_01OCT04.txt	
+Engineer: Mohan Nayak.
+Added files:     
+Affected files:
+	Source/prj/ICAD/ColorComboBox.cpp?rev=1.1.4.4.2.3 
+Description:
+	Applied the fixes to solve the bug reported by Dave related to "Color
+	Control" of "Entity Properties" toolbar.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+A) Test cases for the bug reported by Alan Prat related to "setfunhelp".
+1. Create a LISP file.
+2. Write this line i.e (setfunhelp "c:test" "test" "myhelp.hlp") in that file.
+3. Load this LISP file.
+4. ICAD do not get crashed.  
+
+B) Test cases for the bug reported by Dave related to "Color Control".
+1. Load IntelliCAD 
+2. Select the color over 7(say 200) from the color control on the status bar
+(repeat 3 times).
+3. Check the "Color Control" drop down list. 
+4. The list should show only one entry of color 200. 
+5. Select the color over 7(say 240) from the color control on the properties
+toolbar (repeat 3 times).
+6. Check the "Color Control" drop down list again. 
+7. The list should show only one entry of color 240. 
+
+
+
+9.  Installation Issues:
+

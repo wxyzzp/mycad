@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-97
+Product Version:        IntelliCAD 5
+Date:                   09/14/2004 15:34pm
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DB
+	DWGDIRECT
+
+3.  Overview:
+	Changed prior fix for plote.scr failures to a hybrid of what 
+	was alread in my last submission, and what was done in the icad_cee 
+	stream. Turns out you can't rely on the handitem member of the ReactorItem
+	to be valid. I've added a call to use the ReactorItem handle member to actuall
+	retrieve the handitem from the data base.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/lib/db/reactor.cpp
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/prj/lib/db/handitem.cpp
+        source/prj/lib/db/reactor.h
+        source/prj/lib/sds/sds_db.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-97.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

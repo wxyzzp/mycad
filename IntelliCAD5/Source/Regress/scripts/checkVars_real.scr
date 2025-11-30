@@ -1,0 +1,9 @@
+logfilename log/checkvars_real.log
+logfileon
+;_____________
+(load "lisp/checkvars_real.lsp")
+;______________
+dxfout output_dxf\checkvars_real.dxf
+6
+quit
+y

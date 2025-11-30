@@ -1,0 +1,27 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_22102002_3.txt
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission fixes the display problems for boolean operations.
+
+Comments:	The screen was not updated correctly after the UNION and INTERSECT 
+                operations. This problem was fixed by adding code to redraw the 
+                resulting solids.
+
+Changed files:	
+
+		CvsHist:Source/Prj/Lib/cmds/cmds8.cpp
+		
+
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,17 @@
+logfilename log\78689.log
+logfileon
+;________create_pline_______
+pline
+0,0
+1,0
+1,1
+
+;________offset_____________
+offset
+0.5
+last
+2,0
+
+dxfout output_dxf\78689.dxf
+6
+exit y

@@ -1,0 +1,107 @@
+Document Title:  DJL_06OCT04_1.txt
+Product Version: ICAD 5
+Date: 6  October 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+DB
+
+3.  Overview:
+
+Changed the function use_nextanon() in drawing.h because it was hosing ArchT's ability to create anonymous blocks. 
+When entmaking a *U block with no number argument, IntelliCAD would return a block name of an already existing *U block.
+ArchT would then proceed to entmake the block and it would redefine an existing Ublock.  This would redefine doors to be windows,
+windows to doors, screw up stairways - you name it!
+
+New Function:
+int use_nextanon(int sourCount) {
+	if(sourCount == 0)
+		return (++nextanon);
+	else if (sourCount > nextanon)
+	{
+		nextanon = sourCount;
+		return (nextanon);
+	}
+	else 
+		return sourCount;
+}
+
+Old Function:
+int use_nextanon(int sourCount) {
+      if ((sourCount == 0) || (sourCount > nextanon))
+             return (++nextanon);
+       else 
+             return sourCount;           
+}
+
+
+This function was changed since IntelliCAD 4 to fix Bugzilla 7820, I also made sure this new code still resolves this bug.
+
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+
+Script Change required: N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      DJL_06OCT04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/DB :
+    modified: drawing.h
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_06OCT04_1.txt
+2 file(s) found.
+
+Description:
+Changed the function use_nextanon() in drawing.h because it was hosing ArchT's ability to create anonymous blocks. 
+When entmaking a *U block with no number argument, IntelliCAD would return a block name of an already existing *U block.
+ArchT would then proceed to entmake the block and it would redefine an existing Ublock.  This would redefine doors to be windows,
+windows to doors, screw up stairways - you name it!
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_06OCT04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/DB :
+    modified: drawing.h
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_06OCT04_1.txt
+2 file(s) found.
+
+Description:
+Remove comments that I left in the function use_nextanon().
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+None
+
+9.  Installation Issues:
+None
+
+

@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78180_1.txt
+Date:		10-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78180
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimTEdit.cpp
+Description: 	Dimtedit command shows wrong results in case of radial and diameter dimensions. 
+Comments:	TaL78180
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimTEdit.cpp
+		The case for radial and diameter dimensions has been re-written.
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,24 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_14012003.txt
+Date:		14-01-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Affected files: Source/prj/ICAD/icadview.cpp?rev=1.30.4.9
+
+Description:    Fixed bug #78427 - "isometric viewpoint prints topview, and 
+                ends up as another view", which was introduced by one of the
+                later changes that overrided my previous change to fix this
+                problem. The bug was in CIcadView::FilePrint(), which changed
+                ucs to plan view.
+                
+                My last submission only fixed the problem for printing meshes. 
+                This submission fixes the same problem shown up while ICAD is
+                printing wireframes.

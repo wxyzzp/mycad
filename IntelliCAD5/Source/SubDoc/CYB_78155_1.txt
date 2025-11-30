@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78155_1.txt
+Date:		28-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78155
+Affected files:	
+		Source/prj/lib/CMDS/DimMakeDim.cpp                          
+Description:	The "Dimcontinue" command creates incorrect dimension when earlier 
+		dimension creation is cancelled.
+Comments:	TAL78155
+File by File:  
+		* Source/prj/lib/CMDS/DimMakeDim.cpp                          
+		The "lastdimpts" were being saved even when the dimension was being 
+		dragged ( while nodeDrag and while creation ) giving wrong results 
+		when the dragging was cancelled (ESC) fore some reason
+		Now "lastdimpts" are only saved when the entity is finally being created.  
+--------------------------------------------------------------------------------

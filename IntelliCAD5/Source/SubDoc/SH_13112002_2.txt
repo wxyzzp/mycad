@@ -1,0 +1,34 @@
+
+
+	                     Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_12112002_2.txt
+Date:		13-11-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission integrate imagemenu with IntelliCAD.
+ 	
+
+COMMANDS:
+
+	Added the code to load imagement.dll while a new session is starting.
+	
+
+CHANGED FILES:	
+
+	Source/Prj/ICAD/Icadapi.cpp:
+	Source/Prj/ICAD/configure.h: 
+	
+	Source/ThirdParty/imagemenu/imagemenu.dsp:  
+	
+	
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,80 @@
+logfilename log/57684_moretests.log
+logfileon
+;_____________
+(setvar "useri1" (getvar "expert"))
+expert
+5
+;_____________
+(load "lisp/57684.lsp")
+;__________________
+line
+0,0
+2,0
+
+;______________
+(setq LineHand (entlast))
+;______________
+(addXdata (entlast) "XLINE" 1000 "LINESTRING")
+;______________
+circle
+1,1
+1
+;______________
+(setq CircleHand (entlast))
+;______________
+(addXdata (entlast) "XCIRCLE" 1000 "CIRCLESTRING")
+;______________
+moveedata
+*
+2,0
+2,1
+
+;______________
+(if (checkXdataexists CircleHand "XLINE") (princ "OK") (alert "ERR"))
+(if (checkXdataexists CircleHand "XCIRCLE") (princ "OK") (alert "ERR"))
+(if (checkXdataexists LineHand "XLINE") (alert "ERR")(princ "OK") )
+;______________
+deledata
+*
+all
+
+;______________
+(if (checkXdataexists CircleHand "XLINE")  (alert "ERR")(princ "OK"))
+(if (checkXdataexists CircleHand "XCIRCLE") (alert "ERR")(princ "OK"))
+(if (checkXdataexists LineHand "XLINE") (alert "ERR")(princ "OK"))
+;______________
+(addXdata LineHand "XLINE" 1000 "LINE1")
+(appendXdata LineHand "XCIRCLE" 1000 "XCIRCLE")
+(addXdata CircleHand "XLINE" 1000 "CIRCLE1")
+(appendXdata circleHand "XCIRCLE" 1000 "XCIRCLE")
+;______________
+moveedata
+*
+2,1
+2,0
+
+y
+y
+;______________
+(if (checkXdataexists CircleHand "XLINE")  (alert "ERR")(princ "OK"))
+(if (checkXdataexists CircleHand "XCIRCLE") (alert "ERR")(princ "OK"))
+(if (checkXdataexists lineHand "XLINE")  (princ "OK")(alert "ERR"))
+(if (checkXdataexists lineHand "XCIRCLE") (princ "OK")(alert "ERR"))
+;______________
+copyedata
+*
+2,0
+2,1
+
+;______________
+(if (checkXdataexists CircleHand "XLINE")  (princ "OK")(alert "ERR"))
+(if (checkXdataexists CircleHand "XCIRCLE") (princ "OK")(alert "ERR"))
+(if (checkXdataexists lineHand "XLINE")  (princ "OK")(alert "ERR"))
+(if (checkXdataexists lineHand "XCIRCLE") (princ "OK")(alert "ERR"))
+;______________
+(setvar "expert" (getvar "useri1"))
+;______________
+dxfout output_dxf\57684_moretests.dxf
+6
+quit
+y

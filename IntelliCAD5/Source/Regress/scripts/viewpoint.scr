@@ -1,0 +1,38 @@
+logfilename log\viewpoint.log
+logfileon
+Open dwg\Viewpoint.dwg
+z
+e
+viewpoint
+0,0,1
+hide
+viewpoint
+0,-1,0
+viewpoint
+1,0,0
+viewpoint
+-1,0,0
+viewpoint
+0,1,0
+viewpoint
+0,0,-1
+viewpoint
+1,-1,1
+viewpoint
+-1,-1,1
+viewpoint
+1,1,1
+viewpoint
+-1,1,1
+viewpoint
+1,-1,-1
+viewpoint
+-1,-1,-1
+viewpoint
+1,1,-1 
+viewpoint
+-1,1,-1
+dxfout Output_Dxf\Viewpoint.dxf
+6
+close n
+exit

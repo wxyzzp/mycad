@@ -1,0 +1,12 @@
+Logfilename log\lsp_nentsel.log
+Logfileon
+line
+1,1
+3,3
+
+(setq n (nentsel "Select a line: "))
+1,1
+Dxfout output_dxf\lsp_nentsel.dxf
+6
+Quit
+y

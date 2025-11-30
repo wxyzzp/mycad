@@ -1,0 +1,40 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_180603.txt
+Date:		18/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78550 
+
+Added files:    None
+
+Affected files: Source/prj/lib/cmd/surfaces.cpp
+                Source/prj/Icad/res/icadrc2.h
+                Eng-us/icad.rc2
+
+Description:	This submission fixes the bug #78550 - "In ACIS enabled build Rulesurf between 
+                point and line is not created". 
+                
+                In ACIS enabled build, the Rulesurf command creates surfaces as ACIS bodies
+                rather than polylines. The implementation did not support point, I guess, is 
+                because the command was implementation by using ACIS skinning API function 
+                to create surfaces, which can only fit the surface from two disconnected edges.
+                
+		To fix the problem, I changed cmd_edgesurf_acis() function by adding DB_POINT
+		to selection filter list to enable to select point as input and the code to 
+		create two additional boundary curves and form the surface from the connected 
+		boundary curves when one of selected entities is a point. I also added the code
+		to verify user input and prompt users to select the second entity again if 
+		both selected entities are points. A string index for a new error message is 
+		added to icadrc2.h and the new error messages is added to icad.rc2 file.
+		
+
+
+
+                
+
+

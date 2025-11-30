@@ -1,0 +1,20 @@
+logfilename log\78608.log
+logfileon
+;_________create_a_box___________________
+box
+0,0,0
+4,4,4
+;_________check_box____________________
+solidedit
+b
+c
+last
+
+
+zoom
+extents
+;_________
+dxfout output_dxf\78608.dxf
+6
+quit
+y

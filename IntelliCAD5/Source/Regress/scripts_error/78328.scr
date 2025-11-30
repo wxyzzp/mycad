@@ -1,0 +1,13 @@
+logfilename log\78328_1.log
+logfileon
+open
+dwg/78328_1.dwg
+xclip
+last
+
+
+
+on
+dxfout output_dxf\78328_1.dxf
+6
+exit y

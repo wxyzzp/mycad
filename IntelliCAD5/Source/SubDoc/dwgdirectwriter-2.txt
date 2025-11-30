@@ -1,0 +1,30 @@
+Project IntelliCAD development
+
+
+Document Title		dwgdirectwriter-2.txt
+Produce Version		ICAD 4
+Date:				01/13/2004 16:20pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fixed a nested directory problem with DWGdirect and AutoCAD 2004 drawings.
+Added export of Registered applications, and thumbnail bitmaps. Also changed 
+some function names to better reflect their usage.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgload.cpp
+\source\prj\lib\drw\dwgsave.cpp

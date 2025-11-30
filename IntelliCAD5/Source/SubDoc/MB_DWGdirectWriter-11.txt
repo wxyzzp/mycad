@@ -1,0 +1,36 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-11.txt
+Produce Version		ICAD 4
+Date:				02/24/2004 06:34am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added support for round tripping Mline Styles, Mlines and splined
+heavy weight 2dPolylines.
+Also added some code to cmdsdraworder to test for a null db_drawing
+pointer. I was crashing on it when attempting to open a drawing when
+IntelliCAD's default drawing was not open. I.E launch icad, close the
+current drawing, then open a new one. This check prevents using the
+NULL pointer.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\cmds\cmdsdraworder.cpp
+

@@ -1,0 +1,23 @@
+logfilename log\msnapshot_options.log
+logfileon
+;__________
+(setvar "useri1" (getvar "filedia"))
+(setvar "useri2" (getvar "expert"))
+filedia
+0
+expert
+5
+;________
+rectangle
+0,0,0
+1,1,1
+;________
+msnapshot
+output\msnapshot_options
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;_________
+dxfout output_dxf\msnapshot_options.dxf
+6
+quit
+y

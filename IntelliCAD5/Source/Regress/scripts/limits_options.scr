@@ -1,0 +1,20 @@
+logfilename log\limits_options.log
+logfileon
+;__________
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001)))
+limits
+-100,-100
+200,200
+(if (comparepoint (getvar "limmin") (list -100.0 -100.0)) (princ "OK") (alert "Error"))
+(if (comparepoint (getvar "limmax") (list 200.0 200.0)) (princ "OK") (alert "Error"))
+limits
+on
+(if (/= (getvar "limcheck") 1) (alert "Error"))
+limits
+off
+(if (/= (getvar "limcheck") 0) (alert "Error"))
+;__________
+dxfout output_dxf\limits_options.dxf
+6
+quit
+y

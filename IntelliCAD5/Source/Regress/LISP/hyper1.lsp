@@ -1,0 +1,6 @@
+(defun c:hypercept1()
+(setq pt (getpoint "\n Select a point")
+       rdus (getint "\n Enter radius for circle :")
+)
+(command "circle" pt rdus)
+)

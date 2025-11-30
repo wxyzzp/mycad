@@ -1,0 +1,72 @@
+Document Title:  MN_03SEP04.txt	
+Product Version: ICAD 5
+Date:  03 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : CMDS
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	
+	I have made the changes in the file "insert.cpp" in the CMDS module to 
+solve the bugzilla 78869. The bugzilla description of this bug is as follows:
+ "Cannot INSERT DWG file with "." (period) in filename".
+	According to Bugzilla description, when the user creates a drawing like 
+"a.b.dwg" and then gives the "Insert" command to insert this drawing as
+a block in new drawing, the user gets the error message as "Could not find file
+"c:\...\a.b.dwg".
+	This problem was present in the function "ProcessInsertBlockName" in the file
+"insert.cpp". In this function there is a variable "blkfile" which stores the full
+path of the file as "c:\....\a.b.dwg". In this function, there is some block of
+codes written to remove ".dwg" part from the "blkfile" variable. Due to that
+part, this bug was produced. I have commented this part to solve this bug. 
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_03SEP04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	 Source/prj/lib/CMDS/insert.cpp?rev=1.22.4.9.2.1 
+Description:
+	 Bugzilla :: 78869 : Cannot INSERT DWG file with "." (period) in filename.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1.	Start IntelliCAD 5.
+2.	Draw some entities.
+3.  Save this drawing as "a.b.c.dwg". (any name with periods in it)
+4.  Close this drawing. 
+5.	Start a new drawing.
+6.	Give "insert" command.
+7.  Select the "Browse" option.
+8.  Browse to the location where we save "a.b.c.dwg" file.
+9.  Provide other informations at command prompt to insert this block.
+10. The block is inserted.
+11. Check the result with AutoCAD.
+
+
+9.  Installation Issues:
+

@@ -1,0 +1,22 @@
+logfilename log\cvport_options.log
+logfileon
+;________
+tilemode
+0
+mview
+0,0
+3,2
+mview
+2,2
+6,4
+cvport
+1
+cvport
+2
+cvport
+3
+;_____
+dxfout output_dxf\cvport_options.dxf
+6
+quit
+y

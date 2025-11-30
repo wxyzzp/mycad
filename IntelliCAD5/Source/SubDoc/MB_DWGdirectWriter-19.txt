@@ -1,0 +1,27 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-19.txt
+Produce Version		ICAD 4
+Date:				03/17/2004 07:38am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fix for dimensions in blocks. This truned out to be a 
+dimension block lookup problem that is now fixed.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+

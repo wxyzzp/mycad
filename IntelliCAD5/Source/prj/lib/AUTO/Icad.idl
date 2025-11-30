@@ -1,0 +1,490 @@
+/* ICADDEV\PRJ\LIB\AUTO\ICAD.IDL
+ * Copyright (C) 1997-1998 Visio Corporation. All rights reserved.
+ * 
+ * Abstract
+ * 
+ * icad.idl : type library source for icad.exe
+ * 
+ */ 
+
+//#include "vbactl.odl"
+import "oaidl.idl";
+import "ocidl.idl";
+
+#include "IcadDispID.h"
+
+// forward interface declarations
+#include "IcadEnums.idh"
+#include "IcadLibrary.idh"
+#include "PlotSupport.idh"
+#include "IcadGlobal.idh"
+#include "IcadTables.idh"
+#include "IcadEntity.idh"
+#include "IcadDimensions.idh"
+#include "IcadDocument.idh"
+
+// interface and enum definitions
+#include "IcadEnums.idl"
+#include "IcadLibrary.idl"
+#include "PlotSupport.idl"
+#include "IcadGlobal.idl"
+#include "IcadTables.idl"
+#include "IcadEntity.idl"
+#include "IcadDimensions.idl"
+#include "IcadDocument.idl"
+
+
+[
+	uuid(77E49E57-976B-11CF-8CCB-00A0245B09EB),	 // *** LIBID_Icad
+	version(1.0),
+	lcid(0x0000),
+	helpstring("IntelliCAD 2001 Object Library")
+]
+library IntelliCAD
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	#include "IcadEnums.idh"
+	#include "IcadLibrary.idh"
+	#include "PlotSupport.idh"
+	#include "IcadGlobal.idh"
+	#include "IcadTables.idh"
+	#include "IcadEntity.idh"
+	#include "IcadDimensions.idh"
+	#include "IcadDocument.idh"
+
+	#include "IcadCoClasses.idl"
+
+};
+
+
+
+
+/* **************************************************************************************************************
+
+The following 208 UUIDs were generated from UUIDGEN for use with the IntelliCAD automation model.  When adding
+new objects/interfaces to the ICAD Automation Model, search for an appropriate one here, before  generating new ones.
+
+
+
+TOP LEVEL OBJECTS
+
+//Interfaces
+8011c100-7e36-11d1-bc5a-0060089608a4	no longer used for IID_IIcadGlobal
+8011c101-7e36-11d1-bc5a-0060089608a4	IID_IIcadApplication
+8011c102-7e36-11d1-bc5a-0060089608a4	IID_IIcadDocuments
+8011c103-7e36-11d1-bc5a-0060089608a4	IID_IIcadDocument
+8011c104-7e36-11d1-bc5a-0060089608a4	IID_IIcadWindows
+8011c105-7e36-11d1-bc5a-0060089608a4	IID_IIcadWindow
+8011c106-7e36-11d1-bc5a-0060089608a4	IID_IIcadLibrary
+8011c107-7e36-11d1-bc5a-0060089608a4	IID_IIcadPoint
+8011c108-7e36-11d1-bc5a-0060089608a4	IID_IIcadVector
+8011c109-7e36-11d1-bc5a-0060089608a4	IID_IIcadMatrix
+8011c10a-7e36-11d1-bc5a-0060089608a4	IID_IIcadSelectionSet
+8011c10b-7e36-11d1-bc5a-0060089608a4	IID_IIcadSelectionSets
+8011c10c-7e36-11d1-bc5a-0060089608a4	IID_IIcadPoints
+8011c10d-7e36-11d1-bc5a-0060089608a4	IID_IIcadUtility	
+8011c10e-7e36-11d1-bc5a-0060089608a4	IID_IIcadApplicationPreferences
+8011c10f-7e36-11d1-bc5a-0060089608a4	IID_IIcadDocumentPreferences
+
+//Classids
+8011c110-7e36-11d1-bc5a-0060089608a4	no longer used for CLSID_Global
+8011c111-7e36-11d1-bc5a-0060089608a4	CLSID_Application
+8011c112-7e36-11d1-bc5a-0060089608a4	CLSID_Documents
+8011c113-7e36-11d1-bc5a-0060089608a4	not used - CLSID_Document is same as VisioDWG - 000D0E00-0000-0000-C000-000000000046
+8011c114-7e36-11d1-bc5a-0060089608a4	CLSID_Windows
+8011c115-7e36-11d1-bc5a-0060089608a4	CLSID_Window
+8011c116-7e36-11d1-bc5a-0060089608a4	CLSID_Library
+8011c117-7e36-11d1-bc5a-0060089608a4	CLSID_Point
+8011c118-7e36-11d1-bc5a-0060089608a4	CLSID_Vector
+8011c119-7e36-11d1-bc5a-0060089608a4	CLSID_Matrix
+8011c11a-7e36-11d1-bc5a-0060089608a4	CLSID_SelectionSet
+8011c11b-7e36-11d1-bc5a-0060089608a4	CLSID_SelectionSets
+8011c11c-7e36-11d1-bc5a-0060089608a4	CLSDI_Points
+8011c11d-7e36-11d1-bc5a-0060089608a4	CLSID_Utility
+8011c11e-7e36-11d1-bc5a-0060089608a4	CLSID_ApplicationPreferences
+8011c11f-7e36-11d1-bc5a-0060089608a4	CLSID_DocumentPreferences
+
+
+TABLES
+
+//Interfaces
+8011c120-7e36-11d1-bc5a-0060089608a4	IID_IIcadDbItem
+8011c121-7e36-11d1-bc5a-0060089608a4	IID_IIcadTableItem
+8011c122-7e36-11d1-bc5a-0060089608a4	no longer used for IID_IIcadTableCollection
+8011c123-7e36-11d1-bc5a-0060089608a4	IID_IIcadRegisteredApplication
+8011c124-7e36-11d1-bc5a-0060089608a4	IID_IIcadRegisteredApplications
+8011c125-7e36-11d1-bc5a-0060089608a4	IID_IIcadBlock
+8011c126-7e36-11d1-bc5a-0060089608a4	IID_IIcadBlocks
+8011c127-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimensionStyle
+8011c128-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimensionStyles
+8011c129-7e36-11d1-bc5a-0060089608a4	IID_IIcadLayer
+8011c12a-7e36-11d1-bc5a-0060089608a4	IID_IIcadLayers
+8011c12b-7e36-11d1-bc5a-0060089608a4	IID_IIcadLinetype
+8011c12c-7e36-11d1-bc5a-0060089608a4	IID_IIcadLinetypes
+8011c12d-7e36-11d1-bc5a-0060089608a4	IID_IIcadTextStyle
+8011c12e-7e36-11d1-bc5a-0060089608a4	IID_IIcadTextStyles
+8011c12f-7e36-11d1-bc5a-0060089608a4	IID_IIcadUserCoordSystem
+8011c130-7e36-11d1-bc5a-0060089608a4	IID_IIcadUserCoordSystems
+8011c131-7e36-11d1-bc5a-0060089608a4	IID_IIcadView
+8011c132-7e36-11d1-bc5a-0060089608a4	IID_IIcadView
+8011c133-7e36-11d1-bc5a-0060089608a4	IID_IIcadViewport
+8011c134-7e36-11d1-bc5a-0060089608a4	IID_IIcadViewports
+8011c135-7e36-11d1-bc5a-0060089608a4
+8011c136-7e36-11d1-bc5a-0060089608a4
+8011c137-7e36-11d1-bc5a-0060089608a4
+8011c138-7e36-11d1-bc5a-0060089608a4
+8011c139-7e36-11d1-bc5a-0060089608a4
+8011c13a-7e36-11d1-bc5a-0060089608a4
+8011c13b-7e36-11d1-bc5a-0060089608a4
+8011c13c-7e36-11d1-bc5a-0060089608a4
+8011c13d-7e36-11d1-bc5a-0060089608a4
+8011c13e-7e36-11d1-bc5a-0060089608a4
+8011c13f-7e36-11d1-bc5a-0060089608a4
+
+//Classids
+8011c140-7e36-11d1-bc5a-0060089608a4
+8011c141-7e36-11d1-bc5a-0060089608a4
+8011c142-7e36-11d1-bc5a-0060089608a4
+8011c143-7e36-11d1-bc5a-0060089608a4	CLSID_RegisteredApplication
+8011c144-7e36-11d1-bc5a-0060089608a4	CLSID_RegisteredApplications
+8011c145-7e36-11d1-bc5a-0060089608a4	CLSID_Block
+8011c146-7e36-11d1-bc5a-0060089608a4	CLSID_Blocks
+8011c147-7e36-11d1-bc5a-0060089608a4	CLSID_DimensionStyle
+8011c148-7e36-11d1-bc5a-0060089608a4	CLSID_DimensionStyles
+8011c149-7e36-11d1-bc5a-0060089608a4	CLSID_Layer
+8011c14a-7e36-11d1-bc5a-0060089608a4	CLSID_Layers
+8011c14b-7e36-11d1-bc5a-0060089608a4	CLSID_Linetype
+8011c14c-7e36-11d1-bc5a-0060089608a4	CLSID_Linetypes
+8011c14d-7e36-11d1-bc5a-0060089608a4	CLSID_TextStyle
+8011c14e-7e36-11d1-bc5a-0060089608a4	CLSID_TextStyles
+8011c14f-7e36-11d1-bc5a-0060089608a4	CLSID_UserCoordSystem
+8011c150-7e36-11d1-bc5a-0060089608a4	CLSID_UserCoordSystems
+8011c151-7e36-11d1-bc5a-0060089608a4	CLSID_View
+8011c152-7e36-11d1-bc5a-0060089608a4	CLSID_Views
+8011c153-7e36-11d1-bc5a-0060089608a4	CLSID_Viewport
+8011c154-7e36-11d1-bc5a-0060089608a4	CLSID_Viewports
+8011c155-7e36-11d1-bc5a-0060089608a4
+8011c156-7e36-11d1-bc5a-0060089608a4
+8011c157-7e36-11d1-bc5a-0060089608a4
+8011c158-7e36-11d1-bc5a-0060089608a4
+8011c159-7e36-11d1-bc5a-0060089608a4
+8011c15a-7e36-11d1-bc5a-0060089608a4
+8011c15b-7e36-11d1-bc5a-0060089608a4
+8011c15c-7e36-11d1-bc5a-0060089608a4
+8011c15d-7e36-11d1-bc5a-0060089608a4
+8011c15e-7e36-11d1-bc5a-0060089608a4
+8011c15f-7e36-11d1-bc5a-0060089608a4
+
+
+ENTITIES
+
+//Interfaces
+8011c160-7e36-11d1-bc5a-0060089608a4	IID_IIcadModelSpace
+8011c161-7e36-11d1-bc5a-0060089608a4	IID_IIcadPaperSpace
+8011c162-7e36-11d1-bc5a-0060089608a4	IID_IIcad3DFace
+8011c163-7e36-11d1-bc5a-0060089608a4	IID_IIcad3DPoly
+8011c164-7e36-11d1-bc5a-0060089608a4	IID_IIcad3DSolid
+8011c165-7e36-11d1-bc5a-0060089608a4	IID_IIcadArc
+8011c166-7e36-11d1-bc5a-0060089608a4	IID_IIcadAttributeDef
+8011c167-7e36-11d1-bc5a-0060089608a4	IID_IIcadAttribute
+8011c168-7e36-11d1-bc5a-0060089608a4	IID_IIcadBlockInsert
+8011c169-7e36-11d1-bc5a-0060089608a4	IID_IIcadCircle
+8011c16a-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimension
+8011c16b-7e36-11d1-bc5a-0060089608a4	IID_IIcadEllipse
+8011c16c-7e36-11d1-bc5a-0060089608a4	IID_IIcadHatch
+8011c16d-7e36-11d1-bc5a-0060089608a4	IID_IIcadLeader
+8011c16e-7e36-11d1-bc5a-0060089608a4	IID_IIcadLightWeightPolyline
+8011c16f-7e36-11d1-bc5a-0060089608a4	IID_IIcadLine
+8011c170-7e36-11d1-bc5a-0060089608a4	IID_IIcadMText
+8011c171-7e36-11d1-bc5a-0060089608a4	IID_IIcadPointEntity
+8011c172-7e36-11d1-bc5a-0060089608a4	IID_IIcadPolyline
+8011c173-7e36-11d1-bc5a-0060089608a4	IID_IIcadPolygonMesh
+8011c174-7e36-11d1-bc5a-0060089608a4	IID_IIcadPViewport
+8011c175-7e36-11d1-bc5a-0060089608a4	IID_IIcadImage
+8011c176-7e36-11d1-bc5a-0060089608a4	IID_IIcadRay
+8011c177-7e36-11d1-bc5a-0060089608a4	IID_IIcadRegion
+8011c178-7e36-11d1-bc5a-0060089608a4	IID_IIcadShape
+8011c179-7e36-11d1-bc5a-0060089608a4	IID_IIcadSolid
+8011c17a-7e36-11d1-bc5a-0060089608a4	IID_IIcadSpline
+8011c17b-7e36-11d1-bc5a-0060089608a4	IID_IIcadText
+8011c17c-7e36-11d1-bc5a-0060089608a4	IID_IIcadTolerance
+8011c17d-7e36-11d1-bc5a-0060089608a4	IID_IIcadTrace
+8011c17e-7e36-11d1-bc5a-0060089608a4	IID_IIcadInfiniteLine
+8011c17f-7e36-11d1-bc5a-0060089608a4	IID_IIcadExternalReference
+8011c180-7e36-11d1-bc5a-0060089608a4	no longer used for IID_IIcadVertex
+8011c181-7e36-11d1-bc5a-0060089608a4	no longer used for IID_IIcadVertices
+8011c182-7e36-11d1-bc5a-0060089608a4	IID_IIcadAttributes
+8011c183-7e36-11d1-bc5a-0060089608a4	IID_IIcadPolyfaceMesh
+8011c184-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimAngular
+8011c185-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimAligned
+8011c186-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimDiametric
+8011c187-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimOrdinate
+8011c188-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimRadial
+8011c189-7e36-11d1-bc5a-0060089608a4	IID_IIcadDimRotated
+8011c18a-7e36-11d1-bc5a-0060089608a4	IID_IIcadDim3PointAngular
+8011c18b-7e36-11d1-bc5a-0060089608a4
+8011c18c-7e36-11d1-bc5a-0060089608a4
+8011c18d-7e36-11d1-bc5a-0060089608a4
+8011c18e-7e36-11d1-bc5a-0060089608a4	IID_IIcadEntities
+8011c18f-7e36-11d1-bc5a-0060089608a4	IID_IIcadEntity
+
+//Classids
+8011c190-7e36-11d1-bc5a-0060089608a4	CLSID_ModelSpace
+8011c191-7e36-11d1-bc5a-0060089608a4	CLSID_PaperSpace
+8011c192-7e36-11d1-bc5a-0060089608a4	CLSID_3DFace
+8011c193-7e36-11d1-bc5a-0060089608a4	CLSID_3DPolyline
+8011c194-7e36-11d1-bc5a-0060089608a4	CLSID_3DSolid
+8011c195-7e36-11d1-bc5a-0060089608a4	CLSID_Arc
+8011c196-7e36-11d1-bc5a-0060089608a4	CLSID_AttributeDef
+8011c197-7e36-11d1-bc5a-0060089608a4	CLSID_Attribute
+8011c198-7e36-11d1-bc5a-0060089608a4	CLSID_BlockInsert
+8011c199-7e36-11d1-bc5a-0060089608a4	CLSID_Circle
+8011c19a-7e36-11d1-bc5a-0060089608a4	CLSID_Dimension
+8011c19b-7e36-11d1-bc5a-0060089608a4	CLSID_Ellipse
+8011c19c-7e36-11d1-bc5a-0060089608a4	CLSID_Hatch
+8011c19d-7e36-11d1-bc5a-0060089608a4	CLSID_Leader
+8011c19e-7e36-11d1-bc5a-0060089608a4	CLSID_LightWeightPolyline
+8011c19f-7e36-11d1-bc5a-0060089608a4	CLSID_Line
+8011c1a0-7e36-11d1-bc5a-0060089608a4	CLSID_MText
+8011c1a1-7e36-11d1-bc5a-0060089608a4	CLSID_PointEntity
+8011c1a2-7e36-11d1-bc5a-0060089608a4	CLSID_Polyline
+8011c1a3-7e36-11d1-bc5a-0060089608a4	CLSID_PolygonMesh
+8011c1a4-7e36-11d1-bc5a-0060089608a4	CLSID_PViewport
+8011c1a5-7e36-11d1-bc5a-0060089608a4	CLSID_Image
+8011c1a6-7e36-11d1-bc5a-0060089608a4	CLSID_Ray
+8011c1a7-7e36-11d1-bc5a-0060089608a4	CLSID_Region
+8011c1a8-7e36-11d1-bc5a-0060089608a4	CLSID_Shape
+8011c1a9-7e36-11d1-bc5a-0060089608a4	CLSID_Solid
+8011c1aa-7e36-11d1-bc5a-0060089608a4	CLSID_Spline
+8011c1ab-7e36-11d1-bc5a-0060089608a4	CLSID_Text
+8011c1ac-7e36-11d1-bc5a-0060089608a4	CLSID_Tolerance
+8011c1ad-7e36-11d1-bc5a-0060089608a4	CLSID_Trace
+8011c1ae-7e36-11d1-bc5a-0060089608a4	CLSID_InfiniteLine
+8011c1af-7e36-11d1-bc5a-0060089608a4	CLSID_ExternalReference
+8011c1b0-7e36-11d1-bc5a-0060089608a4	no longer used for CLSID_Vertex
+8011c1b1-7e36-11d1-bc5a-0060089608a4	no longer used for CLSID_Vertices
+8011c1b2-7e36-11d1-bc5a-0060089608a4	CLSID_Attributes
+8011c1b3-7e36-11d1-bc5a-0060089608a4	CLSID_PolyfaceMesh
+8011c1b4-7e36-11d1-bc5a-0060089608a4	CLSID_DimAngular
+8011c1b5-7e36-11d1-bc5a-0060089608a4	CLSID_DimAligned
+8011c1b6-7e36-11d1-bc5a-0060089608a4	CLSID_DimDiametric
+8011c1b7-7e36-11d1-bc5a-0060089608a4	CLSID_DimOrdinate
+8011c1b8-7e36-11d1-bc5a-0060089608a4	CLSID_DimRadial
+8011c1b9-7e36-11d1-bc5a-0060089608a4	CLSID_DimRotated
+8011c1ba-7e36-11d1-bc5a-0060089608a4	CLSID_Dim3PointAngular
+8011c1bb-7e36-11d1-bc5a-0060089608a4
+8011c1bc-7e36-11d1-bc5a-0060089608a4
+8011c1bd-7e36-11d1-bc5a-0060089608a4
+8011c1be-7e36-11d1-bc5a-0060089608a4
+8011c1bf-7e36-11d1-bc5a-0060089608a4	CLSID_Entity
+
+
+
+
+
+//MISC GUIDS  - for VBA
+8011c1c0-7e36-11d1-bc5a-0060089608a4	IID_IIcadWorkspace
+8011c1c1-7e36-11d1-bc5a-0060089608a4	IID_IIcadPlotManager	
+8011c1c2-7e36-11d1-bc5a-0060089608a4	IID_IIcadPlotProperties
+8011c1c3-7e36-11d1-bc5a-0060089608a4	IID_IIcadPlotterPens
+8011c1c4-7e36-11d1-bc5a-0060089608a4	IID_IIcadPlotterPen
+8011c1c5-7e36-11d1-bc5a-0060089608a4	IID_IIcadPlotRegManager
+8011c1c6-7e36-11d1-bc5a-0060089608a4	
+8011c1c7-7e36-11d1-bc5a-0060089608a4	
+8011c1c8-7e36-11d1-bc5a-0060089608a4	
+8011c1c9-7e36-11d1-bc5a-0060089608a4	
+8011c1ca-7e36-11d1-bc5a-0060089608a4	
+8011c1cb-7e36-11d1-bc5a-0060089608a4	
+8011c1cc-7e36-11d1-bc5a-0060089608a4	
+8011c1cd-7e36-11d1-bc5a-0060089608a4	
+8011c1ce-7e36-11d1-bc5a-0060089608a4	
+8011c1cf-7e36-11d1-bc5a-0060089608a4	
+8011c1d0-7e36-11d1-bc5a-0060089608a4	DIID__EIcadDocument
+8011c1d1-7e36-11d1-bc5a-0060089608a4	DIID__IcadWorkspaceEvents	
+8011c1d2-7e36-11d1-bc5a-0060089608a4	
+8011c1d3-7e36-11d1-bc5a-0060089608a4	
+8011c1d4-7e36-11d1-bc5a-0060089608a4	
+8011c1d5-7e36-11d1-bc5a-0060089608a4	
+8011c1d6-7e36-11d1-bc5a-0060089608a4	
+8011c1d7-7e36-11d1-bc5a-0060089608a4	
+8011c1d8-7e36-11d1-bc5a-0060089608a4	
+8011c1d9-7e36-11d1-bc5a-0060089608a4	
+8011c1da-7e36-11d1-bc5a-0060089608a4	
+8011c1db-7e36-11d1-bc5a-0060089608a4	
+8011c1dc-7e36-11d1-bc5a-0060089608a4	
+8011c1dd-7e36-11d1-bc5a-0060089608a4	
+8011c1de-7e36-11d1-bc5a-0060089608a4	
+8011c1df-7e36-11d1-bc5a-0060089608a4
+	
+8011c1e0-7e36-11d1-bc5a-0060089608a4	CLSID_Workspace
+8011c1e1-7e36-11d1-bc5a-0060089608a4	CLSID_PlotManager
+8011c1e2-7e36-11d1-bc5a-0060089608a4	CLSID_PlotProperties
+8011c1e3-7e36-11d1-bc5a-0060089608a4	CLSID_PlotterPens
+8011c1e4-7e36-11d1-bc5a-0060089608a4	CLSID_PlotterPen
+8011c1e5-7e36-11d1-bc5a-0060089608a4	
+8011c1e6-7e36-11d1-bc5a-0060089608a4	
+8011c1e7-7e36-11d1-bc5a-0060089608a4	
+8011c1e8-7e36-11d1-bc5a-0060089608a4	
+8011c1e9-7e36-11d1-bc5a-0060089608a4	
+8011c1ea-7e36-11d1-bc5a-0060089608a4	
+8011c1eb-7e36-11d1-bc5a-0060089608a4	
+8011c1ec-7e36-11d1-bc5a-0060089608a4	
+8011c1ed-7e36-11d1-bc5a-0060089608a4	
+8011c1ee-7e36-11d1-bc5a-0060089608a4	
+8011c1ef-7e36-11d1-bc5a-0060089608a4	
+8011c1f0-7e36-11d1-bc5a-0060089608a4	
+8011c1f1-7e36-11d1-bc5a-0060089608a4	
+8011c1f2-7e36-11d1-bc5a-0060089608a4	
+8011c1f3-7e36-11d1-bc5a-0060089608a4	
+8011c1f4-7e36-11d1-bc5a-0060089608a4	
+8011c1f5-7e36-11d1-bc5a-0060089608a4	
+8011c1f6-7e36-11d1-bc5a-0060089608a4	
+8011c1f7-7e36-11d1-bc5a-0060089608a4	
+8011c1f8-7e36-11d1-bc5a-0060089608a4	
+8011c1f9-7e36-11d1-bc5a-0060089608a4	
+8011c1fa-7e36-11d1-bc5a-0060089608a4	
+8011c1fb-7e36-11d1-bc5a-0060089608a4	
+8011c1fc-7e36-11d1-bc5a-0060089608a4	
+8011c1fd-7e36-11d1-bc5a-0060089608a4	
+8011c1fe-7e36-11d1-bc5a-0060089608a4	
+8011c1ff-7e36-11d1-bc5a-0060089608a4	
+
+
+
+
+
+//Enumerations
+8011c0f0-7e36-11d1-bc5a-0060089608a4	AttachmentPoint
+8011c0f1-7e36-11d1-bc5a-0060089608a4	TextFlag
+8011c0f2-7e36-11d1-bc5a-0060089608a4	DrawingDirection
+8011c0f3-7e36-11d1-bc5a-0060089608a4	AttributeMode
+8011c0f4-7e36-11d1-bc5a-0060089608a4	Colors
+8011c0f5-7e36-11d1-bc5a-0060089608a4	DistanceUnits
+8011c0f6-7e36-11d1-bc5a-0060089608a4	no longer used for Units
+8011c0f7-7e36-11d1-bc5a-0060089608a4	AngleUnits
+8011c0f8-7e36-11d1-bc5a-0060089608a4	EntityTypes
+8011c0f9-7e36-11d1-bc5a-0060089608a4	PMSpace
+8011c0fa-7e36-11d1-bc5a-0060089608a4	HatchStyle
+8011c0fb-7e36-11d1-bc5a-0060089608a4	HatchType
+8011c0fc-7e36-11d1-bc5a-0060089608a4	HorizontalAlignment
+8011c0fd-7e36-11d1-bc5a-0060089608a4	VerticalAlignment
+8011c0fe-7e36-11d1-bc5a-0060089608a4	LeaderType
+8011c0ff-7e36-11d1-bc5a-0060089608a4	IntersectOptions
+8011c0e0-7e36-11d1-bc5a-0060089608a4	ObjectSnapMode
+8011c0e1-7e36-11d1-bc5a-0060089608a4	PolylineType
+8011c0e2-7e36-11d1-bc5a-0060089608a4	SelectionSetType
+8011c0e3-7e36-11d1-bc5a-0060089608a4	CoordinateSystemTypes
+8011c0e4-7e36-11d1-bc5a-0060089608a4	ViewMode
+8011c0e5-7e36-11d1-bc5a-0060089608a4	ZoomScale
+8011c0e6-7e36-11d1-bc5a-0060089608a4	no longer used for TrueFalse
+8011c0e7-7e36-11d1-bc5a-0060089608a4	no longer used for OnOff
+8011c0e8-7e36-11d1-bc5a-0060089608a4	ArrangeStyle
+8011c0e9-7e36-11d1-bc5a-0060089608a4	WhichViewport
+8011c0ea-7e36-11d1-bc5a-0060089608a4	PolymeshType
+8011c0eb-7e36-11d1-bc5a-0060089608a4	Versions
+8011c0ec-7e36-11d1-bc5a-0060089608a4	ScrollFlagsX
+8011c0ed-7e36-11d1-bc5a-0060089608a4	ScrollFlagsY
+8011c0ee-7e36-11d1-bc5a-0060089608a4	WindowState
+8011c0ef-7e36-11d1-bc5a-0060089608a4	TextFontStyle
+8011c0d0-7e36-11d1-bc5a-0060089608a4	DimTextMovement
+8011c0d1-7e36-11d1-bc5a-0060089608a4	DimToleranceMethod
+8011c0d2-7e36-11d1-bc5a-0060089608a4	DimToleranceJustify
+8011c0d3-7e36-11d1-bc5a-0060089608a4	DimPrecision
+8011c0d4-7e36-11d1-bc5a-0060089608a4	DimLUnits
+8011c0d5-7e36-11d1-bc5a-0060089608a4	DimVerticalJustification
+8011c0d6-7e36-11d1-bc5a-0060089608a4	DimHorizontalJustification
+8011c0d7-7e36-11d1-bc5a-0060089608a4	DimArrowheadType
+8011c0d8-7e36-11d1-bc5a-0060089608a4	DimFit
+8011c0d9-7e36-11d1-bc5a-0060089608a4	DimFractionType
+8011c0da-7e36-11d1-bc5a-0060089608a4	DimCenterType
+8011c0db-7e36-11d1-bc5a-0060089608a4	PrintArea
+8011c0dc-7e36-11d1-bc5a-0060089608a4	Orientation
+8011c0dd-7e36-11d1-bc5a-0060089608a4	ViewportSplitType
+8011c0de-7e36-11d1-bc5a-0060089608a4	UserInputType
+8011c0df-7e36-11d1-bc5a-0060089608a4
+
+
+// New intefaces
+15719800-7425-11d2-9125-0060973d0dde	IIcadPlotRegManager
+
+// following range is reserved for new UUIDs
+15719801-7425-11d2-9125-0060973d0dde
+15719a00-7425-11d2-9125-0060973d0dde
+
+************************************************************************************************************** */
+
+
+
+/* Revision Log
+ * 
+ * $Log: Icad.idl,v $
+ * Revision 1.5  2001/04/13 13:15:55  cyberage
+ * Mail from Surya Sarda(suryas@cadopia.com) dated 06/04/2001
+ * Changing references of Intellicad 2000 to Intellicad 2001
+ *
+ * Revision 1.4  2001/03/16 21:48:12  alexanderv
+ * merge code 14-9-2000 to 14-3-2001
+ *
+ * Revision 1.6  2000/06/14 07:01:19  andreyg
+ * no message
+ *
+ * Revision 1.5  2000/04/27 14:26:05  martinw
+ * replaced Briscnet by Bricsnet.
+ *
+ * Revision 1.4  2000/01/24 14:18:24  martinw
+ * Changed "IntelliCAD 2000" to "Bricsnet IntelliCAD 2000".
+ *
+ * Revision 1.3  1999/10/22 15:32:40  johank
+ * Merged changes to fileheader
+ *
+# Revision 6.9  1999/07/22  15:29:30  AbrahamM
+# Removed unused enums
+#
+# Revision 6.8  1999/07/12  08:55:36  AbrahamM
+# Define new enum for initializing user input
+#
+# Revision 6.7  1999/06/17  16:53:26  AbrahamM
+# Various automation enhancements
+#
+# Revision 6.6  1999/06/01  08:47:04  AbrahamM
+# Added Dimensions IDL and various other IDL cleanup
+#
+# Revision 6.5  1999/05/07  16:18:48  AbrahamM
+# VBA strings resourced
+#
+# Revision 6.4  1999/05/04  08:54:08  abrahamm
+# MOced Auto files to the Auto DLL
+#
+# Revision 6.3  1999/04/30  14:30:19  abrahamm
+# Added Plot objects to Automation model
+#
+# Revision 6.2  1999/04/19  17:50:41  AbrahamM
+# VBA6 Project and ProjectItem support
+#
+# Revision 6.1  1999/04/15  16:22:24  AbrahamM
+# New Object Model IDL files
+#
+
+
+# * $Log: icad.odl
+# Revision 6.1  1999/02/12  13:13:09  PeterK
+# Set all versions to 6 for consistency
+#
+# Revision 2.1  1999/01/27  10:24:11  PeterK
+# Main source version 2.x
+#
+# Revision 1.7  1999/01/27  09:53:21  markba
+# With Abraham's help, reverted back to CLSID_Document from CLSID_Documents.
+#
+# Revision 1.6  1999/01/26  09:45:46  markba
+# Updates for VC++ 6.0 use.
+#
+# Revision 1.5  1998/11/19  13:48:28  LaraF
+# Added IIcadPlotRegManager interface to plotmanager
+#
+# Revision 1.4  1998/11/04  12:53:35  PeterK
+# Added file header
+#
+ * 
+ */ 

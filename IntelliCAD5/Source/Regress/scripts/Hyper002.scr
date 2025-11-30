@@ -1,0 +1,6 @@
+logfilename log\Hyper002.log
+logfileon
+(xload "Sds\hyper001")
+(command "hyper002" "10,10" "20,20" "1" "0" "scripts\Script2\Hyper002.scr")
+ 
+ 

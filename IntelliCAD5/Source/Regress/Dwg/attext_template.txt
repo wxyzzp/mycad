@@ -1,0 +1,6 @@
+BL:X        N001001
+BL:Y        N001001
+BL:Z        N001001
+Oname_1     C120000
+Oname_2     C120000
+Oname_3     C120000

@@ -1,0 +1,29 @@
+;_Created_by_Cybage_on_11/11/2002_
+logfilename log\misc2.log
+logfileon
+;________
+box
+-.75,-.75,-.75
+.75,.75,.75
+;__________
+sphere
+0,0,0
+1
+;__________
+union
+all
+
+;__________
+vpoint
+1,1,1
+zoom
+c
+0,0,0
+3
+;__________
+RENDERFULL
+;__________
+dxfout output_dxf\misc2.dxf
+6
+quit
+y

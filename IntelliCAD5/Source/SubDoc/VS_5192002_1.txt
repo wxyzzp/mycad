@@ -1,0 +1,70 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_5192002_1.txt
+Date:		05-19-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Regress_icad_14/Debug/regress_icad_acad_roundtrip.exe
+		CvsHist:Source/Regress_apps/regress_scr/Debug/regress_scr.exe
+
+Changed files:	
+		CvsHist:Source/Regress/Regress_apps/regress_scr/regress.cpp
+		CvsHist:Source/Regress/Regress_apps/regress_icad_14/regress.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission updates the regress applications.
+Comments:	This submission adds new functionality to the regress applications. regress_scr.exe automatically
+		runs all scr files in a sub-directory called scripts and places its output in output_dxf, log and results
+		sub-directories. Now it can take an optional parameter which is the sub-directory where the scripts are present
+		The only restriction is this sub-directory cannot be called mem, time, cov or purify. The logfile will now
+		have the directory from which the scripts are run as part of its name.
+
+		regress_scr -- runs all scr files in scripts directory. Log file is icadregress_scripts.log
+		regress_scr scripts_qa -- runs all scr files in scripts_qa directory. Log file is icadregress_scripts_qa.log
+
+		Some of the scr files which take long to run are moved to scripts_qa directory in regress.
+
+
+		I have updated regress_acad_icad_roundtrip.exe to run with AutoCAD 2002. The syntax change is for the saveas
+		format and it now saves as 2000 (as opposed to A2K in the old code.)
+
+		I have checked in the actual exe files as well.
+
+
+File by File:	
+		Source/Regress/Regress_apps/regress_scr/regress.cpp	 			New Rev. 1.2
+
+		regress_scr.exe automatically
+		runs all scr files in a sub-directory called scripts and places its output in output_dxf, log and results
+		sub-directories. Now it can take an optional parameter which is the sub-directory where the scripts are present
+		The only restriction is this sub-directory cannot be called mem, time, cov or purify. The logfile will now
+		have the directory from which the scripts are run as part of its name.
+
+		regress_scr -- runs all scr files in scripts directory. Log file is icadregress_scripts.log
+		regress_scr scripts_qa -- runs all scr files in scripts_qa directory. Log file is icadregress_scripts_qa.log
+
+		Source/prj/lib/SDS/sds_findfile.cpp	 			New Rev. 1.12
+
+		Changed call to sds_findfile() to ic_findinpath() in function ic_findinpath().
+
+		Source/Regress/Regress_apps/regress_icad_14/regress.cpp	 			New Rev. 1.2
+
+		I have updated regress_acad_icad_roundtrip.exe to run with AutoCAD 2002. The syntax change is for the saveas
+		format and it now saves as 2000 (as opposed to A2K in the old code.)
+
+
+		Source/Regress_apps/Regress_icad_14/Debug/regress_icad_acad_roundtrip.exe
+			Initial version
+		Source/Regress_apps/regress_scr/Debug/regress_scr.exe
+			Initial version
+
+------------------------------------------------------------------------------

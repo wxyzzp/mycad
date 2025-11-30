@@ -1,0 +1,9 @@
+// interface declarations
+
+interface IIcadDbItem;
+interface IIcadEntities;
+interface IIcadModelSpace;
+interface IIcadPaperSpace;
+interface IIcadDocument;
+dispinterface _EIcadDocument;
+interface IIcadDocumentPreferences;

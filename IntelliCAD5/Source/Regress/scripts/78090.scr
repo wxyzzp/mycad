@@ -1,0 +1,63 @@
+logfilename log\78090.log
+logfileon
+;;;;;;;;;;;;;;;;;;;polygon block a ;;;;;;;;;;;;;;
+polygon 6 4,4 6,4
+block 
+a 
+4,4 
+6,4
+
+;;;;;;;;;;;;;;;;;;;;;;;circle block b ;;;;;;;;;
+circle 4,4
+6,4
+block 
+b 
+4,4 
+6,4
+
+;;;;;;;;;;;;;;;;;;;;;;insert a & b ;;;;;;;;;;;;;
+erase all
+
+insert 
+a 
+5,4
+
+
+
+insert 
+b 
+5,4
+
+
+
+;;;;;;;;;;;;;;combined block C;;;;;;;;;;;;;;;;;;
+block 
+c 
+5,4 
+all
+
+;;;;;;;;;;;;;;;insert c without scaling;;;;;;;;
+insert 
+c 
+4,4
+
+
+
+;;;;;;;;;;;;;;;;;;explode c;;;;;;;;;;;;;;;;;
+explode 
+all
+;;;;;;;;;;;;;;;;insert c with scaling;;;;;;;;;;;
+insert 
+c 
+8,4
+.5
+.75
+
+;;;;;;;;;;;;;;;;;explode scaled block;;;;;;;;;;
+explode 
+last
+;____________
+dxfout output_dxf\78090.dxf
+6
+quit
+y

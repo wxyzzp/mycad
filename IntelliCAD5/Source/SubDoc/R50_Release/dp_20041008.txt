@@ -1,0 +1,70 @@
+Document Title:  DP_20041008.txt	
+Product Version: ICAD 5
+Date:  08.10.2004
+Engineer: Denis Petrov
+
+1. Process Checklist :
+* Regress run without new failures: Y/N
+* Did you test it? : Y/N
+* Code Reviewed By: 
+* Docs Changes Required: Y/N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+ICAD
+
+3.  Overview:
+
+Steps to create the paint problem:
+1. Open a drawing in AutoCAD 
+2. Open IntelliCAD 
+3. Draw a circle in the current drawing 
+4. Try to open the same file in IntelliCAD that is currently loaded in AutoCAD 
+5. IntelliCAD will ask if you want to open the file as a read-only drawing 
+6. Answer “No”
+
+Expected:
+The drawing opened is cancelled and you are returned to the previous drawing file with a circle in it.
+
+Actual:
+The drawing open is cancelled and the current drawing display is corrupted.  
+The display cannot be fixed with Regen or Redraw, but if you minimize and maximize the drawing window then the display is fixed.
+
+On initialization of new MDI window it creates child windows, views and controls.
+These views are also moved and resized in order to create necessary lay-out.
+View that does not belong to given MDI window has been incorrectly resized.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: Y/N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y/N
+File Name       	Sent to buildmanager@intellicad.org
+Name of Script File     Y/N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:       Bugzilla 78976 
+Affected files: 
+2004-10-08   06:05   denisp   Source/prj/ICAD/icadchildwnd.cpp?rev=1.4.4.3.2.2 
+Description:  
+Fixed recalculation of lay-out for MDI child window.
+--------------------------------------------------------------------------------
+
+7.  System file - Component Changes and Additions
+Need any system file changes in icad due to this submission (eg. files added to c:\winnt\system32)?  Please provide detail.
+
+8.  Testing Considerations:
+* Unit Test Description: Describe your unit test and your result so that we know the expected result.
+* Notes for QA Testing: Notes for the QA team.
+
+9.  Installation Issues:
+Anything the members need to be aware of when creating their installers for the product.
+
+
+

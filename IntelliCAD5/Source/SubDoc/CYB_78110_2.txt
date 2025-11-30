@@ -1,0 +1,23 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78110_2.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78110
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimLinear.cpp
+Description:	Linear dimension drawn using only keyboard input is affected by mouse motion. Implemented code review suggestions.
+Comments:		TaL78110
+Problem Analysis:
+		The code-fix is not very elegant and is difficult to decypher.
+Proposed Solution:
+		Improve the readability of the earlier fix.
+File by File:	
+*		Source/prj/lib/CMDS/DimLinear.cpp
+		Replaced the earlier fix at one particular location with a new, more-readable one.
+--------------------------------------------------------------------------------

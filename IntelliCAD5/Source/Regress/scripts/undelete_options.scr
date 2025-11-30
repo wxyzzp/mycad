@@ -1,0 +1,22 @@
+logfilename log\undelete_options.log
+logfileon
+;___
+line
+1,1
+0,0
+
+;__________
+delete
+last
+
+;__________
+(if (/= (entlast) nil) (alert "del"))
+;__________
+undelete
+;__________
+(if (= (entlast) nil) (alert "del"))
+;___
+dxfout output_dxf\undelete_options.dxf
+6
+quit
+y

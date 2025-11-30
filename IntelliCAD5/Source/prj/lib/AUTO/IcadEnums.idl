@@ -1,0 +1,457 @@
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// ENUMERATIONS
+	typedef [uuid(8011c0f0-7e36-11d1-bc5a-0060089608a4), helpstring("Text attachment point")]	enum AttachmentPoint
+	{
+		[ helpstring("Text attachment point - Top Left") ] vicAttachmentPointTopLeft = 1,
+		[ helpstring("Text attachment point - Top Center") ] vicAttachmentPointTopCenter = 2,
+		[ helpstring("Text attachment point - Top Right") ] vicAttachmentPointTopRight = 3,
+		[ helpstring("Text attachment point - Middle Left") ] vicAttachmentPointMiddleLeft = 4,
+		[ helpstring("Text attachment point - Middle Center") ] vicAttachmentPointMiddleCenter = 5,
+		[ helpstring("Text attachment point - Middle Right") ] vicAttachmentPointMiddleRight = 6,
+		[ helpstring("Text attachment point - Bottom Left") ] vicAttachmentPointBottomLeft = 7,
+		[ helpstring("Text attachment point - Bottom Center") ] vicAttachmentPointBottomCenter = 8,
+		[ helpstring("Text attachment point - Bottom Right") ] vicAttachmentPointBottomRight = 9
+	} AttachmentPoint;
+
+	typedef [uuid(8011c0f1-7e36-11d1-bc5a-0060089608a4), helpstring("Text Flag")] enum TextFlag
+	{
+		vicTextFlagNormal = 0,
+		vicTextFlagBackward = 2,
+		vicTextFlagUpsideDown = 4
+	} TextFlag;
+
+	typedef [uuid(8011c0f2-7e36-11d1-bc5a-0060089608a4), helpstring("Drawing Direction")] enum DrawingDirection
+	{
+		vicLeftToRight = 1,
+		vicRightToLeft = 2,
+		vicTopToBottom = 3,
+		vicBottomToTop = 4
+	} DrawingDirection;
+
+	typedef [uuid(8011c0f3-7e36-11d1-bc5a-0060089608a4), helpstring("Attribute Mode")] enum AttributeMode
+	{
+		[ helpstring("Normal Attribute") ] vicAttributeModeNormal		= 0,
+		[ helpstring("Invisible Attribute") ] vicAttributeModeInvisible	= 1,
+		[ helpstring("Constant Attribute") ] vicAttributeModeConstant	= 2,
+		[ helpstring("Verify Attribute") ] vicAttributeModeVerify		= 4,
+		[ helpstring("Preset Attribute") ] vicAttributeModePreset		= 8
+	} AttributeMode;
+
+	typedef [uuid(8011c0f4-7e36-11d1-bc5a-0060089608a4), helpstring("Predefined Colors")] enum Colors
+	{
+		[ helpstring("Various Colors in a set") ] vicVariousColors	= -2,
+		[ helpstring("XOR Color for temporary entities only") ] vicColorXOr	= -1,
+		[ helpstring("Color ByBlock") ] vicByBlock	= 0,
+		[ helpstring("Color Red") ] vicRed		= 1,
+		[ helpstring("Color Yellow") ] vicYellow	= 2,
+		[ helpstring("Color Green") ] vicGreen	= 3,
+		[ helpstring("Color Cyan") ] vicCyan	= 4,
+		[ helpstring("Color Blue") ] vicBlue	= 5,
+		[ helpstring("Color Magenta") ] vicMagenta	= 6,
+		[ helpstring("Color White") ] vicWhite	= 7,
+		[ helpstring("Color ByLayer") ] vicByLayer	= 256
+	} Colors;
+
+	typedef [uuid(8011c0f5-7e36-11d1-bc5a-0060089608a4), helpstring("Distance To Float(Equivalent to Lisp Distof function)")]
+	enum DistanceUnits
+	{
+		vicScientific = 1,
+		vicDecimal = 2,
+		vicEngineering = 3,
+		vicArchitectural = 4,
+		vicFractional = 5
+	} DistanceUnits;
+
+	typedef [uuid(8011c0f7-7e36-11d1-bc5a-0060089608a4), helpstring("Angle Units")] enum AngleUnits
+	{
+		vicDegrees = 0,
+		vicDegreeMinuteSeconds = 1,
+		vicGrads = 2,
+		vicRadians = 3,
+		vicSurveyorUnits = 4
+	} AngleUnits;
+
+	typedef [uuid(8011c0f8-7e36-11d1-bc5a-0060089608a4), helpstring("Entity Type")]	enum EntityType
+	{
+		vicUnknownEntity,
+		vic3dFace,
+		vic3dPoly,
+		vicArc,
+		vicAttribute,
+		vicAttributeDef,
+		vicBlockInsert,
+		vicCircle,
+		vicDim3PointAngular,
+		vicDimAligned,
+		vicDimAngular,
+		vicDimDiametric,
+		vicDimOrdinate,
+		vicDimRadial,
+		vicDimRotated,
+		vicEllipse,
+		vicExternalReference,
+		vicHatch,
+		vicImage,
+		vicInfiniteLine,
+		vicLeader,
+		vicLine,
+		vicLWPolyline,
+		vicMtext,
+		vicPointEntity,
+		vicPolyline,
+		vicPolygonMesh,
+		vicPolyfaceMesh,
+		vicPViewport,
+		vicRay,
+		vicShape,
+		vicSolid,
+		vicSpline,
+		vicText,
+		vicTolerance,
+		vicTrace
+	} EntityType;
+
+	typedef [uuid(8011c0f9-7e36-11d1-bc5a-0060089608a4), helpstring("Model Space or Paper Space")] enum PMSpace
+	{
+		vicModelSpace,
+		vicPaperSpace
+	} PMSpace;
+
+	typedef [uuid(8011c0fa-7e36-11d1-bc5a-0060089608a4), helpstring("Hatch Style")]	enum HatchStyle
+	{
+		vicHatchStyleNormal,
+		vicHatchStyleOuter,
+		vicHatchStyleIgnore
+	} HatchStyle;
+
+	typedef [uuid(8011c0fb-7e36-11d1-bc5a-0060089608a4), helpstring("Hatch Type")] enum HatchType
+	{
+		vicHatchPatternTypeUserDefined,
+		vicHatchPatternTypePreDefined,
+		vicHatchPatternTypeCustomDefined
+	} HatchType;
+
+	typedef [uuid(8011c0fc-7e36-11d1-bc5a-0060089608a4), helpstring("Horizontal Alignment for Attributes and Text")] enum HorizontalAlignment
+	{
+		vicHorizontalAlignmentLeft,
+		vicHorizontalAlignmentCenter,
+		vicHorizontalAlignmentRight,
+		vicHorizontalAlignmentAligned,
+		vicHorizontalAlignmentMiddle,
+		vicHorizontalAlignmentFit
+	} HorizontalAlignment;
+
+	typedef [uuid(8011c0fd-7e36-11d1-bc5a-0060089608a4), helpstring("Vertical Alignment for Attributes and Text")] enum VerticalAlignment
+	{
+		vicVerticalAlignmentBaseline,
+		vicVerticalAlignmentBottom,
+		vicVerticalAlignmentMiddle,
+		vicVerticalAlignmentTop
+	} VerticalAlignment;
+
+	typedef [uuid(8011c0fe-7e36-11d1-bc5a-0060089608a4), helpstring("Leader Type")] enum LeaderType
+	{
+		vicLineNoArrow = 0,
+		vicSplineNoArrow	= 1,
+		vicLineWithArrow	= 2,
+		vicSplineWithArrow = 3
+	} LeaderType;
+
+	typedef [uuid(8011c0ff-7e36-11d1-bc5a-0060089608a4), helpstring("Extend to intersection Options")] enum IntersectOptions
+	{
+		vicExtendNone,
+		vicExtendThisEntity,
+		vicExtendOtherEntity,
+		vicExtendBoth
+	} IntersectOptions;
+
+	typedef [uuid(8011c0e0-7e36-11d1-bc5a-0060089608a4), helpstring("Object Snap Mode")] enum ObjectSnapMode
+	{
+		vicOsnapNone				= 0,
+		vicOsnapEnd					= 1,
+		vicOsnapMid					= 2,
+		vicOsnapCenter				= 4,
+		vicOsnapNode				= 8,
+		vicOsnapQuadrant			= 16,
+		vicOsnapIntersection		= 32,
+		vicOsnapInsert				= 64,
+		vicOsnapPerpendicular		= 128,
+		vicOsnapTangent				= 256,
+		vicOsnapNear				= 512,
+		vicOsnapQuick				= 1024,
+		vicOsnapPlanViewIntersection= 2048,
+		vicOsnapPoint				= 4096
+	} ObjectSnapMode;
+
+	typedef [uuid(8011c0e1-7e36-11d1-bc5a-0060089608a4), helpstring("Polyline fit type")] enum PolylineType
+	{
+		vicSimplePoly,
+		vicFitCurvePoly,
+		vicQuadSplinePoly,
+		vicCubicSplinePoly
+	} PolylineType;
+
+	typedef [uuid(8011c0e2-7e36-11d1-bc5a-0060089608a4), helpstring("Selection Set")] enum SelectionSetType
+	{
+		vicSelectionSetCrossingPolygon,
+		vicSelectionSetOutsidePolygon,
+		vicSelectionSetInsidePolygon,
+		vicSelectionSetCrossingCircle,
+		vicSelectionSetOutsideCircle,
+		vicSelectionSetInsideCircle,
+		vicSelectionSetCrossingWindow,
+		vicSelectionSetOutsideWindow,
+		vicSelectionSetInsideWindow,
+		vicSelectionSetPrevious,
+		vicSelectionSetLast,
+		vicSelectionSetAll,
+		vicSelectionSetFence
+	} SelectionSetType;
+
+	typedef [uuid(8011c0e3-7e36-11d1-bc5a-0060089608a4), helpstring("Translate Coordinates")] enum CoordinateSystemTypes
+	{
+		vicWorld = 0,
+		vicUCS = 1,
+		vicDisplayDCS = 2,
+		vicPaperSpaceDCS = 3
+	} CoordinateSystemTypes;
+
+	typedef [uuid(8011c0e4-7e36-11d1-bc5a-0060089608a4), helpstring("View Mode")] enum ViewMode
+	{
+		vicViewModeNormal			= 0,
+		vicViewModePerspectiveOn	= 1,
+		vicViewModeFrontClippingOn	= 2,
+		vicViewModeBackClippingOn	= 4,
+		vicViewModeUCSFollowOn		= 8
+	} ViewMode;
+
+	typedef [uuid(8011c0e5-7e36-11d1-bc5a-0060089608a4), helpstring("Zoom Scale")] enum ZoomScale
+	{
+		vicZoomScaledAbsolute,
+		vicZoomScaledRelative,
+		vicZoomScaledRelativePSpace
+	} ZoomScale;
+
+
+	typedef [uuid(8011c0e8-7e36-11d1-bc5a-0060089608a4), helpstring("Window Arrangement Styles")] enum ArrangeStyle
+	{
+		vicArrangeTileVertical = 1,
+		vicArrangeTileHorizontal = 2,
+		vicArrangeCascade = 3
+	} ArrangeStyle;
+
+	typedef [uuid(8011c0e9-7e36-11d1-bc5a-0060089608a4), helpstring("Specifies which Viewports to regen.")] enum WhichViewport
+	{
+		vicActiveViewport,
+		vicAllViewports
+	} WhichViewport;
+
+	typedef [uuid(8011c0ea-7e36-11d1-bc5a-0060089608a4), helpstring("Polygon mesh types")] enum PolygonMeshType
+	{
+		vicSimpleMesh = 0,
+		vicQuadSurfaceMesh = 5,
+		vicCubicSurfaceMesh = 6,
+		vicBezierSurfaceMesh = 8
+	} PolygonMeshType;
+
+	typedef [uuid(8011c0eb-7e36-11d1-bc5a-0060089608a4), helpstring("DWG File format versions.")] enum FileVersions
+	{
+		vicVersionR2_5	= 0,
+		vicVersionR2_6	= 1,
+		vicVersionR9	= 2,
+		vicVersionR10	= 3,
+		vicVersionR11_12 = 4,
+		vicVersionR13	= 5,
+		vicVersionR14	= 6,
+		vicVersionR2000 = 7
+	} FileVersions;
+
+	typedef [uuid(8011c0ec-7e36-11d1-bc5a-0060089608a4), helpstring("Horizontal Window scroll flags")] enum ScrollFlagsX
+	{
+		vicScrollNoneX = 9,
+		vicScrollLeft = 0,
+		vicScrollLeftPage = 2,
+		vicScrollRight = 1,
+		vicScrollRightPage = 3,
+		vicScrollToLeft = 6,
+		vicScrollToRight = 7
+	} ScrollFlagsX;
+
+	typedef [uuid(8011c0ed-7e36-11d1-bc5a-0060089608a4), helpstring("Vertical Window scroll flags")] enum ScrollFlagsY
+	{
+		vicScrollNoneY = 9,
+		vicScrollUp = 0,
+		vicScrollUpPage = 2,
+		vicScrollDown = 1,
+		vicScrollDownPage = 3,
+		vicScrollToTop = 6,
+		vicScrollToBottom = 7
+	} ScrollFlagsY;
+
+
+	typedef [uuid(8011c0ee-7e36-11d1-bc5a-0060089608a4), helpstring("Window State flags")] enum WindowState
+	{
+		vicWSNone = 0,
+		vicWSDockedLeft = 1,
+		vicWSDockedTop = 2,
+		vicWSDockedRight = 4,
+		vicWSDockedBottom = 8,
+		vicWSFloating = 16,
+		vicWSAnchorLeft = 32,
+		vicWSAnchorTop = 64,
+		vicWSAnchorRight = 128,
+		vicWSAnchorBottom = 256,
+		vicWSAnchorAutoHide = 512,
+		vicWSVisible = 134217728,
+		vicWSRestored = 268435456,
+		vicWSMinimized = 536870912,
+		vicWSMaximized = 1073741824
+	} WindowState;
+
+
+	typedef [uuid(8011c0ef-7e36-11d1-bc5a-0060089608a5), helpstring("Text Font style")] enum TextFontStyle
+	{
+		vicFontRegular,
+		vicFontItalic,
+		vicFontBold,
+		vicFontBoldItalic
+	} TextFontStyle;
+
+
+	typedef [uuid(8011c0d0-7e36-11d1-bc5a-0060089608a5), helpstring("Dimension Text Movement")] enum DimTextMovement
+	{
+		vicDimLineWithText,
+		vicMoveTextAddLeader,
+		vicMoveTextNoLeader
+	} DimTextMovement;
+
+	typedef [uuid(8011c0d1-7e36-11d1-bc5a-0060089608a5), helpstring("Dimension Tolerance Display Method")] enum DimToleranceMethod
+	{
+		vicTolNone,
+		vicTolSymmetrical,
+		vicTolDeviation,
+		vicTolLimits,
+		vicTolBasic
+	} DimToleranceMethod;
+
+
+	typedef [uuid(8011c0d2-7e36-11d1-bc5a-0060089608a5), helpstring("Dimension Tolerance Justification types")] enum DimToleranceJustify
+	{
+		vicTolTop,
+		vicTolMiddle,
+		vicTolBottom
+	} DimToleranceJustify;
+
+
+	typedef [uuid(8011c0d3-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Precision")] enum DimPrecision
+	{
+		vicDimPrecisionZero,
+		vicDimPrecisionOne,
+		vicDimPrecisionTwo,
+		vicDimPrecisionThree,
+		vicDimPrecisionFour,
+		vicDimPrecisionFive,
+		vicDimPrecisionSix,
+		vicDimPrecisionSeven,
+		vicDimPrecisionEight
+	} DimPrecision;
+
+	typedef [uuid(8011c0d4-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Units")] enum DimLUnits
+	{
+		vicDimLScientific,
+		vicDimLDecimal,
+		vicDimLEngineering,
+		vicDimLArchitectural,
+		vicDimLFractional,
+		vicDimLWindowsDesktop
+	} DimLUnits;
+
+	typedef [uuid(8011c0d5-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Vertical Justification")] enum DimVerticalJustification
+	{
+		vicVertCentered,
+		vicAbove,
+		vicOutside,
+		vicJIS
+	} DimVerticalJustification;
+
+	typedef [uuid(8011c0d6-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Horizontal Justification")] enum DimHorizontalJustification
+	{
+		vicHorzCentered,
+		vicFirstExtensionLine,
+		vicSecondExtensionLine,
+		vicOverFirstExtension,
+		vicOverSecondExtension
+	} DimHorizontalJustification;
+
+	typedef [uuid(8011c0d7-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Arrowhead Type")] enum DimArrowheadType
+	{
+		vicArrowDefault,
+		vicArrowDot,
+		vicArrowDotSmall,
+		vicArrowDotBlank,
+		vicArrowOrigin,
+		vicArrowOrigin2,
+		vicArrowOpen,
+		vicArrowOpen90,
+		vicArrowOpen30,
+		vicArrowClosed,
+		vicArrowSmall,
+		vicArrowNone,
+		vicArrowOblique,
+		vicArrowBoxFilled,
+		vicArrowBoxBlank,
+		vicArrowClosedBlank,
+		vicArrowDatumFilled,
+		vicArrowDatumBlank,
+		vicArrowIntegral,
+		vicArrowArchTick,
+		vicArrowUserDefined
+	} DimArrowheadType;
+
+
+	typedef [uuid(8011c0d8-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Fit methods")] enum DimFit
+	{
+		vicTextAndArrows,
+		vicArrowsOnly,
+		vicTextOnly,
+		vicBestFit
+	} DimFit;
+
+	typedef [uuid(8011c0d9-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Fraction Types")] enum DimFractionType
+	{
+		vicHorizontal,
+		vicDiagonal,
+		vicNotStacked
+	} DimFractionType;
+
+	typedef [uuid(8011c0da-7e36-11d1-bc5a-0060089608a4), helpstring("Dimension Center Type")] enum DimCenterType
+	{
+		vicCenterMark,
+		vicCenterLine,
+		vicCenterNone
+	} DimCenterType;
+
+	typedef [uuid(8011c0dd-7e36-11d1-bc5a-0060089608a4), helpstring("Viewport Split Type")] enum ViewportSplitType
+	{
+		vicViewport2Horizontal,
+		vicViewport2Vertical,
+		vicViewport3Left,
+		vicViewport3Right,
+		vicViewport3Horizontal,
+		vicViewport3Vertical,
+		vicViewport3Above,
+		vicViewport3Below,
+		vicViewport4
+	} ViewportSplitType;
+
+	typedef [uuid(8011c0de-7e36-11d1-bc5a-0060089608a4), helpstring("User Input Type")] enum UserInputType
+	{
+		[ helpstring("Do not allow null input (user not allowed to press Enter).") ] vicNoNull = 1,
+		[ helpstring("Do not allow zero values.") ] vicNoZero =	2,
+		[ helpstring("Do not allow negative values.") ] vicNoNegative = 4,
+		[ helpstring("Do not check drawing limits, regardless of  LIMCHECK setting.") ] vicNoLimitsCheck = 8,
+		[ helpstring("Use dashed lines when drawing rubber band lines and boxes.") ] vicUseDashedLines = 32,
+		[ helpstring("For getdist only: do not allow input of a z-coordinate.") ] vicNoZ = 64,
+		[ helpstring("Ignore above settings, allow any input.") ] vicNoRestrictions = 128
+	} UserInputType;

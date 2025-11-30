@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+Date:		06-02-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78445
+Affected files:			
+		Source/prj/lib/DRW/dwgload.cpp 
+Description:	Crash on Print command. Actually whenever IntelliCAD? searched for ACAD_LAYOUT in 
+	   	dictionary for old drawing like IntelliCAD? 98 dwg where there were no database entries for layyout,
+	                	IntelliCAD? crashed. Now when old drawing are loaded ACAD2k objects are added to prevent the crash. Here 
+		only the last parameter for adloadfilex() is changed fom 0 to 1.    
+Comments:	TaL78445
+
+Problem analysis:	IntelliCAD would crash on Print, new layout or switching to tile / paperspace. Actaully the crash was 
+		after failing for serach of ACAD_LAYOUT. Old IntelliCAD drawing likes IntelliCAD 98 drawings did not have layout 		database when loaded and hece when searched did not find any and would return a NULL pointer crashing IntelliCAD.
+
+Proposed Solution:	When such old drawings without layout entries were loaded data necessary for them should be automatically added. While loading of file we have the option of adding ACAD 2K database objects into the drawig file. We can use this option to solve the problem.
+
+File By File :
+	*	Source/prj/lib/DRW/dwgload.cpp 
+		Just changed the last parameter for 0 to 1. Thus now ACAD 2k objects will be added to the drawing.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

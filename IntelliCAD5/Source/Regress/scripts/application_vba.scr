@@ -1,0 +1,10 @@
+logfilename log\application_vba.log
+logfileon
+open
+dwg/application.dwg
+-vbarun
+Module1.Main
+dxfout output_dxf\application_vba.scr
+6
+quit
+y

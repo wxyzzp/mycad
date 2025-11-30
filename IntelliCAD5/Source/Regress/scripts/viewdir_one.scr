@@ -1,0 +1,59 @@
+logfilename log\viewdir_one.log
+logfileon
+;_______________
+color
+red
+;_______________
+cone
+3,3
+5
+7
+;________________
+vpoint
+0,1,0
+(getvar "viewdir")
+(if (/= (getvar "viewdir") 0,  1,  0) (alert "error"))
+vpoint
+0,0,1
+(getvar "viewdir")
+(if (/= (getvar "viewdir") 0,  0,  1) (alert "error"))
+vpoint
+1,0,0
+(getvar "viewdir")
+(if (/= (getvar "viewdir") 1,  0,  0) (alert "error"))
+vpoint
+1,1,1
+;____________________
+vpoint
+rotate
+30
+30
+;____________________
+vpoint
+perspective
+on
+front
+on
+45
+off
+off
+;____________________
+vpoint
+plan
+world
+;____________________
+ucs
+save
+icad
+;_____________________
+vpoint
+plan
+ucs
+icad
+;____________________
+(if (/= (getvar "lenslength") 50) (alert "error"))
+;____________________
+dxfout output_dxf\viewdir_one.dxf
+6
+quit
+y

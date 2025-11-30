@@ -1,0 +1,39 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-Writer-27.txt
+Produce Version		ICAD 4
+Date:				04/08/2004 08:20am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added code to round trip wipeout entities.
+Note this is a partial fix. DWG is fine.
+However, exporting to DXF doesn't not display the
+wipeout boundary. The wipeout exists and is correct
+in every other way. This is related to my ability
+to get the binary data associated with the wipeout.
+I have been working with the ODT folks to get this 
+resolved.
+
+Notes to Developers:
+
+Notes to QA:
+I would hold off testing wipeout export to DXF until
+I can get my issue addressed by the ODT guys.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\make\db.dsp
+\source\prj\lib\db\entities.h
+\source\prj\lib\db\wipeout.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+

@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------------
+Date:		21-10-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78341
+Affected files:			
+		Source/prj/lib/CMDS/text.cpp
+Description:	For format code \W, mtext created for values -1 to 0 are invalid.
+		Simliar problems for \H-2x are also fixed.	
+Comments:	TaL78341
+File_by_File :
+
+	*	Source/prj/lib/GR/mtextgen.cpp
+		1. We have modified the function getvalue() to return value correctly in 				case of format code like '\H-2.4;'. Previously negative sign was not taken into
+		consideration hence the output was not proper. As getvalue() is common fuction 		called for most of format codes.This problem was there for most of format codes.
+-------------------------------------------------------------------------------

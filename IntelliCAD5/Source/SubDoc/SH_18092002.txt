@@ -1,0 +1,61 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	SH_18092002.txt
+Date:		18-09-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission integrate the imagemenu code with IntelliCAD.
+
+Comments:	The imagemenu was implemented as a SDS add-on application, which needed
+                to be manually loaded into IntelliCAD by using (xload "imagemenu") every 
+                time when a new section is started. This submission moves this functionality
+                into IntelliCAD. A flag BUILD_WITH_IMAGEMENU_SUPPORT is added to 
+                configure.h so a member who doesn't want to built it, has the choice to 
+                not build it. This submission also fixed bugs in origianl code.
+
+Usage:          See imagemenu.txt.
+
+New files:	
+		CvsHist:Source/Prj/Lib/Imagemenu/image.dcl
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.aps
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.cpp
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.def
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.h
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.rc
+		CvsHist:Source/Prj/Lib/Imagemenu/imagemenu.txt
+		CvsHist:Source/Prj/Lib/Imagemenu/menuitem.cpp
+		CvsHist:Source/Prj/Lib/Imagemenu/menuitem.h
+		CvsHist:Source/Prj/Lib/Imagemenu/menupage.cpp
+		CvsHist:Source/Prj/Lib/Imagemenu/menupage.h
+		CvsHist:Source/Prj/Lib/Imagemenu/menuread.cpp
+		CvsHist:Source/Prj/Lib/Imagemenu/menuread.h		
+		CvsHist:Source/Prj/Lib/Imagemenu/StdAfx.cpp
+		CvsHist:Source/Prj/Lib/Imagemenu/StdAfx.h
+		
+		CvsHist:Source/Prj/make/imagemenu.dsp
+		CvsHist:Source/Prj/make/imagemenu.dsw
+		CvsHist:Source/Prj/make/imagemenu.ncb
+		CvsHist:Source/Prj/make/imagemenu.opt
+		CvsHist:Source/Prj/make/imagemenu.plg
+			
+
+Changed files:	
+		CvsHist:Source/Prj/make/icad.dsp
+		CvsHist:Source/Prj/make/icad.dsw:         Added imagemenu project and import library.
+		
+		CvsHist:Source/Prj/iacd/Configure.h:      Defined BUILD_WITH_IMAGEMENU_SUPPORT 
+		CvsHist:Source/Prj/make/icadapi.cpp:      Added "imagemenu" command
+
+Deleted files:	
+		
+		CvsHist:Source/ThirdParty/imagemenu:      Deleted this fold(every thing under this folder).
+		
+
+--------------------------------------------------------------------------------

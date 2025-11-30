@@ -1,0 +1,31 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_08122002.txt
+Date:		08-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description: This submission fixes bug# 78393.
+             
+
+Comments:    BUG #78393: ICAD crashes on doing the mirror operation in the 
+                         attached operation.
+
+             RESOLUTION: The mirror command crashes when it tries to access 
+                         annotation data of leaders that don't have annotation.
+             		 This problem is fixed.
+                
+Changed files:	
+
+
+     Source/Prj/Lib/CMDS/cmds9.cpp:     Modified cmd_mirrorss().
+             
+
+--------------------------------------------------------------------------------

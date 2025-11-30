@@ -1,0 +1,35 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-28.txt
+Produce Version		ICAD 4
+Date:				04/08/2004 07:24am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added support for round tripping Tolerances.
+
+Note that if the dimstyle has say arial as its text style,
+IntelliCAD shows ???? in place of the text. This is an 
+IntelliCAD problem (I believe with resolving in-line font changes),
+that is the same with or without DWGdirect active.
+
+Notes to Developers:
+
+Notes to QA:
+With the exception of proxies, and wipeout entities, this completes
+the entity list (I believe). If you find any entities that we don't
+round trip please let me know ASAP.
+
+I say entities as opposed to objects!!! There are still several objects
+yet to be supported. I.e spatial Indexes, layer Indexes, some types of
+dictionary entities, VBA projects etc. 
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h

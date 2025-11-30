@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78181_1.txt
+Date:		10-06-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78181
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/DimMakeDim.cpp
+Description:	"Dimcontinue/Dimbase" commands create Radial/Diameter dimension 
+		instead of Linear.
+Comments:	TaL78181
+File by File:  
+		* Source/prj/lib/CMDS/DimMakeDim.cpp                          
+		The "lastdimpts" were being saved even when a radial or diameter dimension 
+		was being created. Continuous dim only possible for linear,angular and 								ordinate dim. Now "lastdimpts" are not saved when a radial or diameter 
+		dimension is being created.
+--------------------------------------------------------------------------------

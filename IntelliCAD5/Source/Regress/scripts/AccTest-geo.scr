@@ -1,0 +1,141 @@
+;=====================================================================
+;;$Workfile: AccTest-geo.scr $
+; Lisp Geometric Tests.
+logfilename log\AccTest-geo.log
+logfileon
+; Copyright (C) 1998 Visio Corporation. All rights reserved.
+;
+;
+; ABSTRACT
+;	This routine tests the geometric functions.
+;
+;	VERIFICATION:  Compare the LispAccTest.log created by this run
+;	with \\audrey\qa\automate\API Testing\Lisp\Geometric\LispAccTest_acad.log.
+;    
+;
+; RELATED FILES
+;	//audrey/qa/automate/api testing/lisp/Geometric/*
+;	//audrey/qa/automate/api testing/lisp/doslib14.arx & .dll
+;	//audrey/qa/automate/api testing/lisp/acctest.lsp
+;	//audrey/qa/automate/api testing/lisp/common.lsp
+;	//audrey/qa/automate/api testing/lisp/error.lsp
+;
+;=====================================================================
+; REVISION HISTORY
+;
+;;$Log: AccTest-geo.scr,v $
+;;Revision 1.1  2002/04/21 11:11:07  vittals
+;;no message
+;;
+; 
+;
+;=====================================================================
+;;;
+;;; ----------------------------------------------------------------------
+;;; prepare for the test.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "Before load")
+(setq logfilnam "Geometric")
+(load "Lisp/acctest")
+(setq errloc "Before init")
+(init)
+(setq errloc "Before header info")
+(logmsg (strcat "Lisp acceptance test run at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+;;;
+;;; ----------------------------------------------------------------------
+;;; run the tests.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "Begin tests")
+(logmsg "\nStarting tests...")
+;;;
+;;; -----------------------------------------------
+;;; angle.
+(logmsg "\n--- angle ---")
+(setq errloc "angle load")
+(load (strcat testscrdir logfilnam "/geo-angle"))
+(setq errloc "zero")
+(zero)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "acadhlp2")
+(acadhlp2)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; distance.
+(logmsg "\n--- distance ---")
+(setq errloc "distance load")
+(load (strcat testscrdir logfilnam "/geo-distance"))
+(setq errloc "zero")
+(zero)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "acadhlp2")
+(acadhlp2)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; inters.
+(logmsg "\n--- inters ---")
+(setq errloc "inters load")
+(load (strcat testscrdir logfilnam "/geo-inters"))
+(setq errloc "zero")
+(zero)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "icadhlp3")
+(icadhlp3)
+(setq errloc "icadhlp4")
+(icadhlp4)
+(setq errloc "icadhlp5")
+(icadhlp5)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "acadhlp2")
+(acadhlp2)
+(setq errloc "acadhlp3")
+(acadhlp3)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; polar.
+(logmsg "\n--- polar ---")
+(setq errloc "polar load")
+(load (strcat testscrdir logfilnam "/geo-polar"))
+(setq errloc "zero")
+(zero)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; ----------------------------------------------------------------------
+;;; clean up.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "End tests")
+(logmsg (strcat "Lisp acceptance test completed at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+(setq errloc "Before deinit")
+(deinit)
+(setq errloc "After deinit")
+(princ)
+dxfout output_dxf\AccTest-geo.dxf
+6
+quit _y

@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+File:		CYB_78105_1.txt
+Date:		01-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78105
+Affected files:			
+		Source/prj/lib/CMDS/DimAng.cpp
+		Source/prj/lib/CMDS/DimContinue.cpp
+		Source/prj/lib/CMDS/DimOrdinate.cpp
+Description: 	Angular dimension text not update during grip edit. Similar problem for 				dimordinate and dimcontinue/baseline dimension.
+Comments:	TaL78105
+File by File:
+	*	Source/prj/lib/CMDS/DimAng.cpp
+		In buildlist of dimension we have used dimtxt variable. The problem here is that 			dimtxt variable have the default value of dimension text. Now when 					the user press enter while DDIM > angular for text prompt, this plink->text is 				not updated hence the varaible DIMTXT. So dimtxt value is considered as if 		entered by user and stored in dxf 1 of entity and not updated when the user drags 		the dimension. There was no such problem for dimlinear dimension. The code here 		does not check for ( *fs1 ) after user enters the value.
+	*	Source/prj/lib/CMDS/DimContinue.cpp
+		Similar problem as mentioned above. Our aim here is to copy whatever entered by 			user to dimtxt and hence in plink->text. If user press enter ie blank string no 			problem.. copy it to dimtxt and hence to plink->text. 
+	*	Source/prj/lib/CMDS/DimOrdinate.cpp
+		Similar fix for problem mentioned above in this file also. 
+		
+--------------------------------------------------------------------------------
+
+				

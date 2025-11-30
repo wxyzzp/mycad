@@ -1,0 +1,20 @@
+logfilename log\78168_style.log
+logfileon
+;_________
+-style
+       st yle1    
+txt.shx
+.2
+1
+0
+
+
+
+;________
+(tblnext "STYLE" T)
+(if (/= (cdr (assoc 2 (tblnext "STYLE"))) "ST YLE1") (alert "style err") (princ "OK"))
+;__________
+dxfout output_dxf\78168_style.dxf
+6
+quit
+y

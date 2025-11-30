@@ -1,0 +1,62 @@
+*** IntelliCAD 2000 Notes: see below ***
+
+===============
+USING IMAGEMENU
+===============
+
+Imagemenu is an SDS add-on that performs the functionality of the ***IMAGE section of an IntelliCAD menu file.
+
+
+TO USE IMAGEMENU:
+
+1. Save the files Imagemenu.dll and Image.dcl in a directory that is in an IntelliCAD search path (menu search path). (Type OPTIONS on the command line to view, add, or remove search paths.)
+
+2. Use the "imagemenu" function to open the IMAGE window. In the menu file, replace
+
+   $I=IMAGEMENUSECTION $I=*
+
+   with
+
+   (imagemenu "menufile" "starting image section")
+
+where menufile is the name of the file and starting image section is the name of the section you want to define as the first section.
+
+Imagemenu reads and performs the commands in the menu file, including jumps to new IMAGE sections.  
+
+NOTE: Icon (slide) images do not highlight when you select them.  This is a known issue at this time. However, you can double-click an image to perform its associated action.  Menu  should not contain blank empty lines between menu items.
+
+--Copyright Visio Corporation, August 1998
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED
+WARRANTY.  ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR
+PURPOSE AND OF MERCHANTABILITY ARE HEREBY DISCLAIMED.
+
+If you have any questions, comments, problems regarding imagemenu, please write to:
+
+David Gates
+icaddev@visio.com
+520 Pike St.
+Suite 1800
+Seattle, WA 98101
+
+
+
+Version 1.012
+Search for ***IMAGE is now case insensitive
+If slide description is missing, the slide name is provided in the list
+  [somelib(slide,slide description)] - with description
+  [somelib(slide)] - without description
+Added several error message to help with implementation
+
+
+Version 2.011
+Adjusted source to compile on IntelliCAD 2000:
+Note: the 'color = graphics_background' attribute is currently broken in DCL. As a workaround I coded a fixed color in the DCL file. You may want to change this depending on the backgroundcolor.
+
+To change this background color on the tiles change the
+color = 0;
+lines to
+color = 7;
+(0 = black, 7 = white).
+
+Bart Vankeirsbilck
+bart.vankeirsbilck@bricsnet.com

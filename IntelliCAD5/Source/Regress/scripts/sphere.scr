@@ -1,0 +1,11 @@
+logfilename log\sphere.log
+logfileon
+;**** MAKES A SPHERE AND A SLIDE OF THE SPHERE *****
+sphere
+5,5
+5
+mslide
+output\sphere
+dxfout output_dxf\sphere.dxf
+6
+quit _y

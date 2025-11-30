@@ -1,0 +1,8 @@
+rectang 1,-0.5 2,0.5
+circle 1.5,0 .5
+array all  r 1 10 1.5
+array all  p 0,0 360  y
+zoom e
+dxfout output_dxf\test_array.dxf
+6
+quit _y

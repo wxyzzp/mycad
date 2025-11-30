@@ -1,0 +1,33 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_31072002_1.txt
+Date:		31-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/ICAD/icadwndaction.cpp
+
+Deleted files:	
+		None
+
+Description:	Fixed crash in sds_menucmd() call.
+Comments:	The string passed in a sds_menucmd() call can be on the local stack. IcadMenu::DoMenuRef() was
+		modifying this string which causes a crash. Fixed this by creating a local copy of the string which
+		can be safely modified. The fix is made to the calling function CMainWindow::IcadWndAction
+
+
+File by File:	
+		Source/prj/ICAD/icadwndaction.cpp				Rev 1.22
+			In  CMainWindow::IcadWndAction, make a local copy of SDS_MenuCmdStr (by allocating memory and doing a copy)
+			and pass this to IcadMenu::DoMenuRef().
+
+-----------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+logfilename log\78287.log
+logfileon
+;_________
+vport
+save
+*active
+;_________
+vport
+del
+*active
+;__________
+vport
+2
+vertical
+;___________
+vport
+3
+hori
+;___________
+dxfout output_dxf\78287.dxf
+6
+quit
+y

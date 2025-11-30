@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Date:           19-6-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech
+Reference:      BugZilla:78208
+Affected files: CvsHist:Source/prj/ICAD/icadapi.cpp
+                  CvsHist:Source/prj/lib/DB/handitem.cpp
+                  CvsHist:Source/prj/lib/DB/handitem.h
+                  CvsHist:Source/prj/lib/DB/viewport.cpp
+                  CvsHist:Source/prj/lib/DB/viewport.h
+                  CvsHist:Source/prj/lib/DB/vxtabrec.h
+                  CvsHist:Source/prj/lib/ICADLIB/Resval.cpp
+Description:    Support floating Viewport frozen layers(DXF=341, multiple).
+                  Fixed result buffer data type(DXF=110..112).
+Comments:       SearchFor:TaL78208
+-------------------------------------------------------------------------------

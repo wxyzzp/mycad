@@ -1,0 +1,34 @@
+;_Created_by_Cybage_on_11/11/2002_
+logfilename log\3d_fillet.log
+logfileon
+;__________
+box
+0,0,0
+4,4,4
+;__________
+zoom
+window
+-1,-1
+5,5
+;__________
+_SELGRIPS;_ALL;;
+4.0000,4.0000,4.0000
+4.0000,4.0000,4.0000
+;__________
+vpoint
+1,1,1
+;__________
+fillet
+0,1,0
+
+1,0,0
+chain
+1,4,0
+4,1,0
+
+regen
+;__________
+dxfout output_dxf\3d_fillet.dxf
+6
+quit
+y

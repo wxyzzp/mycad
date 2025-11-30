@@ -1,0 +1,7 @@
+logfilename log\inters.log
+logfileon
+(load "Lisp\inters.lsp")
+(C:main)  
+dxfout output_dxf\inters.dxf
+6
+quit _y

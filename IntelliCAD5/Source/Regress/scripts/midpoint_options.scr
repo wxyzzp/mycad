@@ -1,0 +1,16 @@
+logfilename log\midpoint_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+midpoint
+(if (/= (getvar "osmode") 2) (alert "midpoint did not work!"))
+;__________
+midpoint
+(if (/= (getvar "osmode") 0) (alert "midpoint did not work!"))
+;__________
+dxfout output_dxf\midpoint_options.dxf
+6
+quit
+y

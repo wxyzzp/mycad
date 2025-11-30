@@ -1,0 +1,68 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4242002_2.txt
+Date:		24-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:
+Affected files: 
+Description:
+Comments:
+	Automation Enhancement about SHAPE object.
+
+	Shape Object
+			IntelliCAD SHAPE Entity.
+		Object Specific Methods
+			None
+		Common Object Methods
+			Same as other Entity Object.
+			(ex. Copy, Rotate, Update ...)
+		Object Specific Properties
+			InsertionPoint As Point
+				SHAPE Insertion Point (DXF=10)
+			Name As String
+				SHAPE name (DXF=3)
+			Normal As Vector
+				Extrusion Direction vector (DXF=210)
+			Rotation As Double
+				Rotation angle (DXF=50)
+			Height As Double
+				SHAPE height (DXF=40)
+			ScaleFactor As Double
+				SHAPE Width factor (DXF=41)
+			ObliqueAngle As Double
+				SHAPE Oblique angle (DXF=51)
+			Thickness As Double
+				SHAPE Thickness (DXF=39)
+		Common Object Properties
+			Same as other Entity Object.
+			(ex. Layer, Color, Visible ...)
+
+	TextStyle Object New Property
+		Shape As Boolean
+			True: This is STYLE for SHAPE.
+			False: This is STYLE for TEXT.
+			(DXF=70, bit0)
+
+	Document Object New Method
+		Sub LoadShapeFile( Filename As String )
+			Load shape file to use SHAPE object.
+			Filename can set with/without path.
+
+	ModelSpace, PaperSpace, BlockRecord Object New Method
+		Function AddShape( Name As String, InsertionPoint As Point, 
+			Height As Double, Rotation As Rotation) As Shape
+			Adds a Shape entity with given height and rotation
+			Height and Rotation are optional arguments.
+
+	Automation Enhancement about GetLispVariable/SetLispVariable.
+		Automation		Lisp
+		-------------------------
+		VARIANT_TRUE	RTT
+		VARIANT_FALSE	RTNIL
+

@@ -1,0 +1,592 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78548_1.txt	
+Product Version:	ICAD 4
+Date:			05/01/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/cmds/save.cpp
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78548: Saved drawing cannot be saved after 
+xref > attach.
+
+
+Problem Analysis:
+-----------------
+
+If the xref > attach operation is performed on a saved drawing, the drawing 
+cannot be saved by ICAD.
+Following are the steps that are given in Bugzilla to produce this bug.
+ 1. Start new drawing.
+ 2. Create some entities and save dwg as drawing1.dwg.
+ 3. Close drawing1.dwg
+ 4. Start a new drawing
+ 5. Save the drawing as drawing2.dwg
+ 6. Attach the drawing1.dwg to drawing2
+    >xref
+    >a
+    >drawing1.dwg
+    >accept default values
+ 7. Quick save the drawing2.dwg.
+    >qsave
+
+Expected results:
+The drawing is saved correctly.
+
+Actual results:
+ICAD shows 'Failed to save document' messagebox.
+
+Further to this there is a script in Bugzilla as an attachment for the bug 
+report, that produces the bug.
+
+Well after going through the steps, I could not reproduce this bug. But 
+after running the script, I observed that the bug is present. The main 
+point in the script is that the environment variable FILEDIA is set to 0. 
+Only if FILEDIA = 0, then this bug is produced.
+After close examination, I also came to the conclusion that XREF has nothing 
+to do with this bug. 
+
+The bug is also produced if one follows the steps as outlined below:
+1. Start New drawing in ICAD.
+2. Set FileDia = OFF.
+3. Save the drawing. (give Command "save" at the prompt).
+4. Give the filename to save (for eg: Drawing1).
+5. Now Quick save it (Press Save Button on toolbar OR type "qsave" at prompt).
+
+The Message Box 'Failed to save document' appears.
+Note that every time you give "qsave" at the command prompt after this, the 
+messagebox will appear. But once you close this drawing, and reopen it, this 
+error (MessageBox) won't appear.
+
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+The MessageBox is shown during the saving of the ".vbi" file, in the File: Source\Prj\Icad|IcadDoc.cpp, in the function CIcadDoc::OnSaveDocument(LPCTSTR lpszPathName) as shown below: 
+
+File: Source\Prj\Icad|IcadDoc.cpp
+
+BOOL CIcadDoc::OnSaveDocument(LPCTSTR lpszPathName)
+{
+    BOOL bRet=FALSE;
+
+    ...
+    ...
+    ...
+
+    if (g_Vba6Installed)
+    {
+           if (!SDS_AutoSave) //save the VBA project only if we are not in AutoSave....
+           {
+                if (ApcProject)
+                {
+                     BOOL bSameAsLoad = FALSE;
+                     bSameAsLoad = AfxComparePath(m_strPathName, fname);
+
+                     //if file has never been saved || saving to a new file
+                     if (strName.IsEmpty() || !bSameAsLoad)
+                          strName = fname;
+
+                     if((vbaName = new char[strName.GetLength()+1])==NULL) goto out;
+                     strcpy(vbaName, strName);
+                     ic_setext(vbaName,"vbi"/*DNT*/);
+
+                     //this is an MFC hack.  We use MFC to save the VBI file, but not the DWG file.  The DWG file is
+                     //saved in this function using drw_savefile.  To save the VBI file, MFC needs to know if it is saving
+                     //to the same file (m_bSameAsLoad).  It does this by comparing the string m_strPathName with the file
+                     //name passed in (vbaName).  Since the m_strPathName is set to the .dwg extension, we temporarily
+                     //change it to have the VBI extension.  This way MFC can determine ig the VBI file has been saved.
+                     CString oldName;
+                     if (m_bVbaProjectSaved || bSameAsLoad)
+                     {
+                          oldName = GetPathName();
+                          // A.G.
+                          // This hack is to enable saving VBI file if it's not existed.
+                          // We suppose there's no file named as _vbiIcadDummy.vbi and
+                          // use this dummy name
+                          CFileFind finder;
+                          if( finder.FindFile( vbaName ) )
+                               SetPathName (vbaName,FALSE);
+                          else
+                               SetPathName( "_vbiIcadDummy.vbi", FALSE );
+                     }
+
+                    //VARIANT_BOOL IsDirty;     /*D.G.*/
+                    //ApcProject->APC_GET(Dirty)(&IsDirty);  // Save vbi-file only
+                    //if(IsDirty == VARIANT_TRUE)     // if we've made something in VB.
+     
+                     //Store oleclient items and remove from oledoc. They are messing up with VBI
+                     //Bugzilla No 78255 05-08-2002 [
+                     CObList * pObList = NULL ;
+                     StoreOleClientItem( pObList );
+                     
+                     CApcDocument<CIcadDoc,COleServerDoc>::OnSaveDocument(vbaName);   // <<<<===== After the execution of this statement
+                     
+                     //Restore oleclient items back to oledoc
+                     ReStoreOleClientItem( pObList );
+                     //Bugzilla No 78255 05-08-2002 ]
+        ...
+        ...
+        ...
+        ...
+        ...
+        ...
+        ...
+
+}
+
+
+This is because when FILEDIA = 0, vbaName passed above to 
+"CApcDocument::OnSaveDocument" is not a fully qualified name. 
+"CApcDocument::OnSaveDocument" after making a hierarchy of function calls 
+upwards, eventually calls the following function:
+        BOOL COleDocument::OnSaveDocument(LPCTSTR lpszPathName) in MFC code, 
+and COleDocument::OnSaveDocument requires that "lpszPathName" must be fully 
+qualified.
+
+When FILEDIA = 1, vbaName always contains the fully qualified name, because 
+the Drawing file to be saved as contains the fully qualified name when making 
+its exit out of the Save As Dialog Box. Therefore "lpszPathName" passed to 
+CIcadDoc::OnSaveDocument(LPCTSTR lpszPathName) contains the fully qualified 
+name, and hence the vbaName contains the fully qualified name.
+But when FILEDIA = 0, the vbaName does not always contain the fully qualified 
+name, because generally the user just types in the filename only to be saved 
+when he wants to save in the current directory. Therefore the Message Box is 
+shown. If the user types in the fully qualified name of the file to be saved, 
+this message Box does not appear.
+
+Thus the solution is to ensure that there is always a fully qualified name even 
+if the user does not enter one. I have made the modifications in 
+"Source\prj\lib\CMDS\Save.cpp" in "cmd_SaveAs" function as follows: 
+(Modifications are within Bugzilla Comments) 
+
+File: "Source\prj\lib\CMDS\Save.cpp"
+------------------------------------
+long cmd_SaveAs(dwg_filelink* pCurDwg, char* fname, int nStrLen,int exportmode)
+{
+         char fs1[IC_ACADBUF],fs2[IC_ACADBUF];
+        ...
+        ...
+        ...
+        ...
+        ...
+
+          ChangeSlashToBackslashAndRemovePipe(fname);
+
+          // Bugzilla::78548 : Date : 26-12-2003.
+          //----------------------------------------
+          // It may happen that when filedia = 0, "fname" may not be fully qualified.
+          // If "fname" does not contain the path, give the path-name of the current 
+          // directory.
+ 
+          if (filedia == 0)
+          {
+               char* pDestination = strrchr(fname,'\\'/*DNT*/);
+               int nPos = pDestination - fname + 1;
+               if (nPos <= 0)
+               {
+                    // Get Current Directory in which this Drawing File is to be stored
+                    char strCurrentPathName[IC_PATHSIZE + IC_FILESIZE];
+                    ::GetCurrentDirectory(IC_PATHSIZE + IC_FILESIZE, strCurrentPathName);
+                    strcat(strCurrentPathName, "\\"/*DNT*/);
+                    strcat(strCurrentPathName, fname);
+                    strncpy(fname, strCurrentPathName, nStrLen);
+               }
+          }
+          //----------------------------------------
+          // Bugzilla::78548 : Date : 26-12-2003.
+
+#ifdef BUILD_WITH_VBA
+
+		if (filedia == 0 && expert < 2) // Do not prompt the user if expert is set to 2 or greater.
+		{
+			char strFileNameWithVbiExt[IC_PATHSIZE + IC_FILESIZE];
+			strcpy(strFileNameWithVbiExt, fname);
+			ic_setext(strFileNameWithVbiExt, ".vbi"/*DNT*/);
+
+			// Bugzilla::78548 : Date : 26-12-2003.
+			//----------------------------------------
+			// Check if the VBI file-name contains a BackSlash Character
+			/*!!! NOT Needed now 
+			char* pDestination = strrchr(strFileNameWithVbiExt,'\\'/*DNT* /);
+			if (pDestination == NULL)
+			{
+				// Get Current Directory in which this VBI File is to be stored
+				char strCurrentPathName[IC_PATHSIZE + IC_FILESIZE];
+				::GetCurrentDirectory(IC_PATHSIZE + IC_FILESIZE, strCurrentPathName);
+				strcat(strCurrentPathName, "\\"/*DNT* /);
+				strcat(strCurrentPathName, strFileNameWithVbiExt);
+				strncpy(strFileNameWithVbiExt, strCurrentPathName, IC_PATHSIZE + IC_FILESIZE);
+			}
+			//!!!*/
+			//----------------------------------------
+			// Bugzilla::78548 : Date : 26-12-2003.
+
+			// Check if the VBI File exists in the specified location.
+			if (!access(strFileNameWithVbiExt, 0))
+			{
+				char strMessage[IC_ACADBUF];
+						
+				sprintf (strMessage, 
+						 ResourceString(IDC_SDS_GET__VBI_FILE_EXISTS__CMDLINE, "A file with the name <%s> already exists. Overwrite this File? <N>: "/*DNT*/),
+						 strFileNameWithVbiExt
+						);
+
+				sds_initget(RSG_OTHER , ResourceString(IDC_SDS_GET__VBI_FILE_OVERWRITE, "Yes No ~_Yes ~_No"));
+				if ((ret=sds_getkword(strMessage, fs1))==RTERROR)
+				{
+					rc=(-__LINE__); 
+					goto bail;
+				}
+				else if (ret==RTCAN) 
+				{
+					rc=(-1L); 
+					goto bail;
+				}
+				else if (ret==RTNONE) 
+				{
+					rc=(-1L); 
+					goto bail;
+				}
+				else if (ret==RTNORM) 
+				{
+					if (strisame(fs1, "NO"/*DNT*/)) 
+					{
+						rc=(-1L); 
+						goto bail; 
+					}
+				}
+			}
+
+		}
+#endif
+
+
+          if (strrchr(fname,'\\'/*DNT*/)) 
+          {
+               db_astrncpy(&cmd_DwgSavePath,fname,strlen(fname)+1);
+               *(strrchr(cmd_DwgSavePath,'\\'/*DNT*/)+1)=0;
+          }
+ 
+          break;
+      }
+
+bail:
+
+     return rc;
+}
+
+
+As seen in the code above, we no longer need check for "whether the VBI 
+file-name contains a BackSlash Character", because the fname is copied 
+to strFileNameWithVbiExt, therefore this check becomes un-necessary that 
+was made at the time of Bugzilla#68870.
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+***Note: There is an alternative way to produce this bug.
+--------
+
+The bug is also produced if one follows the steps as outlined below:
+1. Start New drawing in ICAD.
+2. Set FileDia = OFF.
+3. Save the drawing. (give Command "save" at the prompt).
+4. Give the filename to save (for eg: Drawing1).
+5. Now Quick save it (Press Save Button on toolbar OR type "qsave" at prompt).
+
+The Message Box 'Failed to save document' appears.
+Note that every time you give "qsave" at the command prompt after this, the 
+messagebox will appear. But once you close this drawing, and reopen it, this 
+error (MessageBox) won't appear.
+
+
+The code should be checked for the following cases:
+	1. When FILEDIA is OFF, the message Box saying "Failed to Save 
+	   Document" should NEVER appear, even if the fully qualified name for 
+	   the file is not given either manually or through the script to be 
+	   saved for the drawing file in question.
+
+	2. When FILEDIA is ON, the message Box saying "Failed to Save 
+	   Document" should NEVER appear.
+
+	3. The attached script in Bugzilla against this Bugzilla Report
+	   should run without any problems whatsoever.
+
+	Note: 
+	--> This bug is not produced in Standard version of IntelliCAD.
+	--> This bug has nothing to do with "XREF > Attach". It is solely related to the 
+	    saving of DWG file(and ".VBI" file in particular), when FILEDIA is OFF, when the 
+	    DWG file does not have a fully qualified name.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

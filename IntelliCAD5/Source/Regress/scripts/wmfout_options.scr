@@ -1,0 +1,14 @@
+logfilename log\wmfout_options.log
+logfileon
+;__________
+line
+1,1
+3,3
+
+wmfout
+output\wmfout1
+;_______
+dxfout output_dxf\wmfout_options.dxf
+6
+quit
+y

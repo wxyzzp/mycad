@@ -1,0 +1,93 @@
+Document Title:  DJL_23JUL04_1.txt
+Product Version: ICAD 5
+Date:  23 JUL 04
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: Y
+* Submitted to branch(es):
+R50_Release
+R40_dev
+
+2. Modules Affected :
+Available modules: Not Sure.
+
+3.  Overview:
+Brief overview of all submissions covered by this subdoc.
+A) Added new commands to the File menu:
+	Recover
+	Audit
+
+Mark Barrow has already added the commands, I just implemented the menus.
+
+B) Removed the Draworder command from the Image Enabler menu.  This was removed since IntelliCAD has it's
+own Draworder command on the Tools menu.
+
+C) Rename View->Paper Space Views to be View->Layout Viewports.  I also changed a couple of prompts to 
+get rid of references to TILEMODE.  We need to use the Model/Layout terminology and try to get away from
+TILEMODE since it is so confusing.
+
+4.  Notes to Docs:
+Any Notes for review when compiling documentation for the product.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: Y/N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y/N
+File Name       	Sent to buildmanager@intellicad.org
+Name of Script File     Y/N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference: djl_23JUL04_1.txt
+
+Added files: None
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Pure/IntelliCAD/Eng-us :
+    modified: icad.rc2
+In C:/Project/IntelliCAD/R50_Pure/IntelliCAD/Source/prj/ICAD :
+    modified: IcadMenuTBDef.H
+In C:/Project/IntelliCAD/R50_Pure/IntelliCAD/Source/prj/ICAD/res :
+    modified: icadrc2.h
+In C:/Project/IntelliCAD/R50_Pure/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_23JUL04_1.txt
+
+Description:
+Brief overview of all submissions covered by this subdoc.
+A) Added new commands to the File menu:
+	Recover
+	Audit
+
+Mark Barrow has already added the commands, I just implemented the menus.
+
+B) Removed the Draworder command from the Image Enabler menu.  This was removed since IntelliCAD has it's
+own Draworder command on the Tools menu.
+
+C) Rename View->Paper Space Views to be View->Layout Viewports.  I also changed a couple of prompts to 
+get rid of references to TILEMODE.  We need to use the Model/Layout terminology and try to get away from
+TILEMODE since it is so confusing.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Mark already implemented the commands, this only implements the menus.
+Don't forget to check the help text on the commands.
+
+9.  Installation Issues:
+None
+
+
+

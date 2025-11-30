@@ -1,0 +1,42 @@
+Document Title:  SH_04SEP04_1.txt	
+Product Version: ICAD 5.0
+Date:  04/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/icad/icaddrawbitmap.cpp
+   
+3. Overview:
+
+When a drawing did not have a preview image, the previous drawing’s preview image 
+was still visible in the Open dialog’s preview pane. This bug is fixed.
+
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

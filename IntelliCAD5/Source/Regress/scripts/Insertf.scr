@@ -1,0 +1,27 @@
+logfilename log\Insertf.log
+logfileon
+Open DWG\Insertf.dwg
+z
+c
+38,-8
+30
+close
+n
+(Princ "\n Multiple inserting of the same file")
+MINSERT DWG\Insertf.dwg 
+y
+0,0
+1
+1
+0
+4
+4
+50
+50
+(Princ "Processing over")
+z
+e
+dxfout output_dxf\Insertf.dxf
+6
+close n
+exit

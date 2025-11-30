@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+File:		CYB_78194_1.txt
+Date:		10-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78194
+Affected files:		
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+Description: 	In IntelliCAD Explorer, change button of delete dialog box for linetypes does not 		work properly.
+Comments:	TaL78194
+File by File:
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		The reason for this problem was lost of value of name of linetype stored in 				ic_rbassoc->resval.rstring when a dialog was invoked. This is because 				ic_assoc() is golobal function storing the result in 				ic_rbassoc->resval.rstring. The method used to fix the problem is storing the 				linetype name in local variable and using it instead of depending on global 				ic_rbassoc->resval.rstring.
+-------------------------------------------------------------------------------

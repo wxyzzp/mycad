@@ -1,0 +1,27 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78179_2.txt
+Date:		14-04-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78179
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimTEdit.cpp
+Description:	Problem in restoring the text in case of Radial, Diameter, Aligned, Horizontal and Vertical dimensions using the dimtedit command. Implemented code-review suggestions. 
+Comments:		TaL78179
+Problem Analysis:
+		Implementing code-review suggestions.
+Proposed Solution:
+		Reformatting code in accordance with Coding Style.
+File by File:	
+*		Source/prj/lib/CMDS/DimTEdit.cpp
+		The line plink->txtangflag=FALSE; has been removed from fix since variable plink->txtangflag is already 
+initialized to FALSE at the beginning of function. Reformatted code in accordance with Coding Style.
+--------------------------------------------------------------------------------
+
+
+

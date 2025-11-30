@@ -1,0 +1,384 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78722_1.txt	
+Product Version:	ICAD 4
+Date:			23/03/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+
+Source\prj\lib\CMDS\cmdsErrors.cpp  ==> void cmd_ErrorPrompt( int promptID, short mode, void* arg1, void* arg2, void* arg3)
+Source\prj\lib\CMDS\insert.cpp	    ==> short xref_add_new(bool	isOverlay,sds_resbuf *param,bool isCropPath)
+Source\prj\ICAD\res\icadrc2.h	    ==> added new message CMD_ERR_XREFADDED
+Eng-us\icad.rc2			    ==> added new message CMD_ERR_XREFADDED
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This  is regarding bugzilla# 78722; ArchT Affected: ads_command fails to 
+add blocks to the block table
+
+This is a regression bug. While checking the error code, a check was added
+for 'CMD_ERR_INSERTDEF' in cmd_ErrorPrompt(), because of which SDS_FreeEventList(0) 
+was NOT getting called for  INSERT command. As a result of this, a block 
+was NOT getting inserted into the drawing. That required the check 
+'CMD_ERR_INSERTDEF' to be removed.
+
+At the same time, cmd_ErrorPrompt() was called with CMD_ERR_INSERTDEF for 
+' Xref ' command, which required 'CMD_ERR_INSERTDEF' check to be there in 
+cmd_ErrorPrompt()(Otherwise it would break one of the script in the regress). 
+So, the solutions for above two conditions were exactly opposite to each 
+other,  as bothe of them were using the same message to display. Hence I 
+have added a new message 'CMD_ERR_XREFADDED' in Source\prj\ICAD\res\icadrc2.h.
+The corresponding change is made in Source\prj\lib\CMDS\insert.cpp for 'xref'
+command.
+
+For previous fix, please refer: Bugzilla# 78186; failed xunload gives wrong error message
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+File: Source\prj\lib\CMDS\cmdsErrors.cpp 
+----------------------------------------
+Function: void cmd_ErrorPrompt( int promptID, short mode, void* arg1, void* arg2, void* arg3)
+---------------------------------------------------------------------------------------------
+
+{
+	.....
+	.....
+	.....
+
+
+	if( promptID != CMD_ERR_DWGHASACIS &&
+		promptID != CMD_ERR_DWGHASPROXY &&
+		promptID != CMD_ERR_UNSUPPORTEDA2KENT &&
+		promptID != CMD_ERR_GRIDTOOSMALL &&
+		promptID != CMD_ERR_GRIDTOOLARGE &&
+		promptID != CMD_ERR_ZOOMIN &&
+		promptID != CMD_ERR_ZOOMOUT &&
+		promptID != CMD_ERR_INSERTACIS &&
+		promptID != CMD_ERR_INSERTPROXY &&
+		promptID != CMD_ERR_PASTEACIS &&
+		promptID != CMD_ERR_PASTEPROXY &&
+		promptID != CMD_ERR_WBLOCKACIS &&
+		promptID != CMD_ERR_WBLOCKPROXY &&
+		promptID != CMD_ERR_XREFADDED &&
+		promptID != CMD_ERR_ENTSINSET &&
+		promptID != CMD_ERR_FLATTENED &&
+		promptID != CMD_ERR_NOTPARALLEL )
+	{
+		SDS_FreeEventList(0);
+	}
+
+	.....
+	.....
+	.....
+	.....
+
+}
+
+
+File: Source\prj\lib\CMDS\insert.cpp	    
+----------------------------------------
+Function: short xref_add_new(bool isOverlay,sds_resbuf *param,bool isCropPath)
+------------------------------------------------------------------------------
+{
+
+	....
+	....
+	....
+	....
+	
+	/*DG - 20.2.2002*/// check nRet (see my comments above)
+	if (nRet == RTNORM && AddInsertEntity(name,ins,curelev,false,false,false)==RTNORM)	{
+	// get the entity name for the insert so that the objects can refer to it
+		sds_name insname;
+		sds_entlast(insname);
+		if (AddXrefObjects(insname,name)==RTNORM){	// this is the success point
+				delete ins;
+				nRet=RTNORM;
+			/*DG - 31.5.2002*/// Now we can print the message.
+		  		//cmd_ErrorPrompt(CMD_ERR_INSERTDEF, -1); 
+			/*********************************************************/
+					Added new message for xref
+			/*********************************************************/
+				cmd_ErrorPrompt(CMD_ERR_XREFADDED, -1); 
+				goto depart;
+		}
+		sds_entdel(insname);
+	}
+
+	....
+	....
+	....
+	....
+}
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following commands:
+	1. Load 78722.dll.
+	2. Call ‘functest’.
+	3. Check that the block should be added in the drawing.
+	4. The fix for this bug should not affect the functionality of Bugzilla# 78186.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis.(In process)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

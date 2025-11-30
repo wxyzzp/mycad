@@ -1,0 +1,58 @@
+Document Title:  DP_20040912.txt	
+Product Version: ICAD 5
+Date:  12.09.2004
+Engineer: Denis Petrov
+
+1. Process Checklist :
+* Regress run without new failures: Y/N
+* Did you test it? : Y/N
+* Code Reviewed By: 
+* Docs Changes Required: Y/N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+ICAD
+
+3.  Overview:
+
+The following issues are resolved:
+1) Warning dialog does not appear before deleting a layout (Bugzilla78796).
+2) Rename to existing name warning appears when name of layout is not changed (Bugzilla78798).
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: Y/N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y/N
+File Name       	Sent to buildmanager@intellicad.org
+Name of Script File     Y/N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference: Bugzilla78796, 78798       
+Affected files: 
+2004-09-12   19:38   denisp   Eng-us/icad.rc2?rev=1.63.2.34.2.33 
+2004-09-12   19:39   denisp   Source/prj/ICAD/res/icadrc2.h?rev=1.59.2.27.2.17 
+2004-09-12   19:41   denisp   Source/prj/ICAD/LayoutTabs.cpp?rev=1.1.4.4.2.5 
+Description:  
+1) Added warning dialog before deleting of layout.
+2) Added a check to not display rename to existing name warning when name of layout is not changed.
+--------------------------------------------------------------------------------
+
+7.  System file - Component Changes and Additions
+Need any system file changes in icad due to this submission (eg. files added to c:\winnt\system32)?  Please provide detail.
+
+8.  Testing Considerations:
+* Unit Test Description: Describe your unit test and your result so that we know the expected result.
+* Notes for QA Testing: Notes for the QA team.
+
+9.  Installation Issues:
+Anything the members need to be aware of when creating their installers for the product.
+
+
+

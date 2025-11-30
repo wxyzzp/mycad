@@ -1,0 +1,38 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_10112002_1.txt
+Date:		10-11-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fix the bug# 78353.
+ 	
+
+COMMANDS:
+
+        This problem is introduced after I made changes to OnPaint()
+	to comment out _USE_OPENGL_ in order to force the hidden line image 
+	to be redrawed whenever screen size is changed/hidden. But the 
+	change caused the screen to be re-painted every time when the image was
+	wireframe, which confused display engine when it drawed dragging 
+	objects. To fix the problem, instead of redraw hidden line image, 
+	I change the HIDE/SHADE functions to copy the screen DC to off-screen 
+	windows' DC after using OpenGL to generate hidden line image.
+
+	
+
+CHANGED FILES:	
+
+	Source/Prj/Iacad/IacadView.cpp:  	Changed OnPaint() to remove comment on _USE_OPENGL_. 
+		
+	Source/Prj/Lib/cmd/HideAndShade.cpp:    Modifed CGLPaintHiddenLineImage::RenderSense() to 
+	                                        blit from on screen DC to off-screen.

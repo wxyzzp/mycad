@@ -1,0 +1,18 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+ File Name:	EBA_5012002_1.txt
+ Date:           01-05-2002
+ Developer:      Chikahiro Masami
+ Company:        Ebatech
+ Reference:      
+ Affected files: 
+                CvsHist:Source/prj/ICAD/IcadSetVarsDia.cpp
+                CvsHist:Source/prj/lib/CMDS/cmdsDimVars.cpp
+
+ Description:    DIMPOST was overrided DIMAPOST value. DDIM was not MBCS safe.
+ Comments:       TalDIMPOST
+--------------------------------------------------------------------------------

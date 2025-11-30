@@ -1,0 +1,35 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_10112002_1.txt
+Date:		10-11-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fix the bug# 78353.
+ 	
+
+COMMANDS:
+
+        This problem is introduced after I made changes to comment out _USE_OPENGL_ in OnPaint()
+        in order to force the hidden line image to be redrawed whenever screen side is changed,
+        which caused the screen to be re-painted every time whenever dragging was active. 
+        To fix the problem, instead of repainting hidden line image, I change the HIDE functions
+        to copy the screen DC to off-screen windows' DC after using OpenGL to generate hidden 
+        line image.
+	
+
+CHANGED FILES:	
+
+	Source/Prj/Iacad/IacadView.cpp:  	Changed OnPaint() to remove comment on _USE_OPENGL_. 
+		
+	Source/Prj/Lib/cmd/HideAndShade.cpp:    Modifed CGLPaintHiddenLineImage::RenderSense() to 
+	                                        blit from on screen DC to off-screen.

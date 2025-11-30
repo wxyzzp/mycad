@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+File:		CYB_78503_1.txt
+Date:		28-04-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78318
+Affected files:	
+		Source/prj/ICAD/IcadApp.cpp?rev=1.28.6.13 		
+		Source/prj/ICAD/COMAddInManager.cpp?rev=1.1.2.3 		
+Description:	Icad hangs when logged on as Restricted User. 
+Comments:	TaL78318
+Problem Analysis:
+		Due to a return statement in RegisterServer function in IcadApp.cpp, some keys 
+		(like Addin)are not created in registry. Due to this ICAD hangs in COMAddinManager.cpp in load function.
+Provlem Solution:	
+		Remove the return statement but provide a way in which the regedit warning message is not displayed when logged in as 		restricted user.
+		IntelliCAD would hang as it would enumerate wrong key. So check if proper key is created and only then proceed.
+File by file:
+	*	Source/prj/ICAD/IcadApp.cpp?rev=1.28.6.13 		
+		Changes so that regedit warning is not displayed. Though there are many functions which set and read value from HKEY_ 		CLASSES_ROOT this does not give the warning. ONLY " m_server.UpdateRegistry(OAT_INPLACE_SERVER);" caused 		the warning and this is now conditional.
+
+	*	Source/prj/ICAD/COMAddInManager.cpp?rev=1.1.2.3 		
+		Though there are no changes required in this file as the addin key is now created. But its better to check and return if the 		handle is NULL. This was actual place where IntelliCAD used to hang. 
+--------------------------------------------------------------------------------

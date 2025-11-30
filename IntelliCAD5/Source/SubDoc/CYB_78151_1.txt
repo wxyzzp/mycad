@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78151_1.txt
+Date:		13-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78151
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/DimContinue.cpp
+Description:	continue/baseline  dimensions to  Angular dimension are not 
+		drawn correctly.
+Comments:	TaL78151
+
+File by File:  
+		* CvsHist:Source/prj/lib/CMDS/DimContinue.cpp
+		For dim type DIM_ANGULAR continous dimension was not being drawn 
+		from the side closest(original dimension) to the point user selected, added 
+		code now to draw it from the closest direction of the user point selection.
+
+		For dim type DIM_ANGULAR_3P code was written to check for 
+		closest side to the point user selected in all cases, this is required only 
+		in case of continous dimsension and not baseline, baseline dimsnion should 
+		be always drawn from pt13. 
+		Hence  added an if else statement to seperate the baseline and contionus 
+		flows, also the code used a wrong centre to calculate angles, used the 
+		correct one now.
+		
+		ICAD was prompting for text in all both angular dimension types, Now it 
+		does not propmt for dimtext (same as ACAD)
+
+		Since the dimtxt is not changed from the dimcontinue/baseline but is 
+		calculated when the dimension is being created, removed the plink->dimtxt
+		from the sds_buildlist call.
+
+--------------------------------------------------------------------------------

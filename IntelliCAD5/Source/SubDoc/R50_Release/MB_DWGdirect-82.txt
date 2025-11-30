@@ -1,0 +1,78 @@
+Document Title:		MB_DWGdirect-82.txt
+Product Version:	ICAD 5
+Date:  				08/11/2004 13:30pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	Resources
+	DWGdirect
+	AUTO
+	DB
+	GR
+	GEO
+
+3.  Overview:
+This submission fixes a problem where handles as strings could get truncated.
+This was part of the reason for some of the round trip tests to fail. There were
+a number of old R12 drawings with 16 digit handles. IntelliCAD & I were truncating
+them in some cases. FIXED.
+
+This submission fixes resource versioning where it won't be affected by subsequent
+editing via the VC resource editor.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    Eng-us\dcl.rc
+                    Eng-us\authenticateres.rc
+                    Eng-us\icadres.rc
+                    source/licensed/dwgdirect/exservices/exhostappservices.cpp
+                    source/prj/lib/acis/acis.rc
+                    source/prj/lib/auto/autodimension.cpp
+                    source/prj/lib/auto/autodimradial.cpp
+                    source/prj/lib/auto/autodll.rc
+                    source/prj/lib/db/dbdll.rc
+                    source/prj/lib/drw/utilities.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/dwgsave.cpp
+                    source/prj/lib/gr/grdll.rc
+                    source/thirdparty/geo/geo.rc
+                    source/subdoc/MB_DWGdirect-82.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+Notes to Developers:
+
+Basic idea of version OR anything in the resource file that is not supposed to be
+changed by the resource editor;
+
+Put all #defines and #includes in the '3 TEXTINCLUDE DISCARDABLE' section of the .rc
+file.
+Then repeat them in the '#ifndef APSTUDIO_INVOKED' section of the .rc file.
+
+See geo.rc for an good simple example.
+
+
+

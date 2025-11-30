@@ -1,0 +1,52 @@
+Engineer(s):		Mark Barrow
+Date:				07/23/2004 05:26am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    Eng-us\IcadRes.rc
+                    Eng-us\icad.rc2
+                    source/prj/icad/dwfinfodialog.cpp
+                    source/prj/icad/dwfinfodialog.h
+                    source/prj/icad/icadnewwiz.cpp
+                    source/prj/icad/resource.hm
+                    source/prj/lib/db/db1.cpp
+                    source/prj/lib/db/sysvar.h
+                    source/prj/lib/db/sysvar_ctor_dtor.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/subdoc/MB_DWGdirect-71.txt
+Change Overview:
+Changed all template opening opportunities to use .dwt files instead of .dwg
+
+Implemented Allison's doc review suggestions including adding a help button
+to the DWF export options dialog, and removing periods and semi-colons etc.
+Help button responds to both pressing the button, and F1.
+
+Also worked on some hatching issues, but am waiting on ODT for some feedback.
+
+Notes to Developers:
+
+Notes to QA:
+Note since BASEFILE is saved in the registry, you may have to actually change
+the sysvar the first time. New installs will have it set correctly upon install.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

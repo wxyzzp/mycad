@@ -1,0 +1,16 @@
+logfilename log\nearest_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+nearest
+(if (/= (getvar "osmode") 512) (alert "nearest did not work!"))
+;__________
+nearest
+(if (/= (getvar "osmode") 0) (alert "nearest did not work!"))
+;__________
+dxfout output_dxf\nearest_options.dxf
+6
+quit
+y

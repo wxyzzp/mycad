@@ -1,0 +1,313 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78544_1.txt	
+Product Version:	ICAD 4
+Date:			05/01/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\CMDS\entitydata.cpp   ==> cmd_renameed(sds_name ss, char *oldapp, char *newapp, short mode) 
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is regarding Bugzilla# 78544; ICAD crashes while using reassocapp command
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+While using Reassociate Entity  data dialog, ICAD crashes in some cases. 
+This was happening because, in cmd_renameed() a null pointer was getting 
+accessed  for checking an  if() condition. Now it's value is checked and 
+if it is  NULL, the control comes  out of  the loop to avoid  the  crash.
+Another  change  here is,  previously  'fs1'  was being used to copy the 
+application  name into  'appnamo'.  As this  was an assignment but not a 
+string copy operation, further when 'fs1'  was getting modified, that was 
+changing 'appnamo.resval.rstring'  also.  This gives undesirable results 
+while reassociating entity data in the case of multiple entities. As per
+my changes, the application name is not copied into  'fs1', but directly 
+assigned to 'appnamo.resval.rstring'. Considering the same case for 'fs2' 
+also, the changes are made.
+
+
+File: entitydata.cpp Function: cmd_renameed(sds_name ss, char *oldapp, char *newapp, short mode) 
+---------------------------------
+
+                            //strcpy(fs1,oldapp); 
+                            appnamo.restype = RTSTR; 
+                            //appnamo.resval.rstring = fs1; 
+                            appnamo.resval.rstring = oldapp; 
+                            appnamo.rbnext = NULL; 
+                            //strcpy(fs2,newapp); 
+                            appnamn.restype = RTSTR; 
+                            //appnamn.resval.rstring = fs2; 
+                            appnamn.resval.rstring = newapp; 
+                            appnamn.rbnext = NULL; 
+                            appso=appsn=NULL; 
+	                        . . . . 
+        	                . . . . 
+                	        . . . . 
+                            //if (tempo->rbnext->restype == 1002) break; 
+                            if (tempo->rbnext == NULL || tempo->rbnext->restype == 1002) break; 
+---------------------------------
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+ 	1. Test the reassocapp command for single entity. Test with and without overwriting the original data.
+	2. Similarly test for more than one entity, with and without overwriting the original data.
+	3. Give the second EED name other than the one that exsits in the entity.
+		e.g. if there are 'A' and 'B' applications in an entity. Replace 'A' with 'C'.
+		     Here the application name 'A' should be replaced with 'C'.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional) : JK
+
+QA Manager (optional) : 
+
+
+
+Code Reviewed by : Denis
+
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

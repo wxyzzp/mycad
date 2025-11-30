@@ -1,0 +1,42 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_22102002_1.txt
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission implemented the funciton for printing hidden line image
+                and support hidden line printing preview.
+
+Comments:	IntelliCAD uses OpenGL to create hidden line image for graphics disdplay.
+                Due to the fact that many printer drivers can't work with the 
+                SetPixelFormat() function, it is not feasible to render an OpenGL scene 
+                to a printer directly. To print OpenGL image, I use Windows function 
+                CreateDIBSection() to create a DIB section, select it into a memory DC, 
+                then create an OpenGL memory RC associated with the memory DC. After 
+                rendering the scene, call StretchDIBits() to copy the image to the 
+                printer DC.
+                
+                To shade the code with display, I rewrote the HIDE and SHADE commands.
+
+
+New Files:
+
+		CvsHist:Source/Prj/Lib/cmds/HideAndShade.h
+Changed files:	
+
+		CvsHist:Source/Prj/Lib/cmds/HideAndShade.cpp
+		CvsHist:Source/Prj/Lib/icad/icadview.h
+		CvsHist:Source/Prj/Lib/icad/icadview.cpp
+		CvsHist:Source/Prj/Lib/icad/icadapp.cpp
+		
+
+
+--------------------------------------------------------------------------------

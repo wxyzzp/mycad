@@ -1,0 +1,71 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_3102002_1.txt
+Date:		3/10/2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	Source/regress
+		Source/regress/modify.xml
+		Source/regress/Readme.txt
+		Source/regress/regress.bat
+		Source/regress/scripts/3dspiral_3dspiral.scr
+		Source/regress/scripts/arctex_at.scr
+		Source/regress/scripts/3dspiral_spiral.scr
+		Source/regress/base/3dspiral_spiral_base.dxf
+		Source/regress/base/3dspiral_3dspiral_base.dxf
+		Source/regress/base/arctex_at_base.dxf
+		Source/regress/LISP
+		Source/regress/LISP/3dspiral.lsp
+		Source/regress/LISP/ARCTEX.lsp
+		Source/regress/sds
+Changed files:	None
+Deleted files:	None
+
+Description:	This submission adds a regress suite to IntelliCAD.
+Comments:	This is the initial version of a regress suite for IntelliCAD. The regress suite consists of
+		scr files which are run from a batch file (regress.bat). Base dxf files are provided and each
+		scr file is expected to write out a dxf file to comapre with the base file. The output from
+		regress is written to regress.log file.
+
+		The Readme.txt file shows what environment variable to set and how to add new tests to the regress suite.
+		Currently 3 scr files have been added and more will be added shortly.
+
+		Currently the regress suite will report errors for each of the script files. This is due to the fact 
+		the dxf values for $TDCREATE, $TDUPDATE, $TDINDWG and $TDUSRTIMER vary for each run of ICAD. A fix 
+		will be made for this shortly.
+
+File by File:	Source/regress
+			New directory.
+		Source/regress/scripts/3dspiral_3dspiral.scr
+			Script file to run 3dspiral from 3dspiral.lsp file.
+		Source/regress/base/3dspiral_3dspiral_base.dxf
+			Base dxf file for 3dspiral_3dspiral test case.
+		Source/regress/scripts/3dspiral_spiral.scr
+			Script file to run spiral from 3dspiral.lsp file.
+		Source/regress/base/3dspiral_spiral_base.dxf
+			Base dxf file for 3dspiral_spiral test case.
+		Source/regress/scripts/arctex_at.scr
+			Script file to run at from arctex.lsp file.
+		Source/regress/base/arctex_at_base.dxf
+			Base dxf file for arctex_at test case.
+		Source/regress/modify.xml
+			Not used yet -- proposed to use for supressing harmless diffs (like $TDCREATE,...)
+		Source/regress/Readme.txt
+			Readme file for regress.
+		Source/regress/regress.bat
+			Batch file to run regress
+		Source/regress/LISP
+			New directory. LSP files loaded by the scr files should go in here.
+		Source/regress/LISP/3dspiral.lsp
+			LSP file for 3dspiral. From current QA benchmark suite.
+		Source/regress/LISP/ARCTEX.lsp
+			LSP file for arctex. From current QA benchmark suite.
+		Source/regress/sds
+			New directory. SDS apps. loaded by scr files should go in here.
+--------------------------------------------------------------------------------

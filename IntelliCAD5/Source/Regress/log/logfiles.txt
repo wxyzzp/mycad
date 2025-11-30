@@ -1,0 +1,1 @@
+All log files created by scripts should be written to this directory.

@@ -1,0 +1,27 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78128_1.txt
+Date:		29-04-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78128
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/insert.cpp
+		CvsHist:Source/prj/lib/CMDS/cmdsError.cpp
+		CvsHist:Source/prj/lib/CMDS/cmdsError.h
+Description: 	The prompt for "Insert" command behaves incorrectly
+Comments:	TaL78128
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/insert.cpp
+		Used an extern variable SDS_IgnoreMenuWQuote. Used sds_getstring instead of sds_getkword in the function 		GetBlockName.  
+*		CvsHist:Source/prj/lib/CMDS/cmdsError.cpp
+		Added a case CMD_ERR_INVALIDNAME.
+*		CvsHist:Source/prj/lib/CMDS/cmdsError.h
+		Defined CMD_ERR_INVALIDNAME
+--------------------------------------------------------------------------------
+

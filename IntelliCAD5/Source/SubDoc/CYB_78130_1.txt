@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+File Name:	CYB_78130_1.txt
+Date:		06-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78130
+Affected files:	
+		CvsHist:Source/prj/lib/DRW/dwgload.cpp
+Description:	Xreffed linetype , dimstyles are not shown in ICAD Explorer.
+Comments:	TaL78130
+
+File by File: 
+		* CvsHist:Source/prj/lib/DRW/dwgload.cpp
+		
+		 After xref - detach of a drwaing the table entries of the corresponding 
+		 drawing are deleted ,actually marked for deletion and deleted only when the 
+		 drawing is saved (defualt behaviour of sds_entdel). Now when the same drwaing
+		 was being xref- attached, findtabrec(last parameter=0) was finding these 
+		 deleted table entries during the attach process. IcadExplorer shows only 
+		 non-deleted entries hence these entries were not visible.
+
+			Nowe changed calls to findtabrec to find only non-deleted table entries
+		this will lead to proper table record entries and will solve problems 
+		that could have occured later after a attach-detach-attach kind of drwaing is 
+ 		saved and opened. Also changed other calls to findtabrec just as a precaution
+                so that all pointers point to valid(non-deleted) table records 
+------------------------------------------------------------------------------

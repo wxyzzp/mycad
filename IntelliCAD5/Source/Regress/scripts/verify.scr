@@ -1,0 +1,9 @@
+logfilename log\verify.log
+logfileon
+(Load "lisp\verify.lsp")
+verify
+dxfout output_dxf\verify.dxf
+6
+close y
+exit
+

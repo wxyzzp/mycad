@@ -1,0 +1,26 @@
+logfilename log\undo_trim.log
+logfileon
+;________create_ellipse_arc_______
+ellipse
+a
+1,1
+10,1
+2
+0
+270
+;________create_a_line_____________
+line
+1,-2
+11,3
+
+;________trim_ellipse_and_then_undo_______________
+trim
+last
+
+10,1
+u
+
+;;;;;;;;;;;;
+dxfout output_dxf\undo_trim.dxf
+6
+exit y

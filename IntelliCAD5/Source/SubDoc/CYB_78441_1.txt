@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+Date:		31-03-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78441
+Affected files:	
+		Source/prj/lib/LISP/sym.cpp?rev=1.10.6.1
+Description:	LISP bug related to setting value to variants
+Comments:	TaL78441
+File by File:
+	*	Source/prj/lib/LISP/sym.cpp?rev=1.10.6.1
+		The problem was in case of defuning functions with name starting with "_". Actaully, internal commands are starting with "_" eg _LINE. So in IntelliCAD when user tries to defun _LINE again ( _LINE is already in atom list ) , we append "L:" at the begining to differentiate the basic _LINE command with the newly defined LISP LINE function. So while undefuning _LINE we append "L:" at the begining and then undefun it. The basic _LINE is intact.
+
+But when the function name start with "_" and is not the internal commands, we add it to the atom list as it is.(  without "L:" ) but when undefunning it we append "L:" and try to find it in atom list which naturally would fail.
+
+So this becomes a special case, the function name start with "_" but still is not the internal IntelliCAD command. I have have checked the link2mod->id == -2 to differentiate the two cases.
+
+Please note, I think we should have "_" strictly reserved for internal commands only. IntelliCAD have little different behaviour when comapred to autocad. If we define "_LINE" we can access the new function like "L:_LINE".
+--------------------------------------------------------------------------------

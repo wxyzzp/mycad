@@ -1,0 +1,45 @@
+new
+
+; there are 3 layouts by default (Model, Layout1 and Layout2)
+layout
+; try to delete current layout (model)
+delete
+model
+
+delete
+layout2
+
+; try to delete the only paper space layout
+delete
+layout1
+
+new
+layout2
+
+delete
+layout2
+
+new
+layout2
+
+delete
+layout1
+
+set
+layout2
+
+; try to delete current and the only layout
+delete
+layout2
+
+new
+layout1
+
+; try to delete current layout
+delete
+layout2
+
+; try to delete model layout
+delete 
+model
+exit y

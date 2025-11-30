@@ -1,0 +1,38 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4242002_1.txt
+Date:		24-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		CvsHist:Source/prj/lib/LISP/table.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission fixes a bug from my last submission in table.cpp. Fixed lint problem in same file.
+Comments:	This submission fixes a bug in LISP\table.cpp. A resbuf was previously being deleted which I changed to a
+		sds_relrb(). I need to set the rbnext pointer of this resbuf to NULL -- or else it will free buffers which
+		it should not. This was fixed in lsp_modify_adslist().
+		Also fixed a lint warning in table.cpp -- In function lsp_tblobjname() removed a local variable (rb) 
+		which was set but not used.
+
+File by File:	
+		Source/prj/lib/LISP/table.cpp	 			New Rev. 1.5
+
+		A resbuf was previously being deleted which I changed to a
+		sds_relrb(). I need to set the rbnext pointer of this resbuf to NULL -- or else it will free buffers which
+		it should not. This was fixed in lsp_modify_adslist().
+		Also fixed a lint warning in table.cpp -- In function lsp_tblobjname() removed a local variable (rb) 
+		which was set but not used.
+
+------------------------------------------------------------------------------

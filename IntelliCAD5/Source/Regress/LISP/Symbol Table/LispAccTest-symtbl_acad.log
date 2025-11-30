@@ -1,0 +1,334 @@
+Lisp acceptance test run at 07-28-1998 01:56:06p on version P.0.31
+
+Starting tests...
+
+--- snvalid ---
+
+***Error (noargs): too few arguments
+emptystr = nil
+spacestr = nil
+below0str = nil
+0to9str = T
+above9str = nil
+bigatozstr = T
+btwnalphastr = nil
+abovezstrs = nil
+abovezstre = nil
+***Error (nilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+maxstr = nil
+maxp1str = nil
+icadhlp1 = T
+
+--- tblnext ---
+
+***Error (noargs): too few arguments
+APPID Table = 
+0 = APPID
+2 = ACAD
+70 = 0
+BLOCK Table = 
+0 = BLOCK
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+-2 = ENAME
+DIMSTYLE Table = 
+0 = DIMSTYLE
+2 = STANDARD
+70 = 0
+3 = 
+4 = 
+5 = 
+6 = 
+7 = 
+40 = 1.0000
+41 = 0.1800
+42 = 0.0625
+43 = 0.3800
+44 = 0.1800
+45 = 0.0000
+46 = 0.0000
+47 = 0.0000
+48 = 0.0000
+140 = 0.1800
+141 = 0.0900
+142 = 0.0000
+143 = 25.4000
+144 = 1.0000
+145 = 0.0000
+146 = 1.0000
+147 = 0.0900
+71 = 0
+72 = 0
+73 = 1
+74 = 1
+75 = 0
+76 = 0
+77 = 0
+78 = 0
+170 = 0
+171 = 2
+172 = 0
+173 = 0
+174 = 0
+175 = 0
+176 = 0
+177 = 0
+178 = 0
+270 = 2
+271 = 4
+272 = 4
+273 = 2
+274 = 2
+275 = 0
+280 = 0
+281 = 0
+282 = 0
+283 = 1
+284 = 0
+285 = 0
+286 = 0
+287 = 3
+288 = 0
+340 = ENAME
+LAYER Table = 
+0 = LAYER
+2 = 0
+70 = 0
+62 = 7
+6 = CONTINUOUS
+LTYPE Table = 
+0 = LTYPE
+2 = CONTINUOUS
+70 = 0
+3 = Solid line
+72 = 65
+73 = 0
+40 = 0.0000
+STYLE Table = 
+0 = STYLE
+2 = STANDARD
+70 = 0
+40 = 0.0000
+41 = 1.0000
+50 = 0.0000
+71 = 0
+42 = 0.2000
+3 = txt
+4 = 
+UCS Table = 
+0 = UCS
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+11:
+	 = 1.0000
+	 = 0.0000
+	 = 0.0000
+12:
+	 = 0.0000
+	 = 1.0000
+	 = 0.0000
+VIEW Table = 
+0 = VIEW
+2 = TEST
+70 = 0
+40 = 12.6388
+10:
+	 = 6.0000
+	 = 6.3194
+41 = 12.0000
+11:
+	 = 0.0000
+	 = 0.0000
+	 = 1.0000
+12:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+42 = 50.0000
+43 = 0.0000
+44 = 0.0000
+50 = 0.0000
+71 = 0
+VPORT Table = 
+0 = VPORT
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+11:
+	 = 1.0000
+	 = 1.0000
+12:
+	 = 6.0000
+	 = 6.3194
+13:
+	 = 0.0000
+	 = 0.0000
+14:
+	 = 0.5000
+	 = 0.5000
+15:
+	 = 0.5000
+	 = 0.5000
+16:
+	 = 0.0000
+	 = 0.0000
+	 = 1.0000
+17:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+40 = 12.6388
+41 = 0.9495
+42 = 50.0000
+43 = 0.0000
+44 = 0.0000
+50 = 0.0000
+51 = 0.0000
+71 = 0
+72 = 100
+73 = 1
+74 = 1
+75 = 0
+76 = 0
+77 = 0
+78 = 0
+
+--- tblobjname ---
+
+***Error (noargs): too few arguments
+APPID Table = 
+Found test? = T
+BLOCK Table = 
+Found test? = nil
+DIMSTYLE Table = 
+Found test? = T
+LAYER Table = 
+Found test? = T
+LTYPE Table = 
+Found test? = T
+STYLE Table = 
+Found test? = T
+UCS Table = 
+Found test? = nil
+VIEW Table = 
+Found test? = nil
+VPORT Table = 
+Found test? = nil
+
+--- tblsearch ---
+
+***Error (noargs): too few arguments
+APPID Table = 
+appid = didn't find it
+BLOCK Table = 
+0 = BLOCK
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+-2 = ENAME
+DIMSTYLE Table = 
+dimstyle = didn't find it
+LAYER Table = 
+layer = didn't find it
+LTYPE Table = 
+ltype = didn't find it
+STYLE Table = 
+style = didn't find it
+UCS Table = 
+0 = UCS
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+11:
+	 = 1.0000
+	 = 0.0000
+	 = 0.0000
+12:
+	 = 0.0000
+	 = 1.0000
+	 = 0.0000
+VIEW Table = 
+0 = VIEW
+2 = TEST
+70 = 0
+40 = 12.6388
+10:
+	 = 6.0000
+	 = 6.3194
+41 = 12.0000
+11:
+	 = 0.0000
+	 = 0.0000
+	 = 1.0000
+12:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+42 = 50.0000
+43 = 0.0000
+44 = 0.0000
+50 = 0.0000
+71 = 0
+VPORT Table = 
+0 = VPORT
+2 = TEST
+70 = 0
+10:
+	 = 0.0000
+	 = 0.0000
+11:
+	 = 1.0000
+	 = 1.0000
+12:
+	 = 6.0000
+	 = 6.3194
+13:
+	 = 0.0000
+	 = 0.0000
+14:
+	 = 0.5000
+	 = 0.5000
+15:
+	 = 0.5000
+	 = 0.5000
+16:
+	 = 0.0000
+	 = 0.0000
+	 = 1.0000
+17:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+40 = 12.6388
+41 = 0.9495
+42 = 50.0000
+43 = 0.0000
+44 = 0.0000
+50 = 0.0000
+51 = 0.0000
+71 = 0
+72 = 100
+73 = 1
+74 = 1
+75 = 0
+76 = 0
+77 = 0
+78 = 0
+Lisp acceptance test completed at 07-28-1998 01:56:08p on version P.0.31

@@ -1,0 +1,26 @@
+logfilename log\intersect.log
+logfileon
+;__________________________
+box
+0,0,0
+length
+10
+10
+10
+;___________________
+sphere
+5,5
+10
+;__________________
+intersect
+last
+0,0
+
+;______________
+vpoint
+2,2,2
+;_______________
+dxfout output_dxf\intersect.dxf
+6
+quit
+y

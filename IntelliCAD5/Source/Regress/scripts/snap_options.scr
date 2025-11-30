@@ -1,0 +1,68 @@
+logfilename log\snap_options.log
+logfileon
+;_________on___________________
+snap
+on
+(if (/= (getvar "snapmode") 1) (alert "snap not set correctly"))
+;________t___________
+snap
+t
+(if (/= (getvar "snapmode") 0) (alert "snap not set correctly"))
+;_________t_______
+snap
+t
+(if (/= (getvar "snapmode") 1) (alert "snap not set correctly"))
+;_________off_______
+snap
+off
+(if (/= (getvar "snapmode") 0) (alert "snap not set correctly"))
+;_________rotate________
+snap
+r
+2,2
+30
+(if (equal (getvar "snapbase") (list 2.0 2.0)) (princ "OK") (alert "snap not set correctly"))
+(if (equal (getvar "snapang") 0.523599 0.00001) (princ "OK") (alert "snap not set correctly"))
+;_________style_Std_________
+snap
+s
+s
+1.5
+(if (equal (getvar "snapstyl") 0) (princ "OK") (alert "snap not set correctly"))
+(if (equal (getvar "snapunit") (list 1.5 1.5)) (princ "OK") (alert "snap not set correctly"))
+;_________style_Std_aspect_________
+snap
+s
+s
+a
+1.2
+1.3
+(if (equal (getvar "snapstyl") 0) (princ "OK") (alert "snap not set correctly"))
+(if (equal (getvar "snapunit") (list 1.2 1.3)) (princ "OK") (alert "snap not set correctly"))
+;_________aspect________
+snap
+a
+1.1
+1.4
+(if (equal (getvar "snapunit") (list 1.1 1.4)) (princ "OK") (alert "snap not set correctly"))
+;_______equal__________
+snap
+e
+1.7
+(if (equal (getvar "snapunit") (list 1.7 1.7) 0.000000001) (princ "OK") (alert "snap not set correctly"))
+;_________style_iso___________
+snap
+s
+i
+1.6
+(if (equal (getvar "snapstyl") 1) (princ "OK") (alert "snap not set correctly"))
+(if (equal (getvar "snapunit") (list 2.7712812921102036696439141464094 1.60000)) (princ "OK") (alert "snap not set correctly"))
+;________iso_vert_________
+snap
+1.8
+(if (equal (getvar "snapunit") (list 3.1176914536239791283494034147106 1.8)) (princ "OK") (alert "snap not set correctly"))
+;_________
+dxfout output_dxf\snap_options.dxf
+6
+quit
+y

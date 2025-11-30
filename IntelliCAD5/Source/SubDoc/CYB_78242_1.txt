@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------------
+Date:		29-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78242
+Affected files:
+		Source/prj/lib/AUTO/AutoViewport.cpp
+Description:	ActiveViewport.Zoomwindow command does not work in COM
+Comments:	TaL78242
+File by File:
+		Source/prj/lib/AUTO/AutoViewport.cpp
+		Actual problem for Zoom not working through com was the variable screensize was not returning its value properly. Since we have a limitation till which one can zoom, this garbage value of SCREENSIZE variable would exceed that limit and we would get the error. As SCREENSIZE is a session variable call following way works and hence solves the problem.
+	GetApp()->SDSGetVar (m_pDoc, "SCREENSIZE", &rb);
+--------------------------------------------------------------------------------

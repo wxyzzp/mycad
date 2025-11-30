@@ -1,0 +1,44 @@
+--------------------------------------------------------------------------------
+File:		CYB_78429_1.txt
+Date:		11-01-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78429
+Affected files:			
+		Source/prj/ICAD/IcadToolbarMain.cpp
+		Source/prj/ICAD/IcadToolbar.cpp
+		Source/prj/lib/ICADLIB/xml.h
+		Source/prj/lib/ICADLIB/Icaddef.h
+Description:	Problem of saving ToolBar ID into registry after moving from 32 bit toolid to 64 bit (reported by Denis ).Also problem while 			writing XML toolbar. Please note to check XML change one will have to uncomment the #define XML_TOOLBAR 				defined in IcadToolBar.h file
+Comments:	TaL78429
+Problem Analysis:
+		The problem reported by Denis was due to DWORD being used instead of QWORD in function RegSetValueEx.
+		The problem in XML toolbar code was that necessary changes after moving from 32 bit to 64 bit were not done.
+Problem Solution:
+		#define QWORD was not found in library files of VC 6.0 service pack 6. We could add our own #define QWORD with value 		11.
+		In XML Toolbar code need to have 		
+		->attribute("DefID")->tolong_double() 	instead of
+		->attribute("DefID")->toint().
+		and used %I64d instead of %li as done previously.
+
+File_by_File:
+	-	Source/prj/ICAD/IcadToolbarMain.cpp
+		->attribute("DefID")->toInt() ...this is wrong...it should have been ->attribute("DefID")->tolong()
+		but after moving from 32 to 64 bits ...it should be 
+		->attribute("DefID")->tolong_double().
+
+		RegSetValueEx used to save DWORD. This was correct for ToolId long.
+		but after moving from 32 to 64 bits ...it should be 		
+		RegSetValueEx should use QWORD. 
+
+	-	Source/prj/ICAD/IcadToolbar.cpp
+		Previously %li was used to for DefID. But now as we have moved from 32 to 64 bit we would use %I64d
+
+	-	Source/prj/lib/ICADLIB/xml.h
+		#define long_double __int64. Cannot include IcadCusToolbar.h where its defined. Gives lot of dependency errors
+		
+		added function tolong_double() to convert from string to long_double
+		
+	-	Source/prj/lib/ICADLIB/Icaddef.h
+		#define REG_QWORD                   ( 11 ) 
+--------------------------------------------------------------------------------

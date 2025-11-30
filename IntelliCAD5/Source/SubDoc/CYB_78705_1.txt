@@ -1,0 +1,367 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78705_1.txt	
+Product Version:	ICAD 4
+Date:			02/03/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/ThirdParty/DCL_Components/Source/EditBox.cpp	==> DCL
+Source/ThirdParty/DCL_Components/Include/EditBox.h	==> DCL
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78705: ArchT Blocker: Return does not 
+fire CBR_SELECT in DCL edit box control
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, When the user types in the Edit Box and 
+presses "ENTER" key, nothing happens. This is because CBR_SELECT 
+($reason = 1) is not mapped for the "Edit Box" tile in IntelliCAD.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the files "EditBox.cpp" and "EditBox.h" present in
+"Source/ThirdParty/DCL_Components/Source" and 
+"Source/ThirdParty/DCL_Components/Include" respectively. These files contain 
+the implementation of the Edit Box tile in DCL.
+
+	On checking this file I found that for the $reason = 2, i.e CBR_LOST_FOCUS
+there is an appropriate Message Hamdler "OnKillfocus" that does the job.
+
+	I provided the "OnChar" handler for the ON_WM_CHAR message macro for 
+WM_CHAR message. 
+
+	But to have the <ENTER> key as a part of Text in Edit Box I have modified 
+its style to be used as follows:
+
+FILE: Source/ThirdParty/DCL_Components/Source/EditBox.cpp
+---------------------------------------------------------
+int EditBox:: CreateOnScreenObject (
+									CWnd* pParent	// i:pointer to the parent window
+									)
+	{
+	int error;
+	
+	// Bugzilla::78705; 20Feb2004	Mohan
+	//!!! DWORD dwStyle =  WS_CHILD|WS_VISIBLE|WS_BORDER|WS_GROUP|ES_AUTOHSCROLL;
+	DWORD dwStyle =  WS_CHILD | WS_VISIBLE | WS_BORDER | WS_GROUP | ES_AUTOHSCROLL | ES_MULTILINE | ES_WANTRETURN;
+	// Bugzilla::78705; 20Feb2004	Mohan
+	
+	DWORD dwStyleLabel = WS_CHILD|WS_VISIBLE;
+	int editwidth ;
+
+	...
+	...
+	...
+	...
+	...
+	
+	
+	}
+
+
+	In the handler I check for the "ENTER" key (VK_ENTER).
+	
+	I have also introduced a new function "ProcessCALLBACKFunction" which
+takes the "reason" as an integer parameter which may be either 
+"SDS_CBR_LOST_FOCUS" or "SDS_CBR_SELECT". 
+	
+	I have copied the contents of what was done in "OnKillfocus" in this 
+function and modified the function to take into account the "reason" parameter.
+I have then called "ProcessCALLBACKFunction" with a parameter of 
+"SDS_CBR_LOST_FOCUS" in the function "OnKillfocus".
+
+	Thus if the ENTER key has been pressed, I call "ProcessCALLBACKFunction" 
+with a parameter of "SDS_CBR_SELECT", in "OnChar" which does the job.
+
+	Please find the related modifications in the folowing 2 files:
+		==> Source/ThirdParty/DCL_Components/Source/EditBox.cpp	==> DCL
+		==> Source/ThirdParty/DCL_Components/Include/EditBox.h	==> DCL
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should work for the following cases:
+1.	For the case reported in Bugzilla against this bug. These steps involve 
+	the integration of ArchT, and therefore please refer to the steps in 
+	Bugzilla.
+2.	For the Dialog Box and corresponding LISP code in which a Edit Box is 
+	present and the "action_tile" for this Edit Box is mapped to a certain 
+	LISP routine, then that LISP routine should execute in any of the 
+	following cases: 
+	Ø	When "$reason" is 1, i.e Enter key is pressed in Edit Box. 
+	Ø	When "$reason" is 2, i.e the Edit Box, which initially has the focus, 
+		looses the focus.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

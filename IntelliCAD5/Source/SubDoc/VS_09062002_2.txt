@@ -1,0 +1,93 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_09062002_2.txt
+Date:		09-06-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.vbp 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.frx 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.frm 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.exe 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplashtd.bmp 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplashOld.bmp 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplash.bmp 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/frmSplash.frx 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/frmSplash.frm 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/FormHelp.frx 
+		CvsHist:Source/Regress_apps/Roundtrip%20application/FormHelp.frm 
+
+Changed files:	
+		CvsHist:Source/prj/ICAD/icadmain.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission adds a flexible roundtrip application.
+Comments:	This submission a flexible roundtrip application. This can be customised to run any combination of
+		ICAD and ACAD versions and to open/save different versions of the dwg file. The restriction is at most 5 steps
+		can be performed. This application is written in Visual Basic and the executable is checked in.
+
+		You would need roundtrip.exe and the 3 bmp files to run the application. The other files are checked in
+		in case someone wants to modify the application.
+
+		This application allows the user to perform roundtrip 
+		testing of Icad and Acad. The application allows the user 
+		to test from 1 to 5 steps in roundtrip. For each step, either Icad or Acad 
+		can be used. In addition, a different version of the executable
+		can be used at each step.
+
+		WARNING -- the output directory should not be under the 
+		directory to process
+
+		There are two tabs in the application. In the options tab, 
+		the user can specify a default location for icad.exe and acad.exe.
+		The user can set the directory to process and a directory to 
+		place the output files. All dwg files in the input directory are processed
+		and the output files placed in the output directory. The input folder 
+		is recursively processed and the same hierarchy is created for the output 
+		folder.
+
+		The output dwg file from one step in the input dwg file for the next
+		step. The appliation builds a scr file on the fly for each dwg file 
+		it is processing and for each step. This scr file is run against the
+		executable chosen for that step.
+
+		It is the responsibility of the user to ensure that the roundtrip steps
+		are valid. For example, if step 1 is ICAD 2001 version and step 2 is ACAD R14 
+		version, the saveas for step 1 should be a version ACAD R14 can recognise.
+		Also the saveas from step 2 should be a format ACAD R14
+		can write out to.
+
+
+
+File by File:	
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.vbp 
+			VB project file to build application.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.frx 
+			Generated VB file.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.frm 
+			Main form for roundtrip application.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/roundtrip.exe 
+			Executable for roundtrip.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplashtd.bmp 
+			Bitmap for splash screen.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplashOld.bmp 
+			Bitmap for splash screen.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/icadsplash.bmp 
+			Bitmap for splash screen.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/frmSplash.frx 
+			Generated VB file.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/frmSplash.frm 
+			Form for splash screen.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/FormHelp.frx 
+			Generated VB file.
+		CvsHist:Source/Regress_apps/Roundtrip%20application/FormHelp.frm 
+			Form for Help.
+-----------------------------------------------------------------------------

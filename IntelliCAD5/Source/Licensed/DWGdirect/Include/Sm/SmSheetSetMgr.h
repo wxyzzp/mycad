@@ -1,0 +1,60 @@
+///////////////////////////////////////////////////////////////////////////////
+// Copyright © 2002, Open Design Alliance Inc. ("Open Design") 
+// 
+// This software is owned by Open Design, and may only be incorporated into 
+// application programs owned by members of Open Design subject to a signed 
+// Membership Agreement and Supplemental Software License Agreement with 
+// Open Design. The structure and organization of this Software are the valuable 
+// trade secrets of Open Design and its suppliers. The Software is also protected 
+// by copyright law and international treaty provisions. You agree not to 
+// modify, adapt, translate, reverse engineer, decompile, disassemble or 
+// otherwise attempt to discover the source code of the Software. Application 
+// programs incorporating this software must include the following statement 
+// with their copyright notices:
+//
+//      DWGdirect © 2002 by Open Design Alliance Inc. All rights reserved. 
+//
+// By use of this software, you acknowledge and accept the terms of this 
+// agreement.
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef _SmSheetSetMgr_h_Included_
+#define _SmSheetSetMgr_h_Included_
+
+#include <RxObject.h>
+#include <OdWString.h>
+#include "SmEvents.h"
+#include "SmExport.h"
+#include "SmSheetSet.h"
+#include "SmSheet.h"
+
+namespace dst
+{
+  typedef OdSmEnum<OdSmDatabase> OdSmEnumDatabase;
+  typedef OdSmartPtr<OdSmEnumDatabase>OdSmEnumDatabasePtr;
+
+  /** Description:
+
+      {group:OdSm_Classes} 
+  */
+  struct SMDLL_EXPORT OdSmSheetSetMgr : public OdRxObject
+  {
+    ODRX_DECLARE_MEMBERS( OdSmSheetSetMgr );
+    virtual OdSmDatabase* createDatabase( OdString filename, OdString templatefilename, bool bAlwaysCreate = true ) = 0;
+    virtual OdSmDatabase* openDatabase( OdString filename, bool bFailIfAlreadyOpen = false ) = 0;
+    virtual OdSmDatabase* findOpenDatabase( OdString filename ) = 0;
+    virtual void closeAll() = 0;
+    virtual void close( OdSmDatabase* db ) = 0;
+    virtual long subscribe( OdSmEvents * eventHandler ) = 0;
+    virtual void unSubscribe( long cookie ) = 0;
+    virtual OdSmSheetSet* getParentSheetSet( OdString dwg, OdWString layout ) = 0;
+    virtual OdSmSheet* getSheetFromLayout( OdString filename, OdString handle ) = 0;
+    virtual OdSmEnumDatabasePtr getDatabaseEnumerator() const = 0;
+  };
+  
+  typedef OdSmartPtr<OdSmSheetSetMgr> OdSmSheetSetMgrPtr;
+}
+
+#endif //_SmSheetSetMgr_h_Included_

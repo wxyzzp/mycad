@@ -1,0 +1,61 @@
+
+
+	                     Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_12112002_1.txt
+Date:		13-11-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fixed the following bugs that appeared in Win32 Release build
+ 	only.
+ 	
+ 	     BUG #78353 - "With Full ACIS support entities are not seen as soon as 
+ 	                  they are created". 
+ 	         
+ 	     BUG #78354 - "With Full ACIS support builds, zoom>extents zooms out too 
+ 	                   much".
+ 	
+
+COMMANDS:
+
+        The solids were actually created but could not be displayed because some values of the
+        coordinates of the display objects were infinite big.
+        
+	The problem was the data members of the icl::point class was not initialized in 
+	the default constructor, which caused the values of m_draggingStart and m_draggingCurr 
+	of the gr_acisGetDispObjs class were used without initialized in Win32 Release build. 
+	Since the values of m_draggingStart and m_draggingCurr were invalid, an invalid 
+	translation vector was created and applied to the display objects, which made
+	the display objects of the solids become infinite. 
+	
+
+CHANGED FILES:	
+
+	Source/Prj/Lib/IACADLIB/gvector.inl:       Changed to initialize the coordinates in 
+	                                           point::point() and gvector::gvector();
+	                                           
+	Source/Prj/Lib/IACADLIB/matrix.h:          Changed to set matrix to identity in default
+	                                           constructor.
+		
+	Source/Prj/Lib/ACIS/AsDisplayObject.h:
+	Source/Prj/Lib/ACIS/AsDisplayObject.cpp:   Added code to write AsDisplayObject data to 
+	                                           an output stream.
+	                                           
+	Source/Prj/Lib/ACIS/AsTools.cpp:
+	Source/Prj/Lib/ACIS/AsViewer.cpp:          Changed the order of the included headers.
+	
+	Source/Prj/Lib/GR/DoDef.h:
+	Source/Prj/Lib/GR/DoDef.cpp:               Added code to write display object lists
+	                                           to an output stream.
+	
+	
+
+--------------------------------------------------------------------------------

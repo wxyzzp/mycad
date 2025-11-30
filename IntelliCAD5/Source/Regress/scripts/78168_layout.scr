@@ -1,0 +1,38 @@
+logfilename log\78168_layout.log
+logfileon
+;___________layout_new_
+layout
+n     lay out1     
+;___________layout_set_
+layout
+s     lay out1     
+;___________layout_delete_
+layout
+n     lay outd     
+layout
+s     lay outd     
+layout
+d     lay out1     
+;___________layout_rename_
+;layout
+;n     lay outr   
+;layout
+;r     lay outr     
+;      lay outrr   
+;layout
+;s     lay outrr
+;___________layout_set_
+;layout
+;s     lay out2     
+;________;___________layout_copy_
+;layout
+;c     lay out1     
+;      lay out2   
+;___________layout_set_
+;layout
+;s     lay out2     
+;__________
+dxfout output_dxf\78168_layout.dxf
+6
+quit
+y

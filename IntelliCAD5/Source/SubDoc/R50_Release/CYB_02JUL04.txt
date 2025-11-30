@@ -1,0 +1,82 @@
+Document Title:  CYB_02JUL04.txt	
+Product Version: ICAD 5
+Date:  02 July 2004
+Engineers: Mohan Nayak and Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev, R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+Mohan:
+	In "OnCreate()" member function of "CLWeightComboBox" class in the file
+"LWeightComboBox.cpp" file, new font object is created and for this creation,
+memory is allocated using pointer "*pFont" of "CFont" type. I have freed the 
+memory associated with this pointer after its use to solve the 
+memory leak problem.
+
+
+Sachin:
+	I have added 2 Bmps for different Splash Screens. They are as follows:
+		1. "icadsplash_Standard.bmp" for Standard Version.
+		2. "icadsplash_Professional.bmp" for Professional Version.
+	At present I have just modified the original BMP created by the artisti
+and written the words Professional and Standard on them. In later stages
+we might see these BMPS modified to have the artistic touch. 
+	The corresponding code has also been modified in the file: 
+"Eng-us/AuthenticateRes.rc".
+
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: CYB_02JUL04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/ICAD/LWeightComboBox.cpp?rev=1.1.4.2.2.1 
+Description: 
+	Solved Memory leak problem as reported by Denis.
+Reviewer's Name and Comments: Denis.
+
+
+Reference: CYB_02JUL04.txt
+Engineer: Sachin Dange
+Added Files:
+	Source/res/icadsplash_Standard.bmp?rev=1.1.2.1 
+	Source/res/icadsplash_Professional.bmp?rev=1.1.2.1 
+Affected Files:
+	Eng-us/AuthenticateRes.rc?rev=1.3.6.4.2.1 
+Description: 
+	Introduced 2 Bmps for different Splash Screens for Professional and Standard Versions.
+Reviewer's Name and Comments:
+
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+
+9.  Installation Issues:
+
+
+
+

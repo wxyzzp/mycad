@@ -1,0 +1,7 @@
+logfilename log\lgrid.log
+logfileon
+(load "lisp\lgrid.lsp")
+lgrid
+dxfout output_dxf\lgrid.dxf
+6
+exit y

@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_06092002_1.txt
+Date:		06-09-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/drw/dwgload.cpp
+		Source/prj/lib/db/handtable.h
+ 
+Deleted files:	
+		None
+
+Description:	Performance improvement in load of groups.
+Comments:	This submission improves performance of groups in large drawings by a substantial factor. The fix is not to call 
+		CDbGroup::addEntity() for each entity in a group in drw_readwrite::drw_marcompopen(). Instead, the linked list is
+		maintained and CDbGroup::setEntitiesList() is called. In one large 12MB dwg file, open time came down to 25 sec. from 11 minutes.
+
+		Fixed memory leak in HandleTable class. Added a destructor and cleared the map.
+
+
+File by File:	
+		Source/prj/lib/drw/dwgload.cpp			Version: 1.48.4.2
+			Removed call to	CDbGroup::addEntity() for each entity in a group in drw_readwrite::drw_marcompopen(). Instead, the linked list is
+			maintained and CDbGroup::setEntitiesList() is called. 
+		Source/prj/lib/db/handtable.h			Version: 1.1.1.1.14.2
+			Added a destructor which calls clear on the map.
+
+
+-----------------------------------------------------------------------------

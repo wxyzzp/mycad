@@ -1,0 +1,16 @@
+logfilename log\endpoint_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+endpoint
+(if (/= (getvar "osmode") 1) (alert "endpoint did not work!"))
+;__________
+endpoint
+(if (/= (getvar "osmode") 0) (alert "endpoint did not work!"))
+;__________
+dxfout output_dxf\endpoint_options.dxf
+6
+quit
+y

@@ -1,0 +1,40 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-12.txt
+Produce Version		ICAD 4
+Date:				02/25/2004 08:01am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added support for round tripping dimensions, and inserts
+and images.
+Added some data to the db_dimension for round tripping.
+
+Also added a method for delaying the conversion of inserts
+and dimensions until any blocks that may be associated with
+them has been converted.
+
+Also finished up hatch export.
+
+Notes to Developers:
+
+Notes to QA:
+I'm still having a little problem with text placement on 
+radial, diametric and obliqued dimensions. I need to 
+transform them some way and am working on them.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\db\entities.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+

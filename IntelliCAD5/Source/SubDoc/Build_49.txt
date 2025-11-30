@@ -1,0 +1,801 @@
+Notes for Build_49:
+
+Build Date: June 13, 2004.
+To reproduce this build, checkout tag Build_49.  This produces a non-committable working area.  If you want to commit changes made to this work area, please update IntelliCAD to R40_Dev (cvs update -cd R40_Dev or refer to checkin_process.doc) and proceed with your checkin process.  If you run into any issues, contact yamuna@pacbell.net
+
+CHANGED FILES:
+Date has to be DD-MMM-YYYY format
+28-May-2004
+M 2004-06-11 09:11 +0000 cyberage 1.2.6.5      regen.cpp                      IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.15.6.15    cmds8.cpp                      IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.20.4.21    cmds.h                         IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      LineweightDlg.h                IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      LineweightDlg.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.1.2.4      IntCmds.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.22.4.14    icadwndaction.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.21.4.26    IcadRes.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.8.6.5      icadmain.h                     IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      IcadLWListBox.h                IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      IcadLWListBox.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      IcadLWComboBox.h               IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      IcadLWComboBox.cpp             IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      icadLineWeightDia.cpp          IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.9.6.4      IcadApp.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.28.6.29    IcadApp.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.20.6.13    IcadApi.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.1.2.6      DDPlaneBuffer.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.28.4.37    IcadRes.rc                     IntelliCAD/Eng-us                                            == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.63.4.65    icad.rc2                       IntelliCAD/Eng-us                                            == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.59.4.47    icadrc2.h                      IntelliCAD/Source/prj/ICAD/res                               == <remote>
+A 2004-06-11 09:11 +0000 cyberage 1.1.2.1      icad_fil.bmp                   IntelliCAD/Source/res                                        == <remote>
+M 2004-06-11 09:11 +0000 cyberage 1.23.4.23    icad.dsp                       IntelliCAD/Source/prj/make                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.7.6.12     sds_vars.cpp                   IntelliCAD/Source/prj/lib/SDS                                == <remote>
+A 2004-06-11 13:55 +0000 cyberage 1.1.2.1      LWeightComboBox.h              IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 13:55 +0000 cyberage 1.1.2.1      LWeightComboBox.cpp            IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.3      LTypeComboBox.h                IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.6      LTypeComboBox.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.3      LayerComboBox.h                IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.5      LayerComboBox.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.22.4.15    icadwndaction.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.10.4.10    IcadToolBarMain.cpp            IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.21.4.27    IcadRes.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.19.4.11    IcadMenuTBDef.H                IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.8.6.6      icadmain.h                     IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.18.6.13    icadmain.cpp                   IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.2      icadLineWeightDia.cpp          IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.64.4.52    icadapi.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.3      ColorComboBox.h                IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.1.2.3      ColorComboBox.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 13:55 +0000 cyberage 1.23.4.24    icad.dsp                       IntelliCAD/Source/prj/make                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.22.4.16    icadwndaction.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.21.4.28    IcadRes.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.19.4.12    IcadMenuTBDef.H                IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.8.6.7      icadmain.h                     IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.18.6.14    icadmain.cpp                   IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.33.6.19    IcadExplorer.cpp               IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.64.4.53    icadapi.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 15:28 +0000 cyberage 1.1.2.1      DimStyleComboBox.h             IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 15:28 +0000 cyberage 1.1.2.1      DimStyleComboBox.cpp           IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.59.4.48    icadrc2.h                      IntelliCAD/Source/prj/ICAD/res                               == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.63.4.66    icad.rc2                       IntelliCAD/Eng-us                                            == <remote>
+M 2004-06-11 15:28 +0000 cyberage 1.23.4.25    icad.dsp                       IntelliCAD/Source/prj/make                                   == <remote>
+M 2004-06-01 08:46 +0000 denisp   1.33.6.18    IcadExplorer.cpp               IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-01 08:46 +0000 denisp   1.1.2.6      LayoutTabs.cpp                 IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.1.2.2      CloneHelper.cpp                IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.1.2.2      CloneHelper.h                  IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.20.4.20    cmds.h                         IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.1.2.28     cmdsLayout.cpp                 IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.1.2.11     cmdsLayout.h                   IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.6.6.1      copy_and_move.cpp              IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-01 08:49 +0000 denisp   1.4.12.2     paste.cpp                      IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-11 06:46 +0000 denisp   1.28.4.36    IcadRes.rc                     IntelliCAD/Eng-us                                            == <remote>
+M 2004-06-11 06:48 +0000 denisp   1.21.4.25    IcadRes.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 06:48 +0000 denisp   1.22.4.13    icadwndaction.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 06:48 +0000 denisp   1.1.2.1      LayoutInsert.cpp               IntelliCAD/Source/prj/ICAD                                   == <remote>
+A 2004-06-11 06:48 +0000 denisp   1.1.2.1      LayoutInsert.h                 IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-11 06:51 +0000 denisp   1.23.4.22    icad.dsp                       IntelliCAD/Source/prj/make                                   == <remote>
+M 2004-06-01 18:08 +0000 markba   1.1.6.2      78417.dwg                      IntelliCAD/Source/Regress/Dwg                                == <remote>
+A 2004-06-01 18:08 +0000 markba   1.1.2.1      MB_DWGdirect-42.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-01 18:08 +0000 markba   1.1.2.29     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-01 18:08 +0000 markba   1.1.2.36     DWGdirectProtocolExtension.cpp IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-01 18:12 +0000 markba   1.1.6.3      78417.dwg                      IntelliCAD/Source/Regress/Dwg                                == <remote>
+A 2004-06-02 13:44 +0000 markba   1.1.2.1      MB_DWGdirect-43.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-02 13:44 +0000 markba   1.1.2.30     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-02 13:44 +0000 markba   1.1.2.24     DWGdirectConverter.h           IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-02 15:29 +0000 markba   1.1.2.3      CloneHelper.cpp                IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-02 15:29 +0000 markba   1.1.2.5      cmdsWBlock.cpp                 IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+A 2004-06-02 15:30 +0000 markba   1.1.2.1      MB_DWGdirect-44.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+A 2004-06-03 12:35 +0000 markba   1.1.2.1      MB_DWGdirect-45.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-03 12:35 +0000 markba   1.1.2.31     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-03 12:35 +0000 markba   1.1.2.37     DWGdirectProtocolExtension.cpp IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-05 15:19 +0000 markba   1.28.4.35    IcadRes.rc                     IntelliCAD/Eng-us                                            == <remote>
+M 2004-06-05 15:19 +0000 markba   1.63.4.64    icad.rc2                       IntelliCAD/Eng-us                                            == <remote>
+A 2004-06-05 15:19 +0000 markba   1.1.2.1      regress.lst                    IntelliCAD/Source/Regress/scripts                            == <remote>
+A 2004-06-05 15:19 +0000 markba   1.1.2.1      MB_DWGdirect-46-SaveAs2004.txt IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-05 15:19 +0000 markba   1.21.4.17    IcadDoc.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-05 15:19 +0000 markba   1.21.4.24    IcadRes.h                      IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-05 15:19 +0000 markba   1.7.6.4      icad.h                         IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-05 15:19 +0000 markba   1.8.6.5      icadpromptmenu.cpp             IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-05 15:19 +0000 markba   1.59.4.46    icadrc2.h                      IntelliCAD/Source/prj/ICAD/res                               == <remote>
+M 2004-06-05 15:19 +0000 markba   1.10.6.3     AutoDoc.cpp                    IntelliCAD/Source/prj/lib/AUTO                               == <remote>
+M 2004-06-05 15:19 +0000 markba   1.4.6.8      dxfInOut.cpp                   IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-05 15:19 +0000 markba   1.8.6.12     save.cpp                       IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-05 15:19 +0000 markba   1.1.2.32     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-05 15:19 +0000 markba   1.1.2.35     DWGdirectReader.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-05 15:19 +0000 markba   1.1.2.35     DWGdirectWriter.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-05 15:19 +0000 markba   1.40.6.23    sds_get.cpp                    IntelliCAD/Source/prj/lib/SDS                                == <remote>
+M 2004-06-08 14:07 +0000 markba   1.1.2.2      regress.lst                    IntelliCAD/Source/Regress/scripts                            == <remote>
+A 2004-06-08 14:07 +0000 markba   1.1.2.1      MB_DWGdirect_ODT_out.txt       IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-08 14:07 +0000 markba   1.15.6.13    Change.cpp                     IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-08 14:07 +0000 markba   1.28.6.28    IcadApp.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-08 14:07 +0000 markba   1.6.6.4      IcadEditXdata.cpp              IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-08 14:07 +0000 markba   1.64.4.51    icadapi.cpp                    IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-08 14:07 +0000 markba   1.5.6.11     icaddrawbitmap.cpp             IntelliCAD/Source/prj/ICAD                                   == <remote>
+M 2004-06-08 14:07 +0000 markba   1.3.6.2      adstream.cpp                   IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:07 +0000 markba   1.8.4.8      db.h                           IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:07 +0000 markba   1.13.4.19    db_util.cpp                    IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:07 +0000 markba   1.5.6.7      dbprotos.h                     IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:08 +0000 markba   1.11.4.14    objects.h                      IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:08 +0000 markba   1.15.6.10    oldvars.cpp                    IntelliCAD/Source/prj/lib/DB                                 == <remote>
+A 2004-06-08 14:08 +0000 markba   1.1.2.1      oldvars.h                      IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.1.1.14.4 xrecord.cpp                    IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.1.1.14.1 dbdll.rc2                      IntelliCAD/Source/prj/lib/DB/res                             == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.2.33     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.2.25     DWGdirectConverter.h           IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.2.38     DWGdirectProtocolExtension.cpp IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.2.36     DWGdirectWriter.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.1.1.1.14.5 Drw.h                          IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.11.6.6     drwfns.cpp                     IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.3.6.1      drwprotos.h                    IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.48.4.54    dwgload.cpp                    IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.47.4.36    dwgsave.cpp                    IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 14:08 +0000 markba   1.13.4.24    db.dsp                         IntelliCAD/Source/prj/make                                   == <remote>
+M 2004-06-08 20:21 +0000 markba   1.1.2.3      regress.lst                    IntelliCAD/Source/Regress/scripts                            == <remote>
+A 2004-06-08 20:21 +0000 markba   1.1.2.1      MB_DWGdirect-47.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-08 20:21 +0000 markba   1.1.1.1.14.5 xrecord.cpp                    IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-08 20:21 +0000 markba   1.1.2.34     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-08 20:21 +0000 markba   1.1.2.37     DWGdirectWriter.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 00:02 +0000 markba   1.1.6.4      export_options.scr             IntelliCAD/Source/Regress/scripts                            == <remote>
+M 2004-06-09 00:02 +0000 markba   1.1.2.4      regress.lst                    IntelliCAD/Source/Regress/scripts                            == <remote>
+A 2004-06-09 00:02 +0000 markba   1.1.2.1      MB_DWGdirect-48.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-09 00:02 +0000 markba   1.1.2.4      CloneHelper.cpp                IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+M 2004-06-09 00:02 +0000 markba   1.1.2.35     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DWGdirect.chm                  IntelliCAD/Source/Licensed/DWGdirect                         == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      ExGiRasterImage.cpp            IntelliCAD/Source/Licensed/DWGdirect/ExServices              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      ExGiRasterImage.h              IntelliCAD/Source/Licensed/DWGdirect/ExServices              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      ExSystemServices.cpp           IntelliCAD/Source/Licensed/DWGdirect/ExServices              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      ExSystemServices.h             IntelliCAD/Source/Licensed/DWGdirect/ExServices              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      OdFileBuf.h                    IntelliCAD/Source/Licensed/DWGdirect/ExServices              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      AcisRenderer.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      AfTypeVer.h                    IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      CmColor.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      ColorMapping.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DDVersion.h                    IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      Db3dSolid.h                    IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbAbstractViewTableRecord.h    IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbAbstractViewportData.h       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbBody.h                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbColor.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DbDatabase.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbEntity.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      DbField.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      DbFieldValue.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbFiler.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbGraph.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbGsManager.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbHostAppServices.h            IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbHyperlink.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbIdMapping.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbLinetypeTableRecord.h        IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbMInsertBlock.h               IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DbMText.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbObject.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbObjectId.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbProxyEntity.h                IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbProxyObject.h                IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbRegion.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbSecurity.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbSortentsTable.h              IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DbSystemServices.h             IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      DbTable.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      DbTableStyle.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbText.h                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      DbViewport.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      DbXrecord.h                    IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DynamicLinker.h                IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      Entities.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiStack.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      HatchPatternManager.h          IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      Int64.h                        IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      LyLayerFilter.h                IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      MessageDefs.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      ModelerGeometry.h              IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      OdAlloc.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      OdAllocExport.h                IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      OdErrorContext.h               IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      OdFont.h                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      OdHeap.h                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      OdMutex.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      OdPlatform.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      OdPlatformSettings.h           IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      OdaX.h                         IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      OdaX_i.c                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      OleStorage.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      RawByteData.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      RefCountImpl.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      RxDLinkerReactor.h             IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      RxDictionary.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      RxDispatchImpl.h               IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      RxDynamicModule.h              IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      RxInit.h                       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      RxModule.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      RxModuleDefs.h                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      RxObject.h                     IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      RxVariantValue.h               IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      SysVarDefs.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      ThumbnailImage.h               IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      XRefMan.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      diagnostics.h                  IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrep.h                       IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrepComplexTraverser.h       IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrepEdgeTraverser.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrepFaceTraverser.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrepShellTraverser.h         IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrBrepVertexTraverser.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrComplex.h                    IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrComplexShellTraverser.h      IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrEdge.h                       IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrEdgeLoopTraverser.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrEntity.h                     IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrEnums.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrExport.h                     IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrFace.h                       IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrFaceLoopTraverser.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrLoop.h                       IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      BrLoopEdgeTraverser.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrLoopVertexTraverser.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrShell.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrShellFaceTraverser.h         IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      BrSystemInternals.h            IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrTraverser.h                  IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrVertex.h                     IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrVertexEdgeTraverser.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      BrVertexLoopTraverser.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Br              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      EdCommandStack.h               IntelliCAD/Source/Licensed/DWGdirect/Include/Ed              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      EdUserIO.h                     IntelliCAD/Source/Licensed/DWGdirect/Include/Ed              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeCone.h                       IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GeCurve3d.h                    IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeCylinder.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeEllipArc3d.h                 IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeEllipCone.h                  IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeEllipCylinder.h              IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GeFiler.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GeMatrix3d.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeNurbCurve2d.h                IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeNurbCurve3d.h                IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeNurbSurface.h                IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GePlanarEnt.h                  IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GeScale2d.h                    IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GeShell.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GeTorus.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Ge              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      Gi.h                           IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiBaseTraits.h                 IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiBaseVectorizer.h             IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GiCommonDraw.h                 IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GiContextForDbDatabase.h       IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiConveyorConnector.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiConveyorGeometry.h           IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiConveyorNode.h               IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiDrawable.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiEmptyGeometry.h              IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiGeometry.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiGeometrySimplifier.h         IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GiLinetype.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      GiLinetypeGenerator.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiLinetyper.h                  IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiMetafile.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiNonEntityTraits.h            IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiOrthoClipper.h               IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiPolyline.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiRasterImage.h                IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiSegTaker.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiSelector.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiShellFaceIterator.h          IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiShellFaceWithHolesIterator.h IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiSubEntityTraitsData.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiViewport.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiViewportDraw.h               IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiViewportGeometry.h           IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      GiWorldDraw.h                  IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GiWorldGeometry.h              IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      GiXform.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      OdPolyPolygon3d.h              IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      Gs.h                           IntelliCAD/Source/Licensed/DWGdirect/Include/Gs              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GsBaseVectorizer.h             IntelliCAD/Source/Licensed/DWGdirect/Include/Gs              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.4      GsLight.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Gs              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.2      ModelerGeometryImpl.h          IntelliCAD/Source/Licensed/DWGdirect/Include/ModelerGeometry == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      AveDefs.h                      IntelliCAD/Source/Licensed/DWGdirect/Include/Ve              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.3      wrTriangulationParams.h        IntelliCAD/Source/Licensed/DWGdirect/Include/Wr              == <remote>
+M 2004-06-09 20:35 +0000 markba   1.1.2.5      DD_VC6MD_AcisBuilder.lib       IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:36 +0000 markba   1.1.2.5      DD_VC6MD_AcisRenderer.lib      IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:36 +0000 markba   1.1.2.2      DD_VC6MD_Alloc.lib             IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:36 +0000 markba   1.1.2.2      DD_VC6MD_Br.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:36 +0000 markba   1.1.2.5      DD_VC6MD_Db.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_DwfExport.lib         IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.4      DD_VC6MD_DwfImport.lib         IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_DwfToolkit.lib        IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_FT.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_Ge.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.4      DD_VC6MD_Gi.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_Gs.lib                IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_Jpeg.lib              IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_ModelerGeometry.lib   IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+A 2004-06-09 20:37 +0000 markba   1.1.2.1      DD_VC6MD_Ole.lib               IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_Root.lib              IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+A 2004-06-09 20:37 +0000 markba   1.1.2.1      DD_VC6MD_RxRasterServices.lib  IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.4      DD_VC6MD_SpatialIndex.lib      IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.4      DD_VC6MD_SvgExport.lib         IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_ZLib.lib              IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.5      DD_VC6MD_Zip.lib               IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD               == <remote>
+A 2004-06-09 20:37 +0000 markba   1.1.2.1      MB_DWGdirect_LibUpdate.txt     IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.39     DWGdirectProtocolExtension.cpp IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.10     DWGdirectProtocolExtension.h   IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.36     DWGdirectReader.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.38     DWGdirectWriter.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.6      GiWorldDrawVectors.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 20:37 +0000 markba   1.1.2.4      GiWorldDrawVectors.h           IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-09 21:45 +0000 markba   1.1.2.5      Regression.exe                 IntelliCAD/Source/Regress Applications/regress App           == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.1      DbClass.h                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.1      ModelerGeometryCreator.h       IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.5      OdaToolkit.h                   IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.5      OdaToolkit_i.c                 IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.1      RxRasterServices.h             IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.5      ViewX.h                        IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.5      ViewX_i.c                      IntelliCAD/Source/Licensed/DWGdirect/Include                 == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.1      GiExtAccum.h                   IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+A 2004-06-10 00:06 +0000 markba   1.1.2.1      GiPerspectivePreprocessor.h    IntelliCAD/Source/Licensed/DWGdirect/Include/Gi              == <remote>
+A 2004-06-11 14:04 +0000 markba   1.1.2.1      MB_DWGdirect-49.txt            IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-11 14:04 +0000 markba   1.25.4.23    drawing.cpp                    IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-11 14:04 +0000 markba   1.2.6.1      hireflink.cpp                  IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-11 14:04 +0000 markba   1.11.4.15    objects.h                      IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-11 14:04 +0000 markba   1.1.2.36     DWGdirectConverter.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-11 14:04 +0000 markba   1.1.2.26     DWGdirectConverter.h           IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-11 14:04 +0000 markba   1.1.2.37     DWGdirectReader.cpp            IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-11 14:04 +0000 markba   1.1.2.7      GiWorldDrawVectors.cpp         IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-11 14:04 +0000 markba   1.1.2.10     Utilities.cpp                  IntelliCAD/Source/prj/lib/DRW                                == <remote>
+M 2004-06-14 05:08 +0000 master   1.4.8.58     blddate.h                      IntelliCAD/Source/prj/ICAD                                   == ~/R40_Dev/IntelliCAD/Source/prj/ICAD
+M 2004-06-01 06:37 +0000 stephenh 1.13.6.10    OsnapHelpers.cpp               IntelliCAD/Source/prj/lib/flyoversnap                        == <remote>
+A 2004-06-01 06:38 +0000 stephenh 1.1.2.1      SH_78765_1.doc                 IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-09 02:25 +0000 stephenh 1.21.6.17    cmds4.cpp                      IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+A 2004-06-09 02:53 +0000 stephenh 1.1.2.1      SH_78766_1.doc                 IntelliCAD/Source/SubDoc                                     == <remote>
+M 2004-06-10 01:46 +0000 stephenh 1.7.6.6      AsTools.h                      IntelliCAD/Source/prj/lib/ACIS                               == <remote>
+M 2004-06-10 01:47 +0000 stephenh 1.9.6.9      AsTools.cpp                    IntelliCAD/Source/prj/lib/ACIS                               == <remote>
+M 2004-06-10 01:48 +0000 stephenh 1.8.6.9      AsModeler.h                    IntelliCAD/Source/prj/lib/ACIS                               == <remote>
+M 2004-06-10 01:52 +0000 stephenh 1.9.6.9      Modeler.h                      IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-10 01:52 +0000 stephenh 1.2.6.8      ModelerStub.h                  IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-10 01:55 +0000 stephenh 1.9.6.14     AsModeler.cpp                  IntelliCAD/Source/prj/lib/ACIS                               == <remote>
+M 2004-06-10 01:59 +0000 stephenh 1.33.4.18    db1.cpp                        IntelliCAD/Source/prj/lib/DB                                 == <remote>
+M 2004-06-10 02:01 +0000 stephenh 1.5.6.3      acisInOut.cpp                  IntelliCAD/Source/prj/lib/CMDS                               == <remote>
+A 2004-06-10 02:04 +0000 stephenh 1.1.2.1      SH_090604_1.doc                IntelliCAD/Source/SubDoc                                     == <remote>
+
+CHANGELOG:
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-42.txt
+Date:				05/28/2004 06:17am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Fix for script 78417.scr (USEDDWGDIRECT) and its variants.
+Turns out there was a call to gather handseeds without
+first checking to see that there were some.
+Also fixe export of a test drawing Dave sent me, called
+car render test.dwg. Note it now round trips correctly.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-43.txt
+Date:				06/02/2004 06:27am
+Engineer(s):		Mark Barrow
+
+Change Description:
+I somehow missed export of arcalignedtext entities.
+This submission fixes that.
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-44.txt
+Date:				06/02/2004 08:25am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Wblock was broken, as in no output file was being created.
+I changed a test looking for RTNORM from a function that never returns RTNORM in clonehelper.
+
+Also, change a test in cmdswblock that was deleting the entities being
+wblocked from the ORIGINAL drawing if there was any kind of problem during
+wblock. I changed the test value, but left the (what looks like) orginal
+code in place and added an ASSERT() to fire if we ever drop into what I
+believe to be bogus code.
+
+Files Affected:
+\source\prj\lib\cmds\cmdswblock.cpp
+\source\prj\lib\cmds\clonehelper.cpp
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-45.txt
+Date:				06/03/2004 05:30am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Minor changes to add tests for NULL objects.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-46-SaveAs2004.txt
+Date:				06/04/2004 11:50am
+Engineer(s):		Mark Barrow
+
+Change Description:
+This submission makes the default ouput file version for IntelliCAD
+version 2004.
+
+Notes to Developers:
+From this point on you MUST set the environment variable USEDWGDIRECT to 
+some value via the control panel/system, to make it globally accessable.
+
+If you do not do this, and do a simple save of the current drawing, you'll
+get the following error in an alert box;
+		Error writing file.
+		Save attempted to incompatible version
+
+This error means that IntelliCAD tried to save a 2004 drawing using the old
+ODT libraries, which fails. Setting USEDWGDIRECT to any value (I suggest 1)
+will cause the DWGdirect code path to be used for all save/saveas/wblock etc
+commands.
+
+Notes to QA:
+Regression;
+
+There will be some instability in regression for a short while. I will be
+making every attempt to fix regression problems promptly.To that end, I
+have created a file called regress.lst which is a file with all the file
+names in \source\regress\scripts piped into this ascii file. I have commented
+out ALL files that I experienced problems with during the running of regress
+with a small note as to why it is commented out. The reasons range from 'stopped
+for user input' to 'displays a dialog' to 'crashes'. My objective is to leave
+only files that run to completion without ANY user intervention.
+
+All the files that have been commented out will need to be address at some time
+or another, with the idea of only uncommenting them when they run to completion,
+without ANY user intervention.
+
+I know this ties regress to regression.exe, but unless the old regress.exe is updated 
+to handle lst files, I don't see another good way to work toward a regression
+process that works. 
+
+The ultimate goal is to make a copy of regress.lst called something like 
+minRegress.lst that has far fewer files, thereby taking a lot less time, hopefully
+not to exceed 30 mins or so for Developers to run prior to submissions. The current
+process of running all 500+ files is simply too time consuming for developers to 
+run. I have been attempting to run it since last October, and have yet to make it
+all the way through with having to intervene in some way, or having a large number
+of scripts time out and be killed.
+
+Rant alert !!!!!!!!!!!!!!!!!!
+I have tracked down one problem that I have been haunted with related to regress
+for a long time. Some where along the line my setting for ATTDIA was set to 1. The
+default is 0. This was causing a dialog to appear for every insert (that had attributes)
+I blew away my HKEY_CURRENT_USER\Software\ITC\IntelliCAD registry key, and MANY (not all)
+but many of my failures went away.
+Then I noticed that none of the scripts that were displaying the dialog were even checking
+the ATTDIA sysvar.
+
+I believe we need a set of rules for writing scripts that address things like this. ALL
+scripts should preserve whatever they change, and reset it on exit. FILEDIA is a perfect 
+example. Mine is pretty much alwas set to 0 after running regress.
+!!!!!!!!!!!!!!!!!!!
+
+Notes to Docs:
+
+Notes to Localization:
+There have been new strings added to the resources.
+
+Files Affected:
+\IntelliCAD\eng-us\IcadRes.rc
+\IntelliCAD\eng-us\Icad.rc2
+\source\prj\icad\res\icadrc2.h
+\source\prj\icad\icadres.h
+\source\prj\icad\icadpromptmenu.cpp
+\source\prj\icad\icaddoc.cpp
+\source\prj\icad\icad.h
+\source\prj\lib\auto\autodoc.cpp
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectConverter.cpp
+\source\prj\lib\drw\dwgdirectReader.cpp
+\source\prj\lib\sds\sds_get.cpp
+
+Files Added:
+\source\regress\scripts\regress.lst
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-47.txt
+Date:				06/08/2004 13:12pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fixed a hang I introduced in xrecord.cpp
+Also fixed some script crashers, and have
+uncommented them from regress.lst.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\regress\scripts\regress.lst
+\source\prj\lib\db\xrecord.cpp
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-48.txt
+Date:				06/08/2004 17:04pm
+Engineer(s):		Mark Barrow
+
+Change Description:
+Fix for two more failing scripts
+export_options.scr
+edgesurf_options.scr
+
+Updated regress.lst.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\cmds\clonehelper.cpp
+\source\regress\scripts\regress.lst
+\source\regress\scripts\export_options.scr
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect_LibUpdate.txt
+Date:				06/09/2004 12:24pm
+Engineer(s):		Mark Barrow
+
+Change Description:
+Submitting code drop from ODT group. New DWGdirect libraries,
+and supporting files.
+
+Also had to make a few changes due to some library function
+signature changes.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.h
+\source\prj\lib\drw\giworlddrawvectors.h
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\Source\Licensed\DWGdirect\DWGdirect.chm
+See Document for ODT DWGDirect code drop files
+
+-------------------------------------------------------------------------------- 
+Document Title		MB_DWGdirect-49.txt
+Date				06/11/2004 06:09am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Changes made to fix a couple of regression script failures.
+Fixes 77860.scr, 78393.scr, Spline.scr.
+
+utilities.cpp - added three missing group code numbers in ReadWriteUtils::getOdResBufPtrFromSdsResBufPtr().  
+giworlddrawvectors.cpp - Filled in a bit more of the vector retrieval function OdGiEntityGeometry::mesh().
+dwgdirectreader.cpp - Changed the function making sortents to actually make the entity. This was causeing a script to crash upon dwg cleanup/distruction. Sortents is still not fully implemented, I have information requests in to the ODT guys on this issue. Also removed a call to set a given CDbPlotSettings's name member, because it was stepping on the name that was alread correct and in the dictionary record for it.
+dwgdirectconverter.cpp - Added an argument to let the vertex creation function know which type of vertex to create.  I could not rely on the 70 group code for the information because there can be 8 and 16 group code vertices for both 2D and 3D vertices.
+
+Code reformatting only no code change on the following files;
+drawing.cpp
+hireflink.cpp
+objects.h
+
+Files Affected:
+\source\prj\lib\db\hireflink.cpp
+\source\prj\lib\db\drawing.cpp
+\source\prj\lib\db\objects.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+
+-------------------------------------------------------------------------------- 
+Date: 6-8-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: BugZilla:78765 
+Affected files: 
+Source/prj/lib/CMDS/cmds4.cpp?rev=1.21.6.17 
+Deleted Files: 
+None 
+Added Files: 
+None 
+Description: This submission fixes all light weight polyline trimming problems, 
+which did not give correct results in some cases for closed pline 
+and pline trimed byself. One of the problems is reported as the 
+bug #78765 – Trimming rectangle gives wrong result. In that case, 
+the result may or may not be correct strongly depending on which 
+segment is selected as a trimmed or trimming object. 
+
+The root cause of the problems was in cmd_adj_pline_trimpts() 
+function that was implemented to track and move the trimming points 
+on the polyline when a polyline is trimmed by another entity or 
+itself. The algorithm implemented was not incorrect and insufficient 
+to cover all kinds of cases so that it gave a result incorrectly in 
+certain case. To fix the problems, the cmd_adj_pline_trimpts() 
+funtion was completely re-written and cmd_trim_object() was also 
+changed according to the changes in cmd_adj_pline_trimpts(). 
+
+Comments: TaL78765 
+-------------------------------------------------------------------------------- 
+Date: 6-8-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/prj/lib/ACIS/AsTools.h?rev=1.7.6.6 
+Source/prj/lib/ACIS/AsTools.cpp?rev=1.9.6.9 
+Source/prj/lib/ACIS/AsModeler.h?rev=1.8.6.9 
+Source/prj/lib/DB/Modeler.h?rev=1.9.6.9 
+Source/prj/lib/DB/ModelerStub.h?rev=1.2.6.8 
+Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.6.14 
+Source/prj/lib/DB/db1.cpp?rev=1.33.4.18 
+Source/prj/lib/CMDS/acisInOut.cpp?rev=1.5.6.3 
+
+Deleted Files: 
+None 
+Added Files: 
+None 
+
+Description: 
+This submission makes the following changes to the code: 
+
+1) Add RGB color values support for ACISIN and ACISOUT commands. 
+This allows ACISIN command to pick up the RGB values attached 
+in ACIS sat files and map them to the closest color in terms 
+of IntelliCAD’s current palette colors and allows ACISOUT command 
+to convert colors of ACIS models to appropriate RGB values before 
+write the data of models to the sat files. Since how colors are 
+mapped varies from system to system and only normalized RGB values 
+are unique across the systems, those changes will enable to minimize 
+the color change when the models are moved from one system to 
+another system. 
+
+2) Change ACISOUTVER system variable from read-only to read/write in 
+order to allow users to set the version of ACIS sat file format and 
+add the support to ACISOUT command to allow to export ACIS models in 
+various ACIS sat file format. 
+
+3) The entities selected in ACISOUT command were not unhighlighted 
+after the command is completed. This problem is fixed. 
+
+4) Change the code of ACISIN command to bring in models as IntelliCAD 
+BODY rather than 3DSOLID. 
+
+Comments: SH_090604_1.doc 
+-------------------------------------------------------------------------------- 
+Date: 11-06-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Added files: 
+Source/prj/ICAD/LayoutInsert.cpp 
+Source/prj/ICAD/LayoutInsert.h 
+Affected files: 
+Eng-us/IcadRes.rc 
+Source/prj/ICAD/IcadRes.h 
+Source/prj/ICAD/icadwndaction.cpp 
+Source/prj/make/icad.dsp 
+Description: Added Insert Layout dialog. 
+Comments: TALLayouts 
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------ 
+Date: 11-06-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: 
+
+Affected files: 
+Source/prj/ICAD/icadwndaction.cpp 
+Source/prj/ICAD/IcadRes.h 
+Source/prj/ICAD/IcadMenuTBDef.H 
+Source/prj/ICAD/icadmain.h 
+Source/prj/ICAD/icadmain.cpp 
+Source/prj/ICAD/IcadExplorer.cpp 
+Source/prj/ICAD/icadapi.cpp 
+Source/prj/ICAD/res/icadrc2.h 
+Eng-us/icad.rc2 
+Source/prj/make/icad.dsp 
+
+Added files: 
+Source/prj/ICAD/DimStyleComboBox.h 
+Source/prj/ICAD/DimStyleComboBox.cpp 
+
+Description: Added Combo-box for DimStyle? in Dimension toolbar. 
+as per IntelliCAD? 5 Specification. 
+Comments: 
+TO DO after this Check-In process is over. 
+
+------------------------------------------------------------------------------------ 
+Date: 11-06-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: 
+
+Affected files: 
+Source/prj/lib/SDS/sds_vars.cpp 
+Source/prj/ICAD/LTypeComboBox.h 
+Source/prj/ICAD/LTypeComboBox.cpp 
+Source/prj/ICAD/LayerComboBox.h 
+Source/prj/ICAD/LayerComboBox.cpp 
+Source/prj/ICAD/icadwndaction.cpp 
+Source/prj/ICAD/IcadToolBarMain.cpp 
+Source/prj/ICAD/IcadRes.h 
+Source/prj/ICAD/IcadMenuTBDef.H 
+Source/prj/ICAD/icadmain.h 
+Source/prj/ICAD/icadmain.cpp 
+Source/prj/ICAD/icadLineWeightDia.cpp 
+Source/prj/ICAD/icadapi.cpp 
+Source/prj/ICAD/ColorComboBox.h 
+Source/prj/ICAD/ColorComboBox.cpp 
+Source/prj/make/icad.dsp 
+
+Added files: 
+Source/prj/ICAD/LWeightComboBox.h 
+Source/prj/ICAD/LWeightComboBox.cpp 
+
+Description: Added Combo-box for Lineweights in Entity Property toolbar. 
+as per IntelliCAD? 5 Specification. 
+Comments: 
+Done modifications in Entity Properties ToolBar? code. 
+Added LWeight? Combo-box in the Toolbar. 
+Synchronised the code with LWEIGHT command implementation. 
+Made other fixes as found. 
+
+-------------------------------------------------------------------------------- 
+Date: 11-06-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: 
+
+Affected files: 
+Source/prj/lib/CMDS/regen.cpp 
+Source/prj/lib/CMDS/cmds8.cpp 
+Source/prj/lib/CMDS/cmds.h 
+Source/prj/ICAD/IntCmds.cpp 
+Source/prj/ICAD/icadwndaction.cpp 
+Source/prj/ICAD/IcadRes.h 
+Source/prj/ICAD/icadmain.h 
+Source/prj/ICAD/IcadApp.h 
+Source/prj/ICAD/IcadApp.cpp 
+Source/prj/ICAD/IcadApi.h 
+Source/prj/ICAD/DDPlaneBuffer.cpp 
+Eng-us/IcadRes.rc 
+Eng-us/icad.rc2 
+Source/prj/ICAD/res/icadrc2.h 
+Source/prj/make/icad.dsp 
+
+Added files: 
+Source/prj/ICAD/LineweightDlg.h 
+Source/prj/ICAD/LineweightDlg.cpp 
+Source/prj/ICAD/IcadLWListBox.h 
+Source/prj/ICAD/IcadLWListBox.cpp 
+Source/prj/ICAD/IcadLWComboBox.h 
+Source/prj/ICAD/IcadLWComboBox.cpp 
+Source/prj/ICAD/icadLineWeightDia.cpp 
+Source/res/icad_fil.bmp 
+
+Description: Lineweight / LWEIGHT command implementation with "Lineweight Settings" Dialog, as per IntelliCAD? 5 Specification. 
+Comments: TO DO after this Check-In process is over. 
+
+--------------------------------------------------------------------------------
+
+REGRESS:
+The following scripts failed during the regress run (USEDWGDIRECT=0). Running them individually showed no problems.  Please look for performance data on performance.xls at http://www.itcmembers.org/metadot/index.pl?isa=CMSDocument&iid=2720&op=show
+
+F:\Build-49\IntelliCAD\Source\Regress\scripts\78346a.scr
+F:\Build-49\IntelliCAD\Source\Regress\scripts\78393_T1fts011.scr
+F:\Build-49\IntelliCAD\Source\Regress\scripts\78417_1.scr
+F:\Build-49\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-49\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-49\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+
+Plote.scr and AccTest-cond.scr also fail with errors.  These have been moved to the scripts_error directory.
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78765

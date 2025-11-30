@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+File:		CYB_78203_1.txt
+Date:		17-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78203
+Affected files:			
+		CvsHist:Source/Source/prj/lib/CMDS/DimAngA3P.cpp
+Description: 	Wrong dimpoints shown for 2 line angular dimension.
+Comments:	TaL78203
+File By File :
+	*	CvsHist:Source/Source/prj/lib/CMDS/DimAngA3P.cpp
+		There should be different dimpoints for 2 line dimangular dimension and 3 point 			dimangular dimension. So this is checked and different points are added. Due to 			this fix we can now select a 2 line dimension by selecting its vertex of line and 		hence can be stretched. 
+-------------------------------------------------------------------------------

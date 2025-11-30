@@ -1,0 +1,22 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04222003.txt
+Date:		04-22-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Changed files: 	
+		Source/ThirdParty/geo/geometry.h?rev=1.1.1.1.12.1
+		Source/prj/make/Geo.dsp?rev=1.3.10.4
+
+
+Description:	Changed to define DEBUG macro in the project file 
+                rather than in geometry.h to solve name conflict 
+                problem for the deubg build with ACIS..
+
+

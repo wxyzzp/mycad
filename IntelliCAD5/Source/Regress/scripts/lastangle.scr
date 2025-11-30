@@ -1,0 +1,18 @@
+logfilename log\lastangle.log
+logfileon
+;_________
+arc
+1,1
+3,3
+2,3
+;___________
+lastangle
+
+lastpoint
+
+lastprompt
+;__________
+dxfout output_dxf\lastangle.dxf
+6
+quit
+y

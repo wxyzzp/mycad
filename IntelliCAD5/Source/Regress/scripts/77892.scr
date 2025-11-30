@@ -1,0 +1,38 @@
+logfilename log\77892.log
+logfileon
+;______
+pickbox
+4
+(load "lisp/77892.lsp")
+;______Check_on_Screen______
+(entmake '((0 . "TOLERANCE") (5 . "49") (100 . "AcDbEntity") (67 . 0) (410 . "Model") (8 . "0") (100 . "AcDbFcf") (3 . "Standard") (10 4.0 4.0 0.0) (1 . "%%v112%%v%%v%%v%%v") (210 0.0 0.0 1.0) (11 1.0 0.0 0.0)))
+;______
+scale
+last
+
+4,4
+2
+;_______
+(setq tl (entget (car (entsel "\n--Select Tolerance : \n"))))
+5,3.6
+(if (/= tl nil) "--Check On Screen -- OK --" (entsel "--Check On Screen -- Error --"))
+;______Check_using_overrides
+(entmake '((0 . "TOLERANCE") (5 . "50") (100 . "AcDbEntity") (67 . 0) (410 . "Model") (8 . "0") (100 . "AcDbFcf") (3 . "Standard") (10 6.0 4.0 0.0) (1 . "%%v112%%v%%v%%v%%v") (210 0.0 0.0 1.0) (11 1.0 0.0 0.0)))
+77892_ovl
+(if (= gp nil) "--Dimgap before scale -- OK --" (entsel "--Dimgap before scale -- Error --"))
+(if (= tx nil) "--Dimtxt before scale -- OK --" (entsel "--Dimgap before scale -- Error --"))
+;______
+scale
+last
+
+6,4
+2
+;_______
+77892_ovl
+(if (= gp 0.1800) "--Dimgap after scale -- OK --" (entsel "--Dimgap after scale -- Error --"))
+(if (= tx 0.3600) "--Dimtxt after scale -- OK --" (entsel "--Dimgap after scale -- Error --"))
+;_______
+dxfout output_dxf\77892.dxf
+6
+quit
+y

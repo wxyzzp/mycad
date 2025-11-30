@@ -1,0 +1,16 @@
+logfilename log\bubble.log
+logfileon
+;________________
+open dwg\bubble1.dwg
+(load "lisp/bubble.lsp")
+bubble
+284,1500
+300,500
+299,488
+
+2
+;__________________
+dxfout output_dxf\bubble.dxf
+6
+quit
+y

@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------------
+File:		CYB_78167
+Date:		05-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78167
+Affected files:			
+		Source/prj/lib/CMDS/DimDiaCenterMark.cpp
+Description: 	When the Dimcen system variable has large negative value the centre line drawn is incorrect.
+Comments:	TaL78167
+File_by_File:
+	*	Source/prj/lib/CMDS/DimDiaCenterMark.cpp
+		cmd_dimaddline just draw a line given the points. IntelliCAD uses this function 			to draw center mark and center line. After comparing with AutoCAD it was clear 				that AutoCAD does not draw line if both the start and end of center line is 				outside the circle. In intelliCAD there was no such condition. We have added one 			now. If the second point is outside the circle then we donot draw the 					centerlines. To find out if the second point is outside the circle we see if the 			distance is > radius of circle. The radius of circle is stored in plink->distance 		and the new distance which we calculated is stored in fr1. We do not draw center 			lines of fr1 > radius. We have also taken care of the case where the point is 				excatly on the circumferece of the circle. There is difference for behaviour in 			this case when compared with AutoCAD. We prefer to draw center line even when the 		second point is on the circle.
+-------------------------------------------------------------------------------

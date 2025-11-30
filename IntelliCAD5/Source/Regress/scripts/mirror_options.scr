@@ -1,0 +1,114 @@
+logfilename log\mirror_options.log
+logfileon
+;__________
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001) (equal (caddr ptAct) (caddr ptExp) 0.00001)))
+;_________1
+line
+1,0
+2,0
+
+;_________
+mirror
+last
+
+0,0
+1,1
+
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 11 (entget (entlast)))) (list 0.0 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________2
+erase
+all
+
+line
+1,0
+2,0
+
+;_________
+mirror
+last
+
+0,0
+1,1
+y
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 11 (entget (entlast)))) (list 0.0 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________3
+erase
+all
+
+circle
+1,0
+2,0
+;_________
+mirror
+last
+
+0,0
+1,1
+
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________4
+erase
+all
+
+circle
+1,0
+2,0
+;_________
+mirror
+last
+
+0,0
+1,1
+y
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________5
+erase
+all
+
+dimlinear
+1,0
+2,0
+1.5,0.5
+;_________
+mirror
+last
+
+0,0
+1,1
+
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.5 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 11 (entget (entlast)))) (list 0.5 1.5 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 13 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 14 (entget (entlast)))) (list 0.0 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________6
+erase
+all
+
+dimlinear
+1,0
+2,0
+1.5,0.5
+;_________
+mirror
+last
+
+0,0
+1,1
+y
+;_________
+(if (comparepoint (cdr (assoc 10 (entget (entlast)))) (list 0.5 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 11 (entget (entlast)))) (list 0.5 1.5 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 13 (entget (entlast)))) (list 0.0 1.0 0.0)) (princ "OK") (alert "Mirror error"))
+(if (comparepoint (cdr (assoc 14 (entget (entlast)))) (list 0.0 2.0 0.0)) (princ "OK") (alert "Mirror error"))
+;_________
+dxfout output_dxf\mirror_options.dxf
+6
+quit
+y

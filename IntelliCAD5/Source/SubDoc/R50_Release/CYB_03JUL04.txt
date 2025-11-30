@@ -1,0 +1,113 @@
+Document Title:  CYB_03JUL04.txt	
+Product Version: ICAD 5
+Date:  03 July 2004
+Engineers: Mohan Nayak and Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+Mohan:
+i. While resizing the "Entity Properties" toolbar,comboboxes namely layer,color,
+   line type and line weight are not seen after certain limit.While creating these
+   comboboxes in "IcadMain.cpp" file, proper IDs are not given to them. So I have
+   given the proper IDs to them in the same file.
+ii. As suggested by Dave, we should use BYLAYER and BYBLOCK consistently in IntelliCAD
+   instead of ByLayer and ByBlock. So for the same reason, I have replaced "ByLayer"
+   and "ByBlock" entries present in "Icad.rc2" file by "BYLAYER" and "BYBLOCK" 
+   respectively. I have made the same changes in the file "LineweightDlg.cpp" in
+   "SetTextForCurrentLWeight()" member function of "CLineweightDlg" class as well
+   as in the file "IcadLWListBox.cpp" in the overiding function "DrawItem" of 
+   "CIcadLWListBox" class.
+	I have also made changes in "LWeightComboBox.cpp" file in the functions "DrawItem"
+	and "MeasureItem" to change the appearance of "line weight combo-box" properly.
+
+
+Sachin:
+i. I have introduced "IntelliCAD 5" Tree in Registry under ITC, so that from 
+   now on all future changes in Registry regarding ICAD 5 will be made under 
+   this tree. 
+ii. This was necessary to allow multiple versions of IntelliCAD to run on the 
+   same machine at end user. Otherwise settings from one version say ICAD 4
+   used to get over-ridden with settings from another version say ICAD 5.
+  
+
+
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y/N
+File Name       	Sent to buildmanager@intellicad.org
+Name of Script File     Y/N
+
+6.  Change Log:
+--------------------------------------------------------------------------------
+
+Reference:CYB_03JUL04.txt      
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/ICAD/LWeightComboBox.cpp?rev=1.1.4.2.2.2 
+	Source/prj/ICAD/LineweightDlg.cpp?rev=1.1.4.1.2.1 
+	Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.2.5.2.1 
+	Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.3 
+	Source/prj/ICAD/IcadLWListBox.cpp?rev=1.1.4.1.2.1 
+	Eng-us/icad.rc2?rev=1.63.2.34.2.5 
+Description:
+	1.Changed Files for Entity Properties Toolbar to solve resizing problem.
+	2.Made Lineweight Combo-Box consistent to have "BYBLOCK" and "BYLAYER".
+	3.Made similiar changes in Lineweight Dialog.
+Reviewer's Name and Comments:
+
+
+Reference:CYB_03JUL04.txt      
+Engineer: Sachin Dange
+Added files:     
+Affected Files:
+	Source/prj/lib/ICADLIB/win32misc.cpp?rev=1.7.4.2.2.1 
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.3 
+	Source/prj/ICAD/IcadRes.h?rev=1.21.2.16.2.3 
+	Source/prj/ICAD/IcadApp.cpp?rev=1.28.4.21.2.3 
+	Source/prj/lib/AUTO/Autorc.h?rev=1.2.4.1.2.1 
+	Source/prj/lib/AUTO/AutoDLL.rc?rev=1.5.4.5.2.1 
+Description:
+	1. Introduced "IntelliCAD 5" Tree in Registry, so that all future changes in Registry regarding ICAD 5 will be made under this tree. 
+	2. This will allow multiple versions of IntelliCAD to run on the same machine at end user.
+Reviewer's Name and Comments:
+
+
+
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+* Unit Test Description: 
+1. Tested the resizing of "Entity Properties" toolbar and appearance of "line weight" combo-box on that toolbar..
+2. Tested the new IntelliCAD 5 Tree under ITC.
+
+* Notes for QA Testing: 
+
+9.  Installation Issues:
+
+
+
+

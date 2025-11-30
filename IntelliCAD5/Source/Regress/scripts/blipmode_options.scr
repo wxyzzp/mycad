@@ -1,0 +1,23 @@
+logfilename log\blipmode_options.log
+logfileon
+;_________1
+blipmode
+on
+(if (/= (getvar "blipmode") 1) (alert "blipmode not set correctly"))
+;_________2
+blipmode
+t
+(if (/= (getvar "blipmode") 0) (alert "blipmode not set correctly"))
+;_________3
+blipmode
+t
+(if (/= (getvar "blipmode") 1) (alert "blipmode not set correctly"))
+;_________4
+blipmode
+off
+(if (/= (getvar "blipmode") 0) (alert "blipmode not set correctly"))
+;_________
+dxfout output_dxf\blipmode_options.dxf
+6
+quit
+y

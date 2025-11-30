@@ -1,0 +1,31 @@
+logfilename log\78075_1.log
+logfileon
+;_________
+dimtad
+3
+dimaligned
+0,4
+4,0
+4,4
+;__________
+dimtad
+3
+dimaligned
+0,4
+4,0
+4,-4
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+4.7926,4.4194
+(if (= en nil) (alert "err1"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+0.7896,0.4433
+(if (= en nil) (alert "err2"))
+;__________
+dxfout output_dxf\78075_1.dxf
+6
+quit
+y

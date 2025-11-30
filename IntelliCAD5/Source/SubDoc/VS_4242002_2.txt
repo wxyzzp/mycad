@@ -1,0 +1,143 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4242002_2.txt
+Date:		24-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+        CvsHist:Source\Regress\Base\scr1.dxf
+        CvsHist:Source\Regress\Base\scr2.dxf
+        CvsHist:Source\Regress\Base\scr3.dxf
+        CvsHist:Source\Regress\Base\scr4.dxf
+        CvsHist:Source\Regress\Base\scr5.dxf
+        CvsHist:Source\Regress\Base\lisp1.dxf
+        CvsHist:Source\Regress\Base\lisp2.dxf
+        CvsHist:Source\Regress\Base\Hyper001.dxf
+        CvsHist:Source\Regress\Base\Hyper002.dxf
+        CvsHist:Source\Regress\Base\Hyper003.dxf
+        CvsHist:Source\Regress\Base\Hyper004.dxf
+        CvsHist:Source\Regress\Base\Hyper005.dxf
+        CvsHist:Source\Regress\Base\cutube.dxf
+        CvsHist:Source\Regress\Base\78057.dxf
+        CvsHist:Source\Regress\Base\78119.dxf
+        CvsHist:Source\Regress\Base\78120.dxf
+        CvsHist:Source\Regress\LISP\scr1.lsp
+        CvsHist:Source\Regress\LISP\scr2.lsp
+        CvsHist:Source\Regress\LISP\scr3.lsp
+        CvsHist:Source\Regress\LISP\scr4.lsp
+        CvsHist:Source\Regress\LISP\scr5.lsp
+        CvsHist:Source\Regress\LISP\lisp1.lsp
+        CvsHist:Source\Regress\LISP\lisp2.lsp
+        CvsHist:Source\Regress\LISP\cutube.lsp
+        CvsHist:Source\Regress\scripts\scr1.scr
+        CvsHist:Source\Regress\scripts\scr2.scr
+        CvsHist:Source\Regress\scripts\scr3.scr
+        CvsHist:Source\Regress\scripts\scr4.scr
+        CvsHist:Source\Regress\scripts\scr5.scr
+        CvsHist:Source\Regress\scripts\lisp1.scr
+        CvsHist:Source\Regress\scripts\lisp2.scr
+        CvsHist:Source\Regress\scripts\Hyper001.scr
+        CvsHist:Source\Regress\scripts\Hyper002.scr
+        CvsHist:Source\Regress\scripts\Hyper003.scr
+        CvsHist:Source\Regress\scripts\Hyper004.scr
+        CvsHist:Source\Regress\scripts\Hyper005.scr
+        CvsHist:Source\Regress\scripts\cutube.scr
+        CvsHist:Source\Regress\scripts\78057.scr
+        CvsHist:Source\Regress\scripts\78119.scr
+        CvsHist:Source\Regress\scripts\78120.scr
+        CvsHist:Source\Regress\scripts\Script2\Hyper001.scr
+        CvsHist:Source\Regress\scripts\Script2\Hyper002.scr
+        CvsHist:Source\Regress\scripts\Script2\Hyper003.scr
+        CvsHist:Source\Regress\scripts\Script2\Hyper004.scr
+        CvsHist:Source\Regress\scripts\Script2\Hyper005.scr
+        CvsHist:Source\Regress\SDS\Hyper001.dll
+        CvsHist:Source\Regress\Dwg\wblock_crash.dwg
+        CvsHist:Source\Regress\Dwg\test1.dwg
+        CvsHist:Source\Regress\Dwg\Iso hatch patterns.dwg
+        CvsHist:Source\Regress\Dwg\Intl space station dec 98.dwg
+        CvsHist:Source\Regress\Dwg\Hatch patterns.dwg
+        CvsHist:Source\Regress\Dwg\ACIS Solids.dwg
+        CvsHist:Source\Regress\Dwg\78119.dwg
+        CvsHist:Source\Regress\Dwg\78057.dwg
+
+
+Changed files:	
+       CvsHist:Source\Regress\scripts\AccTest-symtbl2.scr
+
+Deleted files:	
+
+Summary:	Added new lsp, scr and base files for regress. Adds sds file for regress test.
+Description:	This submission adds further scripts, base dxf and lisp files to the regress suite. I looked at the
+		IntelliCAD QA regress as well as freeware lsp files and added them.
+
+		Add scr files for bugs fixed by Cybage in previous submission.
+		
+		Updated AccTest-symtbl2.scr with more testcases.
+
+		This submission also adds three new directories -- output, Dwg and SDS. All Dwg files for regress should go to the
+		Dwg directory and SDS files to SDS directory. dwg files from a save command should go to the output directory.
+
+File by File:	Initial versions of the scr, lsp and dxf files shown above have been added.
+        Source\Regress\Base\scr1.dxf
+        Source\Regress\Base\scr2.dxf
+        Source\Regress\Base\scr3.dxf
+        Source\Regress\Base\scr4.dxf
+        Source\Regress\Base\scr5.dxf
+        Source\Regress\Base\lisp1.dxf
+        Source\Regress\Base\lisp2.dxf
+        Source\Regress\Base\Hyper001.dxf
+        Source\Regress\Base\Hyper002.dxf
+        Source\Regress\Base\Hyper003.dxf
+        Source\Regress\Base\Hyper004.dxf
+        Source\Regress\Base\Hyper005.dxf
+        Source\Regress\Base\cutube.dxf
+        Source\Regress\Base\78057.dxf
+        Source\Regress\Base\78119.dxf
+        Source\Regress\Base\78120.dxf
+        Source\Regress\LISP\scr1.lsp
+        Source\Regress\LISP\scr2.lsp
+        Source\Regress\LISP\scr3.lsp
+        Source\Regress\LISP\scr4.lsp
+        Source\Regress\LISP\scr5.lsp
+        Source\Regress\LISP\lisp1.lsp
+        Source\Regress\LISP\lisp2.lsp
+        Source\Regress\LISP\cutube.lsp
+        Source\Regress\scripts\scr1.scr
+        Source\Regress\scripts\scr2.scr
+        Source\Regress\scripts\scr3.scr
+        Source\Regress\scripts\scr4.scr
+        Source\Regress\scripts\scr5.scr
+        Source\Regress\scripts\lisp1.scr
+        Source\Regress\scripts\lisp2.scr
+        Source\Regress\scripts\Hyper001.scr
+        Source\Regress\scripts\Hyper002.scr
+        Source\Regress\scripts\Hyper003.scr
+        Source\Regress\scripts\Hyper004.scr
+        Source\Regress\scripts\Hyper005.scr
+        Source\Regress\scripts\cutube.scr
+        Source\Regress\scripts\78057.scr
+        Source\Regress\scripts\78119.scr
+        Source\Regress\scripts\78120.scr
+        Source\Regress\scripts\Script2\Hyper001.scr
+        Source\Regress\scripts\Script2\Hyper002.scr
+        Source\Regress\scripts\Script2\Hyper003.scr
+        Source\Regress\scripts\Script2\Hyper004.scr
+        Source\Regress\scripts\Script2\Hyper005.scr
+        Source\Regress\SDS\Hyper001.dll
+        Source\Regress\Dwg\wblock_crash.dwg
+        Source\Regress\Dwg\test1.dwg
+        Source\Regress\Dwg\Iso hatch patterns.dwg
+        Source\Regress\Dwg\Intl space station dec 98.dwg
+        Source\Regress\Dwg\Hatch patterns.dwg
+        Source\Regress\Dwg\ACIS Solids.dwg
+        Source\Regress\Dwg\78119.dwg
+        Source\Regress\Dwg\78057.dwg
+	Source\Regress\scripts\AccTest-symtbl2.scr 
+		Added new commands.
+------------------------------------------------------------------------------

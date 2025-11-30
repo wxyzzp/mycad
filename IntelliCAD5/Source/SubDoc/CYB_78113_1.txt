@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78113_1.txt
+Date:		10-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78113
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+Description: 	Dimension text position is incorrect for horizontal dimension with Dimtad=1
+Comments:	TaL78113
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+		Used variables to capture the initial values of dimension angle and text rotation angle. Restored the values of  dimension angle and text rotation angle if the dimension is being currently dragged.
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,29 @@
+logfilename log\base_options.log
+logfileon
+;______
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001) (equal (caddr ptAct) (caddr ptExp) 0.00001)))
+;_________1
+base
+1,1,0
+(if (comparepoint (getvar "insbase") (list 1.0 1.0 0.0)) (princ "OK") (alert "Insbase not set correctly"))
+;_________2
+elevation
+2
+base
+2,2
+(if (comparepoint (getvar "insbase") (list 2.0 2.0 2.0)) (princ "OK") (alert "Insbase not set correctly"))
+;_________1
+base
+100,-111,-112
+(if (comparepoint (getvar "insbase") (list 100.0 -111.0 -112.0)) (princ "OK") (alert "Insbase not set correctly"))
+;_________2
+elevation
+-20
+base
+20,2
+(if (comparepoint (getvar "insbase") (list 20.0 2.0 -20.0)) (princ "OK") (alert "Insbase not set correctly"))
+;__________
+dxfout output_dxf\base_options.dxf
+6
+quit
+y

@@ -1,0 +1,32 @@
+logfilename log\3d_entities.log
+logfileon
+;__________ Script created by Stephen Hou
+circle
+1,1
+3
+;__________
+pline
+1,1
+4,1
+4,4
+1,4
+c
+;__________
+region
+all
+
+;__________
+extrude
+all
+
+4
+5
+;__________
+union
+-2,1
+4,4
+
+;__________
+dxfout output_dxf\78522.dxf
+6
+exit y

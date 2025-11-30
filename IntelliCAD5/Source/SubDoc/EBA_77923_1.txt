@@ -1,0 +1,18 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_77923_1.txt
+Date:		24-06-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/lib/DRW/drwsave.cpp
+Description: set $DRAGMODE from registry for previous version.
+	TaL77923
+
+--------------------------------------------------------------------------------

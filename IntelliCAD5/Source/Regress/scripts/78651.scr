@@ -1,0 +1,13 @@
+logfilename log\78651.log
+logfileon
+;_______
+spline
+5,5
+8,8
+c
+
+;_______
+Dxfout output_dxf\78651.dxf
+6
+Exit
+y

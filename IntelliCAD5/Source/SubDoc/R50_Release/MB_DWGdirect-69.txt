@@ -1,0 +1,54 @@
+Engineer(s):		Mark Barrow
+Date:				07/19/2004 10:56am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    Eng-us\icad.rc2
+                    source/prj/icad/dwfinfodialog.cpp
+                    source/prj/icad/icadnewwiz.cpp
+                    source/prj/icad/res/icadrc2.h
+                    source/prj/lib/cmds/openclose.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/subdoc/MB_DWGdirect-69.txt
+Change Overview:
+Added code to NEW wizard to fix a problem reported by Dave. It appeared 
+to hang icad. I also made new act like acad when either the drawing template
+was not found from the wizard and command line.
+
+Change a bit of code to properly handle user input when requesting a template.
+Both the wizard, and commandline would not indicate that the requested template
+was not found. Now they do and continue by opening an empty default drawing. 
+(like our compeditor)
+
+Minor tweak to DWF export dialog.
+Added some protective code around setting plot style names to not do it
+if the handle being set is NULL.
+
+Made minor change to default line thickness on svg export. The were a bit
+to bold.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

@@ -1,0 +1,9 @@
+logfilename log\tablet_options.scr
+logfileon
+;___________
+tablet
+off
+tablet
+on
+;___________
+quit

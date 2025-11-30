@@ -1,0 +1,41 @@
+; DCL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DCL"
+DESCRIPTION  'DCL Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+		
+	dlg_get_key_string
+	dlg_Initialize
+
+    dlg_init_dialog 
+	dlg_load_dialog
+	dlg_new_dialog
+	dlg_new_positioned_dialog
+	dlg_unload_dialog
+	dlg_set_tile
+	dlg_start_list
+	dlg_add_list
+	dlg_get_list_string	
+	dlg_end_list
+	dlg_dimensions_tile
+	dlg_done_dialog
+	dlg_done_positioned_dialog
+	dlg_get_tile
+	dlg_get_attr
+	dlg_get_attr_string
+	dlg_mode_tile
+	dlg_action_tile
+	dlg_start_dialog
+	dlg_client_data_tile
+	dlg_term_dialog
+	dlg_start_image
+	dlg_slide_image
+	dlg_fill_image
+	dlg_vector_image
+	dlg_end_image
+
+	dlg_LispCompare
+	dlg_Uninitialize
+	

@@ -1,0 +1,12 @@
+filedia
+0
+new
+
+(defun getstart () '(0 0 0))
+line
+(getstart)
+10,0,0
+
+(if (not (equal (append '(10) (getstart)) (assoc 10 (entget (entlast))))) (silent_err "Start point of the line should be 0,0,0") (logmsg "OK"))
+quit
+y

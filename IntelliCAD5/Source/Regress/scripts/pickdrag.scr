@@ -1,0 +1,30 @@
+logfilename log\pickdrag.log
+logfileon
+;___________
+pickdrag
+on
+pickdrag
+off
+;________
+pickstyle
+1
+pickstyle
+2
+pickstyle
+3
+pickstyle
+0
+;_________
+pkser
+
+;__________
+pickdrag
+on
+;__________
+pickdrag
+off
+;__________
+dxfout output_dxf\pickdrag.dxf
+6
+quit
+y

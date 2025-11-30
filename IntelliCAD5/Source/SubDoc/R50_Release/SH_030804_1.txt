@@ -1,0 +1,47 @@
+Document Title:  SH_030804_1.txt	
+Product Version: ICAD 4.0
+Date:  8/3/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : GEO
+
+3. Overview:
+
+This submission made the following changes to the CLine class in GEO library:
+
+* Changed HitTest() member function to test if the hit point is closed to
+  one of the end points within given tolerance zone. If so, let function return 
+  true with the parameter value at that end point.
+  
+* Changed PerpendicularThru() member function to return TRUE insterad of FALSE
+  if the test point is on the line.
+
+
+4.  Notes to Docs: N
+
+5.  Notes for Regress/Benchmarks: N
+
+6.  Change Log: 
+
+Affected files: 
+
+    Source/ThirdParty/Geo/line.cpp
+
+7.  System file - Component Changes and Additions: N
+
+8.  Testing Considerations:
+* Tested extend_option.scr script.
+* Notes for QA Testing: N
+
+9.  Installation Issues: N.
+
+
+

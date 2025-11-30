@@ -1,0 +1,37 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-10a.txt
+Produce Version		ICAD 4
+Date:			02/19/2004 13:27pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+I ran into a little problem with groups when the group is on
+a 'other that model' layout. When not on the model layout, the 
+group resides in the *Paper_Space1, or *Paper_Space2 etc block.
+I can't make the groups until the entities in these blocks have 
+been created. So I move the group dictionary processing into a
+stand alone function that gets called from the end of 
+TransferBlocksToDWGdirect() instead of having the groups be processed
+in TransferObjectsToDWGdirect() which is done prior to block entities
+being converted.
+
+In addition, I'm submitting the file MB_DWGdirectWriter-10.txt which
+I forgot to submit with that submission.
+
+Notes to Developers:
+
+Notes to QA:
+
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+
+

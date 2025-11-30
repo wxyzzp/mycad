@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+File:		CYB_60918_1.txt
+Date:		24-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:60918
+Affected files:			
+		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+Description: 	DIMTSZ=nn, tickmark is drawn too small (half as long as it should be.)
+Comments:	TaL60918
+File by File:
+	*	CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+		Previously the code was
+		(plinkvar[DIMTSZ].dval.rval*plinkvar[DIMSCALE].dval.rval)/2	 	
+		Just removing /2 from above code solves the problem and makes it compatible with 
+		AutoCad.
+-------------------------------------------------------------------------------

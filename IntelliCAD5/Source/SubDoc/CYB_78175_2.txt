@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78175_2.txt
+Date:		14-04-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78175
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimAng.cpp
+Description:	Angular dimension is drawn even if Angular dimension's arc line location is not specified. Implemented code-review suggestions.
+Comments:		TaL78175
+Problem Analysis:
+		Implementing code-review suggestions.
+Proposed Solution:
+		Reformatting code in accordance with ITC Coding Style.
+File by File:	
+*		Source/prj/lib/CMDS/DimAng.cpp
+		Reformatted code in accordance with Coding Style.
+--------------------------------------------------------------------------------
+
+
+

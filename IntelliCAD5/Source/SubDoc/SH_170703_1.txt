@@ -1,0 +1,28 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_170703_1.txt
+Date:		17/07/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:73862   
+
+Description:	This submission fixes the bug #73862 - Pline created by converting non-Plines 
+                w/ PEDIT should create LWPOLY when PLINETYPE=2.
+                
+                The problems was cmd_pedit() did not check the value of PLINETYPE and just
+                convert entities other than lightweight PLINE to regular PLINE before they 
+                were edited. This is fixed by changing cmd_pedit() to add checks for the 
+                value of PLINETYPE and convert lines, arcs, and cricles to LWPLINE when the
+                value of PLINETYPE is not zero.
+                
+		
+Added files:    None
+Affected files: Source/prj/lib/cmds/pedit2.cpp:   Modified cmd_pedit().
+Comments:	TaL73862
+
+
+                

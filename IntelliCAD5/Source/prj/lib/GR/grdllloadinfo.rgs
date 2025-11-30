@@ -1,0 +1,26 @@
+HKCR
+{
+	Visio.GR.GRDLLLoadInfo.1 = s 'GRDLLLoadInfo Class'
+	{
+		CLSID = s '{12AA139E-D8DC-11D2-B186-00104B22E914}'
+	}
+	Visio.GR.GRDLLLoadInfo = s 'GRDLLLoadInfo Class'
+	{
+		CLSID = s '{12AA139E-D8DC-11D2-B186-00104B22E914}'
+		CurVer = s 'Visio.GR.GRDLLLoadInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {12AA139E-D8DC-11D2-B186-00104B22E914} = s 'GRDLLLoadInfo Class'
+		{
+			ProgID = s 'Visio.GR.GRDLLLoadInfo.1'
+			VersionIndependentProgID = s 'Visio.GR.GRDLLLoadInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{12AA1391-D8DC-11D2-B186-00104B22E914}'
+		}
+	}
+}

@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+Date:		21-10-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78321
+Affected files:			
+		Source/prj/ICAD/PrintPenMapTab.cpp
+		Source/prj/ICAD/PrintPenMapTab.h
+Description:	'Line width' and 'output color' is not set properly on the print dialog.
+		1.'Line Width' and 'Output color' were not updated in some cases.
+		2. Focus was not set properly after displaying error message box.
+		3. If 'G' typed for Green color would be accepted but also added as 'g' in 				listctrl instead of word 'Green'.
+Comments:	TaL78321
+File_by_File :
+	*	Source/prj/ICAD/PrintPenMapTab.cpp
+		Initialised		
+Added a notification for ItemChanging. We get this notification before 				ItemChanged notificaion where we have called SetProperties().		
+	
+*	Source/prj/ICAD/PrintPenMapTab.h
+		Added a notification for ItemChanging. We get this notification before 		ItemChanged notificaion where we have called SetProperties().
+		
+		Added a variable called m_bDataUpdated. Which is used to optimise the code being 			executed again and again.
+
+-------------------------------------------------------------------------------

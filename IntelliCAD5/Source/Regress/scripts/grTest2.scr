@@ -1,0 +1,23 @@
+;_Created_by_Cybage_on_9/19/2002_____
+logfilename log\grTest2.log
+logfileon
+;_________
+(load "lisp\grTest2.lsp")
+;_________
+fillmode
+0
+;_________
+grTest2
+;_________
+fillmode
+1
+;_________
+grTest2
+;_________
+zoom
+extents
+;_________
+dxfout output_dxf\grTest2.log
+6
+quit
+y

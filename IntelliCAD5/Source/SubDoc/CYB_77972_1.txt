@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------------
+Date:		29-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77972
+Affected files:			
+		Source/prj/lib/CMDS/Stretch.cpp
+Description: 	Stretching dashed lines depends on where cwindow crosses the line
+Comments:	TaL77972
+File by File:
+		Source/prj/lib/CMDS/Stretch.cpp
+		The problem here was similar to the problem in bug 60691. see TAL60691.
+Here I have converted the previous if statement to a switch and added the case for DB_LINE. In this case we actaully see if the line intersect the polygon and then accordingly delete from the selection set so that its stretched than getting moved.
+--------------------------------------------------------------------------------

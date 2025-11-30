@@ -1,0 +1,10 @@
+wopen
+wcascade
+whtile
+wvtile
+wiarrange
+;______________
+dxfout output_dxf\child_windows_options.dxf
+6
+quit
+y

@@ -1,0 +1,22 @@
+        Submission Document for IntelliCAD
+
+File Name:      EBA_10062002_1.txt
+
+Date:           10-6-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech
+Reference:      TalMtextEdCheck
+Affected files: CvsHist:Source/prj/lib/DB/db1.cpp
+                CvsHist:Source/prj/lib/DB/oldvars.cpp
+Description:    System variable MTEXTED expand size 51 to 256 and accept spaces.
+--------------------------------------------------------------------------------
+Date:           10-6-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech
+Reference:      TalTrimedLeader
+Affected files: CvsHist:Source/prj/ICAD/Change.cpp
+                CvsHist:Source/prj/lib/CMDS/sdsTextbox.cpp
+                CvsHist:Source/prj/lib/DB/DbMtext.cpp
+                CvsHist:Source/prj/lib/DB/DbMtext.h
+                CvsHist:Source/prj/lib/GR/mtextgen.cpp
+Description:    When DIMTAD is 1 (on the line), LEADER line trims annotation.

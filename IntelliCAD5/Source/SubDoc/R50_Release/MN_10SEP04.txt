@@ -1,0 +1,69 @@
+Document Title:  MN_10SEP04.txt	
+Product Version: ICAD 5
+Date:  10 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+	After the discussion with Dave about the "Entity Properties" toolbar problems,
+I have added the fixes to limit the sizing of "Entity Properties" toolbar as well as
+of "Dimension" toolbar. For that purpose I have changed the style of these toolbars
+in  "CreateNewToolBar" function in the file "IcadToolBarMain.cpp". I have also made
+some change with the "Entity Properties" toolbar. The last button present on this 
+toolbar works the same as second button i.e "Exporer Layers" present on "Entity 
+Properties" toolbar.
+	Dave also suggested earlier to remove the last button on this toolbar. 
+In BricsCAD, this button is also not present. So I have removed the
+last button present on the "Entity Properties"toolbar. For that purpose, I have 
+made changes in the file "IcadMenuTBDef.H".
+	I have also applied the fixes to solve the registry saving problems of this
+toolbar. The Combo Boxes on these toolbars should be created before we make a call
+to "LoadBarState" function present in "CMainWindow::OnCreate" function in the file
+"IcadMain.cpp". For the same purpose, I have created them before this function call.
+
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_07SEP04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	  Source/prj/ICAD/IcadToolBarMain.cpp?rev=1.10.2.8.2.2 
+      Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.2.5.2.13 
+      Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.9 
+Description:
+	 Applied the changes to "Entity Properties" and "Dimension" toolbars to 
+	 omit the resizing feature and solve the registry related problems.
+	 Also removed the last button present on "Entity Properties" toolbar.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+
+
+9.  Installation Issues:
+

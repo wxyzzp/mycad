@@ -1,0 +1,49 @@
+Original resource structure
+
+o icad.rc
+  o resource.h
+  o icad.rc2
+     o icadrc2.h
+     o resource.h
+
+o authenticate.rc
+  o authrc.h
+
+
+Icad.rc, authenticate.rc
+
+Contains all kinds of resources, also a stringtable. The resource Ids are kept in resource.h/auth.rc, and managed by the Visual C resource editor.
+
+Icad.rc2
+
+This one contains several string tables not to be edited with the Visual C resource editor. Icadrc2.h contains also a part of the Ids, logically (?) grouped by the developer, and not managed by the Visual C resource editor. 
+
+
+
+I see several  possible reasons for this approach: 
+
+1. When I rename it to test.rc, I get the message “more then 6144 enties were found. Will be truncated.
+2. In icadrc2.h, defines of ids are based on other defines. Visual C resource editor cannot manage this kind of IDS correctly.
+
+ 
+Problems
+
+1. You never know for sure which resource.h is taken while compiling, especially when you make use of additional paths in the settings.
+2. To compile IntelliCAD in another language, you have to overwrite the existing resources, and make sure they are rebuild correctly (if date of the new resources is before the ones you overwrite, nothing gets recompiled).
+3. Resources to be translated are now spread all over the project.
+4. A lot of resources that don’t have to be translated are also in the resources. For a translator (especially one that is not a developer) it is impossible to know which ones should be translated.
+5. If resources were in a separate dll, testing and building localized versions would be a lot easier.
+
+Solutions
+
+1. Resource.h is renamed to icadRes.h
+2. We made icad.rc an empty rc file, that includes icadRes.rc, that contains the actual resources. We did not put a path in the include, the path is taken from the configuration (‘Additional resource Path’). This way, we can make several language configurations, that take each time another resource file, and another output path.
+3. We moved all resources to be localized into one dedicated folder per locale. The english resources were moved to the ‘Eng-Us’ folder.
+4. To make it easier for translations, created a IcadLangIndep.rc file, that is also included in icad.rc.  This file is meant to contain all resources we want to move out of IcadRes.rc, because translation is not wanted.
+5.  Icad.exe itself doesn’t contain any resources anymore. We created an IcadRes project, that creates a resource DLL (IcadRes.dll), which is loaded dynamically at startup.
+
+Considerations
+
+I have the feeling that most content of the rc2 files could be moved to the rc file itself. This would make editing  of resources a lot simpler, since you could use VC resource editor.
+
+

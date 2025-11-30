@@ -1,0 +1,9 @@
+logfilename log\78720.log
+logfileon
+;_________
+(load "lisp/78720.lsp")
+;__________
+dxfout output_dxf\78720.dxf
+6
+quit
+y

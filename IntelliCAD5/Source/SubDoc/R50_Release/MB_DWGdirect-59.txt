@@ -1,0 +1,134 @@
+Engineer(s):		Mark Barrow
+Date:			07/01/2004 
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+   Source/Licensed/DWGdirect/DWGdirect.chm?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Exports/2dExport/Include/2dExportDevice.h?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Exports/2dExport/Source/2dExportDevice.cpp?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/DWFexport.rc?rev=1.1 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfDrawObject.cpp?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/exports.def?rev=1.1 
+   Source/Licensed/DWGdirect/Exports/SvgExport/Source/StdAfx.h?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Exports/SvgExport/Source/SvgExport.cpp?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DWFimport.rc?rev=1.1 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfEventReactor.cpp?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfEventReactor.h?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfImportImpl.cpp?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/EmbeddedImageDef.h?rev=1.1.2.2 
+   Source/Licensed/DWGdirect/Include/AcisRenderer.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/DDTypeLibReg.h?rev=1.1.4.1.2.1 
+   Source/Licensed/DWGdirect/Include/DDVersion.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Db2dPolyline.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Db3dPolyline.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbAbstractViewTableRecord.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbEntity.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/DbGroup.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbHandle.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbHatch.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/DbIndex.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/DbMText.h?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/DbPolyFaceMesh.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbPolygonMesh.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/DbProxyEntity.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/DbTable.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/ErrorDefs.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/MessageDefs.h?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/OdArray.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/OdErrorContextWithId.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/OdaToolkit.h?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/OdaToolkit_i.c?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/OdaX.h?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/OdaX_i.c?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/RxVariant.h?rev=1.1.4.1.2.1 
+   Source/Licensed/DWGdirect/Include/ViewX.h?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/ViewX_i.c?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/Include/Br/BrEntity.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/Br/BrFace.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/Br/BrTraverser.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeCircArc2d.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeCurve2d.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeEllipArc2d.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeLine2d.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeLineSeg2d.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeRay2d.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Ge/GeVector2d.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Gi/GiGeometrySimplifier.h?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/Include/Gi/GiOrthoPrismIntersector.h?rev=1.1.2.1 
+   Source/Licensed/DWGdirect/Include/Gi/GiSpatialFilter.h?rev=1.1.2.1 
+   Source/Licensed/DWGdirect/Include/Gs/GsOpenGLVectorizer.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Ve/AveDefs.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Ve/AveLight.h?rev=1.1.4.3.2.1 
+   Source/Licensed/DWGdirect/Include/Ve/AveMaterial.h?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/Include/Ve/AveScene.h?rev=1.1.4.1.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Alloc.lib?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Br.lib?rev=1.1.4.2.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ole.lib?rev=1.1.4.1.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_RxRasterServices.lib?rev=1.1.4.1.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib?rev=1.1.4.4.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib?rev=1.1.4.5.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/ExCustObjs.lib?rev=1.1.4.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinGDI.lib?rev=1.1.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinOpenGL.lib?rev=1.1.2.1 
+   Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinOpenGL_WithWorldDispList.lib?rev=1.1.2.1 
+   Source/SubDoc/R50_Release/MB_DWGdirect-59.txt?rev=1.1.2.1 
+   Source/prj/lib/DRW/DWGdirectConverter.cpp?rev=1.1.4.13.2.4 
+   Source/prj/lib/DRW/DWGdirectWriter.cpp?rev=1.1.4.16.2.7 
+   Source/prj/lib/DRW/Utilities.cpp?rev=1.1.4.8.2.2 
+   Source/Licensed/DWGdirect/Exports/2dExport/Include/2dExportDevice.h?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Exports/2dExport/Source/2dExportDevice.cpp?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/DWFexport.rc?rev=1.1 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfDrawObject.cpp?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Exports/DwfExport/Source/exports.def?rev=1.1 
+   Source/Licensed/DWGdirect/Exports/SvgExport/Source/StdAfx.h?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Exports/SvgExport/Source/SvgExport.cpp?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DWFimport.rc?rev=1.1 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfEventReactor.cpp?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfEventReactor.h?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfImportImpl.cpp?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/Imports/DwfImport/Source/EmbeddedImageDef.h?rev=1.1.4.2 
+   Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib?rev=1.1.2.6 
+
+Change Overview:
+	This submission updates the DWGdirect files with the latest
+	1.11.01.00 versions of the files.
+
+Notes to Developers:
+
+Notes to QA:
+	
+Notes to Docs:
+	
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

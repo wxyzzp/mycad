@@ -1,0 +1,35 @@
+Project IntelliCAD development
+
+
+Document Title		MHB_DWGdirectWriter-16.txt
+Produce Version		ICAD 4
+Date:				03/10/2004 05:40am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Round tripping DIMASSOC. 
+This is working great, but I still have one small step to take to
+actually get entitiy associativity to be maintained. I've consulted ODT for help.
+
+Initialization of ACIS is now required for AutoCAD 2004 drawings.
+I have added that code.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\collectionclasses.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+

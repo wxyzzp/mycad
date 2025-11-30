@@ -1,0 +1,88 @@
+--------------------------------------------------------------------------------
+Date:		30-01-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78414
+Affected files:			
+		Eng-us/IcadRes.rc?rev=1.28.4.12 
+		Source/prj/ICAD/bhatchpatproptab.cpp?rev=1.5.6.1 
+		Source/prj/ICAD/icadboundarydia.cpp?rev=1.4.6.1 
+		Source/prj/ICAD/IcadRes.h?rev=1.21.4.8 
+		Source/prj/lib/CMDS/bhatch.cpp?rev=1.2.4.2 
+		Source/prj/lib/CMDS/BHatchBuilder.cpp?rev=1.4.8.1 
+		Source/prj/lib/CMDS/BHatchBuilder.h?rev=1.1.1.1.14.1 
+		Source/prj/lib/CMDS/BoundaryBuilder.cpp?rev=1.1.1.1.14.1 
+		Source/prj/lib/CMDS/BoundaryBuilder.h?rev=1.2.12.1 
+		Source/prj/lib/CMDS/BPolyBuilder.cpp?rev=1.1.1.1.14.1 
+		Source/prj/lib/CMDS/BPolyBuilder.h?rev=1.1.1.1.14.1 
+		Source/prj/lib/CMDS/cmds8.cpp?rev=1.15.6.7 
+		Source/prj/lib/CMDS/hatch.cpp?rev=1.8.6.2 
+		Source/prj/lib/ICADLIB/IcadDef.h?rev=1.4.6.2 
+
+
+Description:	Converting Hatch Tolerance const to variable depending on viewsize. This helps in hatching some entities which were not 
+		hatched prior to this change.
+Comments:	TaL78414
+
+Problem analysis:	The drawing Bhatch.dwg did not hatch the expected area beacuse the distance between line and the arc was greater than 			the constant HATCH_TOLERANCE ( 0.00001).So changing the HATCH_TOLERANCE value to 0.001242 ( in this case ) 		solved the problem. It was observed in that the given drawing did not hatch for the given area in AutoCAD also. But when the 		drawing was zoomed out a little, in AutoCAD, hatch worked proper. This implies that Hatch_Tolerance depends on zoom ( 			viewsize). It may also depend on boundary candidate as boundry candidates changes on zoom in / out. But we are not 		considering boundry candidate now.
+
+Proposed Solution:	Use no more constant HATCH_TOLERANCE but a varying hatch tolerance variable whose initial value will depend on the 		current viewsize. 
+
+File By File :
+	*	Eng-us/icadres.rc
+		Changes for addition of edit control "Hatch Tolerance" on Bhatch property sheet, pattern tab dialog. Its read-only field
+
+	*	Source/prj/ICAD/icdres.h
+		Necessary declaration for IDC_HATCH_TOLERANCE_FRAME and IDC_HATCH_TOLERANCE. The previous #defines 		are placed in sorted order
+
+	*	Source/prj/ICAD/bhatchpatproptab.cpp.
+		1. Setting the value of hatch tolerance into edit control. If VARYING_HATCH_TOLERANCE is defined then it calculates and 		then set else it used the HATCH_TOLERANCE value previously used. HATCH_TOLERANCE constant defined is not 			available here so using the "0.00001" directly.		
+
+	*	Source/prj/ICAD/icadboundarydia.cpp
+		1. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. Here hardcoded value was 			used for Hatch tolerance. This is also removed now.
+		2. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. 
+	
+	*	Source/prj/lib/CMDS/bhatch.cpp
+		1. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. 
+
+	*	Source/prj/lib/CMDS/BHatchBuilder.cpp
+		1. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. 		
+		2. Removing the tolerance value being accepted as parameter for constructor. Also disallowed to be passed further to 			CBoundaryBuilder class constructor.
+
+	*	Source/prj/lib/CMDS/BHatchBuilder.h
+		1. Constant HATCH_TOLERANCE is no more, it should be a variable now. Due to this we have to removed the usage 			of it from various places. It was seen that this value was ultimately passed to CBoundaryBuilder class. 
+		2. Commenting the parameter of constructor of CBHatchBuilder class.
+
+
+	*	Source/prj/lib/CMDS/BoundaryBuilder.cpp
+		1.  Including icadapi.h for usage of SDS_getvar.
+		 The constant  HATCH_TOLERANCE_COEFFICIENT was derived by observation 	hatching on the Bahtch drawing of this 		bug. It was observed that AutoCAD hatches if the viewsize is 200 and NOT for less 	than this viewsize. It was observed in 		IntelliCAD that hatch for this drawing would work properly if the hatch tolerance value is set to 0.001242. So hatch tolerance 		for current viewsize can be calculated  as ( current view size * 0.001242 ) / 200. When implemented this way it worked 		properly for the Bhatch drawing.
+		2. Commenting out the previous default copy constructor. As there was new default copy constructor after removing the only  			tolerance parameter of it.
+		3. Removing the tolerance value being accepted as parameter for constructor. 
+
+	*	Source/prj/lib/CMDS/BoundaryBuilder.h
+		1. Removing the tolerance value being accepted as parameter for constructor. 
+		
+	*	Source/prj/lib/CMDS/BPolyBuilder.cpp		
+		1. Removing the tolerance value being accepted as parameter for constructor. Also disallowed to be passed further to 			CBoundaryBuilder class constructor.
+
+	*	Source/prj/lib/CMDS/BPolyBuilder.h
+		1. Removing the tolerance value being accepted as parameter for constructor.
+
+	*	Source/prj/lib/CMDS/cmds8.cpp
+		1. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. 
+
+	*	Source/prj/lib/CMDS/hatch.cpp
+		1. Removed the constant HATCH_TOLERANCE, so removing its usage from various places. 
+
+	*	Source/prj/lib/ICADLIB/icaddef.h
+		// Commenting following #define, tolerance used for HATCHING will be a constant (0.00001)
+		// and will NOT change with VIEWSIZE variable.
+		#define VARYING_HATCH_TOLERANCE
+
+
+		//Constant 0.00000621 is an value derived after comparison with AutoCAD. In AutoCAD, for Bhatch.dwg, when viewsize = 			200,hatch works properly.
+		//In IntelliCAD, for Bhatch.dwg, Hatch tolerance should be 0.001242 to work properly. Following is used to calculate hatch 			tolerance baed on VIEWSIZE.	
+		const double HATCH_TOLERANCE_COEFFICIENT = 0.00000621; 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

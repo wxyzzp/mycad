@@ -1,0 +1,24 @@
+logfilename log\roughen_2.log
+logfileon
+;___________
+color
+red
+;___________
+pline
+1,1
+6,6
+9,1
+
+;________________
+(load "lisp/roughen_2.lsp")
+roughen_2
+3,3
+
+6,6
+
+9,1
+;_________________
+dxfout output_dxf\roughen_2.dxf
+6
+quit
+y

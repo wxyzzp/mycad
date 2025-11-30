@@ -1,0 +1,24 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78238_2.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78238
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimTEdit.cpp
+Description:	DIMJUST loses value on Dimtedit. Implemented code-review suggestions.
+Comments:		TaL78238
+Problem Analysis:
+		The code files looks cluttered as a result of the commenting-out of the lines for fixing this bug.		
+Proposed Solution:
+		Delete the commented lines to clean-up the code.		
+File by File:	
+*		Source/prj/lib/CMDS/DimTEdit.cpp
+		Deleted the commented lines.
+--------------------------------------------------------------------------------

@@ -1,0 +1,62 @@
+Document Title:  SH_78746.txt	
+Product Version: ICAD 4.0
+Date:  8/10/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/flyoversnap/OsnapHelpers.cpp
+   Source/Prj/lib/sds/sds_osnap.cpp
+   Source/ThirdParty/Geo/curve.h
+   Source/ThirdParty/Geo/curve.cpp
+   Source/ThirdParty/Geo/line.h
+   Source/ThirdParty/Geo/line.cpp
+   Source/ThirdParty/Geo/elliparc.h
+   Source/ThirdParty/Geo/elliparc.cpp
+   Source/ThirdParty/Geo/nurbs.h
+   Source/ThirdParty/Geo/nurbs.cpp
+
+3. Overview:
+
+This submission fix the bug #78746 - "Perpendicular object snap does not work 
+correctly for spline, circle and ellipse entities". 
+
+For ellipse and spline entties, the PERP Osnap uses the low level geometry 
+functions in GEO lirabry(I added them early) to computer perpendicular point on 
+the curve from a point. Unfortunately the functions were designed to return 
+single perpendicular point(the closest point to the point) only. For a hight 
+order curve such as ellipse and spline, it is possible that there are more than 
+one possible perpendicular points on the curve. To fix the problem, all 
+PerpendicularThru() functions in GEO module were modified to add a reference 
+point as a new parameter to find a correct solution.
+
+The legacy PERP code for circle are arc entiteis was not implemented corectly.
+That part of the code was rewriten to fix the problem.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: 
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:
+	Name of Script file:   
+
+8.  Notes to Localization:
+
+
+
+

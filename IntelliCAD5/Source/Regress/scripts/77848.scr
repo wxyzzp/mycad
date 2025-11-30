@@ -1,0 +1,148 @@
+logfilename log\77848.log
+logfileon
+;;;;;;;;;;;;;
+circle 4,5 5,5
+circle 7,5 8,5
+;;;;;;;;;;;;;;create_a_locked_layer_
+-layer
+n
+layer1
+lo
+layer1
+
+;;;;;;;change_last_entity_to_locked_layer_to_assist_selection_
+(defun c:toLocked() (command "chprop" "l" "" "la" "layer1" ""))
+;;;;;;;; case 1 ;;;;;;;
+color 1
+circle
+ttr
+3,5
+6,5
+5
+toLocked
+;;;;;;;; case 2 ;;;;;;
+color 2
+circle
+ttr
+3,5
+8,5
+5
+toLocked
+;;;;;;;; case 3 ;;;;;;;
+color 3
+circle
+ttr
+3,5
+7,6
+5
+toLocked
+;;;;;;;; case 4 ;;;;;;
+color 4
+circle
+ttr
+3,5
+7,4
+5
+toLocked
+;;;;;;;; case 5 ;;;;;;;
+color 5
+circle
+ttr
+4,6
+6,5
+5
+toLocked
+;;;;;;;; case 6 ;;;;;;
+color 6
+circle
+ttr
+4,6
+8,5
+5
+toLocked
+;;;;;;;; case 7 ;;;;;;;
+color 7
+circle
+ttr
+4,6
+7,6
+5
+toLocked
+;;;;;;;; case 8 ;;;;;;
+color 8
+circle
+ttr
+4,6
+7,4
+5
+toLocked
+;;;;;;;; case 9 ;;;;;;;
+color 17
+circle
+ttr
+4,4
+6,5
+5
+toLocked
+;;;;;;;; case 10 ;;;;;;
+color 28
+circle
+ttr
+4,4
+8,5
+5
+toLocked
+;;;;;;;; case 11 ;;;;;;;
+color 35
+circle
+ttr
+4,4
+7,6
+5
+toLocked
+;;;;;;;; case 12 ;;;;;;
+color 50
+circle
+ttr
+4,4
+7,4
+5
+toLocked
+;;;;;;;; case 13 ;;;;;;;
+color 65
+circle
+ttr
+5,5
+6,5
+5
+toLocked
+;;;;;;;; case 14 ;;;;;;
+color 85
+circle
+ttr
+5,5
+8,5
+5
+toLocked
+;;;;;;;; case 15 ;;;;;;;
+color 100
+circle
+ttr
+5,5
+7,6
+5
+toLocked
+;;;;;;;; case 16 ;;;;;;
+color 136
+circle
+ttr
+5,5
+7,4
+5
+toLocked
+zoom
+extents
+;;;;;;;;;;;;;;
+dxfout output_dxf\77848.dxf
+6
+exit y

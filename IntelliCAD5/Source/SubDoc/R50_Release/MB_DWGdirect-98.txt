@@ -1,0 +1,122 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-97
+Product Version:        IntelliCAD 5
+Date:                   09/20/2004 5:40am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGDIRECT
+
+3.  Overview:
+	Update source with new beta drop of ODA code.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+			Source/Licensed/DWGdirect/ExServices/ExSystemServices.cpp
+			Source/Licensed/DWGdirect/ExServices/ExSystemServices.h
+			Source/Licensed/DWGdirect/Exports/2dExport/Include/2dExportDevice.h
+			Source/Licensed/DWGdirect/Exports/2dExport/Source/2dExportDevice.cpp
+			Source/Licensed/DWGdirect/Exports/DwfExport/Include/DwfDrawObject.h
+			Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfDrawObject.cpp
+			Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfExportImpl.cpp
+			Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfImportImpl.h
+			Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfImporter.h
+			Source/Licensed/DWGdirect/Imports/DwfImport/Source/ImportCallbacks.cpp
+			Source/Licensed/DWGdirect/Include/DDPackageVersion.h
+			Source/Licensed/DWGdirect/Include/DDTypeLibReg.h
+			Source/Licensed/DWGdirect/Include/DDVersion.h
+			Source/Licensed/DWGdirect/Include/Db2dVertex.h
+			Source/Licensed/DWGdirect/Include/Db3dSolid.h
+			Source/Licensed/DWGdirect/Include/DbDatabase.h
+			Source/Licensed/DWGdirect/Include/DbDate.h
+			Source/Licensed/DWGdirect/Include/DbFieldValue.h
+			Source/Licensed/DWGdirect/Include/DbGroup.h
+			Source/Licensed/DWGdirect/Include/DbObject.h
+			Source/Licensed/DWGdirect/Include/DbObjectId.h
+			Source/Licensed/DWGdirect/Include/DbPageController.h
+			Source/Licensed/DWGdirect/Include/DbPolygonMesh.h
+			Source/Licensed/DWGdirect/Include/DbPolygonMeshVertex.h
+			Source/Licensed/DWGdirect/Include/DbRasterImage.h
+			Source/Licensed/DWGdirect/Include/DbShape.h
+			Source/Licensed/DWGdirect/Include/DbSystemServices.h
+			Source/Licensed/DWGdirect/Include/DbViewport.h
+			Source/Licensed/DWGdirect/Include/DbViewportTableRecord.h
+			Source/Licensed/DWGdirect/Include/DbWipeout.h
+			Source/Licensed/DWGdirect/Include/DynamicLinker.h
+			Source/Licensed/DWGdirect/Include/Entities.h
+			Source/Licensed/DWGdirect/Include/MessageDefs.h
+			Source/Licensed/DWGdirect/Include/ModelerGeometry.h
+			Source/Licensed/DWGdirect/Include/ModelerGeometryCreator.h
+			Source/Licensed/DWGdirect/Include/Objects.h
+			Source/Licensed/DWGdirect/Include/OdFont.h
+			Source/Licensed/DWGdirect/Include/OdPlatform.h
+			Source/Licensed/DWGdirect/Include/OdPlatformSettings.h
+			Source/Licensed/DWGdirect/Include/OdPlatformStreamer.h
+			Source/Licensed/DWGdirect/Include/OdTimeStamp.h
+			Source/Licensed/DWGdirect/Include/OdWString.h
+			Source/Licensed/DWGdirect/Include/OdaX.h
+			Source/Licensed/DWGdirect/Include/OdaX_i.c
+			Source/Licensed/DWGdirect/Include/OdaX_p.c
+			Source/Licensed/DWGdirect/Include/RxDispatchImpl.h
+			Source/Licensed/DWGdirect/Include/Tables.h
+			Source/Licensed/DWGdirect/Include/ThumbnailImage.h
+			Source/Licensed/DWGdirect/Include/Ge/GeBoundBlock2d.h
+			Source/Licensed/DWGdirect/Include/Ge/GeBoundBlock3d.h
+			Source/Licensed/DWGdirect/Include/Ge/GeCurve2d.h
+			Source/Licensed/DWGdirect/Include/Ge/GeCurve3d.h
+			Source/Licensed/DWGdirect/Include/Ge/GeEntity2d.h
+			Source/Licensed/DWGdirect/Include/Ge/GeEntity3d.h
+			Source/Licensed/DWGdirect/Include/Gs/GsBaseVectorizer.h
+			Source/Licensed/DWGdirect/Include/Gs/GsOpenGLVectorizer.h
+			Source/Licensed/DWGdirect/Include/Ps/PlotStyles.h
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Alloc.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Br.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ole.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_RxPlotStyleServices.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_RxRasterServices.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Sm.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/ExCustObjs.lib
+			Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinGDI.lib
+			Source/SubDoc/R50_Release/MB_DWGdirect-98.txt
+			Source/prj/lib/DRW/DWGdirectConverter.cpp
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

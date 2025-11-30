@@ -1,0 +1,10 @@
+// interface declarations
+
+interface IIcadDimension;
+interface IIcadDimAngular;
+interface IIcadDimAligned;
+interface IIcadDimDiametric;
+interface IIcadDimOrdinate;
+interface IIcadDimRadial;
+interface IIcadDimRotated;
+interface IIcadDim3PointAngular;

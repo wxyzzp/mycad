@@ -1,0 +1,96 @@
+Engineer(s):		Mark Barrow
+Date:				06/28/2004 07:36am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    Eng-us/icad.rc2
+                    source/prj/icad/res/icadrc2.h
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/lib/cmds/openclose.cpp
+                    source/prj/icad/dropactions.cpp
+                    source/prj/lib/cmds/save.cpp
+                    source/prj/make/dwf.dsp
+                    source/prj/make/db.dsp
+                    source/prj/make/icad.dsw
+                    source/subdoc/MB_DWGdirect-56.txt
+Modules Added:
+                    source/licensed/dwgdirect/imports/dwfimport/source/fontmanager.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/w2dsumminfo.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfimporter.h
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwfexportimpl.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwfexport.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/imagemanager.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/blockmanager.h
+                    source/licensed/dwgdirect/imports/dwfimport/include/dwfimport.h
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwfsupport.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/include/dwfexport.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfimportimpl.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/importcallbacks.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfcallbacks.h
+                    source/licensed/dwgdirect/exports/2dexport/source/2dexportdevice.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwfwriter.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/include/dwfexportimpl.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/embeddedimagedef.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfeventreactor.cpp
+                    source/licensed/dwgdirect/exports/2dexport/source/2dsupport.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/source/exports.def
+                    source/licensed/dwgdirect/exports/dwfexport/include/dwfsupport.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/embeddedimagedef.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/linemanager.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfeventreactor.h
+                    source/licensed/dwgdirect/exports/2dexport/include/2dexportdevice.h
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwf2dc.cpp
+                    source/licensed/dwgdirect/exports/dwfexport/include/dwfdrawobject.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/extentmanager.h
+                    source/licensed/dwgdirect/imports/dwfimport/source/w2dimport.cpp
+                    source/licensed/dwgdirect/imports/dwfimport/source/dwfimport.cpp
+                    source/licensed/dwgdirect/exports/2dexport/include/2dsupport.h
+                    source/licensed/dwgdirect/exports/dwfexport/source/dwfdrawobject.cpp
+
+Change Overview:
+					This submission adds support for DWF export. It also adds support for 
+					DWF import, but that code is currently turned off because of a last minute
+					spatial index problem.
+					
+					In addition, it makes a change to the iDrop interface to correctly get the
+					TEMP directory in long file name version.
+					
+						
+Notes to Developers:
+					I was forced to make DWF support it's own project, to elimiate a bunch
+					of header file collisions.
+
+Notes to QA:
+					Currently DWF output only outputs version 600 uncompressed version.
+					There are two other versions each of which can be uncompressed binary,
+					compressed binary, and ascii. This will follow after discussions of how
+					to handle the UI.
+
+					DWF import is currently turned off and not ready for testing.
+
+Notes to Docs:
+					Note, that DWF export/import as well as SVG export will both need
+					documentation.
+
+Notes to Localization:
+Strings were added.
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

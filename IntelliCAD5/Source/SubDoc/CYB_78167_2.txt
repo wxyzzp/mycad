@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File:		CYB_78167
+Date:		05-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78167
+Affected files:			
+		Source/prj/lib/CMDS/DimDiaCenterMark.cpp
+Description: 	When the Dimcen system variable has large negative value the centre line drawn is incorrect.
+Comments:	TaL78167
+Problem Analysis:
+		Previous fix was working fine. Alexy code-review gave more optimised solution for one of the 
+		statement of the fix
+Proposed solution:
+		In the previous submission, we had used sds_distance function to calculate the distance between the center point 
+		and end point for center line. Current change to previous submission is to calculate the distance once outside the for lopp
+		with fr1 = (plinkvar[DIMCEN].dval.rval*plinkvar[DIMSCALE].dval.rval)*2.0 instead of sds_distance.
+File_by_File:
+	*	Source/prj/lib/CMDS/DimDiaCenterMark.cpp
+		fr1 = (plinkvar[DIMCEN].dval.rval*plinkvar[DIMSCALE].dval.rval)*2.0 instead of sds_distance.
+		
+-------------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+
+--------------------------------------------------------------------------------
+File Name:	CYB_77860_78047_1.txt
+Date:		22-04-2002
+Developer:	Avinash Kulkarni.& Mohit Mehta
+Company:	Cybage Software
+Reference:	BugZilla:77860 & 78047
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/read.cpp
+Description:	Crash during wblock insert.
+		ICAD crashes While inserting drawing containing block of leader
+		
+Comments:	TaL77860-78047
+
+File by File:	
+	*	CvsHist:Source/CMDS/read.cpp
+
+		The problem with these bugs was that of associations not properly set on insert/ddinsert.
+		This was happening for enities inside an insert.Actually whenever an insert occurs a new insert entity is 			created and present code sets the reactor associations properly for insert.
+		But when it comes to setting the associations for the entities inside the block, the apply fixup was not 			being called. We have created a local  object of reactorfixup and added every new entity of insert being 			entmake(d) into the corresponding arrays. The code is added in cmd_readdwg_makeblks function..
+		
+		CODE [
+		SDS_CURDWG->SetCopyingFlag(true); //This is set to avoid creation of inbetween associations
+		ReactorFixups reactorFixup;
+	
+		reactorFixup.AddHanditem(SDS_LastHandItem);
+		reactorFixup.AddHandleMap(((db_handitem*)ename[0])->RetHandle(), 				SDS_LastHandItem->RetHandle());	
+		CODE ]
+		
+		Finally we call applyfixups for the drawing where all the appropriate reactors are set . This solves both 			the crash problems alongwith other associativity problems in inserts.
+		
+		reactorFixup.ApplyFixups(SDS_CURDWG);			
+--------------------------------------------------------------------------------		

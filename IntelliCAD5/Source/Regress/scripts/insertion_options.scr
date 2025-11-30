@@ -1,0 +1,16 @@
+logfilename log\insertion_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+insertion
+(if (/= (getvar "osmode") 64) (alert "insertion did not work!"))
+;__________
+insertion
+(if (/= (getvar "osmode") 0) (alert "insertion did not work!"))
+;__________
+dxfout output_dxf\insertion_options.dxf
+6
+quit
+y

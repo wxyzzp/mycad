@@ -1,0 +1,28 @@
+
+--------------------------------------------------------------------------------
+File Name:	CYB_78121_1.txt
+Date:		05-05-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:78121
+Affected files:	
+		CvsHist:Source/prj/ICAD/icadapi.cpp
+Description:	ICAD crashes while switching between print preview and print Setup
+		
+Comments:	TaL78121
+
+File by File:	
+	*	CvsHist:Source/prj/ICAD/icaapi.cpp
+		The problem here was that autosave was being kicked on while print preview pointer was valid which it 			should not. To be precise , wrong pointer was passed to the function when the user is switching between 		the print preview and print setting dialogs.
+		After looking at the behaviour of ACAD, it can be noticed that there should not be any autosave in 			betwen print preview.
+		to fix this problem, I have added a check in SDS_cmdthread function where it checks if print preview is 			on before autosaving.
+		
+		CODE :[
+			if((rb.resval.rint > 0) &&
+				(SDSApplication::GetEngineApplication()->GetMainThread()->IsSame( 				SDSApplication::GetActiveApplication()->GetMainThread() ) ) &&
+				GetActiveCommandQueue()->IsEmpty() &&
+				GetMenuQueue()->IsEmpty() 
+				&& !SDS_CMainWindow->m_bPrintPreview )
+		CODE: ]
+
+--------------------------------------------------------------------------------		

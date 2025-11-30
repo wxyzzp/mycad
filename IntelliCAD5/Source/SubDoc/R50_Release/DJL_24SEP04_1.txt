@@ -1,0 +1,93 @@
+Document Title:  DJL_24SEP04_1.txt	
+Product Version: ICAD 5
+Date:  24 September 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Not sure
+
+3.  Overview:
+
+Bugzilla 78951
+Fix crash in creation of leader with tolerance symbol.
+
+I change the following line in cmdsDimVars.cpp in function cmd_buildEEdList:
+
+// Make sure string values are not NULL otherwise strisame will crash!
+if ((ic_rbassoc->resval.rstring) && (plinkvar[fi1].dval.cval) && (strisame(ic_rbassoc->resval.rstring, plinkvar[fi1].dval.cval))) {
+
+
+On October 4 I checked in similar fixes in several other places in this same file.  After further testing I discovered there were
+several other places in the code where these problems exist.  I also initialized a few variables.
+
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+
+Script Change required: N
+
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      DJL_24SEP04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmdsDimVars.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_24SEP04_1.txt
+2 file(s) found.
+
+Description:
+Bugzilla 78951
+Fix crash in creation of leader with tolerance symbol.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Date: 		October 4, 2004
+
+Reference:      DJL_24SEP04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmdsDimVars.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_24SEP04_1.txt
+2 file(s) found.
+
+Description:
+Bugzilla 78951
+Fix crash in creation of leader with tolerance symbol.  This was fixed before, but the same problem was found in
+several other places in the code.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+None
+
+9.  Installation Issues:
+None
+
+

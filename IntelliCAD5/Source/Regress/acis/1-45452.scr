@@ -1,0 +1,13 @@
+logfilename log\1-45452.log
+logfileon
+;________
+(load "lisp\1-45452.lsp")
+testreva
+testrevb
+testruleA
+testruleb
+;________
+dxfout output_dxf\1-45452.dxf
+6
+quit
+y

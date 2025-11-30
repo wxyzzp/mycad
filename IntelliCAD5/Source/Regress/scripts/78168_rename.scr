@@ -1,0 +1,114 @@
+logfilename log\78168_rename.log
+logfileon
+;_______block
+line
+0,1
+1,1
+
+;_________
+block
+b1
+0,0
+all
+
+;__________
+rename
+b   b1  
+b2
+(if (/= (cdr (assoc 2 (tblnext "BLOCK" T))) "b2") (alert "rename err") (princ "OK"))
+;_________dimstyles
+dimstyle
+s
+dimstyle1
+;_________
+rename
+d   dimstyle1   
+dimstyle2
+;_________
+(tblnext "DIMSTYLE" T)
+(if (/= (cdr (assoc 2 (tblnext "DIMSTYLE"))) "dimstyle2") (alert "rename err") (princ "OK"))
+;_________Layers
+-layer
+n
+layer1
+
+;_________
+rename
+la   layer1    
+layer2
+;_________
+(tblnext "LAYER" T)
+(if (/= (cdr (assoc 2 (tblnext "LAYER"))) "layer2") (alert "rename err") (princ "OK"))
+;_________linetype
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+;_________
+linetype
+l
+center
+icad.lin
+
+;________
+rename
+lt   center    
+center2
+;_________
+(tblnext "LTYPE" T)
+(if (/= (cdr (assoc 2 (tblnext "LTYPE"))) "center2") (alert "rename err") (princ "OK"))
+;_________
+(setvar "filedia" (getvar "useri1"))
+;_________styles
+-style
+style1
+arial
+
+
+
+
+
+;_________
+rename
+st   style1    
+style2
+;_________
+(tblnext "STYLE" T)
+(if (/= (cdr (assoc 2 (tblnext "STYLE"))) "style2") (alert "rename err") (princ "OK"))
+;_________ucs
+ucs
+s
+ucs1
+;_________
+rename
+u   ucs1   
+ucs2
+;_________
+;(tblnext "UCS" T)
+(if (/= (cdr (assoc 2 (tblnext "UCS"))) "ucs2") (alert "rename err") (princ "OK"))
+;_________view
+view
+s
+view1
+;_________
+rename
+vi   view1   
+view2
+;_________
+;(tblnext "VIEW" T)
+(if (/= (cdr (assoc 2 (tblnext "VIEW"))) "view2") (alert "rename err") (princ "OK"))
+;_________vport
+vport
+s
+vport1
+;_________
+rename
+vp   vport1   
+vport2
+;_________
+;(tblnext "VPORT" T)
+(if (/= (cdr (assoc 2 (tblnext "VPORT"))) "vport2") (alert "rename err") (princ "OK"))
+;__________
+dxfout output_dxf\78168_rename.dxf
+6
+quit
+y

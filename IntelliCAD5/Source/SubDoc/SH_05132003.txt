@@ -1,0 +1,73 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_05132003.txt
+Date:		05-13-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78522 
+
+Changed files: 	
+		Source/prj/lib/ACIS/AsConstructor.cpp?rev=1.6.6.5
+		Source/prj/lib/ACIS/AsConstructor.h?rev=1.3.6.2
+		Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.6.7
+		Source/prj/lib/ACIS/AsModeler.h?rev=1.8.6.6
+		Source/prj/lib/DB/GeoData.cpp?rev=1.4.6.1
+		Source/prj/lib/DB/GeoData.h?rev=1.2.6.2
+		Source/prj/lib/DB/GeoData.inl?rev=1.2.6.2
+		Source/prj/lib/DB/Modeler.h?rev=1.9.6.6
+		Source/prj/lib/DB/ModelerStub.h?rev=1.2.6.6
+		Source/prj/lib/DB/entities.h?rev=1.13.6.7
+		Source/prj/lib/CMDS/CmdExtrude.cpp?rev=1.5.6.4
+		Source/prj/lib/CMDS/CmdRegion.cpp?rev=1.5.6.4
+		Source/prj/lib/CMDS/CmdRevolve.cpp?rev=1.5.6.6
+		Source/prj/ICAD/IcadUtil.h?rev=1.1.4.2
+		Eng-us/icad.rc2?rev=1.63.4.26
+
+Description:	This submission reimplemented the REGION command and made some major
+                changes to the EXTRUDE and REVOLVE commands in order to fix the bug 
+                #78522 - "Boolean operations not possible with region and extruded 
+                entities" and following REGION, XTRUDE, and REVOLVE problems, which 
+                are not reported: 
+		
+		1) The separated, non-overlapping regions were created by REGION 
+		   command for the intersected curves(i.e. REGION incorrectly created 
+		   3 separated, non overlapping regions for two intersected circles), 
+		   which is wrong totally. 
+		
+		2) In the certain cases, the resions created had wrong normal face 
+		   direction, which caused EXTRUDE and REVOLVE to create invalid solid 
+		   with negative volumn or sweep face along wrong direction.
+		
+		3) All selected curves were deleted after the regions were created when 
+		   some of them were rejected because they don't belong to any loop.
+		   
+		4) The selected curves were not unhighlighted when REGION, EXTRUDE, and 
+		   REVOLVE commands failed.
+		
+		5) No error messages were given when REGION, EXTRUDE, and REVOLVE  
+		   commands failed.
+		
+		6) Unable to create extruded solids with a taper angle.
+		
+		The original implemtation of REGION did not consider the input curves 
+		could be either open or closed, and form some loops that may intersect 
+		each other. It just simply passed all selected curves to ACIS modeler 
+		to create regions, which is wrong and caused some of problems above.
+		The new implemtation build the loops from the curves first and then
+		test them to reject non-planar or/and self-intersected loops. The 
+		manifold vertex case is also taken acocunt. The double side regions 
+		are created from the loops.
+		
+Comments:	TaL78522
+
+		
+
+
+
+                
+
+

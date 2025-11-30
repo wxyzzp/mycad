@@ -1,0 +1,33 @@
+;___Created_By_Cybage_on_12/23/2002_____
+logfilename log\78391.log
+logfileon
+;___________
+box
+0,0,0
+2,2,2
+;___________
+box
+2,0,0
+3,1,1
+;___________
+union
+all
+
+;___________
+box
+2,2,2
+1,1,1
+;___________
+subtract
+previous
+
+last
+
+;___________
+vpoint
+1,1.5,1
+;___________
+dxfout output_dxf\78391.dxf
+6
+quit
+y

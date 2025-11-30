@@ -1,0 +1,481 @@
+Notes for Build_11:
+
+CHANGELOG:
+
+User: master
+Description: Change for build date for Build 11.
+Modified IntelliCAD/Source/prj/ICAD/blddate.h 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Date:		24-10-2002
+Developer:	DenisPetrov
+Company:	ITC
+Reference:	BugZilla:78291
+Affected files:		
+		Source/prj/lib/CMDS/slide.cpp 
+		Source/prj/lib/CMDS/vslide.cpp 
+Description:	1) Slide file creation adopted for 3D DOs? model
+		2) Redesigned output of graphics in VSLIDE command
+Comments:	TALOutputToScreen
+
+--------------------------------------------------------------------------------
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	SH_22102002_1.txt
+
+Added Files:
+		Source/Prj/Lib/cmds/HideAndShade.h
+Changed files:	
+
+		Source/Prj/Lib/cmds/HideAndShade.cpp
+		Source/Prj/Lib/icad/icadview.h
+		Source/Prj/Lib/icad/icadview.cpp
+		Source/Prj/Lib/icad/icadapp.cpp
+		
+Comments:	Implemented the funciton for printing hidden line image
+                and support hidden line printing preview.
+
+--------------------------------------------------------------------------------
+
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	SH_22102002_2.txt
+
+Changed files:	
+
+	        Source/Prj/Lib/cmds/Regen.cpp
+		Source/Prj/Lib/cmds/HideAndShade.cpp
+		Source/Prj/Lib/icad/icadview.cpp
+
+Comments:	Fixes the problems that caused the screen image to be changed 
+                from hidden lines to wireframe.
+
+--------------------------------------------------------------------------------
+
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	SH_22102002_3.txt
+
+Changed files:	
+		Source/Prj/Lib/cmds/cmds8.cpp
+
+Comments:	Fixes the display problems of UNION and INTERSECT operations.
+
+--------------------------------------------------------------------------------
+
+
+REGRESS OUTPUT:
+
+Regress started at 10/29/2002 5:54:35 AM
+Exe path -- F:\Build_11\IntelliCAD\Source\prj\make\Stage\icad.exe
+Directory to process -- f:\Build_11\IntelliCAD\Source\Regress\scripts
+Option -- None
+
+
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D.scr at 10/29/2002 5:54:36 AM
+ Time K+u=total -- 1562 ms + 741 ms = 2303 ms. mem used 10215424 bytes start 5.54.36 end 5.54.54
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entityEMF.scr at 10/29/2002 5:54:54 AM
+ Time K+u=total -- 1562 ms + 1011 ms = 2573 ms. mem used 10350592 bytes start 5.54.54 end 5.54.59
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entityEMF95.scr at 10/29/2002 5:54:59 AM
+ Time K+u=total -- 1502 ms + 961 ms = 2463 ms. mem used 10350592 bytes start 5.54.59 end 5.55.4
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entityEMFNT.scr at 10/29/2002 5:55:04 AM
+ Time K+u=total -- 1522 ms + 1081 ms = 2603 ms. mem used 10350592 bytes start 5.55.4 end 5.55.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entitySLD.scr at 10/29/2002 5:55:09 AM
+ Time K+u=total -- 1412 ms + 1041 ms = 2453 ms. mem used 10260480 bytes start 5.55.9 end 5.55.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entitySLD95.scr at 10/29/2002 5:55:14 AM
+ Time K+u=total -- 1572 ms + 931 ms = 2503 ms. mem used 10260480 bytes start 5.55.14 end 5.55.19
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entitySLDNT.scr at 10/29/2002 5:55:19 AM
+ Time K+u=total -- 1452 ms + 1001 ms = 2453 ms. mem used 10268672 bytes start 5.55.19 end 5.55.24
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\2-D_entity_color_layer.scr at 10/29/2002 5:55:24 AM
+ Time K+u=total -- 1442 ms + 841 ms = 2283 ms. mem used 10235904 bytes start 5.55.24 end 5.55.29
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\3d.scr at 10/29/2002 5:55:29 AM
+ Time K+u=total -- 1281 ms + 1121 ms = 2402 ms. mem used 10203136 bytes start 5.55.29 end 5.55.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\3dmeshes2.scr at 10/29/2002 5:55:34 AM
+ Time K+u=total -- 2373 ms + 2603 ms = 4976 ms. mem used 12644352 bytes start 5.55.34 end 5.55.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\3dspiral_3dspiral.scr at 10/29/2002 5:55:41 AM
+ Time K+u=total -- 1251 ms + 1261 ms = 2512 ms. mem used 10276864 bytes start 5.55.41 end 5.55.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\3dspiral_spiral.scr at 10/29/2002 5:55:46 AM
+ Time K+u=total -- 1211 ms + 1051 ms = 2262 ms. mem used 10219520 bytes start 5.55.46 end 5.55.51
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\3d_entities.scr at 10/29/2002 5:55:51 AM
+ Time K+u=total -- 1592 ms + 1572 ms = 3164 ms. mem used 11247616 bytes start 5.55.51 end 5.55.57
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\60619.scr at 10/29/2002 5:55:57 AM
+ Time K+u=total -- 1772 ms + 891 ms = 2663 ms. mem used 10280960 bytes start 5.55.57 end 5.56.2
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\60914.scr at 10/29/2002 5:56:02 AM
+ Time K+u=total -- 1151 ms + 560 ms = 1711 ms. mem used 10149888 bytes start 5.56.2 end 5.56.7
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\60918.scr at 10/29/2002 5:56:07 AM
+ Time K+u=total -- 1482 ms + 741 ms = 2223 ms. mem used 10264576 bytes start 5.56.7 end 5.56.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\61474.scr at 10/29/2002 5:56:11 AM
+ Time K+u=total -- 1992 ms + 1201 ms = 3193 ms. mem used 10526720 bytes start 5.56.11 end 5.56.17
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\63543.scr at 10/29/2002 5:56:17 AM
+ Time K+u=total -- 1552 ms + 1121 ms = 2673 ms. mem used 10366976 bytes start 5.56.17 end 5.56.22
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\64188_Base.scr at 10/29/2002 5:56:23 AM
+ Time K+u=total -- 1281 ms + 791 ms = 2072 ms. mem used 10211328 bytes start 5.56.23 end 5.56.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\64188_Cont.scr at 10/29/2002 5:56:27 AM
+ Time K+u=total -- 1301 ms + 801 ms = 2102 ms. mem used 10207232 bytes start 5.56.27 end 5.56.32
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\75763.scr at 10/29/2002 5:56:32 AM
+ Time K+u=total -- 1001 ms + 530 ms = 1531 ms. mem used 9834496 bytes start 5.56.32 end 5.56.36
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\76526.scr at 10/29/2002 5:56:36 AM
+ Time K+u=total -- 1261 ms + 590 ms = 1851 ms. mem used 9920512 bytes start 5.56.36 end 5.56.40
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77770_Aligned.scr at 10/29/2002 5:56:40 AM
+ Time K+u=total -- 2193 ms + 1321 ms = 3514 ms. mem used 10629120 bytes start 5.56.40 end 5.56.47
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77770_Linear.scr at 10/29/2002 5:56:47 AM
+ Time K+u=total -- 2093 ms + 1412 ms = 3505 ms. mem used 10629120 bytes start 5.56.47 end 5.56.54
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77770_Rotated.scr at 10/29/2002 5:56:54 AM
+ Time K+u=total -- 2273 ms + 1412 ms = 3685 ms. mem used 10629120 bytes start 5.56.54 end 5.57.1
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77816.scr at 10/29/2002 5:57:01 AM
+ Time K+u=total -- 1191 ms + 430 ms = 1621 ms. mem used 9891840 bytes start 5.57.1 end 5.57.5
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77860.scr at 10/29/2002 5:57:05 AM
+ Time K+u=total -- 4095 ms + 21681 ms = 25776 ms. mem used 26013696 bytes start 5.57.5 end 5.57.35
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77887.scr at 10/29/2002 5:57:35 AM
+ Time K+u=total -- 1562 ms + 911 ms = 2473 ms. mem used 10391552 bytes start 5.57.35 end 5.57.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77888.scr at 10/29/2002 5:57:41 AM
+ Time K+u=total -- 1932 ms + 1361 ms = 3293 ms. mem used 10993664 bytes start 5.57.41 end 5.57.47
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77907.scr at 10/29/2002 5:57:47 AM
+ Time K+u=total -- 1442 ms + 610 ms = 2052 ms. mem used 9916416 bytes start 5.57.47 end 5.57.52
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77943.scr at 10/29/2002 5:57:52 AM
+ Time K+u=total -- 1121 ms + 530 ms = 1651 ms. mem used 10129408 bytes start 5.57.52 end 5.57.56
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77947.scr at 10/29/2002 5:57:56 AM
+ Time K+u=total -- 1171 ms + 540 ms = 1711 ms. mem used 9879552 bytes start 5.57.56 end 5.58.0
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\77972.scr at 10/29/2002 5:58:00 AM
+ Time K+u=total -- 1682 ms + 1041 ms = 2723 ms. mem used 10190848 bytes start 5.58.0 end 5.58.6
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78010.scr at 10/29/2002 5:58:06 AM
+ Time K+u=total -- 1582 ms + 751 ms = 2333 ms. mem used 10145792 bytes start 5.58.6 end 5.58.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78036.scr at 10/29/2002 5:58:11 AM
+ Time K+u=total -- 1171 ms + 590 ms = 1761 ms. mem used 10551296 bytes start 5.58.11 end 5.58.15
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78037.scr at 10/29/2002 5:58:15 AM
+ Time K+u=total -- 2153 ms + 971 ms = 3124 ms. mem used 10760192 bytes start 5.58.15 end 5.58.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78047.scr at 10/29/2002 5:58:21 AM
+ Time K+u=total -- 1482 ms + 831 ms = 2313 ms. mem used 11210752 bytes start 5.58.21 end 5.58.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78057.scr at 10/29/2002 5:58:27 AM
+ Time K+u=total -- 1111 ms + 520 ms = 1631 ms. mem used 10252288 bytes start 5.58.27 end 5.58.31
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78069_78002.scr at 10/29/2002 5:58:31 AM
+ Time K+u=total -- 1522 ms + 1341 ms = 2863 ms. mem used 10862592 bytes start 5.58.31 end 5.58.37
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78075.scr at 10/29/2002 5:58:37 AM
+ Time K+u=total -- 1321 ms + 791 ms = 2112 ms. mem used 10280960 bytes start 5.58.37 end 5.58.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78079.scr at 10/29/2002 5:58:41 AM
+ Time K+u=total -- 2233 ms + 2373 ms = 4606 ms. mem used 10997760 bytes start 5.58.41 end 5.58.49
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78092.scr at 10/29/2002 5:58:49 AM
+ Time K+u=total -- 1832 ms + 3535 ms = 5367 ms. mem used 12898304 bytes start 5.58.49 end 5.58.57
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78105.scr at 10/29/2002 5:58:57 AM
+ Time K+u=total -- 1502 ms + 650 ms = 2152 ms. mem used 10375168 bytes start 5.58.57 end 5.59.2
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78110.scr at 10/29/2002 5:59:02 AM
+ Time K+u=total -- 1151 ms + 620 ms = 1771 ms. mem used 10092544 bytes start 5.59.2 end 5.59.6
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78119.scr at 10/29/2002 5:59:06 AM
+ Time K+u=total -- 1131 ms + 530 ms = 1661 ms. mem used 10190848 bytes start 5.59.6 end 5.59.10
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78120.scr at 10/29/2002 5:59:10 AM
+ Time K+u=total -- 971 ms + 530 ms = 1501 ms. mem used 10018816 bytes start 5.59.10 end 5.59.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78120_test.scr at 10/29/2002 5:59:14 AM
+ Time K+u=total -- 1331 ms + 861 ms = 2192 ms. mem used 10416128 bytes start 5.59.14 end 5.59.19
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78130.scr at 10/29/2002 5:59:19 AM
+ Time K+u=total -- 4336 ms + 2163 ms = 6499 ms. mem used 10412032 bytes start 5.59.19 end 5.59.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78135.scr at 10/29/2002 5:59:30 AM
+ Time K+u=total -- 1492 ms + 721 ms = 2213 ms. mem used 9854976 bytes start 5.59.30 end 5.59.35
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78136.scr at 10/29/2002 5:59:35 AM
+ Time K+u=total -- 1071 ms + 590 ms = 1661 ms. mem used 10092544 bytes start 5.59.35 end 5.59.40
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78140.SCR at 10/29/2002 5:59:40 AM
+ Time K+u=total -- 1682 ms + 991 ms = 2673 ms. mem used 10436608 bytes start 5.59.40 end 5.59.45
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78149.scr at 10/29/2002 5:59:45 AM
+ Time K+u=total -- 1061 ms + 530 ms = 1591 ms. mem used 10043392 bytes start 5.59.45 end 5.59.49
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78151.scr at 10/29/2002 5:59:49 AM
+ Time K+u=total -- 1321 ms + 771 ms = 2092 ms. mem used 10223616 bytes start 5.59.49 end 5.59.54
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78153.scr at 10/29/2002 5:59:54 AM
+ Time K+u=total -- 1492 ms + 901 ms = 2393 ms. mem used 10391552 bytes start 5.59.54 end 5.59.59
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78155.scr at 10/29/2002 5:59:59 AM
+ Time K+u=total -- 1672 ms + 911 ms = 2583 ms. mem used 10412032 bytes start 5.59.59 end 6.0.4
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78167.scr at 10/29/2002 6:00:04 AM
+ Time K+u=total -- 1251 ms + 610 ms = 1861 ms. mem used 10199040 bytes start 6.0.4 end 6.0.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78175.scr at 10/29/2002 6:00:09 AM
+ Time K+u=total -- 1121 ms + 430 ms = 1551 ms. mem used 10018816 bytes start 6.0.9 end 6.0.13
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78177.scr at 10/29/2002 6:00:13 AM
+ Time K+u=total -- 1081 ms + 470 ms = 1551 ms. mem used 9998336 bytes start 6.0.13 end 6.0.17
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78179.scr at 10/29/2002 6:00:17 AM
+ Time K+u=total -- 1472 ms + 931 ms = 2403 ms. mem used 10366976 bytes start 6.0.17 end 6.0.22
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78181.scr at 10/29/2002 6:00:22 AM
+ Time K+u=total -- 1151 ms + 640 ms = 1791 ms. mem used 10117120 bytes start 6.0.22 end 6.0.26
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78182.scr at 10/29/2002 6:00:27 AM
+ Time K+u=total -- 5047 ms + 2072 ms = 7119 ms. mem used 10391552 bytes start 6.0.27 end 6.0.36
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78183.scr at 10/29/2002 6:00:36 AM
+ Time K+u=total -- 1271 ms + 620 ms = 1891 ms. mem used 10240000 bytes start 6.0.36 end 6.0.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78195.scr at 10/29/2002 6:00:41 AM
+ Time K+u=total -- 2603 ms + 1672 ms = 4275 ms. mem used 10444800 bytes start 6.0.41 end 6.0.48
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78197.scr at 10/29/2002 6:00:48 AM
+ Time K+u=total -- 1452 ms + 1351 ms = 2803 ms. mem used 10731520 bytes start 6.0.48 end 6.0.53
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78198.scr at 10/29/2002 6:00:53 AM
+ Time K+u=total -- 1682 ms + 831 ms = 2513 ms. mem used 10469376 bytes start 6.0.53 end 6.0.58
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78203.scr at 10/29/2002 6:00:58 AM
+ Time K+u=total -- 1251 ms + 650 ms = 1901 ms. mem used 10162176 bytes start 6.0.58 end 6.1.3
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78204.scr at 10/29/2002 6:01:03 AM
+ Time K+u=total -- 2213 ms + 1131 ms = 3344 ms. mem used 10366976 bytes start 6.1.3 end 6.1.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78205.scr at 10/29/2002 6:01:09 AM
+ Time K+u=total -- 1652 ms + 690 ms = 2342 ms. mem used 10231808 bytes start 6.1.9 end 6.1.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78222.scr at 10/29/2002 6:01:14 AM
+ Time K+u=total -- 2653 ms + 1742 ms = 4395 ms. mem used 11067392 bytes start 6.1.14 end 6.1.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78236.scr at 10/29/2002 6:01:21 AM
+ Time K+u=total -- 2032 ms + 1061 ms = 3093 ms. mem used 10526720 bytes start 6.1.21 end 6.1.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78238.scr at 10/29/2002 6:01:27 AM
+ Time K+u=total -- 2643 ms + 1962 ms = 4605 ms. mem used 10801152 bytes start 6.1.27 end 6.1.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78243.scr at 10/29/2002 6:01:34 AM
+ Time K+u=total -- 1321 ms + 711 ms = 2032 ms. mem used 10625024 bytes start 6.1.34 end 6.1.39
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78248.scr at 10/29/2002 6:01:39 AM
+ Time K+u=total -- 1772 ms + 801 ms = 2573 ms. mem used 9773056 bytes start 6.1.39 end 6.1.44
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78265.scr at 10/29/2002 6:01:44 AM
+ Time K+u=total -- 2123 ms + 1091 ms = 3214 ms. mem used 10153984 bytes start 6.1.44 end 6.1.50
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78277.scr at 10/29/2002 6:01:50 AM
+ Time K+u=total -- 1311 ms + 630 ms = 1941 ms. mem used 10125312 bytes start 6.1.50 end 6.1.55
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78284.scr at 10/29/2002 6:01:55 AM
+ Time K+u=total -- 1542 ms + 971 ms = 2513 ms. mem used 10362880 bytes start 6.1.55 end 6.2.0
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78300_a.scr at 10/29/2002 6:02:00 AM
+ Time K+u=total -- 24955 ms + 26558 ms = 51513 ms. mem used 13778944 bytes start 6.2.0 end 6.2.56
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78300_c.scr at 10/29/2002 6:02:56 AM
+ Time K+u=total -- 23413 ms + 22272 ms = 45685 ms. mem used 12546048 bytes start 6.2.56 end 6.3.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78300_h.scr at 10/29/2002 6:03:46 AM
+ Time K+u=total -- 15722 ms + 15171 ms = 30893 ms. mem used 12169216 bytes start 6.3.46 end 6.4.20
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78300_t.scr at 10/29/2002 6:04:21 AM
+ Time K+u=total -- 15872 ms + 15241 ms = 31113 ms. mem used 12242944 bytes start 6.4.21 end 6.4.55
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78300_w.scr at 10/29/2002 6:04:55 AM
+ Time K+u=total -- 15812 ms + 14971 ms = 30783 ms. mem used 12173312 bytes start 6.4.55 end 6.5.29
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78305.scr at 10/29/2002 6:05:30 AM
+ Time K+u=total -- 12798 ms + 8061 ms = 20859 ms. mem used 11091968 bytes start 6.5.30 end 6.5.54
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78310_1.scr at 10/29/2002 6:05:54 AM
+ Time K+u=total -- 1462 ms + 1241 ms = 2703 ms. mem used 10452992 bytes start 6.5.54 end 6.5.59
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\78310_2.scr at 10/29/2002 6:06:00 AM
+ Time K+u=total -- 1732 ms + 921 ms = 2653 ms. mem used 10457088 bytes start 6.6.0 end 6.6.5
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-cond.scr at 10/29/2002 6:06:05 AM
+ Time K+u=total -- 43352 ms + 59365 ms = 102717 ms. mem used 10641408 bytes start 6.6.5 end 6.7.59
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-conv.scr at 10/29/2002 6:08:00 AM
+ Time K+u=total -- 7731 ms + 4947 ms = 12678 ms. mem used 10547200 bytes start 6.8.0 end 6.8.18
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-function.scr at 10/29/2002 6:08:18 AM
+ Time K+u=total -- 5407 ms + 2964 ms = 8371 ms. mem used 10514432 bytes start 6.8.18 end 6.8.31
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-geo.scr at 10/29/2002 6:08:31 AM
+ Time K+u=total -- 2463 ms + 1532 ms = 3995 ms. mem used 10100736 bytes start 6.8.31 end 6.8.40
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-list.scr at 10/29/2002 6:08:40 AM
+ Time K+u=total -- 38064 ms + 42951 ms = 81015 ms. mem used 11378688 bytes start 6.8.40 end 6.10.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-math.scr at 10/29/2002 6:10:09 AM
+ Time K+u=total -- 11286 ms + 7530 ms = 18816 ms. mem used 10559488 bytes start 6.10.9 end 6.10.33
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-string.scr at 10/29/2002 6:10:33 AM
+ Time K+u=total -- 12387 ms + 8071 ms = 20458 ms. mem used 10739712 bytes start 6.10.34 end 6.10.59
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-sym.scr at 10/29/2002 6:10:59 AM
+ Time K+u=total -- 19437 ms + 62539 ms = 81976 ms. mem used 10547200 bytes start 6.10.59 end 6.12.28
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-symtbl2.scr at 10/29/2002 6:12:28 AM
+ Time K+u=total -- 3254 ms + 2984 ms = 6238 ms. mem used 10473472 bytes start 6.12.28 end 6.12.39
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AccTest-util.scr at 10/29/2002 6:12:39 AM
+ Time K+u=total -- 4045 ms + 2643 ms = 6688 ms. mem used 10276864 bytes start 6.12.39 end 6.12.51
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\AI_3d_entities.SCR at 10/29/2002 6:12:51 AM
+ Time K+u=total -- 2403 ms + 1952 ms = 4355 ms. mem used 11300864 bytes start 6.12.51 end 6.12.58
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\angtos.scr at 10/29/2002 6:12:58 AM
+ Time K+u=total -- 1091 ms + 701 ms = 1792 ms. mem used 9719808 bytes start 6.12.58 end 6.13.3
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\approved.scr at 10/29/2002 6:13:03 AM
+ Time K+u=total -- 1231 ms + 570 ms = 1801 ms. mem used 10113024 bytes start 6.13.3 end 6.13.8
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\arc.scr at 10/29/2002 6:13:08 AM
+ Time K+u=total -- 2293 ms + 1161 ms = 3454 ms. mem used 10403840 bytes start 6.13.8 end 6.13.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\arcs.scr at 10/29/2002 6:13:14 AM
+ Time K+u=total -- 2934 ms + 1502 ms = 4436 ms. mem used 10309632 bytes start 6.13.14 end 6.13.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\arctex_at.scr at 10/29/2002 6:13:21 AM
+ Time K+u=total -- 1071 ms + 530 ms = 1601 ms. mem used 9879552 bytes start 6.13.21 end 6.13.25
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Array.scr at 10/29/2002 6:13:26 AM
+ Time K+u=total -- 2753 ms + 2904 ms = 5657 ms. mem used 11313152 bytes start 6.13.26 end 6.13.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\ATTRIButes1.SCR at 10/29/2002 6:13:34 AM
+ Time K+u=total -- 2443 ms + 1301 ms = 3744 ms. mem used 10412032 bytes start 6.13.34 end 6.13.40
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\B4.SCR at 10/29/2002 6:13:41 AM
+ Time K+u=total -- 1231 ms + 590 ms = 1821 ms. mem used 10104832 bytes start 6.13.41 end 6.13.45
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\blockexp.scr at 10/29/2002 6:13:45 AM
+ Time K+u=total -- 3695 ms + 20219 ms = 23914 ms. mem used 25710592 bytes start 6.13.45 end 6.14.13
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Break.scr at 10/29/2002 6:14:13 AM
+ Time K+u=total -- 1622 ms + 1882 ms = 3504 ms. mem used 10805248 bytes start 6.14.13 end 6.14.22
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Cardiod.scr at 10/29/2002 6:14:22 AM
+ Time K+u=total -- 3204 ms + 2123 ms = 5327 ms. mem used 10211328 bytes start 6.14.22 end 6.14.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Chair_rarray.scr at 10/29/2002 6:14:30 AM
+ Time K+u=total -- 1582 ms + 1432 ms = 3014 ms. mem used 14766080 bytes start 6.14.30 end 6.14.37
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Circles.scr at 10/29/2002 6:14:37 AM
+ Time K+u=total -- 1141 ms + 811 ms = 1952 ms. mem used 10276864 bytes start 6.14.37 end 6.14.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\circlesEntity.scr at 10/29/2002 6:14:41 AM
+***** ERROR ***** Terminating F:\Build_11\IntelliCAD\Source\Regress\scripts\circlesEntity.scr at 10/29/2002 6:19:41 AM
+ Time K+u=total -- 1462 ms + 610 ms = 2072 ms. mem used 9777152 bytes start 6.14.41 end 6.19.41
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\CONCIRCLEADD.scr at 10/29/2002 6:19:42 AM
+ Time K+u=total -- 1361 ms + 460 ms = 1821 ms. mem used 9945088 bytes start 6.19.42 end 6.19.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\CONCIRCLESUB.scr at 10/29/2002 6:19:46 AM
+ Time K+u=total -- 1301 ms + 580 ms = 1881 ms. mem used 9924608 bytes start 6.19.46 end 6.19.50
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Conference.scr at 10/29/2002 6:19:50 AM
+ Time K+u=total -- 5728 ms + 18116 ms = 23844 ms. mem used 25165824 bytes start 6.19.50 end 6.20.18
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\copy2d.scr at 10/29/2002 6:20:18 AM
+ Time K+u=total -- 2273 ms + 1341 ms = 3614 ms. mem used 10428416 bytes start 6.20.18 end 6.20.24
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Copymove.scr at 10/29/2002 6:20:24 AM
+ Time K+u=total -- 1482 ms + 1001 ms = 2483 ms. mem used 10178560 bytes start 6.20.24 end 6.20.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\cutube.scr at 10/29/2002 6:20:30 AM
+ Time K+u=total -- 1041 ms + 550 ms = 1591 ms. mem used 10035200 bytes start 6.20.30 end 6.20.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\dimedit_oblique.scr at 10/29/2002 6:20:34 AM
+ Time K+u=total -- 3334 ms + 2022 ms = 5356 ms. mem used 10829824 bytes start 6.20.34 end 6.20.43
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\dimedit_rotate.scr at 10/29/2002 6:20:43 AM
+ Time K+u=total -- 3094 ms + 1952 ms = 5046 ms. mem used 10874880 bytes start 6.20.43 end 6.20.50
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\dimtedit.scr at 10/29/2002 6:20:50 AM
+ Time K+u=total -- 2563 ms + 2123 ms = 4686 ms. mem used 10874880 bytes start 6.20.51 end 6.20.58
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\dimtedit_RotatedDim.scr at 10/29/2002 6:20:58 AM
+ Time K+u=total -- 2423 ms + 2093 ms = 4516 ms. mem used 10813440 bytes start 6.20.58 end 6.21.5
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\DimUpdateAll.scr at 10/29/2002 6:21:05 AM
+ Time K+u=total -- 1892 ms + 2072 ms = 3964 ms. mem used 10805248 bytes start 6.21.5 end 6.21.12
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Dim_ArrowHeads.SCR at 10/29/2002 6:21:12 AM
+ Time K+u=total -- 5317 ms + 5708 ms = 11025 ms. mem used 12296192 bytes start 6.21.12 end 6.21.26
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Dim_DIMFIT.SCR at 10/29/2002 6:21:26 AM
+ Time K+u=total -- 6479 ms + 7460 ms = 13939 ms. mem used 12759040 bytes start 6.21.26 end 6.21.43
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\dlength.scr at 10/29/2002 6:21:43 AM
+ Time K+u=total -- 1261 ms + 610 ms = 1871 ms. mem used 9953280 bytes start 6.21.43 end 6.21.47
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\donuts.scr at 10/29/2002 6:21:47 AM
+ Time K+u=total -- 1602 ms + 941 ms = 2543 ms. mem used 10362880 bytes start 6.21.47 end 6.21.53
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\drhatch.scr at 10/29/2002 6:21:53 AM
+ Time K+u=total -- 2804 ms + 3895 ms = 6699 ms. mem used 12574720 bytes start 6.21.53 end 6.22.2
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Ellipse.scr at 10/29/2002 6:22:02 AM
+ Time K+u=total -- 5467 ms + 4917 ms = 10384 ms. mem used 12419072 bytes start 6.22.2 end 6.22.16
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Entities.scr at 10/29/2002 6:22:16 AM
+ Time K+u=total -- 2733 ms + 5708 ms = 8441 ms. mem used 19034112 bytes start 6.22.16 end 6.22.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr at 10/29/2002 6:22:27 AM
+***** ERROR ***** Terminating F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr at 10/29/2002 6:27:27 AM
+ Time K+u=total -- 27589 ms + 268415 ms = 296004 ms. mem used 17408000 bytes start 6.22.27 end 6.27.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_ellipse.scr at 10/29/2002 6:27:28 AM
+ Time K+u=total -- 17565 ms + 144858 ms = 162423 ms. mem used 11849728 bytes start 6.27.28 end 6.30.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_polygon.scr at 10/29/2002 6:30:14 AM
+ Time K+u=total -- 15912 ms + 47578 ms = 63490 ms. mem used 11431936 bytes start 6.30.14 end 6.31.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_xline.scr at 10/29/2002 6:31:21 AM
+ Time K+u=total -- 12257 ms + 28370 ms = 40627 ms. mem used 11362304 bytes start 6.31.21 end 6.32.6
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Fillet.scr at 10/29/2002 6:32:06 AM
+***** ERROR ***** Terminating F:\Build_11\IntelliCAD\Source\Regress\scripts\Fillet.scr at 10/29/2002 6:37:06 AM
+ Time K+u=total -- 1141 ms + 610 ms = 1751 ms. mem used 9986048 bytes start 6.32.6 end 6.37.6
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\grTest1.scr at 10/29/2002 6:37:06 AM
+ Time K+u=total -- 1412 ms + 630 ms = 2042 ms. mem used 9981952 bytes start 6.37.6 end 6.37.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\grTest2.scr at 10/29/2002 6:37:11 AM
+ Time K+u=total -- 1862 ms + 971 ms = 2833 ms. mem used 10022912 bytes start 6.37.11 end 6.37.16
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Hyper001.scr at 10/29/2002 6:37:16 AM
+ Time K+u=total -- 1181 ms + 410 ms = 1591 ms. mem used 10428416 bytes start 6.37.16 end 6.37.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Hyper002.scr at 10/29/2002 6:37:21 AM
+ Time K+u=total -- 1101 ms + 460 ms = 1561 ms. mem used 10309632 bytes start 6.37.21 end 6.37.26
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Hyper003.scr at 10/29/2002 6:37:26 AM
+ Time K+u=total -- 1121 ms + 440 ms = 1561 ms. mem used 10305536 bytes start 6.37.26 end 6.37.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Hyper004.scr at 10/29/2002 6:37:30 AM
+ Time K+u=total -- 1111 ms + 460 ms = 1571 ms. mem used 10305536 bytes start 6.37.30 end 6.37.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Hyper005.scr at 10/29/2002 6:37:34 AM
+ Time K+u=total -- 1041 ms + 530 ms = 1571 ms. mem used 10424320 bytes start 6.37.34 end 6.37.38
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Insertf.scr at 10/29/2002 6:37:38 AM
+ Time K+u=total -- 5247 ms + 59725 ms = 64972 ms. mem used 66928640 bytes start 6.37.38 end 6.39.26
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\inters.scr at 10/29/2002 6:39:27 AM
+ Time K+u=total -- 1111 ms + 520 ms = 1631 ms. mem used 9674752 bytes start 6.39.28 end 6.39.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\knuckle.scr at 10/29/2002 6:39:46 AM
+ Time K+u=total -- 4856 ms + 2663 ms = 7519 ms. mem used 10731520 bytes start 6.39.46 end 6.39.57
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Layers.scr at 10/29/2002 6:39:57 AM
+ Time K+u=total -- 1171 ms + 991 ms = 2162 ms. mem used 10096640 bytes start 6.39.57 end 6.40.2
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\LCREA.scr at 10/29/2002 6:40:02 AM
+ Time K+u=total -- 1672 ms + 2904 ms = 4576 ms. mem used 13983744 bytes start 6.40.2 end 6.40.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\lgrid.scr at 10/29/2002 6:40:09 AM
+ Time K+u=total -- 9573 ms + 4786 ms = 14359 ms. mem used 10305536 bytes start 6.40.9 end 6.40.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Lines.scr at 10/29/2002 6:40:27 AM
+ Time K+u=total -- 1291 ms + 861 ms = 2152 ms. mem used 10186752 bytes start 6.40.27 end 6.40.32
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\lisp1.scr at 10/29/2002 6:40:32 AM
+ Time K+u=total -- 1161 ms + 470 ms = 1631 ms. mem used 9859072 bytes start 6.40.32 end 6.40.36
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\lisp2.scr at 10/29/2002 6:40:36 AM
+ Time K+u=total -- 1131 ms + 550 ms = 1681 ms. mem used 9887744 bytes start 6.40.36 end 6.40.40
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\MIRROR2D.SCR at 10/29/2002 6:40:40 AM
+ Time K+u=total -- 1992 ms + 1031 ms = 3023 ms. mem used 10395648 bytes start 6.40.40 end 6.40.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Misc.scr at 10/29/2002 6:40:47 AM
+ Time K+u=total -- 1922 ms + 1281 ms = 3203 ms. mem used 10412032 bytes start 6.40.47 end 6.41.6
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\move_2d.scr at 10/29/2002 6:41:06 AM
+ Time K+u=total -- 1722 ms + 1131 ms = 2853 ms. mem used 10375168 bytes start 6.41.6 end 6.41.12
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Pline.scr at 10/29/2002 6:41:12 AM
+ Time K+u=total -- 1271 ms + 2093 ms = 3364 ms. mem used 10919936 bytes start 6.41.12 end 6.41.18
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\PLINELengthen1.SCR at 10/29/2002 6:41:18 AM
+ Time K+u=total -- 1261 ms + 1081 ms = 2342 ms. mem used 10260480 bytes start 6.41.18 end 6.41.23
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\plotc.scr at 10/29/2002 6:41:23 AM
+ Time K+u=total -- 1782 ms + 2413 ms = 4195 ms. mem used 13508608 bytes start 6.41.23 end 6.41.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\plote.scr at 10/29/2002 6:41:31 AM
+ Time K+u=total -- 1702 ms + 1852 ms = 3554 ms. mem used 12496896 bytes start 6.41.31 end 6.41.37
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\pl_elp.scr at 10/29/2002 6:41:37 AM
+ Time K+u=total -- 3515 ms + 15291 ms = 18806 ms. mem used 15286272 bytes start 6.41.37 end 6.42.0
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\polararray2d.scr at 10/29/2002 6:42:00 AM
+ Time K+u=total -- 1412 ms + 1001 ms = 2413 ms. mem used 10588160 bytes start 6.42.0 end 6.42.5
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Polygon2.scr at 10/29/2002 6:42:05 AM
+ Time K+u=total -- 1221 ms + 1442 ms = 2663 ms. mem used 10612736 bytes start 6.42.5 end 6.42.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR at 10/29/2002 6:42:11 AM
+***** ERROR ***** Terminating F:\Build_11\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR at 10/29/2002 6:47:11 AM
+ Time K+u=total -- 1442 ms + 1171 ms = 2613 ms. mem used 10104832 bytes start 6.42.11 end 6.47.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Polyline.scr at 10/29/2002 6:47:11 AM
+***** ERROR ***** Terminating F:\Build_11\IntelliCAD\Source\Regress\scripts\Polyline.scr at 10/29/2002 6:52:11 AM
+ Time K+u=total -- 1582 ms + 1412 ms = 2994 ms. mem used 10211328 bytes start 6.47.11 end 6.52.11
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\recarray.scr at 10/29/2002 6:52:11 AM
+ Time K+u=total -- 1622 ms + 1111 ms = 2733 ms. mem used 10743808 bytes start 6.52.11 end 6.52.16
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\RecPgonDonTrace.scr at 10/29/2002 6:52:16 AM
+ Time K+u=total -- 1041 ms + 620 ms = 1661 ms. mem used 10096640 bytes start 6.52.16 end 6.52.21
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Revsurf.scr at 10/29/2002 6:52:21 AM
+ Time K+u=total -- 1462 ms + 2293 ms = 3755 ms. mem used 11591680 bytes start 6.52.21 end 6.52.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\rotate2d.scr at 10/29/2002 6:52:27 AM
+ Time K+u=total -- 1522 ms + 1131 ms = 2653 ms. mem used 10350592 bytes start 6.52.27 end 6.52.32
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\RotateMirror.scr at 10/29/2002 6:52:32 AM
+ Time K+u=total -- 1371 ms + 1041 ms = 2412 ms. mem used 10452992 bytes start 6.52.32 end 6.52.37
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Roughen.scr at 10/29/2002 6:52:38 AM
+ Time K+u=total -- 6439 ms + 36402 ms = 42841 ms. mem used 41054208 bytes start 6.52.38 end 6.53.24
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Roughen_err.scr at 10/29/2002 6:53:24 AM
+ Time K+u=total -- 5197 ms + 34289 ms = 39486 ms. mem used 41041920 bytes start 6.53.24 end 6.54.7
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\RULESURF1.SCR at 10/29/2002 6:54:08 AM
+ Time K+u=total -- 1942 ms + 2233 ms = 4175 ms. mem used 10932224 bytes start 6.54.8 end 6.54.14
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\scr1.scr at 10/29/2002 6:54:14 AM
+ Time K+u=total -- 1211 ms + 570 ms = 1781 ms. mem used 11022336 bytes start 6.54.14 end 6.54.19
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\scr2.scr at 10/29/2002 6:54:19 AM
+ Time K+u=total -- 1932 ms + 3144 ms = 5076 ms. mem used 14262272 bytes start 6.54.19 end 6.54.27
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\scr3.scr at 10/29/2002 6:54:27 AM
+ Time K+u=total -- 3975 ms + 7400 ms = 11375 ms. mem used 20926464 bytes start 6.54.27 end 6.54.42
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\scr4.scr at 10/29/2002 6:54:42 AM
+ Time K+u=total -- 3084 ms + 1081 ms = 4165 ms. mem used 12005376 bytes start 6.54.42 end 6.54.50
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\scr5.scr at 10/29/2002 6:54:50 AM
+ Time K+u=total -- 1221 ms + 520 ms = 1741 ms. mem used 10809344 bytes start 6.54.50 end 6.54.54
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\SineCos.scr at 10/29/2002 6:54:54 AM
+ Time K+u=total -- 4836 ms + 6529 ms = 11365 ms. mem used 10567680 bytes start 6.54.54 end 6.55.9
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\solids.scr at 10/29/2002 6:55:09 AM
+ Time K+u=total -- 1231 ms + 690 ms = 1921 ms. mem used 10416128 bytes start 6.55.9 end 6.55.13
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\sphere.scr at 10/29/2002 6:55:13 AM
+ Time K+u=total -- 1071 ms + 550 ms = 1621 ms. mem used 9912320 bytes start 6.55.13 end 6.55.18
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Spline.scr at 10/29/2002 6:55:18 AM
+ Time K+u=total -- 1321 ms + 1341 ms = 2662 ms. mem used 10686464 bytes start 6.55.18 end 6.55.23
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\test_array.scr at 10/29/2002 6:55:23 AM
+ Time K+u=total -- 3114 ms + 6909 ms = 10023 ms. mem used 16646144 bytes start 6.55.23 end 6.55.36
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\test_array1.scr at 10/29/2002 6:55:36 AM
+ Time K+u=total -- 4646 ms + 13489 ms = 18135 ms. mem used 23281664 bytes start 6.55.36 end 6.55.57
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\test_array1_no.scr at 10/29/2002 6:55:57 AM
+ Time K+u=total -- 4716 ms + 12197 ms = 16913 ms. mem used 23257088 bytes start 6.55.57 end 6.56.17
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\textar.scr at 10/29/2002 6:56:17 AM
+ Time K+u=total -- 19407 ms + 106933 ms = 126340 ms. mem used 40177664 bytes start 6.56.17 end 6.58.28
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Textgrid.scr at 10/29/2002 6:58:28 AM
+ Time K+u=total -- 1241 ms + 1091 ms = 2332 ms. mem used 10268672 bytes start 6.58.28 end 6.58.33
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Theatre.scr at 10/29/2002 6:58:33 AM
+ Time K+u=total -- 16683 ms + 63521 ms = 80204 ms. mem used 55459840 bytes start 6.58.33 end 7.0.1
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Thick_text.scr at 10/29/2002 7:00:02 AM
+ Time K+u=total -- 5588 ms + 6158 ms = 11746 ms. mem used 14131200 bytes start 7.0.3 end 7.0.24
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\verify.scr at 10/29/2002 7:00:24 AM
+ Time K+u=total -- 1191 ms + 540 ms = 1731 ms. mem used 10117120 bytes start 7.0.24 end 7.0.29
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\View.scr at 10/29/2002 7:00:29 AM
+ Time K+u=total -- 1251 ms + 650 ms = 1901 ms. mem used 10100736 bytes start 7.0.29 end 7.0.46
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\viewpoint.scr at 10/29/2002 7:00:46 AM
+ Time K+u=total -- 4927 ms + 24024 ms = 28951 ms. mem used 23449600 bytes start 7.0.46 end 7.1.19
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\viewports.scr at 10/29/2002 7:01:19 AM
+ Time K+u=total -- 2713 ms + 4686 ms = 7399 ms. mem used 13881344 bytes start 7.1.19 end 7.1.30
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\xformssTest.scr at 10/29/2002 7:01:30 AM
+ Time K+u=total -- 1231 ms + 470 ms = 1701 ms. mem used 10043392 bytes start 7.1.30 end 7.1.34
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Xline_ray.scr at 10/29/2002 7:01:35 AM
+ Time K+u=total -- 1281 ms + 751 ms = 2032 ms. mem used 10076160 bytes start 7.1.35 end 7.1.39
+Processing F:\Build_11\IntelliCAD\Source\Regress\scripts\Xmastree.scr at 10/29/2002 7:01:39 AM
+ Time K+u=total -- 1552 ms + 2653 ms = 4205 ms. mem used 15077376 bytes start 7.1.39 end 7.1.46
+
+
+Completed processing 191 scripts.
+Total time is scripts with no errors -- 1844411ms
+
+The following 5 scripts had errors.
+F:\Build_11\IntelliCAD\Source\Regress\scripts\circlesEntity.scr
+F:\Build_11\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr
+F:\Build_11\IntelliCAD\Source\Regress\scripts\Fillet.scr
+F:\Build_11\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR
+F:\Build_11\IntelliCAD\Source\Regress\scripts\Polyline.scr
+
+
+Total time is scripts with errors -- 305434ms
+
+regress ended at 10/29/2002 7:01:46 AM

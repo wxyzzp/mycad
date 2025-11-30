@@ -1,0 +1,338 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78743_1.txt	
+Product Version:	ICAD 4
+Date:			10/05/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/ICAD/IcadApp.cpp	==> ICAD
+Source/prj/ICAD/IcadApp.h	==> ICAD
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78743 : Within the session print setup 
+dialog box does not store the selected printer.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, 
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+I have changed the following 2 files:
+	Ø Source/prj/ICAD/IcadApp.cpp	
+	Ø Source/prj/ICAD/IcadApp.h	
+ 
+	I have introduced a variable "bSavePrinterSettingsAfterFirstCall", in 
+IcadApp.h. Only when we enter the Print Setup Dialog, and press the 
+OK button in the dialog, then this variable will be TRUE. 
+Until then it is always FALSE, by default. 
+	If it is FALSE, then the Print Setup Dialog will always show the selected 
+default printer even if the user changes the default printer through Control Panel 
+when IntelliCAD is running. 
+	But when it is true, it will always show the printer that the user had 
+selected the latest in the Print Setup Dialog.
+
+The selection of the default Printer by default was provided as a reason to fix 
+Bugzilla# 78647: ICAD does not use default Windows printer for printing operations. 
+It was reported by one of the members, "Mohammad Rabiul Alam". 
+According to him, whenever ICAD is started, the Print Setup Dialog should show 
+the default Windows Printer installed. This behaviour is like other applications 
+for example "Microsoft Word". So I had fixed this issue. 
+Please refer CYB_78647_1.txt for details.
+ 
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following cases:
+1.	Go to Control Panel. 
+2.	Make any printer as a default printer from a list of installed printers.
+3.	Run IntelliCAD.
+4.	Click File | Print...
+5.	In the "Print" Dialog, click the "Print Setup" Button.
+6.	Note that in the "Print Setup" dialog, the default printer is selected.
+7.	Choose a different printer.
+8.	Click CANCEL.  ==> (Please note this step).
+9.	Now go to Control Panel.
+10.	Make a different printer other than the current one as a default printer.
+11.	Switch back to IntelliCAD.
+12.	In the "Print" Dialog, click the "Print Setup" Button.
+13.	Note that the default printer is shown, which was selected in step 10.
+
+Now perform all the above steps again except replace step 8 as:
+8. Click OK. ==> (Please note this step).
+We see that the printer shown is the one, which was selected in step 7. 
+
+Note: This bug has been tested on Windows XP, Windows 98 and Windows 2000.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

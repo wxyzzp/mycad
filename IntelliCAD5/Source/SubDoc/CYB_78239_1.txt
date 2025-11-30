@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------
+File:		CYB_78239_1.txt
+Date:		09-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78239
+Added files:
+		Source/res/IDB_ICAD_BWS_GROUP.bmp
+		Source/res/IDB_ICAD_BWL_GROUP.bmp
+		Source/res/IDB_ICAD_SM_GROUP.bmp
+		Source/res/IDB_ICAD_LG_GROUP.bmp
+		Source/res/IDB_ICAD_BWS_ALIGN.bmp
+		Source/res/IDB_ICAD_BWL_ALIGN.bmp
+		Source/res/IDB_ICAD_SM_ALIGN.bmp
+		Source/res/IDB_ICAD_LG_ALIGN.bmp
+Affected files:			
+		Eng-us/icad.rc2
+		Eng-us/icadRes.rc
+		Source/prj/ICAD/IcadMenuTBDef.h
+		Source/prj/ICAD/IcadRes.h
+		Source/prj/ICAD/res/Icadrc2.h
+
+Description: 	Addition of toolbar entry for GROUP command and a menu entry for ALIGN command.
+Comments:	TaL78239
+File by File:
+
+Added Files:
+	*	Source/res/IDB_ICAD_BWS_GROUP.bmp
+		- Small Bland and whilte Group Bitmap
+	*	Source/res/IDB_ICAD_BWL_GROUP.bmp
+		- Large Bland and whilte Group Bitmap
+	*	Source/res/IDB_ICAD_SM_GROUP.bmp
+		- Small colored Group Bitmap
+	*	Source/res/IDB_ICAD_LG_GROUP.bmp
+		- Large colored Group Bitmap
+	*	Source/res/IDB_ICAD_BWS_ALIGN.bmp
+		- Small Bland and whilte Align Bitmap
+	*	Source/res/IDB_ICAD_BWL_ALIGN.bmp
+		- Large Bland and whilte Align Bitmap
+	*	Source/res/IDB_ICAD_SM_ALIGN.bmp
+		- Small colored Align Bitmap
+	*	Source/res/IDB_ICAD_LG_ALIGN.bmp
+		- Large colored Align Bitmap
+Affected files:			
+	*	Eng-us/icad.rc2
+		Resource Strings for Group and Align for ToolTip and Help String.
+
+	*	Eng-us/icadRes.rc
+		Path set for BITMAPS for Group and Align bitmap ID.( 8 bitmaps)
+
+	*	Source/prj/ICAD/IcadMenuTBDef.h
+		Main code added for Toolbar and menu entry for ALIGN and Group Command.
+
+	*	Source/prj/ICAD/IcadRes.h
+		Declaration of BITMAP id. ( 8 ID's )		
+
+	*	Source/prj/ICAD/res/Icadrc2.h
+		Declaration of id's used in IcadMenuTBDef.h
+
+-------------------------------------------------------------------------------------------------
+
+				

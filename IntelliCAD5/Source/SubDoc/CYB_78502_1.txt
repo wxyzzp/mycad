@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78502_1.txt
+Date:		09-06-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78502
+Added files:     	
+Affected files:
+		Source/prj/lib/ICAD/IcadApp.cpp
+Description:	ICAD crashes on double clicking a dwg file in explorer for medium security
+Comments:	TaL78502
+Problem Analysis:
+		When the security is set to medium, the dialog boxes for Macros pop-up and IntelliCAD crashes. The problem is there because of thread synchronisation which is occurring because of the popping of dialog boxes. When the user double-clicks on a file, the DDE process communicates with the newly created IntelliCAD process and the file name passing takes place. The notification, macros and security dialog boxes that appear in the VBA enabled build are modal dialog boxes. These dialogs are there in different threads. So when these dialogs appear, there occurs a problem of thread synchronization.   		
+Proposed Solution:	
+		The dialog boxes should not appear when the security is set to medium and when the dwg file is opened by double clicking. 
+File by File:	
+*		Source/prj/lib/ICAD/IcadApp.cpp
+		When the security is set to medium and the command is DDE then the notification dialog boxes are suppressed. The VBA Macro dialog box which asks the user to enable or disable macros is still displayed. The changes have been made in two functions, namely CIcadApp::InitSecurity() and CIcadApp::InitInstance().     
+--------------------------------------------------------------------------------
+
+
+

@@ -1,0 +1,36 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-18.txt
+Produce Version		ICAD 4
+Date:				03/16/2004 07:09am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Had to do some work on getting layouts straight for export.
+Basically, I had some handle clashes that can't be avoided, but
+I feel pretty good about the fix, and will be keeping my eye on 
+it.
+
+Notes to Developers:
+
+Notes to QA:
+Note; I have left several ASSERT()s in the code that may or may
+not fire when testing on a debug build. In most cases you can 
+simply ignore them. They are mostly to keep me from forgetting to
+address objects that are in progress. There will be some minor loss
+in data until all the asserts have been addressed, but they are mostly
+objects like extension dictionary entries I haven't addressed yet.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\collectionclasses.h
+

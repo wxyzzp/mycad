@@ -1,0 +1,34 @@
+logfilename log/viewpoint_options.log
+logfileon
+;_____________
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001) (equal (caddr ptAct) (caddr ptExp) 0.00001)))
+ucs
+s
+ucs1
+;__________PLAN_CUR
+viewpoint
+p
+
+(if (comparepoint (getvar "viewdir") (list 0.0 0.0 1.0)) (princ "OK") (alert "1"))
+;__________PLAN_W
+viewpoint
+p
+w
+(if (comparepoint (getvar "viewdir") (list 0.0 0.0 1.0)) (princ "OK") (alert "1"))
+;__________PLAN_V
+viewpoint
+p
+ucs
+ucs1
+(if (comparepoint (getvar "viewdir") (list 0.0 0.0 1.0)) (princ "OK") (alert "1"))
+;__________ROTATE_
+viewpoint
+r
+45
+45
+(if (comparepoint (getvar "viewdir") (list 0.5 0.5 0.707107)) (princ "OK") (alert "1"))
+;______________
+dxfout output_dxf\viewpoint_options.dxf
+6
+quit
+y

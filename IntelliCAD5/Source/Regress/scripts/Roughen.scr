@@ -1,0 +1,10 @@
+logfilename log\Roughen.log
+logfileon
+(load "Lisp\Roughen.lsp")
+pline 1,1 2,2 5,2 7,1 8,2  
+array _l   3 3 5 10
+zoom _e
+roughen _all   
+dxfout output_dxf\Roughen
+6
+quit _y

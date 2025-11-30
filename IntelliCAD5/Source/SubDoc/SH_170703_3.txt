@@ -1,0 +1,32 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_170703_3.txt
+Date:		17/07/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:77848   
+
+Description:	This submission fixes the bug #77848 - When create a circle tangent two 
+                other circles using RTT option, it can only create 2 of the possible circles.
+                
+                The original implementation of CIRCLE/RTT is very limited and only works in 
+                the case when the candidate circle is located below or above two non-intersected 
+                separated( one is not inside another one)circles. That is, it only addresses 2 
+                of 10 possible cases in a circle tangent two circles problem. It also incorrectly 
+                used the distance between the center of candidate circle and the pick point on
+                circles rather than the tangent point to the pick point distance as the 
+                criteria to identity the candidate tangent points to solve a circle tangent 
+                two circles and a circle another circle and a line problems, which is wrong.
+                All the problems have been fixed by this submission. 
+                
+		
+Added files:    None
+Affected files: Source/prj/lib/cmds/circle.cpp:  Modified cmd_circle() and added findTanPt2PickPtDis().
+Comments:	TaL77848
+
+
+                

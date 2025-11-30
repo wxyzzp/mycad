@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+File:		Cyb_63543_1.txt
+Date:		13-05-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:63543
+Affected files:			
+		CvsHist:Source/prj/lib/CMDS/DimDiaCenterMArk.cpp
+Description:	Now negative value for DIMCEN variable will produce center lines.
+Comments:	TaL63543
+--------------------------------------------------------------------------------
+File by File:
+
+	*	CvsHist:Source/prj/lib/CMDS/DimDiaCenterMArk.cpp
+		plinkvar[DIMCEN] value can be -ve which means we have to draw center lines. 				Before calculations we remove the -ve sign of global plinkvar[DIMCEN] which 		should have been restored to its original value after calculation. This 		restoration was not done hence this problem was there. 
+--------------------------------------------------------------------------------
+				

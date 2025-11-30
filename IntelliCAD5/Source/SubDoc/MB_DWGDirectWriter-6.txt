@@ -1,0 +1,46 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGDirectWriter-6.txt
+Produce Version		ICAD 4
+Date:				02/04/2004 10:55am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+The following entities have been added to export support:
+Line
+Point
+Arc
+Trace
+Solid
+3dFace
+LWPolyline
+Ellipse
+Spline
+Vertex
+Polyline
+Polygon Mesh
+3d Polyline
+Polyface Mesh
+
+Notes to Developers:
+Note, that I'm filling in the entity creation prior to creating blocks that
+contain entities.
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgload.cpp
+\source\prj\lib\drw\dwgsave.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+

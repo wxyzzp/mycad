@@ -1,0 +1,66 @@
+Document Title:  DJL_31AUG04_1.txt	
+Product Version: ICAD 5
+Date:  25 August 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Gr
+
+3.  Overview:
+Bugzilla 78774
+AutoCAD formatted fractions in MTEXT are not handled properly in ICAD - they hang ICAD in an infinite loop.
+
+I also updated several sub doc files that were not being parsed correctly.
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+
+Script Change required: N
+
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      78774, DJL_31AUG04_1.txt
+
+Added files:     
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/GR :
+    modified: mtextgen.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_10AUG04_1.txt
+              DJL_11AUG04_1.txt
+              DJL_11AUG04_2.txt
+              DJL_13AUG04_1.txt
+    added:    DJL_31AUG04_1.txt
+
+Description:
+Bugzilla 78774
+AutoCAD formatted fractions in MTEXT are not handled properly in ICAD - they hang ICAD in an infinite loop.
+
+I also updated several sub doc files that were not being parsed correctly.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+None
+
+9.  Installation Issues:
+None
+

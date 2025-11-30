@@ -1,0 +1,27 @@
+Project IntelliCAD development
+
+
+Document Title		MB_dwgdirectwriter-4.txt
+Produce Version		ICAD 4
+Date:				01/28/2004 06:06am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added viewport export support, and a bunch of system variables.
+
+Notes to Developers:
+
+Notes to QA:
+I'm having a bit of trouble with some system variables, so adding 
+a full round of sysvar tests to testing the DWGdirect integration
+seems prudent.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp

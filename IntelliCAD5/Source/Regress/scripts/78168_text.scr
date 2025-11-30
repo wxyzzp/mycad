@@ -1,0 +1,34 @@
+logfilename log\78168_text.log
+logfileon
+;_________
+-style
+       st yle1    
+txt.shx
+.2
+1
+0
+
+
+
+-style
+standard
+txt.shx
+.2
+1
+0
+
+
+
+;___________
+text
+s     st yle1     
+2,2
+  text
+;________
+(setq st (cdr (assoc 7 (entget (entlast)))))
+(if (/= st "ST YLE1") (alert "Error"))
+;__________
+dxfout output_dxf\78168_text.dxf
+6
+quit
+y

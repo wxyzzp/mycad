@@ -1,0 +1,55 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by icad.rc
+//
+#define HLP_APPLOAD				101    // APPLOAD
+#define HLP_ATTEXT				102    // DDATTEXT
+#define HLP_CONFIG				103    // CONFIG
+#define HLP_CUSTOMIZE			104    // CUSTOMIZE
+#define HLP_DDATTDEF			105    // DDATTDEF
+#define HLP_DDATTE				106    // DDATTE
+#define HLP_DDINSERT			107    // DDINSERT
+#define HLP_EDITEDATA			108    // EDITEDATA
+#define HLP_ENTPROP				109    // DDMODIFY
+#define HLP_EXPLAYERS			110    // EXPLORE LAYERS
+#define HLP_MTEXT				111    // MTEXT
+#define HLP_NEWWIZ				112    // NEWWIZ
+#define HLP_PMSPACE				113    // PSPACE
+#define HLP_PRINT				114    // PRINT
+#define HLP_SETCOLOR			115    // DDCOLOR
+#define HLP_SETDIM				116    // SETDIM
+#define HLP_SETTINGS			117    // SETTINGS
+#define HLP_SETUCS				118    // UCSP
+#define HLP_SETVPOINT			119    // VPOINT
+#define HLP_SPELL				120    // SPELL
+#define HLP_TBCONFIG			121    // TOOLBAR
+#define HLP_TOLERANCE			122    // TOLERANCE
+#define HLP_VBARUN				123    // VBAMACRO
+#define HLP_VIEWCTL				124    // VIEWCTL
+#define HLP_PPREVIEW			125    // PPREVIEW
+#define HLP_OLELINKS			126    // OLELINKS
+#define HLP_EXPBLOCKS			127    // EXPLORE BLOCKS
+#define HLP_EXPFONTS			128    // EXPLORE TEXT STYLES
+#define HLP_EXPLTYPES			129    // EXPLORE LINE TYPES
+#define HLP_EXPUCS				130    // EXPLORE UCS
+#define HLP_EXPVIEWS			131    // EXPLORE VIEWS
+#define HLP_EXPLORER			132    // EXPLORER
+#define HLP_REASSOCAPP			133    // REASSOCAPP
+#define HLP_BPOLY				134    // BPOLY
+#define HLP_TEXTSTYLE			135    // STYLE COMMAND DIALOG
+#define HLP_EXPDIMS				136    // EXPLORE DIM
+#define HLP_BHATCH				137    // BHATCH
+#define HLP_MCOPTIONS    		138    // Menu Customization Option	
+#define HLP_TCOPTIONS    		139    // ToolBar Customization Option
+
+// Note See KLUGE alert in CMainWindow::IcadHelp()
+// Rather than breaking any of the links defined above,
+// I added a bit of logic that would accuratly handle the
+// define below. If there are #defines added you may need
+// to change the (dwData <= HLP_TCOPTIONS) test in the first
+// if() statement in the CMainWindow::IcadHelp()
+
+#define HLP_GROUP_MAIN    		150    // Main Group Entities dialog
+#define HLP_GROUP_REORDER 		155    // Group Entities Reorder dialog
+#define HLP_PROP_HYPERLINK		160	   // Properties->Hyperline dialog help
+#define HLP_DWFOUT				200	   // DWFInfoDialog help.
+#define HLP_LWEIGHT				205	   // CLineweightDlg dialog help.

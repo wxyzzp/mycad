@@ -1,0 +1,27 @@
+logfilename log\select_options.log
+logfileon
+;_____________
+line
+1,1
+2,2
+
+;_______
+line
+1,2
+2,3
+
+;_______
+select
+all
+
+;_______
+erase
+p
+
+;_______
+(if (/= (entlast) nil) (alert "select err"))
+;__________
+dxfout output_dxf\select_options.dxf
+6
+quit
+y

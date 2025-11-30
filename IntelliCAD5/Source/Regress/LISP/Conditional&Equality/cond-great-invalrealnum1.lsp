@@ -1,0 +1,7 @@
+	(defun invalrealnum1 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (> 0 .5))
+		(logflt errloc rc)
+		(setq *error* prverr)
+	)

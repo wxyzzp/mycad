@@ -1,0 +1,29 @@
+---------------------------------------------------------------------------------
+File:		CYB_98379_1.txt
+Date:		25-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78397
+Affected files:			
+		Source/prj/ICAD/Preferences.cpp?rev=1.12.6.2 
+Description:	"Setup" key in registry not read properly. UserName, Company Name not displayed in About Box and Print Dialig.
+Comments:	TaL78397
+Problem Analysis :
+		IntelliCAD has code that expects 'Setup' key to be in HKEY_CURRENT_USER\Software\ITC\IntelliCAD. Installer 
+		creates 'Setup' key as this location. The informatin stored in this key is used in About Dialog and Print advanced tab.
+		After profile merging this did not work.After debugging it was found that now m_applicationRoot was pointing to 
+		HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Default and hence could not find 'Setup' key.
+Problem Solution:
+		m_applicationRoot should point one key up to read 'Setup' key. 
+		'Setup' key is read from two locations ( about dialog and Print dialog ) and may be more in future. So the 
+		change should be in some common place and not partiular to about and print dialog.
+		The solution is store the previous value, make the key point one level above and then restore back.
+		
+File_By_File:
+	*	Source/prj/ICAD/Preferences.cpp
+		I decided to change the  code in PreferenceKey( HKEY tree, const CString& subkey, bool create) common call from 
+		print and about dialog.
+		Pointing one level above should be in specific case of HKEY_CURRENT_USER and Setup key only. Store the previous 
+		value of m_applicationRoot and restore after Init().		
+		
+--------------------------------------------------------------------------------

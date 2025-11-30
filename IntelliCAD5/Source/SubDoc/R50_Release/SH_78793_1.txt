@@ -1,0 +1,47 @@
+Document Title:  SH_78793_1.txt	
+Product Version: ICAD 4.0
+Date:  8/8/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/db/GeoData.h
+   Source/Prj/lib/db/GeoData.cpp
+
+3. Overview:
+
+This submission fixes the bug #78793 - "Crash when attempting EXTRUDE on some 
+closed SPLINE entities".
+
+The root of the cause was in the spline extraction function that tried to access
+the fit point that has been purged after the control points of the spline had 
+been moved by using grip point editing. This problem is fixed by changing the 
+function to access NURBS data.
+
+4.  Notes to Developers:
+
+5.  Notes to QA:  Test the splines that have been modified with other commands.
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+8.  Notes to Localization:
+
+
+
+

@@ -1,0 +1,180 @@
+logfilename log\face_options.log
+logfileon
+;__________
+(defun chkFace(expVal) (if (/= (cdr (assoc 70 (entget (entlast)))) expVal) (alert "Visible not set correctly")))
+;________
+face
+0,0
+2,0
+2,2
+0,2
+
+;_________
+(chkface 0)
+;__________
+face
+i
+3,0
+5,0
+5,2
+3,2
+
+;__________
+move
+all
+
+0,0
+0,3
+zoom extents
+;_________
+(chkface 1)
+;________
+face
+0,0
+i
+2,0
+2,2
+0,2
+
+;_________
+(chkface 2)
+;_________
+face
+3,0
+5,0
+i
+5,2
+3,2
+
+;__________
+(chkface 4)
+;______________
+move
+all
+
+0,0
+3,0
+zoom extents
+;___________
+face
+0,0
+2,0
+2,2
+i
+0,2
+
+;_________
+(chkface 8)
+;__________
+face
+i
+3,0
+5,0
+i
+5,2
+3,2
+
+;__________
+(chkface 5)
+;_________
+move
+all
+
+0,0
+0,3
+zoom extents
+;________
+face
+0,0
+i
+2,0
+2,2
+i
+0,2
+
+;_________
+(chkface 10)
+;_________
+face
+i
+3,0
+i
+5,0
+i
+5,2
+i
+3,2
+
+;__________
+(chkface 15)
+;__________SPLFRAME_0
+splframe
+0
+;___________
+zoom extents
+regen
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,0
+(if (/= en nil) (alert "Entity is visible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+5,1
+(if (/= en nil) (alert "Entity is visible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,2
+(if (/= en nil) (alert "Entity is visible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+3,1
+(if (/= en nil) (alert "Entity is visible"))
+;__________SPLFRAME_1
+splframe
+1
+;___________
+regen
+;________
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,0
+(if (= en nil) (alert "Entity is invisible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+5,1
+(if (= en nil) (alert "Entity is invisible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,2
+(if (= en nil) (alert "Entity is invisible"))
+;__________
+(setq en nil)
+(setq en (entget (car (entsel))))
+3,1
+(if (= en nil) (alert "Entity is invisible"))
+;__________________________________________________3_side
+erase
+all
+
+face
+0,0
+2,0
+2,2
+
+0,2
+
+
+(setq en (entget (entlast)))
+(if (equal (cdr (assoc 10 en)) (cdr (assoc 11 en))) (princ "OK") (alert "Wrong coords"))
+(if (equal (cdr (assoc 12 en)) (cdr (assoc 13 en))) (princ "OK") (alert "Wrong coords"))
+;____________
+dxfout output_dxf\face_options.dxf
+6
+quit
+y

@@ -1,0 +1,105 @@
+Document Title:  DJL_03AUG03_1.txt
+Product Version: ICAD 5
+Date:  2 August 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: No
+* Submitted to branch(es):
+R50_Release
+R40_Dev
+
+2. Modules Affected :
+Not Sure
+
+3.  Overview:
+Fix the color dialog (78879)  
+
+Fix a bug with SRCHPATHS that causing regression script problems because hatch patterns could not be found
+
+Fix PEDIT command to properly respect the PEDITACCEPT system variable.
+
+Fix some scripts that did not work correctly with the new PEDITACCEPT variable.
+
+Initialize some variables in hatch.cpp
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: None
+
+Script Changes required:
+Scripts that edit polylines should have he PEDITACCEPT variable set
+Made some scripts more accurate in thier entity selections
+
+              73862.scr
+              77907.scr
+              78604.scr
+              arc.scr
+              edgesurf_options.scr
+              reverse_polyline.scr
+              RULESURF1.SCR
+              Spline.scr
+
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+
+--------------------------------------------------------------------------------
+Reference:   djl_03AUG04_1.txt; Bugzilla 78879
+Changed files:
+Looking for modified files...
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/ICAD :
+    modified: icadapi.cpp
+              IcadColorDia.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: hatch.cpp
+              pedit2.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/DB :
+    modified: db1.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/Regress/scripts :
+    modified: 73862.scr
+              77907.scr
+              78604.scr
+              arc.scr
+              edgesurf_options.scr
+              reverse_polyline.scr
+              RULESURF1.SCR
+              Spline.scr
+              dimclrd_extn.scr
+              dimclrt.scr
+
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_03AUG04_1.txt
+
+Description:
+Fix the color dialog (78879)  
+
+Fix a bug with SRCHPATHS that causing regression script problems because hatch patterns could not be found
+
+Fix PEDIT command to properly respect the PEDITACCEPT system variable.
+
+Fix some scripts that did not work correctly with the new PEDITACCEPT variable.
+
+Initialize some variables in hatch.cpp
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Extensive work has been done to all dialogs, they should all be reviewed and tested.
+
+9.  Installation Issues:
+None
+

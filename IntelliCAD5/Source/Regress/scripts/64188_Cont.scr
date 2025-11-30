@@ -1,0 +1,7 @@
+Logfilename log\64188_Cont.log
+Logfileon
+(load "lisp\64188_Cont.lsp")
+64188_Cont
+Dxfout output_dxf\64188_Cont.dxf
+6
+Exit y

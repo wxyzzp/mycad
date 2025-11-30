@@ -1,0 +1,25 @@
+logfilename log\redo_options.log
+logfileon
+;_________
+line
+1,1
+2,2
+
+(setq en nil)
+(Setq en (entlast))
+(if (= en nil) (alert "Err") (princ "OK"))
+;________
+u
+(setq en nil)
+(Setq en (entlast))
+(if (/= en nil) (alert "Err") (princ "OK"))
+;________
+redo
+(setq en nil)
+(Setq en (entlast))
+(if (= en nil) (alert "Err") (princ "OK"))
+;__________
+dxfout output_dxf\redo_options.dxf
+6
+quit
+y

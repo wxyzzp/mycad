@@ -1,0 +1,28 @@
+--------------------------------------------------------------------------------
+File:		CYB_78193_2.txt
+Date:		22-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78193
+Affected files:			
+		Source/prj/ICAD/IcadSetVarsDia.cpp
+Description:	A case found in last bug fix.
+		Actual bug fix :
+		Wrong display in dimension setting dialog when DIMPOST and DIMAPOST is 				overriden with any value without "<>" or "[]" symbol respectively
+Comments:	TaL78193
+File by File:
+	*	Source/prj/ICAD/IcadSetVarsDia.cpp
+		When we fixed this bug last time we had commented the following statement.
+		
+		SetWindowText(hWnd,rb.resval.rstring);
+		
+		beacuse it was updating wrong window.
+		But this led to a minor problem. When we tried to remove the overrides of the 				dimension style the edit windows of DIMPOST and DIMAPOST were not cleared.
+		To solve this new problem we have now allowed to settext to window if its 				setting it "". SO now the new code  is 
+	
+		if ( strlen(rb.resval.rstring) == 0 )
+			SetWindowText(hWnd,rb.resval.rstring);
+
+		This was the minor problem because it just did'nt clear the edit boxes. The 				database was fine.
+		
+--------------------------------------------------------------------------------

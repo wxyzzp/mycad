@@ -1,0 +1,343 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_77893_1.txt	
+Product Version:	ICAD 4
+Date:			05/04/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/ThirdParty/DCL_Components/Source/AuditLevel.cpp	==> DCL
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 77893: children_alignment attribute with 
+value = top/bottom used with a boxed_radio_row or radio_row gives errors.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, when "audit_level" is set to 3, and the
+'children_alignment' attribute with value set to 'top' or 'bottom' for a  
+"boxed_radio_row" or "radio_row" gives errors. The similiar case is present 
+for 'alignment' attribute.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the function "AuditLevelProcessor::IsPossibleValue"
+in the file "Source/ThirdParty/DCL_Components/Source/AuditLevel.cpp".
+
+Problems:
+--------
+1. In this function, the 'alignment' property for the particular tile in 
+question is checked for the values of top, bottom and centered. But this 
+is only considered if 'm_wszParentWidgetName' is either "row" or "boxed_row".
+It has not been checked for "radio_row" or "boxed_radio_row". 
+This correction has been applied.
+
+2. Similarly, this was a problem regarding "radio_column" and 
+"boxed_radio_column". In this case, the 'alignment' property for the 
+particular tile in question is checked for the values of left, right and 
+centered. But this is only considered if 'm_wszParentWidgetName' is either 
+"column" or "boxed_column". It has not been checked for "radio_column" or 
+"boxed_radio_column". This correction has also been applied.
+
+3. Problems 1 & 2 were also present in case of "children_alignment"
+property. They have also been corrected.
+
+*** Known Problem:
+------------------
+For all types of column tiles, viz: "column", "boxed_column", "radio_column", 
+and "boxed_radio_column", when "audit_level" warning is set as 3, following 
+assignment for children_alignment and alignment attributes are treated as 
+redundant assignments in IntelliCAD, which should not be done:
+
+	1. children_alignment = left;	// left is the default for all types of 
+									// column tiles
+	2. alignment = left;			// left is the default for all types of 
+									// column tiles.
+
+The above problem resides in the Parser by PCCT (Purdue Compiler Construction 
+Tool), where IntelliCAD has no control.
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following cases:
+	1.	Run IntelliCAD.
+	2.	Run the attached LISP file with the corresponding DCL file, for this 
+		Bugzilla report Following is the link to the same:
+		http://www.itcdevelopment.org/bugzilla/show_bug.cgi?id=77893.
+	3.	Value of "top" and "bottom" should not give errors for 
+		"children_alignment" attribute for "radio_row" and "boxed_radio_row" 
+		tiles.
+	4.	Value of "top" and "bottom" should not give errors for "alignment" 
+		attribute for "radio_row" and "boxed_radio_row" tiles.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

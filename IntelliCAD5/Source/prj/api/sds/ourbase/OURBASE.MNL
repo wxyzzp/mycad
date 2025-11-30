@@ -1,0 +1,2 @@
+(defun s::startup () (xload "ourbase")(princ))
+(princ)

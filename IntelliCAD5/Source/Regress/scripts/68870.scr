@@ -1,0 +1,31 @@
+logfilename log\68870.log
+logfileon
+;_______
+filedia
+off
+;___________
+expert
+3
+;___________
+rec
+1,1
+4,4
+;_______
+save
+output\68870.dwg
+close
+new
+
+shell
+del output\68870.dwg
+saveas
+
+output\68870.dwg
+
+
+
+;__________
+dxfout output_dxf\68870.dxf
+6
+quit
+y

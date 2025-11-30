@@ -1,0 +1,7396 @@
+Lisp acceptance test run at 07-21-1998 09:49:42a on version P.0.31
+
+Starting tests...
+
+--- acad_strlsort ---
+
+noargs = nil
+noargs2 = nil
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = 
+	 = hi
+txtemptystr:
+	 = 
+	 = hi
+spacestr:
+	 =  
+spacestrtxt:
+	 =  
+	 = hi
+txtspacestr:
+	 =  
+	 = hi
+below0str:
+	 = '
+	 = -
+	 = !
+	 = "
+	 = #
+	 = $
+	 = %
+	 = &
+	 = (
+	 = )
+	 = *
+	 = ,
+	 = .
+	 = /
+	 = +
+below0strtxt:
+	 = !"#$%&'()*+,-./
+	 = hi
+txtbelow0str:
+	 = !"#$%&'()*+,-./
+	 = hi
+0to9str:
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+0to9strtxt:
+	 = 0123456789
+	 = hi
+txt0to9str:
+	 = 0123456789
+	 = hi
+above9str:
+	 = :
+	 = ;
+	 = ?
+	 = @
+	 = <
+	 = =
+	 = >
+above9strtxt:
+	 = :;<=>?@
+	 = hi
+txtabove9str:
+	 = :;<=>?@
+	 = hi
+bigatozstr:
+	 = A
+	 = B
+	 = C
+	 = D
+	 = E
+	 = F
+	 = G
+	 = H
+	 = I
+	 = J
+	 = K
+	 = L
+	 = M
+	 = N
+	 = O
+	 = P
+	 = Q
+	 = R
+	 = S
+	 = T
+	 = U
+	 = V
+	 = W
+	 = X
+	 = Y
+	 = Z
+bigatozstrtxt:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+txtbigatozstr:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+btwnalphastr:
+	 = [
+	 = \
+	 = ]
+	 = ^
+	 = _
+	 = `
+btwnalphastrtxt:
+	 = [\]^_`
+	 = hi
+txtbtwnalphastr:
+	 = [\]^_`
+	 = hi
+abovezstr:
+	 = {
+	 = |
+	 = }
+	 = ~
+abovezstrtxt:
+	 = {|}~
+	 = hi
+txtabovezstr:
+	 = {|}~
+	 = hi
+nilsymstr = nil
+nilsymstrtxt = nil
+txtnilsymstr = nil
+tsymstr = nil
+tsymstrtxt = nil
+txttsymstr = nil
+maxstr:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+maxstrtxt:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = hi
+txtmaxstr:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = hi
+maxp1str:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+maxp1strtxt:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = hi
+txtmaxp1str:
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 0
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 1
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 2
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 3
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 4
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 5
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 6
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 7
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 8
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = 9
+	 = hi
+zero = nil
+nine = nil
+minuszero = nil
+minusnine = nil
+icadhlp1:
+	 = hlg
+	 = kng
+	 = ssg
+icadhlp2:
+	 = Mon
+	 = Sat
+	 = Sun
+acadhlp1:
+	 = Apr
+	 = Aug
+	 = Dec
+	 = Feb
+	 = Jan
+	 = Jul
+	 = Jun
+	 = Mar
+	 = May
+	 = Nov
+	 = Oct
+	 = Sep
+
+--- append ---
+
+noargs = nil
+noargs2 = nil
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = 
+	 = hi
+txtemptystr:
+	 = hi
+	 = 
+spacestr:
+	 =  
+spacestrtxt:
+	 =  
+	 = hi
+txtspacestr:
+	 = hi
+	 =  
+below0str:
+	 = /
+	 = .
+	 = -
+	 = ,
+	 = +
+	 = *
+	 = )
+	 = (
+	 = '
+	 = &
+	 = %
+	 = $
+	 = #
+	 = "
+	 = !
+below0strtxt:
+	 = !"#$%&'()*+,-./
+	 = hi
+txtbelow0str:
+	 = hi
+	 = !"#$%&'()*+,-./
+0to9str:
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+0to9strtxt:
+	 = 0123456789
+	 = hi
+txt0to9str:
+	 = hi
+	 = 0123456789
+above9str:
+	 = @
+	 = ?
+	 = >
+	 = =
+	 = <
+	 = ;
+	 = :
+above9strtxt:
+	 = :;<=>?@
+	 = hi
+txtabove9str:
+	 = hi
+	 = :;<=>?@
+bigatozstr:
+	 = Z
+	 = Y
+	 = X
+	 = W
+	 = V
+	 = U
+	 = T
+	 = S
+	 = R
+	 = Q
+	 = P
+	 = O
+	 = N
+	 = M
+	 = L
+	 = K
+	 = J
+	 = I
+	 = H
+	 = G
+	 = F
+	 = E
+	 = D
+	 = C
+	 = B
+	 = A
+bigatozstrtxt:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+txtbigatozstr:
+	 = hi
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr:
+	 = `
+	 = _
+	 = ^
+	 = ]
+	 = \
+	 = [
+btwnalphastrtxt:
+	 = [\]^_`
+	 = hi
+txtbtwnalphastr:
+	 = hi
+	 = [\]^_`
+abovezstr:
+	 = ~
+	 = }
+	 = |
+	 = {
+abovezstrtxt:
+	 = {|}~
+	 = hi
+txtabovezstr:
+	 = hi
+	 = {|}~
+nilsymstr:
+	 = nil
+nilsymstrtxt:
+	 = nil
+	 = hi
+txtnilsymstr:
+	 = hi
+	 = nil
+tsymstr:
+	 = T
+tsymstrtxt:
+	 = T
+	 = hi
+txttsymstr:
+	 = hi
+	 = T
+maxstr:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxstrtxt:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = hi
+txtmaxstr:
+	 = hi
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxp1str:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+maxp1strtxt:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = hi
+txtmaxp1str:
+	 = hi
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+zero:
+	 = 0
+nine:
+	 = 9
+minuszero:
+	 = 0
+minusnine:
+	 = -9
+belownum:
+	 = /
+abovenum:
+	 = :
+nilsym:
+	 = nil
+tsym:
+	 = T
+zerozeroint:
+	 = 0
+	 = 0
+zerominint:
+	 = 0
+	 = -2147483648
+minzeroint:
+	 = -2147483648
+	 = 0
+zeromaxint:
+	 = 0
+	 = 2147483647
+maxzeroint:
+	 = 2147483647
+	 = 0
+oneminint:
+	 = 1
+	 = -2147483648
+minoneint:
+	 = -2147483648
+	 = 1
+onemaxint:
+	 = 1
+	 = 2147483647
+maxoneint:
+	 = 2147483647
+	 = 1
+zerominp1int:
+	 = 0
+	 = 2147483647
+minp1zeroint:
+	 = 2147483647
+	 = 0
+zeromaxp1int:
+	 = 0
+	 = -2147483648
+maxp1zeroint:
+	 = -2147483648
+	 = 0
+oneminp1int:
+	 = 1
+	 = 2147483647
+minp1oneint:
+	 = 2147483647
+	 = 1
+onemaxp1int:
+	 = 1
+	 = -2147483648
+maxp1oneint:
+	 = -2147483648
+	 = 1
+zerozeroreal1:
+	 = 0
+	 = 0.0000
+zerozeroreal2:
+	 = 0.0000
+	 = 0
+zerominreal:
+	 = 0
+	 = 0.0000
+minzeroreal:
+	 = 0.0000
+	 = 0
+zeromaxreal:
+	 = 0
+	 = 9.9000E+99
+maxzeroreal:
+	 = 9.9000E+99
+	 = 0
+oneminreal:
+	 = 1
+	 = 0.0000
+minonereal:
+	 = 0.0000
+	 = 1
+onemaxreal:
+	 = 1
+	 = 9.9000E+99
+maxonereal:
+	 = 9.9000E+99
+	 = 1
+zerominp1real:
+	 = 0
+	 = 0.0000
+minp1zeroreal:
+	 = 0.0000
+	 = 0
+Exiting due to cancel, quit, or exit
+***Error (zeromaxp1real): Invalid floating point value
+oneminp1real:
+	 = 1
+	 = 0.0000
+minp1onereal:
+	 = 0.0000
+	 = 1
+icadhlp1:
+	 = A
+	 = B
+	 = C
+	 = D
+	 = E
+	 = F
+	 = G
+icadhlp2:
+	 = A
+	 = B
+	 = C
+	 = D
+	 = E
+	 = F
+	 = G
+	 = H
+	 = I
+	 = 1
+	 = 2
+	 = 3
+acadhlp1:
+	 = a
+	 = b
+	 = c
+	 = d
+acadhlp2:
+	:
+		 = a
+	:
+		 = b
+	:
+		 = c
+	:
+		 = d
+
+--- assoc ---
+
+***Error (noargs): too few arguments
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = 
+	 = hi
+txtemptystr:
+	 = hi
+	 = 
+spacestr:
+	 =  
+spacestrtxt:
+	 =  
+	 = hi
+txtspacestr:
+	 = hi
+	 =  
+below0strs:
+	 = !
+	 = hi
+below0stre:
+	 = /
+	 = hi
+below0strtxt:
+	 = !"#$%&'()*+,-./
+	 = hi
+txtbelow0str:
+	 = hi
+	 = !"#$%&'()*+,-./
+0to9strs:
+	 = 0
+	 = hi
+0to9stre:
+	 = 9
+	 = hi
+0to9strtxt:
+	 = 0123456789
+	 = hi
+txt0to9str:
+	 = hi
+	 = 0123456789
+above9strs:
+	 = :
+	 = hi
+above9stre:
+	 = @
+	 = hi
+above9strtxt:
+	 = :;<=>?@
+	 = hi
+txtabove9str:
+	 = hi
+	 = :;<=>?@
+bigatozstrs:
+	 = A
+	 = hi
+bigatozstre:
+	 = Z
+	 = hi
+bigatozstrtxt:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+txtbigatozstr:
+	 = hi
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastrs:
+	 = [
+	 = hi
+btwnalphastre:
+	 = `
+	 = hi
+btwnalphastrtxt:
+	 = [\]^_`
+	 = hi
+txtbtwnalphastr:
+	 = hi
+	 = [\]^_`
+abovezstrs:
+	 = {
+abovezstre:
+	 = ~
+abovezstrtxt:
+	 = {|}~
+	 = hi
+txtabovezstr:
+	 = hi
+	 = {|}~
+nilsymstr:
+	 = nil
+nilsymstrtxt:
+	 = nil
+	 = hi
+txtnilsymstr:
+	 = hi
+	 = nil
+tsymstr:
+	 = T
+tsymstrtxt:
+	 = T
+	 = hi
+txttsymstr:
+	 = hi
+	 = T
+maxstr:
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstrtxt:
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+	 = hi
+txtmaxstr:
+	 = hi
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str:
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1strtxt:
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+	 = hi
+txtmaxp1str:
+	 = hi
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+zero:
+	 = 0
+	 = 5
+nine:
+	 = 9
+	 = 5
+minuszero:
+	 = 0
+	 = 5
+minusnine:
+	 = -9
+	 = 5
+belownum:
+	 = /
+	 = 5
+abovenum:
+	 = :
+	 = 5
+nilsym:
+	 = nil
+	 = 5
+tsym:
+	 = T
+	 = 5
+zerozeroint:
+	 = 0
+	 = 0
+zerominint:
+	 = 0
+	 = -2147483648
+minzeroint:
+	 = -2147483648
+	 = 0
+zeromaxint:
+	 = 0
+	 = 2147483647
+maxzeroint:
+	 = 2147483647
+	 = 0
+oneminint:
+	 = 1
+	 = -2147483648
+minoneint:
+	 = -2147483648
+	 = 1
+onemaxint:
+	 = 1
+	 = 2147483647
+maxoneint:
+	 = 2147483647
+	 = 1
+zerominp1int:
+	 = 0
+	 = 2147483647
+minp1zeroint:
+	 = 2147483647
+	 = 0
+zeromaxp1int:
+	 = 0
+	 = -2147483648
+maxp1zeroint:
+	 = -2147483648
+	 = 0
+oneminp1int:
+	 = 1
+	 = 2147483647
+minp1oneint:
+	 = 2147483647
+	 = 1
+onemaxp1int:
+	 = 1
+	 = -2147483648
+maxp1oneint:
+	 = -2147483648
+	 = 1
+zerozeroreal1:
+	 = 0
+	 = 0.0000
+zerozeroreal2:
+	 = 0.0000
+	 = 0
+zerominreal:
+	 = 0
+	 = 0.0000
+minzeroreal:
+	 = 0.0000
+	 = 0
+zeromaxreal:
+	 = 0
+	 = 9.9000E+99
+maxzeroreal:
+	 = 9.9000E+99
+	 = 0
+oneminreal:
+	 = 1
+	 = 0.0000
+minonereal:
+	 = 0.0000
+	 = 1
+onemaxreal:
+	 = 1
+	 = 9.9000E+99
+maxonereal:
+	 = 9.9000E+99
+	 = 1
+zerominp1real:
+	 = 0
+	 = 0.0000
+minp1zeroreal:
+	 = 0.0000
+	 = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real:
+	 = 1
+	 = 0.0000
+minp1onereal:
+	 = 0.0000
+	 = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = e
+	 = f
+	 = g
+acadhlp1:
+	 = size
+	 = 4.7263
+acadhlp1 = nil
+
+--- car ---
+
+***Error (noargs): too few arguments
+noargs2 = nil
+emptystr = 
+emptyemptystr = 
+emptystrtxt = 
+txtemptystr = hi
+spacestr =  
+spacestrtxt =  
+txtspacestr = hi
+below0str = !"#$%&'()*+,-./
+below0strtxt = !"#$%&'()*+,-./
+txtbelow0str = hi
+0to9str = 0123456789
+0to9strtxt = 0123456789
+txt0to9str = hi
+above9str = :;<=>?@
+above9strtxt = :;<=>?@
+txtabove9str = hi
+bigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+bigatozstrtxt = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+txtbigatozstr = hi
+btwnalphastr = [\]^_`
+btwnalphastrtxt = [\]^_`
+txtbtwnalphastr = hi
+abovezstr = {|}~
+abovezstrtxt = {|}~
+txtabovezstr = hi
+nilsymstr = nil
+nilsymstrtxt = nil
+txtnilsymstr = hi
+tsymstr = T
+tsymstrtxt = T
+txttsymstr = hi
+maxstr = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstrtxt = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+txtmaxstr = hi
+maxp1str = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1strtxt = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+txtmaxp1str = hi
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = /
+abovenum = :
+nilsym = nil
+tsym = T
+zerozeroint = 0
+zerominint = 0
+minzeroint = -2147483648
+zeromaxint = 0
+maxzeroint = 2147483647
+oneminint = 1
+minoneint = -2147483648
+onemaxint = 1
+maxoneint = 2147483647
+zerominp1int = 0
+minp1zeroint = 2147483647
+zeromaxp1int = 0
+maxp1zeroint = -2147483648
+oneminp1int = 1
+minp1oneint = 2147483647
+onemaxp1int = 1
+maxp1oneint = -2147483648
+zerozeroreal1 = 0
+zerozeroreal2 = 0.0000
+zerominreal = 0
+minzeroreal = 0.0000
+zeromaxreal = 0
+maxzeroreal = 9.9000E+99
+oneminreal = 1
+minonereal = 0.0000
+onemaxreal = 1
+maxonereal = 9.9000E+99
+zerominp1real = 0
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1 = first
+acadhlp1 = a
+acadhlp2:
+	 = a
+	 = b
+acadhlp3 = nil
+
+--- cdr ---
+
+***Error (noargs): too few arguments
+noargs2 = nil
+emptystr = nil
+emptyemptystr:
+	 = 
+emptystrtxt:
+	 = hi
+txtemptystr:
+	 = 
+spacestr = nil
+spacestrtxt:
+	 = hi
+txtspacestr:
+	 =  
+below0str = nil
+below0strtxt:
+	 = hi
+txtbelow0str:
+	 = !"#$%&'()*+,-./
+0to9str = nil
+0to9strtxt:
+	 = hi
+txt0to9str:
+	 = 0123456789
+above9str = nil
+above9strtxt:
+	 = hi
+txtabove9str:
+	 = :;<=>?@
+bigatozstr = nil
+bigatozstrtxt:
+	 = hi
+txtbigatozstr:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = nil
+btwnalphastrtxt:
+	 = hi
+txtbtwnalphastr:
+	 = [\]^_`
+abovezstr = nil
+abovezstrtxt:
+	 = hi
+txtabovezstr:
+	 = {|}~
+nilsymstr = nil
+nilsymstrtxt:
+	 = hi
+txtnilsymstr:
+	 = nil
+tsymstr = nil
+tsymstrtxt:
+	 = hi
+txttsymstr:
+	 = T
+maxstr = nil
+maxstrtxt:
+	 = hi
+txtmaxstr:
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str = nil
+maxp1strtxt:
+	 = hi
+txtmaxp1str:
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+zero = nil
+nine = nil
+minuszero = nil
+minusnine = nil
+belownum = nil
+abovenum = nil
+nilsym = nil
+tsym = nil
+zerozeroint:
+	 = 0
+zerominint:
+	 = -2147483648
+minzeroint:
+	 = 0
+zeromaxint:
+	 = 2147483647
+maxzeroint:
+	 = 0
+oneminint:
+	 = -2147483648
+minoneint:
+	 = 1
+onemaxint:
+	 = 2147483647
+maxoneint:
+	 = 1
+zerominp1int:
+	 = 2147483647
+minp1zeroint:
+	 = 0
+zeromaxp1int:
+	 = -2147483648
+maxp1zeroint:
+	 = 0
+oneminp1int:
+	 = 2147483647
+minp1oneint:
+	 = 1
+onemaxp1int:
+	 = -2147483648
+maxp1oneint:
+	 = 1
+zerozeroreal1:
+	 = 0.0000
+zerozeroreal2:
+	 = 0
+zerominreal:
+	 = 0.0000
+minzeroreal:
+	 = 0
+zeromaxreal:
+	 = 9.9000E+99
+maxzeroreal:
+	 = 0
+oneminreal:
+	 = 0.0000
+minonereal:
+	 = 1
+onemaxreal:
+	 = 9.9000E+99
+maxonereal:
+	 = 1
+zerominp1real:
+	 = 0.0000
+minp1zeroreal:
+	 = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real:
+	 = 0.0000
+minp1onereal:
+	 = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = second
+	 = third
+	 = four
+acadhlp1:
+	 = b
+	 = c
+acadhlp2:
+	 = c
+acadhlp3 = nil
+
+--- cons ---
+
+***Error (noargs): too few arguments
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = 
+	 = hi
+txtemptystr:
+	 = hi
+	 = 
+spacestr:
+	 =  
+spacestrtxt:
+	 =  
+	 = hi
+txtspacestr:
+	 = hi
+	 =  
+below0str:
+	 = !"#$%&'()*+,-./
+below0strtxt:
+	 = !"#$%&'()*+,-./
+	 = hi
+txtbelow0str:
+	 = hi
+	 = !"#$%&'()*+,-./
+0to9str:
+	 = 0123456789
+0to9strtxt:
+	 = 0123456789
+	 = hi
+txt0to9str:
+	 = hi
+	 = 0123456789
+above9str:
+	 = :;<=>?@
+above9strtxt:
+	 = :;<=>?@
+	 = hi
+txtabove9str:
+	 = hi
+	 = :;<=>?@
+bigatozstr:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+bigatozstrtxt:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+txtbigatozstr:
+	 = hi
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr:
+	 = [\]^_`
+btwnalphastrtxt:
+	 = [\]^_`
+	 = hi
+txtbtwnalphastr:
+	 = hi
+	 = [\]^_`
+abovezstr:
+	 = {|}~
+abovezstrtxt:
+	 = {|}~
+	 = hi
+txtabovezstr:
+	 = hi
+	 = {|}~
+nilsymstr:
+	 = nil
+nilsymstrtxt:
+	 = nil
+	 = hi
+txtnilsymstr:
+	 = hi
+	 = nil
+tsymstr:
+	 = T
+tsymstrtxt:
+	 = T
+	 = hi
+txttsymstr:
+	 = hi
+	 = T
+maxstr:
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstrtxt:
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+	 = hi
+txtmaxstr:
+	 = hi
+	 = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str:
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1strtxt:
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+	 = hi
+txtmaxp1str:
+	 = hi
+	 = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+zero:
+	 = 0
+nine:
+	 = 9
+minuszero:
+	 = 0
+minusnine:
+	 = -9
+belownum:
+	 = /
+abovenum:
+	 = :
+nilsym:
+	 = nil
+tsym:
+	 = T
+zerozeroint:
+	 = 0
+	 = 0
+zerominint:
+	 = 0
+	 = -2147483648
+minzeroint:
+	 = -2147483648
+	 = 0
+zeromaxint:
+	 = 0
+	 = 2147483647
+maxzeroint:
+	 = 2147483647
+	 = 0
+oneminint:
+	 = 1
+	 = -2147483648
+minoneint:
+	 = -2147483648
+	 = 1
+onemaxint:
+	 = 1
+	 = 2147483647
+maxoneint:
+	 = 2147483647
+	 = 1
+zerominp1int:
+	 = 0
+	 = 2147483647
+minp1zeroint:
+	 = 2147483647
+	 = 0
+zeromaxp1int:
+	 = 0
+	 = -2147483648
+maxp1zeroint:
+	 = -2147483648
+	 = 0
+oneminp1int:
+	 = 1
+	 = 2147483647
+minp1oneint:
+	 = 2147483647
+	 = 1
+onemaxp1int:
+	 = 1
+	 = -2147483648
+maxp1oneint:
+	 = -2147483648
+	 = 1
+zerozeroreal1:
+	 = 0
+	 = 0.0000
+zerozeroreal2:
+	 = 0.0000
+	 = 0
+zerominreal:
+	 = 0
+	 = 0.0000
+minzeroreal:
+	 = 0.0000
+	 = 0
+zeromaxreal:
+	 = 0
+	 = 9.9000E+99
+maxzeroreal:
+	 = 9.9000E+99
+	 = 0
+oneminreal:
+	 = 1
+	 = 0.0000
+minonereal:
+	 = 0.0000
+	 = 1
+onemaxreal:
+	 = 1
+	 = 9.9000E+99
+maxonereal:
+	 = 9.9000E+99
+	 = 1
+zerominp1real:
+	 = 0
+	 = 0.0000
+minp1zeroreal:
+	 = 0.0000
+	 = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real:
+	 = 1
+	 = 0.0000
+minp1onereal:
+	 = 0.0000
+	 = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): misplaced dot
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = a
+	 = b
+	 = c
+	 = d
+icadhlp2:
+***Error (icadhlp2): bad list
+icadhlp3:
+	:
+		 = a
+		 = b
+	 = c
+	 = d
+acadhlp1:
+	 = a
+	 = b
+	 = c
+	 = d
+acadhlp2:
+	:
+		 = a
+	 = b
+	 = c
+	 = d
+
+--- foreach ---
+
+emptystr = 
+emptyemptystr = 
+emptyemptystr = 
+emptystrtxt = 
+emptystrtxt = hi
+txtemptystr = hi
+txtemptystr = 
+spacestr =  
+spacestrtxt =  
+spacestrtxt = hi
+txtspacestr = hi
+txtspacestr =  
+below0str = /
+below0str = .
+below0str = -
+below0str = ,
+below0str = +
+below0str = *
+below0str = )
+below0str = (
+below0str = '
+below0str = &
+below0str = %
+below0str = $
+below0str = #
+below0str = "
+below0str = !
+below0strtxt = !"#$%&'()*+,-./
+below0strtxt = hi
+txtbelow0str = hi
+txtbelow0str = !"#$%&'()*+,-./
+0to9str = 9
+0to9str = 8
+0to9str = 7
+0to9str = 6
+0to9str = 5
+0to9str = 4
+0to9str = 3
+0to9str = 2
+0to9str = 1
+0to9str = 0
+0to9strtxt = 0123456789
+0to9strtxt = hi
+txt0to9str = hi
+txt0to9str = 0123456789
+above9str = @
+above9str = ?
+above9str = >
+above9str = =
+above9str = <
+above9str = ;
+above9str = :
+above9strtxt = :;<=>?@
+above9strtxt = hi
+txtabove9str = hi
+txtabove9str = :;<=>?@
+bigatozstr = Z
+bigatozstr = Y
+bigatozstr = X
+bigatozstr = W
+bigatozstr = V
+bigatozstr = U
+bigatozstr = T
+bigatozstr = S
+bigatozstr = R
+bigatozstr = Q
+bigatozstr = P
+bigatozstr = O
+bigatozstr = N
+bigatozstr = M
+bigatozstr = L
+bigatozstr = K
+bigatozstr = J
+bigatozstr = I
+bigatozstr = H
+bigatozstr = G
+bigatozstr = F
+bigatozstr = E
+bigatozstr = D
+bigatozstr = C
+bigatozstr = B
+bigatozstr = A
+bigatozstrtxt = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+bigatozstrtxt = hi
+txtbigatozstr = hi
+txtbigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = `
+btwnalphastr = _
+btwnalphastr = ^
+btwnalphastr = ]
+btwnalphastr = \
+btwnalphastr = [
+btwnalphastrtxt = [\]^_`
+btwnalphastrtxt = hi
+txtbtwnalphastr = hi
+txtbtwnalphastr = [\]^_`
+abovezstr = ~
+abovezstr = }
+abovezstr = |
+abovezstr = {
+abovezstrtxt = {|}~
+abovezstrtxt = hi
+txtabovezstr = hi
+txtabovezstr = {|}~
+nilsymstr = nil
+nilsymstrtxt = nil
+nilsymstrtxt = hi
+txtnilsymstr = hi
+txtnilsymstr = nil
+tsymstr = T
+tsymstrtxt = T
+tsymstrtxt = hi
+txttsymstr = hi
+txttsymstr = T
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstr = 3
+maxstr = 4
+maxstr = 5
+maxstr = 6
+maxstr = 7
+maxstr = 8
+maxstr = 9
+maxstr = 0
+maxstr = 1
+maxstr = 2
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = 3
+maxstrtxt = 4
+maxstrtxt = 5
+maxstrtxt = 6
+maxstrtxt = 7
+maxstrtxt = 8
+maxstrtxt = 9
+maxstrtxt = 0
+maxstrtxt = 1
+maxstrtxt = 2
+maxstrtxt = hi
+txtmaxstr = hi
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+txtmaxstr = 3
+txtmaxstr = 4
+txtmaxstr = 5
+txtmaxstr = 6
+txtmaxstr = 7
+txtmaxstr = 8
+txtmaxstr = 9
+txtmaxstr = 0
+txtmaxstr = 1
+txtmaxstr = 2
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1str = 4
+maxp1str = 5
+maxp1str = 6
+maxp1str = 7
+maxp1str = 8
+maxp1str = 9
+maxp1str = 0
+maxp1str = 1
+maxp1str = 2
+maxp1str = 3
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = 4
+maxp1strtxt = 5
+maxp1strtxt = 6
+maxp1strtxt = 7
+maxp1strtxt = 8
+maxp1strtxt = 9
+maxp1strtxt = 0
+maxp1strtxt = 1
+maxp1strtxt = 2
+maxp1strtxt = 3
+maxp1strtxt = hi
+txtmaxp1str = hi
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+txtmaxp1str = 4
+txtmaxp1str = 5
+txtmaxp1str = 6
+txtmaxp1str = 7
+txtmaxp1str = 8
+txtmaxp1str = 9
+txtmaxp1str = 0
+txtmaxp1str = 1
+txtmaxp1str = 2
+txtmaxp1str = 3
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = /
+abovenum = :
+nilsym = nil
+tsym = T
+zerozeroint = 0
+zerozeroint = 0
+zerominint = 0
+zerominint = -2147483648
+minzeroint = -2147483648
+minzeroint = 0
+zeromaxint = 0
+zeromaxint = 2147483647
+maxzeroint = 2147483647
+maxzeroint = 0
+oneminint = 1
+oneminint = -2147483648
+minoneint = -2147483648
+minoneint = 1
+onemaxint = 1
+onemaxint = 2147483647
+maxoneint = 2147483647
+maxoneint = 1
+zerominp1int = 0
+zerominp1int = 2147483647
+minp1zeroint = 2147483647
+minp1zeroint = 0
+zeromaxp1int = 0
+zeromaxp1int = -2147483648
+maxp1zeroint = -2147483648
+maxp1zeroint = 0
+oneminp1int = 1
+oneminp1int = 2147483647
+minp1oneint = 2147483647
+minp1oneint = 1
+onemaxp1int = 1
+onemaxp1int = -2147483648
+maxp1oneint = -2147483648
+maxp1oneint = 1
+zerozeroreal1 = 0
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerozeroreal2 = 0
+zerominreal = 0
+zerominreal = 0.0000
+minzeroreal = 0.0000
+minzeroreal = 0
+zeromaxreal = 0
+zeromaxreal = 9.9000E+99
+maxzeroreal = 9.9000E+99
+maxzeroreal = 0
+oneminreal = 1
+oneminreal = 0.0000
+minonereal = 0.0000
+minonereal = 1
+onemaxreal = 1
+onemaxreal = 9.9000E+99
+maxonereal = 9.9000E+99
+maxonereal = 1
+zerominp1real = 0
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+minp1zeroreal = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1
+oneminp1real = 0.0000
+minp1onereal = 0.0000
+minp1onereal = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+***Error (icadhlp1): bad argument type
+acadhlp1 = a
+acadhlp1 = b
+acadhlp1 = c
+
+--- last ---
+
+***Error (noargs): too few arguments
+noargs2 = nil
+emptystr = 
+emptyemptystr = 
+emptystrtxt = hi
+txtemptystr = 
+spacestr =  
+spacestrtxt = hi
+txtspacestr =  
+below0str = !
+below0strtxt = hi
+txtbelow0str = !"#$%&'()*+,-./
+0to9str = 0
+0to9strtxt = hi
+txt0to9str = 0123456789
+above9str = :
+above9strtxt = hi
+txtabove9str = :;<=>?@
+bigatozstr = A
+bigatozstrtxt = hi
+txtbigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = [
+btwnalphastrtxt = hi
+txtbtwnalphastr = [\]^_`
+abovezstr = {
+abovezstrtxt = hi
+txtabovezstr = {|}~
+nilsymstr = nil
+nilsymstrtxt = hi
+txtnilsymstr = nil
+tsymstr = T
+tsymstrtxt = hi
+txttsymstr = T
+maxstr = 2
+maxstrtxt = hi
+txtmaxstr = 2
+maxp1str = 3
+maxp1strtxt = hi
+txtmaxp1str = 3
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = /
+abovenum = :
+nilsym = nil
+tsym = T
+zerozeroint = 0
+zerominint = -2147483648
+minzeroint = 0
+zeromaxint = 2147483647
+maxzeroint = 0
+oneminint = -2147483648
+minoneint = 1
+onemaxint = 2147483647
+maxoneint = 1
+zerominp1int = 2147483647
+minp1zeroint = 0
+zeromaxp1int = -2147483648
+maxp1zeroint = 0
+oneminp1int = 2147483647
+minp1oneint = 1
+onemaxp1int = -2147483648
+maxp1oneint = 1
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0
+zerominreal = 0.0000
+minzeroreal = 0
+zeromaxreal = 9.9000E+99
+maxzeroreal = 0
+oneminreal = 0.0000
+minonereal = 1
+onemaxreal = 9.9000E+99
+maxonereal = 1
+zerominp1real = 0.0000
+minp1zeroreal = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 0.0000
+minp1onereal = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1 = 4
+icadhlp2:
+	 = third
+	 = fourth
+acadhlp1 = e
+acadhlp2:
+	 = d
+	 = e
+
+--- length ---
+
+***Error (noargs): too few arguments
+noargs2 = 0
+emptystr = 1
+emptyemptystr = 2
+emptystrtxt = 2
+txtemptystr = 2
+spacestr = 1
+spacestrtxt = 2
+txtspacestr = 2
+below0str = 15
+below0strtxt = 2
+txtbelow0str = 2
+0to9str = 10
+0to9strtxt = 2
+txt0to9str = 2
+above9str = 7
+above9strtxt = 2
+txtabove9str = 2
+bigatozstr = 26
+bigatozstrtxt = 2
+txtbigatozstr = 2
+btwnalphastr = 6
+btwnalphastrtxt = 2
+txtbtwnalphastr = 2
+abovezstr = 4
+abovezstrtxt = 2
+txtabovezstr = 2
+nilsymstr = 1
+nilsymstrtxt = 2
+txtnilsymstr = 2
+tsymstr = 1
+tsymstrtxt = 2
+txttsymstr = 2
+maxstr = 131
+maxstrtxt = 132
+txtmaxstr = 132
+maxp1str = 132
+maxp1strtxt = 133
+txtmaxp1str = 133
+zero = 1
+nine = 1
+minuszero = 1
+minusnine = 1
+belownum = 1
+abovenum = 1
+nilsym = 1
+tsym = 1
+zerozeroint = 2
+zerominint = 2
+minzeroint = 2
+zeromaxint = 2
+maxzeroint = 2
+oneminint = 2
+minoneint = 2
+onemaxint = 2
+maxoneint = 2
+zerominp1int = 2
+minp1zeroint = 2
+zeromaxp1int = 2
+maxp1zeroint = 2
+oneminp1int = 2
+minp1oneint = 2
+onemaxp1int = 2
+maxp1oneint = 2
+zerozeroreal1 = 2
+zerozeroreal2 = 2
+zerominreal = 2
+minzeroreal = 2
+zeromaxreal = 2
+maxzeroreal = 2
+oneminreal = 2
+minonereal = 2
+onemaxreal = 2
+maxonereal = 2
+zerominp1real = 2
+minp1zeroreal = 2
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 2
+minp1onereal = 2
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1 = 4
+acadhlp2 = 4
+***Error (acadhlp3): null function
+
+--- list ---
+
+icadhlp1:
+	 = 1
+	 = 2
+icadhlp2:
+	 = string1
+	 = string2
+icadhlp3:
+	 = 1
+	 = string1
+icadhlp4:
+	 = 1
+	 = 2
+	 = buckle my shoe
+acadhlp1:
+	 = a
+	 = b
+	 = c
+acadhlp2:
+	 = a
+	:
+		 = b
+		 = c
+	 = d
+acadhlp3:
+	 = 3.9000
+	 = 6.7000
+
+--- listp ---
+
+***Error (noargs): too few arguments
+emptystr = nil
+spacestr = nil
+below0str = nil
+0to9str = nil
+above9str = nil
+bigatozstr = nil
+btwnalphastr = nil
+abovezstr = nil
+maxstr = nil
+maxp1str = nil
+zero = nil
+nine = nil
+minuszero = nil
+minusnine = nil
+belownum = nil
+abovenum = nil
+nilsym = T
+tsym = nil
+zeroint = nil
+maxint = nil
+minint = nil
+minp1int = nil
+maxp1int = nil
+zeroreal = nil
+minreal = nil
+maxreal = nil
+minp1real = nil
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+liist = T
+quotdlist = T
+icadhlp1 = T
+icadhlp2 = nil
+icadhlp3 = nil
+acadhlp1 = T
+acadhlp2 = nil
+acadhlp3 = nil
+acadhlp4 = T
+
+--- mapcar ---
+
+***Error (noargs): bad argument type
+emptystr:
+	 = 0
+spacestr:
+	 = 1
+below0str:
+	 = 15
+0to9str:
+	 = 10
+above9str:
+	 = 7
+bigatozstr:
+	 = 26
+btwnalphastr:
+	 = 6
+abovezstr:
+	 = 4
+maxstr:
+	 = 132
+maxp1str:
+	 = 133
+zero:
+	 = 1
+nine:
+	 = 10
+minuszero:
+	 = 1
+minusnine:
+	 = -8
+belownum:
+	 = 1
+abovenum:
+	 = 1
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint:
+	 = 1
+	 = 1
+maxint:
+	 = 1
+	 = -2147483648
+minint:
+	 = 1
+	 = -2147483647
+minp1int:
+	 = 1
+	 = -2147483648
+maxp1int:
+	 = 1
+	 = -2147483647
+zeroreal:
+	 = 1
+	 = 1.0000
+minreal:
+	 = 1
+	 = 1.0000
+maxreal:
+	 = 1
+	 = 9.9000E+99
+minp1real:
+	 = 1
+	 = 1.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1:
+	 = 10
+	 = 6
+	 = 4
+acadhlp1:
+	 = 11
+	 = 21
+	 = 31
+
+--- member ---
+
+***Error (noargs): too few arguments
+***Error (noargs2): too few arguments
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = 
+	 = hi
+txtemptystr:
+	 = 
+spacestr:
+	 =  
+spacestrtxt:
+	 =  
+	 = hi
+txtspacestr:
+	 =  
+below0strs:
+	 = !
+below0stre:
+	 = /
+	 = .
+	 = -
+	 = ,
+	 = +
+	 = *
+	 = )
+	 = (
+	 = '
+	 = &
+	 = %
+	 = $
+	 = #
+	 = "
+	 = !
+below0strtxt:
+	 = !"#$%&'()*+,-./
+	 = hi
+txtbelow0str:
+	 = !"#$%&'()*+,-./
+0to9strs:
+	 = 0
+0to9stre:
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+0to9strtxt:
+	 = 0123456789
+	 = hi
+txt0to9str:
+	 = 0123456789
+above9strs:
+	 = :
+above9stre:
+	 = @
+	 = ?
+	 = >
+	 = =
+	 = <
+	 = ;
+	 = :
+above9strtxt:
+	 = :;<=>?@
+	 = hi
+txtabove9str:
+	 = :;<=>?@
+bigatozstrs:
+	 = A
+bigatozstre:
+	 = Z
+	 = Y
+	 = X
+	 = W
+	 = V
+	 = U
+	 = T
+	 = S
+	 = R
+	 = Q
+	 = P
+	 = O
+	 = N
+	 = M
+	 = L
+	 = K
+	 = J
+	 = I
+	 = H
+	 = G
+	 = F
+	 = E
+	 = D
+	 = C
+	 = B
+	 = A
+bigatozstrtxt:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+txtbigatozstr:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastrs:
+	 = [
+btwnalphastre:
+	 = `
+	 = _
+	 = ^
+	 = ]
+	 = \
+	 = [
+btwnalphastrtxt:
+	 = [\]^_`
+	 = hi
+txtbtwnalphastr:
+	 = [\]^_`
+abovezstrs:
+	 = {
+abovezstre:
+	 = ~
+	 = }
+	 = |
+	 = {
+abovezstrtxt:
+	 = {|}~
+	 = hi
+txtabovezstr:
+	 = {|}~
+nilsymstr:
+	 = nil
+nilsymstrtxt:
+	 = nil
+	 = hi
+txtnilsymstr:
+	 = nil
+tsymstr:
+	 = T
+tsymstrtxt:
+	 = T
+	 = hi
+txttsymstr:
+	 = T
+maxstr:
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxstrtxt:
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = hi
+txtmaxstr:
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxp1str:
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+maxp1strtxt:
+	 = hi
+txtmaxp1str:
+	 = hi
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+zero:
+	 = 0
+nine:
+	 = 9
+minuszero:
+	 = 0
+minusnine:
+	 = -9
+belownum:
+	 = /
+abovenum:
+	 = :
+nilsym:
+	 = nil
+tsym:
+	 = T
+zerozeroint:
+	 = 0
+	 = 0
+zerominint:
+	 = 0
+	 = -2147483648
+minzeroint:
+	 = -2147483648
+	 = 0
+zeromaxint:
+	 = 2147483647
+maxzeroint:
+	 = 2147483647
+	 = 0
+oneminint:
+	 = -2147483648
+minoneint:
+	 = -2147483648
+	 = 1
+onemaxint:
+	 = 2147483647
+maxoneint:
+	 = 2147483647
+	 = 1
+zerominp1int:
+	 = 2147483647
+minp1zeroint:
+	 = 2147483647
+	 = 0
+zeromaxp1int:
+	 = 0
+	 = -2147483648
+maxp1zeroint:
+	 = -2147483648
+	 = 0
+oneminp1int:
+	 = 2147483647
+minp1oneint:
+	 = 2147483647
+	 = 1
+onemaxp1int:
+	 = -2147483648
+maxp1oneint:
+	 = -2147483648
+	 = 1
+zerozeroreal1:
+	 = 0
+	 = 0.0000
+zerozeroreal2:
+	 = 0.0000
+	 = 0
+zerominreal:
+	 = 0.0000
+minzeroreal:
+	 = 0.0000
+	 = 0
+zeromaxreal:
+	 = 9.9000E+99
+maxzeroreal:
+	 = 9.9000E+99
+	 = 0
+oneminreal:
+	 = 0.0000
+minonereal:
+	 = 0.0000
+	 = 1
+onemaxreal:
+	 = 9.9000E+99
+maxonereal:
+	 = 9.9000E+99
+	 = 1
+zerominp1real:
+	 = 0
+	 = 0.0000
+minp1zeroreal:
+	 = 0.0000
+	 = 0
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = nil
+minp1onereal = nil
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): misplaced dot
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): misplaced dot
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = 3
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+acadhlp1:
+	 = c
+	 = d
+	 = e
+acadhlp2 = nil
+
+--- nth ---
+
+***Error (noargs): too few arguments
+***Error (noargs2): bad argument type
+zero = a
+nine = j
+minuszero = a
+minusnine = j
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = a
+maxint = nil
+***Error (minint): invalid argument
+minp1int = nil
+***Error (maxp1int): invalid argument
+***Error (zeroreal): bad argument type
+***Error (minreal): bad argument type
+***Error (maxreal): bad argument type
+***Error (minp1real): bad argument type
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 5
+icadhlp2 = three
+icadhlp2 = nil
+acadhlp1 = d
+acadhlp1 = a
+acadhlp1 = nil
+
+--- reverse ---
+
+***Error (noargs): too few arguments
+noargs2 = nil
+emptystr:
+	 = 
+emptyemptystr:
+	 = 
+	 = 
+emptystrtxt:
+	 = hi
+	 = 
+txtemptystr:
+	 = 
+	 = hi
+spacestr:
+	 =  
+spacestrtxt:
+	 = hi
+	 =  
+txtspacestr:
+	 =  
+	 = hi
+below0str:
+	 = !
+	 = "
+	 = #
+	 = $
+	 = %
+	 = &
+	 = '
+	 = (
+	 = )
+	 = *
+	 = +
+	 = ,
+	 = -
+	 = .
+	 = /
+below0strtxt:
+	 = hi
+	 = !"#$%&'()*+,-./
+txtbelow0str:
+	 = !"#$%&'()*+,-./
+	 = hi
+0to9str:
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+0to9strtxt:
+	 = hi
+	 = 0123456789
+txt0to9str:
+	 = 0123456789
+	 = hi
+above9str:
+	 = :
+	 = ;
+	 = <
+	 = =
+	 = >
+	 = ?
+	 = @
+above9strtxt:
+	 = hi
+	 = :;<=>?@
+txtabove9str:
+	 = :;<=>?@
+	 = hi
+bigatozstr:
+	 = A
+	 = B
+	 = C
+	 = D
+	 = E
+	 = F
+	 = G
+	 = H
+	 = I
+	 = J
+	 = K
+	 = L
+	 = M
+	 = N
+	 = O
+	 = P
+	 = Q
+	 = R
+	 = S
+	 = T
+	 = U
+	 = V
+	 = W
+	 = X
+	 = Y
+	 = Z
+bigatozstrtxt:
+	 = hi
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+txtbigatozstr:
+	 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	 = hi
+btwnalphastr:
+	 = [
+	 = \
+	 = ]
+	 = ^
+	 = _
+	 = `
+btwnalphastrtxt:
+	 = hi
+	 = [\]^_`
+txtbtwnalphastr:
+	 = [\]^_`
+	 = hi
+abovezstr:
+	 = {
+	 = |
+	 = }
+	 = ~
+abovezstrtxt:
+	 = hi
+	 = {|}~
+txtabovezstr:
+	 = {|}~
+	 = hi
+nilsymstr:
+	 = nil
+nilsymstrtxt:
+	 = hi
+	 = nil
+txtnilsymstr:
+	 = nil
+	 = hi
+tsymstr:
+	 = T
+tsymstrtxt:
+	 = hi
+	 = T
+txttsymstr:
+	 = T
+	 = hi
+maxstr:
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+maxstrtxt:
+	 = hi
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+txtmaxstr:
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = hi
+maxp1str:
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+maxp1strtxt:
+	 = hi
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+txtmaxp1str:
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = hi
+zero:
+	 = 0
+nine:
+	 = 9
+minuszero:
+	 = 0
+minusnine:
+	 = -9
+belownum:
+	 = /
+abovenum:
+	 = :
+nilsym:
+	 = nil
+tsym:
+	 = T
+zerozeroint:
+	 = 0
+	 = 0
+zerominint:
+	 = -2147483648
+	 = 0
+minzeroint:
+	 = 0
+	 = -2147483648
+zeromaxint:
+	 = 2147483647
+	 = 0
+maxzeroint:
+	 = 0
+	 = 2147483647
+oneminint:
+	 = -2147483648
+	 = 1
+minoneint:
+	 = 1
+	 = -2147483648
+onemaxint:
+	 = 2147483647
+	 = 1
+maxoneint:
+	 = 1
+	 = 2147483647
+zerominp1int:
+	 = 2147483647
+	 = 0
+minp1zeroint:
+	 = 0
+	 = 2147483647
+zeromaxp1int:
+	 = -2147483648
+	 = 0
+maxp1zeroint:
+	 = 0
+	 = -2147483648
+oneminp1int:
+	 = 2147483647
+	 = 1
+minp1oneint:
+	 = 1
+	 = 2147483647
+onemaxp1int:
+	 = -2147483648
+	 = 1
+maxp1oneint:
+	 = 1
+	 = -2147483648
+zerozeroreal1:
+	 = 0.0000
+	 = 0
+zerozeroreal2:
+	 = 0
+	 = 0.0000
+zerominreal:
+	 = 0.0000
+	 = 0
+minzeroreal:
+	 = 0
+	 = 0.0000
+zeromaxreal:
+	 = 9.9000E+99
+	 = 0
+maxzeroreal:
+	 = 0
+	 = 9.9000E+99
+oneminreal:
+	 = 0.0000
+	 = 1
+minonereal:
+	 = 1
+	 = 0.0000
+onemaxreal:
+	 = 9.9000E+99
+	 = 1
+maxonereal:
+	 = 1
+	 = 9.9000E+99
+zerominp1real:
+	 = 0.0000
+	 = 0
+minp1zeroreal:
+	 = 0
+	 = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real:
+	 = 0.0000
+	 = 1
+minp1onereal:
+	 = 1
+	 = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = third
+	 = second
+	 = first
+icadhlp2:
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+acadhlp1:
+	 = c
+	 = b
+	:
+		 = a
+
+--- subst ---
+
+***Error (noargs): too few arguments
+emptystr:
+	 = new
+emptyemptystr:
+	 = new
+	 = new
+emptystrtxt:
+	 = new
+	 = hi
+txtemptystr:
+	 = hi
+	 = new
+spacestr:
+	 = new
+spacestrtxt:
+	 = new
+	 = hi
+txtspacestr:
+	 = hi
+	 = new
+below0strs:
+	 = /
+	 = .
+	 = -
+	 = ,
+	 = +
+	 = *
+	 = )
+	 = (
+	 = '
+	 = &
+	 = %
+	 = $
+	 = #
+	 = "
+	 = new
+below0stre:
+	 = new
+	 = .
+	 = -
+	 = ,
+	 = +
+	 = *
+	 = )
+	 = (
+	 = '
+	 = &
+	 = %
+	 = $
+	 = #
+	 = "
+	 = !
+below0strtxt:
+	 = new
+	 = hi
+txtbelow0str:
+	 = hi
+	 = new
+0to9strs:
+	 = 9
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = new
+0to9stre:
+	 = new
+	 = 8
+	 = 7
+	 = 6
+	 = 5
+	 = 4
+	 = 3
+	 = 2
+	 = 1
+	 = 0
+0to9strtxt:
+	 = new
+	 = hi
+txt0to9str:
+	 = hi
+	 = new
+above9strs:
+	 = @
+	 = ?
+	 = >
+	 = =
+	 = <
+	 = ;
+	 = new
+above9stre:
+	 = new
+	 = ?
+	 = >
+	 = =
+	 = <
+	 = ;
+	 = :
+above9strtxt:
+	 = new
+	 = hi
+txtabove9str:
+	 = hi
+	 = new
+bigatozstrs:
+	 = Z
+	 = Y
+	 = X
+	 = W
+	 = V
+	 = U
+	 = T
+	 = S
+	 = R
+	 = Q
+	 = P
+	 = O
+	 = N
+	 = M
+	 = L
+	 = K
+	 = J
+	 = I
+	 = H
+	 = G
+	 = F
+	 = E
+	 = D
+	 = C
+	 = B
+	 = new
+bigatozstre:
+	 = new
+	 = Y
+	 = X
+	 = W
+	 = V
+	 = U
+	 = T
+	 = S
+	 = R
+	 = Q
+	 = P
+	 = O
+	 = N
+	 = M
+	 = L
+	 = K
+	 = J
+	 = I
+	 = H
+	 = G
+	 = F
+	 = E
+	 = D
+	 = C
+	 = B
+	 = A
+bigatozstrtxt:
+	 = new
+	 = hi
+txtbigatozstr:
+	 = hi
+	 = new
+btwnalphastrs:
+	 = `
+	 = _
+	 = ^
+	 = ]
+	 = \
+	 = new
+btwnalphastre:
+	 = new
+	 = _
+	 = ^
+	 = ]
+	 = \
+	 = [
+btwnalphastrtxt:
+	 = new
+	 = hi
+txtbtwnalphastr:
+	 = hi
+	 = new
+abovezstrs:
+	 = ~
+	 = }
+	 = |
+	 = new
+abovezstre:
+	 = new
+	 = }
+	 = |
+	 = {
+abovezstrtxt:
+	 = new
+	 = hi
+txtabovezstr:
+	 = hi
+	 = new
+nilsymstr:
+	 = new
+nilsymstrtxt:
+	 = new
+	 = hi
+txtnilsymstr:
+	 = hi
+	 = new
+tsymstr:
+	 = new
+tsymstrtxt:
+	 = new
+	 = hi
+txttsymstr:
+	 = hi
+	 = new
+maxstr:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = new
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxstrtxt:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = new
+	 = 1
+	 = 2
+	 = hi
+txtmaxstr:
+	 = hi
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = new
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+maxp1str:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = new
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+maxp1strtxt:
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = new
+txtmaxp1str:
+	 = new
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+	 = 4
+	 = 5
+	 = 6
+	 = 7
+	 = 8
+	 = 9
+	 = 0
+	 = 1
+	 = 2
+	 = 3
+zero:
+	 = new
+nine:
+	 = new
+minuszero:
+	 = new
+minusnine:
+	 = new
+belownum:
+	 = new
+abovenum:
+	 = new
+nilsym:
+	 = new
+tsym:
+	 = new
+zerozeroint:
+	 = new
+	 = new
+zerominint:
+	 = new
+	 = new
+minzeroint:
+	 = new
+	 = new
+zeromaxint:
+	 = 0
+	 = new
+maxzeroint:
+	 = new
+	 = 0
+oneminint:
+	 = 1
+	 = new
+minoneint:
+	 = new
+	 = 1
+onemaxint:
+	 = 1
+	 = new
+maxoneint:
+	 = new
+	 = 1
+zerominp1int:
+	 = 0
+	 = new
+minp1zeroint:
+	 = new
+	 = 0
+zeromaxp1int:
+	 = new
+	 = new
+maxp1zeroint:
+	 = new
+	 = new
+oneminp1int:
+	 = 1
+	 = new
+minp1oneint:
+	 = new
+	 = 1
+onemaxp1int:
+	 = 1
+	 = new
+maxp1oneint:
+	 = new
+	 = 1
+zerozeroreal1:
+	 = new
+	 = new
+zerozeroreal2:
+	 = new
+	 = new
+zerominreal:
+	 = 0
+	 = new
+minzeroreal:
+	 = new
+	 = 0
+zeromaxreal:
+	 = 0
+	 = new
+maxzeroreal:
+	 = new
+	 = 0
+oneminreal:
+	 = 1
+	 = new
+minonereal:
+	 = new
+	 = 1
+onemaxreal:
+	 = 1
+	 = new
+maxonereal:
+	 = new
+	 = 1
+zerominp1real:
+	 = new
+	 = new
+minp1zeroreal:
+	 = new
+	 = new
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real:
+	 = 1
+	 = 0.0000
+minp1onereal:
+	 = 0.0000
+	 = 1
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): misplaced dot
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): misplaced dot
+***Error (invalidrealnum2): null function
+icadhlp1:
+	 = A
+	 = A
+	 = C
+acadhlp1:
+	 = a
+	 = qq
+	:
+		 = c
+		 = d
+	 = qq
+acadhlp1:
+	 = a
+	 = b
+	:
+		 = c
+		 = d
+	 = b
+acadhlp1:
+	 = a
+	 = b
+	 = qq
+	 = b
+acadhlp1:
+	 = a
+	 = b
+	:
+		 = qq
+		 = rr
+	 = b
+acadhlp1:
+	 = a
+	 = b
+	:
+		 = c
+		 = d
+	 = b
+acadhlp2:
+	:
+		 = T
+		 = j
+	:
+		 = T
+		 = q
+	:
+		 = T
+		 = public
+Lisp acceptance test completed at 07-21-1998 09:50:12a on version P.0.31

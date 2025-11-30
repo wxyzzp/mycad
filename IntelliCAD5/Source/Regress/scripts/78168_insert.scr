@@ -1,0 +1,27 @@
+logfilename log\78168_insert.log
+logfileon
+;_________
+line
+1,1
+2,2
+
+;__________
+block
+   b l o c k     
+0,0
+all
+
+;__________
+insert   b l o c k   
+0,0
+
+
+
+;__________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "INSERT") (alert "err"))
+(if (/= (cdr (assoc 2 (entget (entlast)))) "B L O C K") (alert "err"))
+;__________
+dxfout output_dxf\78168_insert.dxf
+6
+quit
+y

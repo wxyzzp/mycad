@@ -1,0 +1,10 @@
+logfilename log\graphscr.log
+logfileon
+;____________
+graphscr
+textscr
+'graphscr
+'textscr
+graphscr
+;_________
+quit

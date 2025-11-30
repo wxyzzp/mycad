@@ -1,0 +1,47 @@
+logfilename log\copyedata_options.log
+logfileon
+;(entget_(entlast)_'("ACAD"))
+;(entget_(car_(entsel))_'("ACAD"))
+;(entget_(car_(entsel))_'("SNC"))
+;;;(defun_c:checkedata_()
+;;;(setq
+;;;____entdata_(cdr
+;;;______(assoc_1070
+;;;_____(cdr
+;;;_______(assoc_"SNC"
+;;;______(cdr
+;;;(assoc_-3
+;;;_______(entget_(entlast)_'("SNC"))
+;;;)
+;;;______)
+;;;_______)
+;;;_____)
+;;;_____)
+;;;____)
+;;;__)
+;;;__(if_(/=_entdata_0)
+;;;____(alert_"Err_in_Copyedata")
+;;;__)
+;;;)
+(defun c:checkedata ()(setq entdata (cdr (assoc 1070 (cdr (assoc "SNC" (cdr (assoc -3 (entget (entlast) '("SNC"))))))))) (if (/= entdata 0) (alert "Err in Copyedata")))
+(regapp "SNC")
+(entmake '((0 . "LINE") (5 . "4B") (67 . 0) (8 . "0") (62 . 256) (6 . "ByLayer") (48 . 1.00000) (60 . 0) (39 . 0.000000) (10 1.00000 1.00000 0.000000) (11 7.85387 1.84204 0.000000) (210 0.000000 0.000000 1.00000) (-3 ("SNC" (1070 . 0)))))
+;_________
+checkedata
+;_________
+circle
+1,1
+2,2
+;_________
+copyedata
+snc
+1,1
+l
+
+;_________
+checkedata
+;________
+dxfout output_dxf\copyedata_options.dxf
+6
+quit
+y

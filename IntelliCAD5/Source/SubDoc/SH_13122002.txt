@@ -1,0 +1,31 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_13122002.txt
+Date:		13-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fixed a bug introduced by one of my previous submission.
+ 	In that submission, I changed sds_pmtssget() to only add the entities 
+ 	specified in the filte in the grip selection to the new selection to fix
+ 	a bug. But unfortunately since I did really understand the behavious of
+ 	sds_ssadd() function, the entities added to the new selection were freed 
+ 	after the grip selection was freed. This bug is fixed.
+ 	
+
+CHANGED FILES:	
+
+	Source/Prj/Lib/sds/sds_selectset.cpp:  Changed sds_pmtssget().
+		
+
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78410_1.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78410
+Added files:     	
+Affected files:	
+		Source/prj/lib/GR/DoText.cpp
+Description:	ICAD crashes if text using TTF fonts having large length is created.
+Comments:		TaL78410
+Problem Analysis:
+		The problem was because the buffer was being overrun. 
+Proposed Solution:
+		The buffer should be dynamically allocated.
+File by File:	
+*		Source/prj/lib/GR/DoText.cpp
+		If the text entered by the user can fit in MAX_TEXT_LENGTH then I have used  text[MAX_TEXT_LENGTH] array else I have dynamically allocate memory for use.
+--------------------------------------------------------------------------------

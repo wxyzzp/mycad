@@ -1,0 +1,36 @@
+logfilename log/aunitformats.log
+logfileon
+;________
+(defun checkline()(if (= (entsel) nil) (alert "Err")))
+;________
+line
+1,1
+@1<0
+@1<2R
+@1<35d3'5"
+@1<44d
+@1<3g
+@1<N45dW
+
+;________
+zoom
+extents
+;________
+(checkline)
+1.5,1
+(checkline)
+1.7919,1.4546
+(checkline)
+1.9932,2.1965
+(checkline)
+2.7622,2.8309
+(checkline)
+3.6213,3.2018
+(checkline)
+3.7672,3.5789
+;________
+dxfout output_dxf/aunitformats.dxf
+6
+;________
+quit
+y

@@ -1,0 +1,19 @@
+logfilename log\hyperlinkoptions.log
+logfileon
+;__________
+hyperlinkoptions
+y
+y
+hyperlinkoptions
+y
+n
+hyperlinkoptions
+n
+hyperlinkoptions
+y
+n
+;__________
+dxfout output_dxf\hyperlinkoptions.dxf
+6
+quit
+y

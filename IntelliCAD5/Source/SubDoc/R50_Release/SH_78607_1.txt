@@ -1,0 +1,57 @@
+Document Title:  SH_78607_1.txt	
+Product Version: ICAD 4.0
+Date:  8/22/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/CmdQueryTools.h
+   Source/Prj/lib/cmds/CmdQueryTools.tpl
+   Source/Prj/lib/cmds/CmdSolidedit.cpp
+   Source/Prj/lib/cmds/CmdSolidedit.h
+   
+3. Overview:
+
+This submission fix the bug #78607 - "SOLIDEDIT command cannot create 
+SHELL of solid entity". The problem was the Shell option of Solidedit command
+was not implemented correctly and had following problems:
+
+1) The Shell option in AutoCAD asks users to pick a solid first but it did 
+   not in IntelliCAD. The prompt was missing in IntelliCAD.
+   
+2) The implementation for ALL option for Solidedit/Body/Shell was wrong 
+   totally so it did not work.
+
+3) When users hit Return key instead of selecting any face and keywork in 
+   AutoCAD, all faces of the selected solid will be selected. But IntelliCAD 
+   behaved differently. It prompted users to select a face or keywork again.
+
+All problems mentioned above are fixed in this submission.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: y
+	File Name:                  
+	Name of Script file:   78607.scr
+
+8.  Notes to Localization: 
+
+
+
+

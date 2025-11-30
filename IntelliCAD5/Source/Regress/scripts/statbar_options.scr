@@ -1,0 +1,22 @@
+logfilename log\statbar_options.log
+logfileon
+;_________1
+statbar
+on
+(if (/= (getvar "wndlstat") 1) (alert "statbar not set correctly"))
+;_________2
+statbar
+t
+(if (/= (getvar "wndlstat") 0) (alert "statbar not set correctly"))
+;_________3
+statbar
+t
+(if (/= (getvar "wndlstat") 1) (alert "statbar not set correctly"))
+;_________4
+statbar
+off
+(if (/= (getvar "wndlstat") 0) (alert "statbar not set correctly"))
+;_________
+dxfout output_dxf\statbar_options.dxf
+6
+quit

@@ -1,0 +1,7 @@
+logfilename log\3dspiral_3dspiral.log
+logfileon
+(load "Lisp\3dspiral.lsp")
+3dspiral 1,1 10 2 1 30  
+dxfout output_dxf\3dspiral_3dspiral.dxf
+6
+quit _y

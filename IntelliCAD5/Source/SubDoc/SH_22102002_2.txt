@@ -1,0 +1,31 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_22102002_2.txt
+Date:		22-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission fixes the problems that caused the screen image
+                to be changed from hidden lines to wireframe.
+
+Comments:	When the screen image was hidden lines, REDRAW and PRINT commands
+                turned the screen image to wireframe. Those problems were fixed by
+                modifing redraw and print functions to call appropriate funcitons
+                to paint screen with hidden lines if the screen was hidden lines.
+
+Changed files:	
+
+		CvsHist:Source/Prj/Lib/cmds/Regen.cpp
+		CvsHist:Source/Prj/Lib/cmds/HideAndShade.cpp
+		CvsHist:Source/Prj/Lib/icad/icadview.cpp
+		
+
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,58 @@
+Document Title:  SH_03SEP04_1.txt	
+Product Version: ICAD 5.0
+Date:  03/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/drw/Drw.h
+   Source/Prj/lib/drw/drwfns.cpp
+   Source/Prj/lib/drw/DWGdirectReader.cpp
+   Source/Prj/lib/drw/DWGdirectWriter.cpp
+   Source/Prj/icad/icaddrawbitmap.cpp
+   
+3. Overview:
+
+This submission fixes the following preview problems:
+
+   a) The bug #78758 - "ICAD hangs, while browsing through many files in "insert dialog box".
+      The problem was when the cursor move to the name of a file listed in the Open File dialog 
+      box, the code tried to restore entire database in memory from the file first then looped
+      through the whole database to render entity by entity to generate preview image. Scine this
+      process is very time consuming, in he case when the users hold the "cursor down" key to 
+      browse through many files, ICAD would try to generate preview one by one, which could take a 
+      lot of system resource and "hung" the system. This problem is fixed by creating preview from
+      the thumbnail image of a drawing.
+      
+   b) The preview images were lost after the drawing was saved in IntelliCAD. This problem is fixed.
+      
+   c) The WMF preview images were not supported. This problem is fixed.
+      
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

@@ -1,0 +1,155 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DCL - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"\OutputDir\Icad5\Release\DCL/DCL.res" /i "..\..\..\..\Eng-Us" /i "..\..\..\prj\icad" /d "NDEBUG" "E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\DCL\DCL.rc"" 
+Creating temporary file "C:\DOCUME~1\wyy\LOCALS~1\Temp\RSP9.tmp" with contents
+[
+/nologo /MD /W3 /GR /GX /Zi /O2 /I ".\\" /I "..\PCCTS" /I "..\include" /I "..\..\..\prj\api\sds" /I "..\..\..\..\Eng-Us" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /Fo"\OutputDir\Icad5\Release\DCL/" /Fd"\OutputDir\Icad5\Release\DCL/" /FD /c 
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\DCL\DCL.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\DCL\Global.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\AParser.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\ATokenBuffer.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\DLexerBase.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\DLGLexer.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\GrammarWrapper.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\PCCTS\Grammer.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\AttributeInfo.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\AuditLevel.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Button.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ControlID.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\DefaultAttributes.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Dialog.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\EditBox.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ErrorMessage.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ExceptionManager.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\FileInfo.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ImageButton.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\InactiveCtrl.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ListBox.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ListOfAttributes.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Main.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\NonDefinedNode.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\OpenDlg.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Parser.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\PopUpList.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\ScreenObject.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Slider.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Spacer.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Text.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Tile.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\TileAttributes.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\Tree.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\TreeDebugger.cpp"
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\Source\TreeNode.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\wyy\LOCALS~1\Temp\RSP9.tmp" 
+Creating temporary file "C:\DOCUME~1\wyy\LOCALS~1\Temp\RSPA.tmp" with contents
+[
+/nologo /MD /W3 /GR /GX /Zi /O2 /I ".\\" /I "..\PCCTS" /I "..\include" /I "..\..\..\prj\api\sds" /I "..\..\..\..\Eng-Us" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /Fp"\OutputDir\Icad5\Release\DCL/DCL.pch" /Yc"stdafx.h" /Fo"\OutputDir\Icad5\Release\DCL/" /Fd"\OutputDir\Icad5\Release\DCL/" /FD /c 
+"E:\Project\IntelliCAD5\Source\ThirdParty\DCL_Components\DCL\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\wyy\LOCALS~1\Temp\RSPA.tmp" 
+Creating temporary file "C:\DOCUME~1\wyy\LOCALS~1\Temp\RSPB.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:no /pdb:"..\..\..\prj\make\Release/DCL.pdb" /debug /machine:I386 /def:".\DCL.def" /out:"..\..\..\prj\make\Stage/DCL.dll" /implib:"..\..\..\prj\make\Release/DCL.lib" /OPT:NOREF 
+\OutputDir\Icad5\Release\DCL\DCL.obj
+\OutputDir\Icad5\Release\DCL\DCL.res
+\OutputDir\Icad5\Release\DCL\Global.obj
+\OutputDir\Icad5\Release\DCL\StdAfx.obj
+\OutputDir\Icad5\Release\DCL\AParser.obj
+\OutputDir\Icad5\Release\DCL\ATokenBuffer.obj
+\OutputDir\Icad5\Release\DCL\DLexerBase.obj
+\OutputDir\Icad5\Release\DCL\DLGLexer.obj
+\OutputDir\Icad5\Release\DCL\GrammarWrapper.obj
+\OutputDir\Icad5\Release\DCL\Grammer.obj
+\OutputDir\Icad5\Release\DCL\AttributeInfo.obj
+\OutputDir\Icad5\Release\DCL\AuditLevel.obj
+\OutputDir\Icad5\Release\DCL\Button.obj
+\OutputDir\Icad5\Release\DCL\ControlID.obj
+\OutputDir\Icad5\Release\DCL\DefaultAttributes.obj
+\OutputDir\Icad5\Release\DCL\Dialog.obj
+\OutputDir\Icad5\Release\DCL\EditBox.obj
+\OutputDir\Icad5\Release\DCL\ErrorMessage.obj
+\OutputDir\Icad5\Release\DCL\ExceptionManager.obj
+\OutputDir\Icad5\Release\DCL\FileInfo.obj
+\OutputDir\Icad5\Release\DCL\ImageButton.obj
+\OutputDir\Icad5\Release\DCL\InactiveCtrl.obj
+\OutputDir\Icad5\Release\DCL\ListBox.obj
+\OutputDir\Icad5\Release\DCL\ListOfAttributes.obj
+\OutputDir\Icad5\Release\DCL\Main.obj
+\OutputDir\Icad5\Release\DCL\NonDefinedNode.obj
+\OutputDir\Icad5\Release\DCL\OpenDlg.obj
+\OutputDir\Icad5\Release\DCL\Parser.obj
+\OutputDir\Icad5\Release\DCL\PopUpList.obj
+\OutputDir\Icad5\Release\DCL\ScreenObject.obj
+\OutputDir\Icad5\Release\DCL\Slider.obj
+\OutputDir\Icad5\Release\DCL\Spacer.obj
+\OutputDir\Icad5\Release\DCL\Text.obj
+\OutputDir\Icad5\Release\DCL\Tile.obj
+\OutputDir\Icad5\Release\DCL\TileAttributes.obj
+\OutputDir\Icad5\Release\DCL\Tree.obj
+\OutputDir\Icad5\Release\DCL\TreeDebugger.obj
+\OutputDir\Icad5\Release\DCL\TreeNode.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\wyy\LOCALS~1\Temp\RSPB.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+..\..\..\..\Eng-Us/..\Source\prj\ICAD\blddate.h(16) : warning RC4005: 'VERSIONINFO_COPYRIGHT' : redefinition
+..\..\..\..\Eng-Us/..\Source\prj\ICAD\blddate.h(26) : warning RC4005: 'VERSIONINFO_MAINPRODUCT' : redefinition
+Compiling...
+StdAfx.cpp
+Compiling...
+DCL.cpp
+Global.cpp
+AParser.cpp
+ATokenBuffer.cpp
+DLexerBase.cpp
+DLGLexer.cpp
+GrammarWrapper.cpp
+Grammer.cpp
+AttributeInfo.cpp
+AuditLevel.cpp
+Button.cpp
+ControlID.cpp
+DefaultAttributes.cpp
+Dialog.cpp
+EditBox.cpp
+ErrorMessage.cpp
+ExceptionManager.cpp
+FileInfo.cpp
+ImageButton.cpp
+InactiveCtrl.cpp
+Generating Code...
+Compiling...
+ListBox.cpp
+ListOfAttributes.cpp
+Main.cpp
+NonDefinedNode.cpp
+OpenDlg.cpp
+Parser.cpp
+PopUpList.cpp
+ScreenObject.cpp
+Slider.cpp
+Spacer.cpp
+Text.cpp
+Tile.cpp
+TileAttributes.cpp
+Tree.cpp
+TreeDebugger.cpp
+TreeNode.cpp
+Generating Code...
+Linking...
+   Creating library ..\..\..\prj\make\Release/DCL.lib and object ..\..\..\prj\make\Release/DCL.exp
+
+
+
+<h3>Results</h3>
+DCL.dll - 0 error(s), 2 warning(s)
+</pre>
+</body>
+</html>

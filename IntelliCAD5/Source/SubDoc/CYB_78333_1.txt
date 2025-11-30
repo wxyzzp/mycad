@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78333
+Affected files:			
+		Source/prj/lib/flyoversnap/OsnapHelpers.h?rev=1.1.10.1 
+Description:	Does not show Intersection snaps at all location of the grid block.
+Comments:	TaL78333
+
+Problem analysis:	The grid in attached drawing is a block. Intersection snap does not work correctly at all the locations of the grid but works fine if the grid block is exploded. On mousemove over the grid, with intersection snap on, preprocesSS() is called to which the grid blovk is is passed as a parameter. This preprocessSS()  returns an selection set of the entites below the aperture box. This selection set is further passed to processSS() which returns a snap point. It was found that the preprocesSS() did not return the proper selection set and hence the processSS() did  not work as expected. The reason preprocessSS() did not return the proper selection set was the while loop processing the subentiites of the block was restricted to the 25 entites ( OSNAP_MAX_NUMBER ).
+
+Proposed Solution: As the grid has 54 entities, setting OSNAP_MAX_NUMBER to 54 solves the problem. But we have this restriction of processing of subentities of block due low performance effect. But this number seems to be too small. We have now increased this number to 75. So there will be problem for snapping for blocks having subentities greater than 75. We have checked the performance and feel its not bad for  75 so we have decided on 75.
+
+File By File :
+		Source/prj/lib/flyoversnap/OsnapHelpers.h?rev=1.1.10.1 
+		OSNAP_MAX_NUMBER to 75.
+		
+		Source/prj/lib/SDS/sds_osnap.cpp
+		Changed the hard-coded 25 to 75. Actaully this whole code is duplicated and one day we have to remove it. So does not 			matter if we keep hardcoded value.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

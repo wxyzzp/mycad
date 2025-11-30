@@ -1,0 +1,45 @@
+Document Title:  SH_280804_1.txt	
+Product Version: ICAD 5.0
+Date:  8/28/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/3dsolids.cpp
+   Source/Regress/scripts/AI_3d_entities.SCR
+   Source/Regress/scripts/Attic/ai_cone_options.scr
+   Source/Regress/scripts/Attic/ai_cylinder_Options.scr
+   
+3. Overview:
+
+The prompts of ai_cone and ai_cylinder commands were different than AutoCAD. The 
+problems are fixed by this submission. Some of the regression scripts are also 
+changed.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:                  
+	Name of Script file:   cone_options.scr, cylinder_options.scr
+
+8.  Notes to Localization: 
+
+
+
+

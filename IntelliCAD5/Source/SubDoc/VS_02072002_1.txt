@@ -1,0 +1,32 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_02072002_1.txt
+Date:		02-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		Source/Regress_apps/Regress Script application/reg.frm
+		Source/Regress_apps/Regress Script application/reg.exe
+
+Deleted files:	
+		None
+
+Description:	Regress application changes for better error reporting.
+Comments:	The regress application now rports all errors on completion of processing of scripts directory. It also 
+		reports total time taken for running all scripts.
+
+File by File:	
+		Source/Regress_apps/Regress Script application/reg.frm 		Rev 1.2
+			Better error reporting.
+		Source/Regress_apps/Regress Script application/reg.exe		Rev 1.2
+			Executable for this application with the above changes.
+-----------------------------------------------------------------------------

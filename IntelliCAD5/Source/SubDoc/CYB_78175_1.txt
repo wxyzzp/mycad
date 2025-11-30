@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78175_1.txt
+Date:		28-05-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78175
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+Description: 	Angular dimension is drawn even if Angular dimension's arc line location is not specified
+Comments:	TaL78175
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+		Added a case in the switch statement to handle RTNONE. Delete elp while exiting so as to prevent memory leak.
+--------------------------------------------------------------------------------
+

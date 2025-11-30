@@ -1,0 +1,525 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78745_1.txt	
+Product Version:	ICAD 4
+Date:			10/05/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/DB/drawing.cpp			==> DB
+Source/prj/lib/DRW/dwgload.cpp			==> DB
+Source/prj/lib/DRW/DWGdirectReader.cpp	==> DB
+		
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78745 : Print and Print preview does not 
+show the various line weights in a drawing.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, when one creates a drawing in IntelliCAD
+which has some Line Weights set to the entities, and gives the "Print Preview"
+or "Print" command, the lineweights are not visible in the Preview and 
+neither are they printed.
+	On analysing the problem, I found that there was no problem with 
+the printing module. The bug is not in the printing area, because if we 
+create a drawing in AutoCAD 2000, perform the steps as mentioned in Bugzilla 
+Report, save the drawing and then open it in IntelliCAD, the Print Preview 
+in IntelliCAD does show the Line Weights.
+
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+I have changed the following 3 files:
+	Ø Source/prj/lib/DB/drawing.cpp		
+	Ø Source/prj/lib/DRW/dwgload.cpp		
+	Ø Source/prj/lib/DRW/DWGdirectReader.cpp
+ 
+The details are as follows:
+ 
+IntelliCAD does not show the Line Weights in Print Preview in 2 cases:
+	1. Creating a new drawing in IntelliCAD.
+	2. Opening a drawing that was created and saved in IntelliCAD.
+ 
+I compared the DXF's of AutoCAD and IntelliCAD saved files. 
+I came to the conclusion that DXF 70 of PlotSettings (AcdbPlotSettings entry)need 
+to be modified, to include "PrintWithLineWeights" setting.
+ 
+I have made the following changes in the files listed below: (all changes 
+are within Bugzilla comments, that have been removed at the time of check-in)
+ 
+1. Source\prj\lib\db\drawing.cpp: 
+	This is for the case when the new drawing is created. 
+	(Flag included = CDbPlotSettings::ePrintLineweights).
+
+
+Location = db_drawing::addDefaultLayoutObject
+
+
+//--CODE BEGINS--------------------------------------------------------------------------------------------
+int db_drawing::addDefaultLayoutObject(db_handitem* pLayoutsDictHandItem, const char* pLayoutName)
+{
+	db_dictionary* pLayoutsDict = static_cast<db_dictionary*>(pLayoutsDictHandItem);
+	db_dictionaryrec* pDictRec = NULL;
+
+	CDbLayout* phLayout = new CDbLayout();
+	addhanditem(phLayout);
+	
+	db_objhandle hLayoutObjectHandle = phLayout->RetHandle();
+	pDictRec = new db_dictionaryrec(pLayoutName, DB_SOFT_OWNER, hLayoutObjectHandle, phLayout);
+	pLayoutsDict->addrec(pDictRec);
+
+	phLayout->addReactor(pLayoutsDictHandItem->RetHandle(), pLayoutsDict, ReactorItem::SOFT_POINTER);
+	
+	if (stricmp(pLayoutName, MODELSPACE_LAYOUT) == 0)
+	{
+		//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+		//!!! phLayout->set_70(CDbPlotSettings::eModelType);
+		phLayout->set_70(CDbPlotSettings::eModelType | CDbPlotSettings::ePrintLineweights);
+		//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+		
+		phLayout->setBlock(phLayout);
+		stockhand[DB_SHI_MSLAYOUT] = hLayoutObjectHandle;
+		return 1;
+	}
+
+	if (stricmp(pLayoutName, DEF_PAPERSPACE_LAYOUT) == 0)
+	{
+		phLayout->setCurrent();
+		stockhand[DB_SHI_PSLAYOUT] = hLayoutObjectHandle;
+		return 1;
+	}
+
+	return 0;
+}
+//-----CODE ENDS-----------------------------------------------------------
+
+
+2. Source\prj\lib\drw\dwgload.cpp: 
+	This is for the case when a file previously saved in IntelliCAD is opened 
+in IntelliCAD again, so that the fix is applied automatically. This is related 
+to OpenDWG implementation. (Flag included = CDbPlotSettings::ePrintLineweights).
+
+Location = drw_readwrite::drw_marcompopen
+
+
+//--CODE BEGINS--------------------------------------------------------------------------------------------
+
+DB_API db_drawing *drw_readwrite::drw_marcompopen(db_drawing *argdp, char *p_pn, int *rcp, bool convertplines) 
+{
+    short entset;
+    int i,setviewvars=1,newhand;
+    bool gotactivevport;
+    db_objhandle hand,dflthand;
+    db_handitem *hip;
+
+               ...
+				...
+				...
+				...
+				...
+				
+				
+				// some drawings contain layouts which are not in dictionary, so copy the name to object
+                strncpy(lo->m_name, adob.layout.name, sizeof(adob.layout.name)-1); 
+                //lo->setName(adob.layout.name, dp);
+
+				// If the layout name is "Model", include "eModelType" and "ePrintLineweights" in PlotSetting type,  
+				// if not already present.
+				if (strisame(adob.layout.name, "Model"))
+				{
+                    if (dp->ret_stockhand(DB_SHI_MSLAYOUT) == NULL)
+                    dp->set_stockhand(hand, DB_SHI_MSLAYOUT);
+
+					if (!(adob.layout.plotsettings.plotlayoutflag & CDbPlotSettings::eModelType))
+						adob.layout.plotsettings.plotlayoutflag |= CDbPlotSettings::eModelType;
+
+					//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+					if (!(adob.layout.plotsettings.plotlayoutflag & CDbPlotSettings::ePrintLineweights))
+						adob.layout.plotsettings.plotlayoutflag |= CDbPlotSettings::ePrintLineweights;
+					//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+				}
+				//** DG - 26.4.2002 ***// we already set paper space layout stockhand earlier (see in blockrecs);
+                // note also, paper space layout object can be not "Layout1"
+                //if(dp->ret_stockhand(DB_SHI_PSLAYOUT) == NULL && strisame(adob.layout.name,"Layout1"))
+                //  dp->set_stockhand(hand,DB_SHI_PSLAYOUT);
+                //po->set_pagesetupname(adob.plotsettings.pagesetupname);
+
+				CDbPlotSettings po;
+				po.set_2(adob.layout.plotsettings.printerorconfigfilename);
+                po.set_4(adob.layout.plotsettings.papersize);
+                po.set_6(adob.layout.plotsettings.plotviewname);
+                ...
+				...
+				...
+				...
+				...
+				
+}
+
+
+//-----CODE ENDS-----------------------------------------------------------
+
+
+
+3. Source\prj\lib\DRW\DWGdirectReader.cpp: 
+	This is for the case when a file previously saved in IntelliCAD is opened 
+in IntelliCAD again, so that the fix is applied automatically. This is related 
+to DWGDirect implementation. (Flag included = BIT80).
+
+Location = DWGdirectReader::CreateAllLayouts
+
+//--CODE BEGINS--------------------------------------------------------------------------------------------
+
+void DWGdirectReader::CreateAllLayouts(db_dictionaryrec* pLayoutDictionary, OdDbDictionary* pObject)
+{
+	ASSERT(pLayoutDictionary != NULL);
+	ASSERT(pObject != NULL);
+
+	...
+	...
+	...
+		if (pLayout->plotPlotStyles() == true)
+			flags |= BIT20;
+		if (pLayout->scaleLineweights() == true)
+			flags |= BIT40;
+		if (pLayout->printLineweights() == true)
+			flags |= BIT80;
+		if (pLayout->drawViewportsFirst() == true)
+			flags |= BIT200;
+		if (pLayout->modelType() == true)
+		{
+			flags |= BIT400;
+
+			//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+			
+			// For Model Layout the "PrintLineWeights" Bit should be set in order to
+			// print the objects with line weights by default.
+			flags |= BIT80; 
+
+			//*** Bugzilla# 78745. -- Date: 30 Apr 2004
+		}
+
+		// TODO MHB 
+		//2048 = UpdatePaper 
+		//4096 = ZoomToPaperOnUpdate 
+		//8192 = Initializing 
+		//16384 = PrevPlotInit
+        plotSettings.set_70(flags);
+
+        plotSettings.set_72(pLayout->plotPaperUnits());
+        plotSettings.set_73(pLayout->plotRotation());
+        plotSettings.set_74(pLayout->plotType());
+        plotSettings.set_75(pLayout->stdScaleType());
+	...
+	...
+	...
+
+}
+
+//-----CODE ENDS-----------------------------------------------------------
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following cases:
+	1.	Start IntelliCAD. 
+	2.	Open a new drawing.
+	3.	Draw a line.
+	4.	Set its Line Weight Property to 2.11mm. You can do this selecting the line, 
+		then right click the line. In the Dialog Box that appears, change the 
+		Line-Weight Property. Click OK.
+	5.	Give the Print Command.
+	6.	In the Print Dialog Box that appears, click the Print Preview button.
+	7.	You should see a thick line. This signifies that the line is drawn with a 
+		line weight during printing.
+	8.	Open an existing drawing that was created in an earlier build of IntelliCAD.
+	9.	Repeat steps 3 through 6. You should see that step 7 holds true.
+	10.	Now close IntelliCAD.
+	11.	Start IntelliCAD and ensure that you are in DWG-DIRECT environment.
+	12.	Open an existing drawing that was created in an earlier build of IntelliCAD.
+	13.	Repeat steps 3 through 6. You should see that step 7 holds true.
+	14.	Open a new drawing in IntelliCAD.
+	15.	Perform Steps 3 & 4.
+	16.	Save this drawing. (say "x1.dwg").
+	17.	Start AutoCAD.
+	18.	Open "x1.dwg" that was saved in IntelliCAD.
+	19.	Give the "plot" command.
+	20.	In the Plot Dialog Box that appears, click the Print Preview button.
+	21.	You should see a thick line. This signifies that the revised Plotsettings 
+		have been properly saved in the drawing.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_09062002_1.txt
+Date:		09-06-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		CvsHist:Source/prj/ICAD/icadmain.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission fixes a crash when ICAD starts if a registry key is missing.
+Comments:	This submission fixes a problem when ICAD starts up. ICAD looks at the registry to load 
+		controlbars. It calls LoadBarState() to load the control bars and is passed in the
+		registry key (ControlBars). This element should have 16 keys under it (ie) ControlBar-Bar0 to
+		ControlBar-Bar15. The code to read this is in CDockState  inside MFC.
+
+		If any of the keys (ControlBar-Barxx) is missing, CdockState::LoadState() will crash as it tries to
+		dereference a NULL pointer.
+
+		I added a try/catch block to catch the exception which is thrown. I just ignore the exception. When
+		Icad exits once again, it will write the proper values to the registry.
+
+File by File:	
+		Source/prj/ICAD/icadmain.cpp	 			New Rev. 1.18
+
+		In CMainWindow::OnCreate wrap the call to LoadBarState() within a try block. The catch ignores the thrown
+		exception and continues execution.
+------------------------------------------------------------------------------

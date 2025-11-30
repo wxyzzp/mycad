@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+File:		CYB_77887_1.txt
+Date:		03-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77887
+Affected files:			
+		CvsHist:Source/Source/prj/lib/CMDS/dimensions.cpp
+		CvsHist:Source/Source/prj/lib/CMDS/dimensions.h
+		CvsHist:Source/Source/prj/lib/CMDS/DimMakeDim.cpp
+Description: 	Implementation of DIMTFAC.
+Comments:	TaL77887
+File by File:
+	*	CvsHist:Source/Source/prj/lib/CMDS/dimensions.h
+		Two variables added in cmd_dimeparlink structure -dimfontheight and dimtfac. 
+		Here they are also initialsed to their default values. Since these variables were 		required in more than one function and needed some calculations to calculate 		their value, these were added in plink structure. As this is global structure and 		accessed from everywhere without modification of any function declaration. These 		variables are initialed in DimMakeDim.cpp
+	*	CvsHist:Source/Source/prj/lib/CMDS/DimMakeDim.cpp
+		Added two static function declaration and defination in DimMakeDim.cpp
+		static sds_real getdimfontheight(db_drawing *flp);
+		static sds_real calculateDIMTFAC(sds_real dimfontheigth);
+		These functions are used to calculate the font height of text used in dimension 			style. This font height is used in calculation of dimtfac. Value of dimtfac 		depends on DIMTXT or font height. If font height is not zero then its taken in 		consideration for dimtfac and dimtxt is ignored.
+		So formula for DIMTFAC value is
+		if ( dimfontheigth == 0 )
+			dimtfac = DIMTXT * DIMSCALE * DIMTFAC;
+		else
+			dimtfac = dimfontheigth * DIMSCALE * DIMTFAC;
+		This dimtfac is calculated only when DIMTOL, DIMLIM or DIMALT is ON.IN other 				cases we need not calculate as effect of DIMTFAC will not be see.		
+	*	CvsHist:Source/Source/prj/lib/CMDS/dimensions.cpp
+		This is the main file where the code is present for DIMTFAC implementation. 		Actaully code is divided in two places for Tolerance and for fractional stack. 		The part for fractional stack was that previously font hieght was kept 1 		irrespective of DIMTFAC. Now value of DIMTFAC is placed eg
+		Previous
+		stackedFractions1[] = "\\A1;%s%s{\\H1.000000x;\\S%s/%s;}\""/*DNT*/,
+		Now 
+		stackedFractions1[] = "\\A1;%s%s{\\H%f;\\S%s/%s;}\""/*DNT*/,
+		We had to change the code at lot of places but our only concern was to use 		DIMTFAC was font height.
+		We did modify the following line as there was one bug where the size of "[" was 		not updated properly.
+		if ((plinkvar[DIMTOL].dval.ival || plinkvar[DIMLIM].dval.ival)  && !tolsAreSame) 
+----------------------------------------------------------------------------------------------
+				

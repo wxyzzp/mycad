@@ -1,0 +1,40 @@
+
+--------------------------------------------------------------------------------
+File Name:	CYB_72003_1.txt
+Date:		05-05-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:72003
+Affected files:	
+		CvsHist:Source/prj/ICAD/icadboundarydia.cpp
+Description:	BHATCH "seed point" picking should ignore running OSNAPs like ACAD (else wrong points get 			picked)
+		
+Comments:	TaL78003
+
+
+File by File:	
+	*	CvsHist:Source/prj/ICAD/icadboundarydia.cpp
+		
+		when picking point for select area option of bhatch, it should not consider the osnap settings.
+		the settings are stored in "OSMODE" system variable.
+		To solve the problem , I have
+		1. stored the osmode value in a temporary variable.and 
+		2. set the  osmode value to 0 before picking points for bhatch.
+		3. finally reset the osmode value stored in temporary variable using setvar
+
+		CODE: [
+			//Bugzilla No 72003 06-05-2002 [
+			struct resbuf rb;
+			sds_getvar("OSMODE"/*DNT*/,&rb);
+			int prevmode=rb.resval.rint;
+			rb.resval.rint=0;
+			sds_setvar("OSMODE",&rb);
+			PickPoints(hatchDia, hatchBuilder, firstPickPoints, ptNormal);
+			rb.resval.rint=prevmode;
+			sds_setvar("OSMODE",&rb);
+			//Bugzilla No 72003 06-05-2002  ]
+
+		CODE:]
+
+
+--------------------------------------------------------------------------------		

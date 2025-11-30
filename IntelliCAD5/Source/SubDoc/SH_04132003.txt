@@ -1,0 +1,31 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04132003.txt
+Date:		04-13-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Changed files: 	
+		Source/ThirdParty/geo/array.cpp?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/array.h?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/array2d.cpp?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/array2d.h?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/ctrlpts.cpp?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/ctrlpts.h?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/knots.cpp?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/knots.h?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/ptarray.h?rev=1.2.8.1
+		Source/ThirdParty/geo/vector.cpp?rev=1.1.2.2
+		Source/ThirdParty/geo/vector.h?rev=1.1.2.2
+
+Description:	This submission added the copy constructor and assign
+                operator to array classes and CControlPoints and CKnots
+                classes to fix the problems.
+                
+Comments        None.
+

@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78182_1.txt
+Date:		03-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78182
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+Description: 	Dimedit command sets wrong value for the dxf 70 of a dimension.
+Comments:	TaL78182
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+		Replaced statement "pCurPair->resval.rint ^= DIM_TEXT_MOVED;" by  "pCurPair->resval.rint &= ~DIM_TEXT_MOVED;".
+--------------------------------------------------------------------------------
+

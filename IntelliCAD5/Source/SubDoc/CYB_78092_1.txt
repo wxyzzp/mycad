@@ -1,0 +1,27 @@
+
+--------------------------------------------------------------------------------
+File Name:	CYB_78092_1.txt
+Date:		29-04-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:78092
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/insert.cpp
+Description:	xref block move on explode.
+	
+Comments:	TaL78092
+
+File by File:	
+	*	CvsHist:Source/CMDS/insert.cpp
+	The root cause of the problem was that of block insertion point value whenever a drawing is xrefed into another drawing (especially when the ucs/origin of the drawing to be xrefed is changed)
+	The sentence 
+	SDS_getvar(NULL,DB_QINSBASE,&rb,xrefdp,&SDS_CURCFG,&SDS_CURSES);
+
+was getting the insertion point from the xrefed drawing without converting it to the proper value (wcs)
+
+I have replaced this sentence with
+db_qgetvar(DB_QINSBASE  ,xrefdp->ret_headerbuf(),rb.resval.rpoint,DB_3DPOINT,0);
+
+which will take care of conversion of particular point into apropriate coordinate system.
+
+--------------------------------------------------------------------------------		

@@ -1,0 +1,63 @@
+--------------------------------------------------------------------------------
+File:		CYB_78382_1.txt
+Date:		25-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78382
+Added files:
+			Source/res/IE_BWL_frame.bmp?rev=1.1.2.1 
+			Source/res/IE_BWL_image.bmp?rev=1.1.2.1 
+			Source/res/IE_BWL_manage.bmp?rev=1.1.2.1 
+			Source/res/IE_BWL_order.bmp?rev=1.1.2.1 
+			Source/res/IE_BWL_qualty.bmp?rev=1.1.2.1 
+			Source/res/IE_BWL_trans.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_adjust.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_frame.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_image.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_manage.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_order.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_qualty.bmp?rev=1.1.2.1 
+			Source/res/IE_BWS_trans.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_adjust.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_frame.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_image.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_manage.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_order.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_qualty.bmp?rev=1.1.2.1 
+			Source/res/IE_LG_trans.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_adjust.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_frame.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_image.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_manage.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_order.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_qualty.bmp?rev=1.1.2.1 
+			Source/res/IE_SM_trans.bmp?rev=1.1.2.1 
+
+Affected files:			
+			Source/prj/ICAD/IcadRes.h?rev=1.21.4.4 
+			Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.4 
+			Eng-us/icad.rc2?rev=1.63.4.8 
+			Eng-us/IcadRes.rc?rev=1.28.4.7 
+			Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.4.1
+Description:	Hardcoding of toolbars and Menus for ImageEnabler in IntelliCAD sourcecode.
+Comments:	TaL78382
+Problem Analysis: 
+		Hardcoding of toolbars and Menus for ImageEnabler in IntelliCAD sourcecode.
+Problem Solution:
+		Study the existing menu and toolbar and then implement them for Image Enabler.
+File_BY_FILE:
+	*		Source/prj/ICAD/IcadRes.h 
+			Declaration of BITMAP id. 
+
+	*		Source/prj/ICAD/res/icadrc2.h 
+			Declaration of id's used in IcadMenuTBDef.h		
+	
+	*		Eng-us/icad.rc2 
+			Resource Strings for ToolTip and Help String.
+
+	*		Eng-us/IcadRes.rc 
+			Path set for BITMAPS for bitmap ID.
+
+	*		Source/prj/ICAD/IcadMenuTBDef.H
+			Array entires for for Toolbar and menu entry.
+--------------------------------------------------------------------------------

@@ -1,0 +1,702 @@
+Lisp acceptance test run at 07-20-1998 04:07:00p on version P.0.31
+
+Starting tests...
+
+Math tests:
+
+--- plus ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0
+zerominint = -2147483648
+minzeroint = -2147483648
+zeromaxint = 2147483647
+maxzeroint = 2147483647
+oneminint = -2147483647
+minoneint = -2147483647
+onemaxint = -2147483648
+maxoneint = -2147483648
+zerominp1int = 2147483647
+minp1zeroint = 2147483647
+zeromaxp1int = -2147483648
+maxp1zeroint = -2147483648
+oneminp1int = -2147483648
+minp1oneint = -2147483648
+onemaxp1int = -2147483647
+maxp1oneint = -2147483647
+plusedgeint = 214748367
+plusoverint = 214748368
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 0.0000
+zeromaxreal = 9.9000E+99
+maxzeroreal = 9.9000E+99
+oneminreal = 1.0000
+minonereal = 1.0000
+onemaxreal = 9.9000E+99
+maxonereal = 9.9000E+99
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1.0000
+minp1onereal = 1.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 1.7970E+99
+plusoverreal = 0.0000E+99
+icadhlp1 = 13
+icadhlp2 = 15.2500
+icadhlp3 = 54
+icadhlp4 = 0
+icadhlp5 = 2
+acadhlp1 = 3
+acadhlp2 = 10.5000
+acadhlp3 = 10.0000
+
+--- minus ---
+
+noargs = 0
+zero = 0
+nine = -9
+minuszero = 0
+minusnine = 9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0
+zerominint = -2147483648
+minzeroint = -2147483648
+zeromaxint = -2147483647
+maxzeroint = 2147483647
+oneminint = -2147483647
+minoneint = 2147483647
+onemaxint = -2147483646
+maxoneint = 2147483646
+zerominp1int = -2147483647
+minp1zeroint = 2147483647
+zeromaxp1int = -2147483648
+maxp1zeroint = -2147483648
+oneminp1int = -2147483646
+minp1oneint = 2147483646
+onemaxp1int = -2147483647
+maxp1oneint = 2147483647
+plusedgeint = -1
+plusoverint = 0
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 0.0000
+zeromaxreal = -9.9000E+99
+maxzeroreal = 9.9000E+99
+oneminreal = 1.0000
+minonereal = -1.0000
+onemaxreal = -9.9000E+99
+maxonereal = 9.9000E+99
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1.0000
+minp1onereal = -1.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = -1.0000E+99
+plusoverreal = 0.0000
+icadhlp1 = 3
+icadhlp2 = 11
+icadhlp3 = -5
+icadhlp4 = 0
+icadhlp5 = -2
+icadhlp6 = 3.0000
+acadhlp1 = 10
+acadhlp2 = 10.0000
+acadhlp3 = 7.5000
+acadhlp4 = -8
+
+--- times ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0
+zerominint = 0
+minzeroint = 0
+zeromaxint = 0
+maxzeroint = 0
+oneminint = -2147483648
+minoneint = -2147483648
+onemaxint = 2147483647
+maxoneint = 2147483647
+zerominp1int = 0
+minp1zeroint = 0
+zeromaxp1int = 0
+maxp1zeroint = 0
+oneminp1int = 2147483647
+minp1oneint = 2147483647
+onemaxp1int = -2147483648
+maxp1oneint = -2147483648
+plusedgeint = 214748366
+plusoverint = 214748368
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 0.0000
+zeromaxreal = 0.0000
+maxzeroreal = 0.0000
+oneminreal = 0.0000
+minonereal = 0.0000
+onemaxreal = 9.9000E+99
+maxonereal = 9.9000E+99
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 0.0000
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 1.7960E+99
+plusoverreal = 0.0000E+99
+icadhlp1 = 77
+icadhlp2 = 230.4000
+icadhlp3 = 23040.0000
+icadhlp4 = 0
+icadhlp5 = 2
+icadhlp6 = -6
+acadhlp1 = 6
+acadhlp2 = 6.0000
+acadhlp3 = 24.0000
+acadhlp4 = -13.5000
+acadhlp5 = 3
+
+--- divide ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+***Error (zerozeroint): divide by zero
+zerominint = 0
+***Error (minzeroint): divide by zero
+zeromaxint = 0
+***Error (maxzeroint): divide by zero
+oneminint = 0
+minoneint = -2147483648
+onemaxint = 0
+maxoneint = 2147483647
+zerominp1int = 0
+***Error (minp1zeroint): divide by zero
+zeromaxp1int = 0
+***Error (maxp1zeroint): divide by zero
+oneminp1int = 0
+minp1oneint = 2147483647
+onemaxp1int = 0
+maxp1oneint = -2147483648
+plusedgeint = 0
+plusoverint = 1
+***Error (zerozeroreal1): divide by zero
+***Error (zerozeroreal2): divide by zero
+zerominreal = 0.0000
+***Error (minzeroreal): divide by zero
+zeromaxreal = 0.0000
+***Error (maxzeroreal): divide by zero
+oneminreal = 0.0000E+99
+minonereal = 0.0000
+onemaxreal = 0.0000
+maxonereal = 9.9000E+99
+***Error (zerominp1real): divide by zero
+***Error (minp1zeroreal): divide by zero
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+***Error (oneminp1real): divide by zero
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 0.9989
+plusoverreal = 1.0000
+icadhlp1 = 2
+icadhlp2 = 0.1000
+icadhlp3 = 120.0000
+icadhlp4 = 0
+icadhlp5 = -2
+icadhlp6 = 0
+icadhlp7 = 0.5000
+acadhlp1 = 50
+acadhlp2 = 50.0000
+acadhlp3 = 2.5000
+acadhlp4 = 2
+acadhlp5 = 4
+
+--- one plus ---
+
+***Error (noargs): too few arguments
+zero = 1
+nine = 10
+minuszero = 1
+minusnine = -8
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 1
+minint = -2147483647
+maxint = -2147483648
+minp1int = -2147483648
+maxp1int = -2147483647
+zeroreal = 1.0000
+minreal = 1.0000
+maxreal = 9.9000E+99
+minp1real = 1.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 23
+icadhlp2 = 6.0200
+icadhlp3 = -35
+acadhlp1 = 6
+acadhlp2 = -16.5000
+
+--- one minus ---
+
+***Error (noargs): too few arguments
+zero = -1
+nine = 8
+minuszero = -1
+minusnine = -10
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = -1
+minint = 2147483647
+maxint = 2147483646
+minp1int = 2147483646
+maxp1int = 2147483647
+zeroreal = -1.0000
+minreal = -1.0000
+maxreal = 9.9000E+99
+minp1real = -1.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 7
+icadhlp2 = 8.7500
+icadhlp3 = -19
+acadhlp1 = 4
+acadhlp2 = -18.5000
+
+--- abs ---
+
+***Error (noargs): too few arguments
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = 9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0
+minint = -2147483648
+maxint = 2147483647
+minp1int = 2147483647
+maxp1int = -2147483648
+zeroreal = 0.0000
+minreal = 0.0000
+maxreal = 9.9000E+99
+minp1real = 0.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 56
+icadhlp2 = 2.3000
+icadhlp3 = 49
+acadhlp1 = 100
+acadhlp2 = 100
+acadhlp3 = 99.2500
+
+--- atan ---
+
+***Error (noargs): too few arguments
+zero = 0.0000
+pi = 72.3432
+nine = 83.6598
+minuszero = 0.0000
+minusnine = 276.3402
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0.0000
+zerominint = 180.0000
+minzeroint = 270.0000
+zeromaxint = 0.0000
+maxzeroint = 90.0000
+oneminint = 180.0000
+minoneint = 270.0000
+onemaxint = 0.0000
+maxoneint = 90.0000
+zerominp1int = 0.0000
+minp1zeroint = 90.0000
+zeromaxp1int = 180.0000
+maxp1zeroint = 270.0000
+oneminp1int = 0.0000
+minp1oneint = 90.0000
+onemaxp1int = 180.0000
+maxp1oneint = 270.0000
+plusedgeint = 45.0000
+plusoverint = 45.0000
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 90.0000
+zeromaxreal = 0.0000
+maxzeroreal = 90.0000
+oneminreal = 90.0000
+minonereal = 0.0000
+onemaxreal = 0.0000
+maxonereal = 90.0000
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 90.0000
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 44.9681
+plusoverreal = 45.0000
+icadhlp1 = 14.0362
+icadhlp2 = 296.5651
+icadhlp3 = 53.1301
+acadhlp1 = 26.5651
+acadhlp2 = 45.0000
+acadhlp3 = 315.0000
+acadhlp4 = 315.0000
+acadhlp5 = 315.0000
+acadhlp6 = 315.0000
+
+--- cos ---
+
+***Error (noargs): too few arguments
+zero = 57.2958
+pi = 302.7042
+nine = 307.7961
+minuszero = 57.2958
+minusnine = 307.7961
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 57.2958
+minint = 13.6259
+maxint = 320.5326
+minp1int = 320.5326
+maxp1int = 13.6259
+zeroreal = 57.2958
+minreal = 57.2958
+maxreal = 0.0000
+minp1real = 57.2958
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 302.7042
+icadhlp2 = 358.3270
+icadhlp3 = 0.0000
+acadhlp1 = 57.2958
+acadhlp2 = 302.7042
+
+--- expt ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+***Error (zerozeroint): function undefined for argument
+***Error (zerominint): function undefined for argument
+minzeroint = 1
+zeromaxint = 0
+maxzeroint = 1
+oneminint = 0
+minoneint = -2147483648
+onemaxint = 1
+maxoneint = 2147483647
+zerominp1int = 0
+minp1zeroint = 1
+***Error (zeromaxp1int): function undefined for argument
+maxp1zeroint = 1
+oneminp1int = 1
+minp1oneint = 2147483647
+onemaxp1int = 0
+maxp1oneint = -2147483648
+plusedgeint = 355014849
+plusoverint = 0
+***Error (zerozeroreal1): function undefined for argument
+***Error (zerozeroreal2): function undefined for argument
+***Error (zerominreal): function undefined for argument
+***Error (minzeroreal): function undefined for argument
+zeromaxreal = 0.0000
+maxzeroreal = 1.0000
+oneminreal = 1.0000
+minonereal = 0.0000
+onemaxreal = 1.0000
+maxonereal = 9.9000E+99
+***Error (zerominp1real): function undefined for argument
+***Error (minp1zeroreal): function undefined for argument
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1.0000
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 0.0000E+99
+plusoverreal = 0.0000E+99
+icadhlp1 = 25
+icadhlp2 = 113.3799
+acadhlp1 = 16
+acadhlp2 = 9.0000
+
+--- fix ---
+
+***Error (noargs): too few arguments
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0
+minint = -2147483648
+maxint = 2147483647
+minp1int = 2147483647
+maxp1int = -2147483648
+zeroreal = 0
+minreal = 0
+maxreal = 9.9000E+99
+minp1real = 0
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 3
+icadhlp2 = 3
+icadhlp3 = 7
+acadhlp1 = 3
+acadhlp2 = 3
+
+--- rem ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+***Error (zerozeroint): divide by zero
+zerominint = 0
+***Error (minzeroint): divide by zero
+zeromaxint = 0
+***Error (maxzeroint): divide by zero
+oneminint = 1
+minoneint = 0
+onemaxint = 1
+maxoneint = 0
+zerominp1int = 0
+***Error (minp1zeroint): divide by zero
+zeromaxp1int = 0
+***Error (maxp1zeroint): divide by zero
+oneminp1int = 1
+minp1oneint = 0
+onemaxp1int = 1
+maxp1oneint = 0
+plusedgeint = 107374183
+plusoverint = 0
+***Error (zerozeroreal1): divide by zero
+***Error (zerozeroreal2): divide by zero
+zerominreal = 0.0000
+***Error (minzeroreal): divide by zero
+zeromaxreal = 0.0000
+***Error (maxzeroreal): divide by zero
+oneminreal = 0.0000
+minonereal = 0.0000
+onemaxreal = 1.0000
+maxonereal = 0.0000
+***Error (zerominp1real): divide by zero
+***Error (minp1zeroreal): divide by zero
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+***Error (oneminp1real): divide by zero
+minp1onereal = 0.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+plusedgereal = 8.9800E+99
+plusoverreal = 0.0000
+icadhlp1 = 1
+icadhlp2 = 0
+icadhlp3 = 4.0000
+icadhlp4 = 2.0000
+icadhlp5 = 2
+icadhlp6 = 2.0000
+icadhlp7 = -4.0000
+icadhlp8 = -10.0000
+icadhlp9 = -4.0000
+***Error (icadhlp10): divide by zero
+acadhlp1 = 6
+acadhlp2 = 12.0000
+acadhlp3 = 5
+acadhlp4 = 5
+acadhlp5 = 5
+
+--- sin ---
+
+***Error (noargs): too few arguments
+zero = 0.0000
+pi = 0.0000
+nine = 0.4121
+minuszero = 0.0000
+minusnine = -0.4121
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0.0000
+minint = 0.9713
+maxint = -0.7249
+minp1int = -0.7249
+maxp1int = 0.9713
+zeroreal = 0.0000
+minreal = 0.0000
+maxreal = 9.9000E+99
+minp1real = 0.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 0.0000
+icadhlp2 = 1.0000
+icadhlp3 = 0.8415
+icadhlp4 = 0.0000
+acadhlp1 = 0.8415
+acadhlp2 = 0.0000
+
+--- sqrt ---
+
+***Error (noargs): too few arguments
+zero = 0.0000
+nine = 3.0000
+minuszero = 0.0000
+***Error (minusnine): function undefined for argument
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0.0000
+***Error (minint): function undefined for argument
+maxint = 46340.9500
+minp1int = 46340.9500
+***Error (maxp1int): function undefined for argument
+zeroreal = 0.0000
+minreal = 0.0000
+maxreal = 9.9499E+99
+minp1real = 0.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 7.0000
+icadhlp2 = 1.7725
+acadhlp1 = 2.0000
+acadhlp2 = 1.4142
+Lisp acceptance test completed at 07-20-1998 04:09:30p on version P.0.31

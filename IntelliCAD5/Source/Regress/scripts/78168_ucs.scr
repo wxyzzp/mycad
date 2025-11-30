@@ -1,0 +1,20 @@
+logfilename log\78168_ucs.log
+logfileon
+;_________ucs_save_
+ucs
+o
+1,1
+ucs
+s   u cs1   
+;(tblnext "ucs" T)
+(if (/= (cdr (assoc 2 (tblnext "ucs"))) "U CS1") (alert "rename err") (princ "OK"))
+;_________ucs_restore_
+ucs
+w
+ucs
+r   u cs1   
+;__________
+dxfout output_dxf\78168_ucs.dxf
+6
+quit
+y

@@ -1,0 +1,75 @@
+logfilename log\attdef_options.log
+logfileon
+;________
+color 1
+;________1
+attdef
+f
+f
+f
+f
+h
+h
+h
+d
+d
+d
+v
+v
+v
+pro
+attdef_name_1
+attdef_prompt_1
+attdef_default_text_1
+0,0
+
+
+color 2
+;________2
+attdef
+f
+pro
+attdef_name_2
+attdef_prompt_2
+2,0
+.3
+
+color 3
+;________3
+attdef
+f
+h
+pro
+attdef_name_3
+attdef_prompt_3
+attdef_default_text_3
+4,0
+.18
+15
+color 4
+;________4
+attdef
+d
+pro
+attdef_name_4
+attdef_prompt_4
+attdef_default_text_4
+0,1
+.2
+-15
+color 5
+;________5
+attdef
+v
+pro
+attdef_name_5
+attdef_prompt_5
+attdef_default_text_5
+2,1
+.5
+345
+;_________
+dxfout output_dxf\attdef_options.dxf
+6
+quit
+y

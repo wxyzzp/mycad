@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_76265_1.txt
+Date:		09-09-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:76265
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/scale_and_rotate.cpp
+Description: 	Rotate does not consider AUNITS variable.
+Comments:	TaL76265
+File by File:	
+*		Source/prj/lib/CMDS/scale_and_rotate.cpp
+		Changed the SDS_angtof_convert function to take into account the AUNITS variable. 
+--------------------------------------------------------------------------------

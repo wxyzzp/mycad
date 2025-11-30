@@ -1,0 +1,691 @@
+Notes for Build_48:
+
+Build Date: May 28, 2004.
+To reproduce this build, checkout tag Build_48.  This produces a non-committable working area.  If you want to commit changes made to this work area, please update IntelliCAD to R40_Dev (cvs update -cd R40_Dev or refer to checkin_process.doc) and proceed with your checkin process.
+
+CHANGED FILES:
+M	2004-05-10:09:56	cyberage	1.5.6.1	IntelliCAD/Source/prj/lib/LISP/datahome.cpp
+M	2004-05-10:09:56	cyberage	1.14.6.2	IntelliCAD/Source/prj/lib/LISP/interpreter.cpp
+M	2004-05-10:09:56	cyberage	1.4.12.1	IntelliCAD/Source/prj/lib/LISP/LISP.H
+M	2004-05-10:09:56	cyberage	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/LISP/lispvars.h
+M	2004-05-10:09:56	cyberage	1.18.6.12	IntelliCAD/Source/prj/ICAD/icadmain.cpp
+M	2004-05-10:09:56	cyberage	1.7.10.10	IntelliCAD/Source/prj/lib/SDS/sds_misc.cpp
+M	2004-05-10:09:56	cyberage	1.25.6.10	IntelliCAD/Source/prj/lib/CMDS/todo.cpp
+M	2004-05-10:10:07	cyberage	1.8.6.5	IntelliCAD/Source/ThirdParty/DCL_Components/Source/ImageButton.cpp
+M	2004-05-10:10:07	cyberage	1.4.6.4	IntelliCAD/Source/ThirdParty/DCL_Components/Include/ImageButton.h
+M	2004-05-10:10:09	cyberage	1.25.4.22	IntelliCAD/Source/prj/lib/DB/drawing.cpp
+M	2004-05-10:10:09	cyberage	1.1.2.28	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-10:10:09	cyberage	1.48.4.51	IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+M	2004-05-10:10:10	cyberage	1.28.6.27	IntelliCAD/Source/prj/ICAD/IcadApp.cpp
+M	2004-05-10:10:10	cyberage	1.9.6.3	IntelliCAD/Source/prj/ICAD/IcadApp.h
+M	2004-05-10:10:17	cyberage	1.17.6.18	IntelliCAD/Source/prj/lib/CMDS/cmds3.cpp
+M	2004-05-10:10:30	cyberage	1.4.6.7	IntelliCAD/Source/prj/lib/CMDS/circle.cpp
+M	2004-05-10:10:35	cyberage	1.1.2.4	IntelliCAD/Source/prj/lib/DB/DbPlotSettings.h
+M	2004-05-10:10:35	cyberage	1.2.8.13	IntelliCAD/Source/prj/ICAD/printdialog.cpp
+M	2004-05-10:10:35	cyberage	1.2.10.6	IntelliCAD/Source/prj/ICAD/printdialog.h
+M	2004-05-10:10:35	cyberage	1.2.10.10	IntelliCAD/Source/prj/ICAD/printscaleviewtab.cpp
+M	2004-05-10:10:35	cyberage	1.1.1.1.12.7	IntelliCAD/Source/prj/ICAD/printscaleviewtab.h
+M	2004-05-10:11:19	cyberage	1.8.6.4	IntelliCAD/Source/prj/ICAD/icadinsertdia.cpp
+M	2004-05-10:11:19	cyberage	1.40.6.21	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+A	2004-05-11:06:12	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78756_1.txt
+A	2004-05-11:06:12	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78751_1.txt
+A	2004-05-11:06:12	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78663_1.txt
+A	2004-05-11:06:12	cyberage	1.1.2.1	IntelliCAD/Source/Regress/SDS/78663.dll
+A	2004-05-11:10:36	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78745_1.txt
+A	2004-05-11:10:36	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78743_1.txt
+A	2004-05-11:10:36	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78653_1.txt
+M	2004-05-14:20:21	davel	1.2.10.3	IntelliCAD/Source/ThirdParty/DCL_Components/Source/Tree.cpp
+M	2004-05-19:00:26	davel	1.40.6.22	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+M	2004-05-19:00:39	davel	1.1.1.1.4.3	Arch-T/archt-intellicad/Dev/Proj/ArchT/Current/REPORTS.cpp
+M	2004-05-19:17:33	davel	1.1.1.1.4.1	Arch-T/archt-intellicad/Dev/Proj/ArchT/Current/RailsFuncs.H
+M	2004-05-19:17:33	davel	1.1.1.1.4.1	Arch-T/archt-intellicad/Dev/Proj/ArchT/Current/rails.cpp
+M	2004-05-09:09:58	denisp	1.17.6.9	IntelliCAD/Source/prj/lib/CMDS/block.cpp
+M	2004-05-09:09:58	denisp	1.20.4.17	IntelliCAD/Source/prj/lib/CMDS/cmds.h
+M	2004-05-09:09:58	denisp	1.1.2.25	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+A	2004-05-09:09:58	denisp	1.1.2.1	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.cpp
+A	2004-05-09:09:58	denisp	1.1.2.1	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.h
+M	2004-05-09:09:58	denisp	1.8.6.11	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-05-09:10:01	denisp	1.7.6.3	IntelliCAD/Source/prj/ICAD/DocAutoSds.cpp
+M	2004-05-09:10:01	denisp	1.33.6.17	IntelliCAD/Source/prj/ICAD/IcadExplorer.cpp
+M	2004-05-09:10:01	denisp	1.30.4.29	IntelliCAD/Source/prj/ICAD/icadview.cpp
+M	2004-05-09:10:01	denisp	1.1.2.3	IntelliCAD/Source/prj/ICAD/IntCmds.cpp
+M	2004-05-09:10:02	denisp	1.21.4.10	IntelliCAD/Source/prj/make/cmds.dsp
+M	2004-05-13:19:22	denisp	1.20.4.18	IntelliCAD/Source/prj/lib/CMDS/cmds.h
+M	2004-05-13:19:22	denisp	1.1.2.2	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.cpp
+M	2004-05-13:19:22	denisp	1.4.12.1	IntelliCAD/Source/prj/lib/CMDS/paste.cpp
+M	2004-05-21:05:46	denisp	1.63.4.63	IntelliCAD/Eng-us/icad.rc2
+M	2004-05-21:05:48	denisp	1.59.4.45	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-05-21:05:51	denisp	1.1.2.26	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-05-21:05:51	denisp	1.1.2.10	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+M	2004-05-21:05:51	denisp	1.1.2.3	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.cpp
+M	2004-05-21:05:51	denisp	1.1.2.2	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.h
+A	2004-05-23:14:55	denisp	1.1.2.1	IntelliCAD/Source/prj/lib/CMDS/CloneHelper.cpp
+A	2004-05-23:14:55	denisp	1.1.2.1	IntelliCAD/Source/prj/lib/CMDS/CloneHelper.h
+M	2004-05-23:14:55	denisp	1.1.2.4	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.cpp
+M	2004-05-23:14:55	denisp	1.1.2.3	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.h
+M	2004-05-23:14:57	denisp	1.21.4.11	IntelliCAD/Source/prj/make/cmds.dsp
+M	2004-05-23:15:01	denisp	1.1.2.27	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-05-23:15:03	denisp	1.20.6.12	IntelliCAD/Source/prj/ICAD/IcadApi.h
+M	2004-05-23:15:03	denisp	1.22.4.12	IntelliCAD/Source/prj/ICAD/icadwndaction.cpp
+M	2004-06-01:08:46	denisp	1.33.6.18	IntelliCAD/Source/prj/ICAD/IcadExplorer.cpp
+M	2004-06-01:08:46	denisp	1.1.2.6	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+M	2004-06-01:08:49	denisp	1.1.2.2	IntelliCAD/Source/prj/lib/CMDS/CloneHelper.cpp
+M	2004-06-01:08:49	denisp	1.1.2.2	IntelliCAD/Source/prj/lib/CMDS/CloneHelper.h
+M	2004-06-01:08:49	denisp	1.20.4.20	IntelliCAD/Source/prj/lib/CMDS/cmds.h
+M	2004-06-01:08:49	denisp	1.1.2.28	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-06-01:08:49	denisp	1.1.2.11	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+M	2004-06-01:08:49	denisp	1.6.6.1	IntelliCAD/Source/prj/lib/CMDS/copy_and_move.cpp
+M	2004-06-01:08:49	denisp	1.4.12.2	IntelliCAD/Source/prj/lib/CMDS/paste.cpp
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/DWGdirect.chm
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiRasterImage.cpp
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiRasterImage.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExHostAppServices.cpp
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExHostAppServices.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.cpp
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExUndoController.cpp
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExUndoController.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/OdFileBuf.cpp
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/OdFileBuf.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisData.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisExport.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisFile.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisRenderer.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/AfTypeVer.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/BoolArray.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/CAseDLPNTableRecord.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/CmColor.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/CmColorArray.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/CmEntityColorArray.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DDPackageVersion.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DDVersion.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DD_GL.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Db2dPolyline.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3dPolyline.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3dSolid.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbArcAlignedText.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAudit.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockReference.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBody.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbCommandContext.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbCurve.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDatabase.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDatabaseReactor.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimStyleTableRecord.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimension.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbEntity.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbExtents.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbField.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFieldValue.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGraph.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHatch.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHyperlink.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbIdMapping.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerTable.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerTableRecord.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLeader.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLine.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLinetypeTableRecord.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMText.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMaterial.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMline.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMlineStyle.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObject.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObjectId.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbOle2Frame.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbOleFrame.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlotSettings.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlotSettingsValidator.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyFaceMesh.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolygonMesh.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyline.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbProxyEntity.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterImage.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterImageDef.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRay.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRegion.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSecurity.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSortentsTable.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpatialFilter.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpline.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSymUtl.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSystemServices.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTable.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTableStyle.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTextStyleTableRecord.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbXline.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DebugStuff.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DoubleArray.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/DynamicLinker.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/EdCmd.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/EdCommandContext.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Editor.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/EditorImpl.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Entities.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/ErrorDefs.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/GiStack.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/HatchPatternManager.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Int16Array.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Int64.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Int64Array.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Int8Array.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/LyLayerFilter.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/MemoryStream.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/MessageDefs.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/ModelerGeometry.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Objects.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdAlloc.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdAllocExport.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdArray.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdErrorContext.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdErrorContextWithId.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdHeap.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdMemory.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdMutex.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/OdPlatform.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdPlatformSettings.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdPlatformStreamer.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdRound.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdString.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaCommon.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaDefs.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaSTL.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit_i.c
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX_i.c
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaxMath.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OleStorage.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RawByteData.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RefCountImpl.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDictionary.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDispatchImpl.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDynamicModule.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxEvent.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxIterator.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/RxModule.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxModuleDefs.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxObject.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxObjectImpl.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxVariant.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxVariantValue.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/SmartPtr.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/StaticRxObject.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/StringArray.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/SysVarDefs.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/ThumbnailImage.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/UInt64Array.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX_i.c
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/dlldata.c
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrep.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepComplexTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepEdgeTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepFaceTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepShellTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepVertexTraverser.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrCoEdge.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrComplex.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrComplexShellTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdge.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdgeCoEdgeTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdgeLoopTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEntity.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEnumToString.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEnums.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrExport.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrFace.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrFaceLoopTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoop.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoopCoEdgeTraverser.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoopEdgeTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoopVertexTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrShell.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrShellFaceTraverser.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrSystemInternals.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertex.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertexEdgeTraverser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertexLoopTraverser.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Ed/EdCommandStack.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Ed/EdUserIO.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/CmColorArray.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/CmEntityColorArray.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCircArc3d.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCone.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCylinder.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipArc3d.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCone.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCylinder.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEntity2d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEntity3d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExtents2d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExtents3d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeFiler.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeKnotVector.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLine3d.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve2d.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve3d.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbSurface.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePlanarEnt.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePlane.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeScale2d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeShell.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSphere.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSurface.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeTol.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeTorus.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/Gi.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiAbstractDrawObject.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiBaseDrawObject.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiBaseTraits.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiBaseVectorizer.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiCommonDraw.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiContextForDbDatabase.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorGeometry.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorNode.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiEmptyGeometry.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiEnhancedMetafile.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiExtentser.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiGeometry.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiGeometrySimplifier.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetype.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetypeGenerator.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiMaterial.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiMaterialData.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiMetafile.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiNonEntityTraits.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiOrthoClipper.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiPolyline.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiRasterImage.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSegTaker.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiShellFaceIterator.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiShellFaceWithHolesIterator.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSmartDrawObject.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSubEntityTraitsData.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiUtils.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiViewportGeometry.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/OdPolyPolygon3d.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/Gs.h
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBase.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseModel.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseOpenGL.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseVectorizer.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsDeviceManager.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsLight.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsOpenGLVectorizer.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/PlotStyle.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ve/AveDefs.h
+M	2004-05-11:11:35	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ve/AveLight.h
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Wr/wrExport.h
+M	2004-05-11:11:35	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Wr/wrTriangulationParams.h
+R	2004-05-11:11:35	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Acis.lib
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib
+M	2004-05-11:11:35	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Alloc.lib
+A	2004-05-11:11:35	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Br.lib
+M	2004-05-11:11:36	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib
+M	2004-05-11:11:36	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib
+M	2004-05-11:11:36	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib
+M	2004-05-11:11:37	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib
+M	2004-05-11:11:37	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib
+M	2004-05-11:11:37	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib
+R	2004-05-11:11:37	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/ExCustObjs.lib
+A	2004-05-11:11:37	markba	1.1.2.1	IntelliCAD/Source/Regress/scripts/template.lst
+A	2004-05-11:11:37	markba	1.1.2.1	IntelliCAD/Source/Regress/Regression.exe
+A	2004-05-11:11:37	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-34.txt
+M	2004-05-11:11:37	markba	1.2.6.2	IntelliCAD/Source/prj/lib/DB/acad_proxy_entity.cpp
+M	2004-05-11:11:37	markba	1.1.1.1.14.4	IntelliCAD/Source/prj/lib/DB/acad_proxy_object.cpp
+M	2004-05-11:11:37	markba	1.13.6.21	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-05-11:11:37	markba	1.17.6.15	IntelliCAD/Source/prj/lib/DB/handitem.cpp
+M	2004-05-11:11:37	markba	1.1.1.1.14.3	IntelliCAD/Source/prj/lib/DB/layer_index.cpp
+M	2004-05-11:11:37	markba	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/DB/object_ptr.cpp
+M	2004-05-11:11:37	markba	1.11.4.13	IntelliCAD/Source/prj/lib/DB/objects.h
+M	2004-05-11:11:37	markba	1.2.4.3	IntelliCAD/Source/prj/lib/DB/spatial_index.cpp
+M	2004-05-11:11:37	markba	1.2.12.3	IntelliCAD/Source/prj/lib/DB/vbaproject.cpp
+M	2004-05-11:11:37	markba	1.1.1.1.14.3	IntelliCAD/Source/prj/lib/DB/wipeout.cpp
+M	2004-05-11:11:37	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-05-11:11:37	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+M	2004-05-11:11:37	markba	1.1.2.31	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-05-11:11:37	markba	1.1.2.29	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-11:11:37	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/DWGdirectReaderCrypt.h
+M	2004-05-11:11:37	markba	1.1.2.30	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-05-11:11:37	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriterCrypt.h
+M	2004-05-11:11:37	markba	1.1.2.8	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-05-11:11:37	markba	1.48.4.52	IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+M	2004-05-11:11:37	markba	1.1.2.3	IntelliCAD/Source/prj/make/ExServices.dsp
+M	2004-05-11:11:37	markba	1.13.4.22	IntelliCAD/Source/prj/make/db.dsp
+M	2004-05-11:23:35	markba	1.63.4.62	IntelliCAD/Eng-us/icad.rc2
+A	2004-05-11:23:35	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-35.txt
+M	2004-05-11:23:35	markba	1.1.1.1.12.4	IntelliCAD/Source/ThirdParty/geo/curve.cpp
+M	2004-05-11:23:35	markba	1.64.4.50	IntelliCAD/Source/prj/ICAD/icadapi.cpp
+M	2004-05-11:23:35	markba	1.2.6.3	IntelliCAD/Source/prj/lib/DB/acad_proxy_entity.cpp
+M	2004-05-11:23:35	markba	1.13.6.22	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-05-11:23:35	markba	1.1.2.32	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+A	2004-05-11:23:35	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.cpp
+A	2004-05-11:23:35	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.h
+M	2004-05-11:23:35	markba	1.13.4.23	IntelliCAD/Source/prj/make/db.dsp
+A	2004-05-13:18:48	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-36.txt
+M	2004-05-13:18:48	markba	1.9.6.12	IntelliCAD/Source/prj/ICAD/entityrenderer.cpp
+M	2004-05-13:18:48	markba	1.2.6.4	IntelliCAD/Source/prj/lib/DB/acad_proxy_entity.cpp
+M	2004-05-13:18:48	markba	1.13.6.23	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-05-13:18:48	markba	1.1.2.33	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-05-13:18:48	markba	1.1.2.30	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-13:18:48	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.cpp
+M	2004-05-13:18:48	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.h
+M	2004-05-15:20:00	markba	1.1.2.2	IntelliCAD/Source/Regress/Regression.exe
+A	2004-05-16:17:22	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-37.txt
+M	2004-05-16:17:22	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+M	2004-05-16:17:22	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.h
+M	2004-05-16:17:22	markba	1.1.2.34	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-05-16:17:22	markba	1.1.2.31	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-16:17:22	markba	1.1.2.31	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-05-16:17:22	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.cpp
+M	2004-05-16:17:22	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.h
+M	2004-05-16:17:22	markba	1.48.4.53	IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+M	2004-05-17:15:30	markba	1.1.2.3	IntelliCAD/Source/Regress/Regression.exe
+A	2004-05-17:15:30	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-38.txt
+M	2004-05-17:15:30	markba	1.1.2.32	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-17:15:30	markba	1.1.2.32	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+A	2004-05-24:13:02	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-39.txt
+M	2004-05-24:13:02	markba	1.33.4.17	IntelliCAD/Source/prj/lib/DB/db1.cpp
+M	2004-05-24:13:02	markba	1.22.4.14	IntelliCAD/Source/prj/lib/DB/dbdefines.h
+A	2004-05-26:13:58	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-40.txt
+M	2004-05-26:13:58	markba	1.2.6.5	IntelliCAD/Source/prj/lib/DB/acad_proxy_entity.cpp
+M	2004-05-26:13:58	markba	1.1.2.27	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-05-26:13:58	markba	1.1.2.35	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-05-26:13:58	markba	1.1.2.33	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-26:13:58	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-05-26:13:58	markba	1.1.2.33	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-05-26:13:58	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.cpp
+M	2004-05-26:13:58	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+A	2004-05-27:22:38	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DwgDirect-41.txt
+M	2004-05-27:22:39	markba	1.1.2.4	IntelliCAD/Source/Regress/Regression.exe
+M	2004-05-27:22:39	markba	1.22.4.15	IntelliCAD/Source/prj/lib/DB/dbdefines.h
+M	2004-05-27:22:39	markba	1.1.2.28	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-05-27:22:39	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-05-27:22:39	markba	1.1.2.34	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-05-27:22:39	markba	1.1.2.34	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-05-27:22:39	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-05-27:22:39	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/GiWorldDrawVectors.cpp
+M	2004-06-01:18:08	markba	1.1.6.2	IntelliCAD/Source/Regress/Dwg/78417.dwg
+A	2004-06-01:18:08	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-42.txt
+M	2004-06-01:18:08	markba	1.1.2.29	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-06-01:18:08	markba	1.1.2.36	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-06-01:18:12	markba	1.1.6.3	IntelliCAD/Source/Regress/Dwg/78417.dwg
+A	2004-06-02:13:44	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-43.txt
+M	2004-06-02:13:44	markba	1.1.2.30	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-06-02:13:44	markba	1.1.2.24	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-06-02:15:29	markba	1.1.2.3	IntelliCAD/Source/prj/lib/CMDS/CloneHelper.cpp
+M	2004-06-02:15:29	markba	1.1.2.5	IntelliCAD/Source/prj/lib/CMDS/cmdsWBlock.cpp
+A	2004-06-02:15:30	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-44.txt
+A	2004-05-10:23:13	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_47.txt
+R	2004-05-10:23:28	master	1.1	IntelliCAD/Source/Regress/regress.bat
+R	2004-05-10:23:28	master	1.1	IntelliCAD/Source/Regress/regress1.bat
+R	2004-05-11:17:56	master	1.2	IntelliCAD/Source/Regress/Readme.txt
+R	2004-05-11:17:56	master	1.1	IntelliCAD/Source/Regress/regress.bat
+R	2004-05-11:17:56	master	1.1	IntelliCAD/Source/Regress/regress1.bat
+A	2004-05-11:18:50	master	1.1.2.1	IntelliCAD/Source/Regress/scripts_error/colcir.scr
+A	2004-05-11:18:50	master	1.1.2.1	IntelliCAD/Source/Regress/scripts_error/colcir1.scr
+R	2004-05-14:04:52	master	1.1	IntelliCAD/Source/Regress/modify.xml
+M	2004-05-14:14:01	master	1.4.8.55	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-05-27:06:27	master	1.4.8.56	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-05-24:17:29	stephenh	1.9.6.13	IntelliCAD/Source/prj/lib/ACIS/AsModeler.cpp
+M	2004-05-24:17:29	stephenh	1.8.6.8	IntelliCAD/Source/prj/lib/ACIS/AsModeler.h
+M	2004-05-24:17:30	stephenh	1.9.6.8	IntelliCAD/Source/prj/lib/ACIS/AsTools.cpp
+M	2004-05-24:17:30	stephenh	1.7.6.5	IntelliCAD/Source/prj/lib/ACIS/AsTools.h
+M	2004-05-24:17:31	stephenh	1.9.6.8	IntelliCAD/Source/prj/lib/DB/Modeler.h
+M	2004-05-24:17:31	stephenh	1.2.6.7	IntelliCAD/Source/prj/lib/DB/ModelerStub.h
+M	2004-05-24:17:31	stephenh	1.9.6.10	IntelliCAD/Source/prj/lib/CMDS/3dsolids.cpp
+M	2004-05-24:17:32	stephenh	1.5.6.5	IntelliCAD/Source/prj/lib/CMDS/changeprop.cpp
+M	2004-05-24:17:33	stephenh	1.5.6.6	IntelliCAD/Source/prj/lib/CMDS/CmdExtrude.cpp
+M	2004-05-24:17:33	stephenh	1.1.2.13	IntelliCAD/Source/prj/lib/CMDS/CmdFilletChamfer.cpp
+M	2004-05-24:17:34	stephenh	1.5.6.5	IntelliCAD/Source/prj/lib/CMDS/CmdRegion.cpp
+M	2004-05-24:17:35	stephenh	1.5.6.8	IntelliCAD/Source/prj/lib/CMDS/CmdRevolve.cpp
+M	2004-05-24:17:35	stephenh	1.20.4.19	IntelliCAD/Source/prj/lib/CMDS/cmds.h
+M	2004-05-24:17:35	stephenh	1.4.6.4	IntelliCAD/Source/prj/lib/CMDS/cmds_misc.cpp
+M	2004-05-24:17:36	stephenh	1.5.6.8	IntelliCAD/Source/prj/lib/CMDS/surfaces.cpp
+A	2004-05-24:17:48	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_051804_1.doc
+
+
+CHANGELOG:
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78529 
+Affected files: 
+Source/Prj/LIB/CMDS/cmds3.cpp 
+Description: 'AREA' system variable is not set correctly when adding areas. 
+Comments: TaL78529 CYB_78529_1.txt 
+Implemented the code review changes suggested by Denis. 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78653 
+Affected files: 
+Source/Prj/LIB/CMDS/circle.cpp 
+Description: Using TTR option, circle is created at wrong location. 
+Comments: TaL78653 CYB_78653_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004. 
+Developer: Mohan Nayak. 
+Company: Cybage. 
+Reference: BugZilla:78663. 
+Affected files: 
+Source/prj/lib/LISP/intrepreter.cpp 
+Source/prj/ICAD/icadmain.cpp 
+Source/prj/lib/SDS/sds_misc.cpp 
+Source/prj/lib/CMDS/todo.cpp 
+Source/prj/lib/LISP/LISP.H 
+Source/prj/lib/LISP/lispvars.h 
+Source/prj/lib/LISP/datahome.cpp 
+
+Description: sds_setfunhelp is not implemented 
+Comments: TaL78663 CYB_78663_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004. 
+Developer: Mohan Nayak. 
+Company: Cybage. 
+Reference: BugZilla:78756. 
+Affected files: 
+Source/prj/lib/SDS/sds_get.cpp 
+Source/prj/ICAD/icadinsertdia.cpp 
+
+Description: ICAD does not use “path setting” for Blocks. 
+Comments: TaL78756 CYB_78756_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:74349 
+Affected files: 
+Source/ThirdParty/DCL_Components/Source/ImageButton.cpp 
+Source/ThirdParty/DCL_Components/Include/ImageButton.h 
+Description: Calling slide_image repeatedly leaks memory horribly and flashes the display 
+Comments: TaL74349 CYB_74349_1.txt 
+
+Implemented the code review changes suggested by Denis. 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78743 
+Affected files: 
+Source/prj/ICAD/IcadApp.cpp 
+Source/prj/ICAD/IcadApp.h 
+Description: Within the session print setup dialog box does not store the selected printer 
+Comments: TaL78743 CYB_78743_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78745 
+Affected files: 
+Source/prj/lib/DB/drawing.cpp 
+Source/prj/lib/DRW/dwgload.cpp 
+Source/prj/lib/DRW/DWGdirectReader.cpp 
+Description: Print and Print preview does not show the various line weights in a drawing. 
+Comments: TaL78745 CYB_78745_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 10-05-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78751 
+Affected files: 
+Source/Prj/LIB/DB/DbPlotSettings.h 
+Source/Prj/ICAD/printdialog.h 
+Source/Prj/ICAD/printdialog.cpp 
+Source/Prj/ICAD/printscaleviewtab.h 
+Source/Prj/ICAD/printscaleviewtab.cpp 
+Description: Wrong behavior "Fit print area to size of page" check-box, in print dialog. 
+Comments: TaL78751 CYB_78751_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 09-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Added files: 
+Source/prj/lib/CMDS/cmdsWBlock.cpp 
+Source/prj/lib/CMDS/cmdsWBlock.h 
+Affected files: 
+Source/prj/lib/CMDS/block.cpp 
+Source/prj/lib/CMDS/cmds.h 
+Source/prj/lib/CMDS/cmdsLayout.cpp 
+Source/prj/lib/CMDS/save.cpp 
+Source/prj/ICAD/DocAutoSds.cpp 
+Source/prj/ICAD/IcadExplorer.cpp 
+Source/prj/ICAD/icadview.cpp 
+Source/prj/ICAD/IntCmds.cpp 
+Source/prj/make/cmds.dsp 
+Description: 1) Moved WBLOCK command implementation into separate file. 
+2) Corrected formatting. 
+Comments: 
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------ 
+Date: 21-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/cmdsLayout.cpp 
+Source/prj/lib/CMDS/cmdsLayout.h 
+Source/prj/lib/CMDS/cmdsWBlock.cpp 
+Source/prj/lib/CMDS/cmdsWBlock.h 
+Eng-us/icad.rc2 
+Source/prj/ICAD/res/icadrc2.h 
+Description: 1) Improvements in the implementation of WBLOCK command 
+2) The WBLOCK command code incapsulated in the helper class 
+3) The Save option for LAYOUT command 
+4) Resource strings for Save and Template options of LAYOUT command 
+Comments: TALLayouts 
+------------------------------------------------------------------------------------ 
+Date: 13-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/cmds.h 
+Source/prj/lib/CMDS/cmdsWBlock.cpp 
+Source/prj/lib/CMDS/paste.cpp 
+Description: Improvements in the implementation of WBLOCK command: 
+1) Extracted function for creation of table entries 
+2) Removed 2 unused global variables 
+3) Corrected coding style 
+Comments: 
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------ 
+Date: 23-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/cmdsLayout.cpp 
+Source/prj/ICAD/IcadApi.h 
+Source/prj/ICAD/icadwndaction.cpp 
+Description: Added ICAD_WNDACTION_LAYOUTTEMPL for Insert Layout dialog 
+Comments: TALLayouts 
+------------------------------------------------------------------------------------ 
+Date: 23-05-2004 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Added files: 
+Source/prj/lib/CMDS/CloneHelper.cpp 
+Source/prj/lib/CMDS/CloneHelper.h 
+Affected files: 
+Source/prj/lib/CMDS/cmdsWBlock.cpp 
+Source/prj/lib/CMDS/cmdsWBlock.h 
+Source/prj/make/cmds.dsp 
+Description: Created separate source files for clone helper class. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 24-05-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/prj/lib/ACIS/AsModeler.cpp 
+Source/prj/lib/ACIS/AsModeler.h 
+Source/prj/lib/ACIS/AsTools.cpp 
+Source/prj/lib/ACIS/AsTools.h 
+Source/prj/lib/DB/Modeler.h 
+Source/prj/lib/DB/ModelerStub.h 
+Source/prj/lib/CMDS/3dsolids.cpp 
+Source/prj/lib/CMDS/changeprop.cpp 
+Source/prj/lib/CMDS/CmdExtrude.cpp 
+Source/prj/lib/CMDS/CmdFilletChamfer.cpp 
+Source/prj/lib/CMDS/CmdRegion.cpp 
+Source/prj/lib/CMDS/CmdRevolve.cpp 
+Source/prj/lib/CMDS/cmds.h 
+Source/prj/lib/CMDS/cmds_misc.cpp 
+Source/prj/lib/CMDS/surfaces.cpp 
+
+Description: Fixes the following problems related to the color of 
+regions and 3D solids and: 
+
+1) Using a Boolean (UNION, SUBSTRACT, or INTERSECT) or 
+INTERFERE operation resulted in a solid and region 
+with a single color. All faces/edges in the resultant 
+solid, body, or region lose their original colors. 
+2) In AutoCAD?, using FILLET and CHAMFER to modify a solid 
+or region results in a solid with a fillet or chamfer 
+in the current color. But in IntelliCAD?, the fillets 
+and chamfers were created with the color of one of its 
+adjacent faces. 
+3) The ACIS bodies in the SAT files created by IntelliCAD? 
+ACISOUT command were colorless. 
+4) The CHANGE command only worked for solids or regions 
+with a single uniform color. It did not work for the 
+solid and region with multiple colors. 
+
+Comments: TALSolidColor 
+------------------------------------------------------------------------------------ 
+Also, please refer to MB_DWGdirectWriter-34..38.txt, MB_DWGdirect-39..44.txt.
+
+REGRESS:
+The following scripts failed during the regress run (USEDWGDIRECT=0). Running them individually showed no problems.  Please look for performance data on performance.xls at http://www.itcmembers.org/metadot/index.pl?isa=CMSDocument&iid=2720&op=show
+F:\build-48\IntelliCAD\Source\Regress\scripts\3d_mesh_options.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\77892.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\78167_1.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\78346d.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\78346h.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\78417_1.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\arc.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\build-48\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78529, 78653, 78663, 78756, 74349, 78743, 78745, 78751

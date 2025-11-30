@@ -1,0 +1,31 @@
+logfilename log\78730.log
+logfileon
+;___________________
+Leader
+1,1
+7,7
+10,7
+a
+Leader annotation with plain color layer
+
+;___________________________
+-la
+new
+win
+color
+red
+win
+set
+win
+
+leader
+4,1
+6,3
+a
+Leader annotation with red color layer
+
+;___________________________
+dxfout output_dxf\78730.dxf
+6
+quit
+y

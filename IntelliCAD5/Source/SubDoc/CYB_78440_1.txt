@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+File: 		CYB_78440_1.txt
+Date:  		14-04-2003
+Developer: 	Vishwanath S Burkule
+Company: 	Cybage Software
+Reference: 	BugZilla:78440
+Affected files: 
+		Source/prj/lib/LISP/loopncond.cpp?rev=1.3.12.1
+Description: 	Variable not set correctly inside (cond) function. Reported by Liang Jiang.
+Comments: 	TaL78440
+File by File:
+	*	Source/prj/lib/LISP/loopncond.cpp?rev=1.3.12.1
+		This was a side-effect of previous old check-in for bug bugzilla::57121.
+		
+		When we compared the expected behaviour for bugzilla:57121 with AutoCAD, we found that
+		the bug was invalid. 
+		
+		So we have rolled back the the changes for bugzilla::57121 and have got 78440 fixed.
+--------------------------------------------------------------------------------

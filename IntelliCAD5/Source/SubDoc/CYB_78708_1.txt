@@ -1,0 +1,324 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78708_1.txt	
+Product Version:	ICAD 4
+Date:			05/01/2004 (DD/MM/YYYY)
+Engineer(s):		Vishwanath Burkule.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\CMDS\CmdFilletChamfer.cpp ==> cmd_fillet()
+					 ==> cmd_fillet_or_chamfer_pline()
+					 ==> cmd_do_chamfer()
+				 	 ==> cmd_chamfer()
+				 	 ==> cmd_fillet_or_chamfer_lwpline()
+				 	 ==> cmd_do_fillet()
+				 	 ==> cmd_segxpoly()
+				 	 ==> cmd_segxlwpoly()
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is regarding Bugzilla :: 78708 ; ICAD crashes while filleting
+two lines, when selecting second entity by 'select all' option.
+	ICAD  crashes  while  filleting  two lines, when selecting second 
+entity by 'select all' option in  the drawing. The problem  was that ICAD
+entered an infinite loop. Also for "select all" option, ICAD did not give
+error like AutoCAD. It was also found  that behaviour was not as expected
+for'last' keyword for while selecting second entity during fillet command.
+There was  similar problem  for chamfer command as the code is same for 
+command fillet and chamfer.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	Actual problem  of infinite loop was due to uninitialised local
+variable namely  'closure' of  function:: cmd_fillet_or_chamfer_pline(),
+File:: CMDS\CmdFilletChamfer.cpp. It had garbage value and so the result
+were not as expected  in debug  and release build also. As a result ICAD
+was going into an infinite while() loop. After initializing it to 0, the 
+problem was solved and  program  worked  as expected. I have initialised 
+'closure' local variable at all places in this file.
+	Second issue of problems with keywords like "select all" or "last"
+was handled as follows. Actually these keywords were not handled for 
+fillet  command.  But after having close look and reading the comments of 
+function "sds_pmtssget", the problem was fixed.
+
+Here is code change :
+//ret=sds_pmtssget(ResourceString(IDC_CMDS4__NSELECT_SECOND_E_77, "\nSelect second entity: "),"~~_"/*DNT*/,&rbp1,NULL,NULL,ent3,1);
+ret=sds_pmtssget(ResourceString(IDC_CMDS4__NSELECT_SECOND_E_77, "\nSelect second entity:"),""/*DNT*/,&rbp1,NULL,NULL,ent3,1);
+
+ 
+File: CMDS\CmdFilletChamfer.cpp.
+---------------------------------
+The line 
+//ret=sds_pmtssget(ResourceString(IDC_CMDS4__NSELECT_SECOND_E_77, "\nSelect second entity: " ),"~ ~_"/*DNT*/,&rbp1,NULL,NULL,ent3,1);
+
+is changed to
+ret=sds_pmtssget(ResourceString(IDC_CMDS4__NSELECT_SECOND_E_77, "\nSelect second entity:" ),""/*DNT*/,&rbp1,NULL,NULL,ent3,1);
+
+---------------------------------
+
+In other all functions 'closure' is initialized to 0.
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+  1. Draw two lines; give fillet command; select first line; for selecting
+     second line, give 'last' option.
+  2. Follow the same above procedure for 'all' option.
+  3. While selecint the first line, give 'all' option.
+  4. Test the above options for 'chamfer' command also.
+
+
+  This change affects ONLY to the fillet command for line.
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional) : JK
+
+QA Manager (optional) : 
+
+
+
+Code Reviewed by : Denis
+
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

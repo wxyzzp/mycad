@@ -1,0 +1,29 @@
+;;Created_by_Cybage_on_12:13PM8/12/2002;;;;;;
+logfilename log\60914.log
+logfileon
+;;;;;;;;;
+dimtih
+0
+dimtoh
+0
+dimtad
+1
+;;;;;;;;
+dimlinear
+2,1
+6,1
+4,2
+;;;;;;;;
+mirror
+last
+
+1,1
+2,2
+
+;;;;;;;;;;;;;
+dblist
+;;;;
+dxfout output_dxf\60914.dxf
+6
+quit
+y

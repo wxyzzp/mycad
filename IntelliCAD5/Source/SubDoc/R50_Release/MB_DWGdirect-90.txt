@@ -1,0 +1,58 @@
+Document Title:		MB_DWGdirect-90.txt
+Product Version:	ICAD 5
+Date:  				09/03/2004 12:51pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & Icad_cee
+
+2.  Modules Affected : 
+	Resources
+	CMDS
+	DWGdirect
+
+3.  Overview:
+This submission adds code to prevent attempts to open files not native
+to IntelliCAD. i.e .dwg, .dxf, .dwt, .dwf.
+
+I also added code to ensure that sortents tables are created after all
+entities have been converted.
+
+Also filled in some vectorizing functions.
+
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    eng_us/icad.rc2
+                    source/prj/icad/res/icadrc2.h
+                    source/prj/lib/cmds/openclose.cpp
+                    source/prj/lib/drw/giworlddrawvectors.h
+                    source/prj/lib/drw/giworlddrawvectors.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.h
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/subdoc/R50_Release/MB_DWGdirect-90.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

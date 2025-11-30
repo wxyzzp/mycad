@@ -1,0 +1,19 @@
+logfilename log\78550.log
+logfileon
+;_______
+point
+3,5
+;_______
+line
+0,0
+5,0
+
+;_______
+rulesurf
+3,5
+3,0
+;_______
+dxfout output_dxf\78550.dxf
+6
+quit
+y

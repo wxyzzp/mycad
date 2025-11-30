@@ -1,0 +1,57 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-100
+Product Version:        IntelliCAD 5
+Date:                   09/23/2004 07:31am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	This submission removes all of the #ifdef WITHODT defines and the
+	code between them, effectivly removing all the old Marcomp code from
+	the source repository, and any references to it in the source code.
+
+3.  Overview:
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/icad/change.cpp
+        source/prj/icad/icadapp.cpp
+        source/prj/icad/icadapi.cpp
+        source/prj/icad/icaddrawbitmap.cpp
+        source/prj/lib/db/acad_proxy_object.cpp
+        source/prj/lib/db/entities.h
+        source/prj/lib/db/object_ptr.cpp
+        source/prj/lib/db/objects.h
+        source/prj/lib/drw/drwfns.cpp
+        source/prj/lib/drw/drwprotos.h
+        source/prj/lib/drw/dwgsave.cpp
+        source/prj/lib/db/rtext.cpp
+        source/prj/lib/db/xrecord.cpp
+        source/prj/lib/drw/drw.h
+        source/prj/lib/drw/dwgload.cpp
+        source/prj/make/db.dsp
+        source/subdoc/R50_Release/MB_DWGdirect-100.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

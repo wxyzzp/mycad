@@ -1,0 +1,16 @@
+;This_script_created_by_Cybage_on_11:16AM8/12/2002;;;
+;This_script_loads_the_knuckle.lsp_which_creates_a_knuckle_joint;
+;icad.lin_file_is_required_to_run_lisp_;;
+logfilename log\knuckle.log
+logfileon
+;;;;;;;;;;
+(load "LISP\knuckle.lsp")
+;;;;;;;;
+knj
+1
+4,2
+;;;;;;;;
+dxfout output_dxf\knuckle.dxf
+6
+quit
+y

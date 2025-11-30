@@ -1,0 +1,155 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\source\prj\Authenticate\authrc.h"
+#include "..\Source\prj\ICAD\configure.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "authrc.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define VERSIONINFO_FILEDESCRIPTION ""ITC IntelliCAD® 5 Authentication DLL\\0""\r\n"
+    "#define VERSIONINFO_INTERNALNAME ""ICADAUTH\\0""\r\n"
+    "#define VERSIONINFO_ORIGINALNAME ""ICADAUTH.DLL\\0""\r\n"
+    "#include ""versioninfo.rc2""\r\n"
+    "\0"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 318, 289
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About IntelliCAD 5"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "",
+                    IDC_STATIC,7,149,298,16
+    LTEXT           "IntelliCAD and the IntelliCAD logo are either registered trademarks or trademarks of The IntelliCAD Technology Consortium in the United States and/or other countries.  ",
+                    IDC_STATIC,7,133,265,17
+    LTEXT           "",IDC_ABOUT_VERSION,83,26,136,8
+    DEFPUSHBUTTON   "OK",IDOK,261,268,50,14
+    LTEXT           "IntelliCAD® 5 for Microsoft Windows",IDC_STATIC,83,16,136,8
+    LTEXT           "Copyright © IntelliCAD Technology Consortium.",
+                    IDC_STATIC,84,38,163,18
+    LTEXT           "All Rights Reserved.",IDC_STATIC,84,56,163,8
+    GROUPBOX        "",IDC_STATIC,7,70,304,60
+    CONTROL         1193,IDC_STATIC,"Static",SS_BITMAP,7,4,67,62
+    RTEXT           "User Name:",IDC_STATIC,13,79,56,8
+    RTEXT           "Company:",IDC_STATIC,13,91,56,8
+    RTEXT           "Product ID:",IDC_STATIC,13,103,56,8
+    EDITTEXT        ABT_COPYRIGHT,7,207,298,33,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER
+    LTEXT           "",IDC_ABOUT_USER,76,79,193,8
+    LTEXT           "",IDC_ABOUT_COMPANY,76,91,193,8
+    LTEXT           "",IDC_ABOUT_PRODUCTID,76,103,193,8
+    LTEXT           "All other trademarks, trade names or company names referenced herein are used for identification only and are the property of their respective owners.",
+                    IDC_STATIC,7,184,298,19
+    LTEXT           "This software is based in part on the work of the Independent JPEG Group.",
+                    IDC_STATIC,7,169,304,11
+    RTEXT           "Support ID:",IDC_STATIC,13,115,56,8
+    LTEXT           "",IDC_ABOUT_SUPPORTID,76,115,193,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+//!!! IDB_SPLASH              BITMAP  DISCARDABLE     "..\\Source\\res\\Icadsplash.bmp"
+#ifdef BUILD_WITH_LICENSED_COMPONENTS
+	IDB_SPLASH              BITMAP  DISCARDABLE     "..\\Source\\res\\icadsplash_Professional.bmp"
+#else
+	IDB_SPLASH              BITMAP  DISCARDABLE     "..\\Source\\res\\icadsplash_Standard.bmp"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 311
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 282
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "Authenticate"
+    IDS_FinalExpirationDate "The evaluation period for this IntelliCAD Test Drive has expired.  For more information or to order a complete copy of IntelliCAD call 1-800-24-VISIO (1-800-248-4746) or 1-206-521-4500 outside the U.S."
+    IDS_MESSAGE_TITLE       "IntelliCAD 5 Test Drive"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define VERSIONINFO_FILEDESCRIPTION "ITC IntelliCAD® 5 Authentication DLL\0"
+#define VERSIONINFO_INTERNALNAME "ICADAUTH\0"
+#define VERSIONINFO_ORIGINALNAME "ICADAUTH.DLL\0"
+#include "versioninfo.rc2"
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

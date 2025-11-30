@@ -1,0 +1,50 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_10022003.txt
+Date:		10-02-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BUG #70921
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fixes following two separated problems reported in 
+ 	the bug #70921:
+ 	
+           1) Hatching geometry that includes elliptic or circular arcs may 
+              fail in certain circumstances. 
+                
+           2) Hatch patterns are not trimmied correctly by boundary curves in 
+              certain circumstanses if one of boundaries is elliptic arc.
+              
+	The first problem was due to the limitation of Newton-Raphson method. It
+	failed to find the intersections of elliptic and elliptic arcs in cetain
+	cases. This problem is fixed by using an analytic method rather than 
+	numerical method to compute the intersections of elliptic and elliptic 
+	arcs for those cases. 
+	
+	The second problem was introduced by an early change, which incorrectly 
+	used the parameters rather than (start and end) angles to construct the 
+	elliptic boundary curve of bhatch so the curves were not actually bounded 
+	at the intersections of the boundary curves. This problem is fixed by 
+	reversing that change.
+	
+
+CHANGED FILES:	
+	
+	Source/prj/lib/GR/gr_Hatch.cpp		Modified EllipFromEdge().
+	Source/ThirdParty/geo/crvpair.cpp:	Added new functions and modified 
+	                                        CEllipArcEllipArc::Intersect().
+	Source/prj/make/Geo.dsp:		Added polynormial.h/.cpp
+
+ADDED FILES:
+
+	Source/ThirdParty/geo/polynomial.cpp
+	Source/ThirdParty/geo/polynomial.h
+
+COMMANDS:

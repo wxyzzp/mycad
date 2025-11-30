@@ -1,0 +1,323 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78287_1.txt	
+Product Version:	ICAD 4
+Date:			19/01/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\CMDS\viewports.cpp  ==> cmd_viewports(void)
+Source\prj\lib\CMDS\viewports.cpp  ==> cmd_viewport_save_configuration()
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is related to Bugzilla# 78287: ICAD crashes if name of vport is set 
+to *active.
+
+IntelliCAD used to allow the characters for viewport name with no restriction,
+whereas AutoCAD does NOT allow the characters like , * / \ \ ? > < \ " ; 
+: | = ` and (only) single space. When user gives *active as a view port 
+name,  which is actually  the name of  current viewport, IntelliCAD goes 
+into infinite  for()  loop in cmd_viewport_save_configuration(). We have 
+followed the  same approach as  that of AutoCAD  to disallow the invalid 
+characters in the viewport name.
+
+Now even if user enters spaces initially before the valid characters, all 
+the spaces are removed and only valid characters are allowed for the name.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+File: Source\prj\lib\CMDS\viewports.cpp
+Function: cmd_viewport_save_configuration (char * vp_to_save, db_drawing *flp)
+----------------------------------------
+
+	if(hip->ret_deleted() || !strisame(fcp1,"*ACTIVE"/*DNT*/) || strisame(vp_to_save, "*ACTIVE"/*DNT*/))
+		continue;
+
+
+File: Source\prj\lib\CMDS\viewports.cpp
+Function: cmd_viewports(void) 
+----------------------------------------
+
+	//if there are spaces in the start and in the end of viewport name, remove them.
+	 StrTrim((LPTSTR)fs1, " "/*DNT*/);
+
+	if ( !strlen(fs1) || ( !strisame(fs1, "*ACTIVE"/*DNT*/) && !ic_isvalidname(fs1)))
+	{
+		cmd_ErrorPrompt(CMD_ERR_INVALIDNAME,-1);
+		continue;
+	}
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+	1. Enter vport name as *active, ICAD should not hang.
+	2. Enter any of the following character as an input:
+	  , * / \ \ ? > < \ " ; : | = `  and only spaces.
+	   ICAD should not allow these characters.
+	3. Compare the results with AutoCAD's -vport command, IntelliCAD's
+	   behavour should be exactly same as that of AuoCAD.
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional) : JK
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in process)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1200 @@
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// Table Record Objects
+	interface IIcadSelectionSets;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoTableItem
+	
+	[	object
+		, uuid(8011c121-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadTableItem
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadTableItem : IIcadDbItem
+	{
+		// ***Properties
+		[propget, helpstring("Returns the object name.")]
+		HRESULT Name([out,retval] BSTR* pstrName);
+		[propput]
+		HRESULT Name([in] BSTR Name);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for IIcadRegisteredApplication
+	
+	[	object
+		, uuid(8011c123-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadRegisteredApplication
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadRegisteredApplication : IIcadTableItem
+	{
+	}
+
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadRegisteredApplications
+	
+	[	object
+		, uuid(8011c124-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadRegisteredApplications
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadRegisteredApplications : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Registered Application to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadRegisteredApplication** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Registered Application object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadRegisteredApplication** ppItem);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadBlock
+
+	[	object
+		, uuid(8011c125-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadBlock
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadBlock : IIcadEntities	//deriving from IIcadEntities inherits all the AddXXX methods
+	{
+		// *** Properties
+		[propget, helpstring("The origin of the block in WCS coordinates.")]
+		HRESULT Origin ([out, retval] IIcadPoint** ppOrigin);
+		[propput]
+		HRESULT Origin ([in] IIcadPoint *Origin);
+
+		[propget, helpstring("Sets or returns the block name.")]
+		HRESULT Name([out,retval] BSTR* pstrName);
+		[propput]
+		HRESULT Name([in] BSTR Name);
+
+		[propget, helpstring("Returns whether the block represents an External Reference.")]
+		HRESULT IsXRef([out,retval] VARIANT_BOOL * IsXRef);
+
+		// ***Methods
+		[helpstring("Adds the entities in the selection set to the Block.")]
+		HRESULT AddItems ([in] IIcadSelectionSet *Entities, [in, optional, defaultvalue(TRUE)] VARIANT_BOOL DeleteOriginals);
+
+		[helpstring("Returns the extended entity data associated with an entity.")]  
+		HRESULT GetXData ([in] BSTR AppName, [in, out] VARIANT *TypeArray, [in, out] VARIANT *DataArray);
+
+		[helpstring("Sets the extended entity data associated with an entity.")]  
+		HRESULT SetXData ([in] VARIANT TypeArray, [in] VARIANT DataArray);
+
+		[helpstring("Deletes the specified object.")]
+		HRESULT Delete();
+
+		[helpstring("Binds the External Reference.")]
+		HRESULT Bind ();
+
+		[helpstring("Detaches the External Reference.")]
+		HRESULT Detach ();
+
+		[helpstring("Unloads the External Reference.")]
+		HRESULT Unload ();
+
+		[helpstring("Reloads the External Reference.")]
+		HRESULT Reload ();
+
+		[helpstring("Writes out the block as a drawing file.")]
+		HRESULT WBlock ([in] BSTR FileName);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoBlocks
+	
+	[	object
+		, uuid(8011c126-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadBlocks
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadBlocks : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Block to the collection.")]
+		HRESULT Add ([in] IIcadPoint *InsertionPoint, [in] BSTR Name, [out, retval] IIcadBlock** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Block object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadBlock** ppItem);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDimensionStyle
+	
+	[	object
+		, uuid(8011c127-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDimensionStyle
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimensionStyle : IIcadTableItem
+	{
+		// *** Propeties
+
+		// 3-7 groups /char*/
+		[propget, helpstring("Sets or returns DIMPOST value.")]
+		HRESULT DimPost ([out, retval] BSTR *pDimPost);
+		[propput]
+		HRESULT DimPost ([in] BSTR DimPost);
+
+		[propget, helpstring("Sets or returns DIMAPOST value.")]
+		HRESULT DimApost ([out, retval] BSTR *pDimApost);
+		[propput]
+		HRESULT DimApost ([in] BSTR DimApost);
+
+		[propget, helpstring("Sets or returns DIMBLK value.")]
+		HRESULT DimBlk ([out, retval] BSTR *pDimBlk);
+		[propput]
+		HRESULT DimBlk ([in] BSTR DimBlk);
+
+		[propget, helpstring("Sets or returns DIMBLK1 value.")]
+		HRESULT DimBlk1 ([out, retval] BSTR *pDimBlk1);
+		[propput]
+		HRESULT DimBlk1 ([in] BSTR DimBlk1);
+
+		[propget, helpstring("Sets or returns DIMBLK2 value.")]
+		HRESULT DimBlk2 ([out, retval] BSTR *pDimBlk2);
+		[propput]
+		HRESULT DimBlk2 ([in] BSTR DimBlk2);
+
+		// 40-48 groups /double/
+		[propget, helpstring("Sets or returns DIMSCALE value.")]
+		HRESULT DimScale ([out, retval] double *pDimScale);
+		[propput]
+		HRESULT DimScale([in] double DimScale);
+
+		[propget, helpstring("Sets or returns DIMASZ value.")]
+		HRESULT DimAsz ([out, retval] double *pDimAsz);
+		[propput]
+		HRESULT DimAsz([in] double DimAsz);
+
+		[propget, helpstring("Sets or returns DIMEXO value.")]
+		HRESULT DimExo ([out, retval] double *pDimExo);
+		[propput]
+		HRESULT DimExo([in] double DimExo);
+
+		[propget, helpstring("Sets or returns DIMDLI value.")]
+		HRESULT DimDli ([out, retval] double *pDimDli);
+		[propput]
+		HRESULT DimDli([in] double DimDli);
+
+		[propget, helpstring("Sets or returns DIMEXE value.")]
+		HRESULT DimExe ([out, retval] double *pDimExe);
+		[propput]
+		HRESULT DimExe([in] double DimExe);
+
+		[propget, helpstring("Sets or returns DIMRND value.")]
+		HRESULT DimRnd ([out, retval] double *pDimRnd);
+		[propput]
+		HRESULT DimRnd([in] double DimRnd);
+
+		[propget, helpstring("Sets or returns DIMDLE value.")]
+		HRESULT DimDle ([out, retval] double *pDimDle);
+		[propput]
+		HRESULT DimDle([in] double DimDle);
+
+		[propget, helpstring("Sets or returns DIMTP value.")]
+		HRESULT DimTp ([out, retval] double *pDimTp);
+		[propput]
+		HRESULT DimTp([in] double DimTp);
+
+		[propget, helpstring("Sets or returns DIMTM value.")]
+		HRESULT DimTm ([out, retval] double *pDimTm);
+		[propput]
+		HRESULT DimTm([in] double DimTm);
+
+		// 71-78 groups
+		[propget, helpstring("Sets or returns DIMTOL value.")]
+		HRESULT DimTol ([out, retval] int *pDimTol);
+		[propput]
+		HRESULT DimTol ([in] int DimTol);
+
+		[propget, helpstring("Sets or returns DIMLIM value.")]
+		HRESULT DimLim ([out, retval] int *pDimLim);
+		[propput]
+		HRESULT DimLim ([in] int DimLim);
+
+		[propget, helpstring("Sets or returns DIMTIH value.")]
+		HRESULT DimTih ([out, retval] int *pDimTih);
+		[propput]
+		HRESULT DimTih ([in] int DimTih);
+
+		[propget, helpstring("Sets or returns DIMTOH value.")]
+		HRESULT DimToh ([out, retval] int *pDimToh);
+		[propput]
+		HRESULT DimToh ([in] int DimToh);
+
+		[propget, helpstring("Sets or returns DIMSE1 value.")]
+		HRESULT DimSe1 ([out, retval] int *pDimSe1);
+		[propput]
+		HRESULT DimSe1 ([in] int DimSe1);
+
+		[propget, helpstring("Sets or returns DIMSE2 value.")]
+		HRESULT DimSe2 ([out, retval] int *pDimSe2);
+		[propput]
+		HRESULT DimSe2 ([in] int DimSe2);
+
+		[propget, helpstring("Sets or returns DIMTAD value.")]
+		HRESULT DimTad ([out, retval] int *pDimTad);
+		[propput]
+		HRESULT DimTad ([in] int DimTad);
+
+		[propget, helpstring("Sets or returns DIMZIN value.")]
+		HRESULT DimZin ([out, retval] int *pDimZin);
+		[propput]
+		HRESULT DimZin ([in] int DimZin);
+		// DIMAZIN (79 group) has not implemented yet in db_dimstyletabrec class
+
+		// 140-147 groups /double/
+		[propget, helpstring("Sets or returns DIMTXT value.")]
+		HRESULT DimTxt ([out, retval] double *pDimTxt);
+		[propput]
+		HRESULT DimTxt([in] double DimTxt);
+
+		[propget, helpstring("Sets or returns DIMCEN value.")]
+		HRESULT DimCen ([out, retval] double *pDimCen);
+		[propput]
+		HRESULT DimCen([in] double DimCen);
+
+		[propget, helpstring("Sets or returns DIMTSZ value.")]
+		HRESULT DimTsz ([out, retval] double *pDimTsz);
+		[propput]
+		HRESULT DimTsz([in] double DimTsz);
+
+		[propget, helpstring("Sets or returns DIMALTF value.")]
+		HRESULT DimAltf ([out, retval] double *pDimAltf);
+		[propput]
+		HRESULT DimAltf([in] double DimAltf);
+
+		[propget, helpstring("Sets or returns DIMLFAC value.")]
+		HRESULT DimLfac ([out, retval] double *pDimLfac);
+		[propput]
+		HRESULT DimLfac([in] double DimLfac);
+
+		[propget, helpstring("Sets or returns DIMTVP value.")]
+		HRESULT DimTvp ([out, retval] double *pDimTvp);
+		[propput]
+		HRESULT DimTvp([in] double DimTvp);
+
+		[propget, helpstring("Sets or returns DIMTFAC value.")]
+		HRESULT DimTfac ([out, retval] double *pDimTfac);
+		[propput]
+		HRESULT DimTfac([in] double DimTfac);
+
+		[propget, helpstring("Sets or returns DIMGAP value.")]
+		HRESULT DimGap ([out, retval] double *pDimGap);
+		[propput]
+		HRESULT DimGap([in] double DimGap);
+		// DIMALTRND (148 group) has not implemented yet in db_dimstyletabrec class
+
+		// 170-178 groups
+		[propget, helpstring("Sets or returns DIMALT value.")]
+		HRESULT DimAlt ([out, retval] int *pDimAlt);
+		[propput]
+		HRESULT DimAlt ([in] int DimAlt);
+
+		[propget, helpstring("Sets or returns DIMALTD value.")]
+		HRESULT DimAltd ([out, retval] int *pDimAltd);
+		[propput]
+		HRESULT DimAltd ([in] int DimAltd);
+
+		[propget, helpstring("Sets or returns DIMTOFL value.")]
+		HRESULT DimTofl ([out, retval] int *pDimTofl);
+		[propput]
+		HRESULT DimTofl ([in] int DimTofl);
+
+		[propget, helpstring("Sets or returns DIMSAH value.")]
+		HRESULT DimSah ([out, retval] int *pDimSah);
+		[propput]
+		HRESULT DimSah ([in] int DimSah);
+
+		[propget, helpstring("Sets or returns DIMTIX value.")]
+		HRESULT DimTix ([out, retval] int *pDimTix);
+		[propput]
+		HRESULT DimTix ([in] int DimTix);
+
+		[propget, helpstring("Sets or returns DIMSOHD value.")]
+		HRESULT DimSohd ([out, retval] int *pDimSohd);
+		[propput]
+		HRESULT DimSohd ([in] int DimSohd);
+
+		[propget, helpstring("Sets or returns DIMCLRD value.")]
+		HRESULT DimClrd ([out, retval] int *pDimClrd);
+		[propput]
+		HRESULT DimClrd ([in] int DimClrd);
+
+		[propget, helpstring("Sets or returns DIMCLRE value.")]
+		HRESULT DimClre ([out, retval] int *pDimClre);
+		[propput]
+		HRESULT DimClre ([in] int DimClre);
+
+		[propget, helpstring("Sets or returns DIMCLRT value.")]
+		HRESULT DimClrt ([out, retval] int *pDimClrt);
+		[propput]
+		HRESULT DimClrt ([in] int DimClrt);
+		// DIMADEC (179 group) has not implemented yet in db_dimstyletabrec class
+
+		// 270-275 groups
+		[propget, helpstring("Sets or returns DIMUNIT value.")]
+		HRESULT DimUnit ([out, retval] int *pDimUnit);
+		[propput]
+		HRESULT DimUnit ([in] int DimUnit);
+
+		[propget, helpstring("Sets or returns DIMDEC value.")]
+		HRESULT DimDec ([out, retval] int *pDimDec);
+		[propput]
+		HRESULT DimDec ([in] int DimDec);
+
+		[propget, helpstring("Sets or returns DIMTDEC value.")]
+		HRESULT DimTdec ([out, retval] int *pDimTdec);
+		[propput]
+		HRESULT DimTdec ([in] int DimTdec);
+
+		[propget, helpstring("Sets or returns DIMALTU value.")]
+		HRESULT DimAltu ([out, retval] int *pDimAltu);
+		[propput]
+		HRESULT DimAltu ([in] int DimAltu);
+
+		[propget, helpstring("Sets or returns DIMALTTD value.")]
+		HRESULT DimAlttd ([out, retval] int *pDimAlttd);
+		[propput]
+		HRESULT DimAlttd ([in] int DimAlttd);
+
+		[propget, helpstring("Sets or returns DIMAUNIT value.")]
+		HRESULT DimAunit ([out, retval] int *pDimAunit);
+		[propput]
+		HRESULT DimAunit ([in] int DimAunit);
+		// DIMFRAC(276), DIMLUNIT(277), DIMDSEP(278), DIMTMOVE(279)
+		// have not implemented yet in db_dimstyletabrec class
+
+		// 280-288 groups
+		[propget, helpstring("Sets or returns DIMJUST value.")]
+		HRESULT DimJust ([out, retval] int *pDimJust);
+		[propput]
+		HRESULT DimJust ([in] int DimJust);
+
+		[propget, helpstring("Sets or returns DIMSD1 value.")]
+		HRESULT DimSd1 ([out, retval] int *pDimSd1);
+		[propput]
+		HRESULT DimSd1 ([in] int DimSd1);
+
+		[propget, helpstring("Sets or returns DIMSD2 value.")]
+		HRESULT DimSd2 ([out, retval] int *pDimSd2);
+		[propput]
+		HRESULT DimSd2 ([in] int DimSd2);
+
+		[propget, helpstring("Sets or returns DIMTOLJ value.")]
+		HRESULT DimTolj ([out, retval] int *pDimTolj);
+		[propput]
+		HRESULT DimTolj ([in] int DimTolj);
+
+		[propget, helpstring("Sets or returns DIMTZIN value.")]
+		HRESULT DimTzin ([out, retval] int *pDimTzin);
+		[propput]
+		HRESULT DimTzin ([in] int DimTzin);
+
+		[propget, helpstring("Sets or returns DIMALTZ value.")]
+		HRESULT DimAltz ([out, retval] int *pDimAltz);
+		[propput]
+		HRESULT DimAltz ([in] int DimAltz);
+
+		[propget, helpstring("Sets or returns DIMALTTZ value.")]
+		HRESULT DimAlttz ([out, retval] int *pDimAlttz);
+		[propput]
+		HRESULT DimAlttz ([in] int DimAlttz);
+
+		[propget, helpstring("Sets or returns DIMFIT value.")]
+		HRESULT DimFit ([out, retval] int *pDimFit);
+		[propput]
+		HRESULT DimFit ([in] int DimFit);
+
+		[propget, helpstring("Sets or returns DIMUPT value.")]
+		HRESULT DimUpt ([out, retval] int *pDimUpt);
+		[propput]
+		HRESULT DimUpt ([in] int DimUpt);
+
+		// 340 group
+		[propget, helpstring("Sets or returns DIMTXSTY value")]
+		HRESULT DimTxSty ([out, retval] BSTR *pDimTxSty );
+		[propput]
+		HRESULT DimTxSty ([in] BSTR DimTxSty);
+
+		// groups 341-344 and 371-372 have not implemented yet
+		// in db_dimstyletabrec class
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoDimensionStyles
+	
+	[	object
+		, uuid(8011c128-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadDimensionStyles
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimensionStyles : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Dimension Style to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadDimensionStyle** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Dimension Style object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadDimensionStyle** ppItem);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoLayer
+	
+	[	object
+		, uuid(8011c129-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadLayer
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadLayer : IIcadTableItem
+	{
+		// ***Properties
+		[propget, helpstring("Sets or returns the layer color.")]  
+		HRESULT Color ([out,retval] Colors* pColor);
+		[propput]  
+		HRESULT Color ([in] Colors Color);
+
+		[propget, helpstring("Freezes or thaws the layer.")]  
+		HRESULT Freeze ([out,retval] VARIANT_BOOL* pFreeze);
+		[propput]  
+		HRESULT Freeze ([in] VARIANT_BOOL Freeze);
+
+		[propget, helpstring("Sets the layer on or off.")]  
+		HRESULT LayerOn ([out,retval] VARIANT_BOOL* pOn);
+		[propput]  
+		HRESULT LayerOn ([in] VARIANT_BOOL On);
+
+		[propget, helpstring("Sets or returns the linetype used in the layer.")]  
+		HRESULT Linetype([out,retval] BSTR* pLinetype);
+		[propput]  
+		HRESULT Linetype([in] BSTR Linetype);
+
+		[propget, helpstring("Locks or unlocks the layer.")]  
+		HRESULT Lock ([out,retval] VARIANT_BOOL* pLock);
+		[propput]  
+		HRESULT Lock ([in] VARIANT_BOOL Lock);
+
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoLayers
+	
+	[	object
+		, uuid(8011c12a-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadLayers
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadLayers : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Layer to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadLayer** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Layer object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadLayer** ppItem);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoLinetype
+
+	[	object
+		, uuid(8011c12b-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadLinetype
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadLinetype : IIcadTableItem
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the linetype description.")]  
+		HRESULT Description	([out, retval] BSTR *pDescription);
+		[propput]  
+		HRESULT Description	([in] BSTR Description);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoLinetypes
+	
+	[	object
+		, uuid(8011c12c-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadLinetypes
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadLinetypes : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Linetype to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadLinetype** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Linetype object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadLinetype** ppItem);
+
+		[helpstring ("Loads the specified linetype file")]
+		HRESULT Load ([in] BSTR LinetypeName, [in] BSTR FileName);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoTextStyle
+	
+	[	object
+		, uuid(8011c12d-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadTextStyle
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadTextStyle : IIcadTableItem
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the name of the Big Font file.")]  
+		HRESULT BigFontFile	([out, retval] BSTR *pFontFile);
+		[propput]  
+		HRESULT BigFontFile	([in] BSTR FontFile);
+
+		[propget, helpstring("Sets or returns the Font file associated with the textstyle.")]  
+		HRESULT FontFile ([out, retval] BSTR *pFontFile);
+		[propput]  
+		HRESULT FontFile ([in] BSTR FontFile);
+
+		[propget, helpstring("Sets or returns the height of the text.")]  
+		HRESULT Height	([out, retval] double* pHeight);
+		[propput]
+		HRESULT Height([in] double Height);
+
+		[propget, helpstring("Sets or returns the last text height used.")]  
+		HRESULT LastHeight ([out, retval] double* pHeight);
+		[propput]  
+		HRESULT LastHeight ([in] double Height);
+
+		[propget, helpstring("Sets or returns the oblique angle of the text entity.")]  
+		HRESULT ObliqueAngle ([out, retval] double *pAngle);
+		[propput]  
+		HRESULT ObliqueAngle ([in] double Angle);
+
+		[propget, helpstring("Sets or returns the width of the text.")]
+		HRESULT Width([out, retval] double* pWidth);
+		[propput]  
+		HRESULT Width ([in] double Width);
+
+		[propget, helpstring("Sets or returns the TextFlags of the text.")]  
+		HRESULT TextGenerationFlag	([out, retval] TextFlag* pTextFlags);
+		[propput]
+		HRESULT TextGenerationFlag([in] TextFlag TextFlags);
+
+		// EBATECH(CNBR) 2002/4/24 Support SHAPE
+		[propget, helpstring("Sets or returns used for shape or not.")]  
+		HRESULT Shape ([out,retval] VARIANT_BOOL* pShape);
+		[propput]
+		HRESULT Shape([in] VARIANT_BOOL Shape);
+
+		// ***Methods
+		// EBATECH(CNBR) 2002/5/11 
+		[helpstring("Sets the extended entity data associated with an entity.")]  
+		HRESULT SetXData ([in] VARIANT TypeArray, [in] VARIANT DataArray);
+
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoTextStyles
+	
+	[	object
+		, uuid(8011c12e-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadTextStyles
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadTextStyles : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Text Style to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadTextStyle** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Text Style object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadTextStyle** ppItem);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoUserCoordSystem
+	[	object
+		, uuid(8011c12f-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadUserCoordSystem
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadUserCoordSystem : IIcadTableItem
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the origin of the User Coordinate System in WCS coordinates.")]
+		HRESULT Origin ([out, retval] IIcadPoint** ppOrigin);
+		[propput, helpstring("Sets or returns the origin of the User Coordinate System in WCS coordinates.")]
+		HRESULT Origin ([in] IIcadPoint *Origin);
+
+		[propget, helpstring("Sets or returns the X direction of the given User Coordinate System.")]  
+		HRESULT Xvector	([out, retval] IIcadVector** ppVector);
+		[propput, helpstring("Sets or returns the X direction of the given User Coordinate System.")]  
+		HRESULT Xvector	([in] IIcadVector* XVector);
+
+		[propget, helpstring("Sets or returns the Y direction of the given User Coordinate System.")]  
+		HRESULT Yvector	([out, retval] IIcadVector** ppVector);
+		[propput, helpstring("Sets or returns the Y direction of the given User Coordinate System.")]  
+		HRESULT Yvector	([in] IIcadVector* YVector);
+
+		[propget, helpstring("Returns the Z direction of the given User Coordinate System.")]  
+		HRESULT Zvector	([out, retval] IIcadVector** ppVector);
+		// *** Methods
+
+		[helpstring("Returns the transformation matrix associated with a User Coordinate System.")]  
+		HRESULT GetUCSMatrix ([out, retval] IIcadMatrix** ppMatrix);	
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoUserCoordSystems
+	
+	[	object
+		, uuid(8011c130-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadUserCoordSystems
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadUserCoordSystems : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new User Coordinate System to the collection.")]
+		HRESULT Add ([in] IIcadPoint *Origin, [in] IIcadVector *XAxis, [in] IIcadVector *YAxis, [in] BSTR Name, [out, retval] IIcadUserCoordSystem** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding UCS object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadUserCoordSystem** ppItem);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoView
+	
+	[	object
+		, uuid(8011c131-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadView
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadView : IIcadTableItem
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the center of the view.")]
+		HRESULT Center ([out, retval] IIcadPoint** ppCenter);
+		[propput]
+		HRESULT Center ([in] IIcadPoint* Center);	
+
+		[propget, helpstring("Sets or returns the viewing direction (view point)for the view.")]
+		HRESULT Direction ([out, retval] IIcadVector** ppNormal);
+		[propput]
+		HRESULT Direction ([in] IIcadVector* Normal);
+
+		[propget, helpstring("Sets or returns the height of the view.")]
+		HRESULT Height ([out, retval] double *pHeight);
+		[propput]
+		HRESULT Height ([in] double Height);
+
+		[propget, helpstring("Returns the lens length of the view. ")]
+		HRESULT LensLength ([out, retval] double *pLensLength);
+
+		[propget, helpstring("Sets or returns the target point for the view.")]
+		HRESULT Target ([out, retval] IIcadPoint** ppTarget);
+		[propput]
+		HRESULT Target ([in] IIcadPoint* Target);	
+
+		[propget, helpstring("Sets or returns the width of the view.")]
+		HRESULT Width ([out, retval] double *pWidth);	
+		[propput]
+		HRESULT Width ([in] double Width);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoViews
+	
+	[	object
+		, uuid(8011c132-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadViews
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadViews : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new View to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadView** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding View object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadView** ppItem);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoViewport
+	
+	[	object
+		, uuid(8011c133-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadViewport
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadViewport : IIcadTableItem
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the center of the viewport.")]
+		HRESULT Center ([out, retval] IIcadPoint** ppCenter);
+		[propput]
+		HRESULT Center ([in] IIcadPoint* Center);	
+
+		[propget, helpstring("Sets or returns the viewing direction (view point) for the view.")]
+		HRESULT Direction ([out, retval] IIcadVector** ppNormal);
+		[propput]
+		HRESULT Direction ([in] IIcadVector* Normal);
+
+		[propget, helpstring("Sets or returns whether the grid is On/Off")]
+		HRESULT GridOn ([out, retval] VARIANT_BOOL *pGridOn);
+		[propput]
+		HRESULT GridOn ([in] VARIANT_BOOL GridOn);
+
+		[propget, helpstring("Sets or returns the height of the viewport.")]
+		HRESULT Height ([out, retval] double *pHeight);
+		[propput]
+		HRESULT Height ([in] double Height);
+
+		[propget, helpstring("Sets or returns the lower left corner for the viewport. ")]
+		HRESULT LowerLeftCorner ([out, retval] IIcadPoint** ppLowerLeftCorner);	
+		[propput]
+		HRESULT LowerLeftCorner ([in] IIcadPoint* LowerLeftCorner);	
+
+		[propget, helpstring("Sets or returns whether the ortho mode is On/Off")]
+		HRESULT OrthoOn ([out, retval] VARIANT_BOOL *pOrthoOn);	
+		[propput]
+		HRESULT OrthoOn ([in] VARIANT_BOOL OrthoOn);	
+
+		[propget, helpstring("Sets or returns the snap origin point for the viewport. ")]
+		HRESULT SnapBasePoint ([out, retval] IIcadPoint** ppSnapBasePoint);	
+		[propput]
+		HRESULT SnapBasePoint ([in] IIcadPoint* SnapBasePoint);	
+
+		[propget, helpstring("Sets the snap is On or Off")]
+		HRESULT SnapOn ([out, retval] VARIANT_BOOL *pSnapOn);	
+		[propput]
+		HRESULT SnapOn ([in] VARIANT_BOOL SnapOn);	
+
+		[propget, helpstring("Sets or returns the snap rotation angle of the viewport relative to the current User Coordinate System.")]
+		HRESULT SnapRotationAngle ([out, retval] double *pAngle);
+		[propput]
+		HRESULT SnapRotationAngle ([in] double Angle);
+
+		[propget, helpstring("Sets or returns the target point for the view.")]
+		HRESULT Target ([out, retval] IIcadPoint** ppTarget);
+		[propput]
+		HRESULT Target ([in] IIcadPoint* Target);	
+
+		[propget, helpstring("Turns the User Coordinate System Icon at the origin On or Off.")]
+		HRESULT UCSIconAtOrigin	([out, retval] VARIANT_BOOL *pIcon);
+		[propput]
+		HRESULT UCSIconAtOrigin	([in] VARIANT_BOOL Icon);
+
+		[propget, helpstring("Turns the User Coordinate System Icon On or Off.")]
+		HRESULT UCSIconOn	([out, retval] VARIANT_BOOL *pIcon);
+		[propput]
+		HRESULT UCSIconOn	([in] VARIANT_BOOL Icon);
+
+		[propget, helpstring("Sets or returns the UpperRight corner for the view. ")]
+		HRESULT UpperRightCorner ([out, retval] IIcadPoint** ppUpperRightCorner);	
+		[propput]
+		HRESULT UpperRightCorner ([in] IIcadPoint* UpperRightCorner);	
+
+		[propget, helpstring("Sets or returns the width of the view.")]
+		HRESULT Width ([out, retval] double *pWidth);	
+		[propput]
+		HRESULT Width ([in] double Width);
+
+		// *** Methods
+		[helpstring("Sets or returns the current grid spacing setting value.")]
+		HRESULT GetGridSpacing ([in, out] double *Xspacing, [in, out] double *Yspacing);
+
+		[helpstring("Sets or returns the current snap spacing setting value.")]
+		HRESULT GetSnapSpacing	([in, out] double *Xspacing, [in, out] double *Yspacing);
+
+		[helpstring("Sets or returns the grid spacing value for the viewport.")]
+		HRESULT SetGridSpacing ([in] double Xspacing, [in] double Yspacing);
+
+		[helpstring("Sets or returns the snap spacing value for the viewport.")]
+		HRESULT SetSnapSpacing	([in] double Xspacing, [in] double Yspacing);
+
+		[helpstring("Sets the view to a saved view in the Views collection.")]
+		HRESULT SetView	([in] IIcadView *View);
+
+		[helpstring("Splits the viewport based on the split type specified.")]
+		HRESULT Split ([in] ViewportSplitType NumberOfWindows);
+
+		[helpstring("Displays the complete drawing in the current viewport.")]
+		HRESULT ZoomAll	();
+
+		[helpstring("Displays the drawing at a given center point and specified zoom factor.")]
+		HRESULT ZoomCenter ([in] IIcadPoint *Center, [in] double ZoomFactor);
+
+		[helpstring("Displays the drawing extents.")]
+		HRESULT ZoomExtents	();
+
+		[helpstring("Zooms into an area picked in a screen window.")]
+		HRESULT ZoomPickWindow ();	
+
+		[helpstring("Displays the drawing at a user specified zoom scale factor.")]
+		HRESULT ZoomScaled ([in] double Scale, [in] ZoomScale ScaleType);
+
+		[helpstring("Zooms into an area bounded by a window")]
+		HRESULT ZoomWindow ([in] IIcadPoint *Lowerleft, [in] IIcadPoint *UpperRight);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoViewports
+	
+	[	object
+		, uuid(8011c134-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadViewports
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadViewports : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Viewport to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadViewport** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Viewport object.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadViewport** ppItem);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoSelectionSet
+	[	object
+		, uuid(8011c10a-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadSelectionSet
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadSelectionSet : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]  
+		HRESULT Application([out,retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of entities in the SelectionSet.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the document associated with the object.")]  
+		HRESULT Document([out,retval] IIcadDocument** ppDoc);
+
+		[propget, helpstring("Returns the selection set name.")]
+		HRESULT Name([out,retval] BSTR* pstrName);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		[propget, helpstring("Returns the Selection Sets collection object.")]
+		HRESULT Parent([out, retval] IIcadSelectionSets** ppParent);
+
+		[propget, helpstring("Sets the color of all entities in the set. Returns the common color of all entities or icVariousColors if no common color exists.")]  
+		HRESULT Color([out,retval] Colors * pColor);
+		[propput]  
+		HRESULT Color([in] Colors Color);
+
+		[propget, helpstring("Sets the layer that all entities in the set are on. Returns the common layer of all entities or an empty string if no common layer exists.")]  
+		HRESULT Layer([out,retval] BSTR *pLayer);
+		[propput]  
+		HRESULT Layer([in] BSTR Layer);
+
+		[propget, helpstring("Sets the linetype of all entities in the set. Returns the common linetype of all entities or an empty string if no common linetype exists.")]  
+		HRESULT Linetype([out,retval] BSTR *pLinetype);
+		[propput]  
+		HRESULT Linetype([in] BSTR Linetype);
+
+		[propget, helpstring("Sets all entities in the set to be visible or invisible. Always returns TRUE.")]  
+		HRESULT Visible([out,retval] VARIANT_BOOL* pVisible);
+		[propput]  
+		HRESULT Visible([in] VARIANT_BOOL Visible);
+
+		// *** Methods
+		[helpstring("Adds the entities in the array to the SelectionSet.")]
+		HRESULT AddItems ([in] VARIANT ArrayOfEntities);
+
+		[helpstring("Empties the selection set. The selection set will still exist, but will contain no items.")]
+		HRESULT Clear ();
+
+		[helpstring("Deletes the selection set and all its members.")]
+		HRESULT Delete();
+
+		[helpstring("Empties the selection set and deletes all its members.")]
+		HRESULT Erase ();
+
+		[helpstring("Highlights or dehighlights the objects in a selection set.")]
+		HRESULT Highlight ([in] VARIANT_BOOL HighlightFlag);
+
+		[id(0), helpstring("Given the index, returns one of the entities in the Selection Set")]
+		HRESULT Item([in] long Index, [out, retval] IDispatch** ppItem);
+
+		[helpstring("Removes one or more entities from the SelectionSet.")]
+		HRESULT RemoveItems ([in] VARIANT Entities);
+
+		[helpstring("Selects objects within the rectangle specified by two points, and adds them to the SelectionSet.")]
+		HRESULT Select ([in] SelectionSetType Type, [in, optional] IIcadPoint *Point1, [in, optional] IIcadPoint *Point2, [in, optional] VARIANT FilterType, [in, optional] VARIANT FilterData);
+
+		[helpstring("Selects objects passing through a point, and adds them to the SelectionSet.")]
+		HRESULT SelectAtPoint ([in] IIcadPoint *Point, [in, optional] VARIANT FilterType, [in, optional] VARIANT FilterData);
+
+		[helpstring("Selects objects within a polygon specified by the points, and adds them to the SelectionSet.")]
+		HRESULT SelectByPolygon ([in] SelectionSetType Type, [in] IIcadPoints *PolygonPoints, [in, optional] VARIANT FilterType, [in, optional] VARIANT FilterData);
+
+		[helpstring("Selects objects as picked by the user on the screen, and adds them to the SelectionSet.")]
+		HRESULT SelectOnScreen ([in, optional] VARIANT FilterType, [in, optional] VARIANT FilterData);
+
+		[helpstring("Updates and redraws the objects in the SelectionSet.")]
+		HRESULT Update ();
+
+		[helpstring("Creates a copy of the selection set and all its members.")]
+		HRESULT Copy ([out, retval] IIcadSelectionSet **ppCopy);
+
+		[helpstring("Mirrors the selection set and all its members about an axis defined by two points.")]
+		HRESULT Mirror ([in] IIcadPoint* Point1, [in] IIcadPoint* Point2, [in, optional, defaultvalue(TRUE)] VARIANT_BOOL MakeCopy, [out, retval] IIcadSelectionSet **MirroredEntities);
+
+		[helpstring("Mirrors the selection set and all its members about a plane defined by three points.")]
+		HRESULT Mirror3D ([in] IIcadPoint* Point1, [in] IIcadPoint* Point2, [in] IIcadPoint* Point3, [in, optional, defaultvalue(TRUE)] VARIANT_BOOL MakeCopy, [out, retval] IIcadSelectionSet **MirroredEntities);
+
+		[helpstring("Moves the selection set and all its members.")]
+		HRESULT Move ([in] IIcadPoint* Point1, [in] IIcadPoint* Point2);
+
+		[helpstring("Rotates the selection set and all its members.")]
+		HRESULT Rotate ([in] IIcadPoint* BasePoint, [in] double RotationAngle);
+
+		[helpstring("Rotates the selection set and all its members about an axis formed by two points.  The direction of the axis is from point1 to point2.")]
+		HRESULT Rotate3D ([in] IIcadPoint* Point1, [in] IIcadPoint* Point2, [in] double RotationAngle);
+		
+		[helpstring("Scales the selection set and all its members by a given scale factor.")]
+		HRESULT ScaleEntity	([in] IIcadPoint* BasePoint, [in] double ScaleFactor);
+
+		[helpstring("Applies a rigid motion transformation to the selection set and all its members. ")]
+		HRESULT TransformBy ([in] IIcadMatrix *Matrix);
+
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoSelectionSets
+
+	[	object
+		, uuid(8011c10b-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadSelectionSets
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadSelectionSets : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the number of items in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, helpstring("Returns the parent Document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** ppParent);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Adds a new Selection Set to the collection.")]
+		HRESULT Add ([in] BSTR Name, [out, retval] IIcadSelectionSet** ppItem);
+
+		[id(0), helpstring("Given the index, returns the corresponding Selection Set.")]
+		HRESULT Item([in] VARIANT Index, [out, retval] IIcadSelectionSet** ppItem);
+	}
+
+
+

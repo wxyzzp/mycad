@@ -1,0 +1,22 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_03242003_2.txt
+Date:		03-24-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/CMDS/cmds4.cpp?rev=1.21.6.6
+
+
+Description:	This submission modifies TRIM command to add support
+                for elliptic arc.
+
+Comments        None.

@@ -1,0 +1,372 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78698_2.txt	
+Product Version:	ICAD 4
+Date:			09/02/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/DB/drawing.cpp ==> Db.dll
+Source/prj/lib/DB/drawing.h ==> Db.dll
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78698 -- ICAD crashes while printing 
+attached dxf  file.
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The crash occurs at the following location in 
+File: "Source\prj\lib\CMDS\cmdsLayout.cpp", in the function 
+"cmd_getCurrentLayout" as shown below:
+ 
+ 
+File: "Source\prj\lib\CMDS\cmdsLayout.cpp"
+---------------------------------------------------------------
+ 
+int cmd_getCurrentLayout(sds_name layout)
+{
+	db_drawing* pDrawing = SDS_CURDWG;
+	struct resbuf tm;
+	SDS_getvar(NULL, DB_QTILEMODE, &tm, SDS_CURDWG, &SDS_CURCFG, &SDS_CURSES);
+	db_dictionary* pDictLayout = (db_dictionary*)pDrawing->dictsearch(pDrawing->namedobjdict(), "ACAD_LAYOUT", 0);
+	db_dictionaryrec* pCurRec;
+	pDictLayout->get_recllends(&pCurRec, NULL);
+	while(pCurRec != NULL)
+	{
+		if(!static_cast<CDbLayout*>(pCurRec->hiref->ret_hip(pDrawing))->ret_deleted())
+			if(!tm.resval.rint)
+			{
+				// paper space layout is active
+				if(static_cast<CDbLayout*>(pCurRec->hiref->ret_hip(pDrawing))->isCurrent())
+					break;
+			}
+			else
+			{
+				// model space layout is active
+				if(static_cast<CDbLayout*>(pCurRec->hiref->ret_hip(pDrawing))->block() == static_cast<CDbLayout*>(pCurRec->hiref->ret_hip(pDrawing)))
+					break;
+			}
+		pCurRec = pCurRec->next;
+	}
+
+	ASSERT(pCurRec != NULL);       ======>>>>>>   (ASSERT at this line in Debug Mode)
+
+	layout[0] = (long)pCurRec->hiref->ret_hip(pDrawing);     ======>>>>>>   (Crash on this line)
+
+
+	layout[1] = (long)pDrawing;
+	return 1;
+}
+
+In the Debug Build we get an ASSERT followed by a Crash. The pCurRec has become NULL.
+ 
+Analysis:
+On analyzing the file I found that it is the ACAD DXF (ASCII) R14 File created 
+(saved) in AutoCAD. When such a file is opened in IntelliCAD, then there are 
+no layout objects in it. This can be examined by executing the "layout" 
+command at the Prompt followed by entering the '?' to list all layouts. 
+No layouts are shown. Therefore pCurRec has become NULL after executing 
+"pDictLayout->get_recllends(&pCurRec, NULL);" line in above code.
+
+Solution:
+--------
+After applying the changes in order to fix Bugzilla# 78600: (R13/R14 DXF saved 
+by A2K or later loose LAYOUT) the above problem also gets solved. Therefore 
+no extra changes are required to be made for this fix in particular.
+
+Please refer the Submission DOC, "CYB_78600_2.txt" for more details.
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+The code should be checked for the following cases:
+	1. Following Types of Files Created in AutoCAD should get loaded and SAVED 
+in IntelliCAD:
+	a. AutoCAD R14/LT98/LT97 DXF(*.dxf) [ASCII]
+	b. AutoCAD R14/LT98/LT97 DXF(*.dxf) [Binary]
+	c. AutoCAD R13/LT95 DXF(*.dxf)	[ASCII]
+	d. AutoCAD R13/LT95 DXF(*.dxf)	[Binary]
+
+	2. The Above types of Files when opened should have the layout object 
+present in them. This is verified by the giving a "layout" command, followed
+by '?' at the Prompt asked. It should show the following:
+	
+	: layout
+
+	Enter layout option [Copy/Delete/New/Rename/Set/Template/? to list] <Set>: ?
+
+	Layout name:: Layout1
+	Block name:: *Paper_Space
+	Scroll/<ENTER to show next group>: 
+
+	:
+
+	(The above snapshot is consistent with AutoCAD.)
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+Date:		07-10-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78310
+Affected files:			
+		Source/prj/lib/CMDS/DimMakeDim.cpp
+		Source/prj/lib/DB/Dimension.cpp
+		Source/prj/lib/DB/entities.h
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+Description:	Group Code 42 not implemented for dimension entity
+		1. Adding DXF code 42 for dimension entity.
+		2. Successfully opening dwg files with DXF 42 of dimension.
+		3. Saving dwg files with DXF code 42 of dimension.
+		4. Setting DXF 42 while creating dimension.
+		5. Displaying DXF 42 in dotted pairs.
+Comments:	TaL78310
+File_by_File:
+	*	Source/prj/lib/CMDS/DimMakeDim.cpp
+		plink->dimvalue had already stored the measurement of dimension. So no need to 				calculate the dimension measurement. We only need to set this plink->dimvalue in 			DXF 42 of dimension.
+	*	Source/prj/lib/DB/Dimension.cpp
+		Updating the entgetspecific() for DXF 42 of dimension. This function is used for 			to displays the dotted pair of particular entity. Now (entget (car (entsel)))) 				for dimension should include DXF 42. For old drawing where DXF 42 were not 				stored should display value 0.0. Even AutoCAD does so.
+	*	Source/prj/lib/DB/entities.h
+		Adding a variable measurement of type real for DXF 42 and corresponding 				get_42() and set_42() to access it.
+	*	Source/prj/lib/DRW/dwgload.cpp
+		Getting DXF 42 while reading dimension while loading dwg  /DXF file.
+	*	Source/prj/lib/DRW/dwgsave.cpp
+		Setting DXF 42 while writing  dimension while saving  dwg /DXF file.
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4122002_1.txt
+Date:		12-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:	
+
+Added files:     
+Affected files: 
+                CvsHist:Source/lib/DB/DbMText.cpp
+                CvsHist:Source/lib/DB/DbMText.h
+                CvsHist:Source/lib/DRW/dwgload.cpp
+                CvsHist:Source/lib/DRW/dwgsave.cpp
+Description:  Add  MTEXT DXF=73(LineSpacingType) and DXF=44
+                (LineSpacingFactor).
+--------------------------------------------------------------------------------

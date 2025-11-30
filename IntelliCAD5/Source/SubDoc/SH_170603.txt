@@ -1,0 +1,43 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_170603.txt
+Date:		17/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78521 
+
+Added files:    None
+
+Affected files: Source/prj/ICAD/IcadEntPropTabs.cpp
+
+Description:	This submission fixes the bug #78521 - "Properties dialog does not show 
+                properties of 3d entities". It is reported for 3DSolid entities but I 
+                found that region and body entities also had the same problem.
+                
+	        As color, layer, linetype, linetypescale, and thickness, the line weight 
+	        is also an item of general entity property control and not an item of 
+	        ent_REGION_TAB, ent_3DSOLID_TAB, and ent_BODY_TAB control. But the code 
+	        in ent_REGION_TAB::DoDataExchange(), ent_3DSOLID_TAB::DoDataExchange(),
+		and ent_BODY_TAB::DoDataExchange() functions tried to send the value of the 
+		line weight to ent_REGION_TAB, ent_3DSOLID_TAB, ent_BODY_TAB controls, which 
+		causes MFC to give an assert in CDialog::DoDataExchange() in the debug build 
+		and fire an exception in the release build. The problems have been fixed by 
+		changing 
+				
+		   start += 5;
+		   
+		to 
+		   start += 6;
+		   
+		to skip the line weight to prevent to sent it to the control.
+		
+
+
+
+                
+
+

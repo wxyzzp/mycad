@@ -1,0 +1,49 @@
+Document Title:		MB_DWGdirect-81.txt
+Product Version:	ICAD 5
+Date:  				08/09/2004 12:25pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	Resources
+	Regress
+
+3.  Overview:
+Fix for 78689.scr - Needed an extra return to exit entity
+selection mode.
+regression.lst had some bogus characters at the begining causeing
+problems in regression.exe.
+Removed multiple #includes of blddate.h in icadres.rc. Denis was
+having problems building because of it.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: Y
+File Name       		78689.scr
+Name of Script File     78689.scr
+
+6.  Change Log:
+		Source\Regress\scripts\78689.scr
+		Source\Regress\scripts\regression.lst
+		Eng-us\icadres.rc
+		source\subDoc\MB_DWGdirect-81.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+
+

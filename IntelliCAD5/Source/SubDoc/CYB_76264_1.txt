@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_76264_1.txt
+Date:		09-09-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:76264
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/realtime.cpp
+Description:	Real time zoom does not work after turning UCSFOLLOW ON.
+Comments:	TaL76264
+File by File:	
+*		Source/prj/ICAD/realtime.cpp
+		At all the places where simply m_iViewMode is checked, I checked for  m_iViewMode == 1
+--------------------------------------------------------------------------------

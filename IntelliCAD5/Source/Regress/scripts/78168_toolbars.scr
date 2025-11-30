@@ -1,0 +1,84 @@
+logfilename log\78168_toolbars.log
+logfileon
+;_______
+toolbar   all   
+show
+;_______
+toolbar   standard   
+hide
+;_______
+toolbar   standard   
+show
+;_______
+toolbar   modify   
+hide
+;_______
+toolbar   modify  
+show
+;_______
+toolbar   dimensioning   
+hide
+;_______
+toolbar   dimensioning  
+show
+;_______
+toolbar   inquiry  
+hide
+;_______
+toolbar   inquiry  
+show
+;_______
+toolbar settings 
+hide
+;_______
+toolbar   settings  
+show
+;_______
+toolbar   tools  
+hide
+;_______
+toolbar   tools  
+show
+;_______
+toolbar   view    
+hide
+;_______
+toolbar   view   
+show
+;_______
+toolbar   draw 2d  
+hide
+;_______
+toolbar   draw 2d    
+show
+;_______
+toolbar   draw 3d  
+hide
+;_______
+toolbar draw 3d    
+show
+;_______
+toolbar   entity snaps   
+hide
+;_______
+toolbar entity snaps     
+show
+;_______
+toolbar   entity data   
+hide
+;_______
+toolbar   entity data    
+show
+;_______
+toolbar
+all
+show
+;_______
+toolbar
+all
+hide
+;_______
+dxfout output_dxf\78168_toolbars.dxf
+6
+quit
+y

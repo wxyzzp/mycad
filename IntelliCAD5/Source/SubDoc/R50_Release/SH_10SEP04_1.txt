@@ -1,0 +1,58 @@
+Document Title:  SH_10SEP04_1.txt	
+Product Version: ICAD 5.0
+Date:  10/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release, Icad_cee(will be done separately)
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/gr/clipper.cpp
+   Source/ThirdParty/geo/crvpair.cpp
+   Source/ThirdParty/geo/ptarray.h
+   
+3. Overview:
+
+This submission fix the following problems in the code, which caused ICAD to 
+crash in clipper.cpp on drawing load:
+
+   1) The line-line intersection function in GEO did not give a correct result 
+      in the case the lines are overlapping.
+      
+   2) The code in CClipper::ClipPolygonByFilter() incorrectly removed all 
+      elements from line-line intersection point array in the certain cases, 
+      and then tried to access the element of the array using operator[].
+      
+   3) The cases that two polygons touch on their boundary were not taken 
+      account in CClipper::ClipPolygonByFilter().
+      
+   4) The exception handling was not implemented correctly in CClipper::ClipPolygonByFilter() 
+      for the cases when the code is not able to form a new polygon after the 
+      original one has been clipped.
+      
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

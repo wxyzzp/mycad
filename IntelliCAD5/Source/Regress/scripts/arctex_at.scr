@@ -1,0 +1,7 @@
+logfilename log\arctex_at.log
+logfileon
+(load "Lisp\arctex.lsp")
+(at "Hi there" 1.4 '(1 1 0) 20 180)
+dxfout output_dxf\arctex_at.dxf
+6
+quit _y

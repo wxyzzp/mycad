@@ -1,0 +1,17 @@
+logfilename log\idpoint_options.log
+logfileon
+;______---
+idpoint
+1,1
+(if (equal (getvar "lastpoint") (list 1.0 1.0 0.0)) (princ "OK") (alert "err"))
+;_______
+vpoint
+-1,-1,1
+idpoint
+2,2
+(if (equal (getvar "lastpoint") (list 2.0 2.0 0.0)) (princ "OK") (alert "err"))
+;______________
+dxfout output_dxf\idpoint_options.dxf
+6
+quit
+y

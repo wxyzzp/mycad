@@ -1,0 +1,323 @@
+Notes for Build_45:
+
+Build Date: Apr 14, 2004.
+To reproduce this build, checkout tag Build_45.  This produces a non-committable working area.  If you want to commit changes made to this work area, please update IntelliCAD to R40_Dev (cvs update -cd R40_Dev or refer to checkin_process.doc) and proceed with your checkin process.
+
+ucs_options.scr fails regress.  I am unable to isolate the submission that 
+causes this error.  All other scripts pass when run individually.
+
+CHANGED FILES:
+M	2004-04-07:08:29	chikahirom	1.63.4.58	IntelliCAD/Eng-us/icad.rc2
+M	2004-04-07:08:30	chikahirom	1.4.6.3	IntelliCAD/Source/prj/lib/CMDS/menu.cpp
+M	2004-04-07:08:31	chikahirom	1.3.4.2	IntelliCAD/Source/prj/lib/ICADLIB/xml.h
+M	2004-04-07:08:31	chikahirom	1.2.4.1	IntelliCAD/Source/prj/lib/ICADLIB/xmldoc.cpp
+M	2004-04-07:08:31	chikahirom	1.2.4.1	IntelliCAD/Source/prj/lib/ICADLIB/XmlStream.cpp
+M	2004-04-07:08:32	chikahirom	1.5.6.6	IntelliCAD/Source/prj/ICAD/IcadToolbar.cpp
+M	2004-04-07:08:32	chikahirom	1.4.6.2	IntelliCAD/Source/prj/ICAD/IcadToolBar.h
+M	2004-04-07:08:33	chikahirom	1.10.6.2	IntelliCAD/Source/prj/ICAD/IcadCustom.cpp
+M	2004-04-07:08:34	chikahirom	1.9.4.7	IntelliCAD/Source/prj/ICAD/IcadStatusBar.cpp
+M	2004-04-07:08:36	chikahirom	1.1.2.5	IntelliCAD/Source/prj/ICAD/LTypeComboBox.cpp
+M	2004-04-07:08:38	chikahirom	1.64.4.48	IntelliCAD/Source/prj/ICAD/icadapi.cpp
+M	2004-04-10:06:47	chikahirom	1.12.6.8	IntelliCAD/Source/prj/lib/GR/leadergen.cpp
+M	2004-04-12:03:16	chikahirom	1.4.6.8	IntelliCAD/Source/prj/lib/GR/DoText.cpp
+M	2004-04-12:17:35	denisp	1.25.4.20	IntelliCAD/Source/prj/lib/DB/drawing.cpp
+M	2004-04-12:17:36	denisp	1.22.4.11	IntelliCAD/Source/prj/ICAD/icadwndaction.cpp
+M	2004-04-12:17:38	denisp	1.8.4.3	IntelliCAD/Source/prj/ICAD/IcadTBDlg.cpp
+A	2004-04-06:12:51	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-25.txt
+M	2004-04-06:12:51	markba	1.6.6.4	IntelliCAD/Source/prj/lib/CMDS/purge.cpp
+M	2004-04-07:11:52	markba	1.17.6.15	IntelliCAD/Source/prj/lib/CMDS/cmds3.cpp
+M	2004-04-07:11:52	markba	1.3.10.2	IntelliCAD/Source/prj/lib/DB/styletabrec.h
+M	2004-04-07:11:52	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-07:11:52	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-04-07:11:52	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-07:11:52	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+A	2004-04-07:12:08	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-26.txt
+M	2004-04-08:14:30	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-08:14:30	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+A	2004-04-08:14:32	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-28.txt
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-Writer-27.txt
+M	2004-04-08:15:25	markba	1.13.6.18	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-04-08:15:25	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/wipeout.cpp
+M	2004-04-08:15:25	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-08:15:25	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.h
+M	2004-04-08:15:25	markba	1.1.2.27	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-08:15:25	markba	1.13.4.21	IntelliCAD/Source/prj/make/db.dsp
+M	2004-04-09:18:25	markba	1.28.4.34	IntelliCAD/Eng-us/IcadRes.rc
+M	2004-04-09:18:25	markba	1.63.4.59	IntelliCAD/Eng-us/icad.rc2
+A	2004-04-09:18:25	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-29.txt
+M	2004-04-09:18:25	markba	1.18.6.7	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-04-09:18:25	markba	1.21.4.16	IntelliCAD/Source/prj/ICAD/IcadDoc.cpp
+M	2004-04-09:18:25	markba	1.4.6.6	IntelliCAD/Source/prj/lib/CMDS/dxfInOut.cpp
+M	2004-04-09:18:25	markba	1.8.6.8	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-04-09:18:25	markba	1.40.6.20	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+M	2004-04-09:18:36	markba	1.18.6.8	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-04-10:19:41	markba	1.8.6.9	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-04-14:18:40	markba	1.1.2.2	IntelliCAD/Source/Regress/scripts/68870.scr
+A	2004-04-14:18:40	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectScriptFix.txt
+M	2004-04-14:18:40	markba	1.1.2.4	IntelliCAD/Source/prj/ICAD/UCSIcon.cpp
+M	2004-04-14:18:40	markba	1.4.6.7	IntelliCAD/Source/prj/lib/CMDS/dxfInOut.cpp
+M	2004-04-14:18:40	markba	1.8.6.10	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+A	2004-04-12:05:10	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_44.txt
+M	2004-04-13:21:04	master	1.4.8.52	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-04-10:06:35	stephenh	1.2.6.3	IntelliCAD/Source/prj/lib/ACIS/AsSatStream.h
+M	2004-04-10:06:35	stephenh	1.5.6.3	IntelliCAD/Source/prj/lib/ACIS/AsObject.h
+M	2004-04-10:06:35	stephenh	1.1.6.2	IntelliCAD/Source/prj/lib/ACIS/AsFunctional.h
+M	2004-04-10:06:35	stephenh	1.4.6.1	IntelliCAD/Source/prj/lib/ACIS/AsCache.h
+M	2004-04-10:06:35	stephenh	1.3.6.2	IntelliCAD/Source/prj/lib/ACIS/AsAutoPtr.h
+M	2004-04-10:06:36	stephenh	1.9.6.12	IntelliCAD/Source/prj/lib/ACIS/AsModeler.cpp
+A	2004-04-10:06:37	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_78740_1.doc
+A	2004-04-10:06:37	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_040904_1.doc
+M	2004-04-10:06:45	stephenh	1.5.6.4	IntelliCAD/Source/prj/lib/ACIS/AsDisplayObject.h
+M	2004-04-10:06:49	stephenh	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/ICADLIB/Linexarc.cpp
+
+CHANGELOG:
+------------------------------------------------------------------------------------ 
+Date: 07-04-2004 
+Developer: Chikahiro Masami 
+Company: Ebatech 
+Reference: 
+Affected files: 
+Eng-us/icad.rc2 
+Source/prj/lib/CMDS/menu.cpp 
+Source/prj/lib/ICADLIB/xml.h 
+Source/prj/lib/ICADLIB/xmldoc.cpp 
+Source/prj/lib/ICADLIB/XmlStream.cpp 
+Source/prj/ICAD/IcadToolbar.cpp 
+Source/prj/ICAD/IcadToolBar.h 
+Source/prj/ICAD/IcadCustom.cpp 
+Description: CUSTOMIZE, MENU, MENULOAD command can import XML Toolbar file. 
+CUSTOMIZE command can export XML Toolbar file. 
+XML supports non-ANSI string. 
+I have just tested only Japanes and English. 
+Comments: TaLXmlMenu2?? 
+------------------------------------------------------------------------------------ 
+Date: 07-04-2004 
+Developer: Chikahiro Masami 
+Company: Ebatech 
+Reference: 
+Affected files: 
+Source/prj/ICAD/IcadStatusBar.cpp 
+Description: Skip unnecessary SetTextWindow?? call when new and old text are same. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 07-04-2004 
+Developer: Chikahiro Masami 
+Company: Ebatech 
+Reference: 
+Affected files: 
+Source/prj/ICAD/LTypeComboBox.cpp 
+Source/prj/ICAD/icadapi.cpp 
+Description: 
+icadapi.cpp 
+ICAD crashed when it is exiting. 
+ltypecombobox.cpp 
+CLtypeComboBox??::UpdateLTypeList?? 
+Localized (Chinese) Text is removed. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 09-04-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: BugZilla:78740 
+Affected files: 
+Source/prj/lib/ICADLIB/Linexarc.cpp 
+
+Description: Fixed a line/arc intersection bug. 
+Comments: TaL78740 
+------------------------------------------------------------------------------------ 
+Date: 09-04-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/prj/lib/ACIS/AsSatStream.h 
+Source/prj/lib/ACIS/AsObject.h 
+Source/prj/lib/ACIS/AsFunctional.h 
+Source/prj/lib/ACIS/AsCache.h 
+Source/prj/lib/ACIS/AsAutoPtr.h 
+Source/prj/lib/ACIS/AsDisplayObject.h 
+Source/prj/lib/ACIS/AsModeler.cpp 
+
+Description: Fixed possible memory leaks and the bug of the MASSPROP command. 
+Comments: SH_040904_1.doc 
+
+------------------------------------------------------------------------------------ 
+Date: 12-04-2004. 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/ICAD/IcadTBDlg.cpp 
+Description: Fixed crash on deletion of last toolbar in dialog. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 12-04-2004. 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/ICAD/icadwndaction.cpp 
+Description: Corrected to avoid asserts if entity properties toolbar was not created. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 12-04-2004. 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Source/prj/lib/DB/drawing.cpp 
+Description: Corrected to perform repair if dictionary references layout objects 
+which do not exist. 
+Comments: 
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirectWriter-25.txt
+Date:			04/06/2004 05:51am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Fix for script 78444_purge_all.scr and 78444_xref_detach.scr
+
+Files Affected:
+\source\prj\lib\cmds\purge.cpp
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirect-26.txt
+Date:			04/07/2004 04:51am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Added code to support round tripping of SHAPEs via DWGdirect.
+Added code to cmds3.cpp to prevent divide by zero.
+
+Files Affected:
+\source\prj\lib\db\styletabrec.h
+\source\prj\lib\cmds\cmds3.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirectWriter-28.txt
+Date:			04/08/2004 07:24am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Added support for round tripping Tolerances.
+Note that if the dimstyle has say arial as its text style,
+IntelliCAD shows ???? in place of the text. This is an 
+IntelliCAD problem (I believe with resolving in-line font changes),
+that is the same with or without DWGdirect active.
+
+Notes to QA:
+With the exception of proxies, and wipeout entities, this completes
+the entity list (I believe). If you find any entities that we don't
+round trip please let me know ASAP.
+
+I say entities as opposed to objects!!! There are still several objects
+yet to be supported. I.e spatial Indexes, layer Indexes, some types of
+dictionary entities, VBA projects etc. 
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirect-Writer-27.txt
+Date:			04/08/2004 08:20am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Added code to round trip wipeout entities.
+Note this is a partial fix. DWG is fine.
+However, exporting to DXF doesn't not display the
+wipeout boundary. The wipeout exists and is correct
+in every other way. This is related to my ability
+to get the binary data associated with the wipeout.
+I have been working with the ODT folks to get this 
+resolved.
+
+Notes to QA:
+I would hold off testing wipeout export to DXF until
+I can get my issue addressed by the ODT guys.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\make\db.dsp
+\source\prj\lib\db\entities.h
+\source\prj\lib\db\wipeout.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirectWriter-29.txt
+Date:				04/08/2004 11:28am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Added code to allow export as 2004 from scripts.
+
+NOTE:
+	Currently it is only when 'filedia' is of - i.e. NOT using the 
+	file save dialog box.
+
+	This is to make scripting able to saveas or dxfout as 2004 for 
+	testing.
+
+I'm waiting for the right time to do the same for saving via the
+file save dialog. It's pretty ugly in there and I want to rework
+it because 2005 isn't that far behind, and I'd like to make it 
+easier to add 2005 when it comes.
+
+Notes to Developers:
+Note; NO changes were made to sds_get.cpp. I simply reformated
+SDS_GetFiled() so I could get a better understanding of what it 
+was doing.
+
+
+Notes to QA:
+With 'filedia' off, drawings can be scripted to saveas or dxfout
+as 2004 versions.
+
+Files Affected:
+\intellicad\eng-us\icadres.rc
+\intellicad\eng-us\icad.rc2
+\source\prj\icad\icaddoc.cpp
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\lib\sds\sds_get.cpp
+------------------------------------------------------------------------------------ 
+Document Title		MB_DWGdirectScriptFix.txt
+Date:			04/14/2004 11:36am
+Engineer(s):		Mark Barrow
+
+Change Description:
+This fixes three regress script failures;
+Source\Regress\scripts\68870.scr
+Source\Regress\scripts\78243.scr
+Source\Regress\scripts\78417.scr
+All three now run to completion.
+68870.scr and 78417.scr were because of a difference in running it 
+under DWGdirect and not running it under DWGdirect.
+78243.scr was because of accessing a NULL pointer. I added code to 
+avoid this in ucsicon.cpp.
+
+Files Affected:
+\source\regress\scripts\68870.scr
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\icad\ucsicon.cpp
+------------------------------------------------------------------------------------ 
+REGRESS:
+The following scripts failed during the regress run. Running them individually 
+showed no problems.  Please look for performance data on performance.xls at
+http://www.itcmembers.org/metadot/index.pl?isa=CMSDocument&iid=2720&op=show
+F:\build-45-new\IntelliCAD\Source\Regress\scripts\78260_78273_1.scr
+F:\build-45-new\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\build-45-new\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\build-45-new\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+F:\build-45-new\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78740

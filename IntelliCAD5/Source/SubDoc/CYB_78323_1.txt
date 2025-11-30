@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78323_1.txt
+Date:		07-10-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78323
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/printscaleviewtab.cpp
+Description: 	PEN_WIDTH parameter of .pcp file is set incorrectly for millimeters unit
+Comments:	TaL78323
+File by File:	
+*		Source/prj/ICAD/printscaleviewtab.cpp
+		Extract the fileunits and compare with the current dialog units. If the two are same then do nothing. Else convert the value of Pen_Width in the PCP file to the units selected in the dialog box.  
+
+--------------------------------------------------------------------------------

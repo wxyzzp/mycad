@@ -1,0 +1,54 @@
+logfilename log\qtext_options.log
+logfileon
+;_________
+qtext
+1
+;__________
+(if (/= (getvar "qtextmode") 1) (alert "ERr"))
+;__________
+text
+1,1
+
+
+4
+;__________
+zoom
+extents
+regen
+;__________
+(setq en nil)
+(setq en (entsel))
+1,1
+;__________
+(if (= en nil) (alert "Err") (princ "OK"))
+;__________
+qtext
+0
+;__________
+(if (/= (getvar "qtextmode") 0) (alert "ERr"))
+;__________
+regen
+;__________
+(setq en nil)
+(setq en (entsel))
+1,1
+;__________
+(if (= en nil) (princ "OK") (alert "Err"))
+;__________
+qtext
+t
+;__________
+(if (/= (getvar "qtextmode") 1) (alert "ERr"))
+;__________
+regen
+;__________
+(setq en nil)
+(setq en (entsel))
+1,1
+;__________
+(if (= en nil) (alert "Err") (princ "OK"))
+;__________
+dxfout output_dxf\qtext_options.dxf
+6
+quit
+y

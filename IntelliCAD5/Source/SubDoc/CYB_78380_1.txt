@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------
+File:		CYB_78380_1.txt
+Date:		25-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78380
+Affected files:			
+		Source/prj/ICAD/IcadCusToolbar.cpp?rev=1.6.6.1 
+		Source/prj/ICAD/IcadCusToolbar.h?rev=1.1.1.1.12.1
+		Source/prj/ICAD/IcadToolBar.h?rev=1.4.6.1 
+		Source/prj/ICAD/IcadToolBarMain.cpp?rev=1.10.4.3 
+		Source/prj/ICAD/IcadToolBarMain.h?rev=1.5.4.1 
+Description:	"long" data type for TOOLBARID had reached its limits. So it was NOT possible to add new hardcoded toolbars to 
+		IntelliCAD. Now we have used new #define  long_double __int64 for TOOLBAR ID. In future one can implement 
+		the class long_double and have operator & overloaded and keep the current design of toolbar intact. 
+		Other option is to change the current implementation of toolbar for tool id.
+Comments:	TaL78380
+Problem Analysis:
+		'long' data type limit is exhausted. In IntelliCAD code there is one bit of 32 bits of long for every 
+		toolbar. 
+Problem solution:
+		The solution was to get the new data type. As the operation like &, ! are done on the ToolId. We cannot use
+		'long double'. Denis suggested a good idea of creating a class and overloding operator &, ! etc so that the
+		toolbar design remains intact.
+		We can also use __int64 intead of long data type. So the solution is to replace long for __int64.
+File_By_File:
+	*	Source/prj/ICAD/IcadCusToolbar.h
+		#define long_double	__int64 . replace long for long_double
+
+	*	Source/prj/ICAD/IcadCusToolbar.cpp 
+		replace long for long_double
+
+	*	Source/prj/ICAD/IcadToolBar.h
+		replace long for long_double
+
+	*	Source/prj/ICAD/IcadToolBarMain.cpp 
+		replace long for long_double
+
+	*	Source/prj/ICAD/IcadToolBarMain.h
+		replace long for long_double
+--------------------------------------------------------------------------------

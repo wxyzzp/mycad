@@ -1,0 +1,174 @@
+logfilename log\chamfer_options.log
+logfileon
+;___________
+(defun c:checkchamfer() (setq en nil) (setq en (entget (Car (entsel)))) (if (/= en nil) (alert "chamfer did not work correctly")))
+chamfer
+d
+0.5
+1
+(if (/= (getvar "chamfera") 0.5) (alert "chamfera err"))
+(if (/= (getvar "chamferb") 1) (alert "chamferb err"))
+;_________
+chamfer
+d
+
+.5
+(if (/= (getvar "chamfera") 0.5) (alert "chamfera err"))
+(if (/= (getvar "chamferb") 0.5) (alert "chamferb err"))
+;_________
+chamfer
+a
+.5
+45
+(if (/= (getvar "chamferc") 0.5) (alert "chamferc err"))
+(if (/= (getvar "chamferd") (/ pi 4)) (alert "chamferd err"))
+(if (/= (getvar "chammode") 1) (alert "chammode err"))
+;_________
+chamfer
+a
+1
+0
+(if (/= (getvar "chamferc") 1) (alert "chamferc err"))
+(if (/= (getvar "chamferd") 0) (alert "chamferd err"))
+(if (/= (getvar "chammode") 1) (alert "chammode err"))
+;_________
+chamfer
+t
+n
+
+(if (/= (getvar "trimmode") 0) (alert "trimmode err"))
+;_________
+chamfer
+t
+t
+
+(if (/= (getvar "trimmode") 1) (alert "trimmode err"))
+;_________
+chamfer
+m
+d
+
+(if (/= (getvar "chammode") 0) (alert "trimmode err"))
+;_________
+chamfer
+m
+a
+
+(if (/= (getvar "chammode") 1) (alert "trimmode err"))
+;_________
+chamfer
+d
+0.5
+0.5
+(if (/= (getvar "chammode") 0) (alert "trimmode err"))
+;________1
+line
+1,1
+2,1
+2,0
+
+;________
+zoom
+extents
+;________
+chamfer
+1.9,1
+2,.9
+;________
+checkchamfer
+2,1
+;________
+erase
+all
+
+;________2
+pline
+1,1
+1,0
+2,0
+
+;________
+zoom
+extents
+;________
+chamfer
+1,0.1
+1.1,0
+;________
+checkchamfer
+1,0
+;________
+erase
+all
+
+;________3
+pline
+1,1
+2,1
+2,0
+
+;________
+zoom
+extents
+;________
+chamfer
+p
+2,1
+;________
+checkchamfer
+2,1
+;________
+erase
+all
+
+;________4
+pline
+1,1
+2,1
+
+line
+2,1
+2,0
+
+;________
+zoom
+extents
+;________
+chamfer
+1.9,1
+2,.9
+;________
+;checkchamfer
+;2,1
+;________
+erase
+all
+
+;________5
+line
+1,1
+2,1
+
+line
+2,1
+2,0
+
+;________
+zoom
+extents
+;________
+chamfer
+a
+.5
+45
+
+2,.9
+1.9,1
+;________
+checkchamfer
+2,1
+;__________
+dxfout output_dxf\chamfer_options.dxf
+6
+quit
+y

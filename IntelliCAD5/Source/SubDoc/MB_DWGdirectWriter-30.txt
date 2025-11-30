@@ -1,0 +1,43 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-30.txt
+Produce Version		ICAD 4
+Date:				04/19/2004 10:20am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission finishes all the issues associated with round tripping
+wipeout entities. In addition it lays the groundwork for applying the
+binary data gathering methods needed for all other objects and entities
+that have binary data.
+
+Notes to Developers:
+
+Notes to QA:
+Wipeout entities now round trip correctly.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\db\dblayout.cpp
+\source\prj\lib\db\entities.h
+\source\prj\lib\db\objects.h
+\source\prj\lib\db\wipeout.cpp
+\source\prj\lib\icadlib\assoc.cpp
+\source\prj\lib\icadlib\icadlib.h
+

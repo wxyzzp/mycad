@@ -1,0 +1,60 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-39.txt
+Produce Version		ICAD 4
+Date:				05/24/2004 05:53am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission adds registry saved system variables:
+
+The following variables now have their values saved and retrieved from the registry;
+	BACKGROUNDPLOT
+	DRAGP1
+	DRAGP2
+	FIELDDISPLAY
+	GRIPHOVER
+	GRIPOBJLIMIT
+	GRIPTIPS
+	HPASSOC
+	HPDRAWORDER
+	HPGAPTOL
+	INTERSECTIONCOLOR
+	LOCALROOTPREFIX
+	MTEXTFIXED
+	MTJIGSTRING
+	OSNAPHATCH
+	PALETTEOPAQUE
+	PEDITACCEPT
+	PLOTOFFSET
+	RASTERDPI
+	REPORTERROR
+	ROAMABLEROOTPREFIX
+	SIGWARN
+	STANDARDSVIOLATION
+	STARTUP					**** This one should be hooked up for use.
+	TRAYICONS
+	TRAYNOTIFY
+	TRAYTIMEOUT
+	TREEMAX
+	UCSORTHO
+	UCSVIEW
+	XREFNOTIFY
+	XREFTYPE				* Currently shows On/Off instead of 0/1. Investigating.
+
+Notes to Developers:
+	
+Notes to QA:
+	It should be noted that these variables were added for script compatiblility,
+	but their functionality is NOT supported and is beyond the scope of IntelliCAD 5.
+
+Notes to Docs:
+	I will be cross-referencing these with the lastest spec to make sure i haven't missed any.
+	
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\db\db1.cpp
+\source\prj\lib\db\dbdefines.h

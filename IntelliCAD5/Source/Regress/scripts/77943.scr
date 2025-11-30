@@ -1,0 +1,24 @@
+;This_script_is_created_by_Cybage_on_12:53PM8/12/2002;
+logfilename log\77943.log
+logfileon
+;;;;;;;;;;;;;;
+dimtad
+1
+;;;;;;;;;
+dimlinear
+1,1
+6,6
+4,3
+;;;;;;;;;
+list
+last
+
+;;;;;;;;
+dimtedit
+4,3
+right
+;;;;;;;;
+dxfout output_dxf\77943.dxf
+6
+quit
+y

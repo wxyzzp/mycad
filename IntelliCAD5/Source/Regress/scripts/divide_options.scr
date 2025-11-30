@@ -1,0 +1,9 @@
+logfilename log\edgesurf_options.log
+logfileon
+;_________
+(load "lisp\divide_options.lsp")
+;_________
+dxfout output_dxf\edgesurf_options.dxf
+6
+quit
+y

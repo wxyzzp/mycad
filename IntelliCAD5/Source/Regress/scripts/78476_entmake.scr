@@ -1,0 +1,10 @@
+logfilename log/78476_entmake.log
+logfileon
+;________
+(load "lisp/78476_entmake.lsp")
+entmake_78476
+;________
+dxfout output_dxf\78476_entmake.dxf
+6
+quit
+y

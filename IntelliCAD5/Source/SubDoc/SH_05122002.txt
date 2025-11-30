@@ -1,0 +1,190 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_05122002.txt
+Date:		05-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description: This submission fixes bugs #78391, #78398, #78389, #78364, 
+             #78357, #78390, #78371, #78392, #78399, and #78797.
+             
+
+Comments:    BUG #78391: Full ACIS: ICAD crashes on subtract command
+
+             RESOLUTION: The test case first unite two solid, A and B to 
+                         create a new solid C, and then tries to subtract 
+                         another solid D from the resulting solid C by 
+                         using "PREVIOUS" option to select the solid C. 
+                         Since the "PREVIOUS" option is designed for 
+                         selecting the entities in the previous selection 
+                         set, in that case, the deleted solids A and B are
+                         actually selected(they were selected in the 
+                         previous UNION operation)to be subtracted from, 
+                         which caused IntelliCAD to crash when the code 
+                         tried to access the data without checking if the
+                         selected solids have been deleted. 
+                         
+                         To fix the problems, the checks were added to 
+                         prevent operating on deleted solids.
+
+                         The implementation of the UNION operation was not
+                         consistently between IntelliCAD and AutoCAD. In 
+                         IntelliCAD, the UNION operation was reslut in a 
+                         new solid but it is not in AutoCAD. So running an
+                         AutoCAD script with UNION operations in IntelliCAD 
+                         may create different results. To be consistently 
+                         with AutoCAD, I also made changes to cmd_union().
+                         
+                            
+             BUG #78398: ICAD crashes at interfere command.
+                              
+             RESOLUTION: The test case uses two donuts to test the INTERFERE.
+                         command. The donuts are not solids so they are not
+                         able to be selected at INTERFERE command prompt.
+                         But if the donuts have been pre-selected using GRIP 
+                         when INTERFERE or any other solid command starts, 
+                         the previous implementation of sds_pmtssget() function 
+                         would return all entities in grip selection set
+                         to caller without checking if they match any type 
+                         in the filter provided by the caller. This problem 
+                         caused IntelliCAD to crash at the INTERFERE and other
+                         solid commands because those commands assume the 
+                         selected entities are solids.
+                         
+                         The problem was fixed by modifying the sds_pmtssget()
+                         function to only copy the entities mating type in 
+                         the filter from the grip selection set to the new 
+                         selection set.
+                         
+                         
+               
+             BUG #78389: Solid entities are not arrayed correctly.
+                
+             RESOLUTION: It happened only when the rectangle option is used
+                         at ARRAY command. The two of solids were overlying.
+                         The cmd_array() for solids was not implemented correctly
+                         so the new ACIS data was not actually used to create 
+                         the new solid until the next cycle. That is, the 
+                         second solid was created by using the ACIS data of 
+                         the original solid, and the third solid was created
+                         by using the ACIS data of the second solid and so on.
+                         The problem is fixed.
+                         
+                
+                
+             BUG #78364: (ACIS) Extrude does not work for donuts
+             BUG #78357: (ACIS) Revolve command does not work for donuts
+                
+             RESOLUTION: The cstr::wire() function is used to create an ACIS
+                         wire entity from a closed ICAD curve in order to 
+                         create an extruded or revolved solid. The function 
+                         assumed a closed lightweight pline should have more 
+                         than two vertices, which is wrong. A closed lightweight
+                         pline(i.e. donut) can only contain two vertices. 
+                         This bug is fixed.
+               
+               
+             BUG #78390: The taper direction for extrusion is wrong
+                   
+             RESOLUTION: Compare results with AutoCAD, the direction of taper 
+                         for the extrude operation was opposite to the expected 
+                         direction. This is fixed by changing the sign of the 
+                         taper anger.
+                
+                
+             BUG #78371: Wedge and Box creation with center option is incorrect.
+                
+             RESOLUTION: The wedges and boxes were not created correctly with
+                         center option when 2D the coordinates of the corner 
+                         and height was inputted respectively. The given center 
+                         point was located on a face of the box or wedge but 
+                         not inside the solid. This problems are fixed.
+                
+                
+             BUG #78392: Slice command does work using XY, YZ or ZX planes
+                
+             RESOLUTION: The command didn't work using XY, YZ, or ZX planes 
+                         when the users selected the default coordinates 
+                         for a point on the XY, YZ, or ZX plane at the command 
+                         prompt. In that case, the value of the m_rc data member
+                         of CCmdQuerySectionPlane is RTNONE but the query() 
+                         function of CCmdQuerySectionPlane was incorrectly 
+                         implemented to throw an exception if the m_rc is not 
+                         RTNORM, which caused the SLICE command to be terminated. 
+                         The problem is fixed.
+                
+                
+                
+             BUG #78399: Direction of Revolve is wrong for negative values.
+                
+             RESOLUTION: For the negative angle, the direction of revolve 
+                         should be opposite to the direction for positive values 
+                         but it was the same as for the positive values and the 
+                         revolve angle was actually 360 mining the specified 
+                         angle. The problem is fixed by reversing the direction
+                         of revolve and angle for negative angle.
+                
+                
+                
+             BUG #78399: Slice command changes the Layers
+                
+             RESOLUTION: When a solid is sliced using a cutting plane, the new
+                         solids didn't inherit the properties(color, layer, and
+                         linetype) of the original solids. This problem is fixed.
+             
+                
+                
+                
+Changed files:	
+
+     Source/Prj/Lib/ACIS/AsConstructor.cpp:  changed cstr::wire() to fix the 
+                                             bug #78364 and #78357.
+			
+     Source/Prj/Lib/SDS/sds_selectset.cpo:   Changed sds_pmtssget() to fix the 
+                                             bug #78398.
+			
+     Source/Prj/Lib/CMDS/CmdSolidedit.inl:   Changed getTaperAngle() to fix the 
+                                             bug #78390
+		
+		        
+     Source/Prj/Lib/CMDS/cmds8.cpp:          Added the checks to cmd_subtract(), 
+                                             cmd_interfere(), and cmd_intersect()
+                                             to filter out the deleted solids 
+                                             in the selection sets to fix the
+                                             bug #78391.
+             
+     Source/Prj/Lib/CMDS/3dsolids.cpp:       Changed cmd_box() and cmd_wedge() to 
+                                             fix the bug #78371.
+		
+     Source/Prj/Lib/CMDS/array.cpp:          Changed cmd_array() to fix the 
+                                             bug #78389
+		
+     Source/Prj/Lib/CMDS/CmdQueryTools.cpp:		
+     Source/Prj/Lib/CMDS/CmdQueryTools.h:    Added create() to take additional 
+                                             color, layer, and line type values 
+                                             as input to fix the bug #78399.
+                                             
+                                             Changed CCmdQueryAngle::query() to
+                                             call SDS_getangleneg() instead of 
+                                             sds_getangle() to allow take negative
+                                             angle.
+	
+     Source/Prj/Lib/CMDS/CmdRevolve.cpp:     Changed CCmdRevolve::run() to reverse
+                                             the direction of revolve if the angle 
+                                             is negative to fix the bug #78399.
+	
+     Source/Prj/Lib/CMDS/CmdSection.cpp:     Changed CCmdQuerySectionPlane::query()
+                                             to throw exception only if m_rc is 
+                                             neither RTNORM nor RTNONE to fix the
+                                             bug #78392.
+
+		
+
+--------------------------------------------------------------------------------

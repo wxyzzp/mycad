@@ -1,0 +1,44 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-17.txt
+Produce Version		ICAD 4
+Date:				03/12/2004 10:50am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Moved some static member functions into their own
+class so more than one other class could take advantage of them.
+
+Fixed a bug having to do with the int type of a resbuf being read
+for a group 90 value. It should have been looking at the rlong value
+instead.
+
+Fixed a linetype and line weight issue.
+
+Also reworked the conversion throat for export to match the sequence
+that the reader takes. This helps with nested block conversion.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\make\db.dsp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\db\entity.cpp
+
+Files Added:
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp

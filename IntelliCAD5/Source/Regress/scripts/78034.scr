@@ -1,0 +1,24 @@
+logfilename log\78034.log
+logfileon
+;_________
+-style
+abc
+arial
+2
+1
+0
+
+
+;________
+-mtext
+0,0
+3,2
+This_Text_Should_Have_Height_2.0
+
+;_________
+(assoc 40 (entget (entlast)))
+;__________
+dxfout output_dxf\78034.dxf
+6
+quit
+y

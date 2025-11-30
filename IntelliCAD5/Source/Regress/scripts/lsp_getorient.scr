@@ -1,0 +1,16 @@
+Logfilename log\lsp_getorient.log
+Logfileon
+(getorient)
+1,1
+2,2
+(getorient '(3.5 2.0))
+3,4
+(getorient "Real Angle: ")
+3,2
+4,2
+(getorient '(7.0 2.0) "Real Angle: ")
+2,1
+Dxfout output_dxf\lsp_getorient.dxf
+6
+Quit
+y

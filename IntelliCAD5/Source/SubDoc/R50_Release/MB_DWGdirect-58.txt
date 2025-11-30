@@ -1,0 +1,52 @@
+Engineer(s):		Mark Barrow
+Date:				06/30/2004 07:54am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    Eng-us/icad.rc2
+                    source/prj/lib/cmds/save.cpp
+                    source/prj/icad/res/icadrc2.h
+                    source/prj/lib/cmds/openclose.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/subdoc/MB_DWGdirect-58.txt
+Change Overview:
+	This submission turns on DWF import. I had some minor changes
+	to make to turn on the spacialFilter creation, and this now
+	makes import of .dwf files possible.
+
+Notes to Developers:
+
+Notes to QA:
+	Currently ONLY modelspace entities are being written out. AND they
+	are imported as a block named viewport0 into Layout1. I discussed this
+	with the ODT guys, and it seems we are the only ones using this right
+	now and they have had no feed back on it. In addition, they claim that
+	paperspace layout should also be suppoorted which they currently don't
+	seem to be.
+	I have suggested that viewport0 be be placed in the model space layout
+	instead of Layout1, and they are considering it. Also I expect import of
+	paperspace layouts to come on line soon too. They are currently exported
+	correctly.
+
+Notes to Docs:
+	DWF import needs to be documented. However, I would wait until the
+	things discussed in 'Notes to QA:' have bee flushed out.
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

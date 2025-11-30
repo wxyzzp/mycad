@@ -1,0 +1,62 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_21072002_1.txt
+Date:		21-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/Regress_apps/regress_dwg_dxf/reg.frx
+		Source/Regress_apps/roundtrip_dwg_dxf/reg.frm
+		Source/Regress_apps/roundtrip_dwg_dxf/Module1.bas
+		Source/Regress_apps/roundtrip_dwg_dxf/roundtrip_dwg_dxf.exe
+
+Deleted files:	
+		None
+
+Description:	Enhancements to Roundtrip application to test dwg and dxf operations between Icad and Acad.
+Comments:	The roundtrip_dwg_dxf application allows users to perform roundtrip testing of Icad and Acad and
+		to use dwg or dxf as the input for any step. The base applciation does a dxfin or open on the input
+		(depending on whether the previous step did a dxfout or save) followed by a dxfout or saveas (depending
+		on what the user chose). The output of one step in the input for the next step and upto five steps
+		can be specified. FOr each step, Icad or Acad can be chosen and different versions of the executables can be
+		chosen for each step.
+
+		The application has been enhanced with the following changes :-
+
+		1. User can now specify additional commands to run in each step. For example, "zoom e " can be  typed into
+		the textbox for additional script commands and the application will add this command for each file it processes.
+		More than one command can be given as input (eg) 
+		zoom
+		e
+		erase
+		all
+
+		undo
+		
+		These commands will be run for all scripts.
+
+		2. User can specify the max. time a script can take to run. If a script hangs due to invalid command, it will be
+		automatically terminated after this interval has passed.
+		3. Better reporting of results and errors.
+
+
+File by File:	
+		Source/Regress_apps/regress_dwg_dxf/reg.frx		Rev 1.2
+		Source/Regress_apps/roundtrip_dwg_dxf/reg.frm		Rev 1.2
+			Added 2 textboxes for script timeout intreval and user defined commands for script.
+		Source/Regress_apps/roundtrip_dwg_dxf/Module1.bas	Rev 1.2
+			Updated code to allow better messages to be written out, allow user defined commands to be run in roundtrip
+			and user defined limit for a script.
+		Source/Regress_apps/roundtrip_dwg_dxf/roundtrip_dwg_dxf.exe	Rev 1.2
+			Updated versiuon of exe
+
+-----------------------------------------------------------------------------

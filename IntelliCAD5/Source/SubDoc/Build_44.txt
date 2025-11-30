@@ -1,0 +1,215 @@
+Notes for Build_44:
+To reproduce this build in R40_Dev, checkout tag For_Build_40, For_Build_41, 
+For_Build_42, For_Build_43 and then For_Build_44.
+
+In R40_Integration, checkout tag Build_44.
+
+ucs_options.scr fails regress.  I am unable to isolate the submission that 
+causes this error.  All other scripts pass when run individually.
+
+CHANGED FILES:
+M	2004-04-05:06:36	cyberage	1.1.1.1.12.3	IntelliCAD/Source/prj/ICAD/icaducspdia.cpp
+M	2004-04-05:06:48	cyberage	1.2.8.1	IntelliCAD/Source/ThirdParty/DCL_Components/Source/AuditLevel.cpp
+M	2004-04-05:07:02	cyberage	1.4.10.1	IntelliCAD/Source/prj/ICAD/IcadFlyOut.cpp
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78727.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78727_1.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/bubble.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/crossbreak.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/limitoff.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/multioffset.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/rivet.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/rotatecrosshair.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/roughen_2.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/snaptoggle.scr
+A	2004-04-05:10:03	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/xrecord.scr
+A	2004-04-05:10:04	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_77893_1.txt
+A	2004-04-05:10:04	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78542_1.txt
+A	2004-04-05:10:04	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78734_1.txt
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/BUBBLE.LSP
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/Crossbreak.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/limitoff.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/multioffset.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/rotatecrosshair.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/roughen_2.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/snaptoggle.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/xrecord.lsp
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/BUBBLE1.DWG
+A	2004-04-05:10:05	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/rivet.dwg
+M	2004-03-29:19:21	denisp	1.47.4.34	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-29:18:26	markba	1.13.4.20	IntelliCAD/Source/prj/make/db.dsp
+M	2004-03-30:00:05	markba	1.47.4.35	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+A	2004-03-31:19:24	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-23.txt
+M	2004-03-31:19:24	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-31:19:24	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-31:19:24	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-31:19:24	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-31:19:24	markba	1.1.2.25	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-31:19:24	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-03-31:19:24	markba	1.13.6.8	IntelliCAD/Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+M	2004-03-31:20:59	markba	1.63.4.57	IntelliCAD/Eng-us/icad.rc2
+A	2004-04-05:14:58	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-24.txt
+M	2004-04-05:14:58	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+A	2004-04-06:12:51	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-25.txt
+M	2004-04-06:12:51	markba	1.6.6.4	IntelliCAD/Source/prj/lib/CMDS/purge.cpp
+M	2004-04-07:11:52	markba	1.17.6.15	IntelliCAD/Source/prj/lib/CMDS/cmds3.cpp
+M	2004-04-07:11:52	markba	1.3.10.2	IntelliCAD/Source/prj/lib/DB/styletabrec.h
+M	2004-04-07:11:52	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-07:11:52	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-04-07:11:52	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-07:11:52	markba	1.1.2.26	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+A	2004-04-07:12:08	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-26.txt
+M	2004-04-08:14:30	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-08:14:30	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+A	2004-04-08:14:32	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-28.txt
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirect-Writer-27.txt
+M	2004-04-08:15:25	markba	1.13.6.18	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-04-08:15:25	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/wipeout.cpp
+M	2004-04-08:15:25	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-08:15:25	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+A	2004-04-08:15:25	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.h
+M	2004-04-08:15:25	markba	1.1.2.27	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-08:15:25	markba	1.13.4.21	IntelliCAD/Source/prj/make/db.dsp
+M	2004-04-09:18:25	markba	1.28.4.34	IntelliCAD/Eng-us/IcadRes.rc
+M	2004-04-09:18:25	markba	1.63.4.59	IntelliCAD/Eng-us/icad.rc2
+A	2004-04-09:18:25	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-29.txt
+M	2004-04-09:18:25	markba	1.18.6.7	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-04-09:18:25	markba	1.21.4.16	IntelliCAD/Source/prj/ICAD/IcadDoc.cpp
+M	2004-04-09:18:25	markba	1.4.6.6	IntelliCAD/Source/prj/lib/CMDS/dxfInOut.cpp
+M	2004-04-09:18:25	markba	1.8.6.8	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-04-09:18:25	markba	1.40.6.20	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+M	2004-04-09:18:36	markba	1.18.6.8	IntelliCAD/Source/prj/ICAD/Configure.h
+A	2004-04-02:02:22	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_43.txt
+M	2004-04-06:19:17	master	1.4.8.51	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-04-02:06:05	stephenh	1.20.6.11	IntelliCAD/Source/prj/ICAD/IcadGrips.cpp
+M	2004-04-02:06:06	stephenh	1.13.6.17	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-04-02:06:26	stephenh	1.13.6.9	IntelliCAD/Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+A	2004-04-02:06:28	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_78582_1.doc
+A	2004-04-02:06:28	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_78735_1.doc
+M	2004-04-02:18:23	stephenh	1.18.6.9	IntelliCAD/Source/prj/lib/SDS/sds_osnap.cpp
+M	2004-04-02:18:32	stephenh	1.1.2.2	IntelliCAD/Source/SubDoc/SH_78735_1.doc
+
+CHANGELOG:
+------------------------------------------------------------------------------------
+Date:		05-04-2004
+Developer:	Mohan Nayak
+Company:	Cybage
+Reference:	BugZilla:78542 
+Affected files: 
+		Source/prj/ICAD/icaducspdia.cpp 
+Description:	'User Coordinate Systems' dialog does not set the 'Bottom' option correctly.
+Comments:	TaL78542 CYB_78542_1.txt
+------------------------------------------------------------------------------------
+Date:		05-04-2004.
+Developer:	Mohan Nayak.
+Company:	Cybage.
+Reference:	BugZilla:78734.
+Affected files: 
+		Source/prj/ICAD/IcadFlyOut.cpp 
+Description:	Affects ArchT?: IntelliCAD? crashes when picking toolbar item
+Comments:	TaL78734 CYB_78734_1.txt
+		Known problem: A crash is produced at random on clicking on the toolbar, 
+		which has NOT been located exactly while testing in general. 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+Date:		30-03-2004
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78735
+Affected files: 
+		Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+		Source/prj/lib/SDS/sds_osnap.cpp
+Description:	Fixed PERP Osnap for lines with thinckness greater than zero.
+Comments:	 TaL78735 SH_78735_1.doc
+------------------------------------------------------------------------------------
+Date:		30-03-2004
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78582
+Affected files: 
+		Source/prj/ICAD/IcadGrips.cpp
+		Source/prj/lib/DB/entities.h 
+Description:	Fixed the problem of spline grip point editing. 
+Comments:	         TaL78582 SH_78582_1.doc
+------------------------------------------------------------------------------------
+Date:		29-03-2004
+Developer:	DenisPetrov
+Company:	ITC
+Reference:	BugZilla:78378
+Affected files: 
+		Source/prj/lib/DRW/dwgsave.cpp 
+Description:	Corrected to not save ACAD2000 dictionaries for previous versions
+Comments:	
+------------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-23.txt
+Produce Version		ICAD 4
+Date:				03/31/2004 09:37am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+The major thrust of this submission is for expoting 
+XRecords. I have tested that XRecords in extension dictionaries
+are now written correctly.
+
+A firm representitive;
+Stabiplan Development [dev@stabiplan.nl]
+Contacted me with a bug that caused IntelliCAD to hang. I traced
+it down to a divide by zero in OsnapHelpers.cpp, and fixed it also.
+
+Files Affected:
+\source\prj\lib\flyoversnap\osnaphelpers.cpp
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+------------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-24.txt
+Produce Version		ICAD 4
+Date:				04/05/2004 06:49am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Fixed the problem that prevented script 78037 from running
+to completion under DWGdirect.
+Instead of setting the text string in linetype dashes to NULL
+when the string was empty, I was setting it to the address of the
+string. I have added code to test for and empty string and set
+the value to NULL instead of the address of the empty string.
+
+Notes to QA:
+78037.scr now runs to completion under DWGdirect.
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectreader.cpp
+
+------------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-25.txt
+Produce Version		ICAD 4
+Date:				04/06/2004 05:51am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fix for script 78444_purge_all.scr and 78444_xref_detach.scr
+
+Files Affected:
+\source\prj\lib\cmds\purge.cpp
+------------------------------------------------------------------------------------
+
+
+REGRESS:
+The following scripts failed during the regress run. Running them individually 
+showed no problems.  Please look for performance data on performance.xls 
+(location tbd on itcmembers.org).
+F:\Build-44\IntelliCAD\Source\Regress\scripts\78346a.scr
+F:\Build-44\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-44\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-44\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78542, 78734, 78735, 78582, 78378

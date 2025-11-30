@@ -1,0 +1,34 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_03032003_1.txt
+Date:		03-03-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/Icad/Preferences.cpp?rev=1.12.4.1.2.2
+ 
+Deleted files:	
+		None
+
+Description:	This submission merges one change from R40_dev to R40_from_11.
+Comments:	In this submission the following change from R40_Dev is merged into R40_from_11. 
+
+		Date:  03-03-2003
+		Developer: Vishwanath S Burkule
+		Company:  Cybage Software
+		Reference: BugZilla:78432
+		Affected files:   
+  			Source/prj/ICAD/Preferences.cpp 
+			Description: Grip Crash Bug. Frequently produced on Win98.Current solution is workaround for the problem.                Reported by Stabiplan.
+		Comments: TaL78432
+
+-----------------------------------------------------------------------------

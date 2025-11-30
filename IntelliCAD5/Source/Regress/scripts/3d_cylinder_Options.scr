@@ -1,0 +1,84 @@
+logfilename log\3d_cylinder_Options.log
+logfileon
+;_________1
+3d
+cylinder
+1,1,0
+1
+1
+
+;_________2
+3d
+l
+3,3,0
+diameter
+2
+2
+
+;_________3
+3d
+cylinder
+5,5,0
+1
+5,5,3
+5,5
+
+;_________4
+3d
+cylinder
+6,7
+8,7
+4
+10
+;_________5
+3d
+cylinder
+8,9
+10,9
+9,9.5
+9,9,5
+100
+;_________6
+3d cylinder
+11,11,0
+12,11,0
+0,0
+6,0
+
+;_________7
+3d cylinder
+13,13,0
+diameter
+15,13
+0,0
+7,0
+50
+;_________8
+3d cylinder
+15,15,0
+16,15
+15,15,8
+-4
+2
+;_________9
+3d cylinder
+16,17
+18,17
+17,17.5
+0,0
+9
+;_________10
+3d cylinder
+18,19
+20,19
+19,19.5
+20,19
+2000
+;__________
+vpoint
+0.5,2,1.5
+;__________
+dxfout output_dxf\3d_cylinder_Options.dxf
+6
+quit
+y

@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File: 		CYB_78376_1.txt
+Date:		09-12-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78376
+Affected files:			
+		Source/prj/CMDS/polyline.cpp 
+Description:	Lwpolyline with varying widths cannot be created. This Submission is provided by Bruce Scott of Eagle Point.
+Comments:	TaL78376
+Problem Analysis:
+		The polyines drawn previously did not take care of different width sets. No code to check if the widths are 
+		same or different.
+Proposed Solution:
+		This solution is provide by Bruce Scott of Eagle Point. Find out if the polylines are of with different widths and depending on it set the dxf 43.
+		
+File by File:
+	*	Source/prj/CMDS/polyline.cpp
+		Starting and eding width of every segment is compared to find out if the width is constant and a ( bAllWidthsAreEqual ) variable is set
+		accordingly. Depending on the bAllWidthsAreEqual, a node of DF 43 is added to list list
+
+--------------------------------------------------------------------------------

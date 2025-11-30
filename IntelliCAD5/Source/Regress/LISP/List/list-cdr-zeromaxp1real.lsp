@@ -1,0 +1,7 @@
+	(defun zeromaxp1real ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (cdr '(0 9.9e308)))
+		(loglist errloc rc)
+		(setq *error* prverr)
+	)

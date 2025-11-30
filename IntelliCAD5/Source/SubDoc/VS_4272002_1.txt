@@ -1,0 +1,202 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4272002_1.txt
+Date:		27-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		CvsHist:Source/prj/lib/DRW/dwgload.cpp
+		CvsHist:Source/prj/lib/SDS/sds_findfile.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission fixes some memory bugs in ICAD. This is an array bounds write bug.
+Comments:	A bug which I uncovered in VS_4112002_1.txt has to be fixed in more places. The problem is
+		ic_findinpath() makes a call to SearchPath() and this assumes that the size of buffer being
+		passed in is 2049. In most cases the buffer we pass in is smaller. I added an argument to
+		ic_findinpath() which is the buffer size. I made it a default argument so current code will
+		work as is and I made fixes to some functions calling ic_findinpath(). 
+
+		The problem is one of the functions calling ic_findinpath() is sds_findfile(). sds_findfile()
+		just calls ic_findinpath(). There are 100+ calls to sds_findfile() in our code. And I could
+		not change sds_findfile() to take an argument of bufferSize due to the following problem noted 
+		by lint. If I added an  default argument to api\sds\sds.h, ICAD doesn't link any more. Plus a
+		bigger reason was the comment that this is an SDS External API -- We can't change API functions
+		without discussing this further.
+
+..\lib\SDS\sds_findfile.cpp(300) : Error 1065: Symbol 'sds_findfile(const char
+    *, char *)' not declared as "C" conflicts with line 479, file
+    ..\api\sds\sds.h
+
+
+
+// *****************************************
+// This is an SDS External API
+//
+// SPECIAL !!!
+// Because of multiple dependencies, there is no sdsengine_ version
+// of this function
+//
+int 
+sds_findfile(const char *szLookFor, char *szPathFound) 
+	{
+	return ic_findinpath( NULL, szLookFor, szPathFound);
+	}
+    
+	My fix was to replace calls to sds_findfile() by ic_findinpath() as the code above shows it is not a problem. I
+	changed the code in the files where I had seen there was a problem (when I opened a dwg file). I did this in 2 files
+	sds_findfile.cpp and dwgload.cpp
+
+	Here are the other places we might need to make the same change. We don't need to fix all of them and some of these
+	are not valid places to fix.
+
+Searching for 'sds_findf'...
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\sds.h(479):int                sds_findfile(const char *szLookFor, char *szPathFound);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\sds.h(905):    #define ads_findfile      sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\OURBASE.CPP(1308):  SDS_SETVAR  SDS_FINDFILE SDS_GETFILED
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\OURBASE.CPP(1335):    sds_printf("\nTesting sds_findfile...");
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\OURBASE.CPP(1337):    returni=sds_findfile(string1,string2);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\OURBASE.CPP(1339):    sds_printf("\nsds_findfile returned %i",returni);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\OURBASE.CPP(2438): sds_printf("\n SDS_SETVAR  SDS_FINDFILE SDS_GETFILED");
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\ourbase.c(1230):  SDS_SETVAR  SDS_FINDFILE SDS_GETFILED
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\ourbase.c(1257):    sds_printf("\nTesting sds_findfile...");
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\ourbase.c(1259):    returni=sds_findfile(string1,string2);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\ourbase.c(1261):    sds_printf("\nsds_findfile returned %i",returni);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\api\sds\ourbase\ourbase.c(2360): sds_printf("\n SDS_SETVAR  SDS_FINDFILE  SDS_GETFILED");
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\DocAutoSds.cpp(126): if (sds_findfile (szLookFor, szPathFound) == RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\DocAutoSds.cpp(1669): if (FindTheBlockFile(blkname,blkfile)!=RTNORM)    // find the file's true path using sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadAboutDia.cpp(156): if(RTNORM!=sds_findfile("MfcX32.dll",fs1)) goto out;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadAlias.cpp(368):    if(RTNORM!=sds_findfile(Fname,fs1)) return(RTERROR);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadApp.cpp(1140):        if(RTNORM==sds_findfile(m_cmdInfo.m_strFileName.GetBuffer(0),szPath))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadApp.cpp(1209):        if(sds_findfile(m_cmdInfo.m_strAltPath.GetBuffer(0),szPath)!=RTNORM ||
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadCustom.cpp(215): if(sds_findfile(SDS_DBFILE, CUS_szText) != SDS_RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadCustom.cpp(305): if(sds_findfile(SDS_DBFILE, CUS_szText) != SDS_RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadDoc.cpp(429):   (sds_findfile( rb.resval.rstring, fname) EQ RTNORM )
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadDoc.cpp(2266):  // find the file's true path using sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadExplorer.cpp(2983):      if ((sds_findfile(SDS_LTYPEFILE,&fullFileName[0]))!=RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadExplorer.cpp(6310):          sds_findfile(SDS_LTYPEFILE,IEXP_szText);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadNewWiz.cpp(97): if(sds_findfile(csDwgFile,szTmp)!=RTNORM) goto bail;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadRunForm.cpp(44):    if ((sds_findfile(SDS_DBFILE,RFRM_szText))!=SDS_RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadSetVarsDia.cpp(2578):    if(sds_findfile(SDS_PATTERNFILE,fs1)!=RTNORM) goto bail;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadTipDlg.cpp(50): if(sds_findfile("icad.tip"/*DNT*/,fs1)!=RTNORM || (m_pStream=fopen(fs1, ResourceString(IDC_ICADTIPDLG_R_5, "r" ))) == NULL) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadToolBarMain.cpp(1703):   if(sds_findfile(str.GetBuffer(0), szBitmapPath) == RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadToolBarMain.cpp(1710):   if(sds_findfile(szBitmapPath, szBitmapPath) == RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\IcadXLink.cpp(407):    if ((sds_findfile(SDS_DBFILE,XLINK_szText))!=SDS_RTNORM) return;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4094): if(RTNORM==sds_findfile(SDS_PROGRAMFILE,fs1)) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4102):  if(RTNORM==sds_findfile(rb.resval.rstring,fs1)) db_setfontmap(fs1);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4255):  if(RTNORM==sds_findfile(SDS_LOADSDSFILE,fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4280): if (RTNORM == sds_findfile("xrm.dll", fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4292):  if (RTNORM == sds_findfile("sdsimage.dll", fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4297):  if (RTNORM == sds_findfile("hiisras.dll", fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4302):  if (RTNORM == sds_findfile("spenable.lsp", fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadapi.cpp(4331): if(RTNORM==sds_findfile(SDS_AUTOLOADLISP,fs1))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadappload.cpp(528):        if ((sds_findfile(ICAD_APPLOAD,string))!=RTNORM) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadappload.cpp(731):    if (RTNORM!=(ret=sds_findfile(ICAD_APPLOAD,string)))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadappload.cpp(847):        if ((sds_findfile(ICAD_APPLOAD,string))!=RTNORM) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadform.cpp(692):    if ((sds_findfile(SDS_DBFILE,FRM_szText))!=SDS_RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadinsertdia.cpp(154):        if(RTERROR==sds_findfile(csCurrentFile,dwgname)) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadinsertdia.cpp(159):   if(RTERROR==sds_findfile(csCurrentFile,dwgname)) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadmain.cpp(1306):  if(sds_findfile(ps1,szPath)!=RTNORM ||
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadmain.cpp(1877):     if(RTERROR==sds_findfile(szPathName,buffer))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadraster.cpp(304):  if(RTNORM!=sds_findfile(filename,ffname)) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadraster.cpp(305):   if(NULL==strchr(filename,'\\') || RTNORM!=sds_findfile(strchr(filename,'\\')+1,ffname)) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\icadraster.cpp(323):  if(RTNORM!=sds_findfile(SDS_PROGRAMFILE,dllpath)) { rc=__LINE__; goto out; }
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\textstyledlg.cpp(701):  if( sds_findfile( (LPCTSTR)newValues.GetFontFilename(false), foundpn) != SDS_RTNORM ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\textstyledlg.cpp(704):  if( sds_findfile( (LPCTSTR)newValues.GetBigFontFilename(false), foundpn) != SDS_RTNORM ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\textstyledlg.cpp(961):  if( sds_findfile( (LPCTSTR)values.GetFontFilename(false), foundpn) != SDS_RTNORM ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\ICAD\textstyledlg.cpp(964):  if( sds_findfile( (LPCTSTR)values.GetBigFontFilename(false), foundpn) != SDS_RTNORM ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\block.cpp(842):        if(sds_findfile(fs1,fname)==RTNORM && expert<2) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(918):  if ((ret=sds_findfile("icad.lin"/*DNT*/,fs1))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(987): if (ret=sds_findfile(fname, fflin)!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(1570):   if ((ret=sds_findfile("icad.lin"/*DNT*/,fr))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(1590):   if ((ret=sds_findfile(fr, fs1))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(1900):  if ((ret=sds_findfile("icad.lin"/*DNT*/,fr))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(1921):   if ((ret=sds_findfile(fr, fs1))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(6855):    sds_findfile(oldpath, oldpath);  /*DG - 15.2.2002*/// Convert possibly relative path to absolute one.
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(6862):    }else if (RTNORM!=sds_findfile(rb.resval.rstring,newpath))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\cmds3.cpp(6885):      if (RTNORM!=sds_findfile(enteredNewPath/*newpath*/,newpath))ret=RTNONE;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\hatch.cpp(682): if(sds_findfile(SDS_PATTERNFILE,fname)==RTNORM){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\hatch.cpp(689):   if(sds_findfile(fs1,fname)!=RTNORM){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\insert.cpp(235): if (RTERROR==sds_findfile(blkfile,blkfoundpath))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\insert.cpp(1592):    if (FindTheBlockFile(blkfile,blkfile)!=RTNORM) // find the file's true path using sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\insert.cpp(1604):   if (FindTheBlockFile(blkfile,blkfile)!=RTNORM)    // find the file's true path using sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\insert.cpp(2307):   if(sds_findfile(path, fullPath) != RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\insert.cpp(2310):    if ( sds_findfile(szFileName, fullPath)==RTNORM )
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\menu.cpp(87):  if(sds_findfile(fs1,fs1)==RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\menu.cpp(178):   if(sds_findfile(fs1,fs1)==RTNORM) break;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\openclose.cpp(82):   if(RTNORM==sds_findfile(fs1,fs2))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\openclose.cpp(191):        if(sds_findfile(fs2,fs1)!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\read.cpp(690):   if(sds_findfile(searchfilename,fullfilepath)!=RTNORM) return(RTERROR);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\read.cpp(1238):   if(sds_findfile(recursive_dwg_name,recursive_dwg_name)!=RTNORM){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\scripts.cpp(112):    if( sds_findfile(fs1,fs1)!=RTNORM || 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\shape.cpp(45): if( sds_findfile( testname, fullname ) == RTNORM ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\textstyle.cpp(183):   if(RTNORM!=sds_findfile(fs1,bigfont))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\textstyle.cpp(193):    if(RTNORM!=sds_findfile(fs1,bigfont))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\textstyle.cpp(391):     if(sds_findfile(fs3,fontfile)!=RTNORM && flg1 ){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\textstyle.cpp(428):    if(RTNORM!=sds_findfile(fs2,bigfont))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\textstyle.cpp(444):      if(RTNORM!=sds_findfile(fs3,bigfont))
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\todo.cpp(618):    if(sds_findfile(ab->resval.rstring,fs1)!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\vslide.cpp(241):     if((sds_findfile(tmpfname,fs1))!=SDS_RTNORM) goto err;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\CMDS\vslide.cpp(280):  if((sds_findfile(szSlName,tmpfname))!=SDS_RTNORM) goto err;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\drwfns.cpp(183):    if (sds_findfile(p_pn,fname)!=RTNORM) return(-1);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\drwfns.cpp(856): if( sds_findfile( shapefile, newshapefile ) != RTNORM){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\drwfns.cpp(860):  if(sds_findfile(szFileName, newshapefile) != RTNORM){
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\dwgload.cpp(3913):    //if(sds_findfile(pn, ffpn) == RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\dwgload.cpp(3922):    // if(sds_findfile(szFileName, ffpn) == RTNORM)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\dwgload.cpp(3934):     if ( sds_findfile(szFileName,ffpn)==RTNORM )
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\DRW\dwgload.cpp(3939):     if ( sds_findfile(pn,ffpn)==RTNORM )
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\LISP\app.cpp(125):  sds_findfile(afs1,afs2);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\LISP\fileio.cpp(370):    if (sds_findfile(lsp_argsll->resval.rstring,afs1)==RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_apis.cpp(568):// int sds_findfile(const char *szLookFor, char *szPathFound)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_conversion.cpp(895):  if ((sds_findfile(SDS_UNITFILE,szFname))!=RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_db.cpp(1084):                  if(RTNORM!=sds_findfile(tmpImageName,ffname)) { 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_db.cpp(1085):                   if(NULL==strchr(tmpImageName,'\\') || RTNORM!=sds_findfile(strchr(tmpImageName,'\\')+1,ffname)) { 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_db.cpp(1093):                  if(RTNORM!=sds_findfile(SDS_PROGRAMFILE,dllpath)) { 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_entryexit.cpp(314):    //*** sds_findfile has a bug when a pathname is included with
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_entryexit.cpp(319):        if(sds_findfile(fs1,fname)!=SDS_RTNORM) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_entryexit.cpp(444):    //*** sds_findfile has a bug when a pathname is included with
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_entryexit.cpp(448):        if(sds_findfile(fs1,fname)!=SDS_RTNORM) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_findfile.cpp(1):/* F:\DEV\PRJ\LIB\SDS\SDS_FINDFILE.CPP
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_findfile.cpp(11)://*  sds_findfile.CPP                                                 *
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_findfile.cpp(306):sds_findfile(const char *szLookFor, char *szPathFound) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_misc.cpp(193): if( sds_findfile(szHelpFile,fs1) != RTNORM ) 
+C:\ICAD\NEW2\INTELLICAD\SOURCE\prj\lib\SDS\sds_vars.cpp(417):      if(RTNORM==sds_findfile(rb.resval.rstring,fs1)) {
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Include\sds.h(479):int                sds_findfile(const char *szLookFor, char *szPathFound);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Include\sds.h(905):    #define ads_findfile      sds_findfile
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(63):int sds_findfiles(char *filetofind,char *pathfound);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(64):#define pfnsdsFindFiles sds_findfiles
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(162): CString wszFilePath;                    // Holds the file path of DCL file returned by sds_findfile.
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(213):        char strPath[512 + 1];   // see: ic_findinpath(...) in sds_findfile.cpp(110): if (GetCurrentDirectory(IC_ACADBUF, szPathFound) == 0)
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(246):  // Call icad.exe's sds_findfiles function.
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(257):   typedef int (* fnptr_sds_findfiles)(char *filetofind,char *pathfound);
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(258):   fnptr_sds_findfiles pfnsdsFindFiles;
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(261):    pfnsdsFindFiles = (fnptr_sds_findfiles)GetProcAddress(hmodule,"sds_findfile");
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(267):   if ( pfnsdsFindFiles((LPTSTR)(LPCTSTR)wszFileName,strPath) == SDS_RTERROR )  // Call the sds_findfiles method to get the path of file.
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(1445):/* + int sds_findfiles(char *filetofind,char *pathfound) -
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(1448):*   This function will be removed after integration.It just simulates the sds_findfiles function
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\DCL_Components\Source\Parser.cpp(1452):int sds_findfiles(
+C:\ICAD\NEW2\INTELLICAD\SOURCE\ThirdParty\ImageMenu\imagemenu.cpp(214): if (sds_findfile(rb->resval.rstring, sFile) != RTNORM) {
+125 occurrence(s) have been found.
+
+
+File by File:	
+		Source/prj/lib/DRW/dwgload.cpp	 			New Rev. 1.35
+
+		In function LoadXref(), changed call to sds_findfile() to ic_findinpath().
+
+		Source/prj/lib/SDS/sds_findfile.cpp	 			New Rev. 1.12
+
+		Changed call to sds_findfile() to ic_findinpath() in function ic_findinpath().
+
+
+------------------------------------------------------------------------------

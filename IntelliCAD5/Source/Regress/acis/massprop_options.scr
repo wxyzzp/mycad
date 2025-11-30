@@ -1,0 +1,15 @@
+logfilename log\massprop_options.log
+logfileon
+;________
+box
+0,0,0
+1,1,1
+massprop
+last
+
+
+;________
+dxfout output_dxf\massprop_options.dxf
+6
+quit
+y

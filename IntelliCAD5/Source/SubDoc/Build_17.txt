@@ -1,0 +1,2011 @@
+Notes for Build_16:
+To reproduce this build in R40_Dev, checkout tag For_Build_17.  In R40_Integration, checkout tag Build_17.
+
+CHANGELOG:
+
+User: master
+Description: Change for build date for Build 17.
+Modified IntelliCAD/Source/prj/ICAD/blddate.h 
+
+User: master
+Description: Build notes for Build 16
+Modified IntelliCAD/Source/SubDoc/Build_16.txt
+
+-------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Dmitry Gavrilov
+Company: 	BricsCad?
+Reference:	
+Affected files:	Source/prj/ICAD/icaddrawbitmap.cpp,
+		Source/prj/ICAD/icadentityrenderer.cpp,
+		Source/prj/lib/SDS/sds_misc.cpp
+Description:	Fixed: open/preview and sds_bmpout crash when no drawing opened currently;
+		sds_bmpout returns RTERROR in this case now;
+		partly fixed: open/preview generates wrong image in this case.
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		03-04-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/CMDS/CmdQueryTools.h
+		Source/prj/lib/CMDS/CmdQueryTools.tpl
+		Source/prj/icad/res/icadrc2.h
+		Eng-us/icad.rc2
+
+Description:	This submission fixes the command prompt problems of the EDHE sub-command of
+                SOLIDEDIT command.
+
+Comments        None.
+
+--------------------------------------------------------------------------------------------
+File Name:	VS_03032003_1.txt
+Date:		03-03-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/Icad/Preferences.cpp
+
+Description:	This submission merges one change from R40_dev to R40_from_11.
+Comments:	In this submission the following change from R40_Dev is merged into R40_from_11. 
+
+		Date:  03-03-2003
+		Developer: Vishwanath S Burkule
+		Company:  Cybage Software
+		Reference: BugZilla:78432
+		Affected files:   
+  			Source/prj/ICAD/Preferences.cpp 
+			Description: Grip Crash Bug. Frequently produced on Win98.Current solution is workaround for the problem.                Reported by Stabiplan.
+		Comments: TaL78432
+
+--------------------------------------------------------------------------------
+File Name:	SH_03032003.txt
+Date:		03-03-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+AFFECTED FILES:	
+	
+	Source/prj/lib/DB/Modeler.h
+	Source/prj/lib/DB/ModelerStub.h
+	Source/prj/lib/ACIS/AsModeler.h     
+	Source/prj/lib/ACIS/AsModeler.cpp 	
+	Source/prj/lib/CMDS/CmdExtrude.cpp
+	Source/prj/lib/CMDS/CmdRevolve.cpp	
+	Source/prj/lib/CMDS/cmds8.cpp
+	Source/prj/lib/CMDS/CmdQueryTools.cpp
+	Source/prj/lib/CMDS/CmdSolidedit.inl
+	Source/prj/lib/CMDS/CmdSolidedit.h
+	Source/prj/lib/CMDS/CmdSolidedit.cpp
+
+DESCRIPTIONS:	
+ 
+ 	This submission made following changes to the code to fix problems:
+ 	
+        1) Added 3D solids/bodeis support to SOLIDEDIT/Imprint to imprint the 
+           intersection graph of 3D solids and bodies onto the solids/bodeis.
+                
+        2) Offsetting a face that was created by imprinting a circle on a 3D solid
+           crashed IntelliCAD?. The problem is ACIS' api_offset_faces() creates
+           an invalid body in the case but doesn't return any error. This problem 
+           was fixed by adding a call to api_check_entity() to verify the body after 
+           calling api_offset_faces().
+           
+        3) Unable to change the color of faces of 3D solids. The problem was that 
+           we attached the color attribute to the face entity only but not edges.
+           This bug was fixed by attaching the color to the edges of the face also.
+        
+        4) Changed to cmd_extrude() and cmd_revolve() to delete temporary curves 
+           created by geodata::extract() to create regions.
+           
+        5) Modified cmd_subtract() to fix display problem.
+        
+        6) Modified CCmdQueryEntity?::query() to ask users to select an entity
+           again if the picked point was not on any entity. Originally the
+           function was implemented to throw an exception if the users clicked a 
+           point that was not on the wireframe of any entity, which caused the command
+           to be terminated. Also modified this function to highlight the selected
+           entity.
+           
+	7) Fixed SOLIDEDIT that was not able to change face color.
+	
+	8) Modified SOLIDEDIT to prevent terminating the command in the case when 
+	   the modeler failed to performance local operation. 
+	   
+	9) The face editing subcommands, Extrude and Offset in SOLIDEDIT did remove
+	   selected face form the screen. Those problems have been fixed.
+              
+
+
+COMMANDS:
+
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78464
+Affected files:			
+		Source/prj/lib/SDS/sds_get.cpp 
+Description:	ICAD hangs on pressing F8 key during Pline command with some input at the prompt.
+		e.g Pline > Select > 2'_orthogonal. Reported by Bruce Scott.
+Comments:	TaL78464
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78333
+Affected files:			
+		Source/prj/lib/flyoversnap/OsnapHelpers.h 
+		Source/prj/lib/SDS/sds_osnap.cpp
+Description:	Does not show Intersection snaps at all location of the grid block. Reported by Stabiplan.
+Comments:	TaL78333
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78098
+Affected files:			
+		Source/prj/ICAD/icadapi.cpp 
+Description:	VBA - Getpoint failed when called through Microsoft Word's Macros. Actually syncronization of threads 			problem. Current solution is a workaround from Denis.
+Comments:	TaL78098
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78432
+Affected files:			
+		Source/prj/ICAD/Preferences.cpp 
+Description:	Grip Crash Bug. Frequently produced on Win98.Current solution is workaround for the problem.           			Reported by Stabiplan.
+
+Comments:	TaL78432
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77859
+Affected files:			
+		Source/prj/lib/CMDS/purge.cpp 
+Description:	Small improvement to last check-in of "Crash on purge all".
+Comments:	TaL77859
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78366
+Affected files:	
+		Source/prj/ICAD/icadview.cpp 
+Description:	Flyover snaps are active even if Entity Snap is Off. Reported by A Kotsovos.
+Comments:	TaL78366
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78336
+Affected files:	
+		Source/ThirdParty/DCL_Components/Source/ImageButton.cpp 
+Description:	Tile handling does not work correctly with imagebuttons. Reported by Stabiplan.
+Comments:	TaL78336
+
+--------------------------------------------------------------------------------
+Date:       	28-02-2002
+Developer:	Denis Petrov
+Company:	ITC
+Reference:	BugZilla:77799
+Affected files: Source/prj/lib/flyoversnap/OsnapHelpers?.cpp
+		Source/prj/lib/SDS/sds_osnap.cpp
+Description:	Fixed crash in snapping when loaded file has INSERT in BLOCK.
+Comments:	TALInsertInBlock
+--------------------------------------------------------------------------------
+Date:       	28-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files: Source/prj/lib/ACIS/AsCache?.cpp
+		Source/prj/lib/ACIS/AsCache.h
+		Source/prj/lib/ACIS/AsConstructor.cpp
+		Source/prj/lib/ACIS/AsMesh.h
+		Source/prj/lib/ACIS/AsMesh.cpp
+		Source/prj/lib/ACIS/AsMEshManager.cpp
+		Source/prj/lib/ACIS/AsModeler.cpp
+		Source/prj/lib/ACIS/AsModeler.h
+		Source/prj/lib/ACIS/AsObject.cpp
+		Source/prj/lib/ACIS/AsObject.h
+		Source/prj/lib/ACIS/AsSatStream.cpp
+		Source/prj/lib/ACIS/AsSnaping.cpp
+		Source/prj/lib/ACIS/AsTools.cpp
+		Source/prj/lib/ACIS/AsTools.h
+		Source/prj/lib/ACIS/AsViewer.cpp
+Description:	fixed some lint warnings and errors,
+		added method reassembleFromMesh to CAsModeler?
+Comments:
+--------------------------------------------------------------------------------
+Date:       	28-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files: 
+		Source/prj/lib/CMDS/CmdOsnapModeDefTan.cpp
+Description:	corrected deferredt tangent snapping, to properly handle large circles
+Comments:	TalDeferredTangentSnappingForLineCommand
+--------------------------------------------------------------------------------
+Date:       	28-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files: 
+		Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+Description:	fixed memory leak in COsnapManagerImp?::processSS
+Comments:
+--------------------------------------------------------------------------------
+Date:       	25-02-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:62875 
+Affected files:
+		Source/prj/lib/DB/db1.cpp
+Description:	DISTANCE variable should be read-only 
+Comments:	Tal62875.
+--------------------------------------------------------------------------------
+Date:       	25-02-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:77936
+Affected files:
+		Source/prj/ICAD/IcadToolBarMain.cpp
+		Source/prj/ICAD/IcadTBDlg.cpp
+Description:	"BMP" or "Bmp" not being accepted in a MNU file.
+Comments:	Tal77936.
+--------------------------------------------------------------------------------
+Date:       	25-02-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference: 	BugZilla:77927
+Affected files:	
+		Source/ThirdParty/DCL_Components
+		Source/ImageButton.cpp
+Description: 	Complete history of Image tile was deleted in case of a partial 
+		fill_image operation.
+Comments: 	TaL77927
+--------------------------------------------------------------------------------
+Date:       	25-02-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:77758
+Affected files:	
+		Source/prj/lib/CMDS/DimLinear.cpp
+		Source/prj/lib/SDS/sds_db.cpp
+Description: 	RollBack? code change for Bug No. 77758
+Comments: 	
+--------------------------------------------------------------------------------
+Date:  		25-02-2002
+Developer: 	Vishwanath S Burkule
+Company: 	Cybage Software
+Reference: 	BugZilla:77982 
+Affected files: 
+		Source/prj/ICAD/Icadstatusbar.cpp
+Description: 	Layer menu of IntelliCAD? status bar should exclude Xref and Frozen layer.
+Comments: 	TAL77982
+-------------------------------------------------------------------------------- 
+Date:  		25-02-2002
+Developer: 	Vishwanath S Burkule
+Company: 	Cybage Software
+Reference: 	BugZilla:77949 
+Affected files: 
+		Source/prj/lib/CMDS/dimensions.cpp
+Description: 	In Dimoverride Command,Clear option does not work.
+Comments: 	TAL77949
+-------------------------------------------------------------------------------- 
+Date:		25-02-2002
+Developer:	Mohit Mehta
+Company:	Cybage Software
+Reference:	BugZilla:77975
+Affected files:	
+		Eng-us/icad.rc2
+		Source/prj/ICAD/res/icadrc2.h
+		Source/prj/lib/CMDS/cmdsError.cpp
+		Source/prj/lib/CMDS/cmdsError.h
+		Source/prj/lib/CMDS/text.cpp
+Description: 	For Align and Fit justifications IntelliCAD? accepts even the same value 
+		for "Text start point" as well as "Text end point".
+Comments:	Tal77975
+-------------------------------------------------------------------------------- 
+Date:		25-02-2002
+Developer:	Mohit Mehta
+Company:	Cybage Software
+Reference:	BugZilla:77978
+Affected files:	
+		Source/prj/lib/CMDS/cmdsError.cpp
+		Source/prj/lib/CMDS/cmdsError.h
+		Source/prj/lib/CMDS/text.cpp
+Description: 	Problem with prompts asking for points in case of text command for various 
+		justifications. IntelliCAD? takes arbitrary point when point is not provided
+Comments:	Tal77978
+-------------------------------------------------------------------------------- 
+Date:		25-02-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:77938
+Affected files:
+		Source/prj/lib/CMDS/insert.cpp
+		Source/prj/ICAD/icadinsertdia.cpp
+Description:  	DDINSERT dialog cannot create multiple row/columns during insert.
+		Also fixed a case of explode check box not working for multiple row/col insert.
+Comments:	TAL77938
+--------------------------------------------------------------------------------
+Date:          	20-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/CMDS/insert.cpp
+Description:	Fixed: user cannot cancel completely attaching of xrefs after
+		choosing the drawing (the parent drawing becomes changed).
+Comments:	TalInsertingDrawings
+
+--------------------------------------------------------------------------------
+Date:          	20-2-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	BugZilla:77985 
+Affected files:	
+		Source\ThirdParty?\DCL_Components\Source\listbox.cpp
+Description:	Multiple select listbox does not display its contents
+Comments:	Tal77985
+--------------------------------------------------------------------------------
+Date:          	19-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/CMDS/insert.cpp
+Description:	Fixed: relative paths entered in xref>attach are stored as
+		full ones.
+Comments:	TalXrefPaths
+
+--------------------------------------------------------------------------------
+Date:          	19-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/SDS/sds_selectset.cpp
+Description:	Fixed: misbehaviour of ssgetfirst (SDS and LISP): it must include
+		to the 1st returned selset only those entities that are gripped
+		but not selected.
+Comments:	TalSsgetfirstSssetfirst
+
+--------------------------------------------------------------------------------
+Date:		15-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/CMDS/CmdSolidedit.cpp
+		Source/prj/lib/CMDS/CmdSolidedit.inl
+                	Eng-us/icad.rc2 
+                	Source/prj/ICAD/res/icadrc2.h
+Description:	strings moved to resources
+ 
+--------------------------------------------------------------------------------
+Date:          	15-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/CMDS/cmds3.cpp
+Description:	Fixed: 1. There is no possibility for entering relative paths
+		for xrefs. It's possibly now when FILEDIA is OFF.
+		2. By default entered paths (relative or absolute) are cropped
+		when stored in the parent drawing.
+Comments:	TalXrefPaths
+
+--------------------------------------------------------------------------------
+Date:          	15-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77980, BRX 1548
+Affected files:	
+		Source/prj/lib/DB/drawing.cpp,
+		Source/prj/lib/DRW/dwgsave.cpp
+Description:	Fixed: incorrect adding of ACAD_LAYOUT record to the NOD.
+Comments:	TaL77980
+
+--------------------------------------------------------------------------------
+Date:		15-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/make/ACIS.dsp
+		Source/prj/make/Its.dsp
+		Source/prj/make/testrunner.dsw
+Description:	added project configurations ReleaseTest?
+ 
+--------------------------------------------------------------------------------
+Date:          	14-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77980
+Affected files:	
+		Source/prj/lib/DB/objects.h
+Description:	Completed the undoing of the change of 24-1-2002 started on 6-2-2002.
+Comments:	TalOwningDictaddDictdel
+
+--------------------------------------------------------------------------------
+Date:		14-02-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/CMDS/line.cpp
+		Source/prj/CMDS/CmdOsnapModeDefTan.cpp
+		Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+		Source/prj/lib/ICADLIB/transf.h
+                Source/prj/lib/ICADLIB/transf.cpp
+                Source/prj/lib/ICADLIB/values.h
+Description:	Corrected deferred tangent snapping to process LWPOLYLINES
+ 
+--------------------------------------------------------------------------------
+Date:		12-02-2002
+Developer:	Alexander Van Heuverzwyn
+Company:	BricsCAD?
+Reference:	BugZilla:77976
+Affected files:	Source/prj/ICAD/icadapi.cpp,
+		
+Description:	Older drawings can have fastzoom on.
+		this leads to wrong behaviour, eg, no redraw after deleting an entity. 
+		now FASTZOOM sysvar is ignored but maintained. 
+ 
+--------------------------------------------------------------------------------
+Date:		11-02-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/Authenticate/memleaks.cpp
+Description:	Some changes/additions in comments are made for memleaks alerter.
+
+--------------------------------------------------------------------------------
+Date:		11-02-2002
+Developer:	Archana Walimbe
+Company:	Cybage Software
+Reference:	BugZilla:77841
+Affected files:
+		Source/prj/ICAD/IcadAttDefDia.cpp
+Description:	"validate" & "defined" Attribute  flags check box remains enabled
+  			when "Fixed" attribute flag  is checked
+Comments:	TAL77841
+--------------------------------------------------------------------------------
+Date:		11-02-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77928
+Affected files:	
+		Source/prj/lib/SDS/sds_get.cpp
+Description:	(Getfiled "title" "a.exe" "EXE" 1) should be acceptable
+Comments:	TAL77928
+--------------------------------------------------------------------------------
+Date:       	11-02-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:77974
+Affected files:
+		Source/prj/lib/CMDS/insert.cpp
+		Source/prj/ICAD/icaddragging.cpp
+Description:	Problems with rotation angle while inserting Block when UCS is rotated. 
+Comments:	Tal77974.
+--------------------------------------------------------------------------------
+Date:		11-02-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/make/autodll.dsp
+Description:	gr.dll is made delay-loaded as it was before the change of
+		icad.dsw on 21-11-2001.
+Comments:	DllsInitialization
+
+--------------------------------------------------------------------------------
+Date:		07-02-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77976
+Affected files:	
+		Source/prj/ICAD/icadapi.cpp,
+		Source/prj/lib/DB/db1.cpp
+Description:	Fixed: FASTZOOM sysvar is wrongly treated so in some cases
+		entities are not drawn. Since acad2000 doesn't support it
+		I set its default value to OFF.
+Comments:	TalFastzoomViewres77976
+
+--------------------------------------------------------------------------------
+Date:		07-02-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77905 BugZilla:77968
+Affected files:	
+		Source/prj/ICAD/IcadZoomView.cpp
+Description:	Undone the fix of 30-10-2001 leading to wrong behaviour and
+		even crashes.
+Comments:	TaL77905
+
+--------------------------------------------------------------------------------
+Date:          	6-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/lib/DB/objects.h
+Description:	Undone the change of 24-1-2002 due to its unsafety causing
+		crashes.
+Comments:	TalOwningDictaddDictdel
+
+--------------------------------------------------------------------------------
+Date:          	5-2-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/make/cmds.dsp
+		Eng-us/icad.rc2 
+		Source/prj/ICAD/res/icadrc2.h
+		Source/prj/lib/SDS/sds_osnap.cpp 
+		Source/prj/lib/flyoversnap/OsnapObjects.h
+		Source/prj/lib/flyoversnap/OsnapMode.h
+		Source/prj/lib/flyoversnap/OsnapMode.cpp
+		Source/prj/lib/flyoversnap/OsnapManagerImp.h
+		Source/prj/lib/flyoversnap/OsnapMaangerImp.h
+		Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+		Source/prj/lib/CMDS/line.cpp
+Added file:	Source/prj/lib/CMDS/CmdOsnapModeDefTan.cpp
+		Source/prj/lib/CMDS/CmdOsnapModeDefTan.h
+Description:	Added deferred tangent snapping for command LINE
+
+--------------------------------------------------------------------------------
+Date:          	3-2-2002
+Developer:	Chikahiro Masami
+Company:	EBATECH
+Reference:
+Affected files:	
+		Source/prj/lib/CMDS/sdstextbox.cpp
+		Source/prj/lib/DB/DbMText.cpp
+		Source/prj/lib/GR/textgen.cpp
+		Source/prj/api/SDS/sds.h
+		Source/ThirdParty/DCL_Components/Include/sds.h
+Description:	MTEXT (textbox) sometimes reset DXF=42,43 as zero.
+                	MTEXT DXF=1 is less equal 255 chars and
+                	MTEXT DXF=3 are less equal 250 charas.
+               	TEXT SHX (textbox) return light rectangle
+                	When TEXT STYLE has Bigfont font and Standard font and
+                	\U+XXXX is in Standard font, it shows okay.
+                	sds.h matches definitions into 2 files.
+--------------------------------------------------------------------------------
+Date:          	1-2-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	
+		Source/prj/make/icad.dsw,
+		Source/prj/make/Authenticate.dsp
+Added file:	Source/prj/Authenticate/memleaks.cpp
+Description:	Memory leaks alerter implementation (see comments in memleaks.cpp).
+
+--------------------------------------------------------------------------------
+
+Date:		31-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/DRW/dwgload.cpp,
+		Source/prj/lib/CMDS/insert.cpp,
+		Source/prj/lib/CMDS/cmds3.cpp
+Description:	Fixed: 1. Relative paths of xrefs are not accepted (both when
+		attaching a new xref - additional fix for the change of 16-06-2001,
+		and when loading a drawing with xrefs - fix for the change of
+		09-06-2001).
+		2. xref/path command cannot be cancelled when FILEDIA is OFF
+		(change in cmds3.cpp).
+Comments:	TalXrefPaths
+
+--------------------------------------------------------------------------------
+Date:		29-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/CMDS/utilities.cpp,
+		Source/prj/lib/DB/blocktabrec.cpp
+Description:	Fixed: crash on undo of changes of vertices in blocks.
+Comments:	TalUndoVertex
+
+--------------------------------------------------------------------------------
+Date:		29-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/LISP/ss.cpp,
+		Source/prj/lib/SDS/sds_selectset.cpp,
+		Source/prj/ICAD/IcadApi.h
+Description:	Fixed: some bugs in sssetfirst function (nil&nil args; common ents
+		in args).
+Comments:	TalSsgetfirstSssetfirst
+
+--------------------------------------------------------------------------------
+Date:		28-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/ICADLIB/Escconv.cpp
+Description:	Fixed: national (ASCII > 127) single-byte chars are not allowed
+		in some cases. Eg, in (print), (prin1).
+Comments:	TalLispPrinNonEnglish
+
+--------------------------------------------------------------------------------
+Date:		28-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/DB/drawing.h
+Description:	Fixed: a crash in undo due to the change of 24-1-2002 dealing
+		with TalUndoCreatingObjects.
+
+--------------------------------------------------------------------------------
+Date:		25-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/LISP/ss.cpp
+Description:	Fixed: misbehaviour of ssget and ssadd when they are used together
+		one after one.
+Comments:	TalLispSsgetSsadd
+
+--------------------------------------------------------------------------------
+Date:		25-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/SDS/sds_selectset.cpp
+Description:	Fixed: misbehaviour of sssetfirst and ssgetfirst (SDS and LISP)
+		in many cases.
+Comments:	TalSsgetfirstSssetfirst
+
+--------------------------------------------------------------------------------
+Date:		25-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files: 	Source/prj/ICAD/IcadEntityRenderer.cpp
+		Source/prj/lib/cmd/dimmakedim.cpp
+		Source/prj/lib/DB/handitem.cpp
+		Source/prj/lib/DB/layertabrec.cpp
+		Source/prj/lib/DB/layertabrec.h
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+		Source/prj/lib/GR/dispobjs.cpp
+Description:	for AutoCAD? 2002 Compatibility.
+		We can support LAYER DXF=290(Plotting Flag).
+		Show/change via LISP.
+		Save/load to/from dwg/dxf.
+		User Interface still not be supported.
+		Next time, We will support lineweight viewing, plotting
+		and setting via command/vba.
+Comments:
+--------------------------------------------------------------------------------
+Date:		25-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files: 	Source/prj/lib/ICADLIB/resval.cpp
+Description:	DXF 290-299 is now RTSHORT.
+		DXF 1006-1009 and 1044-1069 are now RTERROR.
+Comments:
+--------------------------------------------------------------------------------
+Date:		24-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/AUTO/AutoPSpace.cpp
+Description:	Fixed: Creating of entities in the Paper space via COM corrupts
+		undo stack that leads to misbehaviour and crashes
+		(the fix of 30-10-2001 dealed with the Model space only).
+Comments:	TalUndoRedoCreating
+
+--------------------------------------------------------------------------------
+Date:		24-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/icadundoredo.cpp,
+		Source/prj/lib/AUTO/AutoMSpace.cpp,
+		Source/prj/lib/DB/drawing.cpp,
+		Source/prj/lib/SDS/sds_db.cpp
+Description:	Fixed: 1. Creating of objects is incorrectly processed for undo/redo
+		that leads to misbehaviour and crashes.
+		2. "Redrawing" of non-entities on undo/redo of their creating.
+Comments:	TalUndoCreatingObjects
+
+--------------------------------------------------------------------------------
+Date:		24-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/DB/blocktabrec.cpp,
+		Source/prj/lib/DB/hireflink.cpp
+Description:	db_hireflink::ret_hip moved from blocktabrec.cpp to hireflink.cpp.
+
+--------------------------------------------------------------------------------
+Date:		24-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/DB/objects.h
+Description:	Added the support of soft pointers (reactors) of owning dictionaries
+		in owned objects. These reactors are considered in dictadd/dictdel.
+Comments:	TalOwningDictaddDictdel
+
+--------------------------------------------------------------------------------
+Date:		23-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Affected files: 	Source/prj/lib/CMDS/CmdCommands.cpp
+		Source/prj/ICAD/res/icadrc2.h
+                	Eng-us/icad.rc2
+Description:    	Strings moved to recources
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files: 	Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/DB/dbdefines.h
+		Source/prj/lib/DB/entity.cpp
+		Source/prj/lib/DB/entity.h
+		Source/prj/lib/DB/handitem.cpp
+		Source/prj/lib/DB/layertabrec.cpp
+		Source/prj/lib/DB/layertabrec.h
+		Source/prj/lib/DB/oldvars.cpp
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+Description:	for AutoCAD? 2002 Compatibility.
+		Now DB.DLL can support lineweight.
+		Create LAYER with lineweight.
+		Create any entities with lineweight.
+		Show/change via LISP.
+		Save/load to/from dwg/dxf.
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Affected files:	Source/prj/lib/ICAD/icadEntPropTabs.cpp
+		Source/prj/lib/ICAD/icadEntPropTabs.h
+Description:	removed unused code
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Affected files:	Source/prj/lib/CMDS/CmdCommands.cpp
+		Source/prj/ICAD/IcadApi.h
+		Source/prj/ICAD/IcadRes.h
+Description:	Changed command "COMMANDS", added capability
+		to display internal commands
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:85
+Affected files:	Source/prj/ICAD/IcadSplash.cpp
+Description:	Release bitmap memory in Splash screen
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:150 Item:151 Item:154
+Affected files:	Source/prj/lib/DB/acad_proxy_entity.cpp
+		Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/DB/handitem.cpp
+Description:	Checkings before releasing memory
+Comments:
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:104 Bugzilla No
+Affected files:	Source/prj/ICAD/IcadView.cpp
+Description:	Print while ucs!=ViewDir? gives invalid ouput
+Comments:	TalPrintWithUcsDifThanViewDir
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:50 Item:96
+Affected files: Source/prj/ICAD/IcadChildWnd?.h
+		Source/prj/ICAD/IcadChildWnd.cpp
+		Source/prj/ICAD/IcadView.h
+		Source/prj/ICAD/IcadView.cpp
+Description:	ViewSize? now changes if we resize viewport
+Comments:       TalResizeViewport
+--------------------------------------------------------------------------------
+Date:	22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:126
+Affected files:	Source/prj/lib/CMDS/cmds8.cpp
+Description:	Change in default dview camera point.
+		Target point has been added to current default value.
+		Attention!SDS apps that call command "DVIEW" should
+		take into account the new default value.
+		If we uncomment #define __BUILD_WITH_OLD_DVIEW_CAMERA_POINT__ in cmds8.cpp
+		project will be built with old default value
+Comments:	TalNewDviewCameraPoint
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:77
+Affected files:	Source/prj/ICAD/IcadMenuTBDef.H
+		Source/prj/ICAD/IcadSetVarsDia.cpp
+		Source/prj/ICAD/IcadStatusBar.cpp
+		Source/prj/ICAD/res/icadrc2.h
+		Eng-us/icad.rc2
+		Source/prj/lib/CMDS/todo.cpp
+		Source/prj/lib/SDS/sds_get.cpp
+		Source/prj/lib/SDS/sds_osnap.cpp
+		Source/prj/lib/flyoversnap/osnapManagerImp.cpp
+Description:	F3 toggles osnap instead of cmdbar
+		Osnap Cursor should not be displayed when osnap is OFF
+		Registry should be cleared so that this change gets into effect
+Comments:	alTogglesOsnapF3
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:78
+Affected files:	Source/prj/ICAD/IcadNewWiz.cpp
+		Source/prj/lib/CMDS/ddcmd.cpp
+Description:	Command NewWiz? should initialize Lisp
+Comments	TalNewWizInitLisp
+--------------------------------------------------------------------------------
+Date:		22-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	Item:71
+Affected files:	Source/prj/ICAD/IcadGrips.cpp
+		Source/prj/ICAD/IcadApi.cpp
+Description:	Entity should remain selected after Grip dragging cancelation
+Comments:	TalGripsDisplayedAfterEsc
+--------------------------------------------------------------------------------
+Date:  		21-1-2002
+Developer:	Van Heuverzwyn Alexander
+Company: 	Bricsnet
+Reference:
+Affected files: 	Eng-us/patterns/*.sld
+		Eng-us/patterns/iso/*.sld
+Description: 	removed slides from eng-us directory. They are still present in stage dir.
+		the slides were erroneously checked in as ascii and were unusable
+
+--------------------------------------------------------------------------------
+Date:		21-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Added files:	Source/prj/lib/ACIS/tests/TsBooleanOperations.cpp
+		Source/prj/lib/ACIS/tests/TsCrasher.cpp
+		Source/prj/lib/ACIS/tests/TsCrasher.h
+		Source/prj/lib/ACIS/tests/TsCynematic.cpp
+		Source/prj/lib/ACIS/tests/TsDisplay.cpp
+		Source/prj/lib/ACIS/tests/TsExploding.cpp
+		Source/prj/lib/ACIS/tests/TsFunctional.h
+		Source/prj/lib/ACIS/tests/TsIcadAcis.cpp
+		Source/prj/lib/ACIS/tests/TsPicking.cpp
+		Source/prj/lib/ACIS/tests/TsPrimitiveConstruction.cpp
+		Source/prj/lib/ACIS/tests/TsQuery.cpp
+		Source/prj/lib/ACIS/tests/TsSaveLoadSatFile.cpp
+		Source/prj/lib/ACIS/tests/TsSectioning.cpp
+		Source/prj/lib/ACIS/tests/TsSolidedit.cpp
+		Source/prj/lib/ACIS/tests/TsSurfaceConstruction.cpp
+		Source/prj/lib/ACIS/tests/TsTools.cpp
+		Source/prj/lib/ACIS/tests/TsTools.h
+Affected files:	Source/prj/lib/ACIS/AsModeler.cpp
+		Source/prj/lib/ACIS/AsConstructor.cpp
+		Source/prj/lib/ACIS/AsMesh.cpp
+		Source/prj/lib/ACIS/AsTools.h
+		Source/prj/lib/ACIS/AsTools.cpp
+		Source/prj/lib/ACIS/AsObject.cpp
+		Source/prj/lib/ACIS/AsViewer.cpp
+		Source/prj/lib/ACIS/AsSatStream.cpp
+		Source/prj/lib/ACIS/AsSnaping.cpp
+		Source/prj/make/acis.dsp
+		Source/prj/make/testrunner.dsw
+
+Description:	Added testunit tests for Acis project
+
+--------------------------------------------------------------------------------
+Date:		20-01-2002
+Developer:	Chikahiro MASAMI
+Company:	EBATECH
+Reference:
+Affected files:	Source/prj/ICAD/icadEntPropMain.cpp
+Description:	Fixed: ENTPROP needs to watch cases for DXF=1(All Entities)
+		and DXF=3(ATTDEF).
+Comments:	TalJ02012001
+
+--------------------------------------------------------------------------------
+Date:		19-01-2002
+Developer:	Chikahiro MASAMI
+Company:	EBATECH
+Reference:
+Affected files:	Source/prj/lib/DbMtext.cpp
+Description:	Fixed: MTEXT has duplicate DXF=1 when its length over 250.
+		It is a reason of ENTPROP MTEXT always shows "Varias"
+		in Text Field.
+Comments:	TalJ02011901
+
+--------------------------------------------------------------------------------
+Date:		18-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Added files:	Source/prj/TestSystem/Its/ItsApp.cpp
+		Source/prj/TestSystem/Its/ItsApp.h
+		Source/prj/TestSystem/Its/ItsApp.rc
+		Source/prj/TestSystem/Its/ItsDoc.cpp
+		Source/prj/TestSystem/Its/ItsDoc.h
+		Source/prj/TestSystem/Its/ItsLinkLibraries.cpp
+		Source/prj/TestSystem/Its/ItsListener.cpp
+		Source/prj/TestSystem/Its/ItsListener.h
+		Source/prj/TestSystem/Its/ItsMainFrm.cpp
+		Source/prj/TestSystem/Its/ItsMainFrm.h
+		Source/prj/TestSystem/Its/ItsResult.cpp
+		Source/prj/TestSystem/Its/ItsResult.h
+		Source/prj/TestSystem/Its/ItsResultView.cpp
+		Source/prj/TestSystem/Its/ItsResultView.h
+		Source/prj/TestSystem/Its/ItsTestRunner.cpp
+		Source/prj/TestSystem/Its/ItsTestRunner.h
+		Source/prj/TestSystem/Its/ItsTestTree.cpp
+		Source/prj/TestSystem/Its/ItsTestTree.h
+		Source/prj/TestSystem/Its/ReadMe.txt
+		Source/prj/TestSystem/Its/resource.h
+		Source/prj/TestSystem/Its/StdAfx.cpp
+		Source/prj/TestSystem/Its/StdAfx.h
+		Source/prj/TestSystem/Its/UiProgressBar.cpp
+		Source/prj/TestSystem/Its/UiProgressBar.h
+		Source/prj/TestSystem/Its/res/Its.rc2
+		Source/prj/TestSystem/Its/res/ItsApp.ico
+		Source/prj/TestSystem/Its/res/ItsDoc.ico
+		Source/prj/TestSystem/Its/res/Toolbar.bmp
+		Source/prj/TestSystem/testunit/all.cpp
+		Source/prj/TestSystem/testunit/assert.cpp
+		Source/prj/TestSystem/testunit/assert.h
+		Source/prj/TestSystem/testunit/autoregistrar.h
+		Source/prj/TestSystem/testunit/collection.cpp
+		Source/prj/TestSystem/testunit/collection.h
+		Source/prj/TestSystem/testunit/crash.h
+		Source/prj/TestSystem/testunit/exception.cpp
+		Source/prj/TestSystem/testunit/exception.h
+		Source/prj/TestSystem/testunit/exctrans.cpp
+		Source/prj/TestSystem/testunit/exctrans.h
+		Source/prj/TestSystem/testunit/exctrans.inl
+		Source/prj/TestSystem/testunit/failure.h
+		Source/prj/TestSystem/testunit/object.cpp
+		Source/prj/TestSystem/testunit/object.h
+		Source/prj/TestSystem/testunit/ostream.cpp
+		Source/prj/TestSystem/testunit/ostream.h
+		Source/prj/TestSystem/testunit/readme.txt
+		Source/prj/TestSystem/testunit/registry.cpp
+		Source/prj/TestSystem/testunit/registry.h
+		Source/prj/TestSystem/testunit/stdafx.cpp
+		Source/prj/TestSystem/testunit/stdafx.h
+		Source/prj/TestSystem/testunit/test.cpp
+		Source/prj/TestSystem/testunit/test.h
+		Source/prj/TestSystem/testunit/testunit.h
+		Source/prj/TestSystem/testunit/tests/_assert.cpp
+		Source/prj/TestSystem/testunit/tests/_autoregistrar.cpp
+		Source/prj/TestSystem/testunit/tests/_collection.cpp
+		Source/prj/TestSystem/testunit/tests/_crash.cpp
+		Source/prj/TestSystem/testunit/tests/_exception.cpp
+		Source/prj/TestSystem/testunit/tests/_failure.cpp
+		Source/prj/TestSystem/testunit/tests/_object.cpp
+		Source/prj/TestSystem/testunit/tests/_registry.cpp
+		Source/prj/TestSystem/testunit/tests/_test.cpp
+		Source/prj/TestSystem/testunit/tests/_tuostream.cpp
+		Source/prj/make/testrunner.dsw
+		Source/prj/make/Its.dsp
+		Source/prj/make/testunit.dsp
+
+Description:	Implemented Icad test system, consisting of core library (testunit)
+		and gui application (Its)
+
+Comments:	IcadTestSystem?
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/icadapi.cpp,
+		Source/prj/ICAD/icadundoredo.cpp
+Description:	Fixed: undo stack is corrupted during execution redefined open
+		command and closing drawings.
+Comments:	TalUndoRedefOpenAndClosing
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files: Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/GR/dispobjs.cpp
+		Source/prj/lib/ICADLIB/icadlib.h
+		Source/prj/lib/DRW/dwgsave.cpp
+		Source/prj/lib/SDS/sds_alert.cpp
+Description:	Removed redundant headers includings
+		dwgload.cpp uses sds_alert() instead ASSERT macro.
+		dispobjs.cpp remove CString?.
+		icadlib.h can switch to reffer afxwin.h or windows.h.
+		*Pending Issue*
+		icadlib.h has LOADSTRINGS_?? macros.
+		These macros use CString? class.
+		They are used by ICAD project only.
+		So, I hope to move these macro to icad.h(for example).
+		dwgsave.cpp still uses CString? class(4M Inc).
+		sds_alert still uses AFX_IDS_APP_TITLE define.
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/ICAD/icadapp.cpp
+		Source/prj/ICAD/res/icadrc2.h
+		Eng-us/icad.rc2
+Description:	for AutoCAD? 2002 Compatibility.
+		Initialize such special system variables:
+		$CTAB from Resource, $CPROFILE from Registory,
+		$EXEDIR using FileString?::ModulePath?() method,
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/ICAD/icaddoc.cpp
+		Source/prj/lib/CMDS/block.cpp
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+Description:	for AutoCAD? 2002 Compatibility.
+		$TDUUPDATE creates from $TDUPDATE.
+		ODT 2.00x returns adhd->tduupdate=0.
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/IcadMenuTBDef.H
+Description:	Fixed: the "Properties..." item is not shown in the right-click
+		menu for hatches. It's been already fixed (26-03-2001) but
+		has been lost during the merge on 15-5-2001.
+
+--------------------------------------------------------------------------------
+Date:       	17-01-2002
+Developer:	Denis Petrov
+Company:	ITC
+Reference:	BugZilla:77963
+Affected files:	Source/prj/lib/CMDS/cmdsDimBlock.cpp
+		Source/prj/lib/CMDS/cmdsDimBlock.h
+		Source/prj/lib/CMDS/dimensions.cpp
+		Source/prj/lib/CMDS/dimensions.h
+Description:	1) Fixed creation of blocks for user arrows.
+		2) Code improvements.
+Comments:	TaL77963
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/GR/gr_Hatch.cpp,
+		Source/prj/lib/GR/gr_mtext.h,
+		Source/prj/lib/GR/polycache.cpp,
+		Source/prj/lib/GR/polycache.h,
+		Source/prj/lib/GR/truetypeutils.cpp,
+		Source/prj/lib/GR/truetypeutils.h
+Description:	Removed redundant headers includings and made some little
+		betterments.
+
+--------------------------------------------------------------------------------
+Date:		17-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/GR/gr_DisplaySurface.h,
+		Source/prj/lib/GR/gr_Hatch.cpp
+Description:	Fixed: some hatches are not displayed correctly.
+Comments:	TalHatch
+
+--------------------------------------------------------------------------------
+Date:		16-01-2002
+Developer:	Hiro Watanabe
+Company:	SystemMetrix?
+Reference:
+Affected files:
+		Source/prj/lib/CMDS/DimDiaMain.cpp
+Description:	Fixed: direction of dim block is opposite
+Comments:	TalJ201162.
+--------------------------------------------------------------------------------
+Date:		16-01-2002
+Developer:	Hiro Watanabe
+Company:	SystemMetrix?
+Reference:
+Affected files:
+		Source/prj/lib/CMDS/DimMakeDim.cpp
+Description:	Fixed: draw radial/diametric in UCS
+Comments:	TalJ201161.
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/CMDS/mail.cpp,
+		Source/prj/lib/CMDS/read.cpp
+Description:	Fixed: compiler errors due to the last change of db.h and last
+		changes of these 2 files. Error appears in mail.cpp only when
+		CRIPPLE_TESTDRIVE is defined in configure.h; error appears in
+		read.cpp only when BUILD_WITH_LICENSED_COMPONENTS and
+		BUILD_WITH_ACIS_SUPPORT are defined in configure.h.
+
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/lib/DB/hatch.cpp
+Description:	Fixed: memory leaks in processing of hatches (eg, on changing
+		of hatches).
+
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Chikahiro MASAMI
+Company:	EBATECH
+Reference:
+Affected files:
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+Description:	ODT 2.007 supports DIMATFIT,DIMTMOVE.
+		ODT 2.006 and earliar have a problem for DIMFIT, DIMATFIT
+		and DIMTMOVE.
+Comments:
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/lib/DB/db.h
+		Source/prj/lib/DB/dbdefines.h
+Description:	for AutoCAD? 2002 Compatibility.
+		DB.DLL and modules which used setvar() include confiure.h.
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:77953
+Affected files:
+		Source/prj/ICAD/icadinsertdia.cpp
+Description:	DDINSERT dialog does not take UCS into consideration.
+Comments:	TaL77953.
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Vishwanath Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77962
+Affected files:
+		Source/prj/ICAD/binchange.cpp
+		Source/prj/ICAD/groupchange.cpp
+		Source/prj/ICAD/dictionarychange.cpp
+Description:	Debug Assert statment while working in Debug Build.
+Comments:	TaL77962.
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Archana Walimbe
+Company:	Cybage Software
+Reference:	BugZilla:77955
+Affected files:
+		Source/prj/lib/GR/mtextgen.cpp
+		Source/prj/ICAD/IcadAttDefDia.cpp
+Description:	a.Dimension text and Mtext are displayed in reverse order when the text style 										has a reverse or updown flag.
+		b. If attribute is created through the ddattdef dialog box, when the text style 												has a reverse or updown flag, these flags are not applied on it.
+Comments:	TaL77955
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:77935
+Affected files:
+		Source/prj/lib/CMDS/arc.cpp
+Description:  	Dragging of arc when end point needs to be specified is enabled now.
+		TaL77935
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Mohit Mehta
+Company:	Cybage Software
+Reference:	BugZilla:77956
+Affected files:
+		Source/prj/lib/CMDS/changeprop.cpp
+Description:	CHANGE command gets terminated after LAYER or LType? subcommands.
+Comments:	TaL77956.
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Yoji Ebata
+Company:	Ebatech
+Reference:
+Affected files:
+		Source/prj/ICAD/IcadCustom.cpp
+Description:	Tools->Customise Keyboard,Aliases -> Export.
+		IntelliCAD? can't export ".ICK",".ICA" file.
+		sorry, I mistook at previous modification. (Reference TalJ110055)
+Comments:
+--------------------------------------------------------------------------------
+Date:		14-01-2002
+Developer:	Yoji Ebata
+Company:	Ebatech
+Reference:	BugZilla:77925
+Affected files:
+		Source/prj/ICAD/IcadCusToolBarAdvDlg.cpp
+		Source/prj/ICAD/IcadCusToolBarAdvDlg.h
+		Source/prj/ICAD/resource.hm
+Description:	Tools->Customise->option Help Button Blank
+		This was fixed by Cybage on 26-11-2001. I added also Help in ToolBar?-option.
+Comments:	TaL77925.
+--------------------------------------------------------------------------------
+Date:		11-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/lib/CMDS/cmdsInet.cpp
+		Source/prj/lib/DB/db1.cpp
+		Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/DB/dbdefines.h
+		Source/prj/lib/DB/dbprotos.h
+		Source/prj/lib/DB/drawing.cpp
+		Source/prj/lib/DB/drawing.h
+		Source/prj/lib/DB/oldvars.cpp
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+		Source/prj/ICAD/configure.h
+Description:	for AutoCAD? 2002 Compatibility.
+		SETVAR command/function support.
+		Support function:
+		 BROWSE command uses INETLOCATION value.
+		 PRODUCT returns "IntelliCAD?"(ReadOnly?).
+		 PROGRAM returns "ICAD"(ReadOnly?).
+		 SDI returns 0(ReadOnly?).
+		Special input error check and We'll support function later:
+		 CELWEIGHT,DIMLWD,DIMLWE,LWDEFAULT,
+		We will support function later:
+		 CEPSNTYPE,CPLOTSTYLE,CPROFILE,CTAB,DEFLPLSTYLE,DEFPLSTYLE,
+		 DIMALTRND,DIMAZIN,EXEDIR,EXTNAMES,
+		 INSUNITS, INSUNITSDEFSOURCE, INSUNITSDEFTARGET,
+		 ISAVEBAK,LOGFILEPATH,LWDISPLAY,LWUNITS,MEASUREINIT,NOMUTT,
+		 OSNAPCOORD,PAPERUPDATE,PLQUIET,
+		 POLARADDANG,POLARANG,POLARDIST,POLARMODE
+		 PSTYLEMODE,PSTYLEPOLICY,PSVPSCALE,PUCSBASE,
+		 SNAPTYPE,TDUUPDATE,
+		 TSPACEFAC,TSPACETYPE,TSTACKALIGN,TSTACKSIZE,
+		 UCSAXISANG,UCSBASE,UCSVP
+		 DIMASSOC (This is Dictionary Var)
+		We won't support function(They are justplace holder):
+		 ACADLSPASDOC,BINDTYPE,COMPASS,DEMANDLOAD,DWGCHECK,FACETRATIO,
+		 FULLOPEN,HIDEPRECISION,IMAGEHLT,LAYOUTREGENCTL,LISPINIT,
+		 OFFSETGAPTYPE,OLEHIDE,OLEQUALITY,OLESTARTUP,
+		 PROXYNOTICE,PROXYSHOW,PROXYWEBSEARCH,
+		 REFEDITNAME,REMEMBERFOLDERS,RTDISPLAY,SHORTCUTMENU,SOLIDCHECK,
+		 STARTUPTODAY,TRACKPATH,WHIPARC,WHIPTHREAD,WMFBKGND,WMFFOREGND,
+		 XEDIT,XFADECTL
+		 They are Dictionary Vars.
+		 HALOGAP,HIDETEXT,OBSCOLOR,OBSLTYPE
+		Pendding/Functionaly Expanded
+		 EXTNAMES ODT2.007 always set 1 even EXTNAMES is 0 in DXF/DWG.
+		 LOGINNAME can iclude spaces.
+Comments:
+
+--------------------------------------------------------------------------------
+Date:		11-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/lib/DB/oldvars.cpp
+Description:	When (getvar) returns 2DPOINT, Z-Value force 0.
+		It is presereve to set abnormal Z value.
+--------------------------------------------------------------------------------
+Date:		11-01-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:
+Affected files:	Eng-us/icad.rc2
+		Source/prj/lib/CMDS/cmdsInet.cpp
+Description:	BROWSE command show default URL.
+Comments:	Other Language Edition MUST change IDC_URL_ENTERURL.
+
+--------------------------------------------------------------------------------
+Date:		11-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/Change.cpp
+Description:	Fixed: some changes of some DB items are not cached for undo/redo.
+		Affected items: ltype, tolerance, image, dimstyle, layer, db_vxtabrec.
+Comments:	TalUndoVariableLengthDataChanges (bug 3), TalUndoTOLERANCEdimstyle,
+		TalUndoLAYERltype, TalUndoDbItemsChanges (items w/o tals)
+
+--------------------------------------------------------------------------------
+Date:		10-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/textstyledlg.cpp
+Description:	Fixed: Some changes in Text Style dialog are not saved for undo.
+Comments:	TalUndoSTYLEfont
+
+--------------------------------------------------------------------------------
+Date:		10-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77854, BugZilla:77852
+Affected files:	Source/prj/ICAD/Change.cpp,
+		Source/prj/ICAD/IcadExplorer.cpp
+Description:	Fixed: Changes of items in IntelliCAD? Explorer are not saved for
+		undo/redo; including that some changes of text styles are not saved
+		for undo/redo in all cases including using explorer.
+Comments:	TaL77854
+
+--------------------------------------------------------------------------------
+Date:		09-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:
+Affected files:	Source/prj/ICAD/icadundoredo.cpp,
+		Source/prj/ICAD/textstyledlg.cpp,
+		Source/prj/ICAD/textstyledlg.h,
+		Source/prj/make/icad.dsp,
+		Source/prj/lib/CMDS/textstyle.cpp
+Removed file:	Source/prj/ICAD/icadtextstyledia.cpp
+Description:	Fixed: 1. Redundant regenall after cancelling Text Style dialog
+		(which is stored also for undo/redo)
+		2. "Redrawing" of non-entities (tables etc.) on undo/redo
+		of their modification.
+
+--------------------------------------------------------------------------------
+Date:		09-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	4M Item:123
+Affected files:	Source/prj/lib/CMDS/cmds8.cpp
+Description:	List the length of a LWPOLYLINE in command Lengthen
+Comments:	TalListLengthLWPOLYLINE
+--------------------------------------------------------------------------------
+Date:		09-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	4M Item:58
+Affected files:	Source/prj/ICAD/icaddragging.cpp
+Description:	getpoint with Ortho On loses z coord
+Comments:	TalGetPointLosesZCoord
+--------------------------------------------------------------------------------
+Date:		09-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	4M Item:129
+Affected files:	Source/prj/lib/CMDS/dimensions.cpp
+		Source/prj/lib/CMDS/dimensions.h
+		Source/prj/lib/CMDS/DimMakeDim.cpp
+		Source/prj/ICAD/configure.h
+Description:	Dimension elements, except points, should be placed in Layer "0"
+		and not in the current layer,for compatibility reasons .
+		#define PLACE_DIM_ELEMENTS_TO_0 has been added  in "configure.h"
+		This definition should be commented if we prefer th old behaviour
+Comments:	TalDimElemInLayer0
+--------------------------------------------------------------------------------
+Date:		08-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	4M Spiros Item:146
+Affected files:	Source/prj/lib/CMDS/todo.cpp
+Description:	Matchprop did not copy attributes among TEXTs? and ATTDEFs?
+Comments:	TalMatchPropText
+--------------------------------------------------------------------------------
+Date:		08-01-2002
+Developer:	Mina Polemi
+Company:	4M
+Reference:	BugZilla:77959 - 4M Item:67
+Affected files:	Source/prj/ICAD/IcadGrips.cpp
+Description:	Attributes that belong to INSERTs? to anonymous blocks do not
+		have grips
+Comments:	TalAttibGripsInAnonBlocks
+--------------------------------------------------------------------------------
+Date:		08-01-2002
+Developer:	Dmitry Gavrilov
+Company:	ITC
+Reference:	BugZilla:77958
+Affected files:	Source/prj/lib/DRW/dwgload.cpp
+Description:	Fixed: Crash on opening some files with DIMADEC	sysvar stored
+		in objects section.
+Comments:	Look at the file attached to 77958.
+
+--------------------------------------------------------------------------------
+Date:		04-01-2002
+Developer:	Alexey Malov
+Company:	ITC
+Reference:
+Affected files:
+		Source/prj/ICAD/IcadEntPropMain.cpp
+Description:	Now for multiple selected acis entities, common bounding box
+		is calculated (with considering DB type: DB_3DSOLID, DB_REGION, DB_BODY)
+Comments:
+--------------------------------------------------------------------------------
+
+Date:		31-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	SH_31122002.txt
+Changed files:	
+   		Source/prj/ICAD/icadapi.cpp 
+   		Source/prj/lib/CMDS/panzoom.cpp 
+   		Source/prj/lib/DRW/dwgload.cpp 
+Description:	This submission fixes the following crash bugs:
+		BugZilla:78191: ICAD crashes if some text is typed at the prompt and 
+		then backspace key is kept pressed
+
+		RESOLUTION: The code didn't record how many characters users entered at the 
+		command prompt and just kept to move back the file position pointer 
+		when the backspace key is kept pressed until ICAD crashed. This 
+		also caused the all records in the script file to be erased.
+		This bug was fixed by modifying SDS_SendMessage() to use a static 
+		variable in to record the number of characters users just entered 
+		at the prompt and ensure the file pointer will not be moved back 
+		more than the number of characters the users entered.
+		
+		BugZilla:78387: ICAD crashes while opening attached drawing.
+             
+		RESOLUTION: The drawing contains a NULL handle of ACDBVARIABLEDICTIONARY 
+		dictionary item but the code didn't check the handle and directly 
+		added it into dictionary that caused ICAD to cash later. To 
+		fix up, some checks are added into the code to prevent NULL
+		handles to be added to the dictionary. AutoCAD? also does similar 
+		fix up 
+		
+		
+		BugZilla:78373: ICAD crashes for zoom>extents operation after inserting attached 
+		drawing.
+		
+		RESOLUTION: The implantation of display object list is not thread safe. When 
+		the ZOOM command is executed, the main win thread will perform tool 
+		hit test on the display object list if hyperlink tooltip is enabled 
+		while the command thread is updating the display object list. So
+		the memory of display object list that main thread holds for test
+		can be freed by the command thread sometimes before the main thread
+		complete the test. That causes ICAD to crash randomly, depending on
+		the thread schedule. This bug is fixed by temporarily disable the
+		hyperlink tooltip at the begin of cmd_zoom().		
+
+Comments:	Added script 78387.scr, 78373.scr.
+--------------------------------------------------------------------------------
+Date:		23-12-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78396
+Affected files:	
+		Source/prj/ICAD/IcadMTextDia.cpp
+		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Source/prj/ICAD/MTextPropertiesTab.h
+Description:	Style is not set correctly for Mtext
+Comments:	TaL78396
+--------------------------------------------------------------------------------
+Date:		23-12-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78034
+Affected files:	
+		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Source/prj/ICAD/mtextpropsheet.cpp
+		Source/prj/ICAD/mtextrichedit.cpp
+		Source/prj/ICAD/mtexttexttab.cpp
+		Source/prj/ICAD/mtexttexttab.h
+		Source/prj/lib/CMDS/cmds3.cpp
+Description:	The text-height using "Mtext" is not same as fixed text-height set while defining the Style.
+Comments:	TaL78034
+--------------------------------------------------------------------------------
+
+REGRESS Results:
+Regress started at 3/8/2003 6:34:44 PM
+Exe path -- F:\Build_17\IntelliCAD\Source\prj\make\Stage\icad.exe
+Directory to process -- f:\Build_17\IntelliCAD\Source\Regress\scripts
+Option -- None
+
+
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D.scr at 3/8/2003 6:34:44 PM
+ Time K+u=total -- 1682 ms + 981 ms = 2663 ms. mem used 12304384 bytes start 18.34.45 end 18.35.4
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entityEMF.scr at 3/8/2003 6:35:04 PM
+ Time K+u=total -- 1702 ms + 1502 ms = 3204 ms. mem used 12460032 bytes start 18.35.5 end 18.35.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entityEMF95.scr at 3/8/2003 6:35:11 PM
+ Time K+u=total -- 1702 ms + 1592 ms = 3294 ms. mem used 12455936 bytes start 18.35.11 end 18.35.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entityEMFNT.scr at 3/8/2003 6:35:17 PM
+ Time K+u=total -- 1902 ms + 1432 ms = 3334 ms. mem used 12451840 bytes start 18.35.17 end 18.35.22
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entitySLD.scr at 3/8/2003 6:35:22 PM
+ Time K+u=total -- 1642 ms + 1422 ms = 3064 ms. mem used 12361728 bytes start 18.35.23 end 18.35.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entitySLD95.scr at 3/8/2003 6:35:28 PM
+ Time K+u=total -- 1722 ms + 1361 ms = 3083 ms. mem used 12357632 bytes start 18.35.28 end 18.35.34
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entitySLDNT.scr at 3/8/2003 6:35:34 PM
+ Time K+u=total -- 1872 ms + 1361 ms = 3233 ms. mem used 12361728 bytes start 18.35.34 end 18.35.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\2-D_entity_color_layer.scr at 3/8/2003 6:35:39 PM
+ Time K+u=total -- 1582 ms + 1121 ms = 2703 ms. mem used 12316672 bytes start 18.35.39 end 18.35.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\3d.scr at 3/8/2003 6:35:43 PM
+ Time K+u=total -- 1181 ms + 1772 ms = 2953 ms. mem used 12316672 bytes start 18.35.43 end 18.35.47
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\3dmeshes2.scr at 3/8/2003 6:35:47 PM
+ Time K+u=total -- 2884 ms + 2984 ms = 5868 ms. mem used 14987264 bytes start 18.35.47 end 18.35.54
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\3dspiral_3dspiral.scr at 3/8/2003 6:35:54 PM
+ Time K+u=total -- 1201 ms + 1171 ms = 2372 ms. mem used 12447744 bytes start 18.35.54 end 18.35.58
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\3dspiral_spiral.scr at 3/8/2003 6:35:58 PM
+ Time K+u=total -- 1031 ms + 1051 ms = 2082 ms. mem used 12378112 bytes start 18.35.58 end 18.36.1
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\3d_entities.scr at 3/8/2003 6:36:01 PM
+ Time K+u=total -- 1852 ms + 1942 ms = 3794 ms. mem used 13451264 bytes start 18.36.1 end 18.36.6
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\60619.scr at 3/8/2003 6:36:06 PM
+ Time K+u=total -- 1832 ms + 1091 ms = 2923 ms. mem used 12431360 bytes start 18.36.6 end 18.36.10
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\60681_1.scr at 3/8/2003 6:36:10 PM
+ Time K+u=total -- 1211 ms + 761 ms = 1972 ms. mem used 12419072 bytes start 18.36.10 end 18.36.13
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\60914.scr at 3/8/2003 6:36:13 PM
+ Time K+u=total -- 1371 ms + 470 ms = 1841 ms. mem used 12259328 bytes start 18.36.13 end 18.36.16
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\60918.scr at 3/8/2003 6:36:16 PM
+ Time K+u=total -- 2022 ms + 861 ms = 2883 ms. mem used 12369920 bytes start 18.36.16 end 18.36.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\61474.scr at 3/8/2003 6:36:20 PM
+ Time K+u=total -- 2874 ms + 1251 ms = 4125 ms. mem used 12640256 bytes start 18.36.20 end 18.36.25
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\63543.scr at 3/8/2003 6:36:25 PM
+ Time K+u=total -- 2593 ms + 1111 ms = 3704 ms. mem used 12500992 bytes start 18.36.25 end 18.36.30
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\64188_Base.scr at 3/8/2003 6:36:30 PM
+ Time K+u=total -- 1692 ms + 721 ms = 2413 ms. mem used 12328960 bytes start 18.36.30 end 18.36.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\64188_Cont.scr at 3/8/2003 6:36:33 PM
+ Time K+u=total -- 1662 ms + 731 ms = 2393 ms. mem used 12328960 bytes start 18.36.33 end 18.36.37
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\70921.scr at 3/8/2003 6:36:37 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\70921.scr at 3/8/2003 6:41:37 PM
+ Time K+u=total -- 1191 ms + 540 ms = 1731 ms. mem used 11702272 bytes start 18.36.37 end 18.41.37
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\75763.scr at 3/8/2003 6:41:37 PM
+ Time K+u=total -- 1131 ms + 470 ms = 1601 ms. mem used 11911168 bytes start 18.41.37 end 18.41.40
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\76186.scr at 3/8/2003 6:41:40 PM
+ Time K+u=total -- 16033 ms + 4125 ms = 20158 ms. mem used 12763136 bytes start 18.41.40 end 18.42.1
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\76526.scr at 3/8/2003 6:42:01 PM
+ Time K+u=total -- 1642 ms + 560 ms = 2202 ms. mem used 12013568 bytes start 18.42.1 end 18.42.5
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77770_Aligned.scr at 3/8/2003 6:42:05 PM
+ Time K+u=total -- 4005 ms + 1762 ms = 5767 ms. mem used 12771328 bytes start 18.42.5 end 18.42.12
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77770_Linear.scr at 3/8/2003 6:42:12 PM
+ Time K+u=total -- 4155 ms + 1692 ms = 5847 ms. mem used 12783616 bytes start 18.42.12 end 18.42.19
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77770_Rotated.scr at 3/8/2003 6:42:19 PM
+ Time K+u=total -- 4296 ms + 1752 ms = 6048 ms. mem used 12750848 bytes start 18.42.19 end 18.42.26
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77816.scr at 3/8/2003 6:42:26 PM
+ Time K+u=total -- 1231 ms + 530 ms = 1761 ms. mem used 12013568 bytes start 18.42.26 end 18.42.29
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77860.scr at 3/8/2003 6:42:29 PM
+ Time K+u=total -- 4366 ms + 18586 ms = 22952 ms. mem used 29687808 bytes start 18.42.29 end 18.42.54
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77887.scr at 3/8/2003 6:42:54 PM
+ Time K+u=total -- 2113 ms + 1071 ms = 3184 ms. mem used 12500992 bytes start 18.42.54 end 18.42.59
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77888.scr at 3/8/2003 6:42:59 PM
+ Time K+u=total -- 2583 ms + 1081 ms = 3664 ms. mem used 14049280 bytes start 18.42.59 end 18.43.4
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77892.scr at 3/8/2003 6:43:04 PM
+ Time K+u=total -- 2293 ms + 580 ms = 2873 ms. mem used 12009472 bytes start 18.43.4 end 18.43.8
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77907.scr at 3/8/2003 6:43:08 PM
+ Time K+u=total -- 1982 ms + 711 ms = 2693 ms. mem used 12017664 bytes start 18.43.8 end 18.43.12
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77943.scr at 3/8/2003 6:43:12 PM
+ Time K+u=total -- 1351 ms + 500 ms = 1851 ms. mem used 12197888 bytes start 18.43.12 end 18.43.15
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77947.scr at 3/8/2003 6:43:15 PM
+ Time K+u=total -- 1672 ms + 520 ms = 2192 ms. mem used 11968512 bytes start 18.43.15 end 18.43.18
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\77972.scr at 3/8/2003 6:43:18 PM
+ Time K+u=total -- 3414 ms + 941 ms = 4355 ms. mem used 12304384 bytes start 18.43.18 end 18.43.24
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78005.scr at 3/8/2003 6:43:24 PM
+ Time K+u=total -- 1832 ms + 650 ms = 2482 ms. mem used 12398592 bytes start 18.43.24 end 18.43.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78010.scr at 3/8/2003 6:43:28 PM
+ Time K+u=total -- 2263 ms + 1111 ms = 3374 ms. mem used 12238848 bytes start 18.43.28 end 18.43.32
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78034.scr at 3/8/2003 6:43:32 PM
+ Time K+u=total -- 1311 ms + 490 ms = 1801 ms. mem used 11988992 bytes start 18.43.32 end 18.43.35
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78036.scr at 3/8/2003 6:43:35 PM
+ Time K+u=total -- 1261 ms + 660 ms = 1921 ms. mem used 12705792 bytes start 18.43.35 end 18.43.38
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78037.scr at 3/8/2003 6:43:38 PM
+ Time K+u=total -- 3805 ms + 991 ms = 4796 ms. mem used 12873728 bytes start 18.43.38 end 18.43.44
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78047.scr at 3/8/2003 6:43:44 PM
+ Time K+u=total -- 2082 ms + 891 ms = 2973 ms. mem used 14315520 bytes start 18.43.44 end 18.43.49
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78057.scr at 3/8/2003 6:43:49 PM
+ Time K+u=total -- 1111 ms + 520 ms = 1631 ms. mem used 12324864 bytes start 18.43.49 end 18.43.51
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78069_78002.scr at 3/8/2003 6:43:51 PM
+ Time K+u=total -- 1912 ms + 1552 ms = 3464 ms. mem used 12967936 bytes start 18.43.51 end 18.43.56
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78075.scr at 3/8/2003 6:43:56 PM
+ Time K+u=total -- 1301 ms + 911 ms = 2212 ms. mem used 12398592 bytes start 18.43.56 end 18.43.59
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78079.scr at 3/8/2003 6:43:59 PM
+ Time K+u=total -- 2874 ms + 2713 ms = 5587 ms. mem used 13168640 bytes start 18.44.0 end 18.44.6
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78092.scr at 3/8/2003 6:44:06 PM
+ Time K+u=total -- 1792 ms + 3294 ms = 5086 ms. mem used 15212544 bytes start 18.44.6 end 18.44.12
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78105.scr at 3/8/2003 6:44:12 PM
+ Time K+u=total -- 1562 ms + 650 ms = 2212 ms. mem used 12439552 bytes start 18.44.13 end 18.44.16
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78110.scr at 3/8/2003 6:44:16 PM
+ Time K+u=total -- 1201 ms + 600 ms = 1801 ms. mem used 12185600 bytes start 18.44.16 end 18.44.19
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78119.scr at 3/8/2003 6:44:19 PM
+ Time K+u=total -- 1121 ms + 620 ms = 1741 ms. mem used 12283904 bytes start 18.44.19 end 18.44.22
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78120.scr at 3/8/2003 6:44:22 PM
+ Time K+u=total -- 1021 ms + 490 ms = 1511 ms. mem used 12083200 bytes start 18.44.22 end 18.44.24
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78120_test.scr at 3/8/2003 6:44:24 PM
+ Time K+u=total -- 1662 ms + 841 ms = 2503 ms. mem used 12496896 bytes start 18.44.24 end 18.44.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78130.scr at 3/8/2003 6:44:28 PM
+ Time K+u=total -- 12558 ms + 2263 ms = 14821 ms. mem used 12472320 bytes start 18.44.28 end 18.44.45
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78135.scr at 3/8/2003 6:44:45 PM
+ Time K+u=total -- 1952 ms + 660 ms = 2612 ms. mem used 11902976 bytes start 18.44.45 end 18.44.49
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78136.scr at 3/8/2003 6:44:49 PM
+ Time K+u=total -- 1251 ms + 420 ms = 1671 ms. mem used 12120064 bytes start 18.44.49 end 18.44.52
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78140.SCR at 3/8/2003 6:44:52 PM
+ Time K+u=total -- 3505 ms + 981 ms = 4486 ms. mem used 12533760 bytes start 18.44.52 end 18.44.57
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78149.scr at 3/8/2003 6:44:57 PM
+ Time K+u=total -- 1351 ms + 410 ms = 1761 ms. mem used 12144640 bytes start 18.44.57 end 18.45.0
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78151.scr at 3/8/2003 6:45:00 PM
+ Time K+u=total -- 1902 ms + 711 ms = 2613 ms. mem used 12320768 bytes start 18.45.0 end 18.45.4
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78153.scr at 3/8/2003 6:45:04 PM
+ Time K+u=total -- 2243 ms + 881 ms = 3124 ms. mem used 12525568 bytes start 18.45.4 end 18.45.8
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78155.scr at 3/8/2003 6:45:08 PM
+ Time K+u=total -- 2683 ms + 1081 ms = 3764 ms. mem used 12521472 bytes start 18.45.8 end 18.45.13
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78167.scr at 3/8/2003 6:45:13 PM
+ Time K+u=total -- 1662 ms + 841 ms = 2503 ms. mem used 12288000 bytes start 18.45.13 end 18.45.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78167_1.scr at 3/8/2003 6:45:17 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\78167_1.scr at 3/8/2003 6:50:17 PM
+ Time K+u=total -- 2193 ms + 801 ms = 2994 ms. mem used 11866112 bytes start 18.45.17 end 18.50.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78175.scr at 3/8/2003 6:50:17 PM
+ Time K+u=total -- 1161 ms + 470 ms = 1631 ms. mem used 12107776 bytes start 18.50.17 end 18.50.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78177.scr at 3/8/2003 6:50:20 PM
+ Time K+u=total -- 1321 ms + 380 ms = 1701 ms. mem used 12083200 bytes start 18.50.20 end 18.50.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78179.scr at 3/8/2003 6:50:23 PM
+ Time K+u=total -- 2423 ms + 881 ms = 3304 ms. mem used 12460032 bytes start 18.50.23 end 18.50.27
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78181.scr at 3/8/2003 6:50:27 PM
+ Time K+u=total -- 1542 ms + 640 ms = 2182 ms. mem used 12206080 bytes start 18.50.27 end 18.50.30
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78182.scr at 3/8/2003 6:50:30 PM
+ Time K+u=total -- 13008 ms + 1882 ms = 14890 ms. mem used 12480512 bytes start 18.50.30 end 18.50.46
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78183.scr at 3/8/2003 6:50:46 PM
+ Time K+u=total -- 1602 ms + 761 ms = 2363 ms. mem used 12320768 bytes start 18.50.46 end 18.50.50
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78195.scr at 3/8/2003 6:50:50 PM
+ Time K+u=total -- 5578 ms + 1792 ms = 7370 ms. mem used 12529664 bytes start 18.50.50 end 18.50.58
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78197.scr at 3/8/2003 6:50:59 PM
+ Time K+u=total -- 2453 ms + 1331 ms = 3784 ms. mem used 12886016 bytes start 18.50.59 end 18.51.3
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78198.scr at 3/8/2003 6:51:03 PM
+ Time K+u=total -- 2343 ms + 991 ms = 3334 ms. mem used 12550144 bytes start 18.51.3 end 18.51.8
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78199_1.scr at 3/8/2003 6:51:08 PM
+ Time K+u=total -- 1642 ms + 590 ms = 2232 ms. mem used 12189696 bytes start 18.51.8 end 18.51.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78203.scr at 3/8/2003 6:51:11 PM
+ Time K+u=total -- 1722 ms + 680 ms = 2402 ms. mem used 12242944 bytes start 18.51.11 end 18.51.15
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78204.scr at 3/8/2003 6:51:15 PM
+ Time K+u=total -- 3585 ms + 1622 ms = 5207 ms. mem used 12468224 bytes start 18.51.15 end 18.51.21
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78205.scr at 3/8/2003 6:51:21 PM
+ Time K+u=total -- 1952 ms + 570 ms = 2522 ms. mem used 12279808 bytes start 18.51.21 end 18.51.25
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78222.scr at 3/8/2003 6:51:25 PM
+ Time K+u=total -- 3434 ms + 1772 ms = 5206 ms. mem used 14123008 bytes start 18.51.25 end 18.51.31
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78222_1.scr at 3/8/2003 6:51:31 PM
+ Time K+u=total -- 2513 ms + 761 ms = 3274 ms. mem used 12128256 bytes start 18.51.31 end 18.51.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78236.scr at 3/8/2003 6:51:36 PM
+ Time K+u=total -- 3464 ms + 1301 ms = 4765 ms. mem used 12623872 bytes start 18.51.36 end 18.51.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78238.scr at 3/8/2003 6:51:42 PM
+ Time K+u=total -- 5588 ms + 1972 ms = 7560 ms. mem used 12931072 bytes start 18.51.42 end 18.51.50
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78238_1.scr at 3/8/2003 6:51:50 PM
+ Time K+u=total -- 19738 ms + 7911 ms = 27649 ms. mem used 14069760 bytes start 18.51.50 end 18.52.19
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78243.scr at 3/8/2003 6:52:19 PM
+ Time K+u=total -- 1602 ms + 741 ms = 2343 ms. mem used 12832768 bytes start 18.52.19 end 18.52.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78248.scr at 3/8/2003 6:52:23 PM
+ Time K+u=total -- 2263 ms + 941 ms = 3204 ms. mem used 11866112 bytes start 18.52.23 end 18.52.27
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78260_78273.scr at 3/8/2003 6:52:27 PM
+ Time K+u=total -- 8442 ms + 1742 ms = 10184 ms. mem used 12701696 bytes start 18.52.27 end 18.52.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78260_78273_1.scr at 3/8/2003 6:52:39 PM
+ Time K+u=total -- 8512 ms + 1862 ms = 10374 ms. mem used 13393920 bytes start 18.52.39 end 18.52.50
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78265.scr at 3/8/2003 6:52:50 PM
+ Time K+u=total -- 4656 ms + 1051 ms = 5707 ms. mem used 12234752 bytes start 18.52.50 end 18.52.57
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78277.scr at 3/8/2003 6:52:57 PM
+ Time K+u=total -- 1552 ms + 610 ms = 2162 ms. mem used 12210176 bytes start 18.52.57 end 18.53.0
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78284.scr at 3/8/2003 6:53:00 PM
+ Time K+u=total -- 2473 ms + 1081 ms = 3554 ms. mem used 12460032 bytes start 18.53.0 end 18.53.5
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78300_a.scr at 3/8/2003 6:53:05 PM
+ Time K+u=total -- 71112 ms + 45705 ms = 116817 ms. mem used 16142336 bytes start 18.53.5 end 18.55.5
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78300_c.scr at 3/8/2003 6:55:05 PM
+ Time K+u=total -- 62389 ms + 45215 ms = 107604 ms. mem used 14819328 bytes start 18.55.5 end 18.56.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78300_h.scr at 3/8/2003 6:56:55 PM
+ Time K+u=total -- 42891 ms + 28030 ms = 70921 ms. mem used 14405632 bytes start 18.56.55 end 18.58.9
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78300_t.scr at 3/8/2003 6:58:09 PM
+ Time K+u=total -- 42981 ms + 28290 ms = 71271 ms. mem used 14483456 bytes start 18.58.9 end 18.59.22
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78300_w.scr at 3/8/2003 6:59:22 PM
+ Time K+u=total -- 43602 ms + 27279 ms = 70881 ms. mem used 14405632 bytes start 18.59.22 end 19.0.35
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78305.scr at 3/8/2003 7:00:35 PM
+ Time K+u=total -- 36622 ms + 8732 ms = 45354 ms. mem used 13225984 bytes start 19.0.35 end 19.1.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78310_1.scr at 3/8/2003 7:01:23 PM
+ Time K+u=total -- 3074 ms + 941 ms = 4015 ms. mem used 12554240 bytes start 19.1.23 end 19.1.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78310_2.scr at 3/8/2003 7:01:28 PM
+ Time K+u=total -- 2894 ms + 971 ms = 3865 ms. mem used 12566528 bytes start 19.1.28 end 19.1.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78376_1.scr at 3/8/2003 7:01:33 PM
+ Time K+u=total -- 2593 ms + 1001 ms = 3594 ms. mem used 12054528 bytes start 19.1.33 end 19.1.38
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78393.scr at 3/8/2003 7:01:38 PM
+ Time K+u=total -- 11566 ms + 59084 ms = 70650 ms. mem used 52523008 bytes start 19.1.38 end 19.2.52
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78393_T1fts011.scr at 3/8/2003 7:02:52 PM
+ Time K+u=total -- 6669 ms + 24625 ms = 31294 ms. mem used 30281728 bytes start 19.2.52 end 19.3.29
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78395.scr at 3/8/2003 7:03:29 PM
+ Time K+u=total -- 1091 ms + 440 ms = 1531 ms. mem used 11427840 bytes start 19.3.29 end 19.3.32
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78410.scr at 3/8/2003 7:03:32 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\78410.scr at 3/8/2003 7:08:33 PM
+ Time K+u=total -- 309845 ms + 3775 ms = 313620 ms. mem used 16875520 bytes start 19.3.32 end 19.8.47
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78414.scr at 3/8/2003 7:08:47 PM
+ Time K+u=total -- 1492 ms + 460 ms = 1952 ms. mem used 12050432 bytes start 19.8.47 end 19.8.51
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78418.scr at 3/8/2003 7:08:51 PM
+ Time K+u=total -- 84912 ms + 34719 ms = 119631 ms. mem used 13193216 bytes start 19.8.51 end 19.10.54
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78425.scr at 3/8/2003 7:10:54 PM
+ Time K+u=total -- 1622 ms + 570 ms = 2192 ms. mem used 12431360 bytes start 19.10.54 end 19.10.57
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78444_misc.scr at 3/8/2003 7:10:57 PM
+ Time K+u=total -- 3314 ms + 1892 ms = 5206 ms. mem used 13414400 bytes start 19.10.57 end 19.11.3
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78444_purge_all.scr at 3/8/2003 7:11:03 PM
+ Time K+u=total -- 4316 ms + 2293 ms = 6609 ms. mem used 14872576 bytes start 19.11.3 end 19.11.12
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\78444_xref_detach.scr at 3/8/2003 7:11:12 PM
+ Time K+u=total -- 3244 ms + 1692 ms = 4936 ms. mem used 14499840 bytes start 19.11.12 end 19.11.19
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-cond.scr at 3/8/2003 7:11:19 PM
+ Time K+u=total -- 85983 ms + 49350 ms = 135333 ms. mem used 12718080 bytes start 19.11.19 end 19.13.40
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-conv.scr at 3/8/2003 7:13:40 PM
+ Time K+u=total -- 15992 ms + 4045 ms = 20037 ms. mem used 12632064 bytes start 19.13.40 end 19.14.2
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-function.scr at 3/8/2003 7:14:02 PM
+ Time K+u=total -- 10985 ms + 2333 ms = 13318 ms. mem used 12611584 bytes start 19.14.2 end 19.14.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-geo.scr at 3/8/2003 7:14:17 PM
+ Time K+u=total -- 4626 ms + 1131 ms = 5757 ms. mem used 12177408 bytes start 19.14.17 end 19.14.24
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-list.scr at 3/8/2003 7:14:24 PM
+ Time K+u=total -- 88296 ms + 36272 ms = 124568 ms. mem used 13479936 bytes start 19.14.24 end 19.16.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-math.scr at 3/8/2003 7:16:33 PM
+ Time K+u=total -- 25927 ms + 6038 ms = 31965 ms. mem used 12660736 bytes start 19.16.33 end 19.17.7
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-string.scr at 3/8/2003 7:17:07 PM
+ Time K+u=total -- 26297 ms + 6028 ms = 32325 ms. mem used 12861440 bytes start 19.17.7 end 19.17.41
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-sym.scr at 3/8/2003 7:17:41 PM
+ Time K+u=total -- 41299 ms + 54207 ms = 95506 ms. mem used 12632064 bytes start 19.17.41 end 19.19.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-symtbl2.scr at 3/8/2003 7:19:21 PM
+ Time K+u=total -- 6359 ms + 2593 ms = 8952 ms. mem used 12537856 bytes start 19.19.21 end 19.19.31
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AccTest-util.scr at 3/8/2003 7:19:31 PM
+ Time K+u=total -- 7961 ms + 2012 ms = 9973 ms. mem used 12349440 bytes start 19.19.31 end 19.19.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\AI_3d_entities.SCR at 3/8/2003 7:19:42 PM
+ Time K+u=total -- 4155 ms + 2022 ms = 6177 ms. mem used 13467648 bytes start 19.19.42 end 19.19.50
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\angtos.scr at 3/8/2003 7:19:50 PM
+ Time K+u=total -- 1512 ms + 620 ms = 2132 ms. mem used 11792384 bytes start 19.19.50 end 19.19.54
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\approved.scr at 3/8/2003 7:19:54 PM
+ Time K+u=total -- 1381 ms + 650 ms = 2031 ms. mem used 12316672 bytes start 19.19.54 end 19.19.57
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\arc.scr at 3/8/2003 7:19:57 PM
+ Time K+u=total -- 4266 ms + 1171 ms = 5437 ms. mem used 12505088 bytes start 19.19.57 end 19.20.3
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\arcs.scr at 3/8/2003 7:20:03 PM
+ Time K+u=total -- 6859 ms + 1702 ms = 8561 ms. mem used 12386304 bytes start 19.20.3 end 19.20.13
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\arctex_at.scr at 3/8/2003 7:20:13 PM
+ Time K+u=total -- 1181 ms + 420 ms = 1601 ms. mem used 11948032 bytes start 19.20.13 end 19.20.16
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Array.scr at 3/8/2003 7:20:16 PM
+ Time K+u=total -- 5758 ms + 2904 ms = 8662 ms. mem used 13451264 bytes start 19.20.16 end 19.20.26
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\ATTRIButes1.SCR at 3/8/2003 7:20:26 PM
+ Time K+u=total -- 4866 ms + 1772 ms = 6638 ms. mem used 12476416 bytes start 19.20.26 end 19.20.34
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\B4.SCR at 3/8/2003 7:20:34 PM
+ Time K+u=total -- 1542 ms + 701 ms = 2243 ms. mem used 12156928 bytes start 19.20.34 end 19.20.37
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\blockexp.scr at 3/8/2003 7:20:37 PM
+ Time K+u=total -- 3885 ms + 20769 ms = 24654 ms. mem used 28577792 bytes start 19.20.37 end 19.21.4
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Break.scr at 3/8/2003 7:21:04 PM
+ Time K+u=total -- 1842 ms + 2243 ms = 4085 ms. mem used 12898304 bytes start 19.21.4 end 19.21.9
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Cardiod.scr at 3/8/2003 7:21:09 PM
+ Time K+u=total -- 7761 ms + 2093 ms = 9854 ms. mem used 12304384 bytes start 19.21.9 end 19.21.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Chair_rarray.scr at 3/8/2003 7:21:20 PM
+ Time K+u=total -- 2663 ms + 1582 ms = 4245 ms. mem used 19435520 bytes start 19.21.20 end 19.21.26
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Circles.scr at 3/8/2003 7:21:26 PM
+ Time K+u=total -- 1201 ms + 931 ms = 2132 ms. mem used 12357632 bytes start 19.21.26 end 19.21.29
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\circlesEntity.scr at 3/8/2003 7:21:29 PM
+ Time K+u=total -- 3825 ms + 1071 ms = 4896 ms. mem used 12410880 bytes start 19.21.30 end 19.21.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\CONCIRCLEADD.scr at 3/8/2003 7:21:36 PM
+ Time K+u=total -- 1642 ms + 510 ms = 2152 ms. mem used 12017664 bytes start 19.21.36 end 19.21.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\CONCIRCLESUB.scr at 3/8/2003 7:21:39 PM
+ Time K+u=total -- 1542 ms + 550 ms = 2092 ms. mem used 11997184 bytes start 19.21.39 end 19.21.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Conference.scr at 3/8/2003 7:21:42 PM
+ Time K+u=total -- 7901 ms + 17495 ms = 25396 ms. mem used 30285824 bytes start 19.21.42 end 19.22.10
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\copy2d.scr at 3/8/2003 7:22:10 PM
+ Time K+u=total -- 4616 ms + 1211 ms = 5827 ms. mem used 12505088 bytes start 19.22.10 end 19.22.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Copymove.scr at 3/8/2003 7:22:17 PM
+ Time K+u=total -- 1692 ms + 1582 ms = 3274 ms. mem used 12234752 bytes start 19.22.17 end 19.22.22
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\cutube.scr at 3/8/2003 7:22:22 PM
+ Time K+u=total -- 1211 ms + 510 ms = 1721 ms. mem used 12107776 bytes start 19.22.22 end 19.22.24
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dictadd.scr at 3/8/2003 7:22:24 PM
+ Time K+u=total -- 1311 ms + 420 ms = 1731 ms. mem used 11788288 bytes start 19.22.24 end 19.22.27
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dictnext.scr at 3/8/2003 7:22:27 PM
+ Time K+u=total -- 1371 ms + 500 ms = 1871 ms. mem used 11796480 bytes start 19.22.27 end 19.22.30
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dictremove.scr at 3/8/2003 7:22:30 PM
+ Time K+u=total -- 1301 ms + 480 ms = 1781 ms. mem used 11788288 bytes start 19.22.30 end 19.22.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dictrename.scr at 3/8/2003 7:22:33 PM
+ Time K+u=total -- 1331 ms + 490 ms = 1821 ms. mem used 11800576 bytes start 19.22.33 end 19.22.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dictsearch.scr at 3/8/2003 7:22:36 PM
+ Time K+u=total -- 1311 ms + 600 ms = 1911 ms. mem used 11788288 bytes start 19.22.36 end 19.22.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dimedit_oblique.scr at 3/8/2003 7:22:39 PM
+ Time K+u=total -- 6589 ms + 2113 ms = 8702 ms. mem used 12931072 bytes start 19.22.39 end 19.22.49
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dimedit_rotate.scr at 3/8/2003 7:22:49 PM
+ Time K+u=total -- 6439 ms + 2273 ms = 8712 ms. mem used 13000704 bytes start 19.22.49 end 19.22.59
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dimfit_vars_check.scr at 3/8/2003 7:22:59 PM
+ Time K+u=total -- 1321 ms + 470 ms = 1791 ms. mem used 11780096 bytes start 19.22.59 end 19.23.2
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dimtedit.scr at 3/8/2003 7:23:02 PM
+ Time K+u=total -- 5798 ms + 2193 ms = 7991 ms. mem used 13004800 bytes start 19.23.2 end 19.23.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dimtedit_RotatedDim.scr at 3/8/2003 7:23:11 PM
+ Time K+u=total -- 5487 ms + 2002 ms = 7489 ms. mem used 12931072 bytes start 19.23.11 end 19.23.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\DimUpdateAll.scr at 3/8/2003 7:23:20 PM
+ Time K+u=total -- 4216 ms + 1962 ms = 6178 ms. mem used 12943360 bytes start 19.23.20 end 19.23.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Dim_ArrowHeads.SCR at 3/8/2003 7:23:28 PM
+ Time K+u=total -- 13138 ms + 6248 ms = 19386 ms. mem used 14524416 bytes start 19.23.28 end 19.23.49
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Dim_DIMFIT.SCR at 3/8/2003 7:23:49 PM
+ Time K+u=total -- 17004 ms + 7781 ms = 24785 ms. mem used 15060992 bytes start 19.23.49 end 19.24.15
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\dlength.scr at 3/8/2003 7:24:15 PM
+ Time K+u=total -- 1732 ms + 600 ms = 2332 ms. mem used 12034048 bytes start 19.24.15 end 19.24.18
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\donuts.scr at 3/8/2003 7:24:18 PM
+ Time K+u=total -- 3184 ms + 961 ms = 4145 ms. mem used 12427264 bytes start 19.24.18 end 19.24.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\drhatch.scr at 3/8/2003 7:24:23 PM
+ Time K+u=total -- 4756 ms + 6449 ms = 11205 ms. mem used 15773696 bytes start 19.24.23 end 19.24.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Ellipse.scr at 3/8/2003 7:24:36 PM
+ Time K+u=total -- 15302 ms + 5608 ms = 20910 ms. mem used 14528512 bytes start 19.24.36 end 19.24.58
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Entities.scr at 3/8/2003 7:24:59 PM
+ Time K+u=total -- 2773 ms + 6078 ms = 8851 ms. mem used 22372352 bytes start 19.24.59 end 19.25.9
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr at 3/8/2003 7:25:09 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr at 3/8/2003 7:30:11 PM
+ Time K+u=total -- 20148 ms + 280923 ms = 301071 ms. mem used 16343040 bytes start 19.25.9 end 19.30.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_ellipse.scr at 3/8/2003 7:30:11 PM
+ Time K+u=total -- 27279 ms + 212355 ms = 239634 ms. mem used 13914112 bytes start 19.30.11 end 19.34.12
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_polygon.scr at 3/8/2003 7:34:12 PM
+ Time K+u=total -- 25656 ms + 79804 ms = 105460 ms. mem used 13754368 bytes start 19.34.12 end 19.35.59
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_xline.scr at 3/8/2003 7:35:59 PM
+ Time K+u=total -- 19498 ms + 62690 ms = 82188 ms. mem used 13692928 bytes start 19.35.59 end 19.37.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Fillet.scr at 3/8/2003 7:37:23 PM
+ Time K+u=total -- 1452 ms + 1902 ms = 3354 ms. mem used 12554240 bytes start 19.37.23 end 19.37.27
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\grTest1.scr at 3/8/2003 7:37:28 PM
+ Time K+u=total -- 1862 ms + 731 ms = 2593 ms. mem used 12496896 bytes start 19.37.28 end 19.37.31
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\grTest2.scr at 3/8/2003 7:37:31 PM
+ Time K+u=total -- 2713 ms + 1181 ms = 3894 ms. mem used 12550144 bytes start 19.37.31 end 19.37.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Hyper001.scr at 3/8/2003 7:37:36 PM
+ Time K+u=total -- 1351 ms + 510 ms = 1861 ms. mem used 12488704 bytes start 19.37.36 end 19.37.40
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Hyper002.scr at 3/8/2003 7:37:40 PM
+ Time K+u=total -- 1291 ms + 540 ms = 1831 ms. mem used 12374016 bytes start 19.37.40 end 19.37.43
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Hyper003.scr at 3/8/2003 7:37:43 PM
+ Time K+u=total -- 1412 ms + 410 ms = 1822 ms. mem used 12374016 bytes start 19.37.43 end 19.37.46
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Hyper004.scr at 3/8/2003 7:37:46 PM
+ Time K+u=total -- 1231 ms + 610 ms = 1841 ms. mem used 12369920 bytes start 19.37.46 end 19.37.49
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Hyper005.scr at 3/8/2003 7:37:49 PM
+ Time K+u=total -- 1241 ms + 570 ms = 1811 ms. mem used 12484608 bytes start 19.37.49 end 19.37.52
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Insertf.scr at 3/8/2003 7:37:52 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\Insertf.scr at 3/8/2003 7:42:52 PM
+ Time K+u=total -- 1882 ms + 2673 ms = 4555 ms. mem used 18690048 bytes start 19.37.52 end 19.42.52
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\inters.scr at 3/8/2003 7:42:52 PM
+ Time K+u=total -- 1201 ms + 360 ms = 1561 ms. mem used 11776000 bytes start 19.42.52 end 19.42.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\knuckle.scr at 3/8/2003 7:42:55 PM
+ Time K+u=total -- 11516 ms + 2693 ms = 14209 ms. mem used 12812288 bytes start 19.42.55 end 19.43.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Layers.scr at 3/8/2003 7:43:11 PM
+ Time K+u=total -- 1351 ms + 1392 ms = 2743 ms. mem used 12193792 bytes start 19.43.11 end 19.43.15
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\layouts1.scr at 3/8/2003 7:43:15 PM
+ Time K+u=total -- 2453 ms + 1432 ms = 3885 ms. mem used 11988992 bytes start 19.43.15 end 19.43.20
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\layouts2.scr at 3/8/2003 7:43:20 PM
+ Time K+u=total -- 2413 ms + 1542 ms = 3955 ms. mem used 11988992 bytes start 19.43.20 end 19.43.25
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\layouts3.scr at 3/8/2003 7:43:25 PM
+ Time K+u=total -- 1392 ms + 590 ms = 1982 ms. mem used 11894784 bytes start 19.43.25 end 19.43.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\LCREA.scr at 3/8/2003 7:43:28 PM
+ Time K+u=total -- 2293 ms + 3224 ms = 5517 ms. mem used 16142336 bytes start 19.43.28 end 19.43.35
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\lgrid.scr at 3/8/2003 7:43:35 PM
+ Time K+u=total -- 21971 ms + 9413 ms = 31384 ms. mem used 12423168 bytes start 19.43.35 end 19.44.8
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Lines.scr at 3/8/2003 7:44:08 PM
+ Time K+u=total -- 1331 ms + 1051 ms = 2382 ms. mem used 12288000 bytes start 19.44.8 end 19.44.11
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\lisp1.scr at 3/8/2003 7:44:11 PM
+ Time K+u=total -- 1141 ms + 540 ms = 1681 ms. mem used 11948032 bytes start 19.44.11 end 19.44.14
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\lisp2.scr at 3/8/2003 7:44:14 PM
+ Time K+u=total -- 1321 ms + 530 ms = 1851 ms. mem used 11984896 bytes start 19.44.14 end 19.44.17
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\MIRROR2D.SCR at 3/8/2003 7:44:17 PM
+ Time K+u=total -- 3765 ms + 1121 ms = 4886 ms. mem used 12488704 bytes start 19.44.17 end 19.44.23
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Misc.scr at 3/8/2003 7:44:23 PM
+ Time K+u=total -- 2784 ms + 1752 ms = 4536 ms. mem used 12509184 bytes start 19.44.23 end 19.44.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\move_2d.scr at 3/8/2003 7:44:42 PM
+ Time K+u=total -- 2052 ms + 1492 ms = 3544 ms. mem used 12472320 bytes start 19.44.42 end 19.44.47
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Pline.scr at 3/8/2003 7:44:47 PM
+ Time K+u=total -- 1482 ms + 1942 ms = 3424 ms. mem used 13107200 bytes start 19.44.47 end 19.44.51
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\PLINELengthen1.SCR at 3/8/2003 7:44:51 PM
+ Time K+u=total -- 1882 ms + 1021 ms = 2903 ms. mem used 12414976 bytes start 19.44.52 end 19.44.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\plotc.scr at 3/8/2003 7:44:55 PM
+ Time K+u=total -- 2072 ms + 2303 ms = 4375 ms. mem used 16826368 bytes start 19.44.55 end 19.45.1
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\plote.scr at 3/8/2003 7:45:01 PM
+ Time K+u=total -- 1822 ms + 1912 ms = 3734 ms. mem used 15740928 bytes start 19.45.1 end 19.45.6
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\pl_elp.scr at 3/8/2003 7:45:06 PM
+ Time K+u=total -- 3835 ms + 13509 ms = 17344 ms. mem used 17948672 bytes start 19.45.6 end 19.45.24
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\polararray2d.scr at 3/8/2003 7:45:24 PM
+ Time K+u=total -- 1652 ms + 1221 ms = 2873 ms. mem used 12693504 bytes start 19.45.24 end 19.45.28
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Polygon2.scr at 3/8/2003 7:45:28 PM
+ Time K+u=total -- 1502 ms + 1412 ms = 2914 ms. mem used 12697600 bytes start 19.45.28 end 19.45.32
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR at 3/8/2003 7:45:33 PM
+***** ERROR ***** Terminating F:\Build_17\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR at 3/8/2003 7:50:33 PM
+ Time K+u=total -- 2002 ms + 1271 ms = 3273 ms. mem used 12156928 bytes start 19.45.33 end 19.50.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Polyline.scr at 3/8/2003 7:50:33 PM
+ Time K+u=total -- 2523 ms + 1872 ms = 4395 ms. mem used 12820480 bytes start 19.50.33 end 19.50.38
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\recarray.scr at 3/8/2003 7:50:38 PM
+ Time K+u=total -- 1662 ms + 1462 ms = 3124 ms. mem used 12865536 bytes start 19.50.38 end 19.50.43
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\RecPgonDonTrace.scr at 3/8/2003 7:50:43 PM
+ Time K+u=total -- 1141 ms + 660 ms = 1801 ms. mem used 12206080 bytes start 19.50.43 end 19.50.45
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Revsurf.scr at 3/8/2003 7:50:45 PM
+ Time K+u=total -- 1482 ms + 2944 ms = 4426 ms. mem used 13819904 bytes start 19.50.45 end 19.50.51
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\rotate2d.scr at 3/8/2003 7:50:51 PM
+ Time K+u=total -- 2103 ms + 1231 ms = 3334 ms. mem used 12443648 bytes start 19.50.51 end 19.50.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\RotateMirror.scr at 3/8/2003 7:50:55 PM
+ Time K+u=total -- 1502 ms + 1301 ms = 2803 ms. mem used 12546048 bytes start 19.50.56 end 19.50.59
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Roughen.scr at 3/8/2003 7:50:59 PM
+ Time K+u=total -- 7350 ms + 24895 ms = 32245 ms. mem used 47022080 bytes start 19.50.59 end 19.51.33
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Roughen_err.scr at 3/8/2003 7:51:33 PM
+ Time K+u=total -- 5077 ms + 23393 ms = 28470 ms. mem used 47005696 bytes start 19.51.33 end 19.52.3
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\RULESURF1.SCR at 3/8/2003 7:52:03 PM
+ Time K+u=total -- 2874 ms + 2673 ms = 5547 ms. mem used 13041664 bytes start 19.52.3 end 19.52.9
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\scr1.scr at 3/8/2003 7:52:09 PM
+ Time K+u=total -- 1241 ms + 660 ms = 1901 ms. mem used 14118912 bytes start 19.52.9 end 19.52.13
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\scr2.scr at 3/8/2003 7:52:13 PM
+ Time K+u=total -- 2133 ms + 2683 ms = 4816 ms. mem used 17666048 bytes start 19.52.13 end 19.52.19
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\scr3.scr at 3/8/2003 7:52:19 PM
+ Time K+u=total -- 3525 ms + 6819 ms = 10344 ms. mem used 24932352 bytes start 19.52.19 end 19.52.31
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\scr4.scr at 3/8/2003 7:52:31 PM
+ Time K+u=total -- 2393 ms + 1081 ms = 3474 ms. mem used 15151104 bytes start 19.52.31 end 19.52.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\scr5.scr at 3/8/2003 7:52:36 PM
+ Time K+u=total -- 1211 ms + 690 ms = 1901 ms. mem used 13881344 bytes start 19.52.36 end 19.52.40
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\SineCos.scr at 3/8/2003 7:52:40 PM
+ Time K+u=total -- 8592 ms + 7600 ms = 16192 ms. mem used 12705792 bytes start 19.52.40 end 19.52.57
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\solids.scr at 3/8/2003 7:52:57 PM
+ Time K+u=total -- 1281 ms + 931 ms = 2212 ms. mem used 12562432 bytes start 19.52.57 end 19.53.0
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\sphere.scr at 3/8/2003 7:53:01 PM
+ Time K+u=total -- 1021 ms + 590 ms = 1611 ms. mem used 12009472 bytes start 19.53.1 end 19.53.3
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Spline.scr at 3/8/2003 7:53:03 PM
+ Time K+u=total -- 1201 ms + 1632 ms = 2833 ms. mem used 12804096 bytes start 19.53.3 end 19.53.7
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\test_array.scr at 3/8/2003 7:53:07 PM
+ Time K+u=total -- 2613 ms + 7180 ms = 9793 ms. mem used 19054592 bytes start 19.53.7 end 19.53.18
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\test_array1.scr at 3/8/2003 7:53:18 PM
+ Time K+u=total -- 3725 ms + 13990 ms = 17715 ms. mem used 26017792 bytes start 19.53.18 end 19.53.37
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\test_array1_no.scr at 3/8/2003 7:53:37 PM
+ Time K+u=total -- 3835 ms + 12167 ms = 16002 ms. mem used 26009600 bytes start 19.53.37 end 19.53.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\textar.scr at 3/8/2003 7:53:55 PM
+ Time K+u=total -- 32456 ms + 67627 ms = 100083 ms. mem used 46080000 bytes start 19.53.55 end 19.55.37
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Textgrid.scr at 3/8/2003 7:55:37 PM
+ Time K+u=total -- 1231 ms + 1351 ms = 2582 ms. mem used 12369920 bytes start 19.55.37 end 19.55.43
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Theatre.scr at 3/8/2003 7:55:43 PM
+ Time K+u=total -- 18236 ms + 60056 ms = 78292 ms. mem used 63840256 bytes start 19.55.43 end 19.57.5
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Thick_text.scr at 3/8/2003 7:57:05 PM
+ Time K+u=total -- 15562 ms + 10084 ms = 25646 ms. mem used 18792448 bytes start 19.57.5 end 19.57.36
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\verify.scr at 3/8/2003 7:57:36 PM
+ Time K+u=total -- 1191 ms + 600 ms = 1791 ms. mem used 12316672 bytes start 19.57.36 end 19.57.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\View.scr at 3/8/2003 7:57:39 PM
+ Time K+u=total -- 1281 ms + 1311 ms = 2592 ms. mem used 12177408 bytes start 19.57.39 end 19.57.55
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\viewpoint.scr at 3/8/2003 7:57:55 PM
+ Time K+u=total -- 8301 ms + 24415 ms = 32716 ms. mem used 28655616 bytes start 19.57.55 end 19.58.30
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\viewports.scr at 3/8/2003 7:58:30 PM
+ Time K+u=total -- 2894 ms + 4626 ms = 7520 ms. mem used 18558976 bytes start 19.58.30 end 19.58.39
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\xformssTest.scr at 3/8/2003 7:58:39 PM
+ Time K+u=total -- 1061 ms + 530 ms = 1591 ms. mem used 12103680 bytes start 19.58.39 end 19.58.42
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Xline_ray.scr at 3/8/2003 7:58:42 PM
+ Time K+u=total -- 1371 ms + 941 ms = 2312 ms. mem used 12177408 bytes start 19.58.42 end 19.58.46
+Processing F:\Build_17\IntelliCAD\Source\Regress\scripts\Xmastree.scr at 3/8/2003 7:58:46 PM
+ Time K+u=total -- 2113 ms + 2844 ms = 4957 ms. mem used 18903040 bytes start 19.58.46 end 19.58.52
+
+
+Completed processing 223 scripts.
+Total time is scripts with no errors -- 2866855ms
+
+The following 6 scripts had errors.
+F:\Build_17\IntelliCAD\Source\Regress\scripts\70921.scr
+F:\Build_17\IntelliCAD\Source\Regress\scripts\78167_1.scr
+F:\Build_17\IntelliCAD\Source\Regress\scripts\78410.scr
+F:\Build_17\IntelliCAD\Source\Regress\scripts\ezoom_cir.scr
+F:\Build_17\IntelliCAD\Source\Regress\scripts\Insertf.scr
+F:\Build_17\IntelliCAD\Source\Regress\scripts\POLYGONS1.SCR
+
+
+Total time is scripts with errors -- 627244ms
+
+regress ended at 3/8/2003 7:58:52 PM
+

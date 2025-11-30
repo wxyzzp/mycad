@@ -1,0 +1,9 @@
+logfilename log\scr2.log
+logfileon
+open
+DWG/Hatch patterns.dwg
+(load "lisp\scr2.lsp")
+newhpatt
+dxfout output_dxf\scr2.dxf
+6
+exit y

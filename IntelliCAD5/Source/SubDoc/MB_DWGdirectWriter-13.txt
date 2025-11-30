@@ -1,0 +1,97 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-13.txt
+Produce Version		ICAD 4
+Date:				03/01/2004 7:30am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added code to support round tripping leaders, and PlotSettings.
+
+I also add a resource string for saving as AutoCAD 2004
+to allow IntelliCAD to save files as AutoCAD 2004 versions. 
+
+Note that this only works when using the DWGdirect code path 
+for reading/writing files. See note at the end of this doc on 
+how to make DWGdirect the default code path for read/write.
+
+If you try to make an AutoCAD 2004 drawing via the SaveAs,
+using the non-DWGdirect code path you will get an error dialog 
+saying 'Save attempted to incompatible version'
+
+Note also that until this code is turned as default perminently,
+the option for acad 2004 drawing save is at the bottom of
+the saveas file type list.
+
+Notes to Developers:
+PLEASE Read all notes!
+
+Notes to QA:
+PLEASE Read all notes!
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\db\dwgsave.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\icadlib\icaddef.h
+\source\prj\icad\res\icadrc2.h
+\source\prj\lib\cmds\save.cpp
+\source\prj\lib\drw\dwgsave.cpp
+\IntelliCAD\Eng-us\icad.rc2
+
+
+Making DWGdirect the default read/write code path.
+---------------------------------------------------
+In the control panel / system dialog. Set a system environment variable named
+' USEDWGDIRECT ' to some value I have mine set to the digit 1.
+From that point on any new sessions of MSVC++ and/or IntelliCAD will run in
+an environment that has that variable defined.
+
+If you paste the code below into a file called icad.lsp, and place it in the
+same directory as the IntelliCAD executable file you are running, you can
+quickly toggle between DWGdirect and the old ODT code paths by issuing the
+command 'dd' at the IntelliCAD command line. Note this toggles the system 
+variable on and off.
+
+Of course if this code path impedes your work, simply remove
+the system sysvar from your system, and you will be back to the default
+code path.
+
+ONE LAST NOTE:
+If you experience any problems, please let me know via email to;
+markba@san.rr.com (for now). PLEASE, before sending me problems,
+use the toggle routine below, and try the problem with the old
+ODT code path first. If the problem is not displayed in ODT, but is
+in DWGdirect, it's mine. I would like to stay out of IntelliCAD
+specific bugs for a short time to finish up the migration to DWGdirect.
+
+thanks all.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setvar "cmdecho" 0)
+
+(defun c:dd()
+	(setq tmp (getenv "USEDWGDIRECT"))
+	(if (= (getenv "USEDWGDIRECT") nil) 
+			(setenv "USEDWGDIRECT" "1")
+			(setenv "USEDWGDIRECT" "")
+	)
+	(if (= (getenv "USEDWGDIRECT") nil)
+	    (print "DWGdirect reader/writer off")
+	    (print "DWGdirect reader/writer on")
+	)
+	(princ)
+)
+
+(setvar "cmdecho" 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------------
+Date:		21-10-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:75557
+Affected files:			
+		Source/prj/lib/CMDS/text.cpp
+Description:	Upside-down text does not place succeeding text correctly.
+		1. Text insertion point was not proper in case of "Upside-down text" while 				creating text and Dtext
+		2. Simliar case for Attdef is also taken into consideration now.
+Comments:	TaL75557
+File_by_File :
+	*	Source/prj/lib/CMDS/text.cpp
+		tgflag is teh Text Generation flag and has bit set for Upside Down ( 4 ) 				and backward ( 2 ). The bug was only for calculating the insertion point for 				Upside down condition. So we have checked for this flag and modified the code 				accordingly so that the insertion point is calculated as in AutoCAD.
+--------------------------------------------------------------------------------

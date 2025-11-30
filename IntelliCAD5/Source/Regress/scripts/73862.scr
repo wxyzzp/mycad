@@ -1,0 +1,29 @@
+logfilename log\73862.log
+logfileon
+;_______set_plinetype___________
+PLINETYPE
+2
+PEDITACCEPT
+0
+;________create_line____________
+line
+0,0
+5,5
+
+;________pedit________
+pedit
+last
+
+;--------create_circle________
+circle
+5,5
+2
+;________pedit________
+pedit
+last
+
+;__________
+dxfout output_dxf\73862.dxf
+6
+quit
+y

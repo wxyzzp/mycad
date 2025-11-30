@@ -1,0 +1,115 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4212002_2.txt
+Date:		21-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Regress_icad_14/regress.cpp
+		CvsHist:Source/Regress_apps/Regress_icad_14/regress.h
+		CvsHist:Source/Regress_apps/Regress_icad_14/regress_roundtrip.dsp
+		CvsHist:Source/Regress_apps/Regress_icad_14/StdAfx.h
+		CvsHist:Source/Regress_apps/Regress_icad_14/StdAfx.cpp
+
+Changed files:	
+		None
+
+Deleted files:	
+		None
+
+Description:	This submission adds the source for regress_icad_acad_roundtrip application.
+Comments:	There are two regress applications. The second regress application performs a roundtrip between
+		ICAD and ACAD. Here we open a dwg file in ICAD, save it as dwg, open the dwg file in ACAD, save it
+		as dwg and reopen the file saved by ACAD in ICAD. The roundtrip is currently tested against ACAD R14 
+		and to get it run against ACAD 2000/2002 would require slight change to the source. This change is the 
+		prompt which ACAD uses in the save command. This is done by creating scr files on the fly to open the dwg file
+		save in the formats shown below and quit and running the scripts.
+
+		Usage is 
+
+		regress_icad_acad_roundtrip "Directory_to_process" "Output_Directory"
+
+		The roundtrip executable process all dwg files in the "Directory_to_process". It recurses to find all
+		dwg files in the hierarchy and processes them. It writes the output files in the same directory structure
+		under "Output_Directory". 
+
+		It is IMPORTANT that "Output_Directory" be not present under "Directory_to_process". If it is, the processing
+		will never end.
+
+		The regress_icad_acad_roundtrip executable saves multiple dwg files and dxf files with the same prefix as the dwg
+		file it is processing. For each directory under "Directory_to_process" it processes, it creates 12 directories
+
+		For the first ICAD operation on a dwg file, it will save dwg files in 3 formats and a dxf file.
+
+		output_2k, output_LT95 and output_R14 have the dwg file saved in 2K, LT95 and R14 formats.
+		output_dxf has the dxf file.
+
+		If we are testing roundtrip against R14, then ACAD will open the saved file in output_R14 directory. It will
+		in turn write 2 dwg files and 1 dxf file.
+
+		output_acad_LT95 and output_acad_R14 have the dwg file saved in LT95 and R14 formats.
+		output_acad_dxf has the dxf file.
+
+		If we were doing a roundtrip against ACAD 2K, then a dwg file will be written to output_acad_2k directory.
+
+		Finally ICAD will open the dwg file saved by ACAD R14 in the output_R14 directory and save 3 dwg and 1 dxf
+		file.
+		
+		output_round_2k, output_round_LT95 and output_round_R14 have the dwg file saved in 2K, LT95 and R14 formats.
+		output_round_dxf has the dxf file.
+
+		This structure opens up the possibilities for stress testing roundtrip which is not coded yet. We could make 
+		ICAD open the files written by ACAD in LT95 format or have ACAD open the LT95 format and have the second run of
+		ICAD open the 2K version. We could also do dxfin on the various formats.
+
+
+		Required system variables :-
+
+		ICAD_REGRESS_EXE_PATH -- This has the complete path (including icad.exe) to the icad executable.
+		ACAD_REGRESS_EXE_PATH -- This has the complete path (including acad.exe) to the acad executable.
+		ACAD_REGRESS_VER -- This tells the applciation wheich version of the saved dwg file ACAD will open.
+				    This is also used by the second run of ICAD.
+		The following are optional --
+		TT_EXE -- True Time executable
+		ICAD_TT_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueTime.
+		BC_EXE -- Boundschecker executable.
+		TC_EXE -- Truecoverage executable.
+		ICAD_COV_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueCoverage.
+		PURIFY_EXE -- Purify executable.
+		ICAD_PURIFY_EXE -- Icad executable instrumented by Purify.
+
+		Output file :-
+
+		c:/icadregress.log
+
+
+
+File by File:	
+		CvsHist:Source/Regress_icad_14/Regress_scr/regress.cpp	
+			
+			This file contains the source for the regress_scr application.
+
+		CvsHist:Source/Regress_icad_14/Regress_scr/regress.h
+
+			This header file pulls in MFC structures like CString.
+
+		CvsHist:Source/Regress_icad_14/Regress_scr/regress_roundtrip.dsp
+
+			This is the project file for regress.
+
+		CvsHist:Source/Regress_icad_14/Regress_scr/StdAfx.h
+
+			This is a placeholder. Nothing much is in here.
+
+		CvsHist:Source/Regress_icad_14/Regress_scr/StdAfx.cpp
+
+
+			This is a placeholder for future code.
+
+------------------------------------------------------------------------------

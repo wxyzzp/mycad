@@ -1,0 +1,103 @@
+Document Title:  SD_20SEP04.txt	
+Product Version: ICAD 5
+Date:  20 September 2004
+Engineer: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : SDS, LISP, ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+      This fix is related to Bugzilla 78663. According to the Bugzilla description
+"sds_setfunhelp is not implemented". Mohan fixed this bug. But according to Denis
+the design was no correct and the fix should be reworked.
+	So as suggested by Denis, I have extended the "commandAtomObj" structure with
+additional new fields namely "m_szHelpFile","m_szContextID","m_nMapNumber" to
+store the help reference for the command. In the function "sdsengine_setfunhelp",
+present in the file "sds_misc.cpp" in SDS module, I have populated these new 
+members of "commandAtomObj" structure with the last three parameters of this
+function accordingly. I also removed the previous fixes of Mohan from this 
+function. When help for the command is requested, the method 
+"CMainWindow :: IcadHelp" is called. In that method I have found the atom for
+command. Then I have extracted the data about the help reference from new fields
+which I added in the "commandAtomObj" structure. I removed the previous fixes of
+Mohan completely from this function.
+	  I have also modified "lsp_setfunhelp" function present in "interpreter.cpp"
+file in LISP module. In this function, I have again populated the newly added 
+members of "commandAtomObj" structure with respective data to store the help 
+reference for the command.
+	  I removed the two global variables namely "SDS_commandAtomList" and
+"SDS_commandAtomObjPtrList" added by Mohan in "datehome.cpp" file in LISP module.
+I completely removed these two map variables from LISP module as well as from
+ICAD module. For the same purpose, I have modified the "lsp_freeExtraAtoms"
+function present in "freers.cpp" file in LISP. I have also modified the functions
+"lsp_defatom" and "lsp_findatom" present in "interpreter.cpp" file in LISP module
+to remove these two map variables and previous fixes of Mohan. I also removed these
+two map variables from "lispvars.h" file present in LISP module.
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: SD_20SEP04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/lib/SDS/sds_misc.cpp?rev=1.7.8.8.2.1 
+    Source/prj/lib/LISP/lispvars.h?rev=1.1.1.1.12.1.2.1 
+    Source/prj/lib/LISP/interpreter.cpp?rev=1.14.4.2.2.1 
+    Source/prj/lib/LISP/freers.cpp?rev=1.3.4.2.2.2 
+    Source/prj/lib/LISP/datahome.cpp?rev=1.5.4.1.2.1 
+    Source/prj/lib/LISP/commandatom.h?rev=1.1.1.1.20.1 
+    Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.10 
+
+	
+Description:
+	Bugzilla : 78663: Applied the changes as suggested by Denis and removed the
+	previous fixes of Mohan.
+	 
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+For LISP :
+ 1. Create a simple LISP file.
+ 2. Call "setfunhelp" through LISP user-defined function.
+ 3. Give proper parameters to the function "setfunhelp".
+ 4. Change the last parameter as HELP_CONTENTS, HELP_FINDER, HELP_HELPONHELP,
+    HELP_PARTIALKEY etc.
+ 5. Check the result.
+ 6. Compare the results with AutoCAD.
+
+For SDS :
+ 1. Create a simple SDS application.
+ 2. Call the function "sds_setfunhelp" in SDS application.
+ 2. Give the proper "function name" e.g.: ‘c:functest’ as first parameter to this
+    function.
+ 3. Give the proper "help file path" e.g.: ‘c:/ArchT/help/ArchT.hlp’, as second
+    parameter to this function.
+ 4. Give the proper "topic" e.g.: ‘base unit’, as third parameter to this function.
+ 5. Give the flag e.g: HELP_CONTENTS, HELP_FINDER, HELP_HELPONHELP, HELP_PARTIALKEY
+    etc as last parameter to this function.
+ 6.	This should show ArchT help file.
+
+
+9.  Installation Issues:
+

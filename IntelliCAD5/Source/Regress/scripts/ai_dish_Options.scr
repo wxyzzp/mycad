@@ -1,0 +1,36 @@
+logfilename log\ai_dish_Options.log
+logfileon
+;_________1
+ai_dish
+1,1,1
+1
+
+
+;_________2
+ai_dish
+3,3,3
+diameter
+3
+32
+
+;_________3
+ai_dish
+5,5,5
+5,3,5
+
+32
+;_________4
+ai_dish
+7,7,7
+diameter
+7,7,12
+150
+100
+;__________
+vpoint
+0.5,2,1.5
+;_________
+dxfout output_dxf\ai_dish_Options.dxf
+6
+quit
+y

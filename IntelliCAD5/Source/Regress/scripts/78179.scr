@@ -1,0 +1,108 @@
+;_This_Script_is_created_by_Srinivas_on_4/14/2003_testing_Bugzilla_no_78179
+logfilename log\78179.log
+logfileon
+;________
+(defun angdiff(ang1 ang2) (<= (if (> ang1 ang2) (- ang1 ang2) (- ang2 ang1)) 0.0001))
+;(angdiff 1.00 2)
+;______________________________________
+;________Horizontal_dimension
+dimlinear
+1,1
+3,1
+2,0
+;________
+dimtedit
+2,0
+a
+45
+;________1
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.78539) (princ "OK_Hori") (alert "Err_Hori"))
+;________
+dimtedit
+2,0
+re
+;________2
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.0) (princ "OK_Hori") (alert "Err_Hori"))
+;___________________________________
+;________Vertical_dimension
+dimlinear
+1,1
+1,3
+0,2
+;________
+dimtedit
+0,2
+a
+45
+;________1
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.78539) (princ "OK_Vert") (alert "Err_Vert"))
+;________
+dimtedit
+0,2
+re
+;________2
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.0) (princ "OK_Vert") (alert "Err_Vert"))
+;___________________________________
+;________Aligned_dimension
+dimaligned
+3,1
+1,3
+2,2
+;________
+dimtedit
+2,2
+a
+45
+;________1
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.78539) (princ "OK_Ali") (alert "Err_Ali"))
+;________
+dimtedit
+2,2
+re
+;________2
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.0) (princ "OK_Ali") (alert "Err_Ali"))
+;___________________________________
+;________Diameter_dimension
+circle
+3.5,3.5
+4,4
+;________
+dimdiameter
+4,4
+4.5,4.5
+;________
+dimtedit
+4.5,4.5
+a
+45
+;________1
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.78539) (princ "OK_Dia") (alert "Err_Dia"))
+;________
+dimtedit
+4.5,4.5
+re
+;________2
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.0) (princ "OK_Dia") (alert "Err_Dia"))
+;___________________________________
+;________Radial_dimension
+dimdiameter
+4,3
+4.5,2.5
+;________
+dimtedit
+4.5,2.5
+a
+45
+;________1
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.78539) (princ "OK_Rad") (alert "Err_Rad"))
+;________
+dimtedit
+4.5,2.5
+re
+;________2
+(if (angdiff (cdr (assoc 53 (entget (entlast)))) 0.0) (princ "OK_Rad") (alert "Err_Rad"))
+;________
+dxfout output_dxf\78179.dxf
+6
+quit
+y

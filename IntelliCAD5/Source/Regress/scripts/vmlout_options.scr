@@ -1,0 +1,22 @@
+logfilename log\vmlout_options.log
+logfileon
+;__________---
+line
+1,2
+3,1
+
+circle
+1,2
+2
+ellipse
+2,1
+4,1
+3,2
+vmlout
+output\vml_out_1
+(if (= (findfile "output\vml_out_1.htm") nil) (alert "no vml file"))
+;________
+dxfout output_dxf\vmlout_options.dxf
+6
+quit
+y

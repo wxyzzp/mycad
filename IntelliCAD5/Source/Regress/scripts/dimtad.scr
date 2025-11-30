@@ -1,0 +1,80 @@
+Logfilename log\dimtab.log
+logfileon
+;_____________
+dimtad
+3
+dimfit
+4
+color 1
+dimaligned
+1,1
+3,3
+3,1
+dimtedit
+3,1
+5,-.5
+;__________
+move
+all
+
+0,0
+2,1
+;__________
+color 2
+dimaligned
+1,1
+3,3
+3,1
+dimtedit
+3,1
+4,-.5
+;__________
+move
+all
+
+0,0
+2,1
+;__________
+color 3
+dimaligned
+1,1
+3,3
+3,1
+dimtedit
+3,1
+3,-.5
+;__________
+move
+all
+
+0,0
+2,1
+;__________
+color 4
+dimaligned
+1,1
+3,3
+3,1
+dimtedit
+3,1
+2,-.5
+;__________
+move
+all
+
+0,0
+2,1
+;__________
+color 5
+dimaligned
+1,1
+3,3
+3,1
+dimtedit
+3,1
+1,-.5
+;___________
+Dxfout output_dxf\.dimtabdxf
+6
+exit
+y

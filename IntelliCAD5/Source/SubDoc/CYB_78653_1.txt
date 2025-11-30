@@ -1,0 +1,549 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78653_1.txt	
+Product Version:	ICAD 4
+Date:			11/05/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)     
+
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/Prj/LIB/CMDS/circle.cpp     ==> CMDS
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================      
+
+	This is related to Bugzilla# 78653: Using TTR option, circle is 
+created at wrong location.
+
+
+Problem Analysis:
+-----------------
+	As per the  Bugzilla report, draw two lines randomly. Give 'circle' 
+command  and select 'TTR'  option. Select  two points: first on one line 
+and  second on the other line.  Give the radius. Observe thet, Sometimes 
+circle is  drawn at the wrong location. Criterion for drawing the circle 
+is: if more than one circle match the Criterion specified in the command, 
+then  the circle with  the tangent points closest to the selected points, 
+should be drawn.    
+ 
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the file "Source/Prj/LIB/CMDS/circle.cpp".
+After checking this file, I found that cmd_circle_ttr() calculates the 
+different centre points and selects the best out of them. So that the resultant
+circle, whose tangent points are closest to the selected points, is drawn. 
+Here, sometimes the center point is wrongly selected. So I have modified 
+the file as shown below (modifications are within the Bugzilla comments):
+
+FILE: Source/Prj/LIB/CMDS/circle.cpp
+------------------------------------
+Function: static int cmd_circle_ttr(sds_point ptsel1, sds_name ent1,struct resbuf *elist1,
+				    sds_point ptsel2, sds_name ent2,struct resbuf *elist2,sds_real rr,sds_point cc)
+------------------------------------
+
+{
+	
+	...
+	...
+	...
+	...
+	...
+
+	if(!cmd_offset_linepts(p1,p2,rr,p5,p6) && !cmd_offset_linepts(p3,p4,rr,p7,p8))
+	{
+	if(cmd_linerayxlineray(p5,p6,/*type1*/2,p7,p8,/*type2*/2,p9)==3)
+		{
+		// Bugzilla# 78529 Date:30 Apr 2004
+		fr1=sds_distance(ptsel1,p9)+sds_distance(ptsel2,p9);        
+		// Bugzilla# 78529 Date:30 Apr 2004
+	...
+	...
+	...
+	...
+	...
+
+	if(!cmd_offset_linepts(p1,p2,rr,p5,p6) && !cmd_offset_linepts(p3,p4,rr,p7,p8))
+	{
+	if(cmd_linerayxlineray(p5,p6,/*type1*/2,p7,p8,/*type2*/2,p9)==3)
+		{
+		// Bugzilla# 78529 Date:30 Apr 2004
+		fr1=sds_distance(ptsel1,p9)+sds_distance(ptsel2,p9);        
+		// Bugzilla# 78529 Date:30 Apr 2004
+	...
+	...
+	...
+	...
+	...
+
+	if(!cmd_offset_linepts(p1,p2,rr,p5,p6) && !cmd_offset_linepts(p3,p4,rr,p7,p8))
+	{
+	if(cmd_linerayxlineray(p5,p6,/*type1*/2,p7,p8,/*type2*/2,p9)==3)
+		{
+		// Bugzilla# 78529 Date:30 Apr 2004
+		fr1=sds_distance(ptsel1,p9)+sds_distance(ptsel2,p9);        
+		// Bugzilla# 78529 Date:30 Apr 2004
+	...
+	...
+	...
+	...
+	...
+
+	if(!cmd_offset_linepts(p1,p2,rr,p5,p6) && !cmd_offset_linepts(p3,p4,rr,p7,p8))
+	{
+	if(cmd_linerayxlineray(p5,p6,/*type1*/2,p7,p8,/*type2*/2,p9)==3)
+		{
+		// Bugzilla# 78529 Date:30 Apr 2004
+		fr1=sds_distance(ptsel1,p9)+sds_distance(ptsel2,p9);        
+		// Bugzilla# 78529 Date:30 Apr 2004
+	...
+	...
+	...
+	...
+	...
+
+}
+	
+
+    cmd_circle_ttr() calculates the four possible center points using cmd_linerayxlineray() 
+and  cmd_circle_ttr().  cmd_linerayxlineray()   calculates  the  possible center 
+point for  the resultant circle, and stores it in "p9". Previously the  distance 
+between first  selected point ( the first  tangent  point entered by  the user ) 
+and "p9" point  was calculated and was  stored in  "fr1". First  time, the value 
+stored in  "fr1" is assigned to "dist"  and the  value in "p9" is copied to "cp", 
+which stores the center point of the resultant circle. Then cmd_linerayxlineray() 
+again calculates the next possible center point. 
+    
+    The distance between the first selected point and new "p9" point is calculated 
+and this distance is stored in "fr1". Then  "fr1" and "dist" is compared to see if 
+"fr1" is smaller than "dist". If it is, then new "p9"  is selected as center point. 
+This process goes on for four possible center points.
+
+    I found that the distance between second selected point and "p9" should also be 
+considered for selecting the best centre point. So I have assigned this distance to 
+"fr1".  Now "fr1" holds the distance between  first selected point and "p9" as well 
+as the distance between second selected point and "p9" point. 
+
+
+   I found that following same things are done four times :
+
+	1. Calculation of new center point ("p9").
+	2. Calculation of distance(distance between first selected point and new 
+	   "p9" as well as distance between second selected point and new "p9"(newly 
+	   added)
+	3. Comparision between previous distance and new distance.
+	4. Assignment of "p9" to center point depending upon comparision. 
+
+    Hence, to avoid repetation of code, I have added new function "setCenterPoint" 
+which does above process. (modifications are within Bugzilla comments):
+
+
+
+FILE: Source/Prj/LIB/CMDS/circle.cpp
+------------------------------------
+Function: static int cmd_circle_ttr(sds_point ptsel1, sds_name ent1,struct resbuf *elist1,
+				    sds_point ptsel2, sds_name ent2,struct resbuf *elist2,sds_real rr,sds_point cc)
+------------------------------------
+
+{
+	
+	...
+	...
+	...
+	...
+	...
+if(!cmd_offset_linepts(p1,p2,rr,p5,p6) && !cmd_offset_linepts(p3,p4,rr,p7,p8))
+		{
+ 			// Bugzilla# 78529 Date:30 Apr 2004 
+			setCenterPoint(p5,p6,p7,p8,&cp,&dist,ptsel1,ptsel2);
+			// Bugzilla# 78529 Date:30 Apr 2004
+
+			/* Parts from here [
+
+			if(cmd_linerayxlineray(p5,p6,/*type1* /2,p7,p8,/*type2* /2,p9)==3)
+			{
+				fr1 = sds_distance(ptsel1, p9) + sds_distance(ptsel2, p9);
+				if(icadRealEqual(fr1,dist))
+				{
+					if(sds_distance(ptsel2,p9)<sds_distance(ptsel2,cp))
+					{
+						ic_ptcpy(cp,p9);
+						dist=fr1;
+					}
+				}
+				else if(dist==-1.0 || fr1<dist)
+				{
+					ic_ptcpy(cp,p9);
+					dist=fr1;
+				}
+			}
+
+			 ] upto here are moved to newly added function "setCenterPoint" */ 
+
+			cmd_offset_linepts(p1,p2,-rr,p5,p6);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			setCenterPoint(p5,p6,p7,p8,&cp,&dist,ptsel1,ptsel2);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			::
+			::
+			::
+			::
+			::
+			cmd_offset_linepts(p3,p4,-rr,p7,p8);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			setCenterPoint(p5,p6,p7,p8,&cp,&dist,ptsel1,ptsel2);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			::
+			::
+			::
+			::
+			::
+			cmd_offset_linepts(p1,p2,-rr,p5,p6);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			setCenterPoint(p5,p6,p7,p8,&cp,&dist,ptsel1,ptsel2);
+			// Bugzilla# 78529 Date:30 Apr 2004
+			::
+			::
+			::
+			::
+			::
+    	sds_trans(cp,&rbucs,&rbnew,0,cp);
+			::
+			::
+			::
+			::
+			::
+
+
+}
+
+//Newly added function
+/********************************************************************************
+ * Author:	Mohan Nayak.
+ *
+ * Purpose:	To set the centre point of the circle.
+ *
+ * Returns:	void
+ ********************************************************************************/
+
+void setCenterPoint(sds_point p1, sds_point p2, sds_point p3, sds_point p4,
+	sds_point *centrepoint,sds_real *dist,sds_point psel1,sds_point psel2)
+					
+{
+
+	sds_real fr1;
+	sds_point p9;
+
+	if (cmd_linerayxlineray (p1,p2,/*type1*/2,p3,p4,/*type2*/2,p9) == 3)
+	{
+		fr1 = sds_distance (psel1, p9) + sds_distance(psel2, p9);
+
+		/*  Bugzilla# 78529 Date:30 Apr 2004 [
+		if(icadRealEqual(fr1,*dist))
+		{
+			if(sds_distance(psel2,p9)<sds_distance(psel2,*centrepoint))
+			{
+				ic_ptcpy(*centrepoint,p9);
+				*dist=fr1;
+			}
+		}
+		else
+		Bugzilla# 78529 Date:30 Apr 2004 ] */ 
+
+		if (*dist == -1.0 || fr1 <* dist)
+		{
+			ic_ptcpy(*centrepoint,p9);
+			*dist = fr1;
+		}
+	}
+
+}
+
+   Previously, the distance between second selected point and newly calculated 
+"p9" was compared with the distance between second selected point and previous 
+"p9", only when the distance  between first selected point and newly calculated 
+"p9" is equal to the the distance between  first  selected  point and previous
+"p9". 
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following steps:
+
+ 1.  Draw two lines randomly.
+ 2.  Give 'CIRCLE' command. 
+ 3.  Select 'TTR' option.
+ 4.  Select first tangent point(It sholud be on one of the lines drawn). 
+ 5.  Select second tangent point(It sholud be on one of the lines drawn).
+ 6.  Give the radius of the circle.
+ 7.  Compare results with AutoCAD
+ 8.  Circle should be drawn at right position as in AutoCAD.
+
+This fix is related to Circle-TTR option ONLY.
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in progress)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+      
+

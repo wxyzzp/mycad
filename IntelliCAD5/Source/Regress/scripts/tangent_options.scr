@@ -1,0 +1,16 @@
+logfilename log\tangent_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+tangent
+(if (/= (getvar "osmode") 256) (alert "tangent did not work!"))
+;__________
+tangent
+(if (/= (getvar "osmode") 0) (alert "tangent did not work!"))
+;__________
+dxfout output_dxf\tangent_options.dxf
+6
+quit
+y

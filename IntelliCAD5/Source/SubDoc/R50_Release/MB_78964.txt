@@ -1,0 +1,76 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_78964
+Product Version:        IntelliCAD 5
+Date:                   09/27/2004 08:19am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	ACAD
+	DB
+	CMDS
+
+3.  Overview:
+	Bug 78964 fix.
+	This submission removes the #define	PLACE_DIM_ELEMENTS_TO_0 found in configure.h
+	This replaces the (few) references to this #define with a call To actually get 
+	the drawing version, and if <= IC_ACAD14 do the things This #define is meant to do.
+	So if you open an R14 or less drawing and create a dimension, its parts will Be 
+	placed on layer zero. If not, they will be placed on the current layer.
+
+	Sooo.
+	If you open an R14 drawing and explode a dimension, its parts will end up on layer zero.
+	If you open an R14 drawing and resave it as say R2004 or open a R2004 drawing, then  
+	explode the dimension, its parts will be on the layer the dimension is created on.
+
+	In addition, I have removed 63543.log from the regress/log directory and replaced it with
+	a generic .txt file to explain what that directory is meant for. I also added such text
+	files to the regress/output and regress/output_dxf directories so those directories are
+	created when the source code is down loaded. This will make it much easier on members
+	running regress for the first time. 
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: Y
+File Name:
+	Source/Regress/scripts/78417.scr
+	This script was putting its output files in the wrong location.
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/icad/configure.h
+        source/prj/icad/icaddoc.cpp
+        source/prj/lib/cmds/dimmakedim.cpp
+        source/prj/lib/cmds/dimensions.cpp
+        source/prj/lib/cmds/dimensions.h
+        source/prj/lib/cmds/explode.cpp
+        source/prj/lib/drw/dwgdirectreader.cpp
+        source/prj/lib/drw/dwgdirectreader.h
+        source/subdoc/R50_Release/MB_78964.txt
+
+	Files Added:
+		Source/Regress/log/logfiles.txt
+		Source/Regress/output/output.txt
+		Source/Regress/output_dxf/output_dxf.txt
+
+	Files removed:
+		Source/Regress/log/63543.log
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

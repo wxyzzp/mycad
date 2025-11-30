@@ -1,0 +1,22 @@
+(defun Tables(Name)
+   (print Name )
+   (setq tbl (tblnext Name 0))
+   (print tbl )
+   (while 
+	(setq tbl (tblnext Name ))
+	(print tbl )
+    )
+)
+
+(defun c:Tbl()
+
+   (Tables "appid")
+   (Tables "ltype")
+   (Tables "style")
+   (Tables "dimstyle")
+   (Tables "block")
+   (Tables "layer")
+   (Tables "ucs")
+   (Tables "view")
+   (Tables "vport")
+)

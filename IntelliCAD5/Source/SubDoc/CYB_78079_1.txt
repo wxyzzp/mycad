@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78079_1.txt
+Date:		20-05-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78079
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+Description: 	Problem with the working of "Dimedit" command.
+Comments:	TaL78079
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+		In case the user presses enter to accept the restore command, i have copied "RESTORE" into the variable fs1.
+--------------------------------------------------------------------------------
+

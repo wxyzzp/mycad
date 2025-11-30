@@ -1,0 +1,883 @@
+Notes for Build_42:
+To reproduce this build in R40_Dev, checkout tag For_Build_40, For_Build_41 and
+then For_Build_42.
+
+In R40_Integration, checkout tag Build_42.
+
+ucs_options.scr fails regress.  I am unable to isolate the submission that 
+causes this error.
+
+CHANGED FILES:
+The following files were changed in R40_Dev during this build period:
+M	2004-02-29:12:34	chikahirom	1.9.6.5	IntelliCAD/Source/prj/ICAD/IcadZoomView.cpp
+M	2004-02-29:12:34	chikahirom	1.10.6.5	IntelliCAD/Source/prj/ICAD/realtime.cpp
+M	2004-02-29:12:34	chikahirom	1.7.6.3	IntelliCAD/Source/prj/lib/GR/coordconvert.cpp
+M	2004-03-06:01:31	chikahirom	1.1.1.1.12.1	IntelliCAD/Source/prj/api/sds/ourbase/ourbase.c
+M	2004-03-06:01:31	chikahirom	1.2.6.2	IntelliCAD/Source/prj/api/sds/ourbase/OURBASE.CPP
+M	2004-03-06:01:31	chikahirom	1.1.1.1.12.1	IntelliCAD/Source/prj/api/sds/ourbase/ourbase.dsp
+M	2004-03-11:07:30	chikahirom	1.17.6.14	IntelliCAD/Source/prj/lib/DB/handitem.cpp
+M	2004-03-02:06:00	cyberage	1.64.4.47	IntelliCAD/Source/prj/ICAD/icadapi.cpp
+M	2004-03-02:06:04	cyberage	1.2.10.2	IntelliCAD/Source/ThirdParty/DCL_Components/Source/Tree.cpp
+M	2004-03-02:06:04	cyberage	1.2.10.1	IntelliCAD/Source/ThirdParty/DCL_Components/Source/ScreenObject.cpp
+M	2004-03-02:06:04	cyberage	1.1.1.1.12.1	IntelliCAD/Source/ThirdParty/DCL_Components/Source/DefaultAttributes.cpp
+M	2004-03-02:06:04	cyberage	1.1.1.1.12.1	IntelliCAD/Source/ThirdParty/DCL_Components/Include/DefaultAttributes.h
+M	2004-03-02:06:06	cyberage	1.1.1.1.12.1	IntelliCAD/Source/ThirdParty/DCL_Components/Include/EditBox.h
+M	2004-03-02:06:06	cyberage	1.5.8.1	IntelliCAD/Source/ThirdParty/DCL_Components/Source/EditBox.cpp
+A	2004-03-02:06:11	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78724_1.txt
+A	2004-03-02:06:11	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78721_1.txt
+A	2004-03-02:06:11	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78705_1.txt
+A	2004-03-02:06:11	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78287_2.txt
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/acis/3dface_points.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/b-crank1.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/bikeseat.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/bkwhl.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/derail2.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/frwhl.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/hndlbar.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/Dwg/typical-bike.dwg
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/getdist.lsp
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/Spcad.lsp
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78724.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/circle_tan.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/cmdactive_1.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/cmdactive_2.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimclrd_extn.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimexe.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimexo.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimtih_dimtoh1.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/doughnuts.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/entget_appdata.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/getdist.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/snapang.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/spcad.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/ucsicon_option.scr
+A	2004-03-02:07:57	cyberage	1.1.2.1	IntelliCAD/Source/Regress/SDS/78724.dll
+M	2004-03-08:08:46	denisp	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-01:15:41	markba	1.63.4.50	IntelliCAD/Eng-us/icad.rc2
+M	2004-03-01:15:41	markba	1.59.4.40	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-03-01:15:41	markba	1.8.6.5	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-03-01:15:41	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-01:15:41	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-01:15:41	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-03-01:15:41	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.h
+M	2004-03-01:15:41	markba	1.1.2.13	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-01:15:41	markba	1.1.2.8	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-01:15:41	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-01:15:41	markba	1.1.2.13	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-01:15:41	markba	1.47.4.31	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-01:15:41	markba	1.4.6.6	IntelliCAD/Source/prj/lib/ICADLIB/IcadDef.h
+A	2004-03-01:15:43	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-13.txt
+A	2004-03-02:19:23	markba	1.1.2.1	IntelliCAD/Source/SubDoc/DWGdirectWriter-14.txt
+M	2004-03-02:19:23	markba	1.1.2.10	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-02:19:23	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-02:19:23	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-02:19:23	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-02:19:23	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+A	2004-03-04:16:55	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-15.txt
+A	2004-03-04:16:55	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/CollectionClasses.h
+M	2004-03-04:16:55	markba	1.1.2.11	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-04:16:55	markba	1.1.2.10	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-04:16:55	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-04:16:55	markba	1.1.2.10	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-04:16:55	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-04:16:55	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-04:16:55	markba	1.48.4.49	IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+M	2004-03-04:16:55	markba	1.13.4.17	IntelliCAD/Source/prj/make/db.dsp
+A	2004-03-10:15:04	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MHB_DWGdirectWriter-16.txt
+M	2004-03-10:15:04	markba	1.18.6.3	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-03-10:15:04	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/CollectionClasses.h
+M	2004-03-10:15:04	markba	1.1.2.12	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-10:15:04	markba	1.1.2.11	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-10:15:04	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-03-10:15:04	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-10:15:04	markba	1.1.2.11	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-10:15:04	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-10:15:04	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-10:15:09	markba	1.18.6.4	IntelliCAD/Source/prj/ICAD/Configure.h
+A	2004-03-12:20:43	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-17.txt
+M	2004-03-12:20:43	markba	1.4.6.5	IntelliCAD/Source/prj/lib/DB/entity.cpp
+M	2004-03-12:20:43	markba	1.1.2.13	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-12:20:43	markba	1.1.2.12	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-12:20:43	markba	1.1.2.24	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-03-12:20:43	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-12:20:43	markba	1.1.2.12	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-12:20:43	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-12:20:43	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+A	2004-03-12:20:43	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+A	2004-03-12:20:43	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/Utilities.h
+M	2004-03-12:20:43	markba	1.13.4.18	IntelliCAD/Source/prj/make/db.dsp
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/DWGdirect.chm
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiEnhancedMetafile.cpp
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExHostAppServices.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.cpp
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/AcadPalette.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisData.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ColorMapping.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DDPackageVersion.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDVersion.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockTableRecord.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbCommandContext.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDatabase.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDictionaryVar.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbErrorInvalidSysvar.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGroup.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHandle.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHatch.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHostAppServices.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMText.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlotSettings.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyline.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterImage.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSecurity.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpline.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSymUtl.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSystemServices.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTextIterator.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbUserIO.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbWipeout.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DbXrecord.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DebugStuff.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/DynamicLinker.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/EdCommandContext.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/ErrorDefs.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/HatchPatternManager.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/LoadReasons.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/MessageDefs.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/ModelerGeometry.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdCharMapper.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdFont.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdPlatform.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaDefs.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit_i.c
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX_i.c
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RasterImageLoader.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDLinkerReactor.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDefs.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDictionary.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDispatchImpl.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDynamicModule.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/RxModule.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxModuleDefs.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxSysRegistry.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/SharedPtr.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/SysVarDefs.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/UInt32Array.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX_i.c
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/XRefMan.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/summinfo.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrFace.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/CmEntityColorArray.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCircArc2d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCircArc3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCone.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCylinder.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipArc2d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipArc3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCone.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCylinder.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeGbl.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLine3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLineSeg3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLinearEnt3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve2d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbSurface.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePlanarEnt.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePoint3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePolyline2d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSphere.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSurface.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeTorus.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVector3d.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiCommonDraw.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiContextForDbDatabase.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorGeometry.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiDeviation.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiGeometrySimplifier.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetype.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetypeGenerator.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiShellFaceIterator.h
+A	2004-03-16:01:07	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiShellFaceWithHolesIterator.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSmartDrawObject.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiTextStyle.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiWorldGeometry.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBase.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseModel.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseVectorizer.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsLight.h
+M	2004-03-16:01:07	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsOpenGLVectorizer.h
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Acis.lib
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib
+M	2004-03-16:01:07	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib
+M	2004-03-16:01:08	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib
+M	2004-03-16:01:08	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib
+M	2004-03-16:01:08	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib
+M	2004-03-16:01:08	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib
+M	2004-03-16:01:08	markba	1.1.2.3	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib
+A	2004-03-16:01:08	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/ExCustObjs.lib
+A	2004-03-16:01:08	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-17A.txt
+A	2004-03-16:15:14	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-18.txt
+M	2004-03-16:15:14	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/CollectionClasses.h
+M	2004-03-16:15:14	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-16:15:14	markba	1.1.2.13	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-16:15:14	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-16:15:14	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-16:18:51	master	1.4.8.48	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-03-05:07:14	stephenh	1.8.6.6	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-03-05:07:14	stephenh	1.4.6.5	IntelliCAD/Source/prj/lib/CMDS/dxfInOut.cpp
+M	2004-03-05:07:15	stephenh	1.59.4.41	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-03-05:07:15	stephenh	1.63.4.51	IntelliCAD/Eng-us/icad.rc2
+A	2004-03-05:07:36	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_040304_1.doc
+M	2004-03-13:21:49	stephenh	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/ICADLIB/Linexarc.cpp
+A	2004-03-13:21:51	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_78570_1.doc
+
+CHANGELOG:
+------------------------------------------------------------------------------------ 
+Date: 29-02-2004 
+Developer: Chikahiro Masami 
+Company: Ebatech 
+Reference: BugZilla:78638 
+Affected files: 
+Source/prj/ICAD/IcadZoomView.cpp 
+Source/prj/ICAD/realtime.cpp 
+Source/prj/lib/GR/coordconvert.cpp 
+Description: Skip redraw viewport when VIEWSIZE is too lower(1e-11). 
+If you will use SDS_ZOOMRATIO_MIN (7e-14), 
+you should change gr_rp2ucs() and more GR coordconvert functions from 
+if (viewp==NULL || icadRealEqual(viewp->viewsize,0.0)) viewp=&gr_defview; 
+to 
+if (viewp==NULL || icadRealEqual(viewp->viewsize,0.0,SDS_ZOOMRATIO_MIN)) viewp=&gr_defview; 
+
+Comments: 
+------------------------------------------------------------------------------------ 
+Date: 02-03-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78705 
+Affected files: 
+Source/ThirdParty/DCL_Components/Source/EditBox.cpp 
+Source/ThirdParty/DCL_Components/Source/EditBox.h 
+Description: ArchT? Blocker: Return does not fire CBR_SELECT in DCL edit box control 
+Comments: TaL78705 CYB_78705_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 02-03-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78721 
+Affected files: 
+Source/ThirdParty/DCL_Components/Source/DefaultAttributes.cpp 
+Source/ThirdParty/DCL_Components/Include/DefaultAttributes.h 
+Source/ThirdParty/DCL_Components/Source/Tree.cpp 
+Source/ThirdParty/DCL_Components/Source/ScreenObject.cpp 
+Description: ArchT? Affected: DCL horizontal radio rows do not display correctly. 
+Comments: TaL78721 CYB_78721_1.txt 
+1. Resolved the Name Ambiguity in DefaultAttributes? Files. 
+2. Removed the memory leak in ScreenObject?.cpp. 
+------------------------------------------------------------------------------------ 
+Date: 02-03-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78724 
+Affected files: 
+Source/prj/ICAD/icadapi.cpp 
+Description: ArchT? Affected: CmdActive? always returns 1 from within ADS/SDS 
+Comments: TaL78724 CYB_78724_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 04-03-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/save.cpp 
+Source/prj/lib/CMDS/dxfInOut.cpp 
+Source/prj/ICAD/res/icadrc2.h 
+Eng-us/icad.rc2 
+Description: Globalization problem fixes. 
+Comments: SH_040304_1.soc 
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------ 
+Date: 13-03-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: BugZilla:78570 
+Affected files: 
+Source/prj/lib/ICADLIB/Linexarc.cpp 
+Description: Rewrote the function ic_linexarc() by using a different algorithm 
+because the previous imlementation is wrong so does not work 
+correctly in manu cases, which is the root cause of some known 
+bugs. 
+Comments: SH_78570_1.soc 
+------------------------------------------------------------------------------------ 
+ 
+REGRESS:
+
+Script Name 	Time	Memory
+2-D.scr	3574	14778368
+2-D_entityEMF.scr	4186	14905344
+2-D_entityEMF95.scr	4205	14901248
+2-D_entityEMFNT.scr	4175	14884864
+2-D_entitySLD.scr	4155	14815232
+2-D_entitySLD95.scr	4195	14811136
+2-D_entitySLDNT.scr	4145	14807040
+2-D_entity_color_layer.scr	3484	14774272
+2dintersection_options.scr	1972	14249984
+3d.scr	3664	14766080
+3darray_c_options.scr	7019	15130624
+3darray_p_options.scr	7150	15126528
+3darray_r_options.scr	91791	63586304
+3dface_vba.scr	2703	16429056
+3dintersection_options.scr	2122	14245888
+3dmeshes2.scr	7230	19488768
+3dpoly_options.scr	2352	14471168
+3dpoly_vba.scr	2403	16379904
+3dspiral_3dspiral.scr	2983	14983168
+3dspiral_spiral.scr	2783	14823424
+3d_box_options.scr	2423	14516224
+3d_cone_options.scr	2453	14729216
+3d_cylinder_Options.scr	3755	18767872
+3d_dish_Options.scr	7870	31494144
+3d_dome_Options.scr	7880	31498240
+3d_entities.scr	4856	16973824
+3d_mesh_options.scr	26788	64315392
+3d_pyramid_options.scr	2662	14499840
+3d_sphere_Options.scr	7900	31911936
+3d_torus_Options.scr	5126	22102016
+3d_wedge_options.scr	2462	14499840
+50537.scr	2562	17002496
+60619.scr	3905	14757888
+60681_1.scr	2613	14782464
+60914.scr	2432	14622720
+60918.scr	3494	14753792
+61474.scr	4345	14860288
+64188_Base.scr	2984	14688256
+64188_Cont.scr	2933	14688256
+6542.scr	2072	14401536
+68870.scr	2783	15097856
+70921.scr	4115	14950400
+70921_1.scr	4755	15020032
+72001.scr	2002	13758464
+73862.scr	2222	14454784
+75763.scr	2162	14331904
+75883.scr	2602	14483456
+76186.scr	24094	15314944
+76526.scr	2692	14442496
+77456.scr	4696	27623424
+77770_Aligned.scr	5597	15040512
+77770_Linear.scr	5657	15040512
+77770_Rotated.scr	5827	15024128
+77816.scr	2272	14462976
+77848.scr	5637	14733312
+77860.scr	25456	37728256
+77887.scr	3724	14876672
+77888.scr	4455	16613376
+77892.scr	2482	14417920
+77907.scr	3164	14479360
+77943.scr	2353	14602240
+77947.scr	2733	14417920
+77972.scr	5046	14798848
+78005.scr	2884	14655488
+78010.scr	3965	14626816
+78034.scr	2272	14397440
+78036.scr	2503	15470592
+78037.scr	4265	15327232
+78047.scr	2883	16723968
+78057.scr	2163	14798848
+78069_78002.scr	4435	15437824
+78075.scr	2883	14733312
+78075_1.scr	2052	14495744
+78075_2.scr	2933	14741504
+78079.scr	6478	15482880
+78090.scr	2272	14659584
+78092.scr	5958	19927040
+78105.scr	2613	14712832
+78110.scr	2183	14565376
+78118.scr	3194	14553088
+78118a.scr	2022	14426112
+78119.scr	2132	14778368
+78120.scr	2082	14495744
+78120_test.scr	3284	14893056
+78130.scr	2683	14938112
+78135.scr	4565	14413824
+78136.scr	2172	14618624
+78140.SCR	5256	14934016
+78149.scr	2202	14532608
+78151.scr	3053	14692352
+78153.scr	3484	14811136
+78155.scr	4115	14852096
+78165.scr	2562	14528512
+78165_1.scr	2562	14528512
+78165_2.scr	2854	14532608
+78165_3.scr	2803	14540800
+78167.scr	2994	14671872
+78168_attdef.scr	2542	14360576
+78168_attedit.scr	2743	14553088
+78168_dimstyle.scr	3133	14368768
+78168_insert.scr	2232	14487552
+78168_layer.scr	3264	14372864
+78168_layout.scr	2463	14385152
+78168_minsert.scr	2422	14491648
+78168_mtext.scr	2532	14360576
+78168_rename.scr	3454	14737408
+78168_style.scr	2253	14290944
+78168_text.scr	2443	14356480
+78168_toolbars.scr	10434	14295040
+78168_ucs.scr	2232	14299136
+78168_view.scr	2302	14319616
+78168_xref.scr	3784	15302656
+78175.scr	2242	14528512
+78177.scr	2192	14467072
+78179.scr	3154	14622720
+78181.scr	2593	14577664
+78182.scr	4355	14839808
+78183.scr	2833	14721024
+78195.scr	7970	14925824
+78197.scr	4255	15179776
+78198.scr	3474	14766080
+78199_1.scr	2743	14553088
+78203.scr	3003	14651392
+78204.scr	6048	14856192
+78205.scr	2993	14544896
+78222.scr	5998	16674816
+78222_1.scr	3494	14581760
+78236.scr	5337	14848000
+78238.scr	8531	15249408
+78238_1.scr	31164	16424960
+78243.scr	3014	15372288
+78248.scr	3474	14422016
+78250.scr	2342	15192064
+78260_78273.scr	11806	15122432
+78260_78273_1.scr	12046	15818752
+78265.scr	6949	14688256
+78277.scr	2683	14602240
+78284.scr	4095	14823424
+78287.scr	2112	14266368
+78300_a.scr	125139	18874368
+78300_c.scr	101385	17260544
+78300_h.scr	73695	16875520
+78300_t.scr	65192	16924672
+78300_w.scr	74776	16883712
+78305.scr	41939	15675392
+78310_1.scr	4476	14880768
+78310_2.scr	4335	14880768
+78331.scr	2422	14553088
+78339.scr	2142	13922304
+78343.scr	295984	20557824
+78346a.scr	2262	16035840
+78376_1.scr	4385	14536704
+78377.scr	3404	19578880
+78393_T1fts011.scr	48699	38019072
+78395.scr	1932	13758464
+78410.scr	7169	21139456
+78411_defaultcommands.scr	2402	14381056
+78411_s.scr	2662	13758464
+78414.scr	2443	14528512
+78417.scr	3655	19181568
+78417_1.scr	3584	19210240
+78418.scr	140091	15843328
+78419.scr	4225	15155200
+78419_1.scr	270197	16973824
+78419_leamitest.scr	5097	15151104
+78425.scr	2653	14913536
+78440_checkcond.scr	2032	13758464
+78440_icad.scr	2172	13758464
+78441_setq.scr	2212	13758464
+78441_v.scr	2042	13758464
+78442.scr	2142	13758464
+78442_1.scr	1992	13758464
+78444_misc.scr	5567	16080896
+78444_purge_all.scr	8371	17436672
+78444_xref_detach.scr	6658	17063936
+78476.scr	2442	14430208
+78476_entmake.scr	2072	14327808
+78476_vba.scr	2493	16281600
+78508.scr	2512	14635008
+78518_lisp.scr	4155	14573568
+78536.scr	2422	14528512
+78538.scr	2162	14422016
+78548.scr	3494	16809984
+78549.scr	2122	14360576
+78556.scr	2202	14438400
+78558.scr	2783	14663680
+78564.scr	4636	26738688
+78577.scr	2843	14635008
+78593_vba.scr	2442	16072704
+78600.scr	2533	16453632
+78604.scr	2192	14393344
+78619.scr	2212	14405632
+78620.scr	2582	14577664
+78648.scr	2202	14368768
+78651.scr	2022	14311424
+78686.scr	2282	14385152
+78700.scr	2212	14426112
+78708.scr	2282	14426112
+78720.scr	2042	14282752
+78724.scr	2202	14749696
+AccTest-cond.scr	137517	15212544
+AccTest-conv.scr	16783	15085568
+AccTest-function.scr	11225	15077376
+AccTest-geo.scr	4185	14659584
+AccTest-list.scr	113262	15962112
+AccTest-math.scr	28700	15118336
+AccTest-string.scr	24624	15339520
+AccTest-sym.scr	97639	15089664
+AccTest-symtbl2.scr	9142	15028224
+AccTest-util.scr	8591	14852096
+AI_3d_entities.SCR	6938	17014784
+ai_box_options.scr	2873	14508032
+ai_cone_options.scr	3114	15106048
+ai_cylinder_Options.scr	3034	14888960
+ai_dish_Options.scr	8201	31494144
+ai_dome_Options.scr	8091	31494144
+ai_pyramid_options.scr	3003	14483456
+align_options.scr	5406	14823424
+alloc.scr	2092	14237696
+angtos.scr	2592	14249984
+aperture_options.scr	2212	14237696
+application_vba.scr	2593	16355328
+approved.scr	2483	14647296
+arc.scr	6157	14987264
+arcs.scr	9543	14884864
+arctex_at.scr	2113	14426112
+arc_vba.scr	2533	16367616
+array_r_options.scr	3344	14835712
+arryc2.scr	8601	14979072
+arryp2.scr	8571	14974976
+arr_pmove.scr	8511	14974976
+attdef_options.scr	3083	14438400
+attdisp.scr	2563	14512128
+attdisp_options.scr	4406	14671872
+attedit_options.scr	4606	14741504
+attext.scr	2612	14536704
+attext_options.scr	3815	14708736
+ATTRIButes1.SCR	7350	14958592
+aunitformats.scr	2332	14393344
+aunits.scr	2393	14397440
+B4.SCR	2713	14626816
+base_options.scr	2382	14282752
+bhatch_options.scr	3965	14725120
+bhatch_options_2.scr	4495	14786560
+bhatch_rotate.scr	3394	14774272
+blipmode_options.scr	2232	14258176
+blockexp.scr	17083	33824768
+block_options.scr	3124	14757888
+bmpout_options.scr	2602	15106048
+break_options.scr	3785	14614528
+Cardiod.scr	14179	14811136
+celtscale.scr	2432	14397440
+center_snap_options.scr	2052	14233600
+Chair_rarray.scr	5037	23019520
+chamfer_options.scr	4405	14598144
+change_options.scr	5346	14794752
+checkdimvars1.scr	237961	22761472
+checkVars_intbool.scr	44373	16146432
+checkVars_real.scr	27308	16048128
+child_windows_options.scr	2673	14782464
+chprop_options.scr	2442	14520320
+Circles.scr	2643	14811136
+circlesEntity.scr	5527	14848000
+circle_tan.scr	3194	14524416
+cmdactive_1.scr	2352	14401536
+cmdactive_2.scr	2582	14270464
+cmdbar_options.scr	2372	14036992
+color_options.scr	3764	14344192
+CONCIRCLEADD.scr	2532	14487552
+CONCIRCLESUB.scr	2572	14454784
+Conference.scr	27489	41549824
+coordinate_options.scr	2433	14274560
+copy2d.scr	6839	14942208
+copyclip_options.scr	3625	17006592
+copyedata_options.scr	2332	14454784
+Copymove.scr	3814	14733312
+cursorsize.scr	3163	14278656
+cutclip_options.scr	3534	17002496
+cutube.scr	2232	14565376
+cvport_options.scr	2342	14331904
+deledata_options.scr	2372	14450688
+dictadd.scr	2182	14270464
+dictnext.scr	2252	14299136
+dictremove.scr	2222	14290944
+dictrename.scr	2152	14274560
+dictsearch.scr	2222	14299136
+dim1_options.scr	8070	14991360
+dimclrd_extn.scr	2222	13975552
+dimclrt.scr	2122	13967360
+dimedit_oblique.scr	9413	15273984
+dimedit_rotate.scr	9472	15343616
+dimexe.scr	2954	14753792
+dimexo.scr	2974	14757888
+dimfit_vars_check.scr	2312	14258176
+dimrnd.scr	3514	14688256
+dimtad.scr	3274	14692352
+dimtedit.scr	8782	15339520
+dimtedit_RotatedDim.scr	8461	15265792
+dimtext.scr	2944	14589952
+dimtih_dimtoh1.scr	2743	14598144
+dimtim.scr	2683	14639104
+dimtol.scr	2632	14630912
+DimUpdateAll.scr	6949	15355904
+dimzin.scr	3224	14659584
+Dim_ArrowHeads.SCR	23583	19529728
+Dim_DIMFIT.SCR	36121	21635072
+dist_options.scr	2402	14266368
+divide_options.scr	4416	14569472
+dlength.scr	2883	14499840
+donutod.scr	3103	14467072
+donuts.scr	4826	14946304
+doughnuts.scr	4756	14942208
+dragmode_options.scr	2172	14237696
+dview_options.scr	3194	14467072
+dwgcodepage_options.scr	3565	14311424
+dxfin_options.scr	2142	14254080
+edgesurf_options.scr	8461	18767872
+editlen_arc_options.scr	3675	14528512
+editlen_line_options.scr	3685	14499840
+editpline_options.scr	3263	14573568
+editpline_vertices_options.scr	3905	14503936
+elevation.scr	3775	19722240
+elev_options.scr	2372	14274560
+ellipse1.scr	3374	15024128
+ellipse_option.scr	14740	23904256
+ellipticalarc.scr	2934	14548992
+endpoint_options.scr	2072	14233600
+entget_appdata.scr	2182	14311424
+Entities.scr	9473	27201536
+erase.scr	4706	14675968
+esnap_options.scr	3625	14327808
+exlode_non-uniform-circle.scr	2262	14561280
+extend_options.scr	3704	14491648
+ezoom_cir.scr	336273	18853888
+ezoom_ellipse.scr	249017	16642048
+ezoom_polygon.scr	137316	16539648
+ezoom_xline.scr	104239	16457728
+face_options.scr	4746	14528512
+Fillet.scr	6939	15081472
+fill_options.scr	2212	14262272
+flatten_lne_options.scr	3544	14503936
+getdist.scr	3123	14483456
+graphscr.scr	1942	13762560
+gridmode.scr	2383	14270464
+grid_options.scr	2443	14282752
+gripcolor.scr	2813	14487552
+group_options.scr	2283	14475264
+grTest1.scr	3454	14778368
+grTest2.scr	5537	14802944
+handles_options.scr	1781	13746176
+hidetext.scr	1992	14258176
+hpscale.scr	3264	14790656
+Hyper001.scr	2082	14970880
+Hyper002.scr	2032	14856192
+Hyper003.scr	2041	14872576
+Hyper004.scr	2082	14852096
+Hyper005.scr	2112	14954496
+hyperlink.scr	2052	14417920
+hyperlinkoptions.scr	1911	14221312
+idpoint_options.scr	2032	14258176
+infline_options.scr	2352	14434304
+Insertf.scr	4856	19283968
+insertion_options.scr	1971	14229504
+inters.scr	1992	14229504
+intersection_options.scr	1982	14225408
+isoplane_options.scr	2012	14249984
+join_options.scr	2483	14528512
+knuckle.scr	7189	15224832
+lastangle.scr	1962	14348288
+Layers.scr	3324	14680064
+layer_options.scr	2493	14336000
+layouts1.scr	3794	14442496
+layouts2.scr	3764	14442496
+layouts3.scr	2052	14352384
+LCREA.scr	5327	19398656
+leader_options.scr	2753	14540800
+lgrid.scr	18796	14839808
+limits_options.scr	2052	14295040
+Lines.scr	2943	14757888
+lisp1.scr	2042	14417920
+lisp2.scr	2122	14430208
+list_options.scr	9602	15278080
+lsp_caaadddrrr.scr	3353	14286848
+lsp_eq.scr	2032	14237696
+lsp_exit.scr	2072	14229504
+lsp_getcorner.scr	2042	14245888
+lsp_getorient.scr	2112	14245888
+lsp_logical.scr	2042	14237696
+lsp_math.scr	2152	14241792
+lsp_nentsel.scr	2042	14352384
+lsp_nentselp.scr	2022	14356480
+lsp_prin1.scr	2142	14233600
+lsp_quit.scr	2072	14229504
+lsp_trace_untrace.scr	2082	14225408
+matchprop_lineweight.scr	2292	14434304
+matchprop_options.scr	2883	14508032
+maxsort.scr	2652	14262272
+measure_options.scr	4005	14573568
+menuload_options.scr	6469	14299136
+menuunload_options.scr	6738	14626816
+menu_options.scr	5748	13864960
+mesh_options.scr	2662	13885440
+midpoint_options.scr	2112	13750272
+minsert.scr	3004	14270464
+minsert_options.scr	4696	14852096
+MIRROR2D.SCR	5957	14413824
+mirror3d_options.scr	16063	14516224
+mirror_options.scr	3404	14135296
+Misc.scr	5427	14495744
+moveedata_options.scr	2172	13955072
+move_2d.scr	4436	14397440
+msnapshot_options.scr	2042	13877248
+mspace_options.scr	2192	13934592
+mtext_options.scr	3684	14065664
+nearest_options.scr	1982	13746176
+node_options.scr	1982	13762560
+none_options.scr	1962	13762560
+oops.scr	9503	17272832
+orthogonal_options.scr	2052	13766656
+osmode.scr	2102	13762560
+pan.scr	2313	13905920
+parallel_options.scr	2182	14094336
+pdmode.scr	2733	13934592
+pdsize.scr	2072	13832192
+perpendicular_options.scr	1952	13746176
+pface_options.scr	2132	13877248
+pickdrag.scr	2032	13766656
+pickstyle.scr	2242	13991936
+plane_options.scr	2713	13955072
+planviewint_options.scr	1982	13746176
+plan_options.scr	2092	13914112
+Pline.scr	4396	15147008
+plinedist.scr	2212	13967360
+PLINELengthen1.SCR	3874	14393344
+plinewid.scr	2613	14020608
+pline_trim.scr	2062	14012416
+plotc.scr	5377	20439040
+plote.scr	4716	19095552
+PlotManager.scr	1922	13762560
+pl_elp.scr	20179	20430848
+pmthist.scr	2472	13864960
+pmthist_options.scr	1841	13275136
+point_options.scr	2373	13881344
+polararray2d.scr	5527	14745600
+Polygon2.scr	4636	14770176
+POLYGONS1.SCR	10043	14823424
+polygon_options.scr	2252	13754368
+Polyline.scr	10434	14888960
+polysides.scr	2883	14028800
+pspace_options.scr	2552	13942784
+purge_options.scr	3915	14098432
+qtext_options.scr	2572	13889536
+quadrant_options.scr	2152	13758464
+quick_options.scr	2122	13754368
+ray_options.scr	3273	13971456
+readaccelerators_options.scr	2122	13758464
+recarray.scr	6088	15056896
+RecPgonDonTrace.scr	2483	14184448
+rectangle_options.scr	4425	14131200
+redefine_options.scr	2052	13869056
+redo_options.scr	2092	13869056
+regenauto_options.scr	2222	13774848
+rename_options.scr	3514	14245888
+reverse_polyline.scr	2703	13963264
+Revsurf.scr	5957	16748544
+rotate2d.scr	7089	14409728
+rotate3d_options.scr	2642	13959168
+RotateMirror.scr	4565	14495744
+rotate_options.scr	2662	13955072
+Roughen.scr	38524	50974720
+Roughen_err.scr	32476	50950144
+rtrot_1.scr	2723	14139392
+RULESURF1.SCR	13839	15310848
+rulesurf_maxent_options.scr	6619	39587840
+rulesurf_options.scr	2492	13979648
+scale_circle_options.scr	2793	13971456
+scale_line_options.scr	2753	13950976
+scr1.scr	2793	16109568
+scr2.scr	3814	20054016
+scr3.scr	11395	36659200
+scr4.scr	3133	16879616
+scr5.scr	2613	15757312
+scrollbar_options.scr	2332	13774848
+select_options.scr	2232	13934592
+selgrips_options.scr	2192	13938688
+selgrip_options.scr	4736	14196736
+setlayer_options.scr	2602	13922304
+setvar.scr	6749	14069760
+shapelister.scr	2302	13934592
+shape_options.scr	2132	13922304
+SineCos.scr	41188	15024128
+skpoly.scr	2232	13766656
+snapang.scr	2362	13766656
+snap_options.scr	3003	13844480
+solids.scr	3344	14958592
+spcad.scr	4906	16519168
+sphere.scr	2112	14106624
+Spline.scr	3725	14921728
+statbar_options.scr	2412	13787136
+status_options.scr	2172	13275136
+stretch_dim_options.scr	3104	14098432
+stretch_line_options.scr	2923	13955072
+syswindows_options.scr	4636	16838656
+tablet_options.scr	2002	13275136
+tangent_options.scr	2132	13754368
+test_array1_no.scr	18145	35164160
+Textgrid.scr	3153	14344192
+text_options.scr	2974	13991936
+Theatre.scr	85172	63799296
+Thick_text.scr	32355	20459520
+time_options.scr	2803	13795328
+toolbars_command.scr	9283	14262272
+trace_options.scr	2662	14385152
+trim.scr	5016	14815232
+ucsicon_option.scr	2702	14266368
+ucsicon_options.scr	2312	14249984
+ucs_options.scr	3073	13934592
+undelete_options.scr	2122	14405632
+undo_options.scr	2833	14467072
+units_aunits_auprec_options.scr	5367	14344192
+units_aunits_options.scr	3514	14307328
+units_lunits_options.scr	5287	14340096
+unnamedblock.scr	1962	14254080
+verify.scr	2202	14626816
+View.scr	3274	14688256
+viewpoint.scr	34148	40153088
+viewpoint_options.scr	2243	14336000
+viewports.scr	8230	23248896
+viewres_options.scr	2173	14245888
+view_options.scr	2082	14307328
+visible_options.scr	1941	14241792
+vmlout_options.scr	1982	14422016
+vplayer_options.scr	2392	14405632
+vports_options.scr	4866	17809408
+vsnapshot_options.scr	1932	14249984
+wblock_options.scr	4706	16785408
+wmfout_options.scr	1921	14352384
+xformssTest.scr	2052	14565376
+Xline_ray.scr	3154	14614528
+Xmastree.scr	5587	23547904
+xref_options.scr	2813	15421440
+zoom_options.scr	3053	14417920
+
+
+Error Script
+F:\Build-42\IntelliCAD\Source\Regress\scripts\78346a.scr
+F:\Build-42\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-42\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-42\IntelliCAD\Source\Regress\scripts\Insertf.scr
+F:\Build-42\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+F:\Build-42\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this release:
+78638, 78705, 78721, 78724, 78570.

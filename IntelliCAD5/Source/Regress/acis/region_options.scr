@@ -1,0 +1,68 @@
+logfilename log\region_options.log
+logfileon
+;__________line_________
+line
+0,0
+1,0
+1,1
+0,1
+c
+;__________
+region
+all
+
+;__________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "REGION") (alert "Region err") (princ "OK"))
+;__________circle_________
+erase
+all
+
+circle
+0,0
+1,0
+;__________
+region
+all
+
+;__________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "REGION") (alert "Region err") (princ "OK"))
+;__________polyline_________
+erase
+all
+
+polyline
+0,0
+1,0
+1,1
+0,1
+c
+;__________
+region
+all
+
+;__________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "REGION") (alert "Region err") (princ "OK"))
+;__________arc_line_________
+erase
+all
+
+line
+0,0
+1,0
+1,1
+
+arc
+0,0
+0,1
+1,1
+;__________
+region
+all
+
+;__________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "REGION") (alert "Region err") (princ "OK"))
+;____________
+dxfout output_dxf\region_options.dxf
+6
+quit
+y

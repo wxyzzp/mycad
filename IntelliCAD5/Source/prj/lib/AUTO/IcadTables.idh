@@ -1,0 +1,23 @@
+// interface declarations
+
+interface IIcadTableItem;
+interface IIcadRegisteredApplication;
+interface IIcadRegisteredApplications;
+interface IIcadBlock;
+interface IIcadBlocks;
+interface IIcadDimensionStyle;
+interface IIcadDimensionStyles;
+interface IIcadLayer;
+interface IIcadLayers;
+interface IIcadLinetype;
+interface IIcadLinetypes;
+interface IIcadTextStyle;
+interface IIcadTextStyles;
+interface IIcadUserCoordSystem;
+interface IIcadUserCoordSystems;
+interface IIcadView;
+interface IIcadViews;
+interface IIcadViewport;
+interface IIcadViewports;
+interface IIcadSelectionSet;
+interface IIcadSelectionSets;

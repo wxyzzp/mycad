@@ -1,0 +1,10 @@
+logfilename log/readaccelerators_options.log
+logfileon
+;_____________
+readaccelerators
+dwg/accel.ick
+;______________
+dxfout output_dxf\readaccelerators_options.dxf
+6
+quit
+y

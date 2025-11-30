@@ -1,0 +1,5 @@
+// IDs' for OLE stuff.
+#define IDP_OLE_INIT_FAILED			100
+#define IDP_FAILED_TO_CREATE		102
+#define ID_CANCEL_EDIT_CNTR			32768
+#define ID_CANCEL_EDIT_SRVR			32769

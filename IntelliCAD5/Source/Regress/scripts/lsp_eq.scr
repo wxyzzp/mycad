@@ -1,0 +1,11 @@
+Logfilename log\lsp_eq.log
+Logfileon
+(setq s1 '(1 2 3))
+(setq s2 '(1 2 3))
+(setq s3 s2)
+(if (/= (eq s1 s3) nil) (alert "eq"))
+(if (/= (eq s3 s2) T) (alert "eq"))
+Dxfout output_dxf\lsp_eq.dxf
+6
+Quit
+y

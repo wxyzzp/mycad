@@ -1,0 +1,39 @@
+
+--------------------------------------------------------------------------------
+
+
+
+File Name:	CYB_78120_1.txt
+Date:		22-04-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:78120
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/leader.cpp
+		CvsHist:Eng-us/icad.rc2
+Description:	leader command is terminated if we select incorrect type of entity via "copy" option.
+		
+Comments:	TaL78120
+
+File by File:	
+	*	CvsHist:Source/prj/lib/CMDS/leader.cpp
+		
+		There was a problem with the way result of strsame is compared.
+		Actually the result of strsame should be compared for 1(success) instead of 0
+		
+		if ((strsame("TEXT"/*DNT*/,   pStr) == 0) || ...
+		I have replaced this to 
+		if ((strsame("TEXT"/*DNT*/,   pStr) == 1) || ...
+
+		Also there were small problems with code when user presses escape.
+		I have fixed them by replacing appropriate continue, break and contflag.
+
+		
+	*	CvsHist:Eng-us/icad.rc2
+
+		Changed one resourcestring value 
+		IDC_DIMENSIONS__NTHAT_ENTI_137  to reflect compatibility with ACAD for showing the 		prompt.
+
+			
+		
+--------------------------------------------------------------------------------		

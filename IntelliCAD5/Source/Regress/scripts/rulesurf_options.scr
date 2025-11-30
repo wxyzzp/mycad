@@ -1,0 +1,35 @@
+logfilename log\rulesurf_options.log
+logfileon
+;_____________
+surftab1
+2
+surftab2
+2
+line
+0,0
+2,0
+
+
+0,2
+2,2
+
+rulesurf
+.5,0
+.5,2
+(if (/= (cdr (assoc 0 (entget (entlast)))) "POLYLINE") (alert "Polyline! Ignore if this is ACIS build"))
+explode
+last
+(if (/= (cdr (assoc 0 (entget (entlast)))) "3DFACE") (alert "3DFACE ! Ignore if this is ACIS build"))
+erase
+last
+
+(if (/= (cdr (assoc 0 (entget (entlast)))) "3DFACE") (alert "3DFACE! Ignore if this is ACIS build"))
+erase
+last
+
+(if (/= (cdr (assoc 0 (entget (entlast)))) "LINE") (alert "3DFACE! Ignore if this is ACIS build"))
+;__________
+dxfout output_dxf\rulesurf_options.dxf
+6
+quit
+y

@@ -1,0 +1,34 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-10.txt
+Produce Version		ICAD 4
+Date:				02/19/2004 13:27pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added support for round tripping Viewports, groups, and layouts.
+Layouts were pretty ugly.
+Groups & layouts are part of 'object' round tripping, which has
+now begun. There is still alot to code for.
+
+
+Notes to Developers:
+
+Notes to QA:
+Layouts are by nature confusing. While I feel I have nailed it, I
+would be remiss if I didn't suggest extra attention be given to layouts
+during testing. 
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+

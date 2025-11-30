@@ -1,0 +1,28 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_13122002_1.txt
+Date:		13-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+	The word "extrusion" was spelled incorrectly in several places(extrision). 
+	They are fixed.
+ 	
+
+CHANGED FILES:	
+
+	Source/Prj/Lib/cmds/CmdSolidEdit.cpp:
+	Eng-us/icad.rc2:
+		
+
+
+--------------------------------------------------------------------------------

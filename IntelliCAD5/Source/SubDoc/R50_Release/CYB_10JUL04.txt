@@ -1,0 +1,161 @@
+Document Title:  CYB_10JUL04.txt	
+Product Version: ICAD 5
+Date:  10 July 2004
+Engineer: Mohan Nayak and Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev, R50_Release
+
+2. Modules Affected : 
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+Mohan:
+	I have made the changes in "icad.rc2" file, to change the tooltips as 
+suggested by Dave  for combo boxes like "Layer","Color","Linetype","Lineweight".
+I have also made changes in "icad.rc2" and "IcadMenuTBDef.h" files to change the
+tooltips and helpstrings for  first two buttons on the "Entity Properties" toolbar i.e.
+"Set Layer by Entity " tool and "IntelliCAD layer Explorer" tool. 
+I have also made changes the "icad.rc2" file to change the tooltip for "Dimension Style"
+combo box.
+
+
+Sachin: 
+
+i. Help file Name change:
+	I have changed the references of "icad4.chm" to "icad.chm" in "IcadHelp.h" file
+so that ICAD application will now refer to the help file as "icad.chm" irrespective 
+of any version.
+
+ii. Lineweight correction:
+	There was a Spelling mistake in Lineweight term. At many places it was broken in 
+2 words such as "line weight" OR "Line Weight" or "LineWeight". I have performed a 
+Find and Replace operation and replaced these broken Strings by "Lineweight" as 
+suggested by Dave.
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: CYB_10JUL04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.2.5.2.3 
+	Eng-us/icad.rc2?rev=1.63.2.34.2.8  
+Description: 
+	Tootips and helpstrings changes in "Entity Properties " and "Dimensioning " toolbar as suggested by Dave.
+Reviewer's Name and Comments: None
+
+
+Reference: CYB_10JUL04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/ICAD/IcadHelp.h?rev=1.3.8.3.2.1
+Description:
+	Changed references of filenames from "icad4.chm" to "icad.chm".
+Reviewer's Name and Comments: None
+
+
+Reference: CYB_10JUL04.txt	
+Engineer: Sachin Dange
+Added Files:
+Affected Files:
+	Source/prj/lib/SDS/sds_vars.cpp?rev=1.7.4.9.2.1 
+	Source/prj/lib/ICADLIB/Resbuf.cpp?rev=1.2.8.2.2.1 
+	Source/prj/lib/GR/dispobjs.cpp?rev=1.21.4.12.2.1 
+	Source/prj/lib/GR/DoBase.cpp?rev=1.1.10.5.2.1 
+	Source/prj/lib/GR/DoDef.cpp?rev=1.1.4.8.2.1 
+	Source/prj/lib/GR/DoDef.h?rev=1.1.4.5.2.1 
+	Source/prj/lib/GR/explodemtext.cpp?rev=1.2.4.2.2.1 
+	Source/prj/lib/GR/gr_DisplaySurface.cpp?rev=1.4.4.4.2.1 
+	Source/prj/lib/GR/gr_DisplaySurface.h?rev=1.6.4.2.2.1 
+	Source/prj/lib/GR/gr_view.cpp?rev=1.4.10.3.2.1 
+	Source/prj/lib/GR/gr_view.h?rev=1.3.10.4.2.1 
+	Source/prj/lib/GR/leadergen.cpp?rev=1.12.4.7.2.1 
+	Source/prj/lib/GR/pc2dispobj.cpp?rev=1.7.8.4.2.1 
+	Source/prj/lib/GR/tolerancegen.cpp?rev=1.6.2.4.2.1 
+	Source/prj/lib/DRW/DWGdirectReader.cpp?rev=1.1.4.15.2.7 
+	Source/prj/lib/DRW/DWGdirectWriter.cpp?rev=1.1.4.16.2.10 
+	Source/prj/lib/DRW/dwgload.cpp?rev=1.48.2.27.2.1 
+	Source/prj/lib/DRW/dwgsave.cpp?rev=1.47.2.23.2.1 
+	Source/prj/lib/DB/db1.cpp?rev=1.33.2.13.2.2 
+	Source/prj/lib/DB/dbdefines.h?rev=1.22.2.12.2.1 
+	Source/prj/lib/DB/dimstyletabrec.cpp?rev=1.4.4.2.2.1 
+	Source/prj/lib/DB/dimstyletabrec.h?rev=1.5.4.2.2.1 
+	Source/prj/lib/DB/drawing.cpp?rev=1.25.2.16.2.1 
+	Source/prj/lib/DB/drawing.h?rev=1.7.4.9.2.1 
+	Source/prj/lib/DB/entity.h?rev=1.3.4.6.2.1 
+	Source/prj/lib/DB/layertabrec.h?rev=1.4.4.2.2.1 
+	Source/prj/lib/CMDS/changeprop.cpp?rev=1.5.4.5.2.1 
+	Source/prj/lib/CMDS/cmds3.cpp?rev=1.17.4.14.2.1 
+	Source/prj/lib/CMDS/cmds9.cpp?rev=1.25.4.4.2.2 
+	Source/prj/lib/CMDS/cmdsDimBlock.cpp?rev=1.3.4.4.2.1 
+	Source/prj/lib/CMDS/cmdsDimVars.cpp?rev=1.13.4.4.2.1 
+	Source/prj/lib/CMDS/DimDiaCenterMark.cpp?rev=1.3.2.2.2.1 
+	Source/prj/lib/CMDS/DimDiaMain.cpp?rev=1.6.2.3.2.1 
+	Source/prj/lib/CMDS/dxfInOut.cpp?rev=1.4.4.7.2.1 
+	Source/prj/lib/CMDS/layer.cpp?rev=1.6.4.6.2.1 
+	Source/prj/lib/CMDS/todo.cpp?rev=1.25.4.10.2.1 
+	Source/prj/lib/AUTO/icadplotcfg.cpp?rev=1.4.4.5.2.1 
+	Source/prj/lib/AUTO/icadplotcfg.h?rev=1.1.1.1.12.3.2.1 
+	Source/prj/lib/AUTO/PlotProperties.cpp?rev=1.2.4.3.2.1 
+	Source/prj/lib/AUTO/PlotProperties.h?rev=1.2.10.3.2.1 
+	Source/prj/ICAD/res/icadrc2.h?rev=1.59.2.27.2.5 
+	Source/prj/ICAD/Configure.h?rev=1.18.4.6.2.1 
+	Source/prj/ICAD/DrawDevice.h?rev=1.1.4.3.2.1 
+	Source/prj/ICAD/icadapi.cpp?rev=1.64.2.29.2.2 
+	Source/prj/ICAD/IcadApp.cpp?rev=1.28.4.21.2.5 
+	Source/prj/ICAD/icadEntPropMain.cpp?rev=1.15.4.5.2.1 
+	Source/prj/ICAD/icadEntPropTabs.cpp?rev=1.10.4.6.2.1 
+	Source/prj/ICAD/icadEntPropTabs.h?rev=1.6.4.2.2.1 
+	Source/prj/ICAD/IcadExplorer.cpp?rev=1.33.4.14.2.1 
+	Source/prj/ICAD/icadLineWeightDia.cpp?rev=1.1.4.2.2.1 
+	Source/prj/ICAD/IcadMenuTBDef.H?rev=1.19.2.5.2.2 
+	Source/prj/ICAD/IcadStatusBar.cpp?rev=1.9.2.8.2.1 
+	Source/prj/ICAD/icadwndaction.cpp?rev=1.22.2.12.2.2 
+	Source/prj/ICAD/LineweightDlg.cpp?rev=1.1.4.1.2.2 
+	Source/prj/ICAD/LWeightComboBox.cpp?rev=1.1.4.2.2.3 
+	Source/prj/ICAD/LWeightComboBox.h?rev=1.1.4.2.2.1 
+	Source/prj/ICAD/printadvancedtab.cpp?rev=1.2.4.6.2.1 
+	Source/prj/ICAD/printadvancedtab.h?rev=1.2.4.4.2.1 
+	Source/prj/ICAD/printerdrawdevice.cpp?rev=1.5.6.3.2.1 
+	Source/prj/ICAD/PrinterDrawDevice.h?rev=1.2.8.3.2.1 
+	Source/Licensed/DWGdirect/Include/Gs/PlotStyle.h?rev=1.1.4.2.2.1 
+	Source/Licensed/DWGdirect/Include/DbEntity.h?rev=1.1.4.4.2.2 
+	Source/Licensed/DWGdirect/Include/DbTable.h?rev=1.1.4.2.2.2 
+	Source/Licensed/DWGdirect/Include/ErrorDefs.h?rev=1.1.4.4.2.2 
+	Source/Licensed/DWGdirect/Exports/SvgExport/Include/SvgExport.h?rev=1.1.2.2 
+	Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfDrawObject.cpp?rev=1.1.2.3 
+	Eng-us/icad.rc2?rev=1.63.2.34.2.7 
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.5 
+Description:
+	Corrected the Spelling Mistake in "Lineweight" throughout the code including comments
+	as suggested by Dave.
+Reviewer's Name and Comments: None
+
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+
+9.  Installation Issues:
+

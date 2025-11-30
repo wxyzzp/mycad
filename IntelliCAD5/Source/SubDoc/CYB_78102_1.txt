@@ -1,0 +1,25 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78102_1.txt
+Date:		10-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78102
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+		CvsHist:Source/prj/lib/CMDS/DimAngA3P.cpp
+Description: 	Dimension text not shown at the default position.
+Comments:	TaL78075
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+		Restored the text mid-point when the return value of sds_dragobject is RTNONE. 
+*		CvsHist:Source/prj/lib/CMDS/DimAngA3P.cpp
+		Corrected the method of calculating dist1 when dimtih is on.
+
+--------------------------------------------------------------------------------
+

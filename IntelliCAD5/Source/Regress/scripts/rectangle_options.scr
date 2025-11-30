@@ -1,0 +1,9 @@
+logfilename log\rectangle_options.log
+logfileon
+;_________
+(load "lisp\rectangle_options.lsp")
+;__________
+dxfout output_dxf\rectangle_options.dxf
+6
+quit
+y

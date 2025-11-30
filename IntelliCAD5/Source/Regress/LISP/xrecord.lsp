@@ -1,0 +1,32 @@
+(defun add-record (/ Xrec Xname)
+(setq Xrec '((0 . "XRECORD")
+(100 . "AcDbXrecord")
+(1 . "DWGPROPS COOKIE")
+(9 . "")
+)
+)
+(setq Xname (entmakex Xrec))
+(dictadd (namedobjdict) "DWGPROPS" Xname)
+)
+
+(prompt "\nType in UPDREV to start this routine")
+(defun c:updRev (/ xlist rev)
+(setq Rev (getstring "\nEnter drawing Revision Number: "))
+(setq xlist (dictsearch (namedobjdict) "DWGPROPS"))
+(if Xlist
+(progn(dictremove (namedobjdict) "DWGPROPS")
+(dictadd (namedobjdict) "DWGPROPS" (entmakex (subst (cons 9 Rev)
+(assoc 9 xlist) xlist)))
+)
+
+(progn
+(add-record)
+(setq xlist (dictsearch (namedobjdict) "DWGPROPS"))
+(dictremove (namedobjdict) "DWGPROPS")
+(dictadd (namedobjdict) "DWGPROPS" (entmakex (subst (cons 9 Rev)(assoc
+9 xlist) xlist)))
+;(entmod (subst (cons 9 Rev) (assoc 9 xlist) xlist))
+)
+)
+(princ)
+)

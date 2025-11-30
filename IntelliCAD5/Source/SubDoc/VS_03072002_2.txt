@@ -1,0 +1,84 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_03072002_2.txt
+Date:		03-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		Source/Regress/base/Viewports.dxf
+		Source/Regress/base/Viewpoint.dxf
+		Source/Regress/base/verify.dxf
+		Source/Regress/base/Theatre.dxf
+		Source/Regress/base/Textar.dxf
+		Source/Regress/base/text.dxf
+		Source/Regress/base/Move_2d.dxf
+		Source/Regress/base/Mirror2d.dxf
+		Source/Regress/base/Insertf.dxf
+		Source/Regress/base/ezoom_xline.dxf
+		Source/Regress/base/ezoom_polygon.dxf
+		Source/Regress/base/ezoom_ellipse.dxf
+		Source/Regress/base/ezoom_cir.dxf
+		Source/Regress/base/Copy2d.dxf
+		Source/Regress/base/Conference.dxf
+		Source/Regress/base/Chair_rarray.dxf
+		Source/Regress/base/Approved.dxf
+
+		Source/Regress/Dwg/viewports.dwg
+		Source/Regress/Dwg/viewpoint.dwg
+		Source/Regress/Dwg/thick_text.dwg
+		Source/Regress/Dwg/Insertf.dwg
+		Source/Regress/Dwg/DWG1.dwg
+		Source/Regress/Dwg/Chair.dwg
+
+		Source/Regress/Lisp/verify.lsp
+		Source/Regress/Lisp/Thick_text.lsp
+		Source/Regress/Lisp/Theatre.lsp
+		Source/Regress/Lisp/meter.lsp
+		Source/Regress/Lisp/laylist.lsp
+		Source/Regress/Lisp/laych.lsp
+		Source/Regress/Lisp/findtxt.lsp
+		Source/Regress/Lisp/ezoom_xline.lsp
+		Source/Regress/Lisp/ezoom_polygon.lsp
+		Source/Regress/Lisp/ezoom_ellipse.lsp
+		Source/Regress/Lisp/ezoom_cir.lsp
+		Source/Regress/Lisp/Conference.lsp
+		Source/Regress/Lisp/chair_rarray.lsp
+		Source/Regress/Lisp/Approved.lsp
+
+		Source/Regress/scripts/viewports.scr
+		Source/Regress/scripts/viewpoint.scr
+		Source/Regress/scripts/verify.scr
+		Source/Regress/scripts/Thick_text.scr
+		Source/Regress/scripts/Theatre.scr
+		Source/Regress/scripts/textar.scr
+		Source/Regress/scripts/move_2d.scr
+		Source/Regress/scripts/Insertf.scr
+		Source/Regress/scripts/ezoom_xline.scr
+		Source/Regress/scripts/ezoom_polygon.scr
+		Source/Regress/scripts/ezoom_ellipse.scr
+		Source/Regress/scripts/ezoom_cir.scr
+		Source/Regress/scripts/copy2d.scr
+		Source/Regress/scripts/Conference.scr
+		Source/Regress/scripts/circlesEntity.scr
+		Source/Regress/scripts/Chair_rarray.scr
+		Source/Regress/scripts/arc.scr
+		Source/Regress/scripts/approved.scr
+
+
+Changed files:	
+		None
+
+Deleted files:	
+		None
+
+Description:	Regress application changes -- additional log file created.
+Comments:	This submission adds new scr, base, lisp and dwg files for regress
+
+File by File:	
+-----------------------------------------------------------------------------

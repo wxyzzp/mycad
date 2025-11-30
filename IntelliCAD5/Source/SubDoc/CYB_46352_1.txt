@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+File:		CYB_46352_1.txt
+Date:		28-05-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:46352
+Affected files:			
+		CvsHist:Source/Source/prj/lib/CMDS/cmdsDim.cpp
+Description: 	Dimstyle in new dwg looks like dimstyle in other dwg.
+Comments:	TaL46352
+--------------------------------------------------------------------------------
+File by File:
+
+	*	CvsHist:Source/Source/prj/lib/CMDS/cmdsDim.cpp
+		Dim command will continue untill enter is pressed or "done" or "exit" is 
+		pressed. Otherwise it will continue for ever. On "dim" command, cmd_DimFunc() 
+		is called which has a drawing variable. As this variable is set only once when 
+		the function is called, swithing drawing did'nt affect the drawing variable 
+		and hence the problem. To solve the probem, what we have done is before 
+		executing any command, have checked if the drawing is switched after comparing 
+		the local variable with with SDS_CURDWG variable. So now every command will 
+		be using the SDS_CURDWG variable.
+
+--------------------------------------------------------------------------------
+				

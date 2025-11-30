@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------------
+File:		CYB_78162_1.txt
+Date:		20-05-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78162
+Affected files:			
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.h
+		CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+		CvsHist:Source/Source/prj/ICAD/textstyledlg.cpp
+Description:	Linetypes set in layer gets deleted.		
+		a) Deleting used linetype should update the layer listctrl in Icad Explorer.
+		b) Setting same linetype to a layer in Icad Explorer again and again adds entry 			for that linetype in linetype listctrl
+		c) Title of delete dialog box is not set.
+Comments:	TaL78162
+File by File:
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		Added following function to update the layers which uses the linetype which we                    are deleting.		
+		void IEXP_CdetailView::IEXP_UpdateLineTypeName(struct resbuf * rbb)	
+                Added code to check the existance of linetype instead of blindly adding it to                 list ctrl.
+                Added code at various places in this file to set the title of the delete dialog                 box.
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.h
+		declaration of follwing fucntion.
+		void IEXP_CdetailView::IEXP_UpdateLineTypeName(struct resbuf * rbb)	
+	*	CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+                Added code in this file to set the title of the delete dialog box.
+	*	CvsHist:Source/Source/prj/ICAD/textstyledlg.cpp
+                Added code in this file to set the title of the delete dialog box.
+--------------------------------------------------------------------------------

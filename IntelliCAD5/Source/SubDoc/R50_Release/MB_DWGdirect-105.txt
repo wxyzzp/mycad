@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-105
+Product Version:        IntelliCAD 5
+Date:                   09/28/2004 08:05am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DB
+	DWGDIRECT
+	ICAD
+	CMDS
+
+3.  Overview:
+	This submission passes the DWGdirect error to file open through to the 
+	error message box that is displayed when a drawing open fails. It makes the
+	description of the error more concise, and informative.
+
+	Also this submission removes the BUILD_WITH_ACAD2002_SUPPORT #define from
+	the source stream. Most of the changes were for this reason.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/icad/configure.h
+        source/prj/icad/icadsetvarsdia.cpp
+        source/prj/icad/icaddoc.cpp
+        source/prj/icad/icadapp.cpp
+        source/prj/icad/icadapi.cpp
+        source/prj/icad/dimbitmap.cpp
+        source/prj/icad/change.cpp
+        source/prj/lib/cmds/cmdsinet.cpp
+        source/prj/lib/cmds/cmds4.cpp
+        source/prj/lib/cmds/clonehelper.cpp
+        source/prj/lib/db/layertabrec.h
+        source/prj/lib/db/extvars.h
+        source/prj/lib/db/entity.h
+        source/prj/lib/db/drawing.h
+        source/prj/lib/db/dbprotos.h
+        source/prj/lib/db/dbdefines.h
+        source/prj/lib/db/oldvars.cpp
+        source/prj/lib/db/layertabrec.cpp
+        source/prj/lib/db/handitem.cpp
+        source/prj/lib/db/entity.cpp
+        source/prj/lib/db/drawing.cpp
+        source/prj/lib/db/db_util.cpp
+        source/prj/lib/db/db1.cpp
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/prj/lib/drw/dwgdirectreader.cpp
+        source/prj/lib/drw/dwgdirectprotocolextension.cpp
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-105.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

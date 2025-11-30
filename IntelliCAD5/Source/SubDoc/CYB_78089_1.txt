@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78098
+Affected files:			
+		Source/prj/ICAD/icadapi.cpp?rev=1.64.4.18 
+Description:	VBA - Getpoint failed when called through Microsoft Word's Macros. Actually syncronization of threads problem. 		Current solution is workaround from Denis.
+Comments:	TaL78098
+
+Problem analysis:	
+
+The bug is seen for methods like GetPoint, GetInteger, GetReal, GetCorner, GetDistance, GetOrientation etc. Maybe for most of GetXXX methods of VBA. So this bug becomes more important...
+ 
+The problem is, the method GetXXX fails if there are 3-4 consecutive calls for GetXXX methods. A run-time error is displayed like -" Method 'GetPoint' of 'IcadUtility' failed. "
+ 
+Please Note : This error is similar to the error displayed when a user presses ESCAPE  at  GetPoint() method which waiting for a point to be entered by user.
+ 
+After debugging its seen that its an multithreading / syncronization problem in IntelliCAD and in this case the problematic variable is global variable "SDS_userbreak".
+ 
+Here's the detail explanation of bug, explained for GetPoint method of VBA:
+------------------------------------------------------------------------------------------------------------------
+ 
+When we call getpoint method from VBA application,  CIcadDoc::AUTO_getpoint() of file Icad\DocAutoSds.cpp get called which in turn calls Execute() of GetPointJob class which is again in same file. In this Execute() there is a call for sdsengine_getpoint () which asks user a point. After this there is a statement which is creating the actual problem. If we comment out this statement we donot get the above mentioned error but a different problem is seen. I will discuss this problem later below. Here's the problematic statement.
+ 
+SDS_SendMessage(WM_MENUSELECT,0,(LPARAM)"^C^C^C"/*DNT*/);
+ 
+This statement creates an ESCAPE event and calls SDS_PostInputEvent() which in turn adds the event in the input event queue. Note that this event is just added to the queue. Its not yet executed and the Execute() proceeds further and returns success of getpoint method and now the next GetPoint statement of VBA application executes and waits for user to enter the point at "SDS_WaitLoop()" in SDS\sds_get.cpp. Now the "ESCAPE" event which was added into input queue comes into play and breaks the "SDS_WaitLoop()" asif the user has pressed escape and hence the error propmt. The escape event increaments global variable "SDS_userbreak" and in SDS_WaitLoop() we check for sds_usrbrk() which is nothing but "SDS_userbreak".
+ 
+ 
+SDS_SendMessage(WM_MENUSELECT,0,(LPARAM)"^C^C^C"/*DNT*/);
+ 
+The purpose of above statement is to clear prompt. After GetPoint() method of VBA is executed there is again a call for SDS_AskForPoint from SDS_cmdthread in file Icad\Icadapi.cpp. So its basically asking for a point. We need to cancel this and so we generate a ESCAPE event, as only "sds_usrbrk()" can cancel the waiting for a point from SDS_WaitLoop(). If we comment out this SDS_SendMessage() statement, we wont get the above error but after completion of GetPoint methods we need to press "ESCAPE" before giving the next command at command prompt.
+ 
+What I think is there should be synchronization between SDS_AskForPoint() from SDS_cmdthread and the ESCAPE event we have created to cancel this asking of point. Otherwise the ESCAPE event is going to cancel some other undesired operation.
+ 
+I did try to replace the above SDS_SendMessage() which just adds event in inputput event queue by the following
+ 
+InputEvent theEvent( SDS_EVM_KEYCHAR, 27);    
+SDS_ProcessInputEvent( &theEvent);
+ 
+The above code does execute the event instead of just adding in queue but still its not synchronized with SDS_AskForPoint from SDS_cmdthread.
+ 
+ 
+VBA GetXXX method works fine from MS Word or VBA application created but fails to work through VBA IDE invoked through ICAD.
+ 
+Same IntelliCAD sourcecode and same VBA macro runs as expected when invoked through external process (like MSWord, VBA application ) and fails when run with Icad process. 
+ 
+This makes clear that the context in which VBA IDE is launched is important.As stated earlier this problem is due to following SDS_SendMessage statement
+
+SDS_SendMessage(WM_MENUSELECT,0,(LPARAM)"^C^C^C"/*DNT*/);
+
+We have a event ( VBAGetEvent() ) set for completion for sds_getpoint but NO such event for the above SDS_SendMessage. Please note that above statement ultimately resolves to posting of message in inputevnt queue and this message is later wrongly consumed by the next GetXXX method.
+ 
+I tried creating an event for this SDS_SendMessage() and setting it in core loop of AskforPoint where SDS_USRBRK() is checked and SDS_USERBREAK = 0; But this did NOT seem to work. Its goes into some deadlock state. The WM_MENUSELECT event posted does not get executed and so the new event created
+does NOT get set and hence the program does not proceed.
+ 
+So the solution to this problem should be something different. The thread processing WM_MENUSELECT should not be blocked before. As mentioned earlier, if the context in which VBA IDE is launched can solve the problem but looking as the way VBA is integrated into IntelliCAD, I do not think this is possible and also the resultant VBA IDE would be comparatively slower.
+ 
+Commenting out the SDS_SendMessage does solves the problem but require to press an escape after all the inputs are completed, to get the normal command prompt back.
+ 
+
+
+Proposed Solution:	
+Work around suggested by Denis.  Setting the cmds thread priority high fixes the problem.
+
+File By File :
+	*	Source/prj/ICAD/icadapi.cpp?rev=1.64.4.18 
+		Increase the cmds thread priority.
+--------------------------------------------------------------------------------

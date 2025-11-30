@@ -1,0 +1,22 @@
+;;;;Created_by_Cybage_on_3:13PM_7/22/2002;;;;;;;;;;;;;
+;;;;This_script_calls_functions_for_creating_sine_and_cos_functions;;;;;;;;
+logfilename log\SineCos.log
+logfileon
+;;;;;;;;;;;;;;;;;;
+(load "lisp\sinecurves.lsp")
+(load "lisp\cosinecurves.lsp")
+sinecurves
+cosinecurves
+;;;;;;;;;;;;;;;;;;;;;
+text
+0,-2
+1
+0
+Done!!
+;;;;;;;;;;;;
+zoom
+extents
+;;;;;;;;;;;;;;;
+dxfout output_dxf\SineCos.dxf
+6
+exit y

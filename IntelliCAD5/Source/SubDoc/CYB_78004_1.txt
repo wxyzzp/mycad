@@ -1,0 +1,20 @@
+
+--------------------------------------------------------------------------------
+
+
+
+File Name:	CYB_78004_1.txt
+Date:		22-04-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:78004
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/cmds9.cpp
+Description:	The LIST command does not show all the information of LEADER.Modification of 		cmd_print_overrides function for lost changes.
+		
+Comments:	TaL78004
+File by File:	
+	*	CvsHist:Source/prj/lib/CMDS/cmds9.cpp
+		Added lost changes in the function cmd_prtoverrides of  bug 77969 and bug 78024.
+		
+--------------------------------------------------------------------------------		

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------------------
+File Name:	CYB_78202_1.txt
+Date:		17-06-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78202
+Affected files:			
+		CvsHist:Source/Source/prj/lib/GR/selectedent.cpp
+		CvsHist:Source/Source/prj/ICAD/icaddrawbitmap.cpp
+Description: 	Entity Snaps not snapping to symbols.
+Comments:	TaL78202
+
+File by File:  
+		* CvsHist:Source/Source/prj/lib/GR/selectedent.cpp
+		* CvsHist:Source/Source/prj/ICAD/icaddrawbitmap.cpp
+		This is a modification of the previous fix, where the entities
+		in blocks would not snap after opening explorer.While 
+		working with the code previously it was found that gr_selected
+		woule not return the correct selected entity, even though the entity was
+		selected properly. It was found that the entity extents were wrong. 
+		It was fixed at that time by recalculating the entity extents every time an 
+		entity was selected.
+ 
+			The fix now has been modified to the location where the extents
+		were being wrongly set. The code for creating a bitmap ( required to be 
+		displayed in explorer ) actually modifed the entity extents. The previous fix
+		has now been completely undone.
+
+		SDS_UpdateEntDisp(ename,FstPt ? 5 : 1,pView->m_pCurDwgView);
+		The flags which used to set the extents have been removed.    
+-------------------------------------------------------------------------------

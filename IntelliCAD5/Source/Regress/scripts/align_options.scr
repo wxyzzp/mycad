@@ -1,0 +1,212 @@
+logfilename log\align_options.log
+logfileon
+;________
+vpoint
+.5,2,1.5
+;_________1
+color 1
+line
+0,0
+1,0
+
+color 2
+line
+0,1
+2,2
+
+align
+l
+
+0,1
+0,0
+
+;_________1
+color 3
+line
+0,0
+1,0
+
+color 4
+line
+0,1
+2,2
+
+align
+l
+
+0,1
+0,0
+2,2
+1,0
+
+y
+;_________2
+color 5
+line
+0,1
+1,1
+
+color 6
+line
+0,2
+2,3
+
+align
+l
+
+0,2
+0,1
+2,3
+1,1
+
+n
+;_________1
+color 7
+ai_box
+1,0,1
+2
+c
+0
+color 1
+ai_pyramid
+0,0,0
+0,1,0
+0,1,1
+0,0,1
+-1,.5,.5
+align
+l
+
+0,0
+1,0,1
+0,1
+3,0,1
+0,1,1
+3,0,3
+;_________1
+color 2
+ai_box
+1,0,1
+2
+c
+0
+color 3
+ai_pyramid
+0,0,0
+0,1,0
+0,1,1
+0,0,1
+-1,.5,.5
+align
+l
+
+0,0
+1,0,1
+0,1
+3,0,1
+0,1,1
+3,0,3
+;_________1
+color 4
+circle
+0,0
+1,0
+color 5
+circle
+0,1
+2,2
+align
+l
+
+0,1
+0,0
+
+;_________1
+color 6
+circle
+0,0
+1,0
+color 7
+circle
+0,1
+2,2
+align
+l
+
+0,1
+0,0
+2,2
+1,0
+
+y
+;_________2
+color 1
+circle
+0,1
+1,1
+color 2
+circle
+0,2
+2,3
+align
+l
+
+0,2
+0,1
+2,3
+1,1
+
+n
+;_________1
+color 3
+ai_box
+1,0,1
+2
+c
+0
+color 4
+ai_pyramid
+0,0,0
+0,1,0
+0,1,1
+0,0,1
+-1,.5,.5
+align
+l
+
+0,0
+1,0,1
+0,1
+3,0,1
+
+y
+;_________2
+color 5
+ai_box
+1,0,1
+2
+c
+0
+color 6
+ai_pyramid
+0,0,0
+0,1,0
+0,1,1
+0,0,1
+-1,.5,.5
+align
+l
+
+0,0
+1,0,1
+0,1
+3,0,1
+
+n
+zoom
+extents
+;_________
+dxfout output_dxf\align_options.dxf
+6
+quit
+y

@@ -1,0 +1,45 @@
+Document Title:  SH_78528_1.txt	
+Product Version: ICAD 5.0
+Date:  8/27/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/3dsolids.cpp
+   
+3. Overview:
+
+This submission fixes the bug #78528 - "Prompts for ai_sphere command differ from ACAD".
+The prompts shown for ai_sphere in IntelliCAD differ from those shown by ACAD. 
+ACAD prompts for number of longitudinal and latitudinal segments while 
+IntelliCAD did not. Similar problem exists for ai_torus command also. The problems are 
+all fixed.
+
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:                  
+	Name of Script file:  78528.scr
+
+8.  Notes to Localization: 
+
+
+
+

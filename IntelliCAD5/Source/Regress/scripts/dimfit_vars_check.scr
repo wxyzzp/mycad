@@ -1,0 +1,37 @@
+logfilename log\dimfit_vars_check.log
+logfileon
+;__________0
+dimfit
+0
+(if (= (getvar "dimatfit") 0)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 0)(princ "OK")(entsel))
+;__________1
+dimfit
+1
+(if (= (getvar "dimatfit") 1)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 0)(princ "OK")(entsel))
+;___________2
+dimfit
+2
+(if (= (getvar "dimatfit") 2)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 0)(princ "OK")(entsel))
+;__________3
+dimfit
+3
+(if (= (getvar "dimatfit") 3)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 0)(princ "OK")(entsel))
+;___________4
+dimfit
+4
+(if (= (getvar "dimatfit") 3)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 1)(princ "OK")(entsel))
+;__________5
+dimfit
+5
+(if (= (getvar "dimatfit") 3)(princ "OK")(entsel))
+(if (= (getvar "dimtmove") 2)(princ "OK")(entsel))
+;___________
+dxfout output_dxf\dimfit_vars_check.dxf
+6
+quit
+y

@@ -1,0 +1,14 @@
+logfilename log\78724.log
+logfileon
+;____________________
+(xload "sds\78724.dll")
+(if (= (c:functest) nil) (alert "error"))
+;(command "delay" "100" "functest" "delay" "100" "quit")
+;__________
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+;_________________
+dxfout output_dxf\78724.dxf
+6
+quit
+y

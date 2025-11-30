@@ -1,0 +1,213 @@
+Notes for Build_46:
+
+Build Date: Apr 21, 2004.
+To reproduce this build, checkout tag Build_46.  This produces a non-committable working area.  If you want to commit changes made to this work area, please update IntelliCAD to R40_Dev (cvs update -cd R40_Dev or refer to checkin_process.doc) and proceed with your checkin process.
+
+ucs_options.scr fails regress.  I am unable to isolate the submission that 
+causes this error.  All other scripts pass when run individually.
+
+CHANGED FILES:
+M	2004-04-19:08:50	cyberage	1.64.4.49	IntelliCAD/Source/prj/ICAD/icadapi.cpp
+M	2004-04-19:08:54	cyberage	1.17.6.16	IntelliCAD/Source/prj/lib/CMDS/cmds3.cpp
+M	2004-04-19:09:23	cyberage	1.9.6.3	IntelliCAD/Source/ThirdParty/DCL_Components/Source/Main.cpp
+M	2004-04-19:09:23	cyberage	1.8.6.4	IntelliCAD/Source/ThirdParty/DCL_Components/Source/ImageButton.cpp
+M	2004-04-19:09:23	cyberage	1.4.6.3	IntelliCAD/Source/ThirdParty/DCL_Components/Include/ImageButton.h
+A	2004-04-19:11:55	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78738_1.txt
+A	2004-04-19:11:55	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78529_1.txt
+A	2004-04-19:11:55	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_74349_1.txt
+M	2004-04-19:11:55	cyberage	1.1.2.2	IntelliCAD/Source/Regress/scripts/cmdactive_2.scr
+M	2004-04-19:11:55	cyberage	1.1.2.2	IntelliCAD/Source/Regress/scripts/cmdactive_1.scr
+M	2004-04-19:11:55	cyberage	1.1.2.2	IntelliCAD/Source/Regress/scripts/78724.scr
+A	2004-04-19:11:55	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts_submitted/78738.scr
+A	2004-04-19:11:55	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts_submitted/78529.scr
+A	2004-04-16:04:48	denisp	1.1.2.1	IntelliCAD/Source/Regress/layout_scripts/layout_delete.scr
+A	2004-04-16:04:48	denisp	1.1.2.1	IntelliCAD/Source/Regress/layout_scripts/layout_set_pspaces.scr
+A	2004-04-16:04:48	denisp	1.1.2.1	IntelliCAD/Source/Regress/layout_scripts/layout_set_viewport.scr
+A	2004-04-16:04:48	denisp	1.1.2.1	IntelliCAD/Source/Regress/layout_scripts/switch_layouts.scr
+M	2004-04-16:04:51	denisp	1.63.4.60	IntelliCAD/Eng-us/icad.rc2
+M	2004-04-16:04:53	denisp	1.1.2.5	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+M	2004-04-16:04:55	denisp	1.1.2.23	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-04-14:18:40	markba	1.1.2.2	IntelliCAD/Source/Regress/scripts/68870.scr
+A	2004-04-14:18:40	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectScriptFix.txt
+M	2004-04-14:18:40	markba	1.1.2.4	IntelliCAD/Source/prj/ICAD/UCSIcon.cpp
+M	2004-04-14:18:40	markba	1.4.6.7	IntelliCAD/Source/prj/lib/CMDS/dxfInOut.cpp
+M	2004-04-14:18:40	markba	1.8.6.10	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+A	2004-04-19:19:54	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-30.txt
+M	2004-04-19:19:54	markba	1.1.2.6	IntelliCAD/Source/prj/lib/DB/DbLayout.h
+M	2004-04-19:19:54	markba	1.13.6.19	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-04-19:19:54	markba	1.11.4.10	IntelliCAD/Source/prj/lib/DB/objects.h
+M	2004-04-19:19:54	markba	1.1.1.1.14.2	IntelliCAD/Source/prj/lib/DB/wipeout.cpp
+M	2004-04-19:19:54	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-19:19:54	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-04-19:19:54	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.cpp
+M	2004-04-19:19:54	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/DWGdirectFiler.h
+M	2004-04-19:19:54	markba	1.1.2.28	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-04-19:19:54	markba	1.1.2.24	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-04-19:19:54	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-04-19:19:54	markba	1.1.2.27	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-04-19:19:54	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-04-19:19:54	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-04-19:19:54	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/Utilities.h
+M	2004-04-19:19:54	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/ICADLIB/Assoc.cpp
+M	2004-04-19:19:54	markba	1.14.6.8	IntelliCAD/Source/prj/lib/ICADLIB/icadlib.h
+A	2004-04-20:14:58	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-31.txt
+M	2004-04-20:14:58	markba	1.1.2.7	IntelliCAD/Source/prj/lib/DB/DbLayout.h
+M	2004-04-20:14:58	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-04-20:14:58	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-04-20:14:58	markba	1.1.2.25	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+A	2004-04-19:02:45	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_45.txt
+M	2004-04-19:03:03	master	1.1.2.2	IntelliCAD/Source/SubDoc/Build_45.txt
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/57674.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/70921.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/70921_1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78167_1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78346d.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78346h.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78393.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78414.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/78621.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/Array.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/Circles.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/bhatch_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/bhatch_options_2.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/boundary_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/export_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/linetype_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/list_options.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/test_array.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/test_array1.scr
+R	2004-04-21:05:59	master	1.1	IntelliCAD/Source/Regress/scripts_error/textar.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/57674.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78167_1.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78346d.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78346h.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/78393.scr
+A	2004-04-21:06:01	master	1.1.2.1	IntelliCAD/Source/Regress/scripts/78621.scr
+A	2004-04-21:06:01	master	1.2.10.3	IntelliCAD/Source/Regress/scripts/Array.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/boundary_options.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/export_options.scr
+A	2004-04-21:06:01	master	1.1.6.3	IntelliCAD/Source/Regress/scripts/linetype_options.scr
+A	2004-04-21:06:01	master	1.2.6.3	IntelliCAD/Source/Regress/scripts/test_array.scr
+A	2004-04-21:06:01	master	1.2.6.3	IntelliCAD/Source/Regress/scripts/test_array1.scr
+A	2004-04-21:06:01	master	1.1.10.3	IntelliCAD/Source/Regress/scripts/textar.scr
+M	2004-04-21:06:02	master	1.4.8.53	IntelliCAD/Source/prj/ICAD/blddate.h
+CHANGELOG:
+--------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-30.txt
+Date:			04/19/2004 10:20am
+Engineer(s):		Mark Barrow
+
+Change Description:
+This submission finishes all the issues associated with round tripping
+wipeout entities. In addition it lays the groundwork for applying the
+binary data gathering methods needed for all other objects and entities
+that have binary data.
+
+Notes to QA:
+Wipeout entities now round trip correctly.
+
+Files Affected:
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\db\dblayout.cpp
+\source\prj\lib\db\entities.h
+\source\prj\lib\db\objects.h
+\source\prj\lib\db\wipeout.cpp
+\source\prj\lib\icadlib\assoc.cpp
+\source\prj\lib\icadlib\icadlib.h
+--------------------------------------------------------------------------------
+Document Title		MB_DWGdirectWriter-31.txt
+Date:			04/20/2004 07:49am
+Engineer(s):		Mark Barrow
+
+Change Description:
+Completes code to round trip minserts.  In addition, I came across a problem with CDbLayout and CDbPlotSettings which CDbLayout is derived from.  Both contain a flags variable that is set/get via the set_70() and get_70() calls. The one in CDbLayout was commented out with a note that the CDbPlotSettings flag would be used. The problem is that both of these classes us bits 0x1 and 0x2 for different things. I checked with Denis, and he actually convinced me that the fix I proposed (uncomment the set_70()/get_70() of CDbLayout) would overwrite the ones for CDbPlotSettings. However, the ones in CDbPlotSettings have overwritten the ones in CDbLayout.
+I have implemented a (possibly) temporary fix by renaming the CDbLayout set/get_70() functions to set_Layout70() and get_Layout70(). This allows both flags to exist independant of one another. There may be some entget ramifications that I need to ponder, and I am awaiting Denis' input. However, I am making this change to allow Denis and me to proceed.
+
+Note: I don't anticipate any problems, because the CDbLayout 70 group accessors have been commented out for some time.
+
+
+Files Affected:
+\source\prj\lib\db\dblayout.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+--------------------------------------------------------------------------------
+Date: 16-04-2004. 
+Developer: DenisPetrov 
+Company: ITC 
+Reference: 
+Affected files: 
+Eng-us/icad.rc2 
+Source/prj/ICAD/LayoutTabs.cpp 
+Source/prj/lib/CMDS/cmdsLayout.cpp 
+Description: 1) Fixed crash on loading of read-only drawing. 
+2) Fixed deletion of layouts. 
+3) Scripts for testing of layouts. 
+Comments: 
+Source/Regress/layout_scripts/layout_delete.scr 
+Source/Regress/layout_scripts/layout_set_pspaces.scr 
+Source/Regress/layout_scripts/layout_set_viewport.scr 
+Source/Regress/layout_scripts/switch_layouts.scr 
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------ 
+Date: 19-04-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78529 
+Affected files: 
+Source/prj/lib/CMDS/cmds3.cpp 
+Description: 'AREA' system variable is not set correctly when adding areas. 
+Comments: TaL78529 CYB_78529_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 19-04-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78738 
+Affected files: 
+Source/prj/ICAD/icadapi.cpp 
+Description: CDAR in RECTANG does not work 
+Comments: TaL78738 CYB_78738_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 19-04-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:74349 
+Affected files: 
+Source/ThirdParty/DCL_Components/Source/Main.cpp 
+Source/ThirdParty/DCL_Components/Source/ImageButton.cpp 
+Source/ThirdParty/DCL_Components/Include/ImageButton.h 
+Description: Calling slide_image repeatedly leaks memory horribly and flashes the display 
+Comments: TaL74349 CYB_74349_1.txt 
+
+Ø Resolved the issue between BN_CLICKED and WM_LBUTTONDOWN messages. Thus fixed the problem of flashing display. 
+Ø Replaced the drawing method of Metafile logic by Bitmap drawing logic. Thus fixed the problem of slow drawing display. 
+Ø Fixed the issue of "Flip Mode", that was present in earlier builds. 
+Ø Made "fill_image" and other drawing functions compatible with Bitmap Logic. 
+Ø Removed functions that were not used and old unwanted commented code. 
+Ø Removed the function "End" for ImageButton?.cpp implementation since it will be no longer used. 
+------------------------------------------------------------------------------------ 
+
+REGRESS:
+The following scripts failed during the regress run (USEDWGDIRECT=0). Running them individually showed no problems(other than for ucs_options).  Please look for performance data on performance.xls at http://www.itcmembers.org/metadot/index.pl?isa=CMSDocument&iid=2720&op=show
+F:\Build-46\IntelliCAD\Source\Regress\scripts\78346a.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\78417_1.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\export_options.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+F:\Build-46\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78529, 78738, 74349 

@@ -1,0 +1,41 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78437_1.txt
+Date:		30-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78437
+Added files:     	
+Affected files:	
+		Source/prj/ICAD/mtextpropsheet.cpp
+		Source/prj/ICAD/mtextpropsheet.h
+		Source/prj/ICAD/mtextrichedit.cpp
+Description:	Height not set in mtext dialog, when pasting text from Word
+Comments:		TaL78437
+Problem Analysis:
+		This bug is there because the height of the text pasted from Word is not added to the height combo box on the MTEXT dialog.	
+Proposed Solution:
+		The height corresponding to the text pasted in the Rich edit control should be added to the height combo box on the MTEXT dialog.			
+File by File:	
+*		Source/prj/ICAD/mtextpropsheet.cpp
+		OnSelChange() added to the file. Though this function is called every time the cursor position in the rich edit control is changed but it is also called whenever some text is pasted in the control. This function sets the values of m_nStartPaste (Starting position of the pasted text) and m_nEndPaste (Ending position of the pasted text) for all the conditions which can be there while pasting text in the rich edit control. These conditions are: 
+i) When the rich edit control is empty
+ii) When the rich edit control already contains some text then try the following:
+	a) Paste at the beginning.
+	b) Paste at the end.
+	c) Paste somewhere in the middle of the existing text.
+	d) Select the existing text completely or a part of it (from left to right using mouse or arrow keys) and then paste. 
+	e) Select the existing text completely or a part of it (from right to left using mouse or arrow keys) and then paste.
+Whenever user pastes some text in the rich edit control, the pNotifyStruct->chrg.cpMin and pNotifyStruct->chrg.cpMax are same. When no text is selected then m_nEndPaste is copied into m_nStartPaste as this is the location where the character was when pasting started. After that m_nEndPaste is set to the character position after pasting, which is pNotifyStruct->chrg.cpMax.  But when some text is selected while pasting the start character of the selection i.e. m_nStartChar is the location where the character was when pasting started. m_nStartChar (Starting position of the slected text) and m_nEndChar (Ending position of the slected text) have to captured in UpdateChar() as by the time OnSelChange() is executed, the selection is lost. 
+OnPaste() is the function which searches for the height in the pasted text and if that height is not there in the height combo then it adds the same it. The function has a loop which traverses only the recently pasted text i.e. from m_nStartPaste to m_nEndPaste.  
+*		Source/prj/ICAD/mtextpropsheet.h
+		Added member variables m_nStartPaste(Starting position of the pasted text), m_nEndPaste(Ending position of the pasted text), m_nStartChar(Starting position of the slected text), m_nEndChar(Ending position of the slected text and m_bPasting(To check if the pasting operation is in progress). Added member functions OnPaste() and OnSelChange() to handle the pasting job.
+*		Source/prj/ICAD/mtextrichedit.cpp
+		Added ENM_SELCHANGE to the event mask of the rich edit control by calling SetEventMask() from inside CMTextRichEdit::init() so that the parent receives SelChange messages. Handled SHIFT + INSERT and CTRL + V combinations in OnKeyUp() and called OnPaste() from within. 
+--------------------------------------------------------------------------------
+
+
+

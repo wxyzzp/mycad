@@ -1,0 +1,65 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:    SH_31122002.txt
+Date:	      31-12-2002
+Developer:    Stephen Hou
+Company:      Nd Space
+Reference:	
+
+
+Description: This submission fixes the following crash bugs:
+             
+
+             BUG #78191: ICAD crashes if some text is typed at the prompt and 
+                         then backspace key is kept pressed
+
+             RESOLUTION: The code didn't record how many characters users entered at the 
+                         command prompt and just kept to move back the file position pointer 
+                         when the backspace key is kept pressed until ICAD crashed. This 
+                         also caused the all records in the script file to be erased.
+                         This bug was fixed by modifying SDS_SendMessage() to use a static 
+                         variable in to record the number of characters users just entered 
+                         at the prompt and ensure the file pointer will not be moved back 
+                         more than the number of characters the users entered.
+                         
+                         
+             BUG #78387: ICAD crashes while opening attached drawing.
+             
+             RESOLUTION: The drawing contains a NULL handle of ACDBVARIABLEDICTIONARY 
+                         dictionary item but the code didn't check the handle and directly 
+                         added it into dictionary that caused ICAD to cash later. To 
+                         fix up, some checks are added into the code to prevent NULL
+                         handles to be added to the dictionary. AutoCAD also does similar 
+                         fix up 
+                         
+                         
+             BUG #78373: ICAD crashes for zoom>extents operation after inserting attached 
+                         drawing.
+                         
+             RESOLUTION: The implantation of display object list is not thread safe. When 
+                         the ZOOM command is executed, the main win thread will perform tool 
+                         hit test on the display object list if hyperlink tooltip is enabled 
+                         while the command thread is updating the display object list. So
+                         the memory of display object list that main thread holds for test
+                         can be freed by the command thread sometimes before the main thread
+                         complete the test. That causes ICAD to crash randomly, depending on
+                         the thread schedule. This bug is fixed by temporarily disable the
+                         hyperlink tooltip at the begin of cmd_zoom().
+                         
+                
+Changed files:	
+
+
+            Source/Prj/icad/icadapi.cpp:     	Modified SDS_SendMessage().
+            Source/Prj/lib/cmds/panzoom.cpp: 	Modified cmd_zoom().
+            Source/Prj/lib/drw/drwload.cpp:     Modified drw_readwrite::drw_marcompopen()
+          
+Comments:   Added script 78387.scr, 78373.scr.
+             
+
+--------------------------------------------------------------------------------

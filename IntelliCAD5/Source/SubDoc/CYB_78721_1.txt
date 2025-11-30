@@ -1,0 +1,575 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78721_1.txt	
+Product Version:	ICAD 4
+Date:			02/03/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/ThirdParty/DCL_Components/Source/DefaultAttributes.cpp	==> DCL
+Source/ThirdParty/DCL_Components/Include/DefaultAttributes.h	==> DCL
+Source/ThirdParty/DCL_Components/Source/Tree.cpp				==> DCL
+Source/ThirdParty/DCL_Components/Source/ScreenObject.cpp		==> DCL
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78721: ArchT Affected: DCL horizontal 
+radio rows do not display correctly.
+
+
+Problem Analysis:
+-----------------
+Radio rows are not aligned when displayed in IntelliCAD, they display fine in 
+AutoCAD. Please refer to the sample DCL file attached in Bugzilla; it can be 
+seen that after loading this file and checking the radio row, the last 
+radio button is not aligned with the other two buttons.
+
+Thus if there are 3 radio buttons, the 3rd radio button is not aligned,
+if there were 4 radio buttons, the 4th radio button is not aligned,
+If there are 2 radio buttons, even then the 2nd radio button is not aligned.
+
+I checked whether this problem is present for any other ROW structures, and .
+I found that this problem is also present in the case of "Boxed Radio Rows".
+(boxed_radio_row)
+There are no problems with "row", "boxed_row", "column", "boxed_column",
+"radio_column", and "boxed_radio_column".
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the calculation of the "nMaxHeight" for the "radio_row"
+or "boxed_radio_row" in the function "Tree::LoopAllChildrenToCalcSize" in 
+the file "Source\ThirdParty\DCL_Components\Source\Tree.cpp".
+	In this fuction, when the last control is considered in the loop for 
+the parent (container) row control, the "nMaxHeight" is calculated as follows:
+
+	nMaxHeight = __max(nMaxHeight + nTempChildMaxDeltaY ,nParentAssignedHeight);
+
+
+This gives rise to the following values in case of Radio-buttons:
+	nMaxHeight = 16, nTempChildMaxDeltaY = 0, nParentAssignedHeight = 23.
+
+This calculation further leads to the assignment of height for the last 
+radio-button in a "radio_row" or "boxed_radio_row" container in the 
+function "Tree::ReCalcDimensions", as follows:
+
+
+File = "Source\ThirdParty\DCL_Components\Source\Tree.cpp"
+---------------------------------------------------------
+
+int Tree::ReCalcDimensions(							// Function where redistribution of extra parent space is done.
+					   TreeNode *pOldNode		//	i : Node for whom the calculation is to be done.
+					   )
+{
+
+	...
+	...
+	...
+	...
+	...
+
+	if ( bSetDirect == FALSE )
+		{
+		// Some calculations are necessary if it is last child.
+		// They are done below.
+		//Condition : last child in a horizontal container has fixed_width true.
+		//Condition : last child in a vertical container has fixed_height true.
+		if ( iIndex == (iTotalChildren - 1) )
+			{
+			if ( iParentLayOut == LAYOUT_HORIZONTAL )
+				{
+				// Parent is a horizontal container.
+				// Check for fixed_width=true.
+				// If fixed_width is true directly set the width/height.(Height depends on whether fh is true or false)
+				// If fixed_width is false go in for normal width distribution.
+				// Whenever fixed_height is true do not forget to add deltaY to nHeight because while setting Height at the end of this function
+				// deltaY is again subtracted.
+				// If the tile is an active tile give all it all that parent has.Do not check for 
+				// fixed_width and fixed_height of active tiles.
+				if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedWidth() == TRUE )
+					{
+					nWidth = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Width() ;
+					if ( ptrThisNode->m_Tile.IsContainer() == TRUE )
+						{
+						if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedHeight() == TRUE )
+							{
+							nHeight = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Height() + ptrThisNode->get_DeltaY();
+							}
+						else
+							{
+							nHeight = nParentHeight ;
+							}
+						}
+					else
+						{
+						nHeight = nParentHeight ;
+						}
+					bSetDirect = TRUE;
+					}
+				}
+			else	// Parent is a vertical container.
+				{
+				// Check for fixed_height=true.
+				// If fixed_height is true directly set the width/height.(Width depends on whether fw is true or false)
+				// If fixed_height go in for normal distribution.
+
+				...
+				...
+				...
+				...
+
+
+				}
+			}
+		}
+
+	...
+	...
+	...
+
+}
+
+
+	As seen from the above code, "nHeight = nParentHeight" for the last control
+in the container for Horizontal Layout.
+	This is true for all the controls in the container for ROWS.
+
+	The values of nActualChildHeight and nParentHeight are different in this case. 
+The most likely question is: why for all childs the height is supposed to be
+"nActualChildHeight" but for last one it is "nParentHeight"? Logically the 
+assignment of nParentHeight to only last child seems wrong.
+
+	The elegant way to fix this problem could be as follows: in case when
+last child is not a container the height is assigned in the same
+statement as for other childs, This is done as follows:
+(The changes are marked within Bugzilla comments:
+// Bugzilla::78721;		Date: 19Feb2004.)
+
+File = Source/ThirdParty/DCL_Components/Source/Tree.cpp
+-------------------------------------------------------
+
+int Tree::ReCalcDimensions(							// Function where redistribution of extra parent space is done.
+						   TreeNode *pOldNode		//	i : Node for whom the calculation is to be done.
+						   )
+{
+
+	...
+	...
+	...
+	...
+
+
+	if ( bSetDirect == FALSE )
+		{
+		// Some calculations are necessary if it is last child.
+		// They are done below.
+		//Condition : last child in a horizontal container has fixed_width true.
+		//Condition : last child in a vertical container has fixed_height true.
+		if ( iIndex == (iTotalChildren - 1) )
+			{
+			if ( iParentLayOut == LAYOUT_HORIZONTAL )
+				{
+				// Parent is a horizontal container.
+				// Check for fixed_width=true.
+				// If fixed_width is true directly set the width/height.(Height depends on whether fh is true or false)
+				// If fixed_width is false go in for normal width distribution.
+				// Whenever fixed_height is true do not forget to add deltaY to nHeight because while setting Height at the end of this function
+				// deltaY is again subtracted.
+				// If the tile is an active tile give all it all that parent has.Do not check for 
+				// fixed_width and fixed_height of active tiles.
+				if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedWidth() == TRUE )
+					{
+					nWidth = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Width() ;
+					if ( ptrThisNode->m_Tile.IsContainer() == TRUE )
+						{
+						if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedHeight() == TRUE )
+							{
+							nHeight = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Height() + ptrThisNode->get_DeltaY();
+							}
+						else
+							{
+							nHeight = nParentHeight ;
+							}
+						
+						// Bugzilla::78721;		Date: 19Feb2004.
+						bSetDirect = TRUE;
+						}
+					
+					// Bugzilla::78721;		Date: 19Feb2004.
+					/*!!!
+					else
+						{
+						nHeight = nParentHeight ;
+						}
+					bSetDirect = TRUE;
+					//!!!*/
+					// Bugzilla::78721;		Date: 19Feb2004.
+					}
+				}
+			else	// Parent is a vertical container.
+				{
+				// Check for fixed_height=true.
+				// If fixed_height is true directly set the width/height.(Width depends on whether fw is true or false)
+				// If fixed_height go in for normal distribution.
+				if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedWidth() == TRUE )
+					{
+					nWidth = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Width() ;
+					}
+				else
+					{
+					nWidth = nParentWidth - ptrThisNode->get_DeltaX();
+					}
+				if ( ptrThisNode->m_Tile.get_ListOfAttributes()->IsFixedHeight() == TRUE )
+					{
+					nHeight = ptrThisNode->m_Tile.get_ScreenObject()->GetDisplayRect().Height() + ptrThisNode->get_DeltaY();
+					bSetDirect = TRUE;
+					}
+				else
+					{
+					bSetDirect = FALSE;
+					}
+				}
+			}
+		}
+
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+
+}
+
+
+	There is a memory leak issue when the DCL Dialog box is shown. It lies in 
+the destructor of ScreenObject, that produces memory leak creating font object. 
+Note the following lines from destructor:
+
+	if ( m_ComponentFont->GetSafeHandle() )
+	{
+	delete m_ComponentFont; // delete the font object created in constructor
+	}
+
+	The object is deleted only if it has not NULL handle. Actually it should be 
+deleted if m_ComponentFont is not NULL.
+	This is done as follows:
+
+File = Source/ThirdParty/DCL_Components/Source/ScreenObject.cpp
+---------------------------------------------------------------
+
+ScreenObject::~ScreenObject()
+{
+//MB 28-1-2000		
+//	if ( m_ClientData )
+//		delete [] (char*)m_ClientData;
+	
+	// Bugzilla::78721;		Date: 21Feb2003.
+	/*!!!
+	if ( m_ComponentFont->GetSafeHandle() )
+		{
+		delete m_ComponentFont; // delete the font object created in constructor
+		}
+	//!!!*/
+
+	if (m_ComponentFont != NULL)
+	{
+		delete m_ComponentFont; // delete the font object created in constructor
+		m_ComponentFont = NULL;
+	}
+	// Bugzilla::78721;		Date: 21Feb2003.
+
+}
+
+
+
+There are a bit of corrections in the naming of variables for CObArray objects.
+Following are the highlights of my modifications for this issue:
+	1. Renamed "BoxedAttrib" to "ColumnAttribs" 
+	2. Renamed "Boxed_RadioAttrib" to "RowAttribs" 
+	3. I have also corrected the respective misleading comments.
+
+These are the names for the container tiles for the controls, which denote:
+    "RowAttribs" for: boxed_row, row, boxed_radio_row, and radio_row.
+	"ColumnAttribs" for: boxed_column, column, boxed_radio_column, and radio_column.
+	
+	The current names were really confusing.
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be checked for the following cases:
+1. For "boxed_radio_row", the radio buttons should be present at the same level.
+2. For "radio_row", the radio buttons should be present at the same level.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

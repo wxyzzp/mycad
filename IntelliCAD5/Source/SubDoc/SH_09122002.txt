@@ -1,0 +1,22 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_09122002.txt
+Date:		09-12-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Comments: 	Added a check to cmd_subtract() to prevent updating 
+                deleted blank solids that were selected by using PREVIOUS
+                option.
+                
+Changed files:	Source/Prj/Lib/CMDS/cmds8.cpp:     Modified cmd_subtract().
+             
+
+--------------------------------------------------------------------------------

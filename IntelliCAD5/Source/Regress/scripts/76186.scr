@@ -1,0 +1,30 @@
+;_Created_by_Cybage_on_11/11/2002______
+;_This_script_does_not_check_the_functionality
+logfilename log\76186.log
+logfileon
+;__________
+(load "lisp\mtexttestdia.lsp")
+testdia
+;__________
+erase
+all
+
+(load "lisp\texttestdia.lsp")
+testdia
+;__________
+erase
+all
+
+(load "lisp\attdeftestdia.lsp")
+testdia
+;__________
+erase
+all
+
+(load "lisp\attribtestdia.lsp")
+testdia
+;__________
+dxfout output_dxf\76186.dxf
+6
+quit
+y

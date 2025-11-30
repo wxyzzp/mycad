@@ -1,0 +1,44 @@
+logfilename log\78411_defaultcommands.log
+logfileon
+;_______1
+(defun _line() (alert "_line"))
+line
+1,1
+2,2
+
+(setq _line nil)
+line
+2,2
+3,1
+
+(_line)
+_line
+3,1
+4,2
+
+;_______2
+(defun _a() (alert "_a"))
+_a
+1,1
+2,2
+2,1
+(setq _a nil)
+(_a)
+a
+3,2
+1,1
+3,1
+'_a
+1,1
+1,2
+3,1
+;_______3
+(defun _ddim() (princ "ddim"))
+(_ddim)
+(setq _ddim nil)
+(if (/= _ddim nil) (alert "Err"))
+;_______
+dxfout output_dxf\78411_defaultcommands.dxf
+6
+quit
+y

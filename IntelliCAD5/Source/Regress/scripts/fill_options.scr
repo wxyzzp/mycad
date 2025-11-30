@@ -1,0 +1,23 @@
+logfilename log\fill_options.log
+logfileon
+;_________1
+fill
+on
+(if (/= (getvar "fillmode") 1) (alert "fill not set correctly"))
+;_________2
+fill
+t
+(if (/= (getvar "fillmode") 0) (alert "fill not set correctly"))
+;_________3
+fill
+t
+(if (/= (getvar "fillmode") 1) (alert "fill not set correctly"))
+;_________4
+fill
+off
+(if (/= (getvar "fillmode") 0) (alert "fill not set correctly"))
+;_________
+dxfout output_dxf\fill_options.dxf
+6
+quit
+y

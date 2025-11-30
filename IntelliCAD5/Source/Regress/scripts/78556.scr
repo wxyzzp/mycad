@@ -1,0 +1,28 @@
+logfilename log\78556.log
+logfileon
+;________create_the_first_line____________
+line
+2,-2,1
+-1,1,3
+
+;________create_the_second_line____________
+line
+10,0,2
+0,10,5
+
+;________create_the_third_line____________
+line
+1,1,3
+4,4,1
+
+;--------extend_the_third_line________
+extend
+all
+
+4,4 
+
+;__________
+dxfout output_dxf\78556.dxf
+6
+quit
+y

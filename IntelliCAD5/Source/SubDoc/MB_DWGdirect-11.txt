@@ -1,0 +1,271 @@
+             	Project 
+  	IntelliCAD Development
+
+Document Title:		MB_DWGdirect-11.doc	
+Product Version: 	ICAD 4
+Date:  			Dec 1 2003
+Engineer(s): 		Mark Barrow
+
+Change History (optional)
+
+Version
+Section/Page Affected
+
+Files modified:
+/Source/prj/make/db.dsp
+/Source/prj/lib/drw/dwgload.cpp
+/Source/prj/lib/drw/dwgdirect.cpp
+/Source/prj/lib/drw/dwgdirect.h
+/Source/prj/lib/drw/dwgdirectprotocolextension.cpp
+/Source/prj/lib/db/objects.h
+/Source/prj/lib/db/xrecord.cpp
+
+Change Description
+Filled in several protocol extensions.
+
+Engineer(s)
+Date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1.  EDD Reviewed *	4.  Engineer Source Diff	7.  Bugzilla Updated	
+
+2.  Coded		5.  Code Reviewed *		8.  Checked-In
+
+3.  Engineer Tested	6.  Release Notes		9.  Docs Notified 
+
+
+Files, modules (gr, cmd, etc.)
+
+Files Modified:  (as part of DWGdirect initialization)
+Files Affected
+Modules Affected 
+/source/lib/drw/DWGdirectProtocolExtension.cpp
+DB.DLL
+
+
+
+
+
+
+
+
+
+
+
+
+
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section 1 Overview
+		
+Section 2 Related Documentation Comments
+
+Section 3 Design (Code) Overview
+This submission continues the work in progress associated with integrating the DWGdirect technology for reading and writing .dwg/.dxf files.
+
+
+Section 4 Design (Code) Considerations
+
+4.1 Risks & Assumptions
+
+None
+
+4.2 Dependencies
+
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+
+None
+
+
+Section 5 Change Description
+Description:	Filling out individual entity protocol extension createHanditem() functions.
+
+
+Section 6 Reviewer's Comments 
+Since this code must be turned on to be used, I have not yet submitted it for code review.
+Once the work is farther along, and I have done more testing myself, I will request a code review. Certainly before using it as a replacement for ODT.
+
+Section 7 System file - Component Changes and Additions
+
+
+Check
+Question    
+No
+Are there any new menu/toolbar entries? If so, please list them:
+No
+Have any existing registry entries changed? If so, please list them:
+No
+Are there any new registry entries? If so, please list them:
+No
+Should icad.dwg be regenerated?
+
+
+
+
+Section 8 Testing Considerations
+
+8.1 Engineers Unit Verification
+
+8.2  Engineers Integration Verification
+
+8.3 QA Testing
+At this point, there are now tests to perform on the new additions. Once DWGdirect becomes active, the normal regress process will make sure we have not lost any functionality.
+
+Section 9 Installation Issues (optional)
+
+Check
+Question    
+No
+Does this change require icad.dwg to be regenerated?
+No
+Other?
+
+Section 10 Open Issues
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+
+Section 11 Approvals
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Mark Barrow
+10/23/03
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+

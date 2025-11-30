@@ -1,0 +1,22 @@
+logfilename log\78822.log
+logfileon
+;________create_circle_______
+circle
+4,4
+4
+;________pline_____________
+pline
+10,1.5
+-2,4
+10,6.5
+
+;________trim_______________
+trim
+last
+
+8,4
+
+;;;;;;;;;;;;
+dxfout output_dxf\78822.dxf
+6
+exit y

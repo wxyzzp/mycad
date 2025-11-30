@@ -1,0 +1,22 @@
+logfilename log\77860.log
+logfileon
+filedia
+off
+expert
+2
+insert
+dwg\wblock_crash.dwg
+5.2201,3.2209
+
+
+
+zoom
+e
+wblock
+output\crash.dwg
+all
+dxfout output_dxf\77860.dxf
+6
+expert
+0
+exit _y

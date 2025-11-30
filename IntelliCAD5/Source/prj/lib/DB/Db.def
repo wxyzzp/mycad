@@ -1,0 +1,18 @@
+; db : Declares the module parameters.
+
+LIBRARY      "db.DLL"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer	@4 PRIVATE
+
+; these 4 are used as friends in drawing.h, which seems to preclude taking them out of here
+    db_getvar
+    db_setvar
+	db_findsysvar
+	?db_makesvbuf@@YAHHPAVdb_charbuflink@@PAVdb_drawing@@@Z
+
+    ?db_str_quotequote@@3PADA
+

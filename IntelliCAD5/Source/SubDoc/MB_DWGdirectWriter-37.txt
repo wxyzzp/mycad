@@ -1,0 +1,33 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-37.txt
+Produce Version		ICAD 4
+Date:				05/16/2004 09:03am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Just some general cleanup and error checking code, in 
+preparation for supporting proxy Objects.
+
+Also removed some old test code that was #ifdef'd on 
+_DEBUGMB anyway, and is no longer needed.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\giworlddrawvectors.h
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgload.cpp

@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78149_1.txt
+Date:		13-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78149
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/cmdsDim.cpp
+		CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+Description:	ICAD crashes while drawing continuous angular dimension.
+Comments:	TaL78149
+
+File by File: 
+		* CvsHist:Source/prj/lib/CMDS/cmdsDim.cpp
+		The dim var strings were being cleaned up after the completion of
+		angular dimension command leading to the crash.
+		Moved the Intialize and cleanup code to a level higher
+		i.e from cmd_dimangular to cmd_dimang
+		cmd_dimang internally calls cmd_dimangular. 
+
+		* CvsHist:Source/prj/lib/CMDS/DimAng.cpp
+		Comented out the intiallize(),setparlink() and cleanUpDimVarStrings()
+		calls, these are now called in cmd_dimang as mentioned above.
+--------------------------------------------------------------------------------

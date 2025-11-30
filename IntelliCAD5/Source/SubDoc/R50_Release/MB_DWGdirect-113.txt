@@ -1,0 +1,60 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-113
+Product Version:        IntelliCAD 5
+Date:                   10/12/2004 06:17am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGdirect
+
+3.  Overview:
+	This submission special cases a class of drawings that are having their
+	block names and/or their handles changed by adding them to the output 
+	database. This was causing problems when those block ids were being looked
+	up to put into instances of these blocks. 
+
+	Note that this fix is not perfect. THere are still situations where a blocks
+	id cannot be resolved, in that case, there is no instance of that block created.
+	For example given a block name/handle pair like *X1 - 33, that becomes *X2 - 4F,
+	is in essence lost in the database. When I try to instantiate an instance of *X1,
+	the db_insert tells me its name is *X1. However, there may not even be a *X1 in the
+	database, so now if I look it up by handle, I could get the wrong block, because
+	the handle has been changed too. 
+
+	At this point in our ship cycle, I believe I have enough redundant checks to handle
+	this situation as well as it can be. THere may be drawings that will not have some
+	blocks instantiated. These are mostly R12 hatches that have this problem. Dimensions
+	seem to be OK.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/prj/lib/drw/utilities.cpp
+        source/prj/lib/drw/utilities.h
+        source/subdoc/R50_Release/MB_DWGdirect-113.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

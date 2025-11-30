@@ -1,0 +1,559 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78404_1.txt	
+Product Version:	ICAD 4
+Date:			19/01/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/DB/db.h
+Source/prj/lib/DB/db1.cpp
+Source/prj/lib/SDS/sds_alert.cpp
+Source/prj/ICAD/IcadApp.cpp
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78404: (alert "hello") is modal and can 
+get behind intellicad.
+
+
+Problem Analysis:
+-----------------
+On executing the following LISP code, 
+	
+	(alert "hello")
+
+we get a dialog box with "Hello" as the Message String.
+Now if we switch the focus to ICAD and press ESC, ICAD has focus but 
+dialog stays open. In short this dialog is not Modal.
+In AutoCAD, the dialog keeps the focus. 
+
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+The Problem here is that we are showing a Message Box with a NULL Window
+Parent Handle, in "Source/prj/lib/SDS/sds_alert.cpp" as follows:
+
+FILE: Source/prj/lib/SDS/sds_alert.cpp
+--------------------------------------
+
+int sds_alert(const char *szAlertMsg) 
+	{
+
+	bool dlgState = IcadSharedGlobals::GetDialogIsModal();
+	IcadSharedGlobals::SetDialogIsModal( true );
+
+
+    // Modified PK 16/04/2000
+	//	MessageBox(GetActiveWindow(),szAlertMsg,"IntelliCAD"/*DNT* /,MB_OK|MB_SETFOREGROUND); Reason: Fix for bug no. 58457 
+//	MessageBox((AfxGetApp()->m_pMainWnd)->GetSafeHwnd(),szAlertMsg,"IntelliCAD"/*DNT* /,MB_OK|MB_SETFOREGROUND); // Preeti
+
+	
+	/*D.G.* /// Dependency from MFC removed.
+	MessageBox( NULL, szAlertMsg, ResourceString(DNT_ICADAPP_INTELLICAD_1, "IntelliCAD" ), MB_OK | MB_SETFOREGROUND);
+	
+	IcadSharedGlobals::SetDialogIsModal( dlgState );
+	
+	return(RTNORM);
+	}
+
+
+
+In this file we are trying to keep the code as independent of MFC as possible.
+Therefore I have added 2 functions to class IcadSharedGlobals, to set/get 
+the Main WIndow Handle. The modifications are in the files, within the Bugzilla
+comments "Source/prj/lib/DB/db.h" and "Source/prj/lib/DB/db1.cpp" as follows:
+
+FILE: Source/prj/lib/DB/db.h
+----------------------------
+class DB_CLASS IcadSharedGlobals
+	{
+	public:
+		static void SetIcadAppInstance( HINSTANCE hInstance );
+		static HINSTANCE GetIcadAppInstance( void );
+		...
+		...
+		
+		//Bugzilla::78404;  Date: 13Jan2004
+		//--------------------------------------------
+		static void SetIcadMainWindowHandle(HWND hWnd);
+		static HWND GetIcadMainWindowHandle();
+		//--------------------------------------------
+		//Bugzilla::78404;  Date: 13Jan2004
+
+	private:
+		static HINSTANCE zm_hAppInstance;
+
+		//Bugzilla::78404;  Date: 13Jan2004
+		//--------------------------------------------
+		static HWND zm_hMainWindow;
+		//--------------------------------------------
+		//Bugzilla::78404;  Date: 13Jan2004
+
+		static HINSTANCE zm_hResourceInstance;
+		static bool zm_bDialogIsModal;
+		...
+		...
+
+		~IcadSharedGlobals();
+	};
+
+
+FILE: Source/prj/lib/DB/db1.cpp
+-------------------------------
+...
+...
+...
+// *****************************************************************
+// IcadSharedGlobals class
+//
+// These are variables that are shared between DLLs and the ICAD
+// executable.	The IcadSharedGlobals class entirely consists of
+// static methods and members, so it acts as a singleton.
+//
+HINSTANCE IcadSharedGlobals::zm_hAppInstance = NULL;
+
+//Bugzilla::78404;  Date: 13Jan2004
+//--------------------------------------------
+HWND IcadSharedGlobals::zm_hMainWindow = NULL;
+//--------------------------------------------
+//Bugzilla::78404;  Date: 13Jan2004
+
+HINSTANCE IcadSharedGlobals::zm_hResourceInstance = NULL;
+bool IcadSharedGlobals::zm_bDialogIsModal = false;
+...
+...
+...
+
+
+HINSTANCE IcadSharedGlobals::GetIcadAppInstance( void )
+	{
+
+	ASSERT( zm_hAppInstance != NULL );
+	return zm_hAppInstance;
+	}
+
+
+//Bugzilla::78404;  Date: 13Jan2004
+//--------------------------------------------
+
+// Function to Set the Main Window Handle.
+void IcadSharedGlobals::SetIcadMainWindowHandle(HWND hWnd)
+{
+	zm_hMainWindow = hWnd;
+}
+
+
+// Function to Get the Main Window Handle.
+HWND IcadSharedGlobals::GetIcadMainWindowHandle()
+{
+	ASSERT(zm_hMainWindow != NULL);
+	return zm_hMainWindow;
+}
+
+//--------------------------------------------
+//Bugzilla::78404;  Date: 13Jan2004
+
+
+void IcadSharedGlobals::SetIcadResourceInstance( HINSTANCE hInstance )
+	{
+	zm_hResourceInstance = hInstance;
+	}
+...
+...
+...
+...
+
+
+
+Now in "Source/prj/ICAD/IcadApp.cpp", when the Main Window of ICAD is created,
+we can set this variable in IcadSharedGlobals. This is done in "InitInstance" 
+function as follows; the changes are within Bugzilla Comments:
+
+FILE: Source/prj/ICAD/IcadApp.cpp
+---------------------------------
+BOOL CIcadApp::InitInstance()
+{
+	// Parse command line for standard shell commands, DDE, file open
+	// SystemMetrix(Maeda) 09.10.2001 -[ change for function call timing
+	ParseCommandLine(m_cmdInfo);
+	CString strCurProfileName;
+	if (m_cmdInfo.m_strOverrideProfileName.IsEmpty())
+	  {
+		CString curProfName;
+		GetCurrentRegistryProfileName(curProfName.GetBuffer(IC_ACADBUF), IC_ACADBUF);
+		SetCurrentRegistryProfileName(curProfName); // if /Pxxx option not setting, set "Default" name.
+	  }
+	else
+	  {
+		SetCurrentRegistryProfileName(m_cmdInfo.m_strOverrideProfileName);
+	  }
+    	GetCurrentRegistryProfileName(strCurProfileName.GetBuffer(IC_ACADBUF),IC_ACADBUF);
+	strCurProfileName.ReleaseBuffer();
+	
+	...
+	...
+	...
+	...
+	...
+	...
+
+
+		else
+		{
+			// write new version
+			//result = RegSetValueEx((HKEY)configKey, "MenuVersion", 0, REG_SZ, buffer, versionString.GetLength() + 1);
+			result = configKey.SetValue(versionString, "MenuVersion");
+			if(result != ERROR_SUCCESS)
+				ASSERT(false);
+		}
+	}
+
+	//Bugzilla::78404;  Date: 13Jan2004
+	//--------------------------------------------
+	// Call the Function to Set the Main Window Handle for the Shared Global Data.
+	IcadSharedGlobals::SetIcadMainWindowHandle(m_pMainWnd->GetSafeHwnd());
+	//--------------------------------------------
+	//Bugzilla::78404;  Date: 13Jan2004
+	
+	// Now everything is done resume the command line.
+	SDS_Run();
+	...
+	...
+	...
+
+	return TRUE;
+
+}
+
+
+We now modify the sds_alert.cpp to have the correct changes. 
+In fact on does not need to call "IcadSharedGlobals::GetDialogIsModal" 
+and "IcadSharedGlobals::SetDialogIsModal" functions at all for this 
+piece of code. Therefore I have commented them. These unnecessary comments 
+will be removed from this file once this file is checked in.
+
+FILE: Source/prj/lib/SDS/sds_alert.cpp
+--------------------------------------
+int sds_alert(const char *szAlertMsg) 
+	{
+
+	//Bugzilla::78404;  Date: 13Jan2004
+	//--------------------------------------------
+	/*!!!
+	// To delete the following STUFF....
+	bool dlgState = IcadSharedGlobals::GetDialogIsModal();
+	IcadSharedGlobals::SetDialogIsModal( true );
+
+
+    // Modified PK 16/04/2000
+	//	MessageBox(GetActiveWindow(),szAlertMsg,"IntelliCAD"/*DNT* /,MB_OK|MB_SETFOREGROUND); Reason: Fix for bug no. 58457 
+//	MessageBox((AfxGetApp()->m_pMainWnd)->GetSafeHwnd(),szAlertMsg,"IntelliCAD"/*DNT* /,MB_OK|MB_SETFOREGROUND); // Preeti
+
+	
+	/*D.G.* /// Dependency from MFC removed.
+	//!!!*/
+	//--------------------------------------------
+	//Bugzilla::78404;  Date: 13Jan2004
+
+
+	//Bugzilla::78404;  Date: 13Jan2004
+	//--------------------------------------------
+	// MessageBox( NULL, szAlertMsg, ResourceString(DNT_ICADAPP_INTELLICAD_1, "IntelliCAD" ), MB_OK | MB_SETFOREGROUND);
+	
+	// Call the function IcadSharedGlobals::GetIcadMainWindowHandle() to pass the Main Window Application handle
+	// to the Message Box, thus keeping this part of the code MFC-independent.
+	MessageBox(IcadSharedGlobals::GetIcadMainWindowHandle(), szAlertMsg, ResourceString(DNT_ICADAPP_INTELLICAD_1, "IntelliCAD" ), MB_OK | MB_SETFOREGROUND);
+	//--------------------------------------------
+	//Bugzilla::78404;  Date: 13Jan2004
+
+
+	//Bugzilla::78404;  Date: 13Jan2004
+	//--------------------------------------------
+	/*!!!
+	// To delete the following STUFF....
+	//IcadSharedGlobals::SetDialogIsModal( dlgState );
+	//!!!*/
+	//--------------------------------------------
+	//Bugzilla::78404;  Date: 13Jan2004
+
+
+	return(RTNORM);
+	}
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be checked for the following cases:
+	1. The LISP fragment " (alert "hello") " should display a dialog box 
+	   with "Hello" string and should be Modal in real sense.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

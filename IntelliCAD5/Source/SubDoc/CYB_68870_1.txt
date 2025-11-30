@@ -1,0 +1,671 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_68870_1.txt	
+Product Version:	ICAD 4
+Date:			05/12/2003 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/Cmds/save.cpp ==> CMDS.lib
+Source/prj/lib/SDS/sds_get.cpp ==> icad.exe
+Source/prj/icad/res/icadrc2.h ==> icad.exe
+Eng-Us/icad.rc2 ==> icad.exe.
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 68870 : Saving a drawing to the same name 
+as a previously deleted drawing overwrites the other drawing's VBA file 
+with no warning.
+Perform the following steps:
+1)  Save a drawing as XXX.
+2)  Close the drawing.
+3)  Delete XXX.DWG but leave XXX.VBI.
+4)  Open a new drawing.
+5)  Save the new drawing as XXX.
+The Expected result should be:  You are warned that the old VBI file will 
+be overwritten. But the Actual result is that the old VBI file is overwritten 
+with no warning.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+	After looking at the code, I found the code needs modifications in two 
+cases, viz:
+	--> Case 1: 
+		When FileDia = ON, the case needs to be handled in the Save As Dialog.
+	--> Case 2: 
+		When FileDia = OFF, the case needs to be handled for the command prompt.
+
+Both the cases are handled only if VBA is enabled. This depends on the macro 
+"BUILD_WITH_VBA" that is defined in "Source\prj\ICAD\configure.h"
+
+Following are the resource constant definitions for the resource strings used for 
+this purpose: (Marked within Bugzilla comments)
+
+File: Source\prj\ICAD\res\icadrc2.h
+-----------------------------------
+...
+...
+...
+// Bugzilla::68870 : Date : 19-12-2003.
+//-------------------------------------
+#define IDC_SDS_GET__VBI_FILE_OVERWRITE				IDS_BASE+5414
+#define IDC_SDS_GET__VBI_FILE_EXISTS__CMDLINE		IDS_BASE+5415
+#define IDC_SDS_GET__VBI_FILE_EXISTS__DIALOG		IDS_BASE+5416
+//-------------------------------------
+// Bugzilla::68870 : Date : 19-12-2003.
+
+#define IDC_SDS_DB_COMMENT							IDS_BASE+5417
+#define IDC_SDS_DB__NSELECT_ENTITY___1				IDS_BASE+5418
+...
+...
+...
+...
+
+
+File: Eng-Us\icad.rc2
+---------------------
+...
+...
+...
+IDC_SDS_DB__NSELECT_ENTITY___1		"\nSelect entity: "
+IDC_SDS_GET_COMMENT					"**LOCALISATION NOTE - SDS_GET COMMAND"
+
+// Bugzilla::68870 : Date : 19-12-2003.
+//-------------------------------------
+IDC_SDS_GET__VBI_FILE_EXISTS__CMDLINE		"A file with the name <%s> already exists. Overwrite this File? <N>: "
+IDC_SDS_GET__VBI_FILE_OVERWRITE				"Yes No ~_Yes ~_No"
+IDC_SDS_GET__VBI_FILE_EXISTS__DIALOG		"A file with the name %s already exists.\nOverwrite this File?"
+//-------------------------------------
+// Bugzilla::68870 : Date : 19-12-2003.
+
+IDC_SDS_GET_ALL_FILES________0		"All files(*.*),*.*,"
+IDC_SDS_GET_PM_1					"PM"
+IDC_SDS_GET_AM_2					"AM"
+IDC_SDS_GET__NSECOND_POINT___3		"\nSecond point: "
+...
+...
+...
+
+
+
+
+CASE 1: FileDia = ON
+--------------------
+
+When FileDia = ON, we do this check in the hook procedure of the SaveAs Dialog
+itself. This hook procedure "sds_getfiledHookProc" is in the "sds_get.cpp". 
+Following are my changes marked within Bugzilla comments:
+
+
+File: Source\prj\lib\SDS\sds_get.cpp
+------------------------------------
+
+UINT APIENTRY sds_getfiledHookProc(HWND hdlg, UINT uiMsg, WPARAM wParam, LPARAM lParam)
+{
+	static CString sstrPreviousFilePath;
+	if(uiMsg==WM_NOTIFY)
+	{
+		LPOFNOTIFY lpOfn = (LPOFNOTIFY)lParam;
+		if(lpOfn->hdr.code==CDN_INITDONE)
+		{
+			...
+			...
+			...
+			return TRUE;
+		}
+		if(lpOfn->hdr.code==CDN_FILEOK)
+		{
+			HWND hWnd = GetDlgItem(hdlg,IDC_PREVIEW_IMAGE);
+			if(NULL!=hWnd)
+			{
+				SDS_PaintPreview(NULL,NULL);
+			}
+			int (*pOnOkCallback)(HWND) = (int (__cdecl*)(HWND))lpOfn->lpOFN->lCustData;
+			if(pOnOkCallback!=NULL)
+			{
+				(*pOnOkCallback)(hdlg);
+			}
+			
+			// Bugzilla::68870 : Date : 19-12-2003.
+			//-------------------------------------
+
+#ifdef BUILD_WITH_VBA
+			if (moduleVariable_bsOptions & 1)  // We do this only when we are saving a file.
+			{
+				// Get the File-name Extension.
+				CString strCompleteFileName (lpOfn->lpOFN->lpstrFile);
+				CString strFileExtension;
+				ic_getext((LPTSTR)((LPCTSTR)strCompleteFileName), (LPTSTR)((LPCTSTR)strFileExtension));
+
+				// If the extension is "dwg", then the file with the same name and ".VBI" extension 
+				// is created. Check if one already exists.
+				if (strFileExtension == _T(".dwg")/*DNT*/)
+				{
+					// Extract the file-name with PATH, but without EXTension.
+					// and Append ".vbi" to it
+					int extPos = strCompleteFileName.Find (_T(".dwg"/*DNT*/));
+					CString strFileNameWithVbiExt;
+					strFileNameWithVbiExt = strCompleteFileName.Left (extPos) + _T(".vbi"/*DNT*/);
+
+					// Check if this file with vbi extension exists.
+					if (!_taccess((LPCTSTR)strFileNameWithVbiExt, 0))
+					{
+						TCHAR strMessage[IC_ACADBUF];
+						
+						// Get only the file-name to display.
+						int lastBackSlashIndex = strFileNameWithVbiExt.ReverseFind ('\\'/*DNT*/);
+						CString strJustFileName;
+						strJustFileName = strFileNameWithVbiExt.Mid(lastBackSlashIndex + 1);
+
+						::wsprintf (strMessage, 
+									ResourceString(IDC_SDS_GET__VBI_FILE_EXISTS__DIALOG, "A file with the name %s already exists.\nOverwrite this File?"/*DNT*/),
+									(LPCTSTR)strJustFileName
+									);
+						
+						int idResult = ::MessageBox(::GetParent(hdlg), strMessage, "Warning"/*DNT*/, 
+									 MB_YESNO | MB_ICONWARNING | MB_DEFBUTTON2);
+
+						if (idResult == IDNO)
+						{
+							// Remain in Dialog Box if user says "No".
+							SetWindowLong(hdlg, DWL_MSGRESULT, TRUE);
+							return TRUE;
+						}
+
+					}
+				}
+			}
+#endif
+			//-------------------------------------
+			// Bugzilla::68870 : Date : 19-12-2003.
+			
+			
+			//Modified Cybage VSB 13/11/2001 DD/MM/YYYY
+			//Reason : Fix for Bug No. 77928 from Bugzilla [
+			if ( strcmp(lpOfn->lpOFN->lpstrDefExt,"" ) != 0)
+			{
+				// Modified PK 12/07/2000 [
+				TCHAR szFilePath[MAX_PATH]; // Reason : Fix for bug no. 47174
+				char ext[5];
+				CommDlg_OpenSave_GetSpec(GetParent(hdlg),szFilePath,sizeof(szFilePath));
+				ic_getext(szFilePath, ext);
+				// EBATECH(CNBR) 2002/4/24 allow multiple select
+				//Modified Cybage VSB 11/02/2002 DD/MM/YYYY
+				//Reason : Fix for Bug No. 77928 from Bugzilla [
+				//if(SDS_CalledFromgetfiled && strcmp(ext,".") != 0 && strstr(lpOfn->lpOFN->lpstrDefExt, ext+1) == NULL && !(moduleVariable_bsOptions & 4))
+				//if(SDS_CalledFromgetfiled && strcmp(ext,".") != 0 && strstr(strupr((char *)lpOfn->lpOFN->lpstrDefExt), strupr(ext+1)) == NULL && !(moduleVariable_bsOptions & 4))
+				//Modified Cybage VSB 11/02/2002 DD/MM/YYYY ]
+				if(SDS_CalledFromgetfiled && strcmp(ext,".") != 0 && strstr(strupr((char *)lpOfn->lpOFN->lpstrDefExt), strupr(ext+1)) == NULL && !(moduleVariable_bsOptions & 4) && !(moduleVariable_bsOptions & 32768))
+				// EBATECH(CNBR) ]-
+				{
+					MessageBox (hdlg, ResourceString(IDS_INVALIDFILENAME,"Invalid filename"), ResourceString(AFX_IDS_APP_TITLE, "IntelliCAD" ), MB_OK);
+					SetWindowLong(hdlg, DWL_MSGRESULT, TRUE);
+					return TRUE;
+				}
+				// Modified PK 12/07/2000 ]
+			}
+			//Modified Cybage VSB 13/11/2001 DD/MM/YYYY ]
+
+		}
+
+		...
+		...
+		...
+		...
+		...
+		
+		
+	}
+
+
+	// EBATECH(CNBR)
+	return FALSE;
+}
+
+
+
+CASE 2: FileDia = OFF.
+----------------------
+When FileDia = OFF, then the changes that the user makes must be reflected on
+the command prompt. This case is handled in "save.cpp", in the function 
+"cmd_SaveAs" as follows (Changes are marked within Bugzilla Comments):
+
+
+File: Source\Prj\CMDS\Save.cpp
+------------------------------
+
+long cmd_SaveAs(dwg_filelink* pCurDwg, char* fname, int nStrLen,int exportmode)
+{
+	char fs1[IC_ACADBUF],fs2[IC_ACADBUF];
+    struct resbuf setgetrb;
+	int expert;			// For Expert Level suppression of prompts.
+    RT ret;
+    short filedia;
+	long rc=0L;
+	
+#ifdef CRIPPLE_TESTDRIVE
+	if (CIcadApp::IsTestDrive())
+	{
+		MessageBox(SDS_hwnd,
+				   ResourceString(IDS_TESTDRIVE_WARNING, "Sorry Testdrive software cannot save files.  Please register to receive the full version.",),
+				   ResourceString(AFX_IDS_APP_TITLE, "IntelliCAD"),
+				   MB_OK | MB_ICONEXCLAMATION);
+		return RTERROR;
+	}
+#endif
+	
+	...
+	...
+	...
+	...
+
+    filedia=setgetrb.resval.rint;
+
+    for (;;) 
+		{
+        if ( filedia && 
+			GetActiveCommandQueue()->IsEmpty() && 
+			GetMenuQueue()->IsEmpty() && 
+			!lsp_cmdhasmore) 
+			{
+			*fs1=0;
+			//*** Don't worry about cmd_DwgSavePath if a path is included with fs1.
+			...
+			...
+			...
+			}
+		else 
+			{
+			if (SDS_SavingAsR12) 
+				{
+				SDS_CURDOC->m_nFileVersion=IC_ACAD11;
+				}
+			else 
+				{
+				if (bCanSaveAsA2K)
+					SDS_CURDOC->m_nFileVersion=IC_ACAD2000;
+				else
+			
+			...
+			...
+			...
+			...
+
+            strncpy(fname,fs2,nStrLen);	// If it gets this far (no "bail"ing) copy it.
+			}
+        
+		ChangeSlashToBackslashAndRemovePipe(fname);
+
+
+		// Bugzilla::68870 : Date : 19-12-2003.
+		//-------------------------------------
+#ifdef BUILD_WITH_VBA
+
+		if (filedia == 0 && expert < 2) // Do not prompt the user if expert is set to 2 or greater.
+		{
+			char strFileNameWithVbiExt[IC_PATHSIZE + IC_FILESIZE];
+			strcpy(strFileNameWithVbiExt, fname);
+			ic_setext(strFileNameWithVbiExt, ".vbi"/*DNT*/);
+
+			// Check if the VBI file-name contains a BackSlash Character
+			char* pDestination = strrchr(strFileNameWithVbiExt,'\\'/*DNT* /);
+			if (pDestination == NULL)
+			{
+				// Get Current Directory in which this VBI File is to be stored
+				char strCurrentPathName[IC_PATHSIZE + IC_FILESIZE];
+				::GetCurrentDirectory(IC_PATHSIZE + IC_FILESIZE, strCurrentPathName);
+				strcat(strCurrentPathName, "\\"/*DNT* /);
+				strcat(strCurrentPathName, strFileNameWithVbiExt);
+				strncpy(strFileNameWithVbiExt, strCurrentPathName, IC_PATHSIZE + IC_FILESIZE);
+			}
+
+			// Check if the VBI File exists in the specified location.
+			if (!access(strFileNameWithVbiExt, 0))
+			{
+				char strMessage[IC_ACADBUF];
+						
+				sprintf (strMessage, 
+						 ResourceString(IDC_SDS_GET__VBI_FILE_EXISTS__CMDLINE, "A file with the name <%s> already exists. Overwrite this File? <N>: "/*DNT*/),
+						 strFileNameWithVbiExt
+						);
+
+				sds_initget(RSG_OTHER , ResourceString(IDC_SDS_GET__VBI_FILE_OVERWRITE, "Yes No ~_Yes ~_No"));
+				if ((ret=sds_getkword(strMessage, fs1))==RTERROR)
+				{
+					rc=(-__LINE__); 
+					goto bail;
+				}
+				else if (ret==RTCAN) 
+				{
+					rc=(-1L); 
+					goto bail;
+				}
+				else if (ret==RTNONE) 
+				{
+					rc=(-1L); 
+					goto bail;
+				}
+				else if (ret==RTNORM) 
+				{
+					if (strisame(fs1, "NO"/*DNT*/)) 
+					{
+						rc=(-1L); 
+						goto bail; 
+					}
+				}
+			}
+
+		}
+#endif
+		//-------------------------------------
+		// Bugzilla::68870 : Date : 19-12-2003.
+
+		if (strrchr(fname,'\\'/*DNT*/)) 
+			{
+			db_astrncpy(&cmd_DwgSavePath,fname,strlen(fname)+1);
+			*(strrchr(cmd_DwgSavePath,'\\'/*DNT*/)+1)=0;
+			}
+	
+        break;
+		}
+
+bail:
+
+	return rc;
+}
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+The code should be checked for the following cases:
+	
+	Perform the following steps in the Professional Edition of ICAD:
+		1)  Save a drawing as XXX.
+		2)  Close the drawing.
+		3)  Delete XXX.DWG but leave XXX.VBI.
+		4)  Open a new drawing.
+		5)  Save the new drawing as XXX.
+	
+	When FileDia = ON:
+	In SaveAs Dialog Box itself the Message Box should appear that asks 
+	whether you want to over-write the xxx.vbi file. If No is pressed,
+	the user remains in the Dialog. If Yes is pressed the XXX.vbi file 
+	is over-written.
+
+	When FileDia = OFF:
+	On the command prompt, the Message should appear that asks 
+	whether you want to over-write the "xxx.vbi" file. 
+	If N is entered, IntelliCAD returns to the prompt without saving 
+	the drawing file. 
+	If Y is entered, IntelliCAD returns to the prompt after saving 
+	the drawing file and over-writing the "xxx.vbi" file.
+
+	This Bug is not applicable to Standard Edition of IntelliCAD.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

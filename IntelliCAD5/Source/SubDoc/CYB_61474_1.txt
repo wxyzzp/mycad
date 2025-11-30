@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+File:		CYB_61474_1.txt
+Date:		24-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:61474
+Affected files:			
+		CvsHist:Source/prj/lib/CMDS/cmdsDimVars.cpp
+Description: 	Could not overridde DIMPOST variable with . (dot), default value.
+Comments:	TaL61474
+File by File:
+	*	CvsHist:Source/prj/lib/CMDS/cmdsDimVars.cpp
+		Previously the code was :
+		rb->resval.rstring = (char*)calloc(strlen(str), sizeof(char*));
+		This code use to give assert in debug build while freeing this memory.
+		This code was corrected as :
+		rb->resval.rstring = (char*)calloc(strlen(str)+1, sizeof(char*));
+
+		The actual problem for reported bug was one could not override DIMPOST variable 			with .(DOT) ie the default value of DIMPOST which is BLANK. This was because we 			were checking for  *plinkvar[i].dval.cval before override any variable. In this 			case *plinkvar[i].dval.cval will be empty which is valid case. So thisvalidation 		condition allows us to override DIMPOST with BLANK and hence fixes the problem.
+-------------------------------------------------------------------------------

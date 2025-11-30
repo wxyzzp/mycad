@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------------
+File:		CYB_60681_1.txt
+Date:		11-01-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:60681
+Affected files:			
+		Source/prj/lib/CMDS/Dimstyle.cpp
+Description:	Commenting unnecessary code. This code also caused memory mismatch problem ( reported by Vittal ). 
+Comments:	TaL60681
+File_BY_File:	
+	-	Source/prj/lib/CMDS/Dimstyle.cpp
+		We have revisited this bug fixe as there was a memory mismatch error reported by Vittal. "New" was used instead of 		"Malloc". But looking further into the problem we found that the if statement where the memory mismatch problem was 		reported was NOT need any more. So we have now commented out this statement.
+	
+--------------------------------------------------------------------------------

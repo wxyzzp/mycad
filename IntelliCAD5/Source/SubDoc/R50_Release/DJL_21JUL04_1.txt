@@ -1,0 +1,92 @@
+Document Title:  DJL_21JUL04_1.txt	
+Product Version: ICAD 5
+Date:  July 21, 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: Yamuna
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release and R40_Dev
+
+2. Modules Affected :
+None
+
+3.  Overview:
+I have been having about 20-30 script failures whenever I run regression.  Many of the failures are due to script problems
+with selecting entities.  I have increased the accuracy of the selections or changed the pickbox to 4 for many scripts.
+See section below for the list of files and an overview of each change.
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+
+Script Change required: Y
+77892.scr - Added Pickbox 4.
+
+78167_1.scr - Changed a couple of picked points to select objects to make them more accurate.
+
+78300_a.scr - Added CMDECHO 0.
+
+78343.scr - Added CMDECHO 0.
+
+78393_T1fts011.scr - I really don't know how this was working for ANYONE.  The script set EXPERT to 5 but then still had "Y"
+added for "Yes to overwrite existing" during the Wblock.
+
+78418.scr - Added CMDECHO 0.
+
+arc.scr - Added Pickbox 4.
+
+attdisp_options.scr - Added Pickbox 4 and numbered the error messages.
+
+POLYGONS1.SCR - Changed Pickbox to 4; Made a pickpoint for a selection more accurate.
+
+Revsurf.scr - Added Pickbox 4. Removed an item from the script that was undo anyway (added a point then did undo).
+
+RULESURF1.SCR - Made a couple of selection points more accurate.
+
+Xline_ray.scr - Changed Pickbox to 4.
+
+Xmastree.scr - Changed from Zoom .05 to Zoom Extents to make sure objects that need to be selected were on the screen.
+
+6.  Change Log:
+--------------------------------------------------------------------------------
+Reference: DJL_21JUL04_1.txt
+
+Affected files:
+77892.scr
+78167_1.scr
+78300_a.scr
+78343.scr
+78393_T1fts011.scr
+78418.scr
+arc.scr
+attdisp_options.scr
+POLYGONS1.SCR
+Revsurf.scr
+RULESURF1.SCR
+Xline_ray.scr
+Xmastree.scr
+
+Description:
+Fix some problems in regression scripts.
+
+Reviewer's Name and Comments:
+David Lorenzo - Yamuna will test these new scripts before I check them into
+R40_Dev.  See Subdoc DJL_21JUL04_1.txt for details of changes.
+--------------------------------------------------------------------------------
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Yamuna, please test the new scripts before I check them into R40_Dev
+
+9.  Installation Issues:
+None
+
+
+

@@ -1,0 +1,19 @@
+logfilename log\78036.log
+logfileon
+;;;;;;;;;;;;;;
+filedia
+off
+xref
+attach
+dwg/wb1.dwg
+0,0
+1
+1
+0
+xref
+?
+
+;;;;;;;;;;;;;;;;
+dxfout output_dxf\78036.dxf
+6
+exit _y

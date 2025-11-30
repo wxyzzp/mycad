@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_64188_1.txt
+Date:		13-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:64188
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/DimContinue.cpp
+Description:	DIMCONT when used w/ aligned dimensions produces dimensions 
+		which aren't parallel to original
+Comments:	TaL64188
+
+File by File: 
+		* CvsHist:Source/prj/lib/CMDS/DimContinue.cpp
+		the diffrent bits set in type like DIM_BIT_6,DIM_TEXT_MOVED where 
+		not being reset before comparing type variable for a dimension type.
+		Hence when a Ordinate dimension was being dim-continued the variable 
+		type was not proper and a if clause was not being executed
+		leading to the wrong behaviour, now the if clause is executed and 
+		a dimrotated type of dimension is created. 
+		
+--------------------------------------------------------------------------------

@@ -1,0 +1,468 @@
+CMDECHO
+1
+logfilename log\ATTRIButes1.log
+logfileon
+PICKBOX
+3
+APERTURE
+10
+;----------------------------------------------------------------------
+; This script file tests attributes within blocks
+; Last Modified on 12/11/97 aym
+; build 257
+; Source: aym
+; Active bugs #3998, #4009, #2621, #4965
+; Fixed bugs: #4012
+;----------------------------------------------------------------------
+;
+;;;;; Setup for LOADING of UCS testing - Pete Martin 01/25/98
+;;;;; DO NOT MODIFY WITHOUT PERMISSION!
+;
+;;;;;pM(if (/= (getenv "UTEST") nil) (LOAD "UCSLOAD"))
+;
+;;;;; End of Setup for LOADING of UCS testing
+;
+; Erase anything that's there already.
+erase
+all
+
+; Turn blips off
+blipmode
+off
+; Show prompts and input at the command line.
+setvar
+cmdecho
+1
+; Set the current layer to zero.
+layer
+s
+0
+
+color
+bylayer
+; Setting all the other necessary system variables:
+vpoint
+0,0,1
+; Zoom to a window at least 100 x 100 (if it were square).
+zoom
+c
+100,100
+220
+elev
+0
+0
+gridmode
+0
+fillmode
+1
+snapmode
+0
+linetype
+s
+bylayer
+
+; Draw a red grid for reference
+layer
+m
+redarcs
+c
+blue
+
+
+line
+0,0
+0,200
+200,200
+200,0
+0,0
+
+line
+0,50
+200,50
+
+line
+0,100
+200,100
+
+line
+0,150
+200,150
+
+line
+50,0
+50,200
+
+line
+100,0
+100,200
+
+line
+150,0
+150,200
+
+layer
+s
+0
+
+; Draw some attributes
+attdef
+c
+
+sample1
+constant
+-25.6700,193.9330
+-25.6700,197.4052
+
+attdef
+c
+i
+
+invisible
+What?
+invisible
+-25.2842,185.8314
+
+
+attdef
+i
+p
+
+preset
+Who?
+preset
+-25.2842,179.2729
+
+
+attdef
+p
+v
+
+verify
+When?
+verify
+-24.8984,171.9428
+
+
+block
+sample
+-19,187
+c
+-29,200
+-10,164
+
+;
+;
+; Insert the blocks by different methods
+; Insert using X and Y scale, and rotation
+layer
+m
+insertions
+c
+yellow
+
+
+text
+2,151
+2.5
+
+1) X, Y scale > rotate
+insert
+sample
+25.3137,176.7159
+.8
+.8
+0
+
+
+
+; Insert using X, Y scale and rotation of 45
+text
+51.6974,158.4502
+2.5
+
+2) X, Y scale
+text
+
+Rotation = 45
+insert
+sample
+74.8339,176.7159
+.8
+.5
+45
+
+
+
+; Insert using Corner option
+text
+102.8413,156.4207
+
+
+3) Corner
+insert
+sample
+126.3838,180.3690
+c
+125.9779,180.7749
+0
+
+
+
+; Insert using Corner option with rotation of 15
+text
+152.3616,156.4207
+
+
+4) Corner
+text
+
+Rotation = 15
+insert
+sample
+173.4686,179.5572
+c
+173.8745,180.3690
+15
+
+
+
+; Insert using Corner option and then switch to scale
+text
+1.7712,105.2768
+
+
+5) Corner, switch
+
+
+to scale
+; Commented out for bug #3998
+;insert
+;sample
+;25.7196,128.0074
+;c
+;.5
+;.5
+;25
+;
+;
+;
+; Insert using XYZ and Xscale method.
+text
+51.6974,104.4649
+
+
+6) XYZ > Xscale
+insert
+sample
+74.4280,128.4133
+xyz
+.5
+.8
+.5
+30
+one
+two
+three
+; Insert using XYZ and Xscale method with negative values
+text
+101.6236,104.4649
+
+
+7) XYZ > Xcale
+
+
+Negative values
+insert
+sample
+126.3838,128.8192
+xyz
+-.5
+-.5
+
+45
+
+
+
+; Insert using XYZ and Corner
+text
+151.1439,104.4649
+
+
+8) XYZ > Corner
+; Commented out for bug #3998
+;insert
+;sample
+;173.4686,126.3838
+;xyz
+;c
+;174.2804,126.7897
+;.5
+;-45
+;
+;
+;
+text
+-35.1661,81.3284
+
+
+Again, with
+
+
+Negative points
+; Insert using X,Y scale and rotation with negative points
+text
+1.7712,56.1624
+
+
+9) X,Y scale, rotate
+text
+
+Negative Z's
+insert
+sample
+25,78,-5
+25.5,78.5
+0
+one
+two
+three
+; Insert using X, Y scale with rotation of 45
+text
+51.0000,56.0000
+
+
+10) X, Y scale
+text
+
+Rotation = -45
+insert
+sample
+74.0000,76.0000,-5
+-.5
+
+-45
+one
+two
+three
+; Insert using corner option 
+text
+102.0000,56.0000
+2.5
+0
+11) Corner
+; Commented out for bug #3998
+;insert
+;sample
+;124.0000,79.0000,-5
+;c
+;124.0000,80.0000,-5
+;124.0000,78.0000,-5
+;124.0000,80.0000,-5
+;124.0000,80.0000,-5
+;125.0000,80.0000,-5
+;128.0000,88.0000,-5
+;
+;
+;
+text
+152.0000,55.0000
+
+
+12) Corner, switch
+text
+
+to scale
+; Commented out for bug #3998
+;insert
+;sample
+;168.0000,79.0000,-5
+;c
+;.5
+;45
+;
+;
+;
+; Insert using XYZ and Xscale
+text
+2.0000,5.0000
+
+
+13) XYZ > Xscale
+; Commented out for bug #4009
+;insert
+;sample
+;26.0000,31.0000,-5
+;xyz
+;26.5,31.5
+;.2
+;25.0000,20.0000,-5
+;
+;
+;
+; Using XYZ and corner option
+text
+51.0000,5.0000
+
+
+14) XYZ > Corner
+;Commented out for bug #3998
+;insert
+;sample
+;72,27,-5
+;xyz
+;c
+;71,28
+;45
+;25
+;
+;
+;
+layer
+off
+REDARCS
+
+attdisp
+on
+attdisp
+off
+attdisp
+n
+attdisp
+on
+attdisp
+off
+attdisp
+n
+text
+109.0000,32.0000
+109.0000,38.0000
+
+Turn ATTDISP on to see
+text
+
+hidden attributes.
+;----------------------------------------------------------------------
+;Now for the grand finale 
+TEXT
+-39.8278,152
+3
+0
+Done!
+text
+
+Active bugs
+text
+
+#3998, #4009, #2621, #4965
+;----------------------------------------------------------------------
+(if (/= (getenv "itest") nil) (command "dxfout" "attributes" "6" "quit" "y"))
+;
+;;;;; Setup for SAVING of UCS testing - Pete Martin 01/25/98
+;;;;; DO NOT MODIFY WITHOUT PERMISSION!
+;
+;;;;;pM(if (/= (getenv "UTEST") nil) (LOAD "UCSSAVE"))
+;
+;;;;; End of Setup for SAVING of UCS testing
+dxfout output_dxf\ATTRIButes1.dxf
+6
+quit _y

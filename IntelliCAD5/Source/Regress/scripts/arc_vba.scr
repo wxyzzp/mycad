@@ -1,0 +1,10 @@
+logfilename log\arc_vba.log
+logfileon
+open
+dwg/arc.dwg
+-vbarun
+Module1.Main
+dxfout output_dxf\arc_vba.scr
+6
+quit
+y

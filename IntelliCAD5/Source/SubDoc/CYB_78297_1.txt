@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------------
+File:		CYB_78297_1.txt
+Date:		20-01-2003
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78297
+Affected files:			
+		Source/prj/ICAD/icadtablet.cpp?rev=1.2.10.1 
+Description:	Solved problems of GTCO rollup tablets. Submission by Bruce Scott.  
+Comments:	TaL78297
+File_by_file:
+	*	Source/prj/ICAD/icadtablet.cpp?rev=1.2.10.1 
+		We have not assumed the default setting for wintab compatible tablets. We have explicitly done the setting now. 		m_pWinTabRaw->SetOptions(m_pWinTabRaw->GetOptions() | CXO_MESSAGES);
+		Adding CXO_MESSAGES to wintab options allow to accept WT_PACKETS
+
+--------------------------------------------------------------------------------

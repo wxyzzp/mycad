@@ -1,0 +1,391 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78730_1.txt	
+Product Version:	ICAD 4
+Date:			23/03/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\CMDS\leader.cpp  ==> cmd_DrawLeader(int iDoTrueLeaderEnt)
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding Bugzilla# 78730 ;  Annotation color property of leader 
+is set as BYBLOCK instead of BYLAYER. 
+
+If  we draw a leader in IntelliCAD, the color property of  annotation is 
+set as BYBLOCK. Actually this should be set as BYLAYER.
+
+In function cmd_DrawLeader(int iDoTrueLeaderEnt) (File: Source\prj\lib\CMDS\leader.cpp), 
+DXF 62 ("Color number" for leader), was set to 0, because atoi(rb.resval.rstring) 
+would return 0 for  "BYLAYER" ( Note here that, ' rb.resval.rstring ' 
+holds the string "BYLAYER" but NOT the value 256. Hence atoi("BYLAYER") 
+would return 0 ). This indicates BYBLOCK (floating) color for annotation. 
+Actually, SDS_getvar() sets the value of 'rb.resval.rstring' from 1 to 255 
+for the colors, but for BYLAYER or BYBLOCK it would set "BYLAYER" or "BYBLOCK" 
+respectively. Hence atoi() used to fail for "BYLAYER".
+
+Another case was, while calling  sds_buildlist() for annotation, DXF 6 
+( Linetype name ) was set to DIM_BYBLOCK, because of which, linetype 
+property of annotation is set to BYBLOCK. Actually that should be BYLAYER.
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+File: Source\prj\lib\CMDS\leader.cpp 
+----------------------------------------------------- 
+
+Function: short cmd_DrawLeader(int iDoTrueLeaderEnt) 
+{ 
+        .... 
+        .... 
+        .... 
+        .... 
+
+    switch (iAnno) 
+          { 
+        // MTEXT 
+            case 0: 
+              { 
+                .... 
+                .... 
+                .... 
+                .... 
+
+         if (sds_getvar("DIMCLRT",&rb) == RTNORM) 
+                  { 
+                    color = rb.resval.rint; 
+                    if (color == 0) 
+                      { 
+                        struct resbuf rb; 
+                        SDS_getvar(NULL,DB_QCECOLOR,&rb,SDS_CURDWG,&SDS_CURCFG,&SDS_CURSES); 
+
+                        // Check for BYLAYER or BYBLOCK else assign the color as it is. 
+                        if (!stricmp(rb.resval.rstring, DIM_BYLAYER)) //DB_BLCOLOR 
+                                color = DB_BLCOLOR;   // color = 256; 
+                        else if (!stricmp(rb.resval.rstring, DIM_BYBLOCK)) //DB_BBCOLOR 
+                                color = DB_BBCOLOR;       // color = 0; 
+                        else 
+                                color = atoi(rb.resval.rstring); 
+                            IC_FREE(rb.resval.rstring); 
+                      } 
+                  } 
+                .... 
+            .... 
+            .... 
+
+                struct resbuf* rbMtext = sds_buildlist( 
+                            RTDXF0, "MTEXT"/*DNT*/, 
+                            8,      layername, 
+                            62,     color, 
+                            10,     tmppt, 
+                            40,     txthgt, 
+                            1,      dimtxt, 
+                            50,     0.0, 
+                            41,     0.0, 
+                            7,      dimtxsty, 
+                            71,     txthjust, 
+                /*****************************************************************************************/ 
+                 For annotation text. 
+                /*****************************************************************************************/ 
+                            //6,      DIM_BYBLOCK, 
+                    6,      DIM_BYLAYER, 
+                            11,     rbx.resval.rpoint, 
+                            210,    pt210, 
+                            0); 
+                if (rbMtext == NULL) 
+                  { 
+                    goto exit; 
+                  } 
+
+                .... 
+                .... 
+                .... 
+
+          } 
+
+        .... 
+        .... 
+        .... 
+} 
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following commands:
+	1. Create a leader.
+	2. Check that the annotation color property and annotation linetype property should 	   
+	   be “BYLAYER”, by default.
+	3. By default, leader and annotation should be in the same layer.
+	4. By default, the color of leader and annotation should be same.
+	5. This fix should NOT break previous functionally of leader command.
+
+This fix is related ONLY to the annotation color and linetype property.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis.
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

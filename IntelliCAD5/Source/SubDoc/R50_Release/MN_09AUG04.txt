@@ -1,0 +1,77 @@
+Document Title:  MN_09AUG04.txt	
+Product Version: ICAD 5
+Date:  09 August 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	This was the bug reported by Stabiplan(SCR 6347). According to the 
+description of Stabiplan, suppose we set the Graphics Screen color as 253("Gray").
+Then we go to "Print" dialog and click "PenMap/Width" tab. Here if we change the
+output color of number 253 to "Black", the color ("Black") should be seen on the 
+color button and in the color list as well, in front of number 253 in the color list. 
+But instead of the color "Black", the color "Grey" is seen in both positions.
+	This problem is also reproduced when we set the Graphics Screen Color other
+than "Black" color and follow the same procedure as mentioned above. 
+     The problem lies in the files "PrintPenMapTab.cpp" and "PenMapListCtrl.cpp".
+In both the files, when we set the Graphics Screen color other than "Black" and 
+change the output color in "PenMap/Width" tab of Print dialog to "Black", the "Black" 
+brush is not created at that time. Instead of this, the brush with Graphics Screen 
+color is created. So we see the wrong color. 
+	Thus I have handled this case and created the "Black" brush in "MapColor" function 
+in the file "PenMapListCtrl.cpp" as well as in "PaintItem" function in the file 
+"PrintPenMapTab.cpp", to solve the problem mentioned above.
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_09AUG04.txt	
+Engineer: Mohan Nayak
+
+Added files:     
+Affected files:
+	Source/prj/ICAD/printpenmaptab.cpp?rev=1.2.6.6.2.1 
+	Source/prj/ICAD/penmaplistctrl.cpp?rev=1.2.6.1.2.1 
+
+Description: Stabiplan Issue : SCR 6347 : When using colornumber 253 as ‘Graphic
+screen color’, output color black in the color/width map is also converted to 
+253 (grey). 
+
+Reviewer's Name and Comments: None.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1. Open IntelliCAD.
+2. Change the "Graphics Screen Color" to 253 ("Grey").
+3. Go to "Print" dialog.
+4. Select "PenMap/Width" tab. 
+5. Change the output color of 253 number to "Black"
+6. Output Color button should be painted with "Black" color.
+7. Check the output color of 253 number.
+8. It should be "Black" again.
+
+
+9.  Installation Issues:
+

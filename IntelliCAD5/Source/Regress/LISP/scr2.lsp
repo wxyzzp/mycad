@@ -1,0 +1,7 @@
+(defun c:newhpatt()
+(command "line" "5,12" "6,12" "")
+(command "line" "5,13" "6,13" "")
+(command "line" "5,14" "6,14" "")
+(command "line" "5,15" "6,15" "")
+(command "line" "5,16" "6,16" "")
+)

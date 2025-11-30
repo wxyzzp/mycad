@@ -1,0 +1,22 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4162002_1.txt
+Date:		16-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/make/ACIS.dsp
+                CvsHist:Source/prj/make/Authenticate.dsp
+                CvsHist:Source/prj/make/autodll.dsp
+                CvsHist:Source/prj/make/db.dsp
+                CvsHist:Source/prj/make/Ge.dsp
+                CvsHist:Source/prj/make/gr.dsp
+                CvsHist:Source/prj/make/icad.dsp
+Description: Prevent No pdb file warning when release build.
+--------------------------------------------------------------------------------

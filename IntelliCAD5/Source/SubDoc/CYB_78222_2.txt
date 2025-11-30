@@ -1,0 +1,29 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78222_2.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78222
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimStyle.cpp
+		Source/prj/lib/CMDS/dimensions.cpp
+		Source/prj/ICAD/icadwndaction.cpp
+Description:	DIM > update does not update tolerance. Implemented code-review suggestions.
+Comments:		TaL78222
+Problem Analysis:
+		The code files looks cluttered as a result of the commenting-out of the lines for fixing this bug.
+Proposed Solution:
+		Delete the commented lines to clean-up the code.
+File by File:	
+*		Source/prj/lib/CMDS/DimStyle.cpp
+		Deleted the commented lines.
+*		Source/prj/lib/CMDS/dimensions.cpp
+		Deleted the commented lines.
+*		Source/prj/ICAD/icadwndaction.cpp
+		Deleted the commented lines.
+--------------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+	(defun invalrealnum2 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (foreach x (append '(.5 0)) (logflt x)))
+		(setq *error* prverr)
+	)

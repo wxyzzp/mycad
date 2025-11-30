@@ -1,0 +1,25 @@
+logfilename log\75883.log
+logfileon
+;___________
+TILEMODE
+OFF
+;_____________
+MVIEW
+FIT
+;___________
+ZOOM
+EXTENTS
+ZOOM
+.8x
+LIST
+LAST
+
+;_______________
+(setq en nil)
+(setq en (entget (entlast) '("*")))
+(if (= en nil) (alert "Err"))
+;______________
+dxfout output_dxf\75883.dxf
+6
+quit
+y

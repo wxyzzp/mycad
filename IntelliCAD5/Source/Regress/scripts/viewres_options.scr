@@ -1,0 +1,20 @@
+logfilename log/viewres_options.log
+logfileon
+;_____________
+viewres
+n
+1
+viewres
+n
+20000
+viewres
+y
+1
+viewres
+n
+20000
+;______________
+dxfout output_dxf\viewres_options.dxf
+6
+quit
+y

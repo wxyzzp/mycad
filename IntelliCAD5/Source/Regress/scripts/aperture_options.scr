@@ -1,0 +1,19 @@
+logfilename log\aperture_options.log
+logfileon
+;____________
+(setvar "useri3" (getvar "aperture"))
+aperture
+1
+(if (/= (getvar "aperture") 1) (alert "aperture did not work!"))
+ap
+10
+(if (/= (getvar "aperture") 10) (alert "aperture did not work!"))
+aperture
+50
+(if (/= (getvar "aperture") 50) (alert "aperture did not work!"))
+(setvar "aperture" (getvar "useri3"))
+;___________
+dxfout output_dxf\aperture_options.dxf
+6
+quit
+y

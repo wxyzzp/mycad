@@ -1,0 +1,18 @@
+logfilename log\2dintersection_options.log
+logfileon
+;_______
+osmode
+0
+2dintersection
+(if (/= (getvar "osmode") 4096) (alert "2dintersection did not work!"))
+2dintersection
+(if (/= (getvar "osmode") 0) (alert "2dintersection did not work!"))
+planviewint
+(if (/= (getvar "osmode") 4096) (alert "planviewint did not work!"))
+planviewint
+(if (/= (getvar "osmode") 0) (alert "planviewint did not work!"))
+;_______
+dxfout output_dxf\2dintersection_options.dxf
+6
+quit
+y

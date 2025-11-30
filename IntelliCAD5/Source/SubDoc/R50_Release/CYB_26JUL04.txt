@@ -1,0 +1,69 @@
+Document Title:  CYB_26JUL04.txt	
+Product Version: ICAD 5
+Date:  26 July 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	While solving the bug Bugzilla no.78761, some of the command strings related 
+to PURGE command have been changed. This resulted in the failure of some scripts 
+related to purge command. So I have modified these scipts. 
+     Also I have modified "Purge.cpp" file to solve some minor problems.
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: CYB_20JUL04.txt	
+
+Added files:     
+Affected files:
+	Source/Regress/scripts/xref_options.scr?rev=1.1.4.1.2.1 
+	Source/Regress/scripts/purge_options.scr?rev=1.1.4.1.2.1 
+    Source/Regress/scripts/78444_xref_detach.scr?rev=1.1.4.1.2.1 
+	Source/Regress/scripts/78444_purge_all.scr?rev=1.1.4.1.2.1 
+	Source/Regress/scripts/78444_misc.scr?rev=1.1.4.1.2.1 
+	Source/Regress/scripts/78168_xref.scr?rev=1.1.4.1.2.1 
+	Source/prj/lib/CMDS/purge.cpp?rev=1.6.4.4.2.2 
+
+Description: 
+	Modified the failure scripts,reported by Yamuna related to PURGE command. 
+Reviewer's Name and Comments:
+	None.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1. Open IntelliCAD.
+2. Create blocks,new dimension styles , layers etc.
+3. Create sample drawing.
+4. Do not use entities created at step2.
+5. Give "Purge" command.
+6. Select "Block" option.
+7. Enter the names of blocks.
+8. Blocks will be purged using their names as in AutoCAD.
+9. Compared results with AutoCAD.
+
+
+9.  Installation Issues:
+

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+File:		CYB_78210_1.txt
+Date:		24-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78210
+Affected files:			
+		CvsHist:Source/prj/Icad/IcadExplorer.cpp
+Description: 	Explorer shows 2 entries as current for layer/linetype/style/dimstyle.
+Comments:	TaL78210
+File by File:
+	*	CvsHist:Source/prj/Icad/IcadExplorer.cpp
+		The actual reason for this bug was wrong value in global varibale
+		"IEXP_EntityCol[IEXP_CurrentIndx].CurrentName".
+		While renaming a table record current index table record name is copied into 		IEXP_EntityCol[IEXP_CurrentIndx].CurrentName which leads to problem while 		deleting the table record. Looking at 		IEXP_EntityCol[IEXP_CurrentIndx].CurrentName in it seems that we are deleting a 		table record which is set current and hence we have to change the current to 		something else and hence we use to get two current entries in table records.
+		To solve this problem we have initialised the value of global variable				IEXP_EntityCol[IEXP_CurrentIndx].CurrentName to the current of table record. This 		prevents the above problem. The problem was for layer, linetype, style and 				dimension style. All these cases are fixed.
+-------------------------------------------------------------------------------

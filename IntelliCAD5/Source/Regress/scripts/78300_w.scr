@@ -1,0 +1,10 @@
+logfilename log\78300_w.log
+logfileon
+;____________
+(load "lisp\mtext_w.lsp")
+test_w
+;____________
+dxfout output_dxf\78300_w.dxf
+6
+quit
+y

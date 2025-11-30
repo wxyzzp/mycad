@@ -1,0 +1,57 @@
+
+Currently the library is just a dll exporting classes without real functionality.
+The main its aim now is introducing its future functionality for using in other
+parts of code.
+So, here is the TODO list:
+- add data members to classes,
+- make some methods in base classes virtual,
+- add overriding(virtual) methods to child classes,
+- implement methods,
+- see also notes about arrays below.
+After that these notes can be erased, but the following ones should exist
+and be complemented if necessary.
+
+
+Changes from AcGe to Ge
+===========================================================================
+The Ge library hasn't internal implementing classes like AcGeImpEntity3d.
+Instead whole the functionality of exported classes is implemented in
+themselves and therefore they have additional data members.
+
+
+Some declarations/definitions/functionality which are existing in AcGe
+are not included in the Ge library:
+- some non-public class members (they are included and commented out
+  with "original code:" tag);
+- some members of the AcGeContext struct (which has become CGeContext);
+- abbreviations like as in the gegblabb.h file;
+- the AcGeGetMetaTypeIndex template function with its specializations
+  (gegetmti.h etc. files) and overloads to the new operator from
+  the gegblnew.h file;
+- casting macros from the geassign.h file
+- I/O classes from gefiler.h, gefileio.h, gedxfio.h and gedwgio.h files
+
+
+Analogs for AcGe's arrays are now implemented as std::vectors so it causes
+compiler warning C4251 about their dll interface. It's have to check if
+they are really exported with such implementation.
+
+
+Some identificators are changed:
+- classnames which are changed not only by replacing of "Ac" with "C":
+ AcGeTol -> CGeTolerance;
+ AcGeLinearEnt2d -> CGeLinearCurve2d;
+ AcGeLinearEnt3d -> CGeLinearCurve3d;
+ AcGePlanarEnt -> CGePlanarSurface;
+ AcGeLineSeg2d -> CGeLineSegment2d;
+ AcGeLineSeg3d -> CGeLineSegment3d;
+ AcGeSplineEnt2d -> CGeSplineCurve2d;
+ AcGeSplineEnt3d -> CGeSplineCurve3d;
+ AcGePointEnt2d -> CGePointEntity2d;
+ AcGePointEnt3d -> CGePointEntity3d;
+ AcGeSurfSurfInt -> CGeSurfaceSurfaceInt;
+- changes for satisfying our coding rules
+ (prefixes for enums, static, boolean, pointing vars)
+
+
+Adesk::Boolean is replaced with bool and kTrue/kFalse with true/false.

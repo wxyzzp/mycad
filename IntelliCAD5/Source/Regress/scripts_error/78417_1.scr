@@ -1,0 +1,21 @@
+logfilename log\78417_1.log
+logfileon
+;___________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+(setvar "useri2" (getvar "expert"))
+expert
+5
+;___________
+open dwg/alignment_welder.dwg
+saveas
+A2k
+output/78417_1.dwg
+;__________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;qsave
+;__________
+quit
+y

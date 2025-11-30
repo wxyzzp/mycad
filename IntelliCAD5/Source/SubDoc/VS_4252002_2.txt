@@ -1,0 +1,33 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4252002_2.txt
+Date:		25-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+        CvsHist:Source\Regress\Base\xformssTest.dxf
+        CvsHist:Source\Regress\LISP\xformssTest.lsp
+        CvsHist:Source\Regress\scripts\xformssTest.scr
+        CvsHist:Source\Regress\SDS\xformssTest.dll
+
+
+Changed files:	
+       CvsHist:Source\Regress\scripts\AccTest-symtbl2.scr
+
+Deleted files:	
+
+Summary:	Added new lsp, scr and base files for regress. Adds another sds file for regress test.
+Description:	This submission adds further scripts, base dxf and lisp files to the regress suite. 
+
+File by File:	Initial versions of the scr, lsp and dxf files shown above have been added.
+        Source\Regress\Base\xformssTest.dxf
+        Source\Regress\LISP\xformssTest.lsp
+        Source\Regress\scripts\xformssTest.scr
+        Source\Regress\SDS\xformssTest.dll
+------------------------------------------------------------------------------

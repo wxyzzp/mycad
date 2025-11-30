@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+File:		CYB_78266_1.txt
+Date:		19-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78266
+Affected files:			
+		Source/prj/ICAD/IcadView.cpp
+		Source/prj/ICAD/IcadView.h
+Description:	Size of inserted object changes after inplace editing.
+Comments:	TaL78266
+File_By_File:
+	*	Source/prj/ICAD/IcadView.h
+		declaration of boolean member varibale m_bLastInPlaceActiveItem;
+
+	*	Source/prj/ICAD/IcadView.cpp
+		The actaul problem in this bug was that VIEWSIZE variable is recalculated on 				
+		returning back to IntelliCAD after completeing the ole inplace editing. After 				
+		returning to IntelliCAD's view, OnSize() function is called. In this function 				
+		VIEWSIZE is calculated and set which changes the size of view. 						
+		cmd_InsideViewPorts,cmd_InsideOpenCommand are used to avoid recaculation of 				
+		VIEWSIZE, but we just cannot know that this time OnSize is called after 				
+		ole-editing. To know this we have taken a variable m_bLastInPlaceActiveItem which 		
+		is initialised to false in contructor. The variable is set to true using 				
+		GetInPlaceActiveItem(SDS_CURVIEW) and again set to false inside the if condition.		
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+Date:		11-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:76186
+Affected files:			
+		Source/prj/ICAD/icadEntPropTabs.cpp
+		Source/prj/ICAD/icadEntPropMain.cpp
+Description:	Properties dialog when used with Attdef or Attribute shows varies. 				Modification for previous fix for Mtext and Text part of this fix.
+Comments:	TaL76186
+File_By_File:
+
+		
+	*	Source/prj/ICAD/icadEntPropMain.cpp
+		In function ent_Data2Struct() we have changed the previous code in the case
+		"ENT_COMBO". The previous code was written taken into consideration that "varies" 		string added as first ( 0th index ) string in combo box. Now We have decided that 		varies will be present in combo only when needed. So removing the varies string 			changes the index of all the remaining items in the combo box hence creating the 			problem and making us think of different solution. 
+		My solution is to add varies string at the end and hence change the functionality 		accordingly. So removing "varies" from the end would not make the difference to 			rest of the string items in the ENT_COMBO. 
+		In MTEXT direction combo, the varies would be at 5 index and justification it 				would be at 9 index. So when we select mutiple mtext entities with different 				justification or dirrection, index will be set to 9 or 5 respectively.
+
+		In function  ent_Struct2ll(), in case "ENT_COMBO" we add 1 before storing the 				values back to link list as we had subtracted 1 while storing the value in 				structure. We donot update the link list if we have "varies" selected into combo 		box.		
+
+	*	Source/prj/ICAD/icadEntPropTabs.cpp
+		The code change for Attribute defination, Attribute and text tab are same except 		for the combo box id. We have initially removed "varies" string being added into 		the combo box. We add it only when needed. In initdialog, iTxtCurSel is set and 		if its value is 15 then we have to add the varies string.
+
+		The code is little different for Mtext as there is no "iTxtCurSel". So we have to 		travse the data structure and check if we have to add "varies"
+		
+--------------------------------------------------------------------------------

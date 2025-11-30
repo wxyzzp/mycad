@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4162002_2.txt
+Date:		16-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/ICAD/textstyledlg.cpp
+                CvsHist:Source/prj/ICAD/icadexplorer.cpp
+                CvsHist:Source/prj/lib/CMDS/textstyle.cpp
+                CvsHist:Source/prj/lib/CMDS/purge.cpp
+Description: Hide STYLE for SHAPE or Complex Linetype in EXP_STYLES,
+                PURGE, STYLE and -STYLE commands.
+--------------------------------------------------------------------------------

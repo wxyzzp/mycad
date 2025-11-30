@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78036_1.txt
+Date:		29-04-2002
+Developer:	Avinash Kulkarni.
+Company:	Cybage Software
+Reference:	BugZilla:78036
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/block.cpp
+		CvsHist:Eng-us/icad.rc2
+		CvsHist:Source/prj/Icad/res/icadrc2.h
+Description:	The tabulation for "Xref" is not correct.
+		
+Comments:	TaL78036
+File by File:	
+	*	CvsHist:Source/CMDS/block.cpp
+	There was a problem in the way sprintf was used. The #define IC_ACADNMLEN with value 260 was causing too much of spacing in between the xref name and the type field. Also there seems to be no need of precision value.
+The replacement of the statement with 
+sprintf(szTmp,"%-*s%s %s",IC_MINNAMELEN,ic_rbassoc->resval.rstring,ResourceString(IDC_CMDS3_OVERLAY_490	,	"Overlay"),path);
+
+solves the problem. 
+Similar is the case with xref attach.
+--------------------------------------------------------------------------------		

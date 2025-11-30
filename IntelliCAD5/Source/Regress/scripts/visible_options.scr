@@ -1,0 +1,16 @@
+logfilename log\visible_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+visible
+(if (/= (getvar "osmode") 2048) (alert "visible did not work!"))
+;__________
+visible
+(if (/= (getvar "osmode") 0) (alert "visible did not work!"))
+;__________
+dxfout output_dxf\visible_options.dxf
+6
+quit
+y

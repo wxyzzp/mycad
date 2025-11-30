@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-96
+Product Version:        IntelliCAD 5
+Date:                   09/14/2004 08:10am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	RESOURCES
+	DWGDIRECT
+
+3.  Overview:
+	Fix for plote.scr. Actually a band aid. THe problem is in the
+	ReactorSubject class where it counts non-deleted reactor subjects.
+	The crash occurs because the ReactorSubject data is being corrupted
+	somewhere, and has been a problem for a long time. I have added a 
+	try/catch block to prevent the crash along with a note that this whole
+	reactor attach/detach/destroy complex needs to be revisited.
+
+	Change the verbiage on the failure to recover messagebox.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        eng-us/icar.rc2
+        source/prj/lib/db/reactor.cpp
+        source/prj/lib/db/reactor.h
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

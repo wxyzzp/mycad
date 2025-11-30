@@ -1,0 +1,510 @@
+Document Title:  DJL_01SEP04_1.txt	
+Product Version: ICAD 5
+Date:  25 August 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Not sure
+
+3.  Overview:
+Check in several bugs turned in by Ron Prepchuck - Autodsys
+
+a) fixes a problem with ArchT being improperly notified when IntelliCAD is closing, which was causing the icad.exe 
+process to remain in memory
+
+b) gives third-party apps access to the display buffer for the purposes of adding their own image data as a background
+
+c) allows for GRIPEDIT callbacks when more than one entity is selected.  It still only passes one entity name to the 
+callback function.
+
+d) fixes a problem where when you exit the SETDIM dialog  via either OK or Cancel the changed settings are enacted.
+
+e) Remove deleted entities from the gripped selection set
+
+f) Changes affect Advanced functionality when in crippled testdrive mode (Render, wblock, renderfull)
+
+
+A) The following code change fixes a problem with ArchT being improperly notified when IntelliCAD is closing, which was causing the icad.exe process to remain in memory.
+IcadDoc.cpp
+void CIcadDoc::OnCloseDocument(void)
+{
+.
+.
+	if (g_Vba6Installed)
+	{
+	FireEvent(DISPID_DOC_CLOSE);
+	GetApp()->FireWorkspaceEvent (DISPID_WS_CLOSEDOC, this);
+	}
+
+	// If the file has not yet been saved, get the name from the Title (Drawing1) instead of
+	// the pathname
+	//
+	CString strFileName( GetPathName() );
+	if ( strFileName.IsEmpty() )
+		{
+		strFileName = GetTitle();
+		}
+    //If the file was not saved while selected "exit" are BUG (Don't cancel command when "exiting")
+    if(!SDS_CMainWindow->m_nIsClosing)
+	   SDS_CallUserCallbackFunc(SDS_CBCLOSEDOC,(void *)(char *)(LPCTSTR)strFileName,NULL,NULL);	//Autodsys 060904
+	// Don't cancel command when exiting the whole app
+	//
+	//	This fix to 48714 breaks all scripts with a close command. (56414)
+	//	48714 is minor in comparison
+	//	if( !SDS_CMainWindow->m_nIsClosing	)
+	//		{
+	//		SDS_SendMessage(WM_CHAR,27,0);
+	//		}
+
+B) The following code gives third-party apps access to the display buffer for the purposes of adding their own image data as a background
+Framebuffer.cpp
+bool CFrameBuffer::Clear()
+{
+	char *bufferPtr = (char *)this->m_pBits;
+	int iSize = this->m_iSizeX * this->m_iSizeY * this->m_BytesPerPixel;
+	
+	int color = 0;
+	// if BytesPerPixel is 1, we need to use a PaletteIndex
+	//
+	if ( this->m_BytesPerPixel == 1 )
+	{
+		color = PALETTEINDEX( 255 );
+		::memset( bufferPtr, color, iSize );
+	}
+	else if ( this->m_BytesPerPixel == 2 )
+	{
+		color = ::SDS_RGB16FromACADColor( 256 );
+		
+		short *pLocPtr = (short *)bufferPtr;
+		long i;
+		for (i = 0; i < iSize / 2; i++, *(pLocPtr++) = color)
+			;
+	}
+	else if ( this->m_BytesPerPixel == 3 )
+	{
+		color = ::SDS_RGBFromACADColor( 256 );
+		char *pTemp = (char *)&color;
+		
+		char *endPtr = bufferPtr + iSize;
+		char *pLocPtr = bufferPtr;
+		while( pLocPtr < endPtr )
+		{
+			pLocPtr[0] = pTemp[2];
+			pLocPtr[1] = pTemp[1];
+			pLocPtr[2] = pTemp[0];
+			pLocPtr += 3;
+		}
+	}
+	else 
+	{
+		color = ::SDS_RGBFromACADColor( 256 );
+		
+		char *pTemp = (char *)&color;
+		
+		char *endPtr = bufferPtr + iSize;
+		char *pLocPtr = bufferPtr;
+		while( pLocPtr < endPtr )
+		{
+			pLocPtr[0] = pTemp[2];
+			pLocPtr[1] = pTemp[1];
+			pLocPtr[2] = pTemp[0];
+			pLocPtr[3] = 0;
+			pLocPtr += 4;
+		}
+	}
+//Autodsys 022504 {{
+/*		struct { 
+			HDC hDC;
+			int x;
+			int y;
+			int width;
+			int height;
+			HDC _this;
+			void* m_MemDCBmp;
+			int m_iSizeX;
+			int m_iSizeY;
+		} HDCInfo;
+*/	
+		m_HDCInfo.hDC    = NULL;
+		m_HDCInfo.x      = 0;
+		m_HDCInfo.y      = 0;
+		m_HDCInfo.width  = this->m_iSizeX;
+		m_HDCInfo.height = this->m_iSizeY;
+		m_HDCInfo._this  = this->GetHdc();
+		m_HDCInfo.m_MemDCBmp = this->m_pBits;
+		m_HDCInfo.m_iSizeX   = this->m_iSizeX;
+		m_HDCInfo.m_iSizeY   = this->m_iSizeY;
+ 
+		SDS_CallUserCallbackFunc(98,NULL,&HDCInfo,NULL);
+//Autodsys 022504 }}		
+	return true;
+}
+
+C) The following code allows for GRIPEDIT callbacks when more than one entity is selected.  It still only passes one entity name to the callback function.
+Icadapi.cpp
+void SDS_cmdthread( void )
+{
+.
+.		
+			if (Fnd) {
+						SDS_GripRClicked[0]=GripCenter[0];
+						SDS_GripRClicked[1]=GripCenter[1];
+
+						GripRClickedFlag=1;
+						if (Fnd==1 && !bIsAcisObject) {
+							if (RTERROR!=SDS_CallUserCallbackFunc(SDS_CBGRIPEDITBEG,(void *)Ename[0],(void *)gripCen[0],NULL)) {
+								SDS_SetUndo(IC_UNDO_COMMAND_BEGIN,(void *)"Grip edit"/*DNT*/,NULL,NULL,SDS_CURDWG);
+								SDS_EntBeingDragged[0]=Ename[0][0];
+								SDS_EntBeingDragged[1]=Ename[0][1];
+								SDS_GripDragging=1;
+								SDS_EntNodeDrag(pDoc,Ename[0],gripCen[0]);
+								SDS_GripDragging=0;
+								SDS_SetUndo(IC_UNDO_COMMAND_END,(void *)"Grip edit"/*DNT*/,NULL,NULL,SDS_CURDWG);
+								SDS_CallUserCallbackFunc(SDS_CBGRIPEDITEND,(void *)Ename[0],(void *)gripCen[0],NULL);
+							}
+						}
+						else {
+							//sds_resbuf **gripped=NULL, **selected=NULL;
+							//sds_ssgetfirst(gripped, selected);
+							SDS_CallUserCallbackFunc(SDS_CBGRIPEDITBEG,(void *)Ename[0],(void *)gripCen[0],(void *)TRUE); //Autodsys 051304
+							SDS_SetUndo(IC_UNDO_COMMAND_BEGIN,(void *)"Grip edit"/*DNT*/,NULL,NULL,SDS_CURDWG);
+							sds_resbuf rbucs,rbwcs;
+							sds_resbuf* rbp=NULL;
+							rbucs.restype=rbwcs.restype=RTSHORT; rbucs.rbnext=rbwcs.rbnext=NULL;
+							rbucs.resval.rint=1; rbwcs.resval.rint=0;
+							sds_trans(pt1,&rbucs,&rbwcs,0,gp1);
+							ic_ptcpy(gp2,gp1);
+							gp2[0]+=0.000001;
+							gp2[1]+=0.000001;
+
+							CString ltp("DASHED2");
+
+
+
+SDS_cmdthread( void )
+							SDS_DrawGripNodes(pDoc);
+//<-4M Item:28
+							sds_entdel(tmpEnt);
+
+    							undoctl.resval.rint = iundo;   // return Undo settings
+    							sds_setvar("UNDOCTL", &undoctl);
+
+							if (TookP) for(int fi=0;fi<Fnd;fi++)
+								SDS_EntNodeDrag(pDoc,Ename[fi],gripCen[fi]);
+
+							SDS_DragNOElevation=false; //back to defaults...
+							SDS_GripPlaced=0;
+
+							SDS_SetUndo(IC_UNDO_COMMAND_END,(void *)"Grip edit"/*DNT*/,NULL,NULL,SDS_CURDWG);
+							SDS_CallUserCallbackFunc(SDS_CBGRIPEDITEND,(void *)Ename[0],(void *)gripCen[0],(void *)TRUE);//Autodsys 051304
+						}
+
+//BugZilla No. 78005; 09-12-2002
+                     GripRClickedFlag=0;
+						goto out;
+					}
+D) This fixes a problem where when you exit the SETDIM dialog  via either OK or Cancel the changed settings are enacted.
+icadwndaction.cpp
+		case ICAD_WNDACTION_DIMVARS:
+			IcadDimDia();
+			struct resbuf rb1;
+			SDS_getvar(NULL,DB_QDIASTAT,&rb1,SDS_CURDWG,&SDS_CURCFG,&SDS_CURSES);
+			if(rb1.resval.rint == 1)//Autodsys 072704
+			{	/*D.Gavrilov*/// And now we must regenerate existing dimensions.
+				// We'll do it like as in ICAD_WNDACTION_MODIFY case without
+				// calling EntProp dialog.
+
+				struct resbuf* rb_filter = NULL;
+				rb_filter = sds_buildlist(RTDXF0, "DIMENSION,TOLERANCE" /*DNT*/, 0);
+				if( rb_filter )
+				{
+					SDS_PickObjects("ALL"/*DNT*/,
+									NULL,		//pt1
+									NULL,		//pt2
+									rb_filter,	//filter
+									SDS_EditPropsSS,	//ss
+									1,			//mode
+									SDS_CURDWG,	//drawing
+									true,		//bIncludeInvisible
+									false,		//bSpecialImageFilter
+									true		//bIncludeLockedLayers
+									);
+					sds_relrb( rb_filter );
+				}
+			IcadEntProps(false);
+			}
+			break;
+
+E) The following change removes deleted entities from the gripped selection set.
+sds_db.cpp
+deleteEnts
+
+int deleteEnts(std::vector<db_handitem*>& aEnts, db_drawing *pDrawing, bool bCmdErase)
+{
+	std::set<db_handitem*> sEnts;
+	for(int i = 0; i < aEnts.size(); ++i)
+	{
+		sds_name ename;
+		sds_name nmEntity;
+		nmEntity[0] = (long)aEnts[i];
+		nmEntity[1] = (long)pDrawing;
+		int rc;
+		if(!get_ent_entdel(rc, ename, nmEntity))
+			continue;
+
+		db_handitem *pHanditem = (db_handitem *)ename[0];
+		/*DG - 13.11.2002*/// If we are undeleting an entity then apps will not be able to entget it, so mark the entity temporary as undeleted.
+		// [btw, the same hacks are implemented in icadundoredo.cpp, see comments before some SDS_CallUserCallbackFunc(SDS_CBENTUNDO calls].
+		// Old code commented out below.
+		int	delflag = pHanditem->ret_deleted();
+		pHanditem->set_deleted(0);
+		int	cbret = SDS_CallUserCallbackFunc(SDS_CBENTDEL, (void*)ename, (void*)delflag, NULL);
+		pHanditem->set_deleted(delflag);
+//Autodsys 062304 {{
+if(sds_ssmemb(ename, SDS_CURDOC->m_pGripSelection) == RTNORM)	/*D.G.*/// Delete it from
+		{													// the GripSelection too.
+			sds_ssdel(ename, SDS_CURDOC->m_pGripSelection);
+}
+//Autodsys 062304 }}
+//4M Item:28->
+
+		if(cbret == RTERROR)
+			continue;
+
+F) The following changes affect Advanced functionality when in crippled testdrive mode.
+
+block.cpp
+short cmd_wblock(void) {
+//Autodsys 102603{{
+#ifdef CRIPPLE_TESTDRIVE
+	if (CIcadApp::IsTestDrive())
+	{
+		MessageBox(SDS_hwnd,
+				   ResourceString(IDS_TESTDRIVE_WARNING, "Sorry Testdrive software cannot save files.  Please register to receive the full version.",),
+				   ResourceString(AFX_IDS_APP_TITLE, "IntelliCAD"),
+				   MB_OK | MB_ICONEXCLAMATION);
+		return RTERROR;
+	}
+#endif
+//Autodsys 102603}}
+
+render.cpp
+short cmd_render(void)    {			// Basic rendering:  "Render"
+//Autodsys 102603{{
+#ifdef CRIPPLE_TESTDRIVE
+	if (CIcadApp::IsTestDrive())
+	{
+		MessageBox(SDS_hwnd,
+				   ResourceString(IDS_TESTDRIVE_RENDERING, "Rendering has been disabled.  Please register to enable the full version.",),
+				   ResourceString(AFX_IDS_APP_TITLE, "IntelliCAD"),
+				   MB_OK | MB_ICONEXCLAMATION);
+		return RTERROR;
+	}
+#endif
+//Autodsys 102603}}
+
+short cmd_renderfull(void)    {		// Killer rendering:  "Full Render"	 
+//Autodsys 102603{{
+#ifdef CRIPPLE_TESTDRIVE
+	if (CIcadApp::IsTestDrive())
+	{
+		MessageBox(SDS_hwnd,
+				   ResourceString(IDS_TESTDRIVE_RENDERING, "Rendering has been disabled.  Please register to enable the full version.",),
+				   ResourceString(AFX_IDS_APP_TITLE, "IntelliCAD"),
+				   MB_OK | MB_ICONEXCLAMATION);
+		return RTERROR;
+	}
+#endif
+//Autodsys 102603}}
+
+
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+
+Script Change required: N
+
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: icadapi.cpp
+              IcadDoc.cpp
+              icadwndaction.cpp
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmdsWBlock.cpp
+              render.cpp
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/lib/SDS :
+    modified: sds_db.cpp
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+7 file(s) found.
+
+
+Description:
+Check in several bugs turned in by Ron Prepchuck - Autodsys
+
+a) fixes a problem with ArchT being improperly notified when IntelliCAD is closing, which was causing the icad.exe 
+process to remain in memory
+
+b) gives third-party apps access to the display buffer for the purposes of adding their own image data as a background
+
+c) allows for GRIPEDIT callbacks when more than one entity is selected.  It still only passes one entity name to the 
+callback function.
+
+d) fixes a problem where when you exit the SETDIM dialog  via either OK or Cancel the changed settings are enacted.
+
+e) Remove deleted entities from the gripped selection set
+
+f) Changes affect Advanced functionality when in crippled testdrive mode (Render, wblock, renderfull)
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+Looking for modified files...
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: framebuffer.cpp
+              framebuffer.h
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/Regress/Dwg :
+    modified: 78417.dwg
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+4 file(s) found.
+
+Description:
+Check in on of several bugs turned in by Ron Prepchuck - Autodsys
+
+Gives third-party apps access to the display buffer for the purposes of adding their own image data as a background.
+This item was not if the first check-in because I did not have a missing header file.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+Looking for modified files...
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: framebuffer.cpp
+              framebuffer.h
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+4 file(s) found.
+
+Description:
+Remove last check-in it was not working:
+
+Gives third-party apps access to the display buffer for the purposes of adding their own image data as a background.
+This item was not if the first check-in because I did not have a missing header file.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+Looking for modified files...
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Eng-us :
+    modified: IcadRes.rc
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: IcadRes.h
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+3 file(s) found.
+
+Description:
+Missing resource string:
+ResourceString(IDS_TESTDRIVE_RENDERING, "Rendering has been disabled.  Please register to enable the full version.",),
+
+I did not catch this because this code was inside #ifdef CRIPPLE_TESTDRIVE
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+Looking for modified files...
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/api/sds :
+    modified: sds.h
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: framebuffer.cpp
+              framebuffer.h
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+4 file(s) found.
+
+Description:
+Added this fix now that I have all the right files:
+
+Gives third-party apps access to the display buffer for the purposes of adding their own image data as a background.
+This item was not if the first check-in because I did not have a missing header file.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Date: 		October 4, 2004
+
+Reference:      DJL_01SEP04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/prj/ICAD :
+    modified: IcadDoc.cpp
+In C:/Project/IntelliCAD/R50_Release/IntelliCAD/Source/SubDoc/R50_Release :
+    modified: DJL_01SEP04_1.txt
+2 file(s) found.
+
+
+Description:
+Remove fix turned in by Ron Prepchuck (letter "A" discussed above) since it introduced new bugs.  Ron removed the SDS_CBCLOSEDOC callback
+when the main IntelliCAD window was closed.  This means all solutions never were notified when a drawing is closed during
+an IntelliCAD quit.  This fix resolved the ArchT problem simply because it never reached the ArchT code.
+
+The problem is more extensive then simply removing the SDS_CBCLOSEDOC callback.  ArchT fails because during the callback notification it tries to 
+select objects and IntelliCAD does not allow it during the close of the document - but it's intermittent.  IntelliCAD shoudl handle this better,
+but this is a can of worms that won't be solved for this release.
+
+So the ArchT code needs to be more clever about how it handles saving it's data on exit of the drawing file, if it can't
+find a selection set or if the selection set is invalid then it may just need to bail.  Or we could just comment the code out
+completely (similar to Ron's fix above), but we may lose some valuable data on save.
+
+Regardless how we fix ArchT, this is the wrong fix for IntelliCAD.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+None
+
+9.  Installation Issues:
+None
+
+

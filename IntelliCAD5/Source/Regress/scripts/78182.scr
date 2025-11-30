@@ -1,0 +1,169 @@
+Logfilename log\78182.log
+Logfileon
+;;;;;;;;
+Filedia
+0
+;;  Horizontal dim ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimlinear
+1,1
+4,1
+2.5,0
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+2.5,0
+;;;;;;;;;;;;
+dimedit
+
+2.5,0
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+2.5,0
+;;;;;;;; ;;Vertical dim ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimlinear
+1,1
+1,4
+0,2.5
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+0,2.5
+;;;;;;;;;;;;
+dimedit
+
+0,2.5
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+0,2.5
+;;;;;;;;;;;; Rotated dim  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimlinear
+1,4
+4,1
+Rotated
+45
+4,4
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+4,4
+;;;;;;;;;;;;
+dimedit
+
+4,4
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+4,4
+;;;;;;;;;;;; Aligned dim  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimaligned
+1,5
+5,1
+5,5
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+5,5
+;;;;;;;;;;;;
+dimedit
+
+5,5
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+5,5
+;;;;;;;;;;;; Angular dim  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+line
+2,7
+3,8.5
+4,7
+
+;;;;
+dimangular
+2,7
+4,7
+3,7
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+3,7
+;;;;;;;;;;;;
+dimedit
+
+3,7
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+3,7
+;;;;;;;;;;;; 3 point Angular dim  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimangular
+
+6,8.5
+5,7
+7,7
+6,7
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+6,7
+;;;;;;;;;;;;
+dimedit
+
+6,7
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+6,7
+;;;;;;;;;;;; Diatemer dim  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+circle
+8,5
+8,7
+;;;
+dimdiameter
+8,3
+10,3
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,3
+;;;;;;;;;;;;
+dimedit
+
+10,3
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,3
+;;;;; ;  ;;Radial dim ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimradius
+8,7
+10,10
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,10
+;;;;;;;;;;;;
+dimedit
+
+10,10
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,10
+;;;;; ;  ;;Ordinate dim ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimordinate
+8,3
+10,2
+
+;;;;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,2
+;;;;;;;;;;;;
+dimedit
+
+10,2
+
+;;;;;;;;;;;;;
+(entget (car (entsel)))
+10,2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+zoom
+extents
+;;;;;;;;;;;;;;;;;;;;
+Dxfout output_dxf\78182.dxf
+6
+;;;;;;;;;
+Exit y

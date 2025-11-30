@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4272002_1.txt
+Date:		27-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/lib/SDS/sds_get.cpp
+                CvsHist:Source/prj/lib/LISP/getter.cpp
+Description: Open/Save File Dialog show [Type] button.
+Comments: Now [Type] button works well.
+	TaLOpenFileDialog
+
+--------------------------------------------------------------------------------

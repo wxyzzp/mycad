@@ -1,0 +1,16 @@
+;_This_Script_is_created_by_Srinivas_on_4/14/2003_testing_Bugzilla_no_78482
+logfilename log\78482.log
+logfileon
+;________
+-vbarun
+check.checkpaperorientation
+-vbarun
+check.checkpaperSIZE
+-vbarun
+check.checkHidelines
+(princ "Please note that this script will not work if VBA is not present")
+;________
+dxfout output_dxf\78482.dxf
+6
+quit
+y

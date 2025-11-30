@@ -1,0 +1,104 @@
+Document Title:  DJL_02AUG04_1.txt
+Product Version: ICAD 5
+Date:  2 August 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: Dan/Allison reviewed the UI
+* Docs Changes Required: Y
+* Submitted to branch(es):
+R50_Release
+R40_Dev
+
+2. Modules Affected :
+Not Sure
+
+3.  Overview:
+In general, this was a continued UI review and Fix:
+	Check new command additions for capitolization, spelling, proper use of terminology
+	Review and fix existing dialogs for the following:
+		Proper layout
+		Consistency of interface
+		Proper spelling
+		Proper use of terminology
+		Proper use of tab stops
+		Proper use of mneumonics
+		Proper tab order
+
+See section below for specific changes.
+
+
+4.  Notes to Docs:
+Recheck and recapture various dialog screen shots.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: None
+
+Script Change required: None
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+
+--------------------------------------------------------------------------------
+Reference:   djl_02AUG04_1.txt
+
+Added files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_02AUG04_1.txt
+
+Changed Files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Eng-us :
+    modified: icad.rc2
+              IcadRes.rc
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/ICAD :
+    modified: bhatchboundarytab.cpp
+              DwfInfoDialog.cpp
+              DwfInfoDialog.h
+              icadboundarydia.cpp
+              IcadSetVarsDia.cpp
+              LineweightDlg.cpp
+              LineweightDlg.h
+              printdialog.cpp
+              resource.hm
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: openclose.cpp
+              save.cpp
+
+Description:
+Continued fixes for UI bugs:
+
+a) Bhatch dialog - remove "Select Objects" button.  This was not used but remained in the UI.
+
+b) Entity Properties dialog - spin control was not connected to main control, some controls overlapped
+
+c) Print dialog - controls at top of property page overlapped in some DPI settings
+
+d) DWF File and Version dialog - added help button to dialog to provide better placement control (problems with low/high DPI)
+
+e) DWF is Design Web format not Drawing Web Format - changed test accordingly
+
+f) Lineweight dialog - changed help button to match other dialogs, added help id
+
+g) Changed text "Display control polyline frame" to "Display polyline control frame"
+
+h) Drawing Settings->Angular Units/Linear Units - spin controls were not connect to proper parent controls
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Extensive work has been done to all dialogs, they should all be reviewed and tested.
+
+9.  Installation Issues:
+None
+

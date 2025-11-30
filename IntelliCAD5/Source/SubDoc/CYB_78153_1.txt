@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78153_1.txt
+Date:		03-06-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78153
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/dimensions.h      
+		CvsHist:Source/prj/lib/CMDS/DimContinue.cpp       
+		
+Description:	
+Comments:	TAL78153
+
+File by File: 
+		* CvsHist:Source/prj/lib/CMDS/dimensions.h      
+		
+		The #defines for X_ORDINATE and Y_ORDINATE were wrong
+		changed them according to AutoCAD's help (DXF REFERENCE) 
+		//BugZilla No. 78153; 20-05-2002
+		//#define DIM_x_ORDINATE    6
+		//#define DIM_Y_ORDINATE    70
+		#define DIM_Y_ORDINATE    6
+		#define DIM_x_ORDINATE    70
+
+
+		* CvsHist:Source/prj/lib/CMDS/DimContinue.cpp       
+		Complete implementation of drawing a continous ordinate dimension
+		to a previous ordinate dimension.
+		
+		Case statements were not being executed properly. 
+		Logic was written for the complete manipulation of points based on 
+		the previous dimension
+		
+		Calculation of the proper dimtext
+
+		The build list was not done with some parameters missing and 
+		some parameters not passed with correct values.
+
+		plink->DefValidflg had to set so that the newly created dimension 
+		is of the same type (X / Y) as the previous one.
+--------------------------------------------------------------------------------

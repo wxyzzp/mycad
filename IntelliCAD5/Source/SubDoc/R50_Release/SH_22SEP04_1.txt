@@ -1,0 +1,50 @@
+Document Title:  SH_22SEP04_1.txt	
+Product Version: ICAD 5.0
+Date:  22/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release, Icad_cee(will be updated separately)
+
+2. Modules Affected : 
+   
+   Source/Prj/Lib/cmd/acisIn.cpp
+   Source/Prj/Lib/acis/AsViewer.cpp
+   Source/Prj/Lib/gr/dispobjs.cpp
+   Source/Prj/Lib/icadlib/hiddenwindow.cpp
+   
+3. Overview:
+
+This submissions made the following changes to the code:
+
+    1) Fixed an ACISIN bug, which caused ACISIN command not to work correctly. The problem was 
+       the file name entered by users did not pass into the function of the modeler so the SAT 
+       files were never found. This bug is fixed.
+    2) Added some the code for debug propose to catch ACIS errors.
+    3) IntelliCAD brought up a window with title "Visio IntelliCAD Hidden Window" in certain case
+       when it failed. I removed "Visio" from those strings defined in hiddenwindow.cpp file.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

@@ -1,0 +1,19 @@
+// interface declarations
+
+// Bugzilla:78647;	Date:05-12-03
+//---------------------------------------------
+//******* Modified by Sachin Dange.
+//*** Uncomment the following line if you want the call through the interface "IIcadPlotManager".
+//#define USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+//---------------------------------------------
+// Bugzilla:78647;	Date:05-12-03
+
+
+interface IIcadPlotterPen;
+interface IIcadPlotterPens;
+interface IIcadPlotProperties;
+interface IIcadPlotManager;
+interface IIcadPlotRegManager;
+
+enum PrintArea;
+enum Orientation;

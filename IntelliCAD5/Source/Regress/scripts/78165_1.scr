@@ -1,0 +1,39 @@
+logfilename log\78165_1.log
+logfileon
+;_________
+color
+red
+;;;;;;;;;
+Rectangle
+c
+0.2
+0.2
+1,1
+4,4
+;;;;;;;;;;;;;;;;;;;;;;
+ucs
+y
+30
+;;;;;;;;;;;;;;
+color
+green
+;;;;;;;;;;;;
+Rectangle
+1,1
+4,4
+;;;;;;;;;;
+vpoint
+0,1,0
+;_______
+(setq en (entget (car (entsel))))
+4,0,0
+(if (= en nil) (alert "err"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+1,0,0
+(if (= en nil) (alert "err"))
+;___________
+dxfout output_dxf\78165_1.dxf
+6
+quit
+y

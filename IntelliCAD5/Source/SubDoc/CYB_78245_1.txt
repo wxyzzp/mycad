@@ -1,0 +1,29 @@
+
+
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78245_1.txt
+Date:		22-07-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78245
+Added files:     	
+Affected files: 
+		Eng-us/icad.rc2
+		Source/prj/lib/CMDS/offset.cpp
+		Source/prj/ICAD/res/icadrc2.h
+Description:	OFFSET  provides invalid options for  entity selection.
+Comments:	TaL78245
+File by File:	
+*		Eng-us/icad.rc2
+		Defined a resource string by the name CMD_ERR_SINGLEOBJECT
+*		Source/prj/lib/CMDS/offset.cpp
+		If more than one entity is selected then show error at the command prompt.
+*		Source/prj/ICAD/res/icadrc2.h
+		Defined an ID by the name CMD_ERR_SINGLEOBJECT
+--------------------------------------------------------------------------------
+

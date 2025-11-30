@@ -1,0 +1,362 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78577_1.txt	
+Product Version:	ICAD 4
+Date:			09/12/2003 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/CMDS/DimLinear.cpp ==> Cmds.lib
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78577: With dimjust=3, dimtext is shown 
+upside down for vertical and rotated dimensions.
+	When we change the value of DIMJUST to 3, the horizontal linear 
+dimension, displays the dimension text correctly as compared to AutoCAD.
+But in the case of Vertical and Rotated Linear dimensions, it displays 
+the text in a opposite way (Upside down) as compared to AutoCAD.
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+	What AutoCAD actually does in this case, is that when it draws a horizontal
+dimension (i.e rotation angle = 0), it displays the dimension text in a way that
+allows the user to read it starting from down to up.
+	Now if you give the linear dimension a small rotation angle (i.e draw a 
+rotated linear dimension) for example an angle of 0.5 degrees, then AutoCAD 
+displays the dimension text in a way that allows the user to read it in a reverse
+direction, i.e. starting from up to down. The reason for this is that when you 
+give an appropriate rotation angle say 45 degrees, or 90 degrees (Vertical dimension),
+it performs an anticlockwise rotation on the linear dimension and the reversely
+displayed dimension text which makes the text display look exact.
+	IntelliCAD does the same as AutoCAD in case of horizontal dimension, but when
+given a rotation angle, it rotates the text as is without reversing it first.
+	This is the approach I exactly took to solve this bug; I had to modify the 
+text rotation angle for the dimension text in a way that it displayed the text
+exactly like AutoCAD. I also found that the same problem existed for DIMJUST = 4.
+I have done my modifications in "File: Source\prj\lib\CMDS\DimLinear.cpp" in the 
+function "cmd_defaultdim" as follows: (modifications are within Bugzilla comments)
+
+
+File: Source\prj\lib\CMDS\DimLinear.cpp
+--------------------------------------------
+BOOL cmd_defaultdim(struct cmd_dimeparlink *plink,db_drawing *flp,short dragmode) {
+	char			 text[IC_ACADBUF] = ""/*DNT*/,
+					*fcp1 = NULL;
+	short			 fi1 = 0,
+					 fi2 = 0;
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+	...
+
+
+	if (SDS_AtNodeDrag!=2 && (!(plinkvar[DIMUPT].dval.ival) || plinkvar[DIMJUST].dval.ival==3 || plinkvar[DIMJUST].dval.ival==4)) {
+		switch(plinkvar[DIMJUST].dval.ival) {
+			case 3:
+				textIns[0]=pt13[0];
+				textIns[1]=ptExtL[1][1]+(txtbox[1][0]/2);
+				
+				// Bugzilla 78577;	Date: 20-11-03
+				//---------------------------------------
+				/*!!!
+				plink->textrot=(plink->dlnang+DIM_90_DEG);
+				//!!!*/
+			
+				// horizontal dimension (plink->dlnang = 0)
+				if (icadRealEqual(plink->dlnang, 0.0))
+					plink->textrot = DIM_90_DEG;
+				else // vertical or rotated dimension
+					plink->textrot = plink->dlnang - DIM_90_DEG;
+				//---------------------------------------
+				// Bugzilla 78577;	Date: 20-11-03
+
+				dlnang += DIM_90_DEG;
+				break;
+			case 4:
+				textIns[0]=pt14[0];
+				textIns[1]=ptExtL[3][1]+((ptExtL[2][1]>ptExtL[3][1])?-(txtbox[1][0]/2):(txtbox[1][0]/2));
+				
+				// Bugzilla 78577;	Date: 20-11-03
+				//---------------------------------------
+				/*!!!
+				plink->textrot=(plink->dlnang+DIM_90_DEG);
+				//!!!*/
+			
+				// horizontal dimension (plink->dlnang = 0)
+				if (icadRealEqual(plink->dlnang, 0.0))
+					plink->textrot = DIM_90_DEG;
+				else // vertical or rotated dimension
+					plink->textrot = plink->dlnang - DIM_90_DEG;
+				//---------------------------------------
+				// Bugzilla 78577;	Date: 20-11-03
+
+				dlnang+=DIM_90_DEG;
+				break;
+		}
+	}
+
+EndOfAdujstmentWhenDimtmoveIsNotZero:	// EBATECH(CNBR) 13-03-2003 
+
+	// When the text is aligned with the dimension, somtimes the text can be aligned but upside down, so I need to rotate it 180 degrees.
+	TextRotation=plink->textrot;
+
+
+	...
+	...
+	...
+	...
+	...
+
+	return DrawDimLinear(
+				plink, flp, dragmode, ptExtL, ptDimL, ptt, box2,	
+				boxrect, ExtDimInt, textIns, cosofdeg, sinofdeg,
+				TextRotation, text, dimsoxdflag, dimDim2flag,
+				MakeCenterLine, MakeExteraLine1, MakeExteraLine2,
+				dimtad4Flg, ArrowFit);
+}
+
+
+	The variable "TextRotation" contains the rotation angle with which the 
+dimension text is drawn. "TextRotation" in turn obtains the value from 
+"plink->textrot".
+	As shown within Bugzilla comments, the linear dimension is horizontal 
+when "plink->dlnang" is 0. At that time we give an anti-clockwise rotation
+to the text; hence the constant "DIM_90_DEG" is added to "plink->dlnang" to
+give the resultant "plink->textrot". 
+	But when "plink->dlnang" has a value, we subtract "DIM_90_DEG" from it
+thus performing a clockwise rotation to the text. Thus the text gets displayed
+correctly.
+	On similiar lines, this has been applied to DIMJUST=4 as shown by the 
+Bugzilla coments.
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1  Engineers Unit Verification
+--------------------------------
+The code should be checked for the following cases:
+	When DIMJUST = 3 and DIMJUST = 4, the dimension text of the linear 
+dimension should be displayed in the same direction as that of AutoCAD for 
+all the following types of linear dimension:
+	1. Horizontal
+	2. Vertical
+	3. Rotated
+	4. Aligned.
+
+	 
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+

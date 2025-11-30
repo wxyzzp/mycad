@@ -1,0 +1,10 @@
+logfilename log\scr3.log
+logfileon
+filedia 0
+open
+DWG/Intl space station dec 98.dwg
+(load "lisp\scr3.lsp")
+zw
+dxfout output_dxf\scr3.dxf
+6
+exit y

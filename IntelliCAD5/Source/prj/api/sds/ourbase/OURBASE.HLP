@@ -1,0 +1,23 @@
+\
+        Type the name of the command or system variable for
+        which you want help and press RETURN.
+
+                              - OR -
+
+        Pick the Index button, select an item from the list
+        box, and pick OK.
+
+
+
+        OK         Exits the HELP dialogue box.
+        Top        Displays these instructions.
+        Previous   Displays help for the previous item in the index.
+        Next       Displays help for the next item in the index.
+
+\BASECMD1
+
+This is the help for cmd 1
+
+\BASECMD2
+
+This is the help for cmd 2

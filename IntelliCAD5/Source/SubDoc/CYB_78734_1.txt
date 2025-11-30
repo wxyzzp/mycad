@@ -1,0 +1,340 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78734_1.txt	
+Product Version:	ICAD 4
+Date:			05/04/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\ICAD\IcadFlyOut.cpp  ==>  LoadFlyOutButtons(CIcadTBbutton* pibParent, BOOL bReverseImages)
+				==>  OnMouseMove(UINT nFlags, CPoint point)
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding bugzilla# 78734; Affects ArchT: IntelliCAD crashes while 
+picking a toolbar item.
+
+Icons in IntelliCAD toolbars changes when a flyout is selected. When a nested 
+flyout is selected in a toolbar, the parent toolbar's icon changes incorrectly 
+(the parent toolbar shows the icon that was selected in the nested flyout).  
+If the changed icon is clicked on the parent toolbar, IntelliCAD will crash.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+The parent for the selected flyout was NOT getting set correctly.
+Actually it should be set to ' m_idxParentButton ', instead, it was set 
+to 'idxButton'. Because of this, it used to set the icon of second item 
+in the row incorrectly. I have changed the following line:
+
+File: Source\prj\ICAD\IcadFlyOut.cpp
+------------------------------------
+Function: OnMouseMove(UINT nFlags, CPoint point)
+--------------------------------------------------------------------------
+
+	//m_pNestedFlyOut->m_idxParentButton = idxButton;
+	m_pNestedFlyOut->m_idxParentButton = m_idxParentButton ;
+
+Another thing that I found while fixing this bug was, on randomly clicking 
+some icons, an assert was coming, which led to a crash in IntelliCAD.
+It seemed to be a memory allocation problem, at first look, as the assert 
+came inside delete operator. One of the possible reason for this is -deleting 
+from mismatched heaps. So I tried with HeapAlloc() and HeapFree(). 
+
+File: Source\prj\ICAD\IcadFlyOut.cpp
+------------------------------------
+Function: LoadFlyOutButtons(CIcadTBbutton* pibParent, BOOL bReverseImages)
+--------------------------------------------------------------------------
+	....
+	....
+	....
+	//LPTBBUTTON	pTbButton;
+	//pTbButton = new TBBUTTON[nButtons];
+	HANDLE procHeap = GetProcessHeap();
+	LPTBBUTTON	pTbButton = (LPTBBUTTON)HeapAlloc(procHeap, HEAP_ZERO_MEMORY, nButtons * sizeof(TBBUTTON));
+	....
+	....
+	....
+
+//	delete [] pTbButton;
+	HeapFree(procHeap,0,pTbButton);
+}
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following:
+	1. Start IntelliCAD.
+	2. Select the menu item: Design-> Design Toolbar (last on the Design menu).
+	3. The ArchT Design Toolbar should appear
+	4. On the ArchT Design toolbar, select a nested flyout: 
+	   Design->Doors->Predefined Doors->Predefined Door B
+	5. The second icon should NOT change, as it was changing before and should NOT crash IntelliCAD.
+
+This fix is ONLY related to Toolbar
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in progress)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

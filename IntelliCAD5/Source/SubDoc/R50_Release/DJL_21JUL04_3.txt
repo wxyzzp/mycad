@@ -1,0 +1,134 @@
+Document Title:  DJL_21JUL04_3.txt
+Product Version: ICAD 5
+Date:  July 16, 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y/N
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: Y
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Available modules: DB
+
+3.  Overview:
+Fixed bugs in Setvar/Getvar implementation
+
+a) Some new variables were available, but had no functionality.  These variables were set to "undocumented" and now 
+roundtrip data but will not allow the user to set them.
+	BACKGROUNDPLOT
+	DRAGP1
+	DRAGP2
+	FILEDDISPLAY
+	GRIPHOVER
+	GRIPTIPS
+	HPGAPTOL
+	INTERSECTIONCOLOR
+	LOCALROOTPREFIX
+	MTEXTFIXED
+	MTJIGSTRING
+	MYDOCUMENTSPREFIX
+	PALETTEOPAQUE
+	PLOTOFFSET
+	RASTERDPI
+	REPORTERROR
+	ROAMABLEROOTPREFIX
+	STANDARDSVIOLATION
+	TRAYICONS
+	TRAYNOTIFY
+	TRAYTIMEOUT
+	TREEMAX
+	UCSORTHO
+	UCSVIEW
+	XREFNOTIFY
+	XREFTYPE
+	OSNAPHATCH
+	QAFLAGS
+
+b) Fix for bug 78811: Not all variables were in alphabetic order. This was from a bad implementation for variables that 
+are stored in the object dictionaries.  This was implemented in a separate list rather than adding a flag to the
+existing list of system variables.  Since it was a separate list it could not be integrated into the display of the normal
+list alphabetically and had to be displayed after the normal list of variables.
+
+PKSER           "123-123123-12"   (Read Only)
+          _VENDORNAME      "PLACE NAME OF ITC MEMBER HERE"   (Read Only)
+          _VERNUM          "5.0.1"   (Read Only)
+          DIMASSOC         2
+          HALOGAP          0
+          HIDETEXT         1
+          INDEXCTL         0
+          OBSCOLOR         0
+          OBSLTYPE         0
+          PROJECTNAME      ""
+          SORTENTS         96
+          XCLIPFRAME       0
+
+c) Added support for the PEDITACCEPT system variable. When set to 1, you will not be prompted to "Turn it into a pline?" when
+pediting non-polyline entities.
+
+d) Added support for the STARTUP system variable. When set to 1, you will get the start a new drawing wizard when you do a File->new command.
+If set to 0, then you just get a new drawing - the wizard does not display.  I also added a check for FILEDIA to the start a new drawing wizard.
+
+e) There were a couple of variables that were not in the correct order in the lists. STANDARDSVIOLATION was not in the correct location in the list of defines
+in dbdefines.h.  TDUSRTIMER was not in alphabetical order in db1.cpp which caused it to fail to work at all.
+
+4.  Notes to Docs:
+I also changed the print dialog to just say "Print" instead of "Print Dialog".
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: Y/N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: N
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference: 78811
+Added files:
+	None
+
+Affected files:
+
+Eng-us/IcadRes.rc?rev=1.28.2.21.2.9 
+Eng-us/icad.rc2?rev=1.63.2.34.2.16 
+Source/prj/ICAD/IcadApp.cpp?rev=1.28.4.21.2.6 
+Source/prj/ICAD/printdialog.cpp?rev=1.2.6.9.2.2 
+Source/prj/lib/CMDS/cmds4.cpp?rev=1.21.4.13.2.3 
+Source/prj/lib/CMDS/cmdsDimVars.cpp?rev=1.13.4.4.2.2 
+Source/prj/lib/CMDS/ddcmd.cpp?rev=1.4.4.1.2.1 
+Source/prj/lib/CMDS/pedit2.cpp?rev=1.14.4.5.2.1 
+Source/prj/lib/DB/db1.cpp?rev=1.33.2.13.2.4 
+Source/prj/lib/DB/db_util.cpp?rev=1.13.2.17.2.1 
+Source/prj/lib/DB/dbdefines.h?rev=1.22.2.12.2.2 
+Source/prj/lib/DB/dbprotos.h?rev=1.5.4.7.2.1 
+Source/prj/lib/DB/extvars.h?rev=1.1.1.1.12.2.4.1 
+Source/prj/lib/DB/oldvars.cpp?rev=1.15.4.9.2.1 
+Source/prj/lib/DB/sysvarlink.h?rev=1.2.4.1.2.1 
+Source/prj/lib/ICADLIB/IcadDef.h?rev=1.4.4.4.2.2 
+
+Description:
+Fixed bugs in Setvar/Getvar implementation.  Fixed misspelled words in Print dialog.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+
+--------------------------------------------------------------------------------
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None.
+
+8.  Testing Considerations:
+None.
+
+9.  Installation Issues:
+None.
+
+
+

@@ -1,0 +1,444 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78720_1.txt	
+Product Version:	ICAD 4
+Date:			09/02/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\DB\db_util.cpp ==>db_makeanonname(char *sour, db_drawing *dp, int donotdisturb)
+Source\prj\lib\DB\drawing.h   ==>int use_nextanon(void)
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is related to Bugzilla# 78720: Unnamed block cannot be redefined in 
+ICAD.
+
+Unnamed blocks can't be redefined in IntelliCAD. When we try to redefine 
+an unnamed block ( e.g. *U112 ), IntelliCAD always creates a new unnamed 
+block with a new number (e.g. *U113). Doing this in AutoCAD, the unnamed 
+block (in the example with name *U112) is redefined correctly.
+
+I also found some  more differences  between ACAD and ICAD, while fixing 
+the above bug. Those are as follows:
+
+	1. The least number  with which AutoCAD creates an unnamed block 
+	   is 1 ( e.g *U1), but IntelliCAD creates it with 0 (e.g. *U0). 
+
+	2. Suppose, no unnamed  block is created,  and  if we create one 
+	   ( e.g. *U10 ) then, AutoCAD  creates it  with name *U1. If we 
+	   keep on creating the new block with the same name (*U10) then 
+	   AutoCAD creates new block like *U2, *U3, *U4 till *U10. After 
+	   this  point it redefines the last block (*U10) if we create a 
+	   block with the name *U10. But IntelliCAD goes on creating 
+	   beyond *U10 (for above example i.e *U10).
+
+	3. AutoCAD does NOT accept any other characters other then '*U', 
+	   but  IntelliCAD accepts the characters like: D, X, B, E. For 
+	   this the  fix is NOT included here, as these characters were 
+	   allowed to have compatibility with German ACAD.
+
+	4. AutoCAD does NOT accepts ' * ' as a block name, but IntelliCAD
+	   does.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+ICAD was not redefining the unnamed blocked because, previously the number
+associated with the unnamed block (e.g 10 in case of *U10) was NOT taken 
+into consideration. ICAD kept a counter (int nextanon; class: db_drawing 
+file: Source\prj\lib\DB\drawing.h ) on the number of blocks created, and 
+whenever a new block is created, it used to increment that counter. Hence
+even if we redefine any unnamed block, it used to create the new one with
+the next number every time. 
+
+To fix this problem following are the modifications I have done:
+
+File: Source\prj\lib\DB\db_util.cpp; 
+------------------------------------
+Function: db_makeanonname(char *sour, db_drawing *dp, int donotdisturb)
+-----------------------------------------------------------------------
+
+if (sour!=NULL)
+{
+   // Added strnicmp("*MODEL_SPACE",sour,12) != 0 because my block name was comming out *Uodel_space. MHB
+   if (strnicmp("*PAPER_SPACE",sour,12) && strnicmp("*MODEL_SPACE",sour,12)) // if it DOES match, don't do this number - attaching
+   {
+    if (*sour=='*'/*DNT*/ && sour[1] && dp!=NULL) /* At least a normal anonymous name */
+    {
+
+		 fi1=(sour[2]=='|' &&
+		 toupper(sour[3])=='R'/*DNT*/ &&
+		 toupper(sour[4])=='E'/*DNT*/ &&
+		 toupper(sour[5])=='F'/*DNT*/) ? 6 : 2; /* Where the number will go. */
+		 /* (2 : Normal; 6 : Xref */
+		 /*
+		 ** If there's nothing already there, or it's not a number,
+		 ** or we don't care if it is, then generate the next
+		 ** anonymous name:
+		 */
+		 if (!sour[fi1] || !isdigit((unsigned char) sour[fi1]) || !donotdisturb)
+		 {
+
+			/******************************************************************************************/
+			The following code separates out the number associates with the block name 
+			e.g. if *U10 is entered, then 10 is separated out in 'blockNum'
+			/******************************************************************************************/ 
+			char *blockNum;
+			int blockNumCount = 0,
+			sourCount;
+		
+			for(sourCount = fi1 ; sour[sourCount] != '\0' ; sourCount++);
+
+			blockNum=new char[sourCount];
+			sourCount = fi1; 
+
+			while(sour[sourCount])
+			{
+					if(isdigit((unsigned char) sour[sourCount]))
+					   blockNum[blockNumCount++] = sour[sourCount++];
+				else 
+					{
+					   blockNumCount = 0;
+					   break;
+        			} 
+			}
+
+			blockNum[blockNumCount] = '\0';
+
+			sprintf(num,"%d"/*DNT*/,dp->use_nextanon(atoi(blockNum)));
+			delete [] blockNum;
+			ret=new char[fi1+strlen(num)+1];
+			fc1=sour[fi1]; sour[fi1]=0;
+			strcpy(ret,sour);
+			sour[fi1]=fc1;
+			strcpy(ret+fi1,num);
+
+		 }
+
+		 // any non-D or X or B type anon blocks should be made as *U type
+		 /*D.G.*/// 'B' code added for compatibility with German ACAD (CR1606).
+		 // EBATECH(CNBR) 'E' code added for Explofing non-uniform scale inserts. 2003/4/30
+		 //if( toupper(sour[1]) != 'D' && toupper(sour[1]) != 'X' && toupper(sour[1]) != 'B')
+		 if(strchr("DXBEdxbe", sour[1]) == NULL )
+		 {
+		  sour[1]='U';
+		 }
+
+		 /****************************************************************************************/ 
+		 If ' * ' is entered as block name, previously ICAD was creating a block named as ' * ' .
+		 The following code is added to prevent it from doing so.
+		 /****************************************************************************************/ 
+     
+		 if (ret==NULL && strcmp(sour,"*"))
+		 {
+		  ret=new char[strlen(sour)+1];
+		  strcpy(ret,sour);
+		 }
+	}
+   }
+}
+
+ 
+
+File: Source\prj\lib\DB\drawing.h; 
+----------------------------------
+Function:int use_nextanon(int sourCount)
+----------------------------------------
+
+int use_nextanon(int sourCount) {
+
+/*********************************************************************************************/
+This code is added to prevent to start counting from 0. 
+/*********************************************************************************************/
+if((sourCount == 0) || (sourCount > nextanon))
+    return (++nextanon);
+else 
+    return sourCount;
+
+}
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+The code should be checked for the following cases:
+
+	1. Create unnamed blocks with same  name. IntelliCAD  should NOT 
+	   create the new block.  i.e.  the first block  should be  over 
+	   written.
+	2. The least number with which IntelliCAD should create the block
+	   should be 1 (e.g. *U1) but NOT 0 (e.g. *U0).
+	3. Create one block (e.g. *U10) then, ICAD should creates it with 
+	   name  *U1. Keep  on creating  the new block with the same name 
+	   (*U10) then ICAD should create new block like  *U2,  *U3,  *U4 
+	   till *U10. After this point it should redefines the last block 
+	   (*U10) if we create a block with the name *U10.
+	4. IntelliCAD should NOT accept '*' as a block name.
+	5. The  block creation and  insertion functionality of IntelliCAD 
+	   should NOT break.
+	6. Compare the behavior with AutoCAD.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Mark
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

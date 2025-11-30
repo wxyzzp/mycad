@@ -1,0 +1,377 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78724_1.txt	
+Product Version:	ICAD 4
+Date:			02/03/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\ICAD\icadapi.cpp ==> int SDS_getvar(const char *vname, short qidx, struct resbuf *res, db_drawing *flp, 						db_charbuflink *configsv, db_charbuflink *sessionsv)
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This  is regarding bugzilla# 78724;  ArchT  Affected:  cmdactive  always 
+returns 1 from within ADS/SDS.
+
+IntelliCAD  always  returns 1,  if  ads_getvar  function is  called with 
+' cmdactive '. This  makes  it difficult to determine if another command 
+is active in IntelliCAD while any ADS function is running. In the similar 
+case AutoCAD 2002 would return 32.
+
+The results in AutoCAD are as follows:
+
+Command                 Result
+--------------------------------
+cmdactive                   1
+line ' cmdactive            3
+functest                   32
+line ' functest            33
+
+As per these results, bit  code 32  specifies that there is some ADS/ARX 
+command active, which was NOT taken care in IntelliCAD.
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+
+
+File: Source\prj\ICAD\icadapi.cpp
+
+------------------------------------------------
+
+Function: int SDS_getvar(const char *vname, short qidx, struct resbuf *res, db_drawing *flp, db_charbuflink *configsv, 			db_charbuflink *sessionsv)
+----------------------------------------------------------------------------------------------------------------------
+
+
+if ( (qidx == DB_QCMDACTIVE) || ((qidx == -1) && strisame( vname, "CMDACTIVE"/*DNT*/ )) )
+   {
+             res->restype = RTSHORT;
+             res->resval.rint = 0;
+             if(res->resval.rint == 0)
+             {
+               if ( SDS_InInternalFunction > 0 )
+               {
+                 res->resval.rint |= 0x01;              // ordinary command is active
+               }
+               if ( SDS_Inside3rdPartyFunc > 0 )
+               {
+                 res->resval.rint |= 0x20;              // 32d; inside SDS command
+               }
+     /**********************************************************************************************************/
+        If it's a 3rd party command (e.g. SDS/ADS Command ), and if it's called transparently (e.g. line; ' functest ), 		SDS_Internal Function will be non zero. So, res->resval.rint will become 33 (32 for SDS command + 1 for ordinary 		command is active). Now we don't want to look for transparency, as 33 is the expected value, therefore in this case 		the following condition should not be executed.
+     /**********************************************************************************************************/
+               if ( (SDS_DoingCommandTrans) && ( SDS_Inside3rdPartyFunc <= 0 )) // if its a 3rd party command,
+               {                                                                // don't look for transparency
+                 res->resval.rint |= 0x02;              			// doing a transparent command too
+               }
+              }
+            return RTNORM;
+            }
+        else
+            {
+            return(db_getvar(vname,qidx,res,flp,configsv,sessionsv));
+            }
+        ........
+        ........
+   }
+
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be checked for the following cases:
+
+Command/Function				IntelliCAD	AutoCAD
+-----------------------------------------------------------------------
+ICAD commands		
+cmdactive						0	1
+line ' cmdactive					3	3
+Lisp commands		
+(getvar "cmdactive")					0	0
+(command "cmdactive")					0	33
+line;(getvar "cmdactive")				1	1
+line;(command "cmdactive")				1	Error
+(defun c:f1() (getvar "CMDACTIVE") )		
+		f1					0	0
+		'f1					0	0
+(defun c:f1()(command "cmdactive"));f1			0	33
+Lisp transparent commands		
+(defun c:f1()(getvar"cmdactive"));line;' f1	 	3	3
+(defun c:f1()(command "cmdactive"));line;' f1		3	Error
+SDS/ADS commands		
+	functest  					32	32
+	line 'functest  				33	33
+
+
+Note: For the last two commands given in the above table, corresponding SDS dll should be loaded.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (In process)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

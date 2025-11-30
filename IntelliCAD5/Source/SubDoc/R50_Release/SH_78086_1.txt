@@ -1,0 +1,45 @@
+Document Title:  SH_78086_1.txt	
+Product Version: ICAD 5.0
+Date:  8/28/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/3dsolids.cpp
+   Source/Prj/lib/cmds/ellipse.cpp
+   
+3. Overview:
+
+This submission fixes the bug #78086 - "Cone and Ellipse commands do not accepts 3-d 
+points at some prompts". The problems were SDS_AskForPoint() could not accept 3D point
+as input in dragging mode. The problem is fixed by temporarily setting the value of 
+global variable SDS_GetZScale to TRUE before SDS_dragobject() is called in 
+cmd_cone_mesh(), cmd_cone_solid_elp(), and cmd_ellipse().
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:                  
+	Name of Script file:  78086.scr
+
+8.  Notes to Localization: 
+
+
+
+

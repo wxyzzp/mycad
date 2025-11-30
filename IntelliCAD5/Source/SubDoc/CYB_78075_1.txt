@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78075_1.txt
+Date:		10-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78075
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+Description: 	Dimension text shown below dimension line for aligned dimension when "Dimtad"=3
+Comments:	TaL78075
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/DimLinear.cpp
+		Added cases to properly set the values for text insertion point when Dimtad is 3 and the dimension is an aligned one. 
+--------------------------------------------------------------------------------
+

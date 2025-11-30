@@ -1,0 +1,53 @@
+Document Title:  SH_14SEP04_1.txt	
+Product Version: ICAD 5.0
+Date:  14/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release, Icad_cee(will be done separately)
+
+2. Modules Affected : 
+   
+   Source/Prj/icad/icadentityrenderer.cpp
+   
+3. Overview:
+
+If you create a viewport by using mview commmand in paper space then UNDO the mview command 
+and then use MVIEW command to create another viewport and MS to change to model space. After 
+that you use LIST command and pick an entity in the viewport, ICAD will crash.
+
+The problem is the following code in CIcadEntityRenderer::drawEntity() is incorrect:
+
+     ((db_vxtabrec*)vphip)->ret_vpehip()->get_69(&fi1);
+     if(fi1 == 1 || vphip->ret_deleted() || ((db_vxtabrec*)vphip)->ret_vpehip() == NULL)
+	continue;
+	
+becasue the first line should be placed after the check 
+((db_vxtabrec*)vphip)->ret_vpehip() == NULL. 
+
+
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

@@ -1,0 +1,11 @@
+logfilename log\xrecord.log
+logfileon
+;________________
+(load "lisp/xrecord.lsp")
+updrev
+4
+;_________________
+dxfout output_dxf\xrecord.dxf
+6
+quit
+y

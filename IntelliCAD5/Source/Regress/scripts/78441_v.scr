@@ -1,0 +1,26 @@
+logfilename log\78441_v.log
+logfileon
+;________
+(defun _aaa() (princ "Hello"))
+(setq _aaa nil)
+!_aaa
+(defun aaa() (princ "Hello"))
+(setq aaa nil)
+!aaa
+(defun c:aaa() (princ "Hello"))
+(setq c:aaa nil)
+!c:aaa
+(defun _aaa() (princ "Hello1"))
+(defun _aaa() (princ "Hello2"))
+(setq _aaa nil)
+!_aaa
+(defun aaa() (princ "Hello1"))
+(defun aaa() (princ "Hello2"))
+(setq aaa nil)
+!aaa
+(defun c:aaa() (princ "Hello1"))
+(defun c:aaa() (princ "Hello2"))
+(setq c:aaa nil)
+!c:aaa
+;_______
+quit

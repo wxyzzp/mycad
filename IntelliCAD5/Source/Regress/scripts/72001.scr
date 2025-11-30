@@ -1,0 +1,9 @@
+logfilename log\72001.log
+logfileon
+;_________________
+(xload "sds\72001.dll")
+(if (= (c:functest) nil) (princ "OK"))
+;(command "delay" "100" "functest" "delay" "100" "quit")
+;__________
+quit
+quit

@@ -1,0 +1,383 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78727_1.txt	
+Product Version:	ICAD 4
+Date:			22/03/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/SDS/sds_misc.cpp	==> ICAD
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78727: ArchT Affected: ads_setview does not 
+change lenslength for perspective views
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, when a user calls sds_setview from a SDS
+DLL that is loaded in IntelliCAD, with a modified value of lenslength, then 
+the modified value is not taken into account.
+	This can be verified by querying the value of the LENSLENGTH variable.
+By default the value is 50.0. 
+	In the attached SDS DLL (78727.dll), I have set a new value of 
+"lenslength" to 30.0. After loading this DLL, one calls the function "functest". 
+	After that, we query the value of LENSLENGTH variable again. 
+	The value should change to 30.0. However it is still 50.0.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the file "Source/prj/lib/SDS/sds_misc.cpp", in the 
+function "sdsengine_setview". This function does not consider the DXF value
+of 42 which contains the value of Lenslength for the VIEW table.
+I have considered this change and mofified the code to set the value of new 
+lenslength, by considering DXF code 42 and calling the "sdsengine_setvar"
+function.
+	There is another related change that has been made. I have introduced a 
+new variable, "newViewMode" to hold the value of the newly passed viewmode
+and set it accordingly. This is as shown below.  
+
+
+				case 71:
+					vmode=trb->resval.rint;
+					// Bugzilla::78727			Date: 12 Mar 2004
+					newViewMode = vmode;
+					// Bugzilla::78727			Date: 12 Mar 2004
+					break;
+
+
+	This is because, further down the code, the value of "vmode" is forcibly set 
+down to one of the two values 1 & 2 as follows:
+
+FILE: Source/prj/lib/SDS/sds_misc.cpp
+-------------------------------------
+int sdsengine_setview(const struct sds_resbuf *prbViews, int nWhichVPort)
+{
+
+	...
+	...
+	...
+	...
+
+		if(vmode&1)
+			{
+			vmode=1;		//tell zoomit we're in perspective projection & save for undo
+			twistorfrontz=frontz;
+			ic_ptcpy(center,target);
+			}
+		else
+			{
+			vmode=2;		//tell zoomit to use orthographic projection & save for undo
+			twistorfrontz=vtwist;
+			rb.restype=RT3DPOINT;
+			ic_ptcpy(rb.resval.rpoint,viewdir);
+
+			...
+			...
+			...
+			...
+			}
+
+		// Bugzilla::78727			Date: 12 Mar 2004
+		//!!! int ret = SDS_ZoomIt(SDS_CURDWG,vmode,center,&viewsize,&vmode,viewdir,&twistorfrontz,&backz);
+		int ret = SDS_ZoomIt(SDS_CURDWG, vmode, center, &viewsize, 
+							 &newViewMode, viewdir, &twistorfrontz, &backz);
+		// Bugzilla::78727			Date: 12 Mar 2004
+
+	...
+	...
+	...
+}
+
+
+	The new value of viewmode if given through DXF code 71, is set in the 
+SDS_ZoomIt function. If a value other than 1 and 2 is given as the new value 
+then it should reflect the new value to be set. Hence the "newViewMode" has 
+been introduced.
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following steps:
+1.	Run IntelliCAD.
+2.	Note down the current values of following system variables, viz: VIEWDIR, LENSLENGTH, VIEWMODE, VIEWSIZE.
+3.	Load 78727.dll in IntelliCAD.
+4.	Call 'functest'.
+5.	The modified values of these variables should be as follows:
+	VIEWDIR = 1.0, 0.0, 1.0
+	VIEWMODE = 0
+	LENSLENGTH = 30.0
+	VIEWSIZE = 4.0
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

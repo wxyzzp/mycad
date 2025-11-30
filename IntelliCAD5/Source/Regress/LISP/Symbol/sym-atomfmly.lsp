@@ -1,0 +1,126 @@
+;;;
+;;; Lisp Acceptance Test
+;;;	Symbol functions
+;;;		atoms-family
+;;;
+;;; 17 Jun 98	MichaelHu
+;;;
+	(logmsg "")
+	(load (strcat testscrdir "error"))
+;;; ---------------------------------------------
+;;; boundary tests.
+	;;; ------------------------------------------
+	;;; no arguments.
+	(defun noargs ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+
+	;;; --------------------------------------------
+	;;; valid arguments.
+	(defun zeronolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 0))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun zerolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 0 '("printall" "zerolist" "princ" "*error*" "rc" "xyz")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun onenolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 1))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun onelist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 1 '("printall" "zerolist" "princ" "*error*" "rc" "xyz")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+
+	;;; --------------------------------------------
+	;;; invalid arguments.
+	(defun m1nolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family -1))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun m1list ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family -1 '("printall" "zerolist" "princ" "*error*" "rc" "xyz")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun twonolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 2))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun twolist ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 2 '("printall" "zerolist" "princ" "*error*" "rc" "xyz")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+
+;;; ---------------------------------------------
+;;; IntelliCAD help tests.
+		(setq hi "Greeting 1")
+		(setq bye "Greeting 2")
+	(defun icadhlp1 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 0 '("hi" "bye")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp2 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 0 '("hi" "hello" "bye")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp3 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 1 '("hi" "bye")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+
+;;; ---------------------------------------------
+;;; AutoCAD help tests.
+	(defun acadhlp1 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 0))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun acadhlp2 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (atoms-family 1 '("car" "cdr" "xyz")))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+

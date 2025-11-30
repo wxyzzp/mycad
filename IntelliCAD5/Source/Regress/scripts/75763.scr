@@ -1,0 +1,13 @@
+;_Created_by_Cybage_on_9/19/2002______
+logfilename log\75763.log
+logfileon
+;___________
+(command "-mtext" "0,0" "6,2" "\\s;10^11" "")
+;___________
+zoom
+extents
+;___________
+dxfout output_dxf\75763.dxf
+6
+quit
+y

@@ -1,0 +1,83 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_27012003_1.txt
+Date:		27-01-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/ICAD/icadview.cpp?rev=1.30.2.3.2.3
+		Source/prj/ICAD/icadtablet.cpp?rev=1.2.12.1
+		Source/prj/ICAD/icadEntPropMain.cpp?rev=1.15.4.1.2.2
+		Source/prj/ICAD/icadEntPropMain.cpp?rev=1.15.6.3
+		Source/prj/lib/LISP/getters.cpp?rev=1.4.8.1
+		Source/prj/lib/SDS/sds_xform.cpp?rev=1.7.8.2
+		Source/prj/lib/CMDS/read.cpp?rev=1.9.8.1
+		Source/prj/lib/CMDS/pedit2.cpp?rev=1.14.8.2
+		Source/prj/lib/CMDS/CmdSolidedit.tpl?rev=1.3.8.1
+		Source/prj/lib/CMDS/CmdSolidedit.inl?rev=1.3.8.2
+		Source/prj/lib/CMDS/CmdSolidedit.h?rev=1.4.8.1
+		Source/prj/lib/CMDS/CmdSolidedit.cpp?rev=1.5.8.2
+		Source/prj/lib/CMDS/CmdRegion.cpp?rev=1.5.4.1.2.1
+		Source/prj/lib/CMDS/CmdQueryTools.h?rev=1.4.4.1.2.2
+		Source/prj/lib/CMDS/CmdQueryTools.cpp?rev=1.5.4.1.2.2
+		Source/prj/lib/GR/mtextgen.cpp?rev=1.15.2.2.2.3
+		Source/prj/lib/GR/glyph.cpp?rev=1.1.10.1.2.1
+		Source/prj/lib/ACIS/AsModeler.h?rev=1.8.4.1.2.1
+		Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.4.1.2.1
+		Source/prj/lib/ACIS/AsMesh.cpp?rev=1.5.8.1
+		Source/prj/lib/ACIS/AsConstructor.cpp?rev=1.6.8.2
+		Source/prj/lib/DB/ModelerStub.h?rev=1.2.4.1.2.1
+		Source/prj/lib/DB/Modeler.h?rev=1.9.4.1.2.1
+		Source/prj/lib/DB/lwpolyline.cpp?rev=1.3.14.2
+		Source/prj/lib/DB/entities.h?rev=1.13.4.1.2.2
+		Source/prj/lib/DB/Attic/DbLayout.cpp?rev=1.1.4.3.2.2
+ 
+Deleted files:	
+		None
+
+Description:	This submission merges changes made to R40_Dev stream to R40_from_11 stream.
+Comments:	This submission describes changes made to the R40_from_11 stream. Details of
+		the changes are in the individual subdocs. This submission also fixes a memory
+		allocation/deallocation mismatch error in IcadEntPropMain.cpp -- memory for
+		structure pRbll is allocated by new and should be deallocated by delete.
+
+
+File by File:	
+		
+		Source/prj/ICAD/icadview.cpp?rev=1.30.2.3.2.3
+		Source/prj/ICAD/icadtablet.cpp?rev=1.2.12.1
+		Source/prj/ICAD/icadEntPropMain.cpp?rev=1.15.4.1.2.2
+		Source/prj/ICAD/icadEntPropMain.cpp?rev=1.15.6.3
+		Source/prj/lib/LISP/getters.cpp?rev=1.4.8.1
+		Source/prj/lib/SDS/sds_xform.cpp?rev=1.7.8.2
+		Source/prj/lib/CMDS/read.cpp?rev=1.9.8.1
+		Source/prj/lib/CMDS/pedit2.cpp?rev=1.14.8.2
+		Source/prj/lib/CMDS/CmdSolidedit.tpl?rev=1.3.8.1
+		Source/prj/lib/CMDS/CmdSolidedit.inl?rev=1.3.8.2
+		Source/prj/lib/CMDS/CmdSolidedit.h?rev=1.4.8.1
+		Source/prj/lib/CMDS/CmdSolidedit.cpp?rev=1.5.8.2
+		Source/prj/lib/CMDS/CmdRegion.cpp?rev=1.5.4.1.2.1
+		Source/prj/lib/CMDS/CmdQueryTools.h?rev=1.4.4.1.2.2
+		Source/prj/lib/CMDS/CmdQueryTools.cpp?rev=1.5.4.1.2.2
+		Source/prj/lib/GR/mtextgen.cpp?rev=1.15.2.2.2.3
+		Source/prj/lib/GR/glyph.cpp?rev=1.1.10.1.2.1
+		Source/prj/lib/ACIS/AsModeler.h?rev=1.8.4.1.2.1
+		Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.4.1.2.1
+		Source/prj/lib/ACIS/AsMesh.cpp?rev=1.5.8.1
+		Source/prj/lib/ACIS/AsConstructor.cpp?rev=1.6.8.2
+		Source/prj/lib/DB/ModelerStub.h?rev=1.2.4.1.2.1
+		Source/prj/lib/DB/Modeler.h?rev=1.9.4.1.2.1
+		Source/prj/lib/DB/lwpolyline.cpp?rev=1.3.14.2
+		Source/prj/lib/DB/entities.h?rev=1.13.4.1.2.2
+		Source/prj/lib/DB/Attic/DbLayout.cpp?rev=1.1.4.3.2.2
+
+-----------------------------------------------------------------------------

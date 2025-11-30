@@ -1,0 +1,24 @@
+logfilename log\cmdactive_1.log
+logfileon
+;_______________
+line
+1,1
+'cmdactive
+3,3
+'cmdactive
+length
+10
+'cmdactive
+20
+'cmdactive
+f
+-5
+u
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive") 5)  (alert "err"))
+
+;_________________
+dxfout output_dxf\cmdactive_1.dxf
+6
+quit
+y

@@ -1,0 +1,47 @@
+Document Title:  SH_6394_1.txt	
+Product Version: ICAD 5.0
+Date:  8/22/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/CmdFilletChamfer.cpp
+   
+3. Overview:
+
+This submission fix the bug #6394 - "Chamfer using Angle option doesn't 
+work with 3D Xlines or 3D Rays". The problem was the underlying code of chamfer
+using a bounded line as infinite line(xline or ray) to compute the intersection
+of two entities and create chamfer by angle. When the pick point was outside 
+of the bound of the line, it incorrectly classified the point was also out of the 
+bound of the xline or ray hence led to an incorrect result. This problem was no 
+thing to do with 3D Xline or ray and also appear for 2D xlines and rays. This 
+bug is fixed.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: y
+	File Name:                  
+	Name of Script file:   6394.scr
+
+8.  Notes to Localization: 
+
+
+
+

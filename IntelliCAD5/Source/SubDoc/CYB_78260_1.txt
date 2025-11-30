@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------------
+File:		CYB_78260_1.txt
+Date:		26-08-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78260
+Affected files:	
+		Source/prj/ICAD/IcadSetVarsDia.cpp
+Description:	Value of DIMADEC variable set incorrectly on using Dimension Settings dialog box.
+Comments:	TaL78260
+File_By_File:	
+	*	Source/prj/ICAD/IcadSetVarsDia.cpp
+		Added code in CMainWindow::IcadDimDia() to restore the value of diamdec when 
+		called through entity property dialog by right clicking on it.		
+
+--------------------------------------------------------------------------------

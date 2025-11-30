@@ -1,0 +1,15 @@
+logfilename log\78346c.log
+logfileon
+;;;;;;;;;;;;;
+open dwg\78346c.dwg
+;;;;;;;;;;;;;;;
+offset
+0.8552
+nearest
+2.5126,4.8531
+1.3,4.5
+
+;;;;;;;;;;;;;;
+dxfout output_dxf\78346c.dxf
+6
+exit y

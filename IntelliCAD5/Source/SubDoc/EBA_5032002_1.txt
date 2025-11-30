@@ -1,0 +1,17 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+ File Name:	EBA_5032002_1.txt
+ Date:           03-05-2002
+ Developer:      Chikahiro Masami
+ Company:        Ebatech
+ Reference:      
+ Affected files: 
+                CvsHist:Source/prj/lib/CMDS/shape.cpp
+
+ Description:    LOAD command is crashed if user select exisiting text(not shape) font.
+ Comments:       Tal
+--------------------------------------------------------------------------------

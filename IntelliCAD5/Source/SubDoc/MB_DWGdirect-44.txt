@@ -1,0 +1,30 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-44.txt
+Produce Version		ICAD 4
+Date:				06/02/2004 08:25am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Wblock was broken, as in no output file was being created.
+I changed a test looking for RTNORM from a function that never returns RTNORM in clonehelper.
+
+Also, change a test in cmdswblock that was deleting the entities being
+wblocked from the ORIGINAL drawing if there was any kind of problem during
+wblock. I changed the test value, but left the (what looks like) orginal
+code in place and added an ASSERT() to fire if we ever drop into what I
+believe to be bogus code.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\cmds\cmdswblock.cpp
+\source\prj\lib\cmds\clonehelper.cpp

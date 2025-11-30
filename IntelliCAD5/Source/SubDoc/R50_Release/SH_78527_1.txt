@@ -1,0 +1,45 @@
+Document Title:  SH_78527_1.txt	
+Product Version: ICAD 4.0
+Date:  8/10/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/AcisInOut.cpp
+   Eng-us/icad.rc2
+
+3. Overview:
+
+This submission fix the bug #78527 - "ACISIN command shows 'Open a SAT file' 
+dialog even when filedia is off.". This bug is fixed by checking the value of 
+FILEDIA first and if it is off let it prompt users to input the file name
+instead of launch a dialog box.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: 
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:
+	Name of Script file:   
+
+8.  Notes to Localization: The string defined by IDC_CMDS9_ACIS_SAT__381 has 
+                           been changed.
+
+
+
+

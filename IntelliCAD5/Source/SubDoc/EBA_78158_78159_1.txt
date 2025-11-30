@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+Date:           11-5-2002 
+Developer:      Chikahiro Masami 
+Company:        Ebatech 
+Reference:    BugZilla:78159 
+Affected files: CvsHist:Source/prj/lib/CMDS/textstyle.cpp 
+Description:    -STYLE in SCRIPT can not set truetype font. 
+Comments:       Tal78159 
+--------------------------------------------------------------------------------
+Date:           11-5-2002 
+Developer:      Chikahiro Masami 
+Company:        Ebatech 
+Reference:    BugZilla:78158 
+Affected files: CvsHist:Source/prj/lib/AUTO/IcadTables.idl
+                CvsHist:Source/prj/lib/AUTO/AutoTextStyle.cpp
+                CvsHist:Source/prj/lib/AUTO/AutoTextStyle.h
+Description:    TextStyle.SetXData() cannot set truetype font.
+Comments:       Tal78158
+--------------------------------------------------------------------------------

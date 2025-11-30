@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------------
+File:		Cyb_77948_1.txt
+Date:		29-04-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77984
+Affected files:			
+		CvsHist:Source/prj/lib/DB/drawing.cpp
+Description:	Undone the changes of validating the "|" character in layer name in entmod().
+		Due to this validation could not entmod layer table entries during renamig of 
+		xref block.See BugZilla:78037
+Comments:	TaL77948
+--------------------------------------------------------------------------------
+File by File:
+	*	CvsHist:Source/prj/lib/DB/drawing.cpp
+		Commented the changes of not allowing to modify the layer entity with name like abc|layer1. Now one is free to set name like abc|layer1 through IntelliCAD lisp but not through Command prompt and IntelliCAD Explorer. We had to do this as entmod of rename of xref block would fail. Commenting this change also fixes another problem of wrong modification of dxf 70 of xref layer while command like purge.

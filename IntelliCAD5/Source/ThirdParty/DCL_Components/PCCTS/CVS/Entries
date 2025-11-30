@@ -1,0 +1,22 @@
+/AParser.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/AParser.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/ATokPtr.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/ATokPtr.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/AToken.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/ATokenBuffer.cpp/1.1.1.1.10.1/Sat Oct 18 06:01:30 2003//TICAD_50
+/ATokenBuffer.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/ATokenStream.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/DLGLexer.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/DLGLexer.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/DLexer.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/DLexerBase.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/DLexerBase.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/GrammarWrapper.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/Grammer.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/Grammer.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/GrammerForDCL.cpp/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/GrammerForDCL.g/1.1.1.1.10.1/Tue Aug 20 00:19:10 2002//TICAD_50
+/config.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/parser.dlg/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+/tokens.h/1.1.1.1/Wed Jan 19 13:41:59 2000//TICAD_50
+D

@@ -1,0 +1,51 @@
+Document Title:		MB_DWGdirect-84.txt
+Product Version:	ICAD 5
+Date:  				08/13/2004 12:53pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	ICAD
+	DB
+	DWGdirect
+
+3.  Overview:
+This submission fixes the multiple copies of entities in blocks.
+I have updated icad.fmp with correct file names, and added a few mappings.
+Removed a couple of exclude files from db.dsp
+Fixed qsave to let the user now they can't save if the drawing was opened
+in read only mode.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/icad/icaddoc.cpp
+                    source/prj/lib/db/res/icad.fmp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/make/db.dsp
+                    source/subdoc/R50_Release/MB_DWGdirect-84.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

@@ -1,0 +1,95 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "ACIS"=.\ACIS.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name testunit
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Its"=.\Its.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name testunit
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ACIS
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name testCOM
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "icadlib"=.\icadlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "testCOM"=.\testCOM.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name testunit
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testunit"=.\testunit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

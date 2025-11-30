@@ -1,0 +1,19 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4122002_2.txt
+Date:		12-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/lib/GR/dispobjs.cpp
+                CvsHist:Source/lib/GR/explodemtext.cpp
+                CvsHist:Source/lib/GR/mtextgen.cpp
+Description: Fix wrong displaying MTEXT when align Center and Right.
+                DIMENSION text (=MTEXT MC) display wrong position, too.
+--------------------------------------------------------------------------------

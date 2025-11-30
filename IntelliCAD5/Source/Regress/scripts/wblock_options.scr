@@ -1,0 +1,93 @@
+logfilename log\wblock_options.log
+logfileon
+;________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+(setvar "useri2" (getvar "expert"))
+expert
+5
+;____________ENTITY____________
+line
+0,0
+1,1
+
+;________
+wblock
+output\entities
+
+0,0
+last
+
+;______
+open
+output\entities
+(if (/= (cdr (assoc  0 (entget (entlast)))) "LINE") (alert "err"))
+close
+;___________all_ENTITies____________
+circle
+0,0
+1,1
+;________
+wblock
+output\allentities
+*
+;______
+open
+output\allentities
+(if (/= (cdr (assoc  0 (entget (entlast)))) "CIRCLE") (alert "err"))
+close
+;___________single_block__________
+circle
+0,0
+1,1
+block
+bl1
+0,0
+all
+
+;________
+wblock
+output\singleblock
+bl1
+;______
+open
+output\singleblock
+(if (/= (cdr (assoc  0 (entget (entlast)))) "CIRCLE") (alert "err"))
+close
+;___________multiple_blocks__________
+circle
+0,0
+1,1
+block
+bl1
+0,0
+all
+
+;________
+line
+0,0
+1,1
+
+block
+bl2
+0,0
+all
+
+;________
+wblock
+output\multipleblocks
+&
+bl*
+;______
+open
+output\multipleblocks
+(if (/= (cdr (assoc  0 (entget (entlast)))) "LINE") (alert "err"))
+close
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;_________
+dxfout output_dxf\wblock_options.dxf
+6
+quit
+y

@@ -1,0 +1,39 @@
+logfilename log\coordinate_options.log
+logfileon
+;_________
+coordinate
+off
+(if (/= (getvar "coords") 0) (alert "err coords 0"))
+;________
+coordinate
+on
+(if (/= (getvar "coords") 1) (alert "err coords 1"))
+;________
+coordinate
+a
+(if (/= (getvar "coords") 2) (alert "err coords 2"))
+;________
+coordinate
+off
+(if (/= (getvar "coords") 0) (alert "err coords 0"))
+;________
+coordinate
+on
+(if (/= (getvar "coords") 1) (alert "err coords 1"))
+;________
+coordinate
+d
+(if (/= (getvar "coords") 2) (alert "err coords 2"))
+;________
+coordinate
+t
+(if (/= (getvar "coords") 0) (alert "err coords 0"))
+;________
+coordinate
+t
+(if (/= (getvar "coords") 1) (alert "err coords 1"))
+;________
+dxfout output_dxf\coordinate_options.dxf
+6
+quit
+y

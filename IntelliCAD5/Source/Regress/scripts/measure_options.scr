@@ -1,0 +1,9 @@
+logfilename log\measure_options.log
+logfileon
+;________
+(load "lisp/measure_options.lsp")
+;________
+dxfout output_dxf\measure_options.dxf
+6
+quit
+y

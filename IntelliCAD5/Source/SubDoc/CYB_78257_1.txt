@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78257_1.txt
+Date:		08-08-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78257
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/IcadMenuTBDef.H
+Description: 	Saveas from File menu invokes Save.
+Comments:	TaL78257
+File by File:	
+*		Source/prj/ICAD/IcadMenuTBDef.H
+		In the file menu I changed the command invoked by selecting "saveas" option from "save" to "saveas".
+--------------------------------------------------------------------------------
+

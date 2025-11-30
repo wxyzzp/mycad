@@ -1,0 +1,35 @@
+logfilename log\78168_attdef.log
+logfileon
+;_________
+-style
+       st yle1    
+txt.shx
+.2
+1
+0
+
+
+
+-style
+standard
+txt.shx
+.2
+1
+0
+
+
+
+;_________________
+attdef
+
+defname
+defprompt
+deftext
+s   st yle1  
+1,1
+
+;__________
+dxfout output_dxf\78168_attdef.dxf
+6
+quit
+y

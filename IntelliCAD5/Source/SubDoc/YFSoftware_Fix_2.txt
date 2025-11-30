@@ -1,0 +1,24 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	YFSoftware_Fix_2.txt
+Date:		04/011/26
+Developer:	Zhifeng.Cheng
+Company:	YFSoftware
+Reference:	
+
+Description:	This submission command bar,Make it can drag,and look more like autocad's behavior
+				Sorry I can't find the bug #,But I think It's useful to IntelliCAD.
+                
+Added files:    Sizecbar.cpp/h:Base class of CCmdBar.
+Affected files: Source/prj/icad/IcadCmdBar.cpp/h: Modify to make CCmdbar drived from CSizingControlBar.
+				Source/prj/icad/IcadPromptwnd.cpp, line 35: Make it look like autocad's.
+				    m_pPromptWndList->Create(NULL, NULL, WS_CHILD | WS_VSCROLL|WS_BORDER, rectEmpty, pParentWnd, IDC_CMDPROMPTLIST);
+
+Comments:	
+
+
+                

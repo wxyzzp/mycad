@@ -1,0 +1,790 @@
+CMDECHO
+1
+logfilename log\3dmeshes2.log
+logfileon
+PICKBOX
+3
+APERTURE
+10
+;----------------------------------------------------------------------
+; This script file tests 3D>Dish, 3d>Dome, 3D>Pyramid, 3DMESH & 3D>Mesh,
+; 3D>FACE, PFACE, 3D>POLY and Cylinder. - Some parts commented out until bugs are 
+; fixed.
+; Last Modified on 11/24/97 aym
+; Some things commented out because of bugs #3480, 
+; Fixed 3486, #3484, #3494
+;----------------------------------------------------------------------
+;
+; Erase anything that's there already.
+;;;;;pM(if (/= (getenv "UTEST") nil)(LOAD "UCSLOAD"))
+erase
+all
+
+; Turn blips off
+blipmode
+off
+; Show prompts and input at the command line.
+setvar
+cmdecho
+1
+; Set the current layer to zero.
+layer
+s
+0
+
+color
+bylayer
+; Look at the whole scene from just below the SouthWest Isometric Viewpoint.
+vpoint
+-1,-1,.7
+; Zoom to a big window.
+zoom
+c
+118,80
+500
+; Setting all the other necessary system variables:
+elev
+0
+0
+gridmode
+0
+fillmode
+1
+snapmode
+0
+linetype
+s
+bylayer
+
+; Draw everything in continuous lines.
+linetype
+s
+continuous
+
+; Draw 8 white lines for visual reference.
+line
+0,240
+200,240
+
+line
+0,200
+200,200
+
+line
+0,160
+200,160
+
+line
+0,120
+200,120
+
+line
+0,80
+200,80
+
+line
+0,40
+200,40
+
+line
+0,0
+200,0
+
+line
+0,-40
+200,-40
+
+line
+240,-40
+240,200
+
+;*************************************************************************
+;*************************************************************************
+;3DFACE
+;*************************************************************************
+;*************************************************************************
+LAYER
+M
+3DFACE
+C
+BLUE
+
+
+3DFACE
+4,-32
+20,-29
+19,-44
+5,-43
+-7,-41
+-6,-30
+
+; Again, but with Z points
+3dface
+4,-32,10
+20,-29,15
+19,-44,8
+5,-43,10
+-7,-41,20
+-6,-30,20
+
+; Again, but with negatives
+3dface
+4,-32,-10
+20,-29,-15
+19,-44,-8
+5,-43,-10
+-7,-41,-20
+-6,-30,-20
+
+;Make invisible edges
+3dface
+29,-43
+28,-32
+i
+41,-33
+41,-44
+i
+35,-50
+29,-46
+
+; Again, but with negatives
+3dface
+29,-43,-10
+i
+28,-32,-10
+41,-33,-15
+i
+41,-44,-15
+35,-50,-10
+29,-46,-15
+
+;*************************************************************************
+;*************************************************************************
+;3DPOLY
+;*************************************************************************
+;*************************************************************************
+LAYER
+M
+3DPOLY
+C
+RED
+
+
+3DPOLY
+59,-35
+73,-32,-5
+62,-46,5
+72,-48,0
+
+; THis time with an undo
+3dpoly
+41,-33,0
+43,-46,5
+232,-79
+u
+52,-33,10
+c
+;
+;*************************************************************************
+;*************************************************************************
+;3DDISH
+;*************************************************************************
+;*************************************************************************
+LAYER
+M
+3DDISH
+C
+CYAN
+
+
+; 3D > Dish with radius of points
+3D
+DISH
+73,-40,10
+73,-31,10
+30
+15
+; Again, but with negative points
+3d
+dish
+73,-40,-15
+73,-31,-15
+30
+15
+; Again, but with zeros
+3D
+DISH
+73,-40
+73,-31
+30
+15
+; A value for Radius rather than a point
+3d
+dish
+101,-44
+10
+20
+20
+;
+; 3ddish with diameter rather than radius
+3d
+dish
+133,-40
+d
+20
+5
+5
+; Again, with a z point
+3d
+dish
+133,-40,-20
+d
+20
+5
+5
+;*************************************************************************
+;*************************************************************************
+;3DDOME
+;*************************************************************************
+;*************************************************************************
+; Dome using Radius
+3d
+dome
+179,-40
+10
+10
+10
+; Again, with positive and negative z values
+3d
+dome
+179,-40,-20
+10
+15
+10
+3d
+dome
+179,-40,20
+10
+10
+10
+; Dome using Diameter
+3d
+dome
+177,0
+d
+30
+20
+20
+; Again, with positive and negative z values
+3d
+dome
+177,0,20
+d
+30
+20
+20
+3d
+dome
+177,0,-20
+d
+30
+20
+20
+;*************************************************************************
+;*************************************************************************
+;3DPYRAMID
+;*************************************************************************
+;*************************************************************************
+LAYER
+M
+3DPYRAMID
+C
+MAGENTA
+
+
+; 3DPYRAMID > 4TH BASE POINT > APEX POINT (value) - commented out bug #3480 is fixed.
+;3D
+;PYRAMID
+;178,40
+;178,55
+;195,48
+;185,33
+;10
+; Again, using an apex point
+3D
+PYRAMID
+178,40
+178,55
+195,48
+185,33
+185,46,-20
+; Again, using positive and negative z values
+3d
+pyramid
+137,32,-20
+137,50,-10
+153,50,-5
+153,32,-10
+145,40,0
+3d
+pyramid
+137,32,20
+137,50,10
+153,50,5
+153,32,10
+145,40,0
+; 3dpyramid > 4th point > top
+3d
+pyramid
+106,34
+106,50
+122,50
+122,34
+t
+109,40,10
+111,44,10
+117,44,5
+117,44,5
+; Again, with 3D values
+3d
+pyramid
+106,34,-20
+106,50,-20
+122,50,-20
+122,34,-20
+t
+109,40,-1
+111,44,-1
+117,44,-1
+117,44,-1
+; 3dpyramid > 4th point > Ridge
+3d
+pyramid
+80,48
+96,48
+96,26
+80,26
+r
+88,32,10
+90,42,10
+; Again, with 3d values
+3d
+pyramid
+80,48,-20
+96,48,-20
+96,26,-20
+80,26,-20
+r
+88,32,-1
+90,42,-1
+; Again, with numerical values - commented out until #3480 is fixed
+;3d
+;pyramid
+;80,48,20
+;96,48,20
+;96,26,20
+;80,26,20
+;r
+;5
+;5
+; 3dpyramid > tetrahedron > apex point
+3d
+pyramid
+46,29
+46,47
+66,47
+t
+50,40,5
+; Again, with negative z values
+3d
+pyramid
+46,29,-20
+46,47,-20
+66,47,-20
+t
+50,40,-5
+; Again, with a value for the apex - commented out until #3480 is fixed
+;3d
+;pyramid
+;46,29,20
+;46,47,20
+;66,47,20
+;t
+;25
+; 3dpyramid > tetrahedron > top
+3d
+pyramid
+8,48
+8,31
+27,31
+t
+t
+13,37,5
+13,37,5
+13,37,5
+; Again, with negative z values
+3d
+pyramid
+8,48,-20
+8,31,-20
+27,31,-20
+t
+t
+13,37,-5
+13,37,-5
+13,37,-5
+; Again, with numeric values for top - Commented out until #3480 is fixed
+;3d
+;pyramid
+;8,48,20
+;8,31,20
+;27,31,20
+;t
+;t
+;5
+;5
+;5
+;*************************************************************************
+;*************************************************************************
+;3Dmesh
+;*************************************************************************
+;*************************************************************************
+layer
+m
+3dmesh
+c
+green
+
+
+3d
+mesh
+5,94
+29,104
+30,69
+7,75
+10
+10
+; Again with Z values
+3d
+mesh
+5,94,-10
+29,104,-20
+30,69,-10
+7,75,-10
+10
+10
+; 3dmesh command, rather than 3d > Mesh
+3dmesh
+4
+4
+70,75
+70,80
+70,85
+70,90
+75,75
+75,80
+75,85
+75,90
+80,75
+80,80
+80,85
+80,90
+85,75
+85,80
+85,85
+85,90
+; Again, with Z points
+3dmesh
+4
+4
+70,75,-10
+70,80,-10
+70,85,-10
+70,90,-10
+75,75,-15
+75,80,-15
+75,85,-15
+75,90,-15
+80,75,-5
+80,80,-5
+80,85,-5
+80,90,-5
+85,75,-15
+85,80,-15
+85,85,-15
+85,90,-15
+;*************************************************************************
+;*************************************************************************
+;PFACE
+;*************************************************************************
+;*************************************************************************
+LAYER
+M
+PFACE
+C
+YELLOW
+
+
+; PFACE USING NORMAL POINTS
+pface
+118,91
+137,92
+142,72
+121,75
+103,75
+105,88
+
+1
+2
+3
+4
+
+1
+5
+4
+3
+
+
+; Again, with z points
+pface
+118,91,20
+137,92,15
+142,72,15
+121,75,10
+103,75,20
+105,88,20
+
+1
+2
+3
+4
+
+1
+5
+4
+3
+
+
+; Now, changing color- Commented out until #3484 is fixed
+pface
+118,91,-20
+137,92,-15
+142,72,-15
+121,75,-10
+103,75,-20
+105,88,-20
+
+c
+red
+1
+2
+3
+4
+
+1
+5
+4
+3
+
+
+; Now, changing layer 
+pface
+118,91,40
+137,92,30
+142,72,30
+121,75,20
+103,75,40
+105,88,40
+
+layer
+0
+1
+2
+3
+4
+
+1
+5
+4
+3
+
+
+; Again, but using negative values to make edges invisible
+pface
+118,91,60
+137,92,50
+142,72,50
+121,75,40
+103,75,60
+105,88,60
+
+-1
+2
+-3
+4
+
+1
+-5
+4
+-3
+
+
+;;*************************************************************************
+;*************************************************************************
+;Cylinder
+;*************************************************************************
+;*************************************************************************
+layer
+m
+cylinder
+c
+red
+
+
+; Cylinder > Radius > Height
+cylinder
+55,120
+10
+10
+; Again, with Z
+cylinder
+55,120,-20
+10
+10
+; Again, with a negative height -  #3494 is fixed
+cylinder
+55,120,30
+10
+-10
+; cylinder > radius > Center
+cylinder
+90,120
+5
+c
+90,120,10
+; Again, with Z
+cylinder
+90,120,15
+5
+c
+90,120,20
+; Cylinder > Diameter > Height
+Cylinder
+153,120
+d
+20
+10
+Cylinder
+153,120,20
+d
+20
+c
+153,120,30
+; Again, but with negative center of other end
+cylinder
+153,120,15
+d
+30
+c
+153,120,-5
+; Cylinder > Elliptical > Center > Height
+cylinder
+e
+c
+188,120
+188,135
+197,120
+10
+; Again, with value rather than point for other axis distance 
+cylinder
+e
+c
+188,120,20
+188,135
+5
+10
+; Cylinder > Elliptical > Center > Center
+Cylinder
+e
+c
+188,160
+188,170
+5
+c
+188,160,10
+; Again, but with a negative center
+Cylinder
+e
+c
+188,160
+188,170
+5
+c
+188,160,-10
+; Cylinder > elliptical > Axis endpoint > height
+Cylinder
+e
+163,160
+163,146
+175,152
+5
+; Again, but with different z's
+Cylinder
+e
+163,160,-10
+163,146,-5
+175,152
+5
+; Cylinder > elliptical > Axis endpoint > Center
+Cylinder
+e
+127,178
+127,144
+5
+c
+124,173,15
+; Again, but negative z
+Cylinder
+e
+127,178
+127,144
+5
+c
+124,173,-15
+color
+white
+; Now to draw some solids (what we call planes)
+solid
+4,169
+26,177
+42,167
+22,146
+5,141
+-5,152
+
+; Again, with 3D points
+solid
+34,212,5
+57,214
+84,212
+84,184
+
+;----------------------------------------------------------------------
+;Now for the grand finale
+text
+-67,15,0
+6
+
+Done!
+text
+
+Some commented out
+text
+
+due to #3480,
+;----------------------------------------------------------------------
+(if (/= (getenv "itest") nil) (command "dxfout" "3dmeshes2" "6" "quit" "y"))
+;;;;;pM(if (/= (getenv "UTEST") nil) (LOAD "UCSSAVE"))
+dxfout output_dxf\3dmeshes2.dxf
+6
+quit _y

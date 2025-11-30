@@ -1,0 +1,159 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4242002_1.txt
+Date:		24-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+                CvsHist:Source/prj/lib/AUTO/AutoShape.cpp
+                CvsHist:Source/prj/lib/AUTO/AutoShape.h
+                CvsHist:Source/prj/lib/CMDS/shape.cpp
+Affected files: 
+                CvsHist:Eng-us/icad.rc2
+                CvsHist:Eng-us/IcadRes.rc
+                CvsHist:Source/prj/ICAD/Change.cpp
+                CvsHist:Source/prj/ICAD/IcadDoc.cpp
+                CvsHist:Source/prj/ICAD/IcadDoc.h
+                CvsHist:Source/prj/ICAD/icaddragging.cpp
+                CvsHist:Source/prj/ICAD/icadEntPropMain.cpp
+                CvsHist:Source/prj/ICAD/icadEntPropTabs.cpp
+                CvsHist:Source/prj/ICAD/icadEntPropTabs.h
+                CvsHist:Source/prj/ICAD/IcadRes.h
+                CvsHist:Source/prj/ICAD/res/icadrc2.h
+                CvsHist:Source/prj/lib/AUTO/AutoBaseDefs.h
+                CvsHist:Source/prj/lib/AUTO/AutoDLL.rc
+                CvsHist:Source/prj/lib/AUTO/AutoDoc.cpp
+                CvsHist:Source/prj/lib/AUTO/AutoDoc.h
+                CvsHist:Source/prj/lib/AUTO/AutoEntities.cpp
+                CvsHist:Source/prj/lib/AUTO/AutoEntities.h
+                CvsHist:Source/prj/lib/AUTO/autohelpers.cpp
+                CvsHist:Source/prj/lib/AUTO/Autorc.h
+                CvsHist:Source/prj/lib/AUTO/AutoTextStyle.cpp
+                CvsHist:Source/prj/lib/AUTO/AutoTextStyle.h
+                CvsHist:Source/prj/lib/AUTO/IcadCoClasses.idl
+                CvsHist:Source/prj/lib/AUTO/IcadDocument.idl
+                CvsHist:Source/prj/lib/AUTO/IcadEntity.idl
+                CvsHist:Source/prj/lib/AUTO/IcadEnums.idl
+                CvsHist:Source/prj/lib/AUTO/IcadTables.idl
+                CvsHist:Source/prj/lib/CMDS/cmds.h
+                CvsHist:Source/prj/lib/CMDS/cmds3.cpp
+                CvsHist:Source/prj/lib/CMDS/insert.cpp
+                CvsHist:Source/prj/lib/CMDS/openclose.cpp
+                CvsHist:Source/prj/lib/CMDS/todo.cpp
+                CvsHist:Source/prj/lib/DB/entities.h
+                CvsHist:Source/prj/lib/DB/ltypetabrec.cpp
+                CvsHist:Source/prj/lib/DB/shape.cpp
+                CvsHist:Source/prj/lib/SDS/sds_get.cpp
+                CvsHist:Source/prj/make/autodll.dsp
+                CvsHist:Source/prj/make/cmds/dsp
+Description: Implement LOAD and SHAPE command, ENTPROP for SHAPE,
+	Automation supports handling SHAPE object and loading shape font file.
+	Automation "GetLISPVariable" and "SetLISPVariable" supports Boolean value.
+	(entget) returns LTYPE entity list simply when shape doesn't include.
+	Open File Dialog can select one more files.
+	Open/Save File Dialog show [Type] button.
+	Open/Save drawing dialog can switch previewing image for performance.
+Comments:
+	function interface
+	(getfiled title filename ext flags)
+		flags +2		show Type button
+		return value
+			1			Type button pressed
+
+		flags +32768	selecting one more files.
+		return value
+			no files	nil
+			one file	RTSTR	filename
+		one more files	(filename1 filename2 ... filenameN)
+
+	int sds_getfiled (const char *title, const char *path, const char *fileext, 
+		int options, struct sds_resbuf *filename);
+		options +2		show Type button
+		return value
+			1			Type button pressed
+
+		options +32768	selecting one more files.
+		filename varibles sets:
+			no files	- don't change -
+			one file	RTSTR	filename
+		one more files	( filename1 filename2 ... filenameN )
+						RTLB RTSTR RTSTR ... RTSTR RTLE
+	NOTE: Type button option now cannot work well.
+			If you hit type button, nothing to do.
+
+	About Automation, please refer to ___ .
+
+File by File:
+	Eng-us/icad.rc2
+	Source/prj/ICAD/res/icadrc2.h
+		Add command line messages for LOAD and SHAPE command
+	Eng-us/IcadRes.rc
+	Source/prj/ICAD/IcadRes.h
+		Add ENT_SHAPE_TAB for ENTPROP command
+	Source/prj/ICAD/Change.cpp
+		db_CompEntLinks cache only shape code, never saves shape name.
+	Source/prj/ICAD/IcadDoc.cpp
+	Source/prj/ICAD/IcadDoc.h
+		Add CIcadDoc::LoadShapeFile() for Automation helper function
+	Source/prj/ICAD/icaddragging.cpp
+		SDS_dragobject() supports SHAPE (like INSERT object).
+	Source/prj/ICAD/icadEntPropMain.cpp
+	Source/prj/ICAD/icadEntPropTabs.cpp
+	Source/prj/ICAD/icadEntPropTabs.h
+		ENTPROP command supports SHAPE
+		Change InsertionPoint using mouse message moves to resource.
+		TEXT STYLE drop down listbox remove STYLE for SHAPE.
+	Source/prj/lib/AUTO/AutoBaseDefs.h
+		Add AddShape method ModelSpace, PaperSpace and BlockRecord objects.
+	Source/prj/lib/AUTO/AutoDLL.rc
+	Source/prj/lib/AUTO/Autorc.h
+		Add Shape object name.
+	Source/prj/lib/AUTO/AutoDoc.cpp
+	Source/prj/lib/AUTO/AutoDoc.h
+		Add LoadShapeFile method.
+		GetLISPVariable and SetLISPVariable support Boolean value.
+	Source/prj/lib/AUTO/AutoEntities.cpp
+	Source/prj/lib/AUTO/AutoEntities.h
+		Add AddShape method.
+	Source/prj/lib/AUTO/autohelpers.cpp
+		CreateEntityWrapper support SHAPE
+		UnsupportedEntity return false for SHAPE (SHAPE is now supported!)
+	Source/prj/lib/AUTO/AutoShape.cpp
+	Source/prj/lib/AUTO/AutoShape.h
+		Automation SHAPE object definition
+	Source/prj/lib/AUTO/AutoTextStyle.cpp
+	Source/prj/lib/AUTO/AutoTextStyle.h
+		Add Shape property as Boolean
+    Source/prj/lib/AUTO/IcadCoClasses.idl
+    Source/prj/lib/AUTO/IcadDocument.idl
+    Source/prj/lib/AUTO/IcadEntity.idl
+    Source/prj/lib/AUTO/IcadEnums.idl
+    Source/prj/lib/AUTO/IcadTables.idl
+		Add SHAPE object, AddShape, LoadShapeFile method, Shape property
+	Source/prj/lib/CMDS/cmds.h
+	Source/prj/lib/CMDS/cmds3.cpp
+	Source/prj/lib/CMDS/insert.cpp
+	Source/prj/lib/CMDS/shape.cpp
+	Source/prj/lib/CMDS/todo.cpp
+		Implement LOAD and SHAPE command.
+	Source/prj/lib/DB/shape.cpp
+	Source/prj/lib/DB/entities.h
+		Add some function to Shape class for simple SHAPE object 
+		(ex. retp_10() use icaddragging.cpp)
+	Source/prj/lib/DB/ltypetabrec.cpp
+		(entget) returns LTYPE entity list simply when shape doesn't include.
+	Source/prj/lib/CMDS/openclose.cpp
+		OPEN command now select one more files.
+	Source/prj/lib/SDS/sds_get.cpp
+		Open File Dialog can select one more files.
+		Open/Save File Dialog show [Type] button.
+		Open/Save drawing dialog can switch previewing image for performance.
+	Source/prj/make/autodll.dsp
+	Source/prj/make/cmds.dsp
+		Add AUTO/AutoShape.cpp and CMDS/shape.cpp
+--------------------------------------------------------------------------------

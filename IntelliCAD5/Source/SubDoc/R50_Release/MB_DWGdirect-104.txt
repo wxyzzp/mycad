@@ -1,0 +1,72 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-104
+Product Version:        IntelliCAD 5
+Date:                   09/25/2004 13:38pm
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGdirect
+
+3.  Overview:
+	Backed out the change that prevented .vbi files from being created for
+	every .dwg file being saved. THis change was causing threading problems
+	that caused IntelliCAD to hang when saving (Only in Professional version)
+
+	A number of scripts were putting their output in the source/regress directory
+	instead of the source/regress/output directory. I have change the scripts that
+	did that.
+
+	Note, because .vbi files are now being created, these scripts will appear to
+	fail. It is because they cannot overwrite the .vbi file on the second save.
+	This is not a problem from the command line, and probably will need a different
+	(Professional specific) version of the script. For the short term These scripts
+	should probably be avoided during regression runs.
+
+		source/regress/scripts/78444_xref_detach.scr
+        source/regress/scripts/78444_xref_detach.scr
+        source/regress/scripts/78444_misc.scr
+        source/regress/scripts/78548.scr
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: Y
+	These scripts were all putting their output in the
+	wrong directory.
+File Name:
+Name of Script file:
+        source/regress/scripts/78444_xref_detach.scr
+        source/regress/scripts/78548.scr
+        source/regress/scripts/78444_purge_all.scr
+        source/regress/scripts/78444_misc.scr
+        source/regress/scripts/checkdimvars1.scr
+        source/regress/scripts/layout_save.scr
+        source/regress/scripts/msnapshot_options.scr
+        source/regress/scripts/sphere.scr
+        source/regress/scripts/wblock_block.scr
+        source/regress/scripts/wblock_blocks.scr
+        source/regress/scripts/wblock_ent.scr
+
+6.  Change Log:
+
+        source/prj/icad/icadwndaction.cpp
+        source/prj/icad/icaddoc.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-104.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

@@ -1,0 +1,159 @@
+logfilename log\color_options.log
+logfileon
+;_________
+color
+red
+(if (/= (getvar "cecolor") "1") (alert "error 1"))
+;_________
+color
+yellow
+(if (/= (getvar "cecolor") "2") (alert "error 2"))
+;_________
+color
+green
+(if (/= (getvar "cecolor") "3") (alert "error 3"))
+;_________
+color
+cyan
+(if (/= (getvar "cecolor") "4") (alert "error 4"))
+;_________
+color
+blue
+(if (/= (getvar "cecolor") "5") (alert "error 5"))
+;_________
+color
+magenta
+(if (/= (getvar "cecolor") "6") (alert "error 6"))
+;_________
+color
+white
+(if (/= (getvar "cecolor") "7") (alert "error 7"))
+;_________
+color
+bylayer
+(if (/= (getvar "cecolor") "BYLAYER") (alert "error bylayer"))
+;_________
+color
+byblock
+(if (/= (getvar "cecolor") "BYBLOCK") (alert "error byblock"))
+;_________
+color
+1
+(if (/= (getvar "cecolor") "1") (alert "error 1"))
+;_________
+color
+2
+(if (/= (getvar "cecolor") "2") (alert "error 2"))
+;_________
+color
+3
+(if (/= (getvar "cecolor") "3") (alert "error 3"))
+;_________
+color
+4
+(if (/= (getvar "cecolor") "4") (alert "error 4"))
+;_________
+color
+5
+(if (/= (getvar "cecolor") "5") (alert "error 5"))
+;_________
+color
+6
+(if (/= (getvar "cecolor") "6") (alert "error 6"))
+;_________
+color
+7
+(if (/= (getvar "cecolor") "7") (alert "error 7"))
+;_________
+color
+256
+(if (/= (getvar "cecolor") "BYLAYER") (alert "error bylayer"))
+;_________
+color
+0
+(if (/= (getvar "cecolor") "BYBLOCK") (alert "error byblock"))
+;_________
+color
+255
+(if (/= (getvar "cecolor") "255") (alert "error 255"))
+;__________________________colour_____________________________________________
+colour
+red
+(if (/= (getvar "cecolor") "1") (alert "error 1"))
+;_________
+colour
+yellow
+(if (/= (getvar "cecolor") "2") (alert "error 2"))
+;_________
+colour
+green
+(if (/= (getvar "cecolor") "3") (alert "error 3"))
+;_________
+colour
+cyan
+(if (/= (getvar "cecolor") "4") (alert "error 4"))
+;_________
+colour
+blue
+(if (/= (getvar "cecolor") "5") (alert "error 5"))
+;_________
+colour
+magenta
+(if (/= (getvar "cecolor") "6") (alert "error 6"))
+;_________
+colour
+white
+(if (/= (getvar "cecolor") "7") (alert "error 7"))
+;_________
+colour
+bylayer
+(if (/= (getvar "cecolor") "BYLAYER") (alert "error bylayer"))
+;_________
+colour
+byblock
+(if (/= (getvar "cecolor") "BYBLOCK") (alert "error byblock"))
+;_________
+colour
+1
+(if (/= (getvar "cecolor") "1") (alert "error 1"))
+;_________
+colour
+2
+(if (/= (getvar "cecolor") "2") (alert "error 2"))
+;_________
+colour
+3
+(if (/= (getvar "cecolor") "3") (alert "error 3"))
+;_________
+colour
+4
+(if (/= (getvar "cecolor") "4") (alert "error 4"))
+;_________
+colour
+5
+(if (/= (getvar "cecolor") "5") (alert "error 5"))
+;_________
+colour
+6
+(if (/= (getvar "cecolor") "6") (alert "error 6"))
+;_________
+colour
+7
+(if (/= (getvar "cecolor") "7") (alert "error 7"))
+;_________
+colour
+256
+(if (/= (getvar "cecolor") "BYLAYER") (alert "error bylayer"))
+;_________
+colour
+0
+(if (/= (getvar "cecolor") "BYBLOCK") (alert "error byblock"))
+;_________
+colour
+255
+(if (/= (getvar "cecolor") "255") (alert "error 255"))
+;_________
+dxfout output_dxf\color_options.dxf
+6
+quit
+y

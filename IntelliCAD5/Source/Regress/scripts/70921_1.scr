@@ -1,0 +1,140 @@
+;_This_Script_is_created_by_Srinivas_Chavan
+logfilename log\70921_1.log
+logfileon
+;_________1_ellipse_arc
+ellipse
+2.5,5.5
+9.0,5.5
+2.0
+;________
+arc
+2.8,8.0
+5.5,5.0
+8.5,8.0
+;________
+-bhatch
+p
+ansi37
+
+
+5.5,6.5
+
+;_________2_ellipse_rectangle
+move all  0,0 -8,0
+;________
+ellipse
+2.5,5.5
+9.0,5.5
+2.0
+;________
+rectangle
+3.8,8.0
+8.5,5.0
+;________
+-bhatch
+5.5,6.5
+
+;_________3_ellipse_rectangle_trim
+move all  0,0 -8,0
+;________
+ellipse
+3,5.5
+9,5.5
+2
+;________
+rectangle
+4,8.0
+11,4.5
+;________
+trim
+5,8
+
+6,7.5
+
+-bhatch
+6,3.6
+
+;_________4_ellipse_circle_trim
+move all  0,0 0,8
+;________
+ellipse
+3,5.5
+9,5.5
+2
+;________
+circle
+7,8.0
+6,5.5
+;________
+trim
+6,5.5
+
+6,7.5
+
+-bhatch
+6,3.6
+
+;_________5_ellipticalarc_rectangle
+move all  0,0 8,0
+;________
+ellipse
+arc
+3,5.5
+9,5.5
+2
+6,8
+9,5.5
+;________
+rectangle
+5,5
+12,8
+;________
+-bhatch
+6,3.6
+
+;________
+zoom
+extents
+;________Checks
+;___3
+(setq en nil)
+(setq en (entget (car (entsel))))
+13.524,13.7889
+(if (/= en nil) (alert "Check this fix"))
+;___4
+(setq en nil)
+(setq en (entget (car (entsel))))
+6.4913,6.0611
+(if (/= en nil) (alert "Check this fix"))
+;___5
+(setq en nil)
+(setq en (entget (car (entsel))))
+13.7031,6.1428
+(if (/= en nil) (alert "Check this fix"))
+;___1
+zoom
+w
+-5.9218,16.0598
+1.0399,11.4709
+(setq en nil)
+(setq en (entget (car (entsel))))
+0.0928,14.7695
+(if (= en nil) (alert "Check this fix"))
+;____2
+(setq en nil)
+zoom
+w
+2.0828,16.0337
+9.0706,11.3405
+(setq en nil)
+(setq en (entget (car (entsel))))
+3.9163,15.0308
+(if (= en nil) (alert "Check this fix"))
+;________
+zoom
+extents
+;________
+dxfout output_dxf\70921_1.dxf
+6
+quit
+y

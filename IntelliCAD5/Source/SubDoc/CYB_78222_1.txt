@@ -1,0 +1,24 @@
+---------------------------------------------------------------------
+File:		CYB_78222_1.txt
+Date:		15-07-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78222
+Affected files:	
+		Source/prj/lib/CMDS/DimStyle.cpp
+		Source/prj/lib/CMDS/Dimensions.cpp
+		Source/prj/Icad/icadwndaction.cpp
+Description:	DIM > update does not update tolerance. 
+Comments:	TaL78222.
+File_By_File:
+	*	Source/prj/lib/CMDS/DimStyle.cpp
+		On Apply, onky dimensions were updated. Now even tolerance is updated. 
+		There was one more problem, the selected entities remain hilited if they were not dimensions or tolerance.
+		This is also fixed now.
+	*	Source/prj/lib/CMDS/Dimensions.cpp
+		Tolerance entity could not be overriden by Dimoverride command. This case is fixed here
+		by checking only tolerance and dimension entity.
+	*	Source/prj/Icad/icadwndaction.cpp
+		Tolerance entity was not been updated through DDIM command. This case is fixed 
+		here by adding tolerance in the filter along with dimension.
+---------------------------------------------------------------------

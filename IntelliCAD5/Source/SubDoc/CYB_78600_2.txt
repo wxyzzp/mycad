@@ -1,0 +1,636 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78600_2.txt	
+Product Version:	ICAD 4
+Date:			09/02/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/DB/drawing.cpp ==> Db.dll
+Source/prj/lib/DB/drawing.h ==> Db.dll
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78600: R13/R14 DXF saved by A2K or 
+later loose LAYOUT.
+	We create a drawing in AutoCAD 2000, and save it as one of the 
+following types viz:
+	AutoCAD R14/LT98/LT97 DXF(*.dxf)  OR
+	AutoCAD R13/LT95 DXF(*.dxf)
+After this we open this file in ICAD. Now in ICAD we try to save this file 
+as dwg. ICAD crashes.
+	The reason for this crash is that when ICAD opens the above file 
+types, it does not add Layout Objects in it. This can be verified by 
+giving the layout command at the command prompt:
+
+
+: layout
+
+Enter layout option [Copy/Delete/New/Rename/Set/Template/? to list] <Set>: ?
+:
+
+Thus from above output, we see that there are no layout objects.
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+	After looking at the code, I found that IntelliCAD, in the function 
+"drw_readwrite::drw_marcompopen" in file "dwgload.cpp", for any DXF File opened,
+the ODT function "adLayoutObjtype(adfile)", return a value of 502. This value is 
+compared with "adobhd.objtype", where adobhd is the AD_OBJ_HDR. "adobhd", is 
+initialised each time for every Object through the function, 
+"(adGetObject(adfile,&adobhd,&adob)". When "adobhd.objtype" equals the value 
+returned by "adLayoutObjtype(adfile)", the LayOut Objects are added.
+	But when the DXF file is the one corresponding to R13 or R14 type saved 
+by AutoCAD 2000 or later, "adobhd.objtype" does not have a value of 502 for any 
+type of object. Therefore the LayOut objects are not added to the drawing.
+	Therefore I haved made the modifications in the class "db_drawing" by adding
+two functions and modifying the function db_drawing::check() as follows: 
+in File: "Source/prj/lib/DB/drawing.cpp" AND "Source/prj/lib/DB/drawing.h"to 
+consider the addition of LayOut Objects for "ACAD DXF (Binary and Ascii),
+R13 and R14" type files which are as follows: 
+(Modifications are within Bugzilla comments)
+
+
+File: Source/prj/lib/DB/drawing.h
+---------------------------------
+
+...
+
+// Bugzilla::78600 + 78698; Date:09-02-2004
+// constants for Model Space Layout and Default Paper Space Layout
+const char MODELSPACE_LAYOUT[] = "Model";
+const char DEF_PAPERSPACE_LAYOUT[] = "Layout1";
+// Bugzilla::78600 + 78698; Date:09-02-2004
+...
+
+
+
+class DB_CLASS db_drawing {  /* BIGDEF */
+
+	friend int db_getvar(const char *vname, int qidx,		resbuf *res    , db_drawing *dp, db_charbuflink *configsv, db_charbuflink *sessionsv);
+	...
+	...
+
+/*-------------------------------------------------------------------------*//**
+Checks drawing objects for validity and fix errors if possible
+
+@author Denis Petrov
+@return 1 if objects is valid or successfully validated, 0 else or for error
+*//*------------------------------------------------------------------------*/
+	int check();
+
+	
+	// Bugzilla::78600 + 78698; Date:09-02-2004
+	int addDefLayoutDictAndRecordIfNotPresent();
+	int addDefaultLayoutObject(db_handitem* pLayoutsDictHandItem, const char* pLayoutName);
+	// Bugzilla::78600 + 78698; Date:09-02-2004
+	
+	void copyheaderfrom(db_drawing* sour)
+	...
+	...
+	...
+
+};
+
+
+
+File: Source/prj/lib/DB/drawing.cpp
+-----------------------------------
+
+// Bugzilla::78600 + 78698; Date:29-12-2003
+/********************************************************************************
+ * Author:	Sachin Dange.
+ *
+ * Purpose:	Ensure that the ACAD_LAYOUT dictionary and the underlying layout objects 
+ *			are present. This check is particularly necessary in case when Layout Objects 
+ *			are not added if the File Version is 13 OR 14 and File Type is DXF 
+ *			(ASCII and BINARY), that has been saved in AutoCAD 2000 only.
+ *
+ * Returns:	int
+ ********************************************************************************/
+int db_drawing::addDefLayoutDictAndRecordIfNotPresent()
+{
+	// get the Named Object Dictionary (NOD).
+	db_dictionary* pNamedObjDict = static_cast<db_dictionary*>(this->namedobjdict());
+	if (pNamedObjDict == NULL)
+		return 0;	// serious problem
+
+	// check if ACAD_LAYOUT dictionary is present in the NOD.
+	db_dictionary* pLayoutsDict = static_cast<db_dictionary*>(this->dictsearch(pNamedObjDict, "ACAD_LAYOUT"/*DNT*/, 0));
+	db_dictionaryrec* pLayoutRec = NULL;
+	int result = 0;
+
+	// If the ACAD_LAYOUT dictionary is not present, then create one and add it to the 
+	// main dictionary.
+	if (pLayoutsDict == NULL)
+	{
+		pLayoutsDict = new db_dictionary();
+		addhanditem(pLayoutsDict);
+
+		db_objhandle hLayoutDictHandle = pLayoutsDict->RetHandle();
+		stockhand[DB_SHI_LAYOUTDIC] = hLayoutDictHandle; 
+
+		// Add the LAYOUT record.
+		pLayoutRec = new db_dictionaryrec("ACAD_LAYOUT"/*DNT*/, DB_SOFT_OWNER, hLayoutDictHandle, pLayoutsDict);
+		pNamedObjDict->addrec(pLayoutRec);
+		pLayoutsDict->addReactor(pNamedObjDict->RetHandle(), pNamedObjDict, ReactorItem::SOFT_POINTER);
+
+		// Add the "Model Space" Layout Object.
+		result = addDefaultLayoutObject(pLayoutsDict, MODELSPACE_LAYOUT);
+		
+		// Add the "Default Paper Space" Layout Object.
+		result = addDefaultLayoutObject(pLayoutsDict, DEF_PAPERSPACE_LAYOUT);
+	}
+	else
+	{
+		// At least 2 default layout objects ("Model" and "Layout1") should be present 
+		// in the dictionary. If any of them are not present, add them to the 
+		// ACAD_LAYOUT Dictionary.
+		
+		bool bModelLayoutPresent = false; 
+		bool bPaperLayoutPresent = false; 
+
+		pLayoutsDict->get_recllends(&pLayoutRec, NULL);
+		while (pLayoutRec != NULL)
+		{
+			if (stricmp(pLayoutRec->name, MODELSPACE_LAYOUT) == 0)
+				bModelLayoutPresent = true;
+			else
+				bPaperLayoutPresent = true;
+
+			if (bModelLayoutPresent && bPaperLayoutPresent)
+				return 1;
+
+			pLayoutRec = pLayoutRec->next;
+		}
+		
+		// Add the "Model" Space Layout Object.
+		if (!bModelLayoutPresent)
+			result = addDefaultLayoutObject(pLayoutsDict, MODELSPACE_LAYOUT);
+
+		// Add the "Paper" Space Layout Object.
+		if (!bPaperLayoutPresent)
+			result = addDefaultLayoutObject(pLayoutsDict, DEF_PAPERSPACE_LAYOUT);
+	}
+
+	return result;
+}
+
+
+/********************************************************************************
+ * Author:	Sachin Dange.
+ *
+ * Purpose:	To add a default Layout Object (for Model Space or Paper Space), 
+ *			depending on pLayoutName.
+ *
+ * Returns:	int
+ ********************************************************************************/
+int db_drawing::addDefaultLayoutObject(db_handitem* pLayoutsDictHandItem, const char* pLayoutName)
+{
+	db_dictionary* pLayoutsDict = static_cast<db_dictionary*>(pLayoutsDictHandItem);
+	db_dictionaryrec* pDictRec = NULL;
+
+	CDbLayout* phLayout = new CDbLayout();
+	addhanditem(phLayout);
+	
+	db_objhandle hLayoutObjectHandle = phLayout->RetHandle();
+	pDictRec = new db_dictionaryrec(pLayoutName, DB_SOFT_OWNER, hLayoutObjectHandle, phLayout);
+	pLayoutsDict->addrec(pDictRec);
+
+	phLayout->addReactor(pLayoutsDictHandItem->RetHandle(), pLayoutsDict, ReactorItem::SOFT_POINTER);
+
+	if (stricmp(pLayoutName, MODELSPACE_LAYOUT) == 0)
+	{
+		phLayout->set_70(CDbPlotSettings::eModelType);
+		phLayout->setBlock(phLayout);
+		stockhand[DB_SHI_MSLAYOUT] = hLayoutObjectHandle;
+		return 1;
+	}
+	
+	if (stricmp(pLayoutName, DEF_PAPERSPACE_LAYOUT) == 0)
+	{
+		phLayout->setCurrent();
+		stockhand[DB_SHI_PSLAYOUT] = hLayoutObjectHandle;
+		return 1;
+	}
+
+	return 0;
+}
+//----------------------------------------------------------------
+// Bugzilla::78600 + 78698; Date:29-12-2003
+
+
+	As shown above I have used the following strategy:
+		1) The db_drawing::addDefLayoutsIfNotPresent() method looks whether 
+the main dictionary i.e the Named Object Dictionary has a record for 
+ACAD_LAYOUT dictionary. 
+		2) If ACAD_LAYOUT dictionary doesn't exist then it's created and 
+default LAYOUT objects are added. In case there is ACAD_LAYOUT dictionary but 
+without LAYOUT objects then only the default Layout objects are added.
+		3) This function is called from db_drawing::check(), because this is 
+the function that gets called at the end when the drawing is being opened.
+Therefore its the best place to add the missing objects. This has been done as 
+shown below:
+
+
+File: Source/prj/lib/DB/drawing.cpp
+-----------------------------------
+
+int db_drawing::check()
+{
+	// Bugzilla::78600 + 78698; Date:29-12-2003
+	if (!addDefLayoutDictAndRecordIfNotPresent())
+		assert(false);
+	// Bugzilla::78600 + 78698; Date:29-12-2003
+
+	// iterate tables
+	for(int i = 0; i < DB_NTABS; ++i)
+		if(!table[i].check(this)) // currently it can't fail so just assert
+			assert(false);
+
+	// iterate objects
+	db_handitem* pElement;
+	for(pElement = objll[0]; pElement; pElement = pElement->next)
+		if(!pElement->check(this)) // currently it can't fail so just assert
+			assert(false);
+
+	// iterate entities
+	for(pElement = entll[0]; pElement; pElement = pElement->next)
+		if(!pElement->check(this)) // currently it can't fail so just assert
+			assert(false);
+
+	return 1;
+}
+
+
+	Also note that the code to add default Layout objects is very similar 
+to one which creates default LAYOUT objects in the constructor 
+"db_drawing::db_drawing ()". 
+	Because of that it's worth to create a method 
+"db_drawing::addDefaultLayoutObject" which will create default LAYOUT objects 
+and call it for both cases, depending on whether its the MODEL_SPACE Layout or 
+PAPER_SPACE Layout (Default = Layout1). This is as shown below:
+
+
+
+File: Source/prj/lib/DB/drawing.cpp
+-----------------------------------
+
+#ifdef	BUILD_WITH_ACAD2002_SUPPORT
+db_drawing::db_drawing(int measureinit, int pstylepolicy)
+#else
+db_drawing::db_drawing(void)
+#endif
+{
+	...
+	...
+	...
+	...
+
+
+	mlsd->addReactor(nod->RetHandle(),nod, ReactorItem::SOFT_POINTER);
+
+	pLayoutsDict->addReactor(nod->RetHandle(),nod, ReactorItem::SOFT_POINTER);
+	// DP: create layouts for model and paper spaces
+
+	// Bugzilla::78600 + 78698; Date:22-12-2003
+	//--------------------------------------------------------
+	/*!!!
+	thip1 = new CDbLayout();
+	addhanditem(thip1);
+
+	tdrp1 = new db_dictionaryrec("Model", DB_SOFT_OWNER, thip1->RetHandle(), thip1);
+	pLayoutsDict->addrec(tdrp1);
+	((CDbLayout*)thip1)->setName("Model", this); // 2003-04-30 Bugzilla#78511 Loose layout name in A2K.
+	((CDbLayout*)thip1)->set_70(CDbPlotSettings::eModelType);
+
+	thip1->addReactor(pLayoutsDict->RetHandle(), pLayoutsDict, ReactorItem::SOFT_POINTER);
+	stockhand[DB_SHI_MSLAYOUT] = thip1->RetHandle();
+	// "trick"
+	static_cast<CDbLayout*>(thip1)->setBlock(thip1);
+
+	thip1 = new CDbLayout();
+	addhanditem(thip1);
+
+	tdrp1 = new db_dictionaryrec("Layout1", DB_SOFT_OWNER, thip1->RetHandle(), thip1);
+	pLayoutsDict->addrec(tdrp1);
+	((CDbLayout*)thip1)->setName("Layout1", this); // 2003-04-30 Bugzilla#78511 Loose layout name in A2K.
+
+	thip1->addReactor(pLayoutsDict->RetHandle(), pLayoutsDict, ReactorItem::SOFT_POINTER);
+	stockhand[DB_SHI_PSLAYOUT] = thip1->RetHandle();
+	static_cast<CDbLayout*>(thip1)->setCurrent();
+	//!!!*/
+
+	addDefaultLayoutObject(pLayoutsDict, MODELSPACE_LAYOUT);
+	addDefaultLayoutObject(pLayoutsDict, DEF_PAPERSPACE_LAYOUT);
+	
+	//--------------------------------------------------------
+	// Bugzilla::78600 + 78698; Date:22-12-2003
+
+
+  /* Create ACAD_PLOTSTYLENAME dictionary and Default PLOTSTYLE */
+	normal = new db_placeholder();
+	plnd = new db_dictionarywdflt();
+
+	...
+	...
+	...
+	...
+
+}
+
+
+Thus now the drawing will have the Layout Object present.
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+The code should be checked for the following cases:
+	1. Following Types of Files Created in AutoCAD should get loaded and SAVED 
+in IntelliCAD:
+	a. AutoCAD R14/LT98/LT97 DXF(*.dxf) [ASCII]
+	b. AutoCAD R14/LT98/LT97 DXF(*.dxf) [Binary]
+	c. AutoCAD R13/LT95 DXF(*.dxf)	[ASCII]
+	d. AutoCAD R13/LT95 DXF(*.dxf)	[Binary]
+
+	2. The Above types of Files when opened should have the layout object 
+present in them. This is verified by the giving a "layout" command, followed
+by '?' at the Prompt asked. It should show the following:
+	
+	: layout
+
+	Enter layout option [Copy/Delete/New/Rename/Set/Template/? to list] <Set>: ?
+
+	Layout name:: Layout1
+	Block name:: *Paper_Space
+	Scroll/<ENTER to show next group>: 
+
+	:
+
+	(The above snapshot is consistent with AutoCAD.)
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

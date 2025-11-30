@@ -1,0 +1,66 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_3202002_1.txt
+Date:		3/20/2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		Source/regress/base/3dspiral_spiral.dxf
+		Source/regress/base/3dspiral_3dspiral.dxf
+		Source/regress/base/arctex_at.dxf
+		Source/regress/regress_scr.exe
+		Source/regress/log
+		Source/regress/output_dxf
+Changed files:	
+		Source/regress/Readme.txt
+		Source/regress/scripts/3dspiral_3dspiral.scr
+		Source/regress/scripts/arctex_at.scr
+		Source/regress/scripts/3dspiral_spiral.scr
+Deleted files:	
+		Source/regress/modify.xml
+		Source/regress/base/3dspiral_spiral_base.dxf
+		Source/regress/base/3dspiral_3dspiral_base.dxf
+		Source/regress/base/arctex_at_base.dxf
+		Source/regress/regress.bat
+
+Description:	This submission updates regress suite to IntelliCAD.
+Comments:	The regress suite has been updated. Instead of a batch file, an executable (regress_scr.exe) is present.
+		The regress_scr.exe automatically runs all scr files in the scripts subdirectory.
+
+		The scr files set logfileon and the logfile is written to the log directory. The output dxf file is 
+		placed in output_dxf directory and is processed to reset values for $TDCREATE, $TDUPDATE, $TDINDWG and
+		$TDUSRTIMER to 0.0. The base dxf files have these values set to 0.0. The output dxf file and base dxf file are 
+		compared and differences (if any) are written to the icadregress.log file.
+
+		Another change -- the base files will no longer have a suffix of base in the file name (ie) the base file for 
+		arctex_at.scr will not be arctex_at_base.dxf but arctex_at.dxf.
+
+File by File:	Source/regress/log
+			New directory. Log files will be written here.
+		Source/regress/output_dxf
+			New directory. dxf files will be written here.
+		Source/regress/scripts/3dspiral_3dspiral.scr
+			logfile is turned on.
+		Source/regress/base/3dspiral_3dspiral_base.dxf
+			logfile is turned on.
+		Source/regress/scripts/3dspiral_spiral.scr
+			logfile is turned on.
+		Source/regress/base/3dspiral_spiral.dxf
+			Base dxf file for 3dspiral_spiral test case. $TDCREATE, $TDUPDATE, $TDINDWG and
+			$TDUSRTIMER to 0.0.
+		Source/regress/scripts/arctex_at.scr
+			logfile is turned on.
+		Source/regress/base/arctex_at.dxf
+			Base dxf file for arctex_at test case. $TDCREATE, $TDUPDATE, $TDINDWG and
+			$TDUSRTIMER to 0.0.
+		Source/regress/Readme.txt
+			Readme file for regress.
+		Source/regress/regress_scr.exe
+			Executable to run regress
+------------------------------------------------------------------------------

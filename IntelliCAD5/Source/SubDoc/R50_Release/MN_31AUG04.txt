@@ -1,0 +1,73 @@
+Document Title:  MN_31AUG04.txt	
+Product Version: ICAD 5
+Date:  31 August 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+The "Boundary Dialog" defines the object type, boundary set, and island 
+detection method for defining boundaries from points you specify. The "Boundary
+dialog  box" is a limited version of the Boundary Hatch dialog box. As per
+AutoCAD's behaviour the "Select Objects" button should be disabled in "Boundary
+Dialog". So to implement this behaviour in ICAD, I have added a new boolean
+variable "m_callFromBhatch" in the "Bhatchboundarytab" class in the file 
+"bhatchboundarytab.cpp". I have set the value of this varible in the function
+"IcadBoundaryHatchDia" of "CMainWindow" class in the file "icadboundarydia.cpp"
+just before making a call to "Domodal" function of "BHATCH" dialog's object.
+Then I have checked the value of "m_callFromBhatch" variable in "OnInitDialog"
+function of "Bhatchboundarytab" class in the file "bhatchboundarytab.cpp" for
+making "Select Objects" button enabled.. 
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_31AUG04.txt	
+Engineer: Mohan Nayak
+
+Added files:     
+Affected files:
+	 Source/prj/ICAD/icadboundarydia.cpp?rev=1.4.4.4.2.3 
+	 Source/prj/ICAD/bhatchboundarytab.h?rev=1.1.1.1.10.1.2.2 
+	 Source/prj/ICAD/bhatchboundarytab.cpp?rev=1.2.8.1.2.3 
+
+Description: To disable the "Select Objects" button in the "Boundary Dialog Box"
+so as to depict the same behavior as in AutoCAD.
+Reviewer's Name and Comments: None.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1.	Start IntelliCAD 5.
+2.	Give "BOUNDARY" command.
+3.  Check the "Select Objects" button in the "Boundary Dialog".
+4.  It should be disabled. 
+5.	Give "BHATCH" command.
+6.	The "Boundary Hatch" dialog is appeared.
+7.  Check the "Select Objects" button.
+8.  It should be enabled. 
+
+
+9.  Installation Issues:
+

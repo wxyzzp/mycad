@@ -1,0 +1,24 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-45.txt
+Produce Version		ICAD 4
+Date:				06/03/2004 05:30am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Minor changes to add tests for NULL objects.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+

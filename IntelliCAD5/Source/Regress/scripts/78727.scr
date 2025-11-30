@@ -1,0 +1,18 @@
+logfilename log\78727.log
+logfileon
+;____________________
+(xload "sds\78727.dll")
+(if (= (c:functest) nil) (princ "error"))
+(getvar "lenslength")
+(if (/= (getvar "lenslength") 30) (alert "error"))
+(getvar "viewmode")
+(if (/= (getvar "viewmode")0) (alert "error"))
+(getvar "viewsize")
+(if (/= (getvar "viewsize") 4) (alert "error"))
+(getvar "viewdir")
+(if (/= (getvar "viewdir") 1,  0,  1) (alert "error"))
+;_________________
+dxfout output_dxf\78727.dxf
+6
+quit
+y

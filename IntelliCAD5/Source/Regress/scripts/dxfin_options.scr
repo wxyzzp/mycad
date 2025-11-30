@@ -1,0 +1,20 @@
+logfilename log\dxfin_options.log
+logfileon
+;___________
+(setvar "useri1" (getvar "filedia"))
+(setvar "useri2" (getvar "expert"))
+filedia
+0
+expert
+5
+;____________
+dxfin
+dwg\dxfin.dxf
+;________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2" ))
+;_________
+dxfout output_dxf\dxfin_options.dxf
+6
+quit
+y

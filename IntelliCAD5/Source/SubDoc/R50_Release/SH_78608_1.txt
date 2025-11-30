@@ -1,0 +1,50 @@
+Document Title:  SH_78608_1.txt	
+Product Version: ICAD 5.0
+Date:  8/27/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/CmdQueryTools.cpp
+   Source/Prj/lib/cmds/CmdSolidedit.h
+   Source/Prj/lib/cmds/CmdSolidedit.inl
+   
+3. Overview:
+
+This submission fixes the following two problems:
+
+  1) The bug #78608 - "Entity selection for SOLIDEDIT command did not support last 
+     entity selection option". The problem is fixed by modifing the command framework
+     of SOLIDEDIT command to take the last selected entitiy.
+     
+  2) SOLIDEDIT command did not support BODY entities. This problem is fixed by adding
+     DB_BODY type to selection fileter.
+  
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:                  
+	Name of Script file:  78608.scr
+
+8.  Notes to Localization: 
+
+
+
+

@@ -1,0 +1,10 @@
+logfilename log\3dpoly_vba.log
+logfileon
+open
+dwg/3dpoly.dwg
+-vbarun
+Module1.Main
+dxfout output_dxf\3dpoly_vba.scr
+6
+quit
+y

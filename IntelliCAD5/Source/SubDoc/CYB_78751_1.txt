@@ -1,0 +1,649 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78751_1.txt	
+Product Version:	ICAD 4
+Date:				10/05/2004 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)     
+
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/Prj/LIB/DB/DbPlotSettings.h     ==> DB
+Source/Prj/ICAD/printdialog.h		   ==> ICAD
+Source/Prj/ICAD/printdialog.cpp		   ==> ICAD
+Source/Prj/ICAD/printscaleviewtab.h	   ==> ICAD
+Source/Prj/ICAD/printscaleviewtab.cpp  ==> ICAD
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================      
+
+	This is related to Bugzilla# 78751: Wrong behavior "Fit print area to size 
+of page" check- box, in print dialog.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report, the user gives the 'print' or 'plot' command. The 
+user unchecks the check box, with the caption "Fit print area to size of 
+page"  present on print/scale view tab and presses "Print Preview" button. 
+Afterwards when the user presses the "Print Settings" button to come back to 
+the "Print" dialog again, the checkbox, which was just unchecked, remains as
+checked.
+
+ 
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the files "Source/Prj/LIB/DB/DbPlotSettings.h" and
+"Source/Prj/ICAD/printscaleviewtab.cpp". Whenever we uncheck the check box
+"Fit print area to size of page" , we can enter new values in the two edit-
+boxes for "Printed Units" and "Drawing Units". So the plot-settings now become
+custom. There are some standard settings for "Printed Units" and "Drawing 
+Units" like 1:1, 1:2, 2:1, 4:1 etc. All these standard settings are declared
+in the file "Source/Prj/LIB/DB/DbPlotSettings.h" as enumerators in enum variable
+"EPlotScaleType". But there is no consideration for custom values . 
+	So I have modified the file as shown below (modifications are within 
+Bugzilla comments) by declaring the new enumerator "eCustom" in enum 
+variable "EPlotScaleType". 
+
+Source/Prj/LIB/DB/DbPlotSettings.h     
+---------------------------------------------------------
+class DB_CLASS CDbPlotSettings: public CDbObject 
+{
+	::
+	::
+	::
+	enum EPlotScaleType
+	{
+		eToFit = 0, // Scaled to Fit
+		::
+		::
+		::
+		//Bugzilla # 78751
+		eCustom = 33,
+		//Bugzilla # 78751
+	};
+
+}
+
+	In the file "Source/Prj/ICAD/printscaleviewtab.cpp","getScaleType"
+function is called for determining the scale type. When the user presses 
+"Print Preview" button, the settings present on the print layout are stored 
+in the registry. But before saving the value of scale type, "getScaleType" function 
+is called. 
+	In the "getScaleType" function, values entered in edit-boxes like
+"Printed Units" and "Drawing Units" are passed. When these values are not 
+matched with the values declared in the enum EPlotScaleType variable(standard 
+values), the function always returns zero, which means scale type is "scaled to
+fit". So when the user presses "Print Settings" to return back to the "Print" 
+dialog, the check box "Fit print area to size of page" remains checked. 
+	If we enter standard values in the edit boxes and press the "Print Preview" 
+button and then we return to "Print" dialog, the check-box then remains unchecked. 
+	Now since I have already added the new enumerator in the EPlotScaleTypevariable, 
+we have to consider this enumerator for custom settings.
+	So I have modified the file as shown below (modifications are within 
+Bugzilla comments).   
+
+Source/Prj/ICAD/printscaleviewtab.cpp  
+---------------------------------------------------------
+
+int  PrintScaleViewTab::getScaleType( double printedUnits, double drawingUnits )
+{
+	CDbLayout::EPlotScaleType code = CDbLayout::eToFit; // Scaled to Fit * Default *
+
+	if( m_Scale == PRN_OPT_MM )
+	{
+		if( icadRealEqual( drawingUnits, 1.0 ) )
+		{
+			if( icadRealEqual( printedUnits, 2.0 ) )
+			::
+			::
+			::
+			::
+			else
+				//Bugzilla # 78751
+				code = CDbLayout::eCustom; //User-entry
+				//Bugzilla # 78751
+		}
+		else if( icadRealEqual( printedUnits, 1.0 ) )
+		{
+			if( icadRealEqual( drawingUnits, 100.0 ) )
+				code = CDbLayout::e1_100; // 1:100
+			::
+			::
+			::
+			::
+			else
+				//Bugzilla # 78751
+				code = CDbLayout::eCustom; //User-entry
+				//Bugzilla # 78751	
+		}	
+		else
+			//Bugzilla # 78751
+			code = CDbLayout::eCustom; //User-entry
+			//Bugzilla # 78751
+	}
+	else if( m_Scale == PRN_OPT_INCHES )
+	{
+		if( icadRealEqual( printedUnits, 1.0 ) )
+		{
+			::
+			::
+			::
+			::
+				//Bugzilla # 78751
+				code = CDbLayout::eCustom; //User-entry
+				//Bugzilla # 78751
+		}
+		else	
+				//Bugzilla # 78751
+				code = CDbLayout::eCustom; //User-entry
+				//Bugzilla # 78751
+	}
+	return (int)code;
+}
+
+	This function is called for getting scale type. As I mentioned earlier that
+this function previously always returned zero when we do not enter standard values
+for "Printing Unit" as well as for "Drawing Unit". 
+	This function first checks the unit type i.e. inches or millimeters. Then it 
+compares user entered values with the standard values. When this function does 
+not find the standard values, I simply return the "eCustom" value and so the user 
+entered values will be stored in the registry. When we return from "Print" dialog, 
+the check box remains unchecked.
+
+	There is one more problem in the "print" dialog. Consider the case when 
+the user makes some changes in the dialog and presses the "Print Preview" button. 
+He then returns back to the dialog by pressing "Print Settings" button. Next the 
+user presses "cancel" button as he wants to discard his changes. In this case the 
+changes made in the dialog should not be stored in the registry. But this does not
+happen in IntelliCAD. The changes are stored in the registry, which is wrong.
+	Whenever the user presses "Print Preview" button, the changes are
+stored in the registry. So if the user discards these changes and again gives "print"
+command, IntelliCAD takes the values from registry and sets the variables accordingly
+and then loads the dialog or property sheet.
+	To correct this behavior, I have added one new function and three variables in the 
+"PrintScaleViewTab" class and modified the file as shown below (modifications
+are within Bugzilla comments).   
+
+Source/Prj/ICAD/printscaleviewtab.h
+---------------------------------------------------------
+class PrintScaleViewTab : public CPropertyPage
+{
+// Construction
+public:
+	PrintScaleViewTab(CWnd* pParent = NULL);   // standard constructor
+	~PrintScaleViewTab();
+	::
+	::
+	::
+	//Bugzilla # 78751
+	void CopyList ();
+	//Bugzilla # 78751
+
+::
+	::
+	::
+
+public:
+	::
+	::
+	::
+	//Bugzilla # 78751
+	bool m_bApplyWasPressed ;
+	bool m_bPreviewWasPressed;
+	struct resbuf* pLayout ;
+	//Bugzilla # 78751
+	::
+	::
+	::
+};
+
+The newly added function "CopyList" is useful to copy the layout link list.
+The boolean variables m_bApplyWasPressed , m_bPreviewWasPressed are useful to
+set the corresponding flags when "Apply" button and "Preview" button are placed.
+The "pLayout" variable is of "resbuf" stores the previous layout object.
+The implementation of "CopyList" function in the file "printscaleviewtab.cpp" is 
+as shown below:
+  
+Source/Prj/ICAD/printscaleviewtab.cpp  
+---------------------------------------------------------    
+/********************************************************************************
+ * Author:	Sachin Dange.
+ *
+ * Purpose:	To copy the previous settings of the "print" property sheet
+ *
+ * Returns:	void
+ ********************************************************************************/
+
+void PrintScaleViewTab::CopyList()
+{
+		
+	if (m_bPreviewWasPressed && !m_bApplyWasPressed)
+		return;
+	
+	sds_name layout;
+	if(!m_bApplyWasPressed) // No necessity when "Apply" was clicked
+	{
+	if (cmd_getCurrentLayout(layout))
+		pLayout = sds_entget(layout);
+	}
+
+}
+
+	The layout object contains settings of all three tabs i.e." Scale/View" ,
+"Pen Map/Width" and "Advanced".
+	This function is called from "LoadRegSettings" function of "PrintScaleViewTab"
+class. Actually this function makes the copy of current layout object so there 
+is no necessity to call this function for other tabs present in the "print" 
+property sheet i.e. "Pen Map/Width" and "Advanced". 
+	At any stage "LoadRegSettings" is always called for all these three tabs 
+when property sheet is ready to add these pages. There is no necessity to copy 
+the layout object when "Apply" button is pressed. This "pLayout" (which of resbuf type) 
+comes into picture when the user presses "Cancel" button without pressing 
+"Apply" button.
+	The variable "m_bPreviewWasPressed" is set when "preview" button is pressed.
+When the user presses either "Preview" button or "Apply" button, the same 
+function is called i.e. "SaveRegSettings" which is present in "CPrintDialogSheet"
+class in the file "Source/Prj/ICAD/printdialog.cpp".
+	The "SaveRegSettings" function is directly mapped with "Apply" button. So 
+to set the flag "m_bApplyWasPressed" I have added new message map function to 
+for "Apply" button and then call "SaveRegSettings" function.
+
+	Following are the two modified files:
+
+Source/Prj/ICAD/printdialog.h		   
+---------------------------------------------------------    
+class CPrintDialogSheet : public CPropertySheet
+{
+	DECLARE_DYNAMIC(CPrintDialogSheet)
+
+// Construction
+public:
+	::
+	::
+	::
+	::
+	::
+	::
+	void OnApplyClick(); // Mapped with "Apply" button.
+	::
+	::
+};
+
+
+
+
+Source/Prj/ICAD/printdialog.cpp
+---------------------------------------------------------    
+	::
+	::
+	::
+BEGIN_MESSAGE_MAP(CPrintDialogSheet, CPropertySheet)
+	//{{AFX_MSG_MAP(CPrintDialogSheet)	
+	ON_WM_HELPINFO()
+	ON_BN_CLICKED(PRN_PREVIEW, OnPrintPreview)	
+	::
+	::
+	::
+END_MESSAGE_MAP()
+
+/********************************************************************************
+ * Author:	Sachin Dange.
+ *
+ * Purpose:	To set the flag when "Apply" button is pressed.
+ *
+ * Returns:	void
+ ********************************************************************************/
+
+void CPrintDialogSheet::OnApplyClick()
+{
+	//Bugzilla # 78751
+	m_scaleViewTab.m_bApplyWasPressed = true;
+	SaveRegSettings();
+	//Bugzilla # 78751
+}
+
+    This function sets "m_bApplyWasPressed" flag and calls "SaveRegSettings"
+function to save the settings permanently.
+	I have also modified the "OnPrinPreview" and "OnCancel" functions in the
+"CPrintDialogSheet" as shown below (modifications are within Bugzilla comments).   
+
+Source/Prj/ICAD/printdialog.cpp
+--------------------------------------------------------- 
+void CPrintDialogSheet::OnCancel() 
+{
+	//Bugzilla # 78751
+	
+	if (!m_scaleViewTab.m_bApplyWasPressed && m_scaleViewTab.m_bPreviewWasPressed)
+	{
+		sds_entmod(m_scaleViewTab.pLayout);
+		sds_relrb(m_scaleViewTab.pLayout);
+	}
+	else
+		sds_relrb(m_scaleViewTab.pLayout );
+	
+	m_scaleViewTab.m_bApplyWasPressed = false;
+	m_scaleViewTab.m_bPreviewWasPressed  = false;
+
+	//Bugzilla # 78751
+	::
+	::
+	::
+}
+
+
+void CPrintDialogSheet::OnPrintPreview() 
+{
+    m_prevTab=GetPageIndex(GetActivePage());
+	m_bPrintPreviewWasPressed = TRUE;
+
+	//Bugzilla # 78751
+	m_scaleViewTab.m_bPreviewWasPressed = true;
+	//Bugzilla # 78751
+
+    DoEndDialog(PRN_PREVIEW);	
+}
+	
+	In "OnPrintPreview" function, I set "m_bPreviewWasPressed" flag. In the 
+function "OnCancel", I have checked the values of "m_bPreviewWasPressed" and 
+"m_bApplyWasPressed" and if "Apply" button is not clicked, I have modified the 
+layout object using previous layout object with the help of "sds_entmod" 
+function.
+
+	Please find the related modifications in the following file:
+		==> Source/Prj/ICAD/printdialog.cpp	
+     
+	      
+
+		 
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> Yes, Plot Scale Type "eCustom" has been added.
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following cases:
+1. Open IntelliCAD
+2. Open "Print Dialog" by giving "print" or "plot" command.
+3. Observe that for Print scale/view tab the check- box "Fit print area to size
+of page" is checked.   
+4. Uncheck the check-box button "Fit print area to size of page"
+5. Click on "Print Preview" button in print dialog box. 
+6. Click on "Print Setting" button in print preview page to return to "print" 
+dialog. 
+7. The check-box button "Fit print area to size of page" should be unchecked.
+8. Make some changes in the print dialog.	
+9. Again click on "Print Preview" button in print dialog box. 
+10.Click on "Print Setting" button in print preview page to return to "print" 
+dialog. Pressed "Cancel" button to discard the changes. Type "print" command 
+again and check the settings in   the print dialog. The changes made in the 
+print dialog before pressing the cancel button should not be restored. 
+If we press "Apply" button before pressing " cancel" button, the changes should
+be restored.
+
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+      
+

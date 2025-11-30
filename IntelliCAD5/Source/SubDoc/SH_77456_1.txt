@@ -1,0 +1,28 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_77456_1.txt
+Date:		04/08/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:77456   
+
+Description:	This submission fixes the bug #77456 - Attached drawing cannot be Xrefed or 
+                Inserted in non-ACIS builds.
+                
+                The problem was in gr_getdispobjs(), which tried to get the display objects 
+                of ACIS entities from the modeler in non-ACIS builds so it failed that caused 
+                INSERT and XREF not to function correctly. The code should not be in non-ACIS
+                builds. The problem is fixed by using "#ifdef BUILD_WITH_ACIS_SUPPORT" to 
+                enclose the part of the code.
+                
+		
+Added files:    None
+Affected files: Source/prj/lib/gr/dispobj.cpp:  Modified gr_getdispobjs().
+Comments:	TaL77456
+
+
+                

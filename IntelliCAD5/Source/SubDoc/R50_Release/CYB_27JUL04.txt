@@ -1,0 +1,137 @@
+Document Title:  CYB_27JUL04.txt	
+Product Version: ICAD 5
+Date:  27 July 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+-------------------------------------------------------------------------
+	This document describes the changes made to the StatusBar for the 
+inclusion of a "Model / Paper" Control on it as per Dave's latest 
+modifications in the IntelliCAD 5 specification. 
+
+	A new "Model / Paper" Control has been added after "LWT" control.
+
+Description:
+	Although we are removed the Tilemode control because it is so confusing, 
+Dave believed we should add a toggle for Paper space and Model space.  
+This is really handy to flip between Model and Paper space, and AutoCAD has 
+this control as well. 
+	The behavior will be as follows:
+	o When in model space the control will display "Model".
+	o When in paper space the control will display "Paper".
+	o Should the user change from Paper to Model or vice versa, the control 
+	  will update to display the current space "Paper" or "Model".
+	o When the control is selected it will toggle from the current space to 
+	  the opposite (Paper or Model).
+
+Model/Paper Control’s Tool Tips:
+	The Tool Tip has been set to "Model or Paper Space".
+
+Model/Paper Control's Context Menus:
+	The context menu-items of this control are: 
+		Paper Space (Switches to Paper Space)
+		Model Space (Switches to Model Space)
+
+	I have modified the "IcadRes.rc" and "IcadRes.h" to include new strings 
+as follows: 
+	ID_ICAD_INDICATOR_TILE		"Model"
+	ID_ICAD_PAPER				"Paper"
+	ID_ICAD_MODEL_PAPER_STRING	"Model / Paper"
+	ID_ICAD_MODEL_PAPER_SPACE	"Model or Paper Space"
+	ID_ICAD_MODEL_SPACE_STRING	"Model Space (switches to Model Space)"
+	ID_ICAD_PAPER_SPACE_STRING	"Paper Space (switches to Paper Space)"
+ 
+	These IDS are used in "IcadStatusBar.cpp" at a number of places. I have 
+also added the option to the main StatusBar Context menu to SHOW / HIDE the 
+"Model / Paper" Control. Therefore I have also made changes to the Registry
+in the StatusBar section to have a boolean variable "Model / Paper" that 
+indicates if the Control is to be shown or hidden when the program is first 
+started.
+
+	I have also mad modifications as suggested by Denis, to add the following
+line: 
+		ExecuteUIAction(ICAD_WNDACTION_STATCHANGE);
+	at the two places where I had originally removed for "DB_QTILEMODE" and 
+"DB_QCTAB" cases.
+
+	In "Source\prj\lib\CMDS\cmds.h" and "Source\prj\lib\CMDS\mpSpace.cpp", I
+have added a new function as follows:
+		int cmd_GetNumberOfMViewPorts(void);
+	This function as the name suggests returns the number of Mview ports for 
+the current Layout.
+
+-------------------------------------------------------------------------
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: CYB_27JUL04	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/lib/SDS/sds_vars.cpp?rev=1.7.4.9.2.2 
+	Source/prj/lib/CMDS/mpSpace.cpp?rev=1.2.4.5.2.1 
+	Source/prj/lib/CMDS/cmds.h?rev=1.20.2.13.2.1 
+	Source/prj/ICAD/IcadStatusBar.cpp?rev=1.9.2.8.2.2 
+	Source/prj/ICAD/IcadRes.h?rev=1.21.2.16.2.8 
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.14 
+Description: 
+	1. Implemented the Statusbar modifications for addition of "Model / Paper" Control
+		as per Dave's latest Specs.
+	2.	Added Denis's suggested changes back in sds_vars.cpp.
+Reviewer's Name and Comments: 
+	None
+
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be tested for the following steps:
+1.  If the current space is Model (and the Model tab is active) and the 
+	control is toggled, then the user will be toggled to the last active 
+	layout tab and be placed in Paper space. The control will display 
+	"Paper" after the toggle.
+2.	If the current space is Model (and a Layout tab is active) and the 
+	control is toggled, then the user will be toggled to Paper space 
+	within the active Layout tab. The control will display "Paper" after 
+	the toggle.
+3.	If the current space is Paper (a layout tab is active) and the control 
+	is toggled, then the user will be toggled to the first active Mview 
+	viewport within the current layout tab. The control will display "Model"
+	after the toggle.
+4.	If the current space is Paper (a layout tab is active) and the control 
+	is toggled and there are no Mview viewports, then the user will be toggled 
+	to the Model tab. The control will display "Model" after the toggle.
+5.	You can’t delete the last Layout tab or the model tab so we don’t have 
+	to worry about those scenarios.
+
+
+9.  Installation Issues:
+
+
+
+

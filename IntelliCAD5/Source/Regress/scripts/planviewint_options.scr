@@ -1,0 +1,16 @@
+logfilename log\planviewint_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+planviewint
+(if (/= (getvar "osmode") 4096) (alert "planviewint did not work!"))
+;__________
+planviewint
+(if (/= (getvar "osmode") 0) (alert "planviewint did not work!"))
+;__________
+dxfout output_dxf\planviewint_options.dxf
+6
+quit
+y

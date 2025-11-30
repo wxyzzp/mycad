@@ -1,0 +1,115 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_18082002_2.txt 
+Date:		18-08-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/make/ACIS.dsp 
+		Source/prj/make/Authenticate.dsp 
+		Source/prj/make/autodll.dsp 
+		Source/prj/make/BuildAll.dsp 
+		Source/prj/make/cmds.dsp 
+		Source/prj/make/db.dsp 
+		Source/prj/make/dbprebuild.dsp 
+		Source/prj/make/flyoversnap.dsp 
+		Source/prj/make/Ge.dsp 
+		Source/prj/make/Geo.dsp 
+		Source/prj/make/gr.dsp 
+		Source/prj/make/icad.dsp 
+		Source/prj/make/icadlib.dsp 
+		Source/prj/make/IcadUtils.dsp 
+		Source/prj/make/lisp.dsp 
+		Source/prj/make/sdslib.dsp 
+		Source/ThirdParty/DCL_Components/DCL/dcl.dsp
+
+Deleted files:	
+		None
+
+Description:	Added new targets for True Time and Bounds Checker Builds.
+Comments:	Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. There
+		are minor changes to support Bounds Checker build -- removal of /Ob from the DCL build.
+
+		The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+
+
+File by File:	
+		Source/prj/make/ACIS.dsp 		Rev 1.14
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/Authenticate.dsp  		Rev 1.10
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/autodll.dsp  		Rev 1.10
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/BuildAll.dsp  		Rev 1.7
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/cmds.dsp  		Rev 1.22
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/db.dsp  		Rev 1.14
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/dbprebuild.dsp  		Rev 1.5
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/flyoversnap.dsp  		Rev 1.3
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/Ge.dsp  		Rev 1.3
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/Geo.dsp  		Rev 1.4
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/gr.dsp  		Rev 1.15
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/icad.dsp  		Rev 1.24
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/icadlib.dsp  		Rev 1.10
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/IcadUtils.dsp  		Rev 1.4
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/lisp.dsp  		Rev 1.6
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/prj/make/sdslib.dsp  		Rev 1.4
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+		Source/ThirdParty/DCL_Components/DCL/dcl.dsp		Rev 1.7
+			Added new targets for True Time and Bounds Checker Builds -- the configurations are cloned from Win32 Debug. 
+			For the Bounds CHecker build, /Ob2 is removed as it conflicts with Boundschecker.
+
+			The intermediate and resultant dlls/icad.exe will be present in True_Time and Bounds_CHecker directories.
+-----------------------------------------------------------------------------

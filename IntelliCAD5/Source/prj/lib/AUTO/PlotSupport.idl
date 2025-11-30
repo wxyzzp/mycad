@@ -1,0 +1,145 @@
+// PlotSupport.idl : IDL source for PlotSupport.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (PlotSupport.tlb) and marshalling code.
+
+
+	[
+		object,
+		uuid(8011c1c4-7e36-11d1-bc5a-0060089608a4),
+		dual,
+		helpstring("IIcadPlotterPen Interface"),
+		pointer_default(unique)
+	]
+	interface IIcadPlotterPen : IDispatch
+	{
+		[propget, id(1), helpstring("property Weight")] HRESULT Weight([out, retval] double *pVal);
+		[propput, id(1), helpstring("property Weight")] HRESULT Weight([in] double newVal);
+		[propget, id(2), helpstring("property Number")] HRESULT Number([out, retval] short *pVal);
+		[propput, id(2), helpstring("property Number")] HRESULT Number([in] short newVal);
+		[propget, id(3), helpstring("property LineType")] HRESULT LineType([out, retval] short *pVal);
+		[propput, id(3), helpstring("property LineType")] HRESULT LineType([in] short newVal);
+	};
+
+
+	[
+		object,
+		uuid(8011c1c3-7e36-11d1-bc5a-0060089608a4),
+		dual,
+		helpstring("IIcadPlotterPens Interface"),
+		pointer_default(unique)
+	]
+	interface IIcadPlotterPens : IDispatch
+	{
+		[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] short *pVal);
+		[propget, id(2), helpstring("property Item")] HRESULT Item(VARIANT index, [out, retval] IIcadPlotterPen* *pVal);
+	};
+
+
+	[
+		object,
+		uuid(8011c1c2-7e36-11d1-bc5a-0060089608a4),
+		dual,
+		helpstring("IIcadPlotProperties Interface"),
+		pointer_default(unique)
+	]
+	interface IIcadPlotProperties : IDispatch
+	{
+		[propget, id(1), helpstring("property PenWidth")] HRESULT PenWidth([out, retval] float *pVal);
+		[propput, id(1), helpstring("property PenWidth")] HRESULT PenWidth([in] float newVal);
+		[propget, id(2), helpstring("property Scale")] HRESULT Scale([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Scale")] HRESULT Scale([in] BSTR newVal);
+		[propget, id(3), helpstring("property Rotate")] HRESULT Rotate([out, retval] short *pVal);
+		[propput, id(3), helpstring("property Rotate")] HRESULT Rotate([in] short newVal);
+		[propget, id(4), helpstring("property OptimizeLevel")] HRESULT OptimizeLevel([out, retval] short *pVal);
+		[propput, id(4), helpstring("property OptimizeLevel")] HRESULT OptimizeLevel([in] short newVal);
+		[propget, id(5), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(6), helpstring("property Units")] HRESULT Units([out, retval] BSTR *pVal);
+		[propput, id(6), helpstring("property Units")] HRESULT Units([in] BSTR newVal);
+		[propget, id(7), helpstring("property OriginX")] HRESULT OriginX([out, retval] double *pVal);
+		[propput, id(7), helpstring("property OriginX")] HRESULT OriginX([in] double newVal);
+		[propget, id(8), helpstring("property OriginY")] HRESULT OriginY([out, retval] double *pVal);
+		[propput, id(8), helpstring("property OriginY")] HRESULT OriginY([in] double newVal);
+		[propget, id(9), helpstring("property Pens")] HRESULT Pens([out, retval] IIcadPlotterPens* *pVal);
+		[propget, id(10), helpstring("property UseLWeight")] HRESULT UseLWeight([out, retval] BOOL *pVal);
+		[propput, id(10), helpstring("property UseLWeight")] HRESULT UseLWeight([in] BOOL newVal);
+		[propget, id(11), helpstring("property ScaleLWeight")] HRESULT ScaleLWeight([out, retval] BOOL *pVal);
+		[propput, id(11), helpstring("property ScaleLWeight")] HRESULT ScaleLWeight([in] BOOL newVal);
+	};
+
+
+	[
+		object,
+		uuid(8011c1c1-7e36-11d1-bc5a-0060089608a4),
+		dual,
+		helpstring("IIcadPlotManager Interface"),
+		pointer_default(unique)
+	]
+	interface IIcadPlotManager : IDispatch
+	{
+		typedef [uuid(8011c0db-7e36-11d1-bc5a-0060089608a4)] enum PrintArea
+		{
+			CurrentView,
+			SavedView,
+			Extents,
+			Limits,
+			Window
+		} PrintArea;
+
+		typedef [uuid(8011c0dc-7e36-11d1-bc5a-0060089608a4)] enum Orientation
+		{
+			Portrait,
+			Landscape
+		} Orientation;
+
+		[propget, id(1), helpstring("property PlotProperties")] HRESULT PlotProperties([out, retval] IIcadPlotProperties* *pVal);
+		[id(2), helpstring("method ImportPlotProperties")] HRESULT ImportPlotProperties(BSTR filename);
+		[id(3), helpstring("method ExportPlotProperties")] HRESULT ExportPlotProperties(BSTR filename);
+		[id(4), helpstring("method Print")] HRESULT Print();
+		[id(5), helpstring("method Preview")] HRESULT Preview();
+		[propget, id(6), helpstring("property Area")] HRESULT Area([out, retval] PrintArea *pVal);
+		[propput, id(6), helpstring("property Area")] HRESULT Area([in] PrintArea newVal);
+		[propget, id(7), helpstring("property HideLines")] HRESULT HideLines([out, retval] BOOL *pVal);
+		[propput, id(7), helpstring("property HideLines")] HRESULT HideLines([in] BOOL newVal);
+		[propget, id(8), helpstring("property PaperOrientation")] HRESULT PaperOrientation([out, retval] Orientation *pVal);
+		[propput, id(8), helpstring("property PaperOrientation")] HRESULT PaperOrientation([in] Orientation newVal);
+		[propget, id(9), helpstring("property Header")] HRESULT Header([out, retval] BSTR *pVal);
+		[propput, id(9), helpstring("property Header")] HRESULT Header([in] BSTR newVal);
+		[propget, id(10), helpstring("property Footer")] HRESULT Footer([out, retval] BSTR *pVal);
+		[propput, id(10), helpstring("property Footer")] HRESULT Footer([in] BSTR newVal);
+		[propget, id(11), helpstring("property OnlyWindowArea")] HRESULT OnlyWindowArea([out, retval] BOOL *pVal);
+		[propput, id(11), helpstring("property OnlyWindowArea")] HRESULT OnlyWindowArea([in] BOOL newVal);
+		[propget, id(12), helpstring("property View")] HRESULT View([out, retval] BSTR *pVal);
+		[propput, id(12), helpstring("property View")] HRESULT View([in] BSTR newVal);
+		[id(13), helpstring("method GetWindow")] HRESULT GetWindow(double *fromX, double *fromY, double *toX, double *toY);
+		[id(14), helpstring("method SetWindow")] HRESULT SetWindow(double fromX, double fromY, double toX, double toY);
+		[id(15), helpstring("method GetPaperSize")] HRESULT GetPaperSize(double *length, double *width);
+		[id(16), helpstring("method SetPaperSize")] HRESULT SetPaperSize(double length, double width);
+		[propget, id(17), helpstring("property CenterOnPage")] HRESULT CenterOnPage([out, retval] BOOL *pVal);
+		[propput, id(17), helpstring("property CenterOnPage")] HRESULT CenterOnPage([in] BOOL newVal);
+
+		// Bugzilla:78647;	Date:05-12-03.
+#ifdef USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+		[id(18), helpstring("method GetDefaultPrinterSettings")] HRESULT GetDefaultPrinterSettings();
+#endif		
+		// Bugzilla:78647;	Date:05-12-03.
+	};
+
+
+	[
+		object,
+		uuid(8011c1c5-7e36-11d1-bc5a-0060089608a4),
+		dual,
+		hidden,
+		helpstring("IIcadPlotRegManager Interface"),
+		pointer_default(unique)
+	]
+
+	interface IIcadPlotRegManager : IUnknown
+	{
+		[id(1), helpstring("method ImportRegPlotProperties")] HRESULT ImportRegPlotProperties();
+		[id(2), helpstring("method ExportRegPlotProperties")] HRESULT ExportRegPlotProperties();
+		[propget, id(3), helpstring("property RegPlotProperties")] HRESULT RegPlotProperties([out, retval] IIcadPlotProperties* *pVal);
+	};
+

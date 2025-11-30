@@ -1,0 +1,7 @@
+Logfilename log\64188_Base.log
+Logfileon
+(load "lisp\64188_Base.lsp")
+64188_Base
+Dxfout output_dxf\64188_Base.dxf
+6
+Exit y

@@ -1,0 +1,29 @@
+SUBMISSION DOC
+ 
+--------------------------------------------------------------------------------
+File Name: CYB_78238_1.txt
+Date:  15-07-2002
+Developer: Sachin Dange
+Company: Cybage Software
+Reference: BugZilla:78238
+Affected files: 
+  Source/prj/lib/CMDS/DimTEdit.cpp
+Description: DIMJUST loses value on Dimtedit. 
+Comments: TaL78238.
+ 
+File by File:  * Source/prj/lib/CMDS/DimTEdit.cpp
+  setvar calls were being made in each of the options left,right and 
+  home to set DIMJUST to the values representing the above metioned
+  dim text positions. The function while returning would again reset 
+  DIMJUST to 0 ( hard coded ).
+ 
+  This code seems to be carried forward even after an implemenatation 
+  change of now doing an "entmod" instead of "entmake" ( previously )
+  
+  As now the dimjust value is stored in the EED of a dimesnion, there is
+  no need to change the value of the Dimstyle variable DIMJUST in this
+  function. For the same reason's the code which resets the value of 
+  DIMJUST to 0 ( and not to a cached previous value ) is also removed.
+--------------------------------------------------------------------------------
+ 
+ 

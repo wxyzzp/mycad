@@ -1,0 +1,16 @@
+logfilename log\intersection_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+intersection
+(if (/= (getvar "osmode") 32) (alert "intersection did not work!"))
+;__________
+intersection
+(if (/= (getvar "osmode") 0) (alert "intersection did not work!"))
+;__________
+dxfout output_dxf\intersection_options.dxf
+6
+quit
+y

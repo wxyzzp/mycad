@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+Date:		03-03-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78432
+Affected files:			
+		Source/prj/ICAD/Preferences.cpp?rev=1.12.6.5 
+Description:	Grip Crash Bug. Frequently produced on Win98.Current solution is workaround for the problem.
+Comments:	TaL78432
+
+Problem analysis:	Selecting entities and then pressing escape to deselect it causes crash in IntelliCAD mostly on Win98 machine. The reason for the crash is not yet known. But as a workround setting OFF the tools->options->Crosshairs grip attraction avoids the crash.
+
+Proposed Solution:	
+		Tools->options->Crosshairs grip attraction is set OFF as default value.
+File By File :
+	*	Source/prj/ICAD/Preferences.cpp?rev=1.12.6.5 
+		Tools->options->Crosshairs grip attraction is set OFF as default value.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

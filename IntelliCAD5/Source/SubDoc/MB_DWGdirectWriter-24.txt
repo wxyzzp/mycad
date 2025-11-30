@@ -1,0 +1,28 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-24.txt
+Produce Version		ICAD 4
+Date:				04/05/2004 06:49am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fixed the problem that prevented script 78037 from running
+to completion under DWGdirect.
+Instead of setting the text string in linetype dashes to NULL
+when the string was empty, I was setting it to the address of the
+string. I have added code to test for and empty string and set
+the value to NULL instead of the address of the empty string.
+
+Notes to Developers:
+
+Notes to QA:
+78037.scr now runs to completion under DWGdirect.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectreader.cpp

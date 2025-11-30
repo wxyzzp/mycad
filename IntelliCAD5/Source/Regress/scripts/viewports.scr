@@ -1,0 +1,21 @@
+logfilename log\viewports.log
+logfileon
+Open DWG\Viewports.dwg
+z
+e
+viewports
+r
+STD
+viewports
+r
+STD1
+viewports
+r
+STD2
+viewports
+r
+STD3
+dxfout output_dxf\Viewports.dxf
+6
+close n
+exit

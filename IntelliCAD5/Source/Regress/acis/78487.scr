@@ -1,0 +1,23 @@
+logfilename log\78487.log
+logfileon
+;_______
+circle
+0,0,0
+2
+;_______
+region
+last
+
+;_______
+box
+0,0,0
+2,2,2
+;_______
+union
+all
+
+;_______
+dxfout output_dxf\78487.dxf
+6
+quit
+y

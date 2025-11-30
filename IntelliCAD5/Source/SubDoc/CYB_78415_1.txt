@@ -1,0 +1,23 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78415_1.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78415
+Added files:     	
+Affected files:	
+		Source/prj/ICAD/icadfontcombobox.cpp
+Description:	Mtext dialog shows wrong font name
+Comments:		TaL78415
+Problem Analysis:
+		The problem was that the function CIcadFontComboBox::AddFont( ) was returning CB_ERR even if a font name already existed in the combo box.
+Proposed Solution:
+		If a font name already exists, the index of that font in the combo box should be returned by the function.
+File by File:	
+*		Source/prj/ICAD/icadfontcombobox.cpp
+		If a font name already exists, the index of that font in the combo box is returned.
+--------------------------------------------------------------------------------

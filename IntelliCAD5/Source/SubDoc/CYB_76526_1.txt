@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------------
+Date:		23-09-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:76526
+Affected files:			
+		Source/prj/lib/GR/mtextgen.cpp
+Description:	Mtext sequence: "\H1;BBB\H.5aaa" didn't display the "aaa" string as in                           it does in AutoCAD.
+Comments:	TaL76526
+File By File:
+	*	Source/prj/lib/GR/mtextgen.cpp
+		The getvalue() which is used to get the value after \H was taking input till the 		";" In this process it would skip the mtext data and hence failed to display the 		data correctly, But AutoCAD accepts something like \H.5aaa. So we should stop at 		first non-numeric character while parsing mtext data for \H.
+--------------------------------------------------------------------------------

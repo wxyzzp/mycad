@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+File Name:	CYB_78057_1.txt
+Date:		22-04-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78057
+Affected files:	
+		CvsHist:Source/prj/lib/DRW/dwgload.cpp
+Description:	After xref and using options reload and editpath ICAD crashes, this 
+		is due to the presence of a layer named "defpoints" in the source 
+		drawing in the xref
+Comments:	TaL78057
+
+File by File:	
+		* CvsHist:Source/prj/lib/DRW/dwgload.cpp
+
+		"ltypehip" was being calculated but was not set in the layer table record for 
+ 		"defpoints" layer.Added the following line
+		CODE [
+		defpointslayhip->set_6(ltypehip); 	
+		CODE ]
+------------------------------------------------------------------------------
+		

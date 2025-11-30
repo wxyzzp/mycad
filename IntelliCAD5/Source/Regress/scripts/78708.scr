@@ -1,0 +1,28 @@
+logfilename log\75708.log
+logfileon
+;___________
+line
+2,2
+10,2
+
+line
+2,4
+10,4
+
+;________
+Fillet
+2,2
+last
+;_________
+fillet
+8,2
+10,4
+;__________
+fillet
+2,2
+all
+;____________
+dxfout output_dxf\78708.dxf
+6
+quit
+y

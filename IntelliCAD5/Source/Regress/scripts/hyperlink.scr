@@ -1,0 +1,25 @@
+logfilename log\-hyperlink.log
+logfileon
+;________
+line
+0,0
+1,1
+
+;________insert
+-hyperlink
+
+l
+
+http://itcdevelopment.org
+itc
+itc
+;________remove
+-hyperlink
+r
+l
+
+;________
+dxfout output_dxf\-hyperlink.dxf
+6
+quit
+y

@@ -1,0 +1,63 @@
+--------------------------------------------------------------------------------
+File:		EBA_78218_2.txt
+Date:		11-07-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:	BugZilla:78218
+Added files:
+		Source/prj/lib/DB/dimassoc.cpp
+Affected files:
+		Merge some high prioritiy files to main developer tree.
+		Source/prj/lib/DB/db.h
+		Source/prj/lib/DB/db1.cpp
+		Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/DB/dbdefines.h
+		Source/prj/lib/DB/drawing.cpp
+		Source/prj/lib/DB/objects.h
+		Source/prj/lib/DB/spatial_index.cpp
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+		Source/prj/make/db.dsp
+
+Description: DIMASSOC object(since 2002) can load/save drawing.
+		Fixed: SPATIAL_INDEX lost some properties.
+		They cannot modify in ICAD session now.
+Comments:	TaL78218
+File by File:
+Added files:
+	*	Source/prj/ICAD/lib/db/dimassoc.cpp
+		Implemente DIMASSOC object.
+
+Affected files:
+	*	Source/prj/ICAD/lib/db/db.h
+		Increse DB_NUMSTOCKCLASSES to 25 for CLASS/DIMASSOC record.
+
+	*	Source/prj/ICAD/lib/db/db1.cpp
+		Add DIMASSOC entry into global variable db_hitypeinfo.
+
+	*	Source/prj/ICAD/lib/db/db_util.cpp
+		Add DIMASSOC case into helper function db_makehip.
+
+	*	Source/prj/ICAD/lib/db/dbdefines.h
+		Add DB_DIMASSOC definition for identify objects/entities.
+
+	*	Source/prj/ICAD/lib/db/drawing.cpp
+		Add CLASS/DIMASSOC record into variable stockclass.
+
+	*	Source/prj/ICAD/lib/db/objects.h
+		Modification for DIMASSOC and SPATIAL_INDEX.
+
+	*	Source/prj/ICAD/lib/db/spatial_index.cpp
+		Fixed: Some member of SPATIAL_INDEX is lost.
+
+	*	Source/prj/ICAD/lib/drw/dwgload.cpp
+		Introduce new DIMASSOC object.
+		Fixed: Some member of SPATIAL_INDEX is lost.
+
+	*	Source/prj/ICAD/lib/drw/dwgsave.cpp
+		Introduce new DIMASSOC object.
+		Fixed: Some member of SPATIAL_INDEX is lost.
+
+	*	Source/prj/ICAD/make/db.dsp
+		add dimassoc.cpp
+

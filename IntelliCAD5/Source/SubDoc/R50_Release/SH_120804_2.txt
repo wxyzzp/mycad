@@ -1,0 +1,43 @@
+Document Title:  SH_120804_2.txt	
+Product Version: ICAD 4.0
+Date:  8/12/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/ThridParty/geo/Line.h
+   Source/ThridParty/geo/Line.cpp
+
+3. Overview:
+
+When projmode = 1 & 2, TRIM command did not work with XLine and Ray entties. This 
+problem was caused by some problems in CLine::HitTest(), which are fixed by this
+submission.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: 
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:
+	Name of Script file:   trim1.scr
+
+8.  Notes to Localization:
+
+
+
+

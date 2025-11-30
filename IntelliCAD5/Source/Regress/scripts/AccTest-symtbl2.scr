@@ -1,0 +1,201 @@
+;=====================================================================
+;;$Workfile: AccTest-symtbl.scr $
+; Lisp Symbol Table Tests.
+; Copyright (C) 1998 Visio Corporation. All rights reserved.
+;
+;
+; ABSTRACT
+;	This routine tests the symbol table functions.
+;
+;	VERIFICATION:  Compare the LispAccTest.log created by this run
+;	with \\audrey\qa\automate\API Testing\Lisp\Symbol Table\LispAccTest_acad.log.
+;    
+;
+; RELATED FILES
+;	//audrey/qa/automate/api testing/lisp/Symbol Table/*
+;	//audrey/qa/automate/api testing/lisp/doslib14.arx & .dll
+;	//audrey/qa/automate/api testing/lisp/acctest.lsp
+;	//audrey/qa/automate/api testing/lisp/common.lsp
+;	//audrey/qa/automate/api testing/lisp/error.lsp
+;
+;=====================================================================
+; REVISION HISTORY
+;
+;;$Log: AccTest-symtbl2.scr,v $
+;;Revision 1.2.4.1  2003/03/09 00:06:28  master
+;;Build 17 Part 1
+;;
+;;Revision 1.2.6.1  2002/12/23 10:59:43  cyberage
+;;ACIS Scripts
+;;
+;;Revision 1.2  2002/04/24 10:20:11  vittals
+;;See vs_4242002_2.txt
+;;
+;;Updated with more commands.
+;;
+;;Revision 1.1  2002/04/21 11:11:07  vittals
+;;no message
+;;
+ * 
+ * 3     9/25/98 2:54p Michaelhu
+ * Added header and verification instructions.
+; 
+;
+;=====================================================================
+;;;
+;;; ----------------------------------------------------------------------
+;;; prepare for the test.
+;;; ----------------------------------------------------------------------
+;;;
+logfilename log\AccTest-symtbl.log
+logfileon
+(setq errloc "Before load")
+(setq logfilnam "Symbol Table")
+(load "Lisp/acctest")
+(setq errloc "Before init")
+(init)
+(setq errloc "Before header info")
+(logmsg (strcat "Lisp acceptance test run at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+;;;
+;;; ----------------------------------------------------------------------
+;;; run the tests.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "Begin tests")
+(logmsg "\nStarting tests...")
+;;;
+;;; -----------------------------------------------
+;;; snvalid.
+(logmsg "\n--- snvalid ---")
+(setq errloc "snvalid load")
+(load (strcat testscrdir logfilnam "/symtbl-snvalid"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "emptystr")
+(emptystr)
+(setq errloc "spacestr")
+(spacestr)
+(setq errloc "below0str")
+(below0str)
+(setq errloc "0to9str")
+(0to9str)
+(setq errloc "above9str")
+(above9str)
+(setq errloc "bigatozstr")
+(bigatozstr)
+(setq errloc "btwnalphastr")
+(btwnalphastr)
+(setq errloc "abovezstrs")
+(abovezstrs)
+(setq errloc "abovezstre")
+(abovezstre)
+(setq errloc "nilsymstr")
+(nilsymstr)
+(setq errloc "tsymstr")
+(tsymstr)
+(setq errloc "maxstr")
+(maxstr)
+(setq errloc "maxp1str")
+(maxp1str)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; tblnext.
+(logmsg "\n--- tblnext ---")
+(setq errloc "tblnext load")
+(load (strcat testscrdir logfilnam "/symtbl-tblnext"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "do_appid")
+(do_appid)
+(setq errloc "do_block")
+(do_block)
+(setq errloc "do_dimstyle")
+(do_dimstyle)
+(setq errloc "do_layer")
+(do_layer)
+(setq errloc "do_ltype")
+(do_ltype)
+(setq errloc "do_style")
+(do_style)
+(setq errloc "do_ucs")
+(do_ucs)
+(setq errloc "do_view")
+(do_view)
+(setq errloc "do_vport")
+(do_vport)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; tblobjname.
+(logmsg "\n--- tblobjname ---")
+(setq errloc "tblobjname load")
+(load (strcat testscrdir logfilnam "/symtbl-tblobjname"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "do_appid")
+(do_appid)
+(setq errloc "do_block")
+(do_block)
+(setq errloc "do_dimstyle")
+(do_dimstyle)
+(setq errloc "do_layer")
+(do_layer)
+(setq errloc "do_ltype")
+(do_ltype)
+(setq errloc "do_style")
+(do_style)
+(setq errloc "do_ucs")
+(do_ucs)
+(setq errloc "do_view")
+(do_view)
+(setq errloc "do_vport")
+(do_vport)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; tblsearch.
+(logmsg "\n--- tblsearch ---")
+(setq errloc "tblsearch load")
+(load (strcat testscrdir logfilnam "/symtbl-tblsearch"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "do_appid")
+(do_appid)
+(setq errloc "do_block")
+(do_block)
+(setq errloc "do_dimstyle")
+(do_dimstyle)
+(setq errloc "do_layer")
+(do_layer)
+(setq errloc "do_ltype")
+(do_ltype)
+(setq errloc "do_style")
+(do_style)
+(setq errloc "do_ucs")
+(do_ucs)
+(setq errloc "do_view")
+(do_view)
+(setq errloc "do_vport")
+(do_vport)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; ----------------------------------------------------------------------
+;;; clean up.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "End tests")
+(logmsg (strcat "Lisp acceptance test completed at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+(setq errloc "Before deinit")
+(deinit)
+(setq errloc "After deinit")
+(princ)
+dxfout output_dxf\AccTest-symtbl.dxf
+6
+quit _y

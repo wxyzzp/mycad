@@ -1,0 +1,23 @@
+logfilename log\78168_dimstyle.log
+logfileon
+;_________dimstyle_save_
+dimstyle
+s   di mstyle1   
+(tblnext "DIMSTYLE" T)
+(if (/= (cdr (assoc 2 (tblnext "DIMSTYLE"))) "DI MSTYLE1") (alert "rename err") (princ "OK"))
+;_________dimstyle_variable_
+dimstyle
+v   di mstyle1   
+dimstyle
+v     ~standard   
+
+
+
+;_________dimstyle_restore_
+dimstyle
+r   standard   
+;__________
+dxfout output_dxf\78168_dimstyle.dxf
+6
+quit
+y

@@ -1,0 +1,10 @@
+logfilename log\78593_vba.log
+logfileon
+;_________
+open
+dwg\78593.dwg
+-vbarun
+Module1.TestWedge
+;________
+quit
+;

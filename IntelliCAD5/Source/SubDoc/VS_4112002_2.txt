@@ -1,0 +1,76 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4112002_2.txt
+Date:		11-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/regress/base/3d.dxf
+		CvsHist:Source/regress/base/Array.dxf
+		CvsHist:Source/regress/base/Break.dxf
+		CvsHist:Source/regress/base/Circles.dxf
+		CvsHist:Source/regress/base/Copymove.dxf
+		CvsHist:Source/regress/base/Ellipse.dxf
+		CvsHist:Source/regress/base/Fillet.dxf
+		CvsHist:Source/regress/base/Layers.dxf
+		CvsHist:Source/regress/base/Lines.dxf
+		CvsHist:Source/regress/base/Misc.dxf
+		CvsHist:Source/regress/base/Pline.dxf
+		CvsHist:Source/regress/base/Polygon2.dxf
+		CvsHist:Source/regress/base/RecPgonDonTrace.dxf
+		CvsHist:Source/regress/base/Revsurf.dxf
+		CvsHist:Source/regress/base/RotateMirror.dxf
+		CvsHist:Source/regress/base/Spline.dxf
+		CvsHist:Source/regress/base/test_array.dxf
+		CvsHist:Source/regress/base/test_array1.dxf
+		CvsHist:Source/regress/base/test_array1_no.dxf
+		CvsHist:Source/regress/base/Textgrid.dxf
+		CvsHist:Source/regress/base/View.dxf
+		CvsHist:Source/regress/base/Xline_ray.dxf
+		CvsHist:Source/regress/scripts/3d.scr
+		CvsHist:Source/regress/scripts/Array.scr
+		CvsHist:Source/regress/scripts/Break.scr
+		CvsHist:Source/regress/scripts/Circles.scr
+		CvsHist:Source/regress/scripts/Copymove.scr
+		CvsHist:Source/regress/scripts/Ellipse.scr
+		CvsHist:Source/regress/scripts/Fillet.scr
+		CvsHist:Source/regress/scripts/Layers.scr
+		CvsHist:Source/regress/scripts/Lines.scr
+		CvsHist:Source/regress/scripts/Misc.scr
+		CvsHist:Source/regress/scripts/Pline.scr
+		CvsHist:Source/regress/scripts/Polygon2.scr
+		CvsHist:Source/regress/scripts/RecPgonDonTrace.scr
+		CvsHist:Source/regress/scripts/Revsurf.scr
+		CvsHist:Source/regress/scripts/RotateMirror.scr
+		CvsHist:Source/regress/scripts/Spline.scr
+		CvsHist:Source/regress/scripts/test_array.scr
+		CvsHist:Source/regress/scripts/test_array1.scr
+		CvsHist:Source/regress/scripts/test_array1_no.scr
+		CvsHist:Source/regress/scripts/Textgrid.scr
+		CvsHist:Source/regress/scripts/View.scr
+		CvsHist:Source/regress/scripts/Xline_ray.scr
+
+Changed files:	
+		CvsHist:Source/regress/regress_scr.exe
+		CvsHist:Source/regress/base/DimUpdateAll.dxf
+		CvsHist:Source/regress/base/dimtedit.dxf
+Deleted files:	
+
+Description:	This submission adds further scripts to the regress suite.
+
+		The regress_scr.exe now supports running with Purify.
+		If an argument (purify) is present, the appropriate application is run and the
+		result files saved to the results directory. System environment variables PURIFY_EXE has to be set.
+
+		Updated a couple of base files.
+
+File by File:	Initial versions of the scr and dxf files shown above have been added.
+		Source/regress/regress_scr.exe
+			Executable to run regress has been updated to support Purify.
+------------------------------------------------------------------------------

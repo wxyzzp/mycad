@@ -1,0 +1,42 @@
+logfilename log/57684.log
+logfileon
+;_____________
+(setvar "useri1" (getvar "expert"))
+expert
+5
+;_____________
+(load "lisp/57684.lsp")
+;______________
+line
+0,0
+2,0
+
+;______________
+(setq LineHand (entlast))
+;______________
+(addXdata (entlast) "XLINE" 1000 "LINESTRING")
+;______________
+circle
+1,1
+1
+;______________
+(setq CircleHand (entlast))
+;______________
+(addXdata (entlast) "XCIRCLE" 1000 "CIRCLESTRING")
+;______________
+moveedata
+*
+2,0
+2,1
+
+;______________
+(if (checkXdataexists CircleHand "XLINE") (princ "OK") (alert "ERR"))
+(if (checkXdataexists CircleHand "XCIRCLE") (princ "OK") (alert "ERR"))
+(if (checkXdataexists LineHand "XLINE") (alert "ERR")(princ "OK") )
+;______________
+(setvar "expert" (getvar "useri1"))
+;______________
+dxfout output_dxf\57684.dxf
+6
+quit
+y

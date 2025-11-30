@@ -1,0 +1,13 @@
+logfilename log\78136.log
+logfileon
+
+filedia
+off
+block
+i c a d
+4,4
+
+b
+dxfout output_dxf\78136.dxf
+6
+exit y

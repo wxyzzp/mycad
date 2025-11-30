@@ -1,0 +1,8 @@
+// interface declarations
+
+interface IIcadPoint;
+interface IIcadPoints;
+interface IIcadVector;
+interface IIcadMatrix;
+interface IIcadLibrary;
+interface IIcadUtility;

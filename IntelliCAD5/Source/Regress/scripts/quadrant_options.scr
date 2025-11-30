@@ -1,0 +1,16 @@
+logfilename log\quadrant_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+quadrant
+(if (/= (getvar "osmode") 16) (alert "quadrant did not work!"))
+;__________
+quadrant
+(if (/= (getvar "osmode") 0) (alert "quadrant did not work!"))
+;__________
+dxfout output_dxf\quadrant_options.dxf
+6
+quit
+y

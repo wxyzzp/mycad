@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File:		CYB_77770_1.txt
+Date:		08-07-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:77770
+Affected files:			
+		Source/prj/lib/CMDS/Dimcontinue.cpp
+Description: 	Continue dimension does not work properly after selecting dimension to continue
+Comments:	TaL77770
+File by File:
+	*	Source/prj/lib/CMDS/Dimcontinue.cpp
+		There were two problems here. 
+		First, the varaible "Selfirst" which is set true after selecting the dimension to 		continue. This should be immediately set to false after the we have continue the 		selected dimension depending on which side of dimension is selected. This was not 		done, so the dimensions hence continue were not same.
+		Second, there was little problem in the logic of selecting the side of dimension 		to continue ie should it continue from 13 pt or should it continue from 14 pt. 		The problem was when the point selected was excatly the center point of dimension 		line. In this case were not compatible with AutoCAD. Also the logic did'nt work 		in all the four quadrant. So now taking the fabs and adding the logic of FUZZ 		while comparing equal the problem can be solved.
+		
+		if ( fabs(ptt[2][0]) < fabs((ptt[1][0]/2)) && 		!cmd_real_equal(fabs(ptt[2][0]),fabs(ptt[1][0]/2)) )
+		
+		The above code means ptt[2][0] should be stricly < than ptt[1][0]/2. Note we have 		taken ! of cmd_real_equal().
+--------------------------------------------------------------------------------
+
+				

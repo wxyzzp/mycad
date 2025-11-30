@@ -1,0 +1,28 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-47.txt
+Produce Version		ICAD 4
+Date:				06/08/2004 13:12pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fixed a hang I introduced in xrecord.cpp
+Also fixed some script crashers, and have
+uncommented them from regress.lst.
+
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\regress\scripts\regress.lst
+\source\prj\lib\db\xrecord.cpp

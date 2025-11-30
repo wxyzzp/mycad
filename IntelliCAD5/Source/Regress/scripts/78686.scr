@@ -1,0 +1,29 @@
+logfilename log\78686.log
+logfileon
+;_________
+plinetype
+2
+pline
+1,1
+5,1
+
+;___________
+(load "lisp/xdatafunctions.lsp")
+;______________
+(addxdata (entlast) "xline" 1000 "linestring")
+;______________
+break
+3,1
+3,1
+;_________
+(setq pl1 (car (entsel)))
+1,1
+(setq pl2 (car (entsel)))
+3,1
+(checkxdata (pl1 "xline" ))
+(checkxdata (pl2 "xline" ))
+;____________
+dxfout output_dxf\78686.dxf
+6
+quit
+y

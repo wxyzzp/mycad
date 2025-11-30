@@ -1,0 +1,70 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_03032003.txt
+Date:		03-03-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission made following changes to the code to fix problems:
+ 	
+        1) Added 3D solids/bodeis support to SOLIDEDIT/Imprint to imprint the 
+           intersection graph of 3D solids and bodies onto the solids/bodeis.
+                
+        2) Offsetting a face that was created by imprinting a circle on a 3D solid
+           crashed IntelliCAD. The problem is ACIS' api_offset_faces() creates
+           an invalid body in the case but doesn't return any error. This problem 
+           was fixed by adding a call to api_check_entity() to verify the body after 
+           calling api_offset_faces().
+           
+        3) Unable to change the color of faces of 3D solids. The problem was that 
+           we attached the color attribute to the face entity only but not edges.
+           This bug was fixed by attaching the color to the edges of the face also.
+        
+        4) Changed to cmd_extrude() and cmd_revolve() to delete temporary curves 
+           created by geodata::extract() to create regions.
+           
+        5) Modified cmd_subtract() to fix display problem.
+        
+        6) Modified CCmdQueryEntity::query() to ask users to select an entity
+           again if the picked point was not on any entity. Originally the
+           function was implemented to throw an exception if the users clicked a 
+           point that was not on the wireframe of any entity, which caused the command
+           to be terminated. Also modified this function to highlight the selected
+           entity.
+           
+	7) Fixed SOLIDEDIT that was not able to change face color.
+	
+	8) Modified SOLIDEDIT to prevent terminating the command in the case when 
+	   the modeler failed to performance local operation. 
+	   
+	9) The face editing subcommands, Extrude and Offset in SOLIDEDIT did remove
+	   selected face form the screen. Those problems have been fixed.
+              
+
+CHANGED FILES:	
+	
+	Source/prj/lib/DB/Modeler.h?rev=1.9.6.5
+	Source/prj/lib/DB/ModelerStub.h?rev=1.2.6.5
+	Source/prj/lib/ACIS/AsModeler.h?rev=1.8.6.5     
+	Source/prj/lib/ACIS/AsModeler.cpp?rev=1.8.6.5 	
+	Source/prj/lib/CMDS/CmdExtrude.cpp?rev=1.5.6.3
+	Source/prj/lib/CMDS/CmdRevolve.cpp?rev=1.5.6.5	
+	Source/prj/lib/CMDS/cmds8.cpp?rev=1.15.6.9
+	Source/prj/lib/CMDS/CmdQueryTools.cpp?rev=1.5.6.6
+	Source/prj/lib/CMDS/CmdSolidedit.inl?rev=1.3.6.3
+	Source/prj/lib/CMDS/CmdSolidedit.h?rev=1.4.6.3
+	Source/prj/lib/CMDS/CmdSolidedit.cpp?rev=1.5.6.4
+
+ADDED FILES:
+
+	None
+
+COMMANDS:

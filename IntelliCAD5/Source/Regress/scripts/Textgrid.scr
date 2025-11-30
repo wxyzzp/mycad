@@ -1,0 +1,518 @@
+;---------------------------------------------
+;File name: Textgrid.SCR
+;Purpose: Demonstrate Text and options 
+;
+;Last Modified: 3/18/98
+;---------------------------------------------
+CMDECHO
+0
+PICKBOX
+3
+APERTURE
+10
+; Erase anything that's there already.
+erase
+all
+
+; Turn blips off
+blipmode
+off
+; Set the current layer to zero.
+layer
+s
+0
+
+color
+bylayer
+; Setting all the other necessary system variables:
+vpoint
+0,0,1
+; Zoom to a window bigger than 100 x 100 (if it were square).
+zoom
+c
+94,54
+120
+elev
+0
+0
+gridmode
+0
+fillmode
+1
+snapmode
+0
+linetype
+s
+bylayer
+
+; Draw a red grid for reference
+layer
+m
+redtextgrid
+c
+red
+
+
+line
+0,0
+0,100
+150,100
+150,0
+0,0
+
+line
+0,50
+100,50
+
+line
+50,0
+50,100
+
+line
+100,0
+100,100
+
+layer
+s
+0
+
+text
+5,95
+4
+0
+The text describes itself:
+layer
+m
+bluetextgrid
+c
+blue
+
+
+text
+5,90
+2
+0
+Start Pt 5,90 Height = 2
+text
+5,85
+2
+270
+270 Degrees
+text
+12,60
+2
+90
+90 Degrees
+layer
+m
+yellowtextgrid
+c
+yellow
+
+
+text
+j
+a
+0,50
+50,50
+Aligned Text
+text
+j
+a
+50,50
+50,100
+This is also Aligned Text
+text
+j
+a
+50,50
+0,50
+Aligned Text
+text
+j
+a
+50,100
+50,50
+This is also Aligned Text
+layer
+m
+magentatextgrid
+c
+magenta
+
+
+text
+j
+f
+60,80
+90,80
+8
+Fit Text
+text
+j
+f
+60,70
+90,70
+8
+Also Fit Text
+text
+j
+f
+60,60
+90,60
+8
+Really skinny Fit text
+text
+j
+f
+90,59
+60,59
+8
+Fit Text
+text
+j
+f
+58,52
+58,88
+2
+Fit Text going upward
+text
+j
+f
+92,88
+92,52
+2
+Fit Text going downward
+layer
+m
+greentextgrid
+c
+green
+
+
+text
+j
+c
+30,70
+3
+0
+Centered, 0%%d
+text
+j
+c
+30,70
+3
+45
+Centered, 45%%d
+text
+j
+c
+30,70
+3
+90
+Centered, 90%%d
+text
+j
+c
+30,70
+3
+135
+Centered, 135%%d
+layer
+s
+bluetextgrid
+
+line
+125,40
+125,100
+
+line
+100,95
+150,95
+
+line
+100,90
+150,90
+
+line
+100,85
+150,85
+
+line
+100,80
+150,80
+
+line
+100,75
+150,75
+
+line
+100,70
+150,70
+
+line
+100,65
+150,65
+
+line
+100,60
+150,60
+
+line
+100,55
+150,55
+
+line
+100,50
+150,50
+
+line
+100,45
+150,45
+
+line
+100,40
+150,40
+
+layer
+s
+0
+
+text
+j
+c
+125,95
+3
+0
+Centered
+text
+j
+m
+125,90
+3
+0
+Middle
+text
+j
+r
+125,85
+3
+0
+Right
+text
+j
+tl
+125,80
+3
+0
+Top Left
+text
+j
+tc
+125,75
+3
+0
+Top Center
+text
+j
+tr
+125,70
+3
+0
+Top Right
+text
+j
+ml
+125,65
+3
+0
+Middle Left
+text
+j
+mc
+125,60
+3
+0
+Middle Center
+text
+j
+mr
+125,55
+3
+0
+Middle Right
+text
+j
+bl
+125,50
+3
+0
+Bottom Left
+text
+j
+bc
+125,45
+3
+0
+Bottom Center
+text
+j
+br
+125,40
+3
+0
+Bottom Right
+layer
+m
+cyantextgrid
+c
+cyan
+
+
+text
+5,2
+3
+60
+%%oOverscored
+text
+10,2
+3
+60
+%%uUnderscored
+text
+15,2
+3
+60
+Degree Symbol %%d
+text
+20,2
+3
+60
+Plus/Minus %%p
+text
+25,2
+3
+60
+Diameter %%c
+text
+30,2
+3
+60
+Percent %%%
+text
+35,2
+3
+60
+%%o%%uBoth
+layer
+s
+greentextgrid
+
+text
+j
+tl
+75,25
+2
+0
+Top Left, 0%%d
+text
+j
+tl
+75,25
+2
+10
+Top Left, 10%%d
+text
+j
+tl
+75,25
+2
+20
+Top Left, 20%%d
+text
+j
+tl
+75,25
+2
+30
+Top Left, 30%%d
+text
+j
+tl
+75,25
+2
+40
+Top Left, 40%%d
+text
+j
+tl
+75,25
+2
+50
+Top Left, 50%%d
+text
+j
+tl
+75,25
+2
+60
+Top Left, 60%%d
+text
+j
+tl
+75,25
+2
+70
+Top Left, 70%%d
+text
+j
+tl
+75,25
+2
+80
+Top Left, 80%%d
+text
+j
+tl
+75,25
+2
+90
+Top Left, 90%%d
+layer
+s
+yellowtextgrid
+
+text
+102,35
+.5
+0
+This text is .5 units high.
+text
+102,30
+3.75
+0
+This text is 3.75 units high.
+text
+102,25
+4.0000
+0
+This text is 4.0000 units high.
+layer
+s
+magentatextgrid
+
+text
+j
+f
+55,2
+145,2
+10
+%%o%%uALL DONE!
+z
+e
+setvar
+cmdecho
+0
+dxfout output_dxf\Textgrid.dxf
+6
+quit _y

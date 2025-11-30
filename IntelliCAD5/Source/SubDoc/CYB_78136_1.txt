@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78136_1.txt
+Date:		06-05-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78136
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/block.cpp
+Description: 	Block names with spaces are not accepted.
+Comments:	TaL78136
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/block.cpp
+		Used an extern variable SDS_IgnoreMenuWQuote to restrict the transparent commands at the build prompt. Changed the first parameter of sds_getstring from 0 to 1 so as to enable entering spaces for block names.
+--------------------------------------------------------------------------------
+

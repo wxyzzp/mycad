@@ -1,0 +1,88 @@
+Document Title:  MN_27AUG04.txt	
+Product Version: ICAD 5
+Date:  27 August 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	According to bugzilla description (No. 77937), "Select Boundary Set" button to 
+select entities still requires pickpoint selection". That means when we give 
+"BHATCH" command and press the "Select Boundary" button, the dialog temporarily
+closes and prompts us to select the objects. If we select some entities and 
+press "OK" to return back to the dialog, the "OK" button is disabled. According
+to bugzilla, it should be enabled. 
+	I have studied this in detail and I have reported to Dave that this is not
+a bug but some desired functionality is missing i.e the "Select Objects" button 
+was missing in the "Boundary Hatch Dialog".
+	So I have changed "IcadRes.rc" file to add "Select Objects" button in the
+"Boundary Hatch Dialog". I have added a new boolean variable "m_selectObjectsCalled"
+in "BHatchBoundaryTab" class in the file "BHatchBoundaryTab.h" file. This variable
+becomes true when the user presses "Select Objects" button in "BHATCH" dialog. I 
+have added one message map function "OnChooseObjects" for the "Select objects" button
+in the file "BHatchBoundaryTab.cpp". I have added a new function "SelectObjects" in the
+file "icadboundarydia.cpp". This function does the job of selecting objects as well
+as hatching the selected objects. 
+	I have also changed the file "bhatchdialog.cpp". When the user presses "Enter" to 
+return back to "BHATCH" dialog, the "OK" button should be enabled. I have checked 
+the status of "m_selectObjectsCalled" variable in this file and accordingly I have 
+enabled the "OK" button.
+	I have found one more bug in "BHATCH" dialog. Suppose the user presses the 
+"Select Area" button of "BHATCH" dialog and selects some closed areas for hatching.
+Then he presses "Esc" button to discard his selection. At that time the "OK" button
+should be disabled as in AutoCAD. I have handled this case as well.
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: MN_27AUG04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.24 
+    Source/prj/ICAD/icadboundarydia.cpp?rev=1.4.4.4.2.2 
+    Source/prj/ICAD/bhatchdialog.cpp?rev=1.9.4.4.2.1 
+    Source/prj/ICAD/bhatchboundarytab.h?rev=1.1.1.1.10.1.2.1 
+    Source/prj/ICAD/bhatchboundarytab.cpp?rev=1.2.8.1.2.2 
+Description: 
+	Bugzilla 77937 : "Select Boundary Set" button to select entities still requires 
+	pickpoint selection
+Reviewer's Name and Comments: None.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1.	Start IntelliCAD 5.
+2.	Draw some entities like circles,rectangles etc.
+3.	Give "BHATCH" command.
+4.	The "Boundary Hatch" dialog appears.
+5.	Press "Select Objects>" button.
+6.	Now select the entities.
+7.	Press "Enter" to return back to the dialog.
+8.	Press "Ok" to complete the command.
+
+Result: The selected entities get hatched.
+
+
+
+9.  Installation Issues:
+

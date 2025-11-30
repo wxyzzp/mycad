@@ -1,0 +1,54 @@
+Document Title:  MN_01SEP04.txt	
+Product Version: ICAD 5
+Date:  01 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	The "BHATCH Dialog" contains the button which has a caption as "Select
+Objects". So as suggested by Dave and Allison, I have changed the caption of 
+this button from "Select Objects" to "Select Entities".
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_01SEP04.txt	
+Engineer: Mohan Nayak
+
+Added files:     
+Affected files:
+	 Eng-us/IcadRes.rc?rev=1.28.2.21.2.28 
+
+
+Description:
+	 To change the caption of the button from "Select Objects" to "Select
+	 Entities" as suggested by Dave and Allison.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+
+9.  Installation Issues:
+

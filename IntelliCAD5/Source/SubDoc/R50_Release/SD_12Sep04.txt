@@ -1,0 +1,90 @@
+
+Document Title:  SD_12SEP04.txt
+Product Version: ICAD 5
+Date:  12 September 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD, DB, Auto
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+	This change is related to Bugzilla::78897 --> Lineweight won't plot 
+preview  through paperspace/layout MVIEWs. Please refer to the steps in 
+Bugzilla in order to see how it is produced.
+	This bug has occurred because the Plot style "PrintWithLineWeights"
+was not aplied to the default layouts while creating a new drawing.
+This flag was only applied to "Model" Layout Tab, and not to "Layout1" Tab
+and "Layout2" Tab.
+	I have included the flag "CDbPlotSettings::ePrintLineweights" in all 3 
+layouts in the method "db_drawing::addDefaultLayoutObject" present in the 
+file: "Source\prj\lib\db\drawing.cpp". Following is the code within
+Bugzilla Comments:
+
+	
+	// Modified By Sachin....Bugzilla::78897
+	// Now Lineweights will be shown in Plot and Plot Previews for all Layouts.
+	int nCurrentPlotLayoutFlag;
+	phLayout->get_70(&nCurrentPlotLayoutFlag);
+	phLayout->set_70(nCurrentPlotLayoutFlag | CDbPlotSettings::ePrintLineweights);
+	// End Modification....Bugzilla::78897
+
+	I have applied similiar changes in the method "db_drawing::drw_marcompopen" 
+present in file : "Source\prj\lib\drw\dwgload.cpp". But at present since 
+"WITHODT" is not defined, this function won't execute.
+	
+
+
+
+4.  Notes to Docs: N.
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: Bugzilla::78897 	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/lib/DRW/dwgload.cpp?rev=1.48.2.27.2.6
+	Source/prj/lib/DB/drawing.cpp?rev=1.25.2.16.2.2 
+Description: 
+	Bugzilla::78897 --> Lineweight won't plot preview  
+	through paperspace/layout MVIEWs.
+Reviewer's Name and Comments: SD_12Sep04.txt
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be checked for the following cases:
+1) Create a line, circle.
+2) Select the circle / Right Mouse / Properties context menu / assign lineweight
+of 2 mm to circle.
+3) Activate layout1.
+4) MVIEW, select a rectangle for the viewport.
+5) LWDISPLAY / On.
+6) Plot / Full Preview
+
+EXPECTED: Lineweight displays properly in preview and in plots.
+
+
+
+
+9.  Installation Issues:
+

@@ -1,0 +1,23 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_03242003_1.txt
+Date:		03-24-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/GR/dispobjs.cpp?rev=1.21.6.8
+		Source/prj/lib/db/entities.h?rev=1.13.6.5
+
+
+Description:	This submission make changes to update the NURBS definition 
+                data of db_spline after fit the spline from fit points.
+
+Comments        None.

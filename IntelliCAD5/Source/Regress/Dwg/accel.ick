@@ -1,0 +1,107 @@
+[IntelliCAD Custom Keyboard File]
+	nAccelKeys=35
+[AccelKey-0]
+	Command=^C^C^C_NEW
+	accel=9,78,19600
+[AccelKey-1]
+	Command=^C^C^C_OPEN
+	accel=9,79,19601
+[AccelKey-2]
+	Command=^C^C^C_QSAVE
+	accel=9,83,19602
+[AccelKey-3]
+	Command=^C^C^C_PRINT
+	accel=9,80,19603
+[AccelKey-4]
+	Command=^C^C^C_U
+	accel=9,90,19604
+[AccelKey-5]
+	Command=^C^C^C_REDO
+	accel=9,89,19605
+[AccelKey-6]
+	Command=^C^C^C_SELGRIPS;_ALL;;
+	accel=9,65,19606
+[AccelKey-7]
+	Command=^C^C^C_CUTCLIP
+	accel=9,88,19607
+[AccelKey-8]
+	Command=^C^C^C_COPYCLIP
+	accel=9,67,19608
+[AccelKey-9]
+	Command=^C^C^C_PASTECLIP
+	accel=9,86,19609
+[AccelKey-10]
+	Command=^C^C^C_DELETE
+	accel=1,46,19610
+[AccelKey-11]
+	Command='_HELP
+	accel=1,112,19611
+[AccelKey-12]
+	Command='_PMTHIST
+	accel=1,113,19612
+[AccelKey-13]
+	Command='_OSNAP;_T
+	accel=1,114,19613
+[AccelKey-14]
+	Command='_TABLET;_T
+	accel=1,115,19614
+[AccelKey-15]
+	Command='_ISOPLANE;;
+	accel=1,116,19615
+[AccelKey-16]
+	Command='_COORDINATE;_T
+	accel=1,117,19616
+[AccelKey-17]
+	Command='_GRID;_T
+	accel=1,118,19617
+[AccelKey-18]
+	Command='_ORTHOGONAL;_T
+	accel=1,119,19618
+[AccelKey-19]
+	Command='_SNAP;_T
+	accel=1,120,19619
+[AccelKey-20]
+	Command='_STATBAR;_T
+	accel=1,121,19620
+[AccelKey-21]
+	Command='_PAN;_L
+	accel=1,37,19621
+[AccelKey-22]
+	Command='_PAN;_R
+	accel=1,39,19622
+[AccelKey-23]
+	Command='_PAN;_U
+	accel=1,38,19623
+[AccelKey-24]
+	Command='_PAN;_D
+	accel=1,40,19624
+[AccelKey-25]
+	Command='_PAN;_PGL
+	accel=5,37,19625
+[AccelKey-26]
+	Command='_PAN;_PGR
+	accel=5,39,19626
+[AccelKey-27]
+	Command='_PAN;_PGU
+	accel=5,38,19627
+[AccelKey-28]
+	Command='_PAN;_PGD
+	accel=5,40,19628
+[AccelKey-29]
+	Command='_PAN;_PGU
+	accel=1,33,19629
+[AccelKey-30]
+	Command='_PAN;_PGD
+	accel=1,34,19630
+[AccelKey-31]
+	Command=^C^C^C_VBA
+	accel=17,122,19631
+[AccelKey-32]
+	Command='_COORDINATE;_T
+	accel=9,68,19632
+[AccelKey-33]
+	Command='_ISOPLANE;;
+	accel=9,69,19633
+[AccelKey-34]
+	Command='_TABLET;_T
+	accel=9,84,19634

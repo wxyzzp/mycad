@@ -1,0 +1,15 @@
+logfilename log\cardiod.log
+logfileon
+;;;;;;;;;;;;;;;;;;;
+(load "lisp\sncCardiod.lsp")
+cardiod
+0,50
+cardiod
+150,50
+;;;;;;;;;;;;;;;;
+zoom
+extents
+;;;;;;;;;;;;
+dxfout output_dxf\Cardiod.dxf
+6
+exit y

@@ -1,0 +1,14 @@
+logfilename log\center_snap_options.log
+logfileon
+;_______
+osmode
+0
+center
+(if (/= (getvar "osmode") 4) (alert "center did not work!"))
+center
+(if (/= (getvar "osmode") 0) (alert "center did not work!"))
+;_______
+dxfout output_dxf\center_snap_options.dxf
+6
+quit
+y

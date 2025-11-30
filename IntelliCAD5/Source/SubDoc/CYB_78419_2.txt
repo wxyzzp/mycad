@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78419_2.txt
+Date:		31-03-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78419
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/cmds9.cpp
+Description:	Mirror adds extra node to Leader.
+Comments:		TaL78419
+Problem Analysis:
+		Group 211 vector is mirrored as point. It should be mirrored as vector.
+Proposed Solution:
+		Mirror 211 as vector.
+File by File:	
+*		Source/prj/lib/CMDS/cmds9.cpp
+		Called cmd_initialrbcs() in case 211 to initialize ucs and wcs. I got code from cmd_mirrorpt() and modified it to NOT use defpt. Also note that third parameter of sds_trans() is 1. 
+--------------------------------------------------------------------------------
+
+
+

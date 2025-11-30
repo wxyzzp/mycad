@@ -1,0 +1,28 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_250603_1.txt
+Date:		25/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78538  
+
+Description:	This submission fixes the bug #78538 - "Chamfer of polyline does not work 
+                even if one vertex is short". The problem is in cmd_fillet_or_chamfer_lwpline(), 
+                which doesn't replace the existing polyline with the new polyline after chamfered 
+                if one of the segments of the polyline is too short to be chamfered. This problem 
+                is fixed by removing that condition check so the old polyline in the database is 
+                always replaced with new one.
+		
+Added files:    None
+
+Affected files: Source/prj/lib/cmds/CmdFilletChamfer.cpp:  Modified cmd_fillet_or_chamfer_lwpline()
+
+
+
+                
+
+

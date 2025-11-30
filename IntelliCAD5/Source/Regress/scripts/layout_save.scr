@@ -1,0 +1,83 @@
+new
+
+expert
+5
+; create layer to save
+layer
+new
+layertosave
+color
+red
+layertosave
+set
+layertosave
+; exit command
+
+; create text style to save
+-style
+tstosave
+arial
+0.8
+; Width factor
+
+; Oblique
+
+; Backward
+
+; Upside-down
+
+layout
+rename
+Layout1
+LayoutToSave
+
+set
+LayoutToSave
+; check INSERT with POLYLINE and ATTRIB
+plinetype
+0
+polyline
+8,5
+12,5
+12,1
+
+plinetype
+2
+polyline
+1,1
+1,5
+5,5
+
+attdef
+
+attrib1
+prompt1
+deftext1
+4,4
+; rotation
+
+block
+block1
+1,1
+all
+
+insert
+block1
+2,2
+; X scale
+
+; Y scale
+
+; Rotation
+
+; ATTRIB prompt
+
+filedia
+0
+layout
+save
+LayoutToSave
+output\layout_save.dwg
+filedia
+1
+exit y

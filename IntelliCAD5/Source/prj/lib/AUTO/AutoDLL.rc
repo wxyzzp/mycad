@@ -1,0 +1,165 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "autorc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "..\..\ICAD\blddate.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "autorc.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""..\\..\\ICAD\\blddate.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""AutoDLL.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\r\n"
+    "1 TYPELIB ""Icad.tlb"
+    "#define VERSIONINFO_FILEDESCRIPTION ""IntelliCAD® 5 AUTO DLL\\0""\r\n"
+    "#define VERSIONINFO_INTERNALNAME ""ICADAUTO\\0""\r\n"
+    "#define VERSIONINFO_ORIGINALNAME ""ICADAUTO.DLL\\0""\r\n"
+    "#include ""../../../../Eng-us/versioninfo.rc2""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    IDS_INTELLICAD          "IntelliCAD"
+    IDS_UnknownType         "UnknownType"
+    IDS_3dFace              "3dFace"
+    IDS_3dPoly              "3dPoly"
+    IDS_Arc                 "Arc"
+    IDS_Attribute           "Attribute"
+    IDS_AttributeDef        "AttributeDef"
+    IDS_BlockInsert         "BlockInsert"
+    IDS_Circle              "Circle"
+    IDS_DimAligned          "DimAligned"
+    IDS_DimAngular          "DimAngular"
+    IDS_DimDiametric        "DimDiametric"
+    IDS_DimOrdinate         "DimOrdinate"
+END
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    IDS_DimRadial           "DimRadial"
+    IDS_DimRotated          "DimRotated"
+    IDS_Ellipse             "Ellipse"
+    IDS_Hatch               "Hatch"
+    IDS_InfiniteLine        "InfiniteLine"
+    IDS_Leader              "Leader"
+    IDS_Line                "Line"
+    IDS_LWPolyline          "LightWeightPolyline"
+    IDS_Mtext               "Mtext"
+    IDS_PointEntity         "Point"
+    IDS_Polyline            "Polyline"
+    IDS_PolyfaceMesh        "PolyfaceMesh"
+    IDS_PViewport           "PaperSpaceViewport"
+    IDS_Ray                 "Ray"
+    IDS_Solid               "Solid"
+    IDS_Spline              "Spline"
+END
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    IDS_Text                "Text"
+    IDS_Tolerance           "Tolerance"
+    IDS_Trace               "Trace"
+    IDS_PolygonMesh         "PolygonMesh"
+    IDS_Image               "Image"
+    IDS_Dim3PtAngular       "Dim3PointAngular"
+    IDS_ExtReference        "ExternalReference"
+    IDS_Shape               "Shape" // 2002/4/24 EBATECH(CNBR)
+END
+
+STRINGTABLE DISCARDABLE
+BEGIN
+//    IDS_REGISTRY_ROOT       "Software\\ITC\\IntelliCAD"
+    IDS_REGISTRY_ROOT       "ITC"
+	IDS_REGISTRY_INTELLICAD_5	"IntelliCAD 5.0"
+    IDS_REGISTRY_PROFILES       "Profiles"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "AutoDLL.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+1 TYPELIB "Icad.tlb"
+
+#define VERSIONINFO_FILEDESCRIPTION "IntelliCAD® 5 AUTO DLL\0"
+#define VERSIONINFO_INTERNALNAME "ICADAUTO\0"
+#define VERSIONINFO_ORIGINALNAME "ICADAUTO.DLL\0"
+#include "../../../../Eng-us/versioninfo.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

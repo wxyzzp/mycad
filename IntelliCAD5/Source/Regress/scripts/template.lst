@@ -1,0 +1,22 @@
+;;    ....\intellicad\source\regress\scripts\
+;;    Will be prepended to each file name in this
+;;    file prior to processing. All files added
+;;    to this file should be relative to it.
+;;	  Lines beginning with ; will be ignored as
+;;	  comments. This file MUST reside in;
+;;	  ....\intellicad\source\regress\scripts\
+;; 
+2-d.scr
+2-d_entity_color_layer.scr
+2-d_entityemf.scr
+2-d_entityemf95.scr
+2-d_entityemfnt.scr
+2-d_entitysld.scr
+2-d_entitysld95.scr
+2-d_entitysldnt.scr
+2dintersection_options.scr
+script2\Hyper001.scr
+script2\Hyper002.scr
+script2\Hyper003.scr
+script2\Hyper004.scr
+script2\Hyper005.scr

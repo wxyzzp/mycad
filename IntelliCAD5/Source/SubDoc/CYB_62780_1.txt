@@ -1,0 +1,20 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_62780_1.txt
+Date:		23-09-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:62780
+Added files:     	
+Affected files: 
+		Source/prj/lib/AUTO/icadplotcfg.h
+Description: 	Default drawing units incorrectly defaults to mm after print/preview (to scale) and when display precision > 6.
+Comments:	TaL62780
+File by File:	
+*		Source/prj/lib/AUTO/icadplotcfg.h
+		Changed the size of the "scale" array of "PlotCfg class" from SMALLBUF to MEDIUMBUF as it was infringing over the array for "units".
+--------------------------------------------------------------------------------

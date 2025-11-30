@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------------------
+Date:		09-09-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78277
+Affected files:			
+		Source/prj/lib/CMDS/dimensions.cpp
+Description:	Dimpost/Dimapost not overridden using . (dot) on the dimoverride command.
+Comments:	TaL78277
+File by File:
+		Source/prj/lib/CMDS/dimensions.cpp
+		DIMPOST and DIMAPOST have string inputs but we need to have some special 		handling for DIMPOST/ DIMAPOST for some input like dot.
+		The dot signifies that the DIMPOST / DIMAPOST should be of value nothing. 
+		The code added her is similar for the case of DIMBLK, DIMBLK1 etc.
+---------------------------------------------------------------------------------------------

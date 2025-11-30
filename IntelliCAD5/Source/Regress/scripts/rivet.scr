@@ -1,0 +1,24 @@
+logfilename log\rivet.log
+logfileon
+;________________
+open dwg\rivet.dwg
+;_________________
+zoom
+all
+;________________
+zoom
+e
+;______________
+copy
+all
+
+200,200
+600,600
+;__________
+zoom
+e
+;_____________
+dxfout output_dxf\rivet.dxf
+6
+quit
+y

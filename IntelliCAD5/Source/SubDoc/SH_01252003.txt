@@ -1,0 +1,17 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_01252003.txt
+Date:		25-01-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Affected files: Source/prj/lib/CMDS/hideAndShade.cpp?rev=1.2.12.7
+		
+Description:    This submission fixes the bug #78377: "Invisible 
+                edges are not hidden for 'splframe'=OFF.

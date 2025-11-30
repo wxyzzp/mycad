@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+File Name:	CYB_78010_1.txt
+Date:		17-06-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78010
+Affected files:			
+		CvsHist:Source/Source/prj/lib/CMDS/DimOrdinate.cpp
+Description: 	The DIMORDINATE command places text incorrectly.
+Comments:	TaL78010
+
+File by File:  
+		* CvsHist:Source/Source/prj/lib/CMDS/DimOrdinate.cpp
+		for Dimordinate which go to top and bottom i.e x - type, while 
+		calculating the text alignment point x co-rdinates of the 
+		textbox were being considered. In these cases as the textbox
+		is aligned to the dimline y co-ordinates should have been considered.
+		Changed the code accordingly to consider y co-ordinates.
+-------------------------------------------------------------------------------

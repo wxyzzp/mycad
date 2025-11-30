@@ -1,0 +1,24 @@
+
+
+--------------------------------------------------------------------------------
+
+Submission Document for IntelliCAD
+
+--------------------------------------------------------------------------------
+Date:		09-09-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78261
+Affected files:	
+		Source/prj/lib/SDS/sds_printf.cpp
+Description:	Prompt history shows pipe symbol for spaces.
+Comments:	TaL78261
+File by File:	
+*		Source/prj/lib/SDS/sds_printf.cpp
+		The scope of the fix is only to avoid the pipe symbol appearing on 
+		the command line. We directly cannot remove the pipe symbol beacuse 
+		xref display will surely have "|" synbol and those are valid also. So 
+		we change the 	"|" symbol to " " only for those strings which are 
+		valid filename. Whether the filename  exist is checked by _access() 
+		function.
+--------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+File:		CYB_78193_1.txt
+Date:		10-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78193
+Affected files:		
+		CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+Description: 	Wrong display in dimension setting dialog when DIMPOST and DIMAPOST is 		overriden with any  value without "<>" or "[]" symbol respectively
+Comments:	TaL78193
+File by File:
+	*	CvsHist:Source/Source/prj/ICAD/IcadSetVarsDia.cpp
+		This was a problem im dimension setting dialog only. Dimensions draw were 				correct but in dimension setting dialog it used to show different override 				( red color rectangular box) and the overriden value in different edit box. The 			problem is for DIMPOST and DIMAPOST. Now proper care taken for the condition 				when <> or [] symbol not present in DIMPOST and DIMAPOST string respectively.
+-------------------------------------------------------------------------------

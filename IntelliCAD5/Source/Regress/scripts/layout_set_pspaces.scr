@@ -1,0 +1,17 @@
+new
+
+layout
+; switch between model and paper; set new current paper space
+set
+layout2
+
+set
+model
+
+; switch between model and paper; set new current paper space
+set
+layout1
+
+set
+model
+exit y

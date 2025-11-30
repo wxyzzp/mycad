@@ -1,0 +1,37 @@
+--------------------------------------------------------------------------------
+File:		Cyb_78037_1.txt
+Date:		29-04-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78037
+Affected files:			
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		CvsHist:Source/Source/prj/ICAD/IcadExplorer.h
+		CvsHist:Source/prj/lib/CMDS/rename.cpp
+		CvsHist:Source/prj/Icad/res/icadrc2.h
+		CvsHist:Eng-us/icad.rc2
+Description:	Renaming of Xref Block should update xref name in all xref dependant tables.
+		a) Fixed : Renaming Xref Block using RENAME command.
+		b) Fixed : Undo of Renamed Xref Block through RENAME Command.
+		c) Fixed : "Caution" Message before renaming xref layer through RENAME 
+		command as AutoCAD.
+		d) Fixed : Converting the block name to upper case instead keeping it as 
+		entered by user.
+		e) Fixed : Renaming Xref Block through IntelliCAD Explorer.
+Comments:	TaL78037
+--------------------------------------------------------------------------------
+File by File:
+
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.cpp
+		Called fucntion cmd_renameXrefDependantTables() from file /lib/CMDS/rename.cpp				This function renames the xref dependant tables like STYLE,LTYPE,LAYER,DIMSTYLE 			and BLOCK. Added fucntion IEXP_CdetailView::IEXP_UpdateXrefName() which updates 			the list view for various types in ICAD Explorer. First Check whether the block 			which we are renaming is an xref block by checking the flag 70 of its elist. 		This change is particularly for renaming Xref Block through IntelliCAD Explorer.
+
+	*	CvsHist:Source/Source/prj/ICAD/IcadExplorer.h
+		Declaration for fucntion IEXP_CdetailView::IEXP_UpdateXrefName().
+
+	*	CvsHist:Source/prj/lib/CMDS/rename.cpp
+		Added fucntion cmd_renameXrefDependantTables() from file /lib/CMDS/rename.cpp				This function renames the xref dependant tables like STYLE,LTYPE,LAYER,DIMSTYLE 			and BLOCK. This change is particularly for renaming Xref Block through RENAME 		command.Also done changes for UNDO of RENAME command for rename of Xref block. 		Rename of Xref block (modifying dependant tables also) should be taken as one 		change and should be allowed to undone. So used IC_UNDO_COMMAND_BEGIN and 		IC_UNDO_COMMAND_END incase of xref block rename.Also we were converting the case 		of new block name to upper. AutoCAD does not do this. So we should preserve the 		case how the new block name is entered. Also AutoCAD displays the CAUTION message 		before change the xref block name. Now we also do this.
+
+	*	CvsHist:Source/prj/Icad/res/icadrc2.h
+	*	CvsHist:Eng-us/icad.rc2
+		Added the #define IDC_RENAME_XREF_CAUTION_MSG in icadrc2.h and its coressponding 		CUATION string in icad.rc2.
+		

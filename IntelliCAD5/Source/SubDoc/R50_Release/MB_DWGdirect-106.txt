@@ -1,0 +1,47 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-106
+Product Version:        IntelliCAD 5
+Date:                   09/29/2004 11:02am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGDIRECT	
+3.  Overview:
+	This submission allows DWGdirect generated error messages to be passed
+	along to the user either via a message box or in the history window
+	depending on if the EXPERT sysvar is set to 5 or not. This makes for
+	more informative error messages, and allows the distinction to be made
+	when the error is caused by trying to read an invalid dwg version. I.e.
+	prior to version 2.5.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/lib/drw/dwgdirectreader.cpp
+        eng-us/icad.rc2
+        source/prj/icad/res/icadrc2.h
+        source/subdoc/R50_Release/MB_DWGdirect-106.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

@@ -1,0 +1,7 @@
+logfilename log\concircleadd.log
+logfileon
+(load "lisp\concircle.lsp")
+concircles 10,10,0 10 10
+dxfout output_dxf\concircleadd.dxf
+6
+exit y

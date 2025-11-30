@@ -1,0 +1,49 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-33.txt
+Produce Version		ICAD 4
+Date:				05/06/2004 06:53am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission is for preparing for the new ODT DWGdirect libraries.
+I have added a few member variables for maintaining proxy class and
+proxy data information.
+Note that proxy objects and proxy entities are still not ready for
+export. The new ODT libraries are specifically to handle that.
+
+Notes to Developers:
+Note that the new ODT libs now have a class to handle the new
+(2005) table entity. IntelliCAD's database will need to be updated
+to handle this new entity.
+
+In addition, I believe I may have submitted my configure.h file which
+has BUILD_WITH_LICENSED_COMPONENTS defined. I am re-submitting it with
+this #define commented out.
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\db\spatial_index.cpp
+\source\prj\lib\db\object_ptr.cpp
+\source\prj\lib\db\layer_index.cpp
+\source\prj\lib\db\acad_proxy_object.cpp
+\source\prj\lib\db\acad_proxy_entity.cpp
+\source\prj\lib\db\objects.h
+\source\prj\lib\db\entities.h
+\source\prj\lib\icadlib\assoc.cpp
+\source\prj\lib\acis\astools.cpp
+\source\prj\lib\db\vbaproject.cpp
+\source\prj\icad\configure.h

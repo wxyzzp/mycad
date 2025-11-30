@@ -1,0 +1,26 @@
+		Project
+	IntelliCAD development
+
+
+Document Title		MB_DWGdirect-5.txt
+Produce Version		ICAD 4
+Date:				12/12/2003 04:24am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Removed some object iterations loops in favor of retrieving the Object IDs 
+directly
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirect.cpp
+\source\prj\lib\drw\dwgdirect.h

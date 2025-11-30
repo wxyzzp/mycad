@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78215_1.txt
+Date:		01-07-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78215
+Added files:     	
+Affected files: 
+		Eng-us/icad.rc2
+		Source/prj/ICAD/IcadApp.cpp
+		Source/prj/ICAD/icadEntPropMain.cpp
+		Source/prj/ICAD/IcadSetVarsDia.cpp
+		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Source/prj/ICAD/mtexttexttab.cpp
+		Source/prj/ICAD/res/icadrc2.h
+Description: 	Text constants are not language independent.
+Comments:	TaL78215
+File by File:	
+*		Eng-us/icad.rc2
+		Declared IDs IDC_MTEXTTEXTTABDIA_UNABLE, IDC_MTEXTTEXTTABDIA_TOO_LARGE and 		IDC_MTEXTTEXTTABDIA_TOO_SMALL
+*		Source/prj/ICAD/IcadApp.cpp
+		Removed string comparison for OK and CANCEL.
+*		Source/prj/ICAD/icadEntPropMain.cpp
+		Replaced "VARIES" with a resouce string. 
+*		Source/prj/ICAD/IcadSetVarsDia.cpp
+		Replaced strings with appropriate resource strings.
+*		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Replaced strings with appropriate resource strings.
+*		Source/prj/ICAD/mtexttexttab.cpp
+		Replaced strings with appropriate resource strings.
+*		Source/prj/ICAD/res/icadrc2.h
+		Defined resource IDs 
+--------------------------------------------------------------------------------
+

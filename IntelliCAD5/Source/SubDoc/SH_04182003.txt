@@ -1,0 +1,51 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04182003.txt
+Date:		04-18-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Changed files: 	
+		Source/prj/lib/GR/SplineUtils.h?rev=1.1.1.1.14.1 
+		Source/prj/lib/GR/gr_splines.cpp?rev=1.3.6.3 
+		Source/prj/lib/DB/spline.cpp?rev=1.3.6.1 
+		Source/prj/lib/DB/entities.h?rev=1.13.6.6 
+		Source/ThirdParty/geo/array.cpp?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/array.h?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/ctrlpts.cpp?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/ctrlpts.h?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/knots.cpp?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/knots.h?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/matrix.cpp?rev=1.1.2.2 
+		Source/ThirdParty/geo/Matrix.h?rev=1.1.2.2 
+		Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/nurbs.h?rev=1.1.1.1.12.3 
+		Source/ThirdParty/geo/point.cpp?rev=1.1.1.1.12.1 
+		Source/ThirdParty/geo/point.h?rev=1.1.1.1.12.1 
+		Source/ThirdParty/geo/ptarray.cpp?rev=1.3.8.1 
+		Source/ThirdParty/geo/ptarray.h?rev=1.2.8.2 
+		Source/prj/lib/CMDS/cmds3.cpp?rev=1.17.6.7 
+		Source/prj/lib/CMDS/cmds4.cpp?rev=1.21.6.7 
+
+
+Description:	This submission made following changes:
+
+                1) Implemented BREAK command for spline.
+                
+                2) Implemented new NURBS functionality to GEO 
+                   library to normalize, reparameterize, and 
+                   manipulate NURBS and knot vector.
+                   
+                3) Fixed the bug in SPLINE command that set 
+                   rational as non-rational.
+                   
+                4) Fixed the problems in the NURBS functions 
+                   in GEO library.
+                
+Comments        None.
+

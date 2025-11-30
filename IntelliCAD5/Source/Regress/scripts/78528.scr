@@ -1,0 +1,23 @@
+logfilename log\78528.log
+logfileon
+;_________create_a_sphere_mesh___________________
+ai_sphere
+0,0,0
+3
+20
+20
+;_________create_a_torus_mesh____________________
+ai_torus
+5,5,5
+4
+1
+20
+20
+;
+zoom
+extents
+;_________
+dxfout output_dxf\78528.dxf
+6
+quit
+y

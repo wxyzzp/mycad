@@ -1,0 +1,46 @@
+Document Title:  SH_78967_1.txt	
+Product Version: ICAD 5.0
+Date:  30/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/Lib/acis/AsModeler.cpp
+   
+3. Overview:
+
+This submissions fixes the bug# 78967 - FILLET silently fails on several available ACIS edges.
+The reason that FILLET failed on those edges is ACIS API was not able to identify the picked edges
+by using the pick point and viewing direction given in IntelliCAD to perform ray-entity hit test. 
+The API function only return hit points and entities in forward direction. But for the test
+case, the pick point given by IntelliCAD is actually behind the solid after it is transformed from
+UCS to WCS. The bug is fixed by also performing ray-hit testing in reversed direction. The code for
+ray-loop hit test is changed to fix similar problem.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

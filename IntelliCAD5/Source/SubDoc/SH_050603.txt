@@ -1,0 +1,47 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_050603.txt
+Date:		05/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78364 
+
+Added files:    None
+
+Affected files: Source/prj/ICAD/IcadUtil.h
+
+Description:	This submission fixes the bug #78364 - "Full Acis - Extrude does not work".
+                This bug was re-introduced by Sander on May 22 when he submitted icadutil.h
+                which overrode my fix submitted early.
+		
+                In the EXTRUDE command, the code call function icadAngleEqual() to verify the 
+                selected circular or ellipstic curve. If the curve is not closed, it will be
+                rejected and the command wil error out.
+
+                Since ICAD_2PI is defiend as 2 * 3.14159265358979323846 rather than 
+                (2 * 3.14159265358979323846) curently(see icadutil.h), the following line 
+                in icadAngleEqual() in icadutil.h file
+
+                     n = (int)(angle / ICAD_2PI)
+
+                becomes 
+ 
+                     n - (int)(angle / 2 * 3.14159265358979323846)
+ 
+                after the code is compiled. This causes the icadAngleEqual() function to return  
+                false that indicates the curve is not closed when the EXTRUDE call the function
+                to compare the start and end angles of circle and ellipse. 
+
+                To fix the problem, all macros defined in icadutil.h are changed to constants. 
+                
+		
+
+
+
+                
+
+

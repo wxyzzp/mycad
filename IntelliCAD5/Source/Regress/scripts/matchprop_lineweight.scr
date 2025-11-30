@@ -1,0 +1,24 @@
+logfilename log\matchprop_linewight.log
+logfileon
+;_______
+lwdisplay
+1
+line
+0,0
+1,1
+2,0
+
+chprop
+l
+
+lw
+200
+
+matchprop
+2,0
+0,0
+
+dxfout output_dxf\matchprop_linewight.dxf
+6
+quit
+y

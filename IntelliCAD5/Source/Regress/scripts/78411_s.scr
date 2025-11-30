@@ -1,0 +1,51 @@
+logfilename log\78411_s.log
+logfileon
+;_______1
+(defun abc() (alert "abc"))
+(setq abc nil)
+(abc)
+;_______2
+(defun _abc() (alert "_abc"))
+(setq _abc nil)
+(_abc)
+;_______3
+(defun _def() (alert "_def"))
+(setq _def nil)
+(setq b _def)
+(b)
+;_______4
+(defun _ghi() (alert "_ghi1"))
+(defun _ghi() (alert "_ghi2"))
+(setq _ghi() nil)
+(_ghi)
+(_ghi)
+(setq b _ghi)
+(b)
+;_______5
+(defun _jkl() (alert "_jkl1"))
+(setq _jkl() nil)
+(_jkl)
+(defun _jkl() (alert "_jkl2"))
+(setq _jkl() nil)
+(_jkl)
+(setq b _jkl)
+(b)
+;_______6
+(defun _mno() (alert "_mno1"))
+(defun _mno() (alert "_mno2"))
+(setq _mno nil)
+(_mno)
+(_mno)
+(setq b _mno)
+(b)
+;_______7
+(defun _pqr() (alert "_pqr1"))
+(setq _pqr nil)
+(_pqr)
+(defun _pqr() (alert "_pqr2"))
+(setq _pqr nil)
+(_pqr)
+(setq b _pqr)
+(b)
+;_______
+quit

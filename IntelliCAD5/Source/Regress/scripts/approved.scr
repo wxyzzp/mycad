@@ -1,0 +1,9 @@
+logfilename log\Approved.log
+logfileon
+(Load "lisp\Approved.lsp")
+Approved
+dxfout output_dxf\Approved.dxf
+6
+close y
+exit
+

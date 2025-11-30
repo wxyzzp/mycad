@@ -1,0 +1,32 @@
+// grmodule.idl : IDL source for db.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (grmodule.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";	  
+#include "dllloadinfo.idl"
+
+
+[
+	uuid(12AA1391-D8DC-11D2-B186-00104B22E914),
+	version(1.0),
+	helpstring("gr 1.0 Type Library")
+]
+library GRMODULELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+	uuid(12AA139E-D8DC-11D2-B186-00104B22E914)
+
+	]
+
+	coclass GRDLLLoadInfo
+	{
+		[default] interface IVisioDLLLoadInfo;
+	};
+
+};

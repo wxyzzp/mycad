@@ -1,0 +1,9 @@
+logfilename log\unnamedblock.log
+logfileon
+;_________
+(load "lisp/unnamedblock.lsp")
+;__________
+dxfout output_dxf\unnamedblock.dxf
+6
+quit
+y

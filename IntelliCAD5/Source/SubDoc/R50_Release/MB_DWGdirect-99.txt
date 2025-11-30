@@ -1,0 +1,84 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-99
+Product Version:        IntelliCAD 5
+Date:                   09/22/2004 08:08am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	Resources
+	CMDS
+	SDS
+	DWGdirect
+
+3.  Overview:
+	For the most part, this submission prevents editing of proxies. In particular
+	it prevents them from being deletable. Copy/move/explode, etc are already not
+	allowed on proxy entities, this simply adds delete to the list. In addition, 
+	I have added prompts for user feedback on why certain entities in selection
+	sets have not been affected by edit commands if they contain proxy entities.
+
+	During some work on ArchT drawings, it was discovered that I was not handling
+	polyline thickness correctly. This is fixed by this submission. In addition,
+	polylines needed transformation based on their normal direction and for 2D 
+	polylines, their elevation. Also added in this submission.
+
+	Utilities.cpp - added some currently commented out code for handling nested
+	OdDbBlockReferences. This code will be completed in my next submission.
+
+	I have also uncommented some code in DWGdirectWriter.cpp that was used to
+	save .DWF files to a temporary file until it is determained that the save
+	succeeded. Upon success, the file is renamed to the final output file name.
+	This was the result of an ODT bug (now fixed) that explicitly looked for
+	the .dwf extension and if not found, ODT would simply throw an exception.
+	This feature now works as designed.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/lib/drw/utilities.cpp
+        source/prj/lib/drw/dwgdirectprotocolextension.cpp
+        source/prj/icad/res/icadrc2.h
+        Eng-us/icad.rc2
+        source/prj/lib/cmds/copy_and_move.cpp
+        source/prj/lib/cmds/cmds_misc.cpp
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/prj/lib/drw/dwgdirectreader.cpp
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/prj/lib/sds/sds_xform.cpp
+        source/regress applications/odreadex.exe
+        source/regress applications/singledoc.exe
+        source/prj/lib/cmds/cmds9.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-99.txt
+
+	Files removed:
+		Source/Licensed/ODTbin/ad2.h
+		Source/Licensed/ODTbin/adinit.dat
+		Source/Licensed/ODTbin/adv6nd.lib
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+10. Notes to build:
+	The directory Source/Licensed/ODTbin can now be removed from
+	the R50_Release stream. In the near future, it can also be
+	removed from the Icad_cee stream. I will let you know when.

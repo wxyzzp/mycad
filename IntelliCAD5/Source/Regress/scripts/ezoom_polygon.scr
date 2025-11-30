@@ -1,0 +1,9 @@
+logfilename log\ezoom_polygon.log
+logfileon
+(Load "lisp\ezoom_polygon.lsp")
+ezoom_polygon
+dxfout output_dxf\ezoom_polygon.dxf
+6
+close y
+exit
+

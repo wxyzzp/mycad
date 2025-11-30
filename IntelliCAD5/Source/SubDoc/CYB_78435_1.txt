@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------------
+File:		CYB_78435_1.txt
+Date:  		14-04-2003
+Developer: 	Vishwanath S Burkule
+Company: 	Cybage Software
+Reference: 	BugZilla:78435
+Affected files: 
+		  Source/prj/ICAD/icadapi.cpp?rev=1.64.4.21 
+		  Source/prj/lib/flyoversnap/osnapManagerIcad.h?rev=1.1.10.2 
+		  Source/prj/lib/flyoversnap/osnapManagerImp.cpp?rev=1.4.6.3 
+		  Source/prj/lib/flyoversnap/osnapManagerImp.h?rev=1.3.6.3 
+Description: 	Wrong points recorded in script if snapping is used. Reported by John Green.
+Comments: 	TaL78435
+Problem Analysis:
+		It was found that the clicked point was first written into the log file and then the snap point was read and used further in 		IntelliCAD.
+Problem Solution:
+		Get the snap point and then write into the log / script file. Though we have getPoint() which returns the snap point, it also set 		the m_bValidData variable to false and then we cannot use this snap point any furhter. So we decided to have another 		function which will just read the valid snap point and use it for writing into log/script file.	
+File by File:
+	*	  Source/prj/ICAD/icadapi.cpp?rev=1.64.4.21 
+		  Changes for reading the snap point.
+
+	*	  Source/prj/lib/flyoversnap/osnapManagerIcad.h?rev=1.1.10.2 
+		  declaration for readSnapPoint().
+
+	*	  Source/prj/lib/flyoversnap/osnapManagerImp.cpp?rev=1.4.6.3 
+		  Implementation for readSnapPoint().
+
+	*	  Source/prj/lib/flyoversnap/osnapManagerImp.h?rev=1.3.6.3 
+		   declaration for readSnapPoint().
+--------------------------------------------------------------------------------

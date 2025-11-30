@@ -1,0 +1,37 @@
+;_Created_by_Cybage_on_11/11/2002______
+;_This_script_only_checks_for_any_crashes_and_not_the_functionality
+logfilename log\layouts3.log
+logfileon
+;____________
+layout
+new
+l1
+;____________
+layout
+delete
+l1
+;____________
+layout
+new
+l1
+;____________
+layout
+rename
+l1
+l2
+;____________
+layout
+set
+l2
+;____________
+layout
+delete
+l2
+;____________
+;layout
+;?
+;____________
+dxfout output_dxf\layouts3.dxf
+6
+quit
+y

@@ -1,0 +1,10 @@
+logfilename log\scr5.log
+logfileon
+filedia 0
+open
+DWG/test1.dwg
+(load "lisp\scr5.lsp")
+moo
+dxfout output_dxf\scr5.dxf
+6
+exit y

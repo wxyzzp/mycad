@@ -1,0 +1,50 @@
+logfilename log\3d_mesh_options.log
+logfileon
+;_________
+vpoint
+-1,-1,1
+color 1
+;________1
+3d
+mesh
+0,0,0
+2,1,1
+0,0,0
+0,0,0
+20
+10
+color 2
+;________2
+3d
+mesh
+3,0,0
+5,0
+3,0,0
+5,5
+2
+256
+color 3
+;________3
+3d
+mesh
+6,1,0
+1,2,1
+-9,4
+6,0,0
+256
+2
+color 4
+;________4
+3d
+mesh
+6,2,0
+1,2,3
+-9,4,1
+6,0,0
+256
+256
+;_________
+dxfout output_dxf\3d_mesh_options.dxf
+6
+quit
+y

@@ -1,0 +1,7 @@
+logfilename log\lisp1.log
+logfileon
+(load "lisp\lisp1.lsp")
+ctext
+dxfout output_dxf\lisp1.dxf
+6
+exit y

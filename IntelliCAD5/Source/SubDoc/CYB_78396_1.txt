@@ -1,0 +1,29 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78396_1.txt
+Date:		23-12-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78396
+Added files:     	
+Affected files:	
+		Source/prj/ICAD/IcadMTextDia.cpp
+		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Source/prj/ICAD/MTextPropertiesTab.h
+Description:	Style is not set correctly for Mtext.
+Comments:		TaL78396
+Problem Analysis:
+		Style was not set correctly because of the usage of m_style even after the code for MTEXT was reorganised.		
+Proposed Solution:	Replace m_style by m_cstyle.		
+File by File:	
+*		Source/prj/ICAD/IcadMTextDia.cpp
+		Replaced m_style by m_cstyle.
+*		Source/prj/ICAD/MTextPropertiesTab.cpp
+		Commented out m_style at all the locations.
+*		Source/prj/ICAD/MTextPropertiesTab.h
+		Commented out the declaration of m_style.
+--------------------------------------------------------------------------------

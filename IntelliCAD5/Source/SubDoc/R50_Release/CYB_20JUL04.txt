@@ -1,0 +1,139 @@
+Document Title:  CYB_20JUL04.txt	
+Product Version: ICAD 5
+Date:  20 July 2004
+Engineers: Mohan Nayak and Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R40_Dev,R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+
+Mohan (Bugzilla::78808)
+	As per the Bugzilla description, there is a CRASH, when we click the '?' 
+button in any Dialog. Actually a Help-file related topic should pop-up if the 
+related Help is installed.
+	I have modified the file "Source/prj/ICAD/icadmain.cpp". This was caused as 
+a side effect to the fix for Bugzilla::78663.
+	There are some dialogs which have specific Help IDS associated with them.
+The previous fix was for the "setfunhelp" implementation fix did not check for
+the case "(dwData > HLP_TCOPTIONS)" in the function CMainWindow::IcadHelp.
+There is a condition which should not be executed for the Help IDS for the Dialog
+but skip the check and execute the later part.
+	This has been taken care of by intoducing the condition "(dwData > HLP_TCOPTIONS)"
+in the if Statement, and thus this crash has been avoided.
+
+	
+Mohan (Bugzilla::78761)	
+	As  per bugzilla description, there is an incompatibility to purge a block 
+by name, using purge -block command. In AutoCAD it is possible to purge a block 
+by name, using purge -block[blockname]. This is not the case in IntelliCAD. 
+	So I have added new entries in the stringtable  in "icad.rc2" 
+file. For these strings I have provided the unique IDs in "icadrc2.h" file. I
+have added a new function "SetPurgeBlockName" in "purge.cpp" file. The purpose
+of this function is to retrieve a string one by one from the list of strings 
+separated by "comma". I have also made the changes in the same file in the 
+function "purge_drawing". 
+	The purpose of the function "purge_drawing" is to purge unreferenced entries 
+depending upon the user's choice i.e. purge layer, purge block,purge dimension styles , 
+purge styles etc. I have made the changes in this function so that the user can purge 
+the blocks by their names as in AutoCAD. 
+	I have also provided the same functionality to other cases i.e layers, styles,
+dimension styles and linetypes.
+
+
+Sachin.
+	Dave has supplied the new BMPS for the Splash Screens for Professional and 
+Standard versions. I have checked them in.
+
+
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: Bugzilla::78808	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.5 
+Description: 
+	Many ICAD dialogs cause crash when clicking "?" (help) button
+Reviewer's Name and Comments: 
+	Reviewer = None, This bug fix is related to the modifications for Bugzilla::78663.
+
+
+Reference: Bugzilla::78761	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/lib/CMDS/purge.cpp?rev=1.6.4.4.2.1 
+	Source/prj/ICAD/res/icadrc2.h?rev=1.59.2.27.2.10 
+	Eng-us/icad.rc2?rev=1.63.2.34.2.14 
+Description: 
+	Incompatibility to purge a block by name, using purge -block.
+Reviewer's Name and Comments: None
+
+
+Reference: CYB_20JUL04	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/res/icadsplash_Standard.bmp?rev=1.1.2.2 
+	Source/res/icadsplash_Professional.bmp?rev=1.1.2.2
+Description: 
+	Changed the BMPS provided by Dave for the Splash Screens for Professional and Standard Versions.
+Reviewer's Name and Comments: None
+
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+Mohan (Bugzilla::78808)
+The code should be tested for the following steps:
+1. Open IntelliCAD.
+2. Give the DDIM command.
+3. Click the "?" Button.
+4. The Help file related to Dimension Settings should pop up.
+
+Mohan (Bugzilla::78761)
+The code should be tested for the following steps:
+1. Open IntelliCAD.
+2. Create blocks,new dimension styles , layers etc.
+3. Create sample drawing.
+4. Do not use entities created at step2.
+5. Give "Purge" command.
+6. Select "Block" option.
+7. Enter the names of blocks.
+8. Blocks will be purged using their names as in AutoCAD.
+9. Compared results with AutoCAD.
+
+Sachin.
+1. On starting IntelliCAD, you should see the new Splash Screens.
+
+
+9.  Installation Issues:
+
+
+
+

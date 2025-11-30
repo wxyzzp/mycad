@@ -1,0 +1,47 @@
+Document Title:  SH_300904_1.txt	
+Product Version: ICAD 5.0
+Date:  30/09/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/Lib/cmds/mpSpace.cpp
+   
+3. Overview:
+
+If you created any paper space viewport then UNDO it, and then switch to another empty 
+layout, IntelliCAD would crash.
+
+The root of the cause is the code in cmd_pspace(void) uses ret_ntabrecs(DB_VXTAB,0) function
+to check the number of the valid viewports but the second parameter was incorrectly set to 
+0 rather than 1, which caused all VX table records marked as deleted() by UNDO also to be 
+counted and a new viewport not to be inserted to the empty layout. This bug is fixed by 
+changing the second parameter to 1 to skip those deleted records.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

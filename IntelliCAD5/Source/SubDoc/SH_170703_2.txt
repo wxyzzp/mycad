@@ -1,0 +1,43 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_170703_2.txt
+Date:		17/07/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:76566   
+
+Description:	This submission fixes the bug #76566 - Second similar BHatch seed point pick 
+                will cause boundary hatch to not display although still listed in the 
+                database..
+                
+                The problem was that the BHATCH command did not check if the same area had 
+                been picked already so when the area was picked again, it would use the 
+                same boundary to hatch the area again and caused the problem.
+                
+                If the same procedure is performed in AutoCAD the second pick produces a 
+                warning message dialog stating "Boundary produces a duplicate boundary" and 
+                the user must press OK to continue.  AutoCAD will then continue on in the 
+                command, accept the first pick, and apply the boundary hatch. 
+                
+                This problem is fixed by adding a check to verify whether the boundary is 
+                on the candidate list already after users pick hatch area. If so, we don't 
+                add it to the list again and will error out.
+		
+Added files:    None
+Affected files: Source/prj/lib/cmds/CandidateList.cpp:
+                Source/prj/lib/cmds/CandidateList.h:    Adds HasSelectedCandidateIO to 
+                                                        CandidateList class.
+                                                        
+                Source/prj/icad/icadboundarydia.cpp:    Modifies CMainWindow::PickPoints()
+                                                        to verify the selected boundary.
+                                                        
+                Source/prj/icad/icadrc2.h:
+                Eng-us/icad2.rc:                        Adds CMD_ERR_BOUNDARY_DUPLICATE.     
+Comments:	TaL76566
+
+
+                

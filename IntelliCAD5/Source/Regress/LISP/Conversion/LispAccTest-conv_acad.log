@@ -1,0 +1,308 @@
+Lisp acceptance test run at 07-28-1998 11:40:18a on version P.0.31
+
+Starting tests...
+
+--- angtof ---
+
+***Error (noargs): too few arguments
+zero0 = 0.0000
+zero1 = 0.0000
+zero2 = 0.0000
+zero3 = 0.0000
+zero4 = 0.0000
+pi0 = 0.0548
+pi1 = 0.0548
+pi2 = 0.0493
+pi3 = 3.1416
+pi4 = 0.0548
+twopi0 = 0.1097
+twopi1 = 0.1097
+twopi2 = 0.0987
+twopi3 = 6.2832
+twopi4 = 0.1097
+icadhlp1 = 1.5708
+icadhlp2 = 1.5708
+icadhlp3 = 1.5796
+icadhlp4 = 1.5708
+icadhlp5 = 1.5708
+icadhlp6 = 1.5708
+icadhlp7 = 1.5708
+
+--- angtos ---
+
+***Error (noargs): too few arguments
+zero0 = 0.000000
+zero1 = 0d0'0.00"
+zero2 = 0.000000g
+zero3 = 0.000000r
+zero4 = E
+pi0 = 180.000000
+pi1 = 180d0'0.00"
+pi2 = 200.000000g
+pi3 = 3.141593r
+pi4 = W
+twopi0 = 0.000000
+twopi1 = 0d0'0.00"
+twopi2 = 0.000000g
+twopi3 = 0.000000r
+twopi4 = E
+icadhlp1 = 89.999981
+icadhlp2 = 100.0000g
+icadhlp3 = 37d31'29"
+icadhlp4 = 89d59'59.93"
+icadhlp5 = 99.999979g
+icadhlp6 = 1.570796r
+icadhlp7 = N 0d0'0.07" E
+acadhlp1 = 45.0000
+acadhlp2 = 315.0000
+
+--- ascii ---
+
+***Error (noargs): too few arguments
+spacestr = 32
+below0strs = 33
+below0stre = 47
+0to9strs = 48
+0to9stre = 57
+above9strs = 58
+above9stre = 64
+bigatozstrs = 65
+bigatozstre = 90
+btwnalphastrs = 91
+btwnalphastre = 96
+abovezstrs = 123
+abovezstre = 126
+maxstr = 49
+maxp1str = 49
+minint = 0
+maxint = 255
+minp1int = 255
+maxp1int = 0
+icadhlp1 = 88
+icadhlp2 = 120
+icadhlp3 = 70
+icadhlp4 = 70
+acadhlp1 = 65
+acadhlp2 = 97
+acadhlp3 = 66
+
+--- atof ---
+
+noargs = 0.0000
+zero = 0.0000
+nine = 9.0000
+minuszero = 0.0000
+minusnine = -9.0000
+belownum = 0.0000
+abovenum = 0.0000
+nilsym = 0.0000
+tsym = 0.0000
+zeroint = 0.0000
+minint = -2147483648.0000
+maxint = 2147483647.0000
+minp1int = -2147483649.0000
+maxp1int = 2147483648.0000
+zeroreal = 0.0000
+minreal = 0.0000
+maxreal = 9.9000E+99
+minp1real = 0.0000
+maxp1real = 0.0000E+99
+invalidrealnum = 0.5000
+icadhlp1 = 59.0000
+icadhlp2 = 213.3500
+icadhlp3 = 0.1000
+icadhlp4 = 0.0000
+acadhlp1 = 97.1000
+acadhlp2 = 3.0000
+acadhlp3 = 3.9000
+
+--- atoi ---
+
+noargs = 0
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = 0
+abovenum = 0
+nilsym = 0
+tsym = 0
+zeroint = 0
+minint = -2147483648
+maxint = 2147483647
+minp1int = 2147483647
+maxp1int = -2147483648
+icadhlp1 = -25
+icadhlp2 = 37
+icadhlp3 = 0
+acadhlp1 = 97
+acadhlp2 = 3
+acadhlp3 = 3
+
+--- chr ---
+
+***Error (noargs): too few arguments
+spacestr =  
+below0strs = !
+below0stre = /
+0to9strs = 0
+0to9stre = 9
+above9strs = :
+above9stre = @
+bigatozstrs = A
+bigatozstre = Z
+btwnalphastrs = [
+btwnalphastre = `
+abovezstrs = {
+abovezstre = ~
+maxint = ÿ
+minp1int = ÿ
+maxp1int = 
+icadhlp1 = X
+icadhlp2 = x
+icadhlp3 = 
+icadhlp4 = 
+acadhlp1 = A
+acadhlp2 = B
+acadhlp3 = a
+
+--- cvunit ---
+
+***Error (noargs): too few arguments
+icadhlp1 = 86400.0000
+icadhlp2 = 2.1872
+icadhlp3:
+	 = 10560.0000
+	 = 15840.0000
+acadhlp1 = 60.0000
+acadhlp2 = nil
+acadhlp3 = 2.5400
+acadhlp4 = 4840.0000
+acadhlp5:
+	 = 12.0000
+	 = 30.0000
+acadhlp6:
+	 = 12.0000
+	 = 24.0000
+	 = 36.0000
+
+--- distof ---
+
+noargs = nil
+zero = 0.0000
+nine = 9.0000
+minuszero = 0.0000
+minusnine = -9.0000
+belownum = nil
+abovenum = nil
+nilsym = nil
+tsym = nil
+zeroint = 0.0000
+minint = -2147483648.0000
+maxint = 2147483647.0000
+minp1int = -2147483649.0000
+maxp1int = 2147483648.0000
+zeroreal = 0.0000
+minreal = nil
+maxreal = nil
+minp1real = nil
+maxp1real = nil
+invalidrealnum = 0.5000
+icadhlp1 = 23.6980
+icadhlp2 = 29.2500
+icadhlp3 = 29.2500
+icadhlp4 = 29.2500
+icadhlp5 = 29.2500
+icadhlp6 = 29.2500
+
+--- itoa ---
+
+***Error (noargs): too few arguments
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0
+minint = -2147483648
+maxint = 2147483647
+minp1int = 2147483647
+maxp1int = -2147483648
+icadhlp1 = 3
+icadhlp2 = -66
+acadhlp1 = 33
+acadhlp2 = -17
+
+--- rtos ---
+
+***Error (noargs): too few arguments
+zero = 0.0000
+nine = 9.0000
+minuszero = 0.0000
+minusnine = -9.0000
+***Error (belownum): bad argument type
+***Error (abovenum): bad argument type
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zeroint = 0.0000
+minint = -2147483648.0000
+maxint = 2147483647.0000
+minp1int = 2147483647.0000
+maxp1int = -2147483648.0000
+zeroreal = 0.0000
+minreal = 0.0000
+maxreal = 9.9000E+99
+minp1real = 0.0000
+***Error (maxp1real): Invalid floating point value
+***Error (maxp1real): null function
+***Error (invalidrealnum): invalid dotted pair
+***Error (invalidrealnum): null function
+icadhlp1 = 1.5350E+01
+icadhlp2 = 15.3500
+icadhlp3 = 1'-3.3500"
+icadhlp4 = 1'-3 3/8"
+icadhlp5 = 15 3/8
+
+--- trans ---
+
+***Error (noargs): too few arguments
+icadhlp1:
+	 = 1.0000
+	 = 0.7071
+	 = -0.7071
+icadhlp2:
+	 = 1.0000
+	 = -2.8284
+	 = 4.2426
+icadhlp3:
+	 = 1.0000
+	 = 0.7071
+	 = 0.7071
+acadhlp1:
+	 = 2.0000
+	 = -1.0000
+	 = 3.0000
+acadhlp2:
+	 = -2.0000
+	 = 1.0000
+	 = 3.0000
+acadhlp3:
+	 = 5.0000
+	 = 3.5355
+	 = 3.5355
+acadhlp4:
+	 = 1.0000
+	 = 3.5355
+	 = 0.7071
+acadhlp5:
+	 = 1.0000
+	 = 0.7071
+	 = 0.7071
+acadhlp6:
+	 = 5.0000
+	 = 5.0000
+	 = 0.0000
+Lisp acceptance test completed at 07-28-1998 11:40:27a on version P.0.31

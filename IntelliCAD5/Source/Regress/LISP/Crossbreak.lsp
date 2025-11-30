@@ -1,0 +1,23 @@
+(prompt "\nType Crossbreak to run....")
+(defun C:Crossbreak ( / AR LN OL OS IN P1 P2 P3 P4 LINE1 LINE2 ENT1 ENT2 AN)
+(setq AR 0.5)
+(setvar "osmode" 0)
+(setq ENT1 (car (entsel "\nSelect crossing line to break: "))
+LINE1 (entget ENT1)
+LN (cdr (assoc 8 LINE1))
+P1 (cdr (assoc 10 LINE1))
+P2 (cdr (assoc 11 LINE1))
+AN (angle P1 P2)
+ENT2 (car (entsel "\nSelect line to cross over: "))
+LINE2 (entget ENT2)
+P3 (cdr (assoc 10 LINE2))
+P4 (cdr (assoc 11 LINE2))
+IN (inters P1 P2 P3 P4)
+BPT1 (polar IN AN (* AR (getvar "ltscale")))
+BPT2 (polar IN (+ AN pi) (* AR (getvar "ltscale")))
+);setq
+(command "break" ENT1 BPT1 BPT2)
+(princ)
+);defun
+;;;*==========================================================
+(princ)

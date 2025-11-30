@@ -1,0 +1,884 @@
+; Unit conversion factors for use with Visio IntelliCAD
+;
+; icad.unt
+; Release 1.0
+;
+; .............................................................................
+;
+; Copyright (c) 1998 by Visio Corporation.  All rights reserved.
+;
+; The Software is subject to the license agreement that accompanies
+; or is included with the Software, which specifies the permitted
+; and prohibited uses of the Software.  Any unauthorized duplication
+; or use of Visio Corporation Software, in whole or in part, in print,
+; or in any other storage and retrieval system is prohibited.
+;
+; To the maximum extent permitted by applicable law, Visio Corporation
+; and its suppliers disclaim any and all warranties and conditions,
+; either express or implied, including, without limitation, implied
+; warranties of merchantability, fitness for a particular purpose,
+; title, and non-infringement, and those arising out of usage of trade
+; or course of dealing, concerning these materials.  These materials
+; are provided "as is" without warranty of any kind.
+;
+; .............................................................................
+;
+; Sources:
+;
+;   "CRC Handbook of Chemistry and Physics, 52nd Edition 1971-1972",(c) 1971
+;   "Physics, Parts I and II", by David Halliday and Robert Resnick (c) 1966
+:   "The Astronomical Almanac, 1992", U.S. Government Printing Office (c) 1991
+;
+; .............................................................................
+;
+; Fundamental units are defined in terms of five fundamental physical
+; constants, expressed in AI units.  From the CRC Handbook,
+; pp. F189-F190:
+;
+;   c : The vacuum speed of light
+;         2.9979250E+08 m/sec
+;
+;   e : Electron charge
+;         1.6021917E-19 C (coulombs)
+;
+;   h : The Planck Constant
+;         6.626196E-34  kg-m^2/sec
+;
+;   k : The Boltzmann Constant
+;         1.380622E-23 kg-m^2/sec^2-K (K=degrees kelvin)
+;
+;   m : Electron rest mass (kg)
+;         9.109558E-31 kg
+;
+; A line defining a unit in fundamental form has the form
+;
+;   x1,x2,x3,x4,x5,f,a
+;
+; The "x" terms are (integer) exponents of the five fundamental
+; constants; "f" is a factor; "a" is an additive term (used only in
+; temperature).  They define a value as follows (where ^ denotes
+; exponentiation and * multiplication):  If we have U of the units
+; being defined, the AI equivalent is
+;
+;   (c^x1 * e^x2 * h^x3 * k^x4 * m^x5) * (U*f + a)
+;
+; Notice that the factor composed of the fundamental constants defines
+; a "fundamental unit" that is some multiple of the corresponding
+; AI unit.  If we have U of the units we're defining, we therefore
+; have U*f+a "fundamental units".  To convert this to some other unit,
+; we seek U', where U'*f'+a' = U*f+a, or
+;
+;   U' = (U*f+a-a')/f'
+;
+; For all but temperature, a and a' are zero reducing this to
+;
+;   U' = U*f/f'
+;
+; Because of the way we're combining the fundamental constants to
+; produce a specific type of unit via dimensional analysis (length,
+; mass, speed, etc.), all fundamental definitions of the same type have
+; the same set of exponents (x1-x5).  Here are the formats of some of
+; the basic types (along with their "fundamental units" in AI units,
+; using the CRC values):
+;
+;   Length:
+;     -1, 0, 1, 0,-1,f,0 (2.426309557165E-12 m)
+;   Mass:
+;      0, 0, 0, 0, 1,f,0 (9.109558E-31 kg)
+;   Time:
+;     -2, 0, 1, 0,-1,f,0 (8.0932963872178E-21 sec)
+;   Temperature:
+;      2, 0, 0,-1, 1,f,a (5.9301276689232E+09 K)
+;   Area:
+;     -2, 0, 2, 0,-2,f,0 (5.8869780671902E-24 m^2)
+;   Volume:
+;     -3, 0, 3, 0,-3,f,0 (1.4283631147244E-35 m^3)
+;   Speed:
+;      1, 0, 0, 0, 0,f,0 (2.9979250E+08 m/sec)
+;   Acceleration:
+;      3, 0,-1, 0, 1,f,0 (3.7042076016576E+28 m/sec^2)
+;   Force:
+;      3, 0,-1, 0, 2,f,0 (3.374369399134E-02 kg-m/sec^2 (newton))
+;   Pressure:
+;      5, 0,-3, 0, 4,f,0 (5.7319211327461E+21 kg/sec^2-m (N/m^2))
+;   Energy:
+;      2, 0, 0, 0, 1,f,0 (8.1872647225241E-14 kg-m^2/sec^2 (joule))
+;   Power:
+;      4, 0,-1, 0, 2,f,0 (1.0116106380899E+07 kg-m2/sec^3 (watt))
+;   Electric charge:
+;      0, 1, 0, 0, 0,f,0 (1.6021917E-19 C (coulomb))
+;   Electric current:
+;      2, 1,-1, 0, 1,f,0 (1.9796528180167E+01 C/sec (amp))
+;   Electromotive force:
+;      2,-1, 0, 0, 1,f,0 (5.1100406540142E+05 kg-m^2/sec^2-C (volt))
+;   Electric resistance:
+;      0,-2, 1, 0, 0,f,0 (2.5812812264393E+04 kg-m^2/sec-C^2 (ohm))
+;   Electric capacitance:
+;     -2, 2, 0, 0,-1,f,0 (3.1353795566018E-25 sec^2-C^2/kg-m^2 (farad))
+;   Electric inductance:
+;     -2,-2, 2, 0,-1,f,0 (2.0891074024335E-16 kg-m^2/C^2 (henry))
+;   Magnetic flux:
+;      0,-1, 1, 0, 0,f,0 (4.1357073563669E-15 kg-m^2/sec-C (weber))
+;   Magnetic induction:
+;      2,-1,-1, 0, 2,f,0 (7.0251788084898E+8  kg/sec-C (tesla))
+;   Dimensionless multiplier:
+;      0, 0, 0, 0, 0,f,0 (No units)
+;
+; Excluding temperatures, we can combine these to produce composite
+; units as follows:
+;
+;   To multiply any two of these, you add the exponents (x1-x5) and
+;   multiply the f's.
+;
+;   To divide one by another, you subtract the second's exponents from
+;   the first's and divide the first f by the second.
+;
+;   To raise one to a power, you multiply the exponents (x1-x5) by the
+;   power and raise f to the power.
+;
+; In acad.unt, the "fundamental units" are those actually produced by
+; combining the fundamental constants.  For example, the fundamental
+; unit of length is h/(mc), which is 2.426309557165E-12 m, and we
+; therefore need mc/h of these (4.1214856408036E+11) to make one meter.
+; (This changes, of course, whenever one of the fundamental constant
+; values is refined.  But, as long as we use the same values for
+; source and destination units in the conversion, this doesn't matter.)
+;
+; Since we're only using these "fundamental units" as temporary
+; intermediates for comparing different units of like type, why not
+; use the SI units themselves as the "fundamental units"?  That's what
+; icad.unt does in this file.  So, instead of
+;
+;   *meter(s),metre(s),m
+;   -1,0,1,0,-1,4.1214856408036E+11,0
+;
+; we have
+;
+;   *meter(s),metre(s),m
+;   -1,0,1,0,-1,1.0,0
+;
+; h/(mc) is indeed a length, but a very cumbersome one compared to
+; a meter.
+;
+; The exponents remain the same, but their function is purely that
+; of unit type-identifiers, making sure the dimensional analysis
+; works out.  (Meters, Kilograms, Seconds, and Kelvins could be used
+; in the same manner, but we keep the "c,e,h,k,m" system to maintain
+; compatibility with ACAD.)
+;
+; .............................................................................
+;
+;     File format information:
+;
+; A semicolon begins a comment that continues through the end of the line.
+;
+; Blank lines are ignored.
+;
+; A unit definition has two lines:
+;
+;   The name(s) of the unit:
+;
+;     The line must begin with an asterisk.  Synonyms are separated by
+;     commas.  Each synonym can have the form
+;
+;       prefix(singularsuffix.pluralsuffix)
+;
+;     The "singularsuffix." part can be omitted; so can the entire
+;     parenthetical singular/plural item.
+;
+;   The definition:
+;
+;     One of the three following formats:
+;
+;       Fundamental format:
+;
+;         The "x1,x2,x3,x4,x5,f,a" format discussed earlier.
+;
+;       Derived format:
+;
+;         This type must begin with an equals sign (=), followed by
+;         literal constants and the names of other defined units and
+;         any of the math operators * (multiplication), / (division),
+;         and ^ (exponentiation).  Multiplication is implied if no
+;         operator is supplied between non-operator items.  Any
+;         derived units used in the formula must of course be
+;         resolvable to fundamental form using other definitions in
+;         this file (in a non-recursive manner -- no infinite
+;         definition loops!).
+;
+;         It seems ACAD only allows ONE division on a definition
+;         line (or in a string passed to cvunit) -- probably because
+;         that's how scientists generally write units: a bunch of units
+;         over another bunch of units -- one division.  For example,
+;         an acceleration in feet per second per minute must
+;         be given as "ft / sec min", not "ft / sec / min".
+;
+;         The units are combined on each side of the slash,
+;         and the division is performed last.
+;
+;         See acad.unt for examples of this format.  Icad.unt specifies
+;         all of it's definitions in "fundamental" format.  This
+;         allows cvunit to process this file faster, with fewer
+;         calculations (and therefore smaller rounding errors).
+;         Since icad.unt uses SI units as the fundamental units,
+;         the file is fairly "human-readable": the "f" terms are
+;         the SI equivalents -- not some collection of cumbersome
+;         physical constants.
+;
+;       Exponent synonym definition format:
+;
+;         Of the form
+;
+;           *square,sq
+;           ^2
+;
+;         Note there's no equals sign ("^2", not "=^2").
+;
+;         ACAD defines this one and "*cubic,cu", but doesn't use
+;         them in acad.unt.  We follow suit.
+;
+;         If you DO use them, it seems they must appear BEFORE the
+;         item to operate on, not after ("sq ft", not "ft sq").
+;         However, if you use exponents directly, you must put them
+;         AFTER the item ("ft^2").  Therefore, "sq" is not a direct
+;         synonym for "^2".
+;
+;         We recommend using an exponent directly -- right up
+;         against the item it follows (like "meter^3").
+;
+; .............................................................................
+
+
+; Exponent definitions (See notes above.  They're NOT substitutions.)
+
+*square,sq
+^2
+
+*cubic,cu
+^3
+
+
+; The primary SI units:
+
+*meter(s),metre(s),m,centare(s)
+-1, 0, 1, 0,-1,1.0,0.0
+
+*kilogram(s),kg
+ 0, 0, 0, 0, 1,1.0,0.0
+
+*second(s),sec
+-2, 0, 1, 0,-1,1.0,0.0
+
+*kelvin(s),k
+ 2, 0, 0,-1, 1,1.0,0.0
+
+*ampere(s),amp(s)
+ 2, 1,-1, 0, 1,1.0,0.0
+
+*candela,cd             ; Careful with this one.  This file (as shipped)
+ 4, 0,-1, 0, 2,1.0,0.0  ; does not specify any other luminous intensity
+                        ; units.  If you add any, keep the exponents (x1-x5)
+                        ; the same.  Enter the equivalent number of
+                        ; candelas for f -- or replace the 1.0 in the
+                        ; candela definition with the true MKS equivalent
+                        ; and then enter others in terms of that MKS value.
+                        ;
+                        ; As it stands, THIS candela is equivalent to
+                        ; a watt -- which I doubt is true.  (acad.unt
+                        ; has the same problem.)
+
+; Length:
+
+*angstrom(s)
+-1, 0, 1, 0,-1,1.0E-10,0.0
+
+*astronomical_unit(s),au
+-1, 0, 1, 0,-1,1.49597870E+11,0.0
+
+*bolt(s)
+-1, 0, 1, 0,-1,36.576,0.0
+
+*cable(s)
+-1, 0, 1, 0,-1,219.456,0.0
+
+*centimeter(s),centimetre(s),cm
+-1, 0, 1, 0,-1,0.01,0.0
+
+*chain(s) ; Gunter's
+-1, 0, 1, 0,-1,20.1168,0.0
+
+*cubit(s)
+-1, 0, 1, 0,-1,0.4572,0.0
+
+*decimeter(s),decimetre(s),dm
+-1, 0, 1, 0,-1,0.1,0.0
+
+*dekameter(s),decameter(s),dekametre(s),decametre(s),dam
+-1, 0, 1, 0,-1,10.0,0.0
+
+*fathom(s),fath
+-1, 0, 1, 0,-1,1.8288,0.0
+
+*foot,feet,ft,'
+-1, 0, 1, 0,-1,0.3048,0.0
+
+*furlong(s),fur
+-1, 0, 1, 0,-1,201.168,0.0
+
+*gigameter(s),gigametre(s)
+-1, 0, 1, 0,-1,1.0E+09,0.0
+
+*hand(s)
+-1, 0, 1, 0,-1,0.1016,0.0
+
+*hectometer(s),hectometre(s),hm
+-1, 0, 1, 0,-1,100.0,0.0
+
+*inch(es),in(s),"
+-1, 0, 1, 0,-1,0.0254,0.0
+
+*kilometer(s),kilometre(s),km
+-1, 0, 1, 0,-1,1000.0,0.0
+
+*league_nautical  ;  International
+-1, 0, 1, 0,-1,5556.0,0.0
+
+*league_statute
+-1, 0, 1, 0,-1,4828.032,0.0
+
+*lightyear(s),ly  ;  Using a tropical year
+-1, 0, 1, 0,-1,9.4605281774268E+15,0.0
+
+*link(s)  ;  Gunter's
+-1, 0, 1, 0,-1,0.201168,0.0
+
+*micron(s)
+-1, 0, 1, 0,-1,0.000001,0.0
+
+*mil(s)
+-1, 0, 1, 0,-1,0.0000254,0.0
+
+*mile_nautical,inm  ;  International
+-1, 0, 1, 0,-1,1852.0,0.0
+
+*mile(s),mile_statute,mi
+-1, 0, 1, 0,-1,1609.344,0.0
+
+*millimeter(s),millimetre(s),mm
+-1, 0, 1, 0,-1,0.001,0.0
+
+*millimicro(s),nanometer(s),nanometre(s)
+-1, 0, 1, 0,-1,1.0E-09,0.0
+
+*pace(s)
+-1, 0, 1, 0,-1,0.762,0.0
+
+*palm(s)
+-1, 0, 1, 0,-1,0.0762,0.0
+
+*parsec(s),pc  ;  From definition and the value of the astronomical unit.
+-1, 0, 1, 0,-1,3.0856775670468E+16,0.0
+
+*pica(s)
+-1, 0, 1, 0,-1,0.0042175176,0.0
+
+*point(s)
+-1, 0, 1, 0,-1,0.0003514598,0.0
+
+*rod(s)
+-1, 0, 1, 0,-1,5.0292,0.0
+
+*rope(s)  ;  British
+-1, 0, 1, 0,-1,6.096,0.0
+
+*skein(s)
+-1, 0, 1, 0,-1,109.728,0.0
+
+*span(s)
+-1, 0, 1, 0,-1,0.2286,0.0
+
+*survey_foot,survey_feet  ;  Based on the old standard of exactly 39.37 in/m.
+-1, 0, 1, 0,-1,0.30480060960122,0.0
+
+*yard(s),yd
+-1, 0, 1, 0,-1,0.9144,0.0
+
+
+; Mass:
+
+*cental(s)  ;  British
+ 0, 0, 0, 0, 1,45.359237,0.0
+
+*dalton(s)  ;  Chemistry
+ 0, 0, 0, 0, 1,1.66024E-27,0.0
+
+*grain(s)  ;  (1/480 ounce_troy)
+ 0, 0, 0, 0, 1,6.4798929166666666666E-05,0.0
+
+*gram(s),gm,g
+ 0, 0, 0, 0, 1,0.001,0.0
+
+*hundredweight(s)  ;  Short (100 lb avdp)
+ 0, 0, 0, 0, 1,45.359237,0.0
+
+*long_ton(s)  ;  (2240 lb avdp)
+ 0, 0, 0, 0, 1,1016.0469088,0.0
+
+*microgram(s)
+ 0, 0, 0, 0, 1,1.0E-09,0.0
+
+*milligram(s),mg
+ 0, 0, 0, 0, 1,0.000001,0.0
+
+*ounce_troy
+ 0, 0, 0, 0, 1,0.031103486,0.0
+
+*ounce_weight,ounce(s),oz
+ 0, 0, 0, 0, 1,0.028349523125,0.0
+
+*pennyweight(s),dwt,pwt  ;  (1/20 ounce_troy)
+ 0, 0, 0, 0, 1,0.0015551743,0.0
+
+*pound(s),lb(s) ; avdp
+ 0, 0, 0, 0, 1,0.45359237,0.0
+
+*poundal(s)
+ 0, 0, 0, 0, 1,0.01409808,0.0
+
+*scruple(s)  ;  Apothecary (1/24 ounce_troy)
+ 0, 0, 0, 0, 1,0.0012959785833333333333,0.0
+
+*slug(s)
+ 0, 0, 0, 0, 1,14.5939,0.0
+
+*stone(s)  ;  British
+ 0, 0, 0, 0, 1,6.35029318,0.0
+
+*ton_metric,tonne(s)
+ 0, 0, 0, 0, 1,1000.0,0.0
+
+*ton_short,ton(s)
+ 0, 0, 0, 0, 1,907.18474,0.0
+
+
+; Time:
+
+*calendar_year(s),year(s),yr
+-2, 0, 1, 0,-1,31536000.0,0.0  ; Calendar -- 365 days
+                               ; One could argue whether "year" should be
+                               ; the calendar one or the tropical.
+                               ; We follow ACAD for compatibility.
+
+*century,centuries
+-2, 0, 1, 0,-1,3153600000.0,0.0  ; Calendar -- 36500 days
+
+*day(s)
+-2, 0, 1, 0,-1,86400.0,0.0
+
+*decade(s)
+-2, 0, 1, 0,-1,315360000.0,0.0  ; Calendar -- 3650 days
+
+*fortnight(s)
+-2, 0, 1, 0,-1,1209600.0,0.0
+
+*hour(s),hr(s)
+-2, 0, 1, 0,-1,3600.0,0.0
+
+*microsecond(s)
+-2, 0, 1, 0,-1,0.000001,0.0
+
+*millennium,millennia,millenium,millenia
+-2, 0, 1, 0,-1,31536000000.0,0.0  ; Calendar -- 365000 days
+
+*millisecond(s),msec
+-2, 0, 1, 0,-1,0.001,0.0
+
+*minute(s),min(s)
+-2, 0, 1, 0,-1,60.0,0.0
+
+*nanosecond(s),nsec
+-2, 0, 1, 0,-1,1.0E-09,0.0
+
+*sidereal_year(s)
+-2, 0, 1, 0,-1,31558149.504,0.0
+
+*tropical_year(s)
+-2, 0, 1, 0,-1,31556925.216,0.0
+
+*week(s),wk
+-2, 0, 1, 0,-1,604800.0,0.0
+
+
+; Frequency
+
+*hertz,hz
+ 2, 0,-1, 0, 1,1.0,0.0
+
+
+; Area:
+
+*acre(s)
+-2, 0, 2, 0,-2,4046.8564,0.0
+
+*are(s)
+-2, 0, 2, 0,-2,100.0,0.0
+
+*barn(s)
+-2, 0, 2, 0,-2,1.0E-28,0.0
+
+*hectare(s)
+-2, 0, 2, 0,-2,10000.0,0.0
+
+*rood(s)  ;  British
+-2, 0, 2, 0,-2,1011.7141,0.0
+
+*township(s)
+-2, 0, 2, 0,-2,93239571.456,0.0
+
+
+; Volume:
+;
+;   Note: The US fluid values quart, pint, cup, ounce, and dram
+;   are based on integral subdivisions of the gallon.  (The CRC
+;   reference has an internal inconsistency between pint and ounce.)
+;
+;   The dry equivalents are also based on the subdivided gallon.
+
+*barrel(s)  ;  US petroleum
+-3, 0, 3, 0,-3,0.1589872956,0.0
+
+*board_foot,board_feet
+-3, 0, 3, 0,-3,0.002359737216,0.0
+
+*british_gallon(s)
+-3, 0, 3, 0,-3,0.004546087,0.0
+
+*bushel(s),bu  ;  US
+-3, 0, 3, 0,-3,0.03523907,0.0
+
+*butt(s)  ;  British
+-3, 0, 3, 0,-3,0.4769618868,0.0
+
+*cc
+-3, 0, 3, 0,-3,0.000001,0.0
+
+*centiliter(s),centilitre(s)
+-3, 0, 3, 0,-3,0.00001000028,0.0
+
+*cord(s)  ;  128 ft^3 (This CRC value looks like it's based on survey feet.)
+-3, 0, 3, 0,-3,3.6245734,0.0
+
+*decaliter(s),*dekaliter(s),*decalitre(s),*dekalitre(s)
+-3, 0, 3, 0,-3,0.01000028,0.0
+
+*decastere(s),dekastere(s)
+-3, 0, 3, 0,-3,10.0,0.0
+
+*decistere(s)
+-3, 0, 3, 0,-3,0.1,0.0
+
+*dry_gallon(s)  ;  US
+-3, 0, 3, 0,-3,0.0044048828,0.0
+
+*dry_pint(s)  ;  US
+-3, 0, 3, 0,-3,0.00055061035,0.0
+
+*dry_quart(s)  ;  US
+-3, 0, 3, 0,-3,0.0011012207,0.0
+
+*fluid_cup(s),cup(s)  ;  US
+-3, 0, 3, 0,-3,0.0002365882375,0.0
+
+*fluid_dram(s),dram(s),dr  ;  US
+-3, 0, 3, 0,-3,3.6966912109375E-06,0.0
+
+*fluid_gallon(s),gallon(s),gal  ;  US
+-3, 0, 3, 0,-3,0.0037854118,0.0
+
+*fluid_ounce(s)  ; US
+-3, 0, 3, 0,-3,2.95735296875E-05,0.0
+
+*fluid_pint(s),pint(s)  ; US
+-3, 0, 3, 0,-3,0.000473176475,0.0
+
+*fluid_quart(s),quart(s),qt  ;  US
+-3, 0, 3, 0,-3,0.00094635295,0.0
+
+*firkin(s)  ;  US  (9 US fluid gallons)
+-3, 0, 3, 0,-3,0.0340687062,0.0
+
+*gill(s)  ;  US  (1/32 US fluid gallons)
+-3, 0, 3, 0,-3,0.00011829411875,0.0
+
+*hectoliter(s),hectolitre(s)
+-3, 0, 3, 0,-3,0.1000028,0.0
+
+*hogshead(s)  ;  (63 US fluid gallons)
+-3, 0, 3, 0,-3,0.2384809434,0.0
+
+*kilderkin(s)  ;  British
+-3, 0, 3, 0,-3,0.08182957,0.0
+
+*kiloliter(s),kilolitre(s)
+-3, 0, 3, 0,-3,1.000028,0.0
+
+*liter(s),litre(s)
+-3, 0, 3, 0,-3,0.001000028,0.0
+
+*milliliter(s),millilitre(s),ml
+-3, 0, 3, 0,-3,0.000001000028,0.0
+
+*minim(s)  ;  US  (1/60 US fluid dram (1/61440 US fluid gallon))
+-3, 0, 3, 0,-3,6.1611520182292E-08,0.0
+
+*peck(s)  ;  US  (2 US dry gallons)
+-3, 0, 3, 0,-3,0.0088097656,0.0
+
+*pottle(s)  ;  (0.5 British gallons)
+-3, 0, 3, 0,-3,0.0022730435,0.0
+
+*puncheon(s)
+-3, 0, 3, 0,-3,0.31797510,0.0  ;  British
+
+*register_ton(s)  ;  (100 ft^3)
+-3, 0, 3, 0,-3,2.8316846592,0.0
+
+*seam(s)  ;  (64 British gallons)
+-3, 0, 3, 0,-3,0.290949568,0.0
+
+*stere(s)
+-3, 0, 3, 0,-3,1.0,0.0
+
+*tun(s)  ;  (252 US fluid gallons (4 hogsheads))
+-3, 0, 3, 0,-3,0.9539237736,0.0
+
+
+; Speed:
+
+*light_speed   ;  The new, exact, value (not the CRC one).
+ 1, 0, 0, 0, 0,299792458.0,0.0
+
+*knot(s)  ;  Nautical miles / hr
+ 1, 0, 0, 0, 0,0.51444444444444444444,0.0
+
+
+; Acceleration:
+
+*g_acceleration
+ 3, 0,-1, 0, 1,9.80665,0.0
+
+
+; Force:
+
+*dyne(s)
+ 3, 0,-1, 0, 2,0.00001,0.0
+
+*force_pound(s)
+ 3, 0,-1, 0, 2,4.4482216765935,0.0
+
+*newton(s)
+ 3, 0,-1, 0, 2,1.0,0.0
+
+
+; Pressure:
+
+*atmosphere(s),atm
+ 5, 0,-3, 0, 4,101325.0,0.0
+
+*bar(s)
+ 5, 0,-3, 0, 4,100000.0,0.0
+
+*barye(s)
+ 5, 0,-3, 0, 4,0.1,0.0
+
+*pascal
+ 5, 0,-3, 0, 4,1.0,0.0
+
+*torr(s),mm_of_hg
+ 5, 0,-3, 0, 4,133.32236842105,0.0
+
+
+; Energy:
+
+*british_thermal_unit(s),btu(s)
+ 2, 0, 0, 0, 1,1054.35,0.0
+
+*calorie(s),cal  ;  Gram-calorie
+ 2, 0, 0, 0, 1,4.184,0.0
+
+*joule(s)  ;  Absolute (kg-m^2/sec^2)
+ 2, 0, 0, 0, 1,1.0,0.0
+
+*kilocalorie(s),kcal  ;  Kilogram-calorie (the nutritional calorie)
+ 2, 0, 0, 0, 1,4184.0,0.0
+
+*electron_volt(s),ev
+ 2, 0, 0, 0, 1,1.60209E-19,0.0
+
+*erg(s)
+ 2, 0, 0, 0, 1,1.0E-07,0.0
+
+
+; Power
+
+*horsepower,hp
+ 4, 0,-1, 0, 2,745.700,0.0
+
+*kilowatt(s),kw
+ 4, 0,-1, 0, 2,1000.0,0.0
+
+*watt(s),w
+ 4, 0,-1, 0, 2,1.0,0.0
+
+
+; Electric charge:
+
+*coulomb(s)
+ 0, 1, 0, 0, 0,1.0,0.0
+
+*electron_charge(s)
+ 0, 1, 0, 0, 0,1.60209E-19,0.0
+
+
+; Electric current:
+
+*microampere(s),microamp(s)
+ 2, 1,-1, 0, 1,0.000001,0.0
+
+*milliampere(s),milliamp(s),ma
+ 2, 1,-1, 0, 1,0.001,0.0
+
+
+; Electromotive force:
+
+*volt(s),v
+ 2,-1, 0, 0, 1,1.0,0.0
+
+*millivolt(s),mv
+ 2,-1, 0, 0, 1,0.001,0.0
+
+*microvolt(s)
+ 2,-1, 0, 0, 1,0.000001,0.0
+
+
+; Electric resistance:
+
+*ohm(s)
+ 0,-2, 1, 0, 0,1.0,0.0
+
+
+; Electric capacitance:
+
+*farad(s)
+-2, 2, 0, 0,-1,1.0,0.0
+
+
+; Electric inductance:
+
+*henry,henries
+-2,-2, 2, 0,-1,1.0,0.0
+
+
+; Magnetic flux:
+
+*maxwell(s)
+ 0,-1, 1, 0, 0,1.0E-08,0.0
+
+*weber(s)
+ 0,-1, 1, 0, 0,1.0,0.0
+
+
+; Magnetic induction:
+
+*gauss(es)
+ 2,-1,-1, 0, 2,0.0001,0.0
+
+*tesla(s)
+ 2,-1,-1, 0, 2,1.0,0.0
+
+
+; Angle
+
+*arc_minute(s)
+ 0, 0, 0, 0, 0,60.0,0.0
+
+*arc_second(s)  ;  Used as the fundamental angular unit.
+ 0, 0, 0, 0, 0,1.0,0.0
+
+*circle(s)
+ 0, 0, 0, 0, 0,1296000.0,0.0
+
+*degree(s),deg
+ 0, 0, 0, 0, 0,3600.0,0.0
+
+*grad(s)
+ 0, 0, 0, 0, 0,3240.0,0.0
+
+*quadrant(s)
+ 0, 0, 0, 0, 0,324000.0,0.0
+
+*radian(s)
+ 0, 0, 0, 0, 0,206264.80624709636,0.0
+
+
+; Solid angle
+
+*hemisphere(s)
+ 0, 0, 0, 0, 0,6.28318530717958647692,0.0
+
+*sphere(s)
+ 0, 0, 0, 0, 0,12.56637061435917295384,0.0
+
+*steradian(s)
+ 0, 0, 0, 0, 0,1.0,0.0
+
+
+; Dimensionless multiples and submultiples:
+
+*atto
+ 0, 0, 0, 0, 0,1.0E-18,0.0
+
+*centi
+ 0, 0, 0, 0, 0,0.01,0.0
+
+*deca,deka
+ 0, 0, 0, 0, 0,10.0,0.0
+
+*deci
+ 0, 0, 0, 0, 0,0.1,0.0
+
+*exa
+ 0, 0, 0, 0, 0,1.0E+18,0.0
+
+*femto
+ 0, 0, 0, 0, 0,1.0E-15,0.0
+
+*giga
+ 0, 0, 0, 0, 0,1.0E+09,0.0
+
+*hecto
+ 0, 0, 0, 0, 0,100.0,0.0
+
+*kilo
+ 0, 0, 0, 0, 0,1000.0,0.0
+
+*mega
+ 0, 0, 0, 0, 0,1.0E+06,0.0
+
+*micro
+ 0, 0, 0, 0, 0,1.0E-06,0.0
+
+*milli
+ 0, 0, 0, 0, 0,0.001,0.0
+
+*nano
+ 0, 0, 0, 0, 0,1.0E-09,0.0
+
+*peta
+ 0, 0, 0, 0, 0,1.0E+15,0.0
+
+*pico
+ 0, 0, 0, 0, 0,1.0E-12,0.0
+
+*tera
+ 0, 0, 0, 0, 0,1.0E+12,0.0

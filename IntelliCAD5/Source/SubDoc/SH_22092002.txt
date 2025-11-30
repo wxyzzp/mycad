@@ -1,0 +1,44 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_22092002.txt
+Date:		22-09-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission fixes the problems in the ACIS releated code to make 
+                solid functionality work.
+
+Comments:	There were many problems in the ACIS releated code in ICAD sub-project
+                ACIS, which caused build to fail and the solid functionalities failed to
+                work, Many ACIS functions were used in the code but the correcponding 
+                ACIS header files were not included. Also the names of the exported 
+                functions defined in ACIS.Dll didn't match names called in db\modeler.cpp. 
+                This submission fixed all of those problems to make solid functionality 
+                work.
+               
+
+Changed files:	
+
+		CvsHist:Source/Prj/Lib/ACIS/ACIS.h
+		CvsHist:Source/Prj/Lib/ACIS/acisHeaders.h
+		CvsHist:Source/Prj/Lib/ACIS/AsConstructor.cpp
+		CvsHist:Source/Prj/Lib/ACIS/AsExtractor.cpp
+		CvsHist:Source/Prj/Lib/ACIS/AsModeler.cpp
+		CvsHist:Source/Prj/Lib/ACIS/AsModeler.h
+		CvsHist:Source/Prj/Lib/ACIS/AsSnaping.cpp
+		CvsHist:Source/Prj/Lib/ACIS/AsTools.cpp
+		CvsHist:Source/Prj/Lib/ACIS/AsTools.h
+		CvsHist:Source/Prj/Lib/ACIS/AsViewer.cpp
+		
+Build:          The environment variable A3DT must be defined and all ACIS DLLs must
+                be copied to the same directory as ACIS.DLL.
+
+
+--------------------------------------------------------------------------------

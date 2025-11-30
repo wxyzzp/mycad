@@ -1,0 +1,15 @@
+;_Created_by_Stephen_Hou_on_3/31/2003______
+logfilename log\6542.log
+logfileon
+;___________
+cylinder
+e
+0,0,1
+4,0,2
+3,0
+5
+;___________
+dxfout output_dxf\6542.dxf
+6
+quit
+y

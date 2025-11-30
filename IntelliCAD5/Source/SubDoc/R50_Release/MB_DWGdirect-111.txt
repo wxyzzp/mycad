@@ -1,0 +1,64 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-111
+Product Version:        IntelliCAD 5
+Date:                   10/08/2004 07:13am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release & Icad_cee.
+
+2.  Modules Affected:
+	ICAD
+	CMDS
+	DB
+
+3.  Overview:
+	This submission allow wblock to export a .DXF file based on the file
+	name extension passed into the command.
+
+	In addition, I went through the whole database and made 2004 the default
+	drawing for all commands.
+
+	Also, submitted the subdoc MB_DWGdirect-110 to the repository. Somehow
+	I missed submitting it with the file changes.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+-------------------------------------------------------------------------------
+Reference:        bugzilla number.  If it is not a bugfix, skip this field or better yet, provide the name of the design doc.
+Added files:      list of new files added to source code. If no files are added then skip this field.
+Affected files:   list of affected files.
+Description:      description of submission.
+Reviewer's Name and Comments:
+-------------------------------------------------------------------------------
+
+        source/prj/lib/cmds/cmdswblock.cpp
+        source/prj/icad/docautosds.cpp
+        source/prj/icad/icadattextdia.cpp
+        source/prj/icad/icadview.cpp
+        source/prj/lib/cmds/clonehelper.cpp
+        source/prj/lib/cmds/cmds8.cpp
+        source/prj/lib/cmds/explode.cpp
+        source/prj/lib/db/drawing.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-111.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

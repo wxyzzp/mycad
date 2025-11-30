@@ -1,0 +1,9 @@
+logfilename log\plotc.log
+logfileon
+open dwg\hatch.dwg
+(load "lisp\plotc.lsp")
+plotc
+dxfout output_dxf\plotc.dxf
+6
+close n
+exit

@@ -1,0 +1,35 @@
+logfilename log\78331.log
+logfileon
+;_____create_a_line____
+line
+0,0
+5,5
+
+;_____put_the_line_to_a_block______
+block
+a
+0,0
+last
+
+;_____insert_the_block_to_drawing____
+insert
+
+0,0
+
+
+
+;_____xclip_the_line_with_a_rectangle____
+xclip
+3,3
+N
+R 
+1,1 4,4
+;_____ZOOM_Extents_the_line______
+zoom
+extents
+;_____the_line_should_fit_to_the_screen____
+;__________
+dxfout output_dxf\78331.dxf
+6
+quit
+y

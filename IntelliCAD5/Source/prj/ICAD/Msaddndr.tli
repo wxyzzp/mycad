@@ -1,0 +1,40 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8867.0 (5fe2456a).
+//
+// Wrapper implementations for Win32 type library D:\Program Files\Common Files\designer\Msaddndr.tlb
+// compiler-generated file created 01/16/01 at 12:00:10 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface _IDTExtensibility2 wrapper method implementations
+//
+
+inline HRESULT _IDTExtensibility2::OnConnection ( IDispatch * Application, enum ext_ConnectMode ConnectMode, IDispatch * AddInInst, SAFEARRAY * * custom ) {
+    HRESULT _hr = raw_OnConnection(Application, ConnectMode, AddInInst, custom);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT _IDTExtensibility2::OnDisconnection ( enum ext_DisconnectMode RemoveMode, SAFEARRAY * * custom ) {
+    HRESULT _hr = raw_OnDisconnection(RemoveMode, custom);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT _IDTExtensibility2::OnAddInsUpdate ( SAFEARRAY * * custom ) {
+    HRESULT _hr = raw_OnAddInsUpdate(custom);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT _IDTExtensibility2::OnStartupComplete ( SAFEARRAY * * custom ) {
+    HRESULT _hr = raw_OnStartupComplete(custom);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT _IDTExtensibility2::OnBeginShutdown ( SAFEARRAY * * custom ) {
+    HRESULT _hr = raw_OnBeginShutdown(custom);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}

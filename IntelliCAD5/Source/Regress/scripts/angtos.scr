@@ -1,0 +1,7 @@
+logfilename log\angtos.log
+logfileon
+(load "Lisp\angtos.lsp")
+(C:main)  
+dxfout output_dxf\angtos.dxf
+6
+quit _y

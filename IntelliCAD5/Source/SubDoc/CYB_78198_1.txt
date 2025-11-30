@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78198_1.txt
+Date:		01-07-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78198
+Affected files:	Source/prj/lib/CMDS/DimOrdinate.cpp
+		
+Description:	Explode of Ordinate dimension with Dimtad=1 has extra line.
+Comments:	TaL78198.
+File by File:	
+		* Source/prj/lib/CMDS/DimOrdinate.cpp
+		
+		When UCS is not same as WCS, and when co-ordinates of pt13 and pt14
+		are entered parallel to any co-ordinate axes ( X / Y ) sometimes a ordinate 
+		dimension is drawn which has 3 lines in its dim block, where as it should have 
+		only 1 ( compare with ACAD ). This was a FUZZ problem solved with using 
+		cmd_real_equal instead of "=".   
+		
+		When dimtad was ON, there was an extra call to cmd_dimaddline
+		this logic was for adding the hookline under the text.
+		Now changed this code so that only the correct no of cmd_dimaddline
+		calls are made, depending on the condition. The end-point of the line
+		had been previously calculated, so the same point is being used for 
+		adding the line.      
+
+		This fix will now solve 2 problems 
+		a ) After explode there will be correct no of entries ( same as ACAD )
+		b ) Fly-over snaps will show end-points correctly, as the entity database 
+		will be correct now.	
+--------------------------------------------------------------------------------

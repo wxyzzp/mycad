@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+File:		CYB_78217_1.txt
+Date:		12-08-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78217
+Affected files:	
+		Source/prj/ICAD/IcadGrips.cpp
+		Source/prj/lib/CMDS/dimensions.cpp
+Description:	Dimensions are displaced on grip editing twice after UCS change
+Comments:	TaL78217
+File_By_File:
+	*	Source/prj/ICAD/IcadGrips.cpp
+		The actual problem was there was some converstion taking place which shouldn't 		have taken place depending on plink->BeginDrag variable. This variable is set to 		false when we start dragging but when escape is pressed it's not reset to true. 		Due to this wrong converstion were taking place and hence there was shiting of 				dimension.So now we have reset plink-BeginDrag at start of dragging to avoid the 		problem. For this we have to include dimension.h and extern the varible extern 		struct cmd_dimeparlink* plink, so that we can reset it properly.
+
+	*	Source/prj/lib/CMDS/dimensions.cpp
+		if you see the function cmd_initialize(), you will notice that initially ie 				when we allocate memory for plink we initialze the plink->BeginDrag=TRUE; This 				means that the default value should be 	plink->BeginDrag=TRUE; BUT when we 				reset the value,plink->BeginDrag becomes FALSE. This is wrong. So we have added 			plink->BeginDrag=TRUE; when we reset plink structure.
+
+--------------------------------------------------------------------------------

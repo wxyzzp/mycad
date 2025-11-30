@@ -1,0 +1,1046 @@
+Notes for Build_38:
+To reproduce this build in R40_Dev, checkout tag For_Build_35, For_Build_36, then For_Build_37 and then For_Build_38.
+
+In R40_Integration, checkout tag Build_38.
+
+We have error free regress!  Actually 2 scripts failed during the regress run, 
+but ran without errors when run individually.  
+
+CHANGED FILES:
+The following files were changed in R40_Dev during this build period:
+A	2004-01-20:21:11	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_dwgdirectwriter-3.txt
+M	2004-01-20:21:11	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/viewtabrec.cpp
+M	2004-01-20:21:11	markba	1.1.1.1.14.1	IntelliCAD/Source/prj/lib/DB/viewtabrec.h
+M	2004-01-20:21:11	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-01-20:21:11	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-01-20:21:11	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-01-20:21:11	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+A	2004-01-28:14:54	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_dwgdirectwriter-4.txt
+M	2004-01-28:14:54	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-01-28:14:54	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-01-28:14:54	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/DWGdirect.chm
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiEnhancedMetafile.cpp
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiEnhancedMetafile.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiRasterImage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExHostAppServices.cpp
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExOdStorage.cpp
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExOdStorage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.cpp
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExSystemServices.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/OdFileBuf.cpp
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/ExServices/OdFileBuf.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisData.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisFile.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/AcisRenderer.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/CAseDLPNTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/CloneFilers.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/CmColor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DDPackageVersion.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DD_PackPop.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DD_PackPush.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db2LineAngularDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db2dPolyline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db2dVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3PointAngularDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3dPolyline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3dPolylineVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Db3dSolid.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAbstractViewTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAbstractViewTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAbstractViewportData.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAlignedDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbArc.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbArcAlignedText.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAttribute.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAttributeDefinition.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbAudit.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockBegin.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockEnd.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockIterator.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockReference.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBlockTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbBody.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbCircle.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbColor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbCurve.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDatabase.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDatabaseReactor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDate.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDiametricDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDictionary.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDictionaryVar.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDictionaryWithDefault.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimAssoc.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimStyleTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimStyleTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbEllipse.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbEntity.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbEntityWithGrData.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbErrorInvalidSysvar.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbExport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbExtents.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFace.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFaceRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFcf.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFiler.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFilter.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbFrame.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGeDwgIO.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGeDxfIO.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGraph.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGroup.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbGsManager.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHandle.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHatch.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHostAppServices.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbHyperlink.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbIdBuffer.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbIdMapping.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbImage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbIndex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbIntArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerFilter.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerIndex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayerTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayout.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLayoutManager.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLeader.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLine.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLinetypeTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbLinetypeTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMInsertBlock.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMText.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMaterial.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbMlineStyle.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbModelerGeometry.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObjPtrArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObjectId.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObjectIterator.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbObjectReactor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbOle2Frame.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbOleFrame.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbOrdinateDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlaceHolder.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlotSettings.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPlotSettingsValidator.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPoint.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyFaceMesh.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyFaceMeshVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolygonMesh.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolygonMeshVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbPolyline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbProxyEntity.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbProxyExt.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbProxyObject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRadialDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterImage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterImageDef.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRasterVariables.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRay.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRegAppTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRegAppTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRegion.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbRotatedDimension.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSafeTransaction.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSequenceEnd.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbShape.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSolid.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSortentsTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpatialFilter.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpatialIndex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSpline.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbStubPtrArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSubentId.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSymUtl.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSymbolTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSymbolTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbSystemServices.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbText.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTextIterator.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTextStyleTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTextStyleTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTrace.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTransact.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbTransactionReactor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbUCSTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbUCSTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbUndoController.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbVPortEntHeaderTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbVPortEntHeaderTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbVbaProject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbViewTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbViewTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbViewport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbViewportTable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbViewportTableRecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbWipeout.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbWipeoutVariables.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbXline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbXrecord.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DbXrefGraph.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DebugStuff.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DimVarDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/DynamicLinker.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/EdCmd.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Editor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/EditorImpl.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Entities.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ErrorDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/FlatMemStream.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/GeometryFromProxy.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/GiStack.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/HatchPatternManager.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Int32Array.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Int64.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/MemoryStream.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/MessageDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ModelerGeometry.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Objects.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdArrayPreDef.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdBinaryData.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdCharMapper.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdCodePage.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdErrorContext.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdErrorContextWithId.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdFileDepMgr.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdFont.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/OdFontServices.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdList.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdMemory.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdMultimap.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdMutex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdPlatform.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdStreamBuf.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdString.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdToolKit.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaCommon.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaSTL.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaToolkit_i.c
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaX_i.c
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OdaxMath.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/OleStorage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RText.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RasterImageLoader.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ResBuf.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RootExport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDictionary.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxDispatchImpl.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxEvent.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/RxInit.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxIterator.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxModule.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxNames.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxObject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxObjectImpl.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/RxVariantValue.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/SharedPtr.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/SmartPtr.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/StaticRxObject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/SysVarDefs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Tables.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ThumbnailImage.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/UInt16Array.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/UInt8Array.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Version.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ViewX_i.c
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/XRefMan.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/dlldata.c
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/odaxwrap.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/odole.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/summinfo.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrep.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepComplexTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepEdgeTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepFaceTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepShellTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrBrepVertexTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrCoEdge.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrComplex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrComplexShellTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdge.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdgeCoEdgeTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEdgeLoopTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEntity.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEnumToString.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrEnums.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrExport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrFace.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrFaceLoopTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoop.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoopCoEdgeTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrLoopVertexTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrShell.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrShellFaceTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertexEdgeTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/BrVertexLoopTraverser.h
+R	2004-01-30:14:33	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Br/RootExport.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrep.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrepComplexTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrepEdgeTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrepFaceTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrepShellTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrBrepVertexTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrComplex.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrComplexShellTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrEdge.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrEdgeLoopTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrEntity.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrEnums.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrExport.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrFace.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrFaceLoopTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrLoop.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrLoopEdgeTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrLoopVertexTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrShell.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrShellFaceTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrSystemInternals.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrVertex.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrVertexEdgeTraverser.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/DDBr/DDBrVertexLoopTraverser.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/CmColorArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/CmEntityColorArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/Ge.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeAugPolyline3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeBoundBlock2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeBoundBlock3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeBoundedPlane.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCircArc2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCircArc3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeClipBoundary2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCompositeCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCompositeCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCone.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCubicSplineCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCubicSplineCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurveBoundary.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurveCurveInt2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurveCurveInt3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCurveSurfInt.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeCylinder.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeDouble2dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeDoubleArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipArc2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipArc3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCone.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEllipCylinder.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEntity2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeEntity3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExtents2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExtents3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExternalBoundedSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExternalCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExternalCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeExternalSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeFileIO.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeFiler.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeGbl.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeImpInterval.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeIntArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeInterval.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeKnotVector.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLibVersion.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLine2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLine3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLineSeg2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLineSeg2dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLineSeg3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLinearEnt2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeLinearEnt3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeMatrix2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeMatrix3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeNurbSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeOffsetCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeOffsetCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeOffsetSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePlanarEnt.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePlane.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePoint2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePoint2dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePoint3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePoint3dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePointEnt2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePointEnt3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePointOnCurve2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePointOnCurve3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePointOnSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePolyline2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePolyline3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePosition2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GePosition3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeRay2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeRay3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeScale2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeScale3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeShell.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSphere.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSplineEnt2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSplineEnt3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSurfSurfInt.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeSurface.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeTol.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeTorus.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVector2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVector2dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVector3d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVector3dArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ge/GeVoidPointerArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/Gi.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiAbstractDrawObject.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiBaseDrawObject.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiBaseVectorizer.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiClipBoundary.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiCommonDraw.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiContextForDbDatabase.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorConnector.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorEntryPoint.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorGeometry.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiConveyorNode.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiDeviation.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiDrawable.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiDrawableImpl.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiEmptyGeometry.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiEnhancedMetafile.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiExport.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiExtents.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiGeometry.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiGeometrySimplifier.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetype.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetypeGenerator.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiLinetyper.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiMaterial.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiMaterialData.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiModelToViewProc.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiOrthoClipper.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiPolyline.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiRasterImage.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSegTaker.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSelector.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSmartDrawObject.h
+R	2004-01-30:14:33	markba	1.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSmartGeometry.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiSubEntityTraitsData.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiTextStyle.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiViewport.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiViewportDraw.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiViewportGeometry.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiWorldDraw.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiWorldGeometry.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/GiXform.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/OdPolyPolygon2d.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/OdPolyPolygon3d.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gi/TtfDescriptor.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/Gs.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBMPDevice.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBase.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseOpenGL.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBaseVectorizer.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsBitMap.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsDCPointArray.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsExport.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsLight.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsModel.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsOpenGLVectorizer.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsPath.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/GsSelectionReactor.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/Gs/PlotStyle.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/ModelerGeometry/ModelGeomExport.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/SpatialIndex/BBox.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/SpatialIndex/SpExtents.h
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/Include/SpatialIndex/SpatialIndex.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ve/AveLight.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/Include/Ve/AveMaterial.h
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Acis.lib
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib
+M	2004-01-30:14:33	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib
+A	2004-01-30:14:33	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib
+A	2004-01-30:14:34	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib
+A	2004-01-30:14:34	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib
+A	2004-01-30:14:34	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib
+M	2004-01-30:14:34	markba	1.1.2.2	IntelliCAD/Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib
+A	2004-01-30:17:39	markba	1.1.2.1	IntelliCAD/Source/Licensed/DWGdirect/ExServices/ExGiRasterImage.cpp
+A	2004-01-30:17:39	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_dwgdirect_codedrop.txt
+M	2004-01-30:17:39	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-01-30:17:39	markba	1.1.2.6	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-01-30:17:39	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-01-30:17:39	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-01-30:17:39	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-01-30:17:39	markba	1.1.2.2	IntelliCAD/Source/prj/make/ExServices.dsp
+M	2004-01-30:17:39	markba	1.13.4.15	IntelliCAD/Source/prj/make/db.dsp
+M	2004-02-01:16:29	master	1.4.6.39	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-01-29:07:37	stephenh	1.7.4.8	IntelliCAD/Source/prj/lib/CMDS/offset.cpp
+A	2004-01-29:07:40	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_78710_1.doc
+
+CHANGELOG:
+
+------------------------------------------------------------------------------------
+Date:		28-01-2004
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78710
+Affected files: 
+		Source/prj/lib/CMDS/offset.cpp 
+		Source/SubDoc/SH_78710_1.doc
+Description:    Fixes the bug that cause ICAD to crash while offsetting polyline 
+                with coincident adjcent arc segments.
+Comments:	TaL78710
+------------------------------------------------------------------------------------
+
+REGRESS:
+
+Script Name 	Time	Memory
+2-D.scr	3154	13295616
+2-D_entityEMF.scr	3604	13410304
+2-D_entityEMF95.scr	3594	13414400
+2-D_entityEMFNT.scr	3594	13418496
+2-D_entitySLD.scr	3594	13340672
+2-D_entitySLD95.scr	3564	13344768
+2-D_entitySLDNT.scr	3534	13340672
+2-D_entity_color_layer.scr	3124	13324288
+2dintersection_options.scr	1521	12783616
+3d.scr	2412	13291520
+3darray_c_options.scr	5858	13692928
+3darray_p_options.scr	5868	13709312
+3darray_r_options.scr	92892	66072576
+3dface_vba.scr	1912	14299136
+3dintersection_options.scr	1601	12767232
+3dmeshes2.scr	7369	18030592
+3dpoly_options.scr	1811	12984320
+3dpoly_vba.scr	1801	14254080
+3dspiral_3dspiral.scr	2542	13508608
+3dspiral_spiral.scr	2372	13344768
+3d_box_options.scr	1901	13049856
+3d_cone_options.scr	1992	13266944
+3d_cylinder_Options.scr	3354	17285120
+3d_dish_Options.scr	7560	30044160
+3d_dome_Options.scr	7420	30040064
+3d_entities.scr	4486	15536128
+3d_mesh_options.scr	6959	41361408
+3d_pyramid_options.scr	2012	13025280
+3d_sphere_Options.scr	7580	30437376
+3d_torus_Options.scr	4666	20635648
+3d_wedge_options.scr	1901	13045760
+50537.scr	1791	14868480
+60619.scr	2793	13312000
+60681_1.scr	2242	13324288
+60914.scr	1781	13156352
+60918.scr	2393	13283328
+61474.scr	2993	13385728
+64188_Base.scr	2052	13225984
+64188_Cont.scr	2031	13225984
+6542.scr	1521	12906496
+68870.scr	2062	13627392
+70921.scr	2623	13488128
+70921_1.scr	2953	13557760
+72001.scr	1381	12271616
+73862.scr	1611	12967936
+75763.scr	1491	12865536
+75883.scr	1761	13000704
+76186.scr	12697	13844480
+76526.scr	1821	12972032
+77456.scr	4155	26107904
+77770_Aligned.scr	3654	13561856
+77770_Linear.scr	3694	13574144
+77770_Rotated.scr	3794	13541376
+77816.scr	1571	12972032
+77848.scr	3324	13234176
+77860.scr	24465	36245504
+77887.scr	2603	13414400
+77888.scr	3163	14491648
+77892.scr	1741	12963840
+77907.scr	2123	12996608
+77943.scr	1611	13148160
+77947.scr	1821	12914688
+77972.scr	3094	13295616
+78005.scr	1951	13160448
+78010.scr	2553	13156352
+78034.scr	1571	12926976
+78036.scr	1761	13983744
+78037.scr	2633	13783040
+78047.scr	2002	14716928
+78057.scr	1611	13320192
+78069_78002.scr	3163	13946880
+78075.scr	2011	13262848
+78075_1.scr	1501	13045760
+78075_2.scr	2092	13283328
+78079.scr	4676	14012416
+78090.scr	1611	13164544
+78092.scr	5407	18472960
+78105.scr	1791	13230080
+78110.scr	1611	13111296
+78119.scr	1621	13295616
+78120.scr	1471	12996608
+78120_test.scr	2202	13434880
+78130.scr	2052	13434880
+78135.scr	2602	12947456
+78136.scr	1581	13119488
+78140.SCR	3083	13467648
+78149.scr	1561	13058048
+78151.scr	2082	13217792
+78153.scr	2383	13352960
+78155.scr	2693	13377536
+78165.scr	1761	13049856
+78165_1.scr	1731	13041664
+78165_2.scr	1881	13062144
+78165_3.scr	1881	13058048
+78167.scr	2002	13209600
+78168_attdef.scr	1731	12886016
+78168_attedit.scr	1881	13082624
+78168_dimstyle.scr	1952	12865536
+78168_insert.scr	1551	13021184
+78168_layer.scr	2122	12873728
+78168_layout.scr	1651	12910592
+78168_minsert.scr	1631	13041664
+78168_mtext.scr	1711	12890112
+78168_rename.scr	2182	13246464
+78168_style.scr	1581	12800000
+78168_text.scr	1641	12877824
+78168_toolbars.scr	3003	13119488
+78168_ucs.scr	1581	13012992
+78168_view.scr	1611	13037568
+78168_xref.scr	2563	14036992
+78175.scr	1591	13266944
+78177.scr	1471	13213696
+78179.scr	2122	13365248
+78181.scr	1771	13303808
+78182.scr	2833	13561856
+78183.scr	1952	13455360
+78195.scr	4676	13656064
+78197.scr	2823	13930496
+78198.scr	2303	13541376
+78199_1.scr	1901	13312000
+78203.scr	1891	13377536
+78204.scr	3754	13586432
+78205.scr	2082	13266944
+78222.scr	4305	14856192
+78222_1.scr	2182	13295616
+78236.scr	3694	13582336
+78238.scr	5507	13987840
+78238_1.scr	20819	15179776
+78243.scr	2052	14057472
+78248.scr	2443	13148160
+78250.scr	1531	13332480
+78260_78273.scr	6208	13848576
+78260_78273_1.scr	6369	14548992
+78265.scr	3754	13410304
+78277.scr	1871	13344768
+78284.scr	2663	13570048
+78287.scr	1481	12988416
+78300_a.scr	78452	17596416
+78300_c.scr	72313	15986688
+78300_h.scr	41258	15581184
+78300_t.scr	47297	15642624
+78300_w.scr	45765	15597568
+78305.scr	28740	14417920
+78310_1.scr	2873	13631488
+78310_2.scr	2753	13635584
+78331.scr	1611	13307904
+78339.scr	1501	12652544
+78343.scr	201098	19275776
+78346a.scr	1821	14692352
+78376_1.scr	2573	13242368
+78377.scr	2272	17166336
+78393_T1fts011.scr	47837	36188160
+78395.scr	1431	12484608
+78410.scr	5858	19910656
+78411_defaultcommands.scr	1651	13107200
+78411_s.scr	1731	12484608
+78414.scr	1611	13271040
+78417.scr	2873	17350656
+78417_1.scr	2863	17367040
+78418.scr	80234	14594048
+78419.scr	3114	13877248
+78419_1.scr	158357	15699968
+78419_leamitest.scr	3173	13873152
+78425.scr	1861	13643776
+78440_checkcond.scr	1381	12476416
+78440_icad.scr	1461	12484608
+78441_setq.scr	1451	12484608
+78441_v.scr	1461	12484608
+78442.scr	1521	12484608
+78442_1.scr	1371	12484608
+78444_misc.scr	3855	14876672
+78444_purge_all.scr	4986	15753216
+78444_xref_detach.scr	3695	15286272
+78476.scr	1691	13148160
+78476_entmake.scr	1461	13062144
+78476_vba.scr	1741	14438400
+78508.scr	1691	13369344
+78518_lisp.scr	2743	13307904
+78536.scr	1611	13262848
+78538.scr	1481	13148160
+78548.scr	2253	14966784
+78549.scr	1441	13078528
+78556.scr	1531	13164544
+78558.scr	1811	13402112
+78564.scr	3725	26087424
+78577.scr	1861	13365248
+78593_vba.scr	1571	14446592
+78600.scr	1771	14614528
+78604.scr	1551	13127680
+78619.scr	1511	13131776
+78620.scr	1751	13324288
+78648.scr	1491	13086720
+78651.scr	1461	13029376
+78686.scr	1551	13103104
+78700.scr	1511	13148160
+78708.scr	1551	13156352
+AccTest-cond.scr	89197	13955072
+AccTest-conv.scr	10254	13803520
+AccTest-function.scr	6778	13795328
+AccTest-geo.scr	2813	13398016
+AccTest-list.scr	71351	14667776
+AccTest-math.scr	16382	13844480
+AccTest-string.scr	14901	14053376
+AccTest-sym.scr	76029	13848576
+AccTest-symtbl2.scr	5778	13750272
+AccTest-util.scr	5237	13553664
+AI_3d_entities.SCR	4456	15745024
+ai_box_options.scr	1881	13246464
+ai_cone_options.scr	2092	13852672
+ai_cylinder_Options.scr	2002	13631488
+ai_dish_Options.scr	7430	30232576
+ai_dome_Options.scr	7360	30228480
+ai_pyramid_options.scr	1882	13213696
+align_options.scr	3103	13561856
+alloc.scr	1441	12963840
+angtos.scr	1731	12972032
+aperture_options.scr	1491	12980224
+application_vba.scr	1711	14524416
+approved.scr	1751	13357056
+arc.scr	3764	13705216
+arcs.scr	5397	13598720
+arctex_at.scr	1481	13123584
+arc_vba.scr	1701	14520320
+array_r_options.scr	2262	13619200
+arryc2.scr	5517	13697024
+arryp2.scr	5517	13697024
+attdef_options.scr	1972	13144064
+attdisp.scr	1761	13271040
+attdisp_options.scr	2693	13406208
+attedit_options.scr	2944	13455360
+attext.scr	1761	13291520
+attext_options.scr	2383	13438976
+ATTRIButes1.SCR	4475	13684736
+aunitformats.scr	1571	13111296
+aunits.scr	1601	13103104
+B4.SCR	1841	13340672
+base_options.scr	1581	13012992
+bhatch_options.scr	2563	13471744
+bhatch_options_2.scr	2943	13545472
+blipmode_options.scr	1531	12984320
+blockexp.scr	16783	32899072
+block_options.scr	2062	13500416
+bmpout_options.scr	1691	13844480
+break_options.scr	2432	13336576
+Cardiod.scr	6559	13520896
+celtscale.scr	1651	13123584
+center_snap_options.scr	1451	12959744
+Chair_rarray.scr	3444	20041728
+chamfer_options.scr	2773	13332480
+change_options.scr	3294	13529088
+checkdimvars1.scr	186176	21483520
+checkVars_intbool.scr	33698	14880768
+checkVars_real.scr	15992	14774272
+child_windows_options.scr	1581	12922880
+chprop_options.scr	1661	13234176
+Circles.scr	1842	13488128
+circlesEntity.scr	3424	13557760
+cmdbar_options.scr	1521	12554240
+color_options.scr	2062	13058048
+CONCIRCLEADD.scr	1831	13225984
+CONCIRCLESUB.scr	1721	13180928
+Conference.scr	25736	38576128
+coordinate_options.scr	1601	12992512
+copy2d.scr	4195	13660160
+copyclip_options.scr	2232	14614528
+copyedata_options.scr	1561	13189120
+Copymove.scr	2633	13402112
+cursorsize.scr	1992	13000704
+cutclip_options.scr	2182	14565376
+cutube.scr	1561	13275136
+cvport_options.scr	1701	13066240
+deledata_options.scr	1551	13180928
+dictadd.scr	1481	12996608
+dictnext.scr	1521	13033472
+dictremove.scr	1531	12988416
+dictrename.scr	1481	13000704
+dictsearch.scr	1521	12992512
+dim1_options.scr	4796	13725696
+dimclrt.scr	1441	12681216
+dimedit_oblique.scr	5827	14004224
+dimedit_rotate.scr	5907	14082048
+dimfit_vars_check.scr	1541	12967936
+dimtad.scr	2243	13434880
+dimtedit.scr	5587	14065664
+dimtedit_RotatedDim.scr	5517	13991936
+dimtext.scr	1982	13328384
+dimtim.scr	1841	13369344
+dimtol.scr	1841	13430784
+DimUpdateAll.scr	4275	14086144
+Dim_ArrowHeads.SCR	16382	18255872
+Dim_DIMFIT.SCR	26467	20357120
+dist_options.scr	1621	12988416
+divide_options.scr	2783	13291520
+dlength.scr	1951	13209600
+donuts.scr	2863	13672448
+dragmode_options.scr	1501	12951552
+dview_options.scr	2052	13213696
+dwgcodepage_options.scr	2302	13025280
+dxfin_options.scr	1461	12951552
+edgesurf_options.scr	6418	17510400
+editlen_arc_options.scr	2403	13266944
+editlen_line_options.scr	2402	13225984
+editpline_options.scr	2232	13316096
+editpline_vertices_options.scr	2613	13225984
+elevation.scr	2502	17313792
+elev_options.scr	1571	13000704
+ellipse1.scr	2213	13725696
+ellipse_option.scr	13228	22630400
+ellipticalarc.scr	1951	13217792
+endpoint_options.scr	1521	12959744
+Entities.scr	8441	25403392
+erase.scr	3585	13389824
+esnap_options.scr	2392	13049856
+exlode_non-uniform-circle.scr	1591	13299712
+extend_options.scr	2402	13221888
+ezoom_cir.scr	309815	17518592
+ezoom_ellipse.scr	209029	15343616
+ezoom_polygon.scr	97429	15233024
+ezoom_xline.scr	69669	15151104
+face_options.scr	2943	13254656
+Fillet.scr	5797	13783040
+fill_options.scr	1561	12984320
+flatten_lne_options.scr	2372	13230080
+graphscr.scr	1361	12484608
+gridmode.scr	1611	12980224
+grid_options.scr	1651	13017088
+gripcolor.scr	2132	13201408
+group_options.scr	1611	13201408
+grTest1.scr	2122	13090816
+grTest2.scr	3254	13242368
+handles_options.scr	1271	12480512
+hidetext.scr	1431	12972032
+Hyper001.scr	1461	13692928
+Hyper002.scr	1401	13582336
+Hyper003.scr	1441	13582336
+Hyper004.scr	1431	13582336
+Hyper005.scr	1441	13672448
+hyperlink.scr	1431	13148160
+hyperlinkoptions.scr	1371	12943360
+idpoint_options.scr	1421	13004800
+infline_options.scr	1722	13160448
+Insertf.scr	56510	67682304
+insertion_options.scr	1541	12963840
+inters.scr	1371	12955648
+intersection_options.scr	1411	12959744
+isoplane_options.scr	1421	12984320
+join_options.scr	1821	13213696
+knuckle.scr	4906	13934592
+lastangle.scr	1361	13070336
+Layers.scr	2372	13381632
+layer_options.scr	1671	13045760
+layouts1.scr	2563	13172736
+layouts2.scr	2573	13164544
+layouts3.scr	1511	13070336
+LCREA.scr	4636	18128896
+leader_options.scr	1931	13279232
+lgrid.scr	11075	13570048
+limits_options.scr	1411	13025280
+Lines.scr	2152	13459456
+lisp1.scr	1461	13119488
+lisp2.scr	1551	13148160
+list_options.scr	5246	14028800
+lsp_caaadddrrr.scr	2021	13000704
+lsp_eq.scr	1411	12963840
+lsp_exit.scr	1461	12943360
+lsp_getcorner.scr	1431	12959744
+lsp_getorient.scr	1461	12955648
+lsp_logical.scr	1481	12951552
+lsp_math.scr	1481	12963840
+lsp_nentsel.scr	1461	13078528
+lsp_nentselp.scr	1481	13078528
+lsp_prin1.scr	1481	12955648
+lsp_quit.scr	1441	12943360
+lsp_trace_untrace.scr	1441	12951552
+matchprop_lineweight.scr	1561	13168640
+matchprop_options.scr	1941	13238272
+maxsort.scr	1761	12980224
+measure_options.scr	2934	13307904
+menuload_options.scr	3825	13283328
+menuunload_options.scr	4656	13484032
+menu_options.scr	4095	12873728
+mesh_options.scr	2172	12943360
+midpoint_options.scr	1901	12800000
+minsert.scr	2533	13312000
+minsert_options.scr	3845	13893632
+MIRROR2D.SCR	4085	13463552
+mirror3d_options.scr	10445	13598720
+mirror_options.scr	2713	13217792
+Misc.scr	4024	13484032
+moveedata_options.scr	2002	13004800
+move_2d.scr	3574	13443072
+msnapshot_options.scr	1861	12931072
+mspace_options.scr	2052	12980224
+mtext_options.scr	2903	13115392
+nearest_options.scr	1881	12804096
+node_options.scr	1851	12804096
+none_options.scr	1891	12800000
+oops.scr	9252	16314368
+orthogonal_options.scr	1901	12816384
+osmode.scr	2011	12808192
+pan.scr	2021	12943360
+parallel_options.scr	2052	13148160
+pdmode.scr	2463	12988416
+pdsize.scr	1932	12881920
+perpendicular_options.scr	1801	12804096
+pface_options.scr	1932	12906496
+pickdrag.scr	1872	12816384
+pickstyle.scr	2012	13049856
+plane_options.scr	2422	13012992
+planviewint_options.scr	1851	12804096
+plan_options.scr	2011	12972032
+Pline.scr	4215	14143488
+plinedist.scr	2072	13000704
+PLINELengthen1.SCR	3183	13393920
+pline_trim.scr	1941	13062144
+plotc.scr	4686	19034112
+plote.scr	4165	17678336
+PlotManager.scr	1871	12853248
+pl_elp.scr	20388	19468288
+pmthist.scr	2182	12922880
+pmthist_options.scr	1751	12312576
+point_options.scr	2002	12951552
+polararray2d.scr	3894	13766656
+Polygon2.scr	4225	13791232
+POLYGONS1.SCR	6358	13856768
+polygon_options.scr	1941	12795904
+Polyline.scr	6678	13922304
+polysides.scr	2402	13086720
+pspace_options.scr	2222	12996608
+purge_options.scr	2904	13139968
+qtext_options.scr	2192	12943360
+quadrant_options.scr	1901	12800000
+quick_options.scr	1932	12804096
+ray_options.scr	2573	13012992
+readaccelerators_options.scr	1901	12795904
+recarray.scr	4405	14069760
+RecPgonDonTrace.scr	2233	13201408
+rectangle_options.scr	3424	13197312
+redefine_options.scr	1952	12910592
+redo_options.scr	2002	12910592
+regenauto_options.scr	1971	12812288
+rename_options.scr	2612	13283328
+reverse_polyline.scr	2292	13008896
+Revsurf.scr	5597	15818752
+rotate2d.scr	4946	13471744
+rotate3d_options.scr	2303	13012992
+RotateMirror.scr	4145	13504512
+rotate_options.scr	2232	13017088
+Roughen.scr	37343	50036736
+Roughen_err.scr	32296	49999872
+rtrot_1.scr	2382	13189120
+RULESURF1.SCR	8862	14348288
+rulesurf_maxent_options.scr	24815	63275008
+rulesurf_options.scr	2202	13037568
+scale_circle_options.scr	2332	13004800
+scale_line_options.scr	2332	12996608
+scr1.scr	2352	14688256
+scr2.scr	3434	19599360
+scr3.scr	10864	35246080
+scr4.scr	2793	15495168
+scr5.scr	2303	14352384
+scrollbar_options.scr	2062	12824576
+select_options.scr	2002	12992512
+selgrips_options.scr	2052	12992512
+selgrip_options.scr	4105	13271040
+setlayer_options.scr	2282	12972032
+setvar.scr	4035	13099008
+shapelister.scr	2032	12992512
+shape_options.scr	2032	12984320
+SineCos.scr	27269	14057472
+skpoly.scr	1981	12816384
+snap_options.scr	2483	12894208
+solids.scr	2763	14012416
+sphere.scr	2062	13152256
+Spline.scr	3784	13971456
+statbar_options.scr	2192	12832768
+status_options.scr	1901	12312576
+stretch_dim_options.scr	2563	13189120
+stretch_line_options.scr	2402	13025280
+syswindows_options.scr	3334	14573568
+tablet_options.scr	1781	12312576
+tangent_options.scr	1921	12800000
+test_array1_no.scr	16784	34201600
+Textgrid.scr	2873	13369344
+text_options.scr	2482	13012992
+Theatre.scr	84250	65822720
+Thick_text.scr	19538	18161664
+time_options.scr	2272	12840960
+toolbars_command.scr	5437	13099008
+trace_options.scr	2212	13185024
+trim.scr	3724	13582336
+ucsicon_options.scr	2002	13045760
+ucs_options.scr	3484	13307904
+undelete_options.scr	1932	13209600
+undo_options.scr	2292	13254656
+units_aunits_auprec_options.scr	3574	13123584
+units_aunits_options.scr	2662	13099008
+units_lunits_options.scr	3534	13127680
+verify.scr	2012	13438976
+View.scr	2603	13451264
+viewpoint.scr	31704	37253120
+viewpoint_options.scr	1992	13139968
+viewports.scr	7379	20586496
+viewres_options.scr	1912	13037568
+view_options.scr	1882	13103104
+visible_options.scr	1801	13037568
+vmlout_options.scr	1832	13205504
+vplayer_options.scr	2202	13193216
+vports_options.scr	3915	13602816
+vsnapshot_options.scr	1781	13045760
+wblock_options.scr	3534	15073280
+wmfout_options.scr	1791	13144064
+xformssTest.scr	1942	13361152
+Xline_ray.scr	2703	13402112
+Xmastree.scr	4966	21200896
+xref_options.scr	2593	14184448
+zoom_options.scr	2403	13217792
+
+
+Error Script
+F:\Build-38\IntelliCAD\Source\Regress\scripts\3d_mesh_options.scr
+F:\Build-38\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+
+BUGZILLA:
+78710

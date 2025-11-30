@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_29072002_1.txt
+Date:		29-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/Regress_apps/regress Script Application/reg.exe
+		Source/Regress_apps/regress Script Application/reg.frm
+
+Deleted files:	
+		None
+
+Description:	Regress script application can run Autocad executable.
+Comments:	To benchmark scripts in Icad and Acad, the regress script application can run Acad as well. If the exe chosen is
+		not icad.exe (ie) the last 8 characters of the exe name is not "icad.exe", acad is run.
+
+		At this point, I am converting the regress scripts to run under Acad R14. This will form the basis for seeing
+		how slow Icad is withrespect to Acad.
+
+
+File by File:	
+		Source/Regress_apps/regress Script Application/reg.exe 		Rev 1.4
+			Updated version of the Exe.
+		Source/Regress_apps/regress Script Application/reg.frm		Rev 1.4
+			If exe is not "icad.exe", a "/b " is added to the command syntax to allow it run under Acad.
+
+-----------------------------------------------------------------------------

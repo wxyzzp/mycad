@@ -1,0 +1,55 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-114
+Product Version:        IntelliCAD 5
+Date:                   10/12/2004 14:04pm
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGdirect
+
+3.  Overview:
+	Dave suggested using a map container to hold old handle/new handle pairs
+	for a lookup table for OdDbBlockReference processing to find the block it
+	is derived from. 
+
+
+4.  Notes to Docs:
+	This situation can happen when you have a r12 drawing with anonymous blocks
+	with especially low handle values. The default drawing created for ouput has
+	a fair number of handles reserved in the lower values for things like block
+	table, styletable, layer 0, standard textstyle etc. It is possible in earlier
+	drawing files to have a handle clash between a block your attempting to add to
+	the block table and some other object that has the same handle. In that case,
+	the old and new handle is saved off for lookup of the new handle when an instance
+	of the block in question is created. See DWGdirectConverter::createOdDbBlockReference()
+	you'll get it.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+        source/prj/lib/drw/collectionclasses.h
+        source/prj/lib/drw/dwgdirectconverter.h
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-114.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

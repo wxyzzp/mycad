@@ -1,0 +1,30 @@
+logfilename log\78339.log
+logfileon
+circle
+5,5
+1
+attdef
+
+testAttrib
+testPrompt
+testDefaultText
+5,5
+
+
+block
+testblock
+5,5
+all
+
+insert
+testblock
+5,5
+1
+1
+0
+NewText
+(setq testval (cdr(assoc 70 (tblnext "block" T))))
+(if (/= 2 testval) (alert "Bugzilla:78339 failed!!  Expected groupcode 70 to equal 2"))
+exit y
+;				If we make it to this we have a successfult result.
+;				Failure would cause an alert box to appear.

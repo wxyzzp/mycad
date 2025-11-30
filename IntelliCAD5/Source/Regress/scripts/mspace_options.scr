@@ -1,0 +1,27 @@
+logfilename log\mspace_options.log
+logfileon
+;__________
+circle
+1,1
+2,1
+;______________
+tilemode
+0
+;_________
+mview
+0,0
+12,9
+;__________
+mspace
+;__________
+zoom
+extents
+;__________
+circle
+0.5,0.5
+1,0.5
+;__________
+dxfout output_dxf\mspace_options.dxf
+6
+quit
+y

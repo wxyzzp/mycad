@@ -1,0 +1,115 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect 108
+Product Version:        IntelliCAD 5
+Date:                   10/04/2004 06:00am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release & Icad_cee.
+
+2.  Modules Affected:
+	DWGDIRECT
+
+3.  Overview:
+	Updates the source code with the latest ODT code libraries.
+
+	Among other things this fixes the multiple recovers in a single
+	icad session problem. It also makes use of the new sortentstable
+	call to get hand/id pairs.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+		Source/Licensed/DWGdirect/ExServices/OdFileBuf.cpp
+		Source/Licensed/DWGdirect/ExServices/OdFileBuf.h
+		Source/Licensed/DWGdirect/Exports/2dExport/Source/2dExportDevice.cpp
+		Source/Licensed/DWGdirect/Exports/DwfExport/Source/DwfDrawObject.cpp
+		Source/Licensed/DWGdirect/Exports/SvgExport/Source/StdAfx.h
+		Source/Licensed/DWGdirect/Exports/SvgExport/Source/SvgExport.cpp
+		Source/Licensed/DWGdirect/Exports/SvgExport/Source/SvgWrappers.h
+		Source/Licensed/DWGdirect/Imports/DwfImport/Source/DwfImportImpl.cpp
+		Source/Licensed/DWGdirect/Include/DDVersion.h
+		Source/Licensed/DWGdirect/Include/DbBody.h
+		Source/Licensed/DWGdirect/Include/DbCommandContext.h
+		Source/Licensed/DWGdirect/Include/DbDatabase.h
+		Source/Licensed/DWGdirect/Include/DbFcf.h
+		Source/Licensed/DWGdirect/Include/DbGeDwgIO.h
+		Source/Licensed/DWGdirect/Include/DbGeDxfIO.h
+		Source/Licensed/DWGdirect/Include/DbSortentsTable.h
+		Source/Licensed/DWGdirect/Include/DbSystemServices.h
+		Source/Licensed/DWGdirect/Include/DebugStuff.h
+		Source/Licensed/DWGdirect/Include/MessageDefs.h
+		Source/Licensed/DWGdirect/Include/OdPlatformStreamer.h
+		Source/Licensed/DWGdirect/Include/OdString.h
+		Source/Licensed/DWGdirect/Include/OdWString.h
+		Source/Licensed/DWGdirect/Include/OdaX.h
+		Source/Licensed/DWGdirect/Include/OdaX_i.c
+		Source/Licensed/DWGdirect/Include/RxDispatchImpl.h
+		Source/Licensed/DWGdirect/Include/Ge/GeBoundBlock3d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeCurve3d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeEllipArc3d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeExtents2d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeExtents3d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeLinearEnt3d.h
+		Source/Licensed/DWGdirect/Include/Ge/GeNurbCurve3d.h
+		Source/Licensed/DWGdirect/Include/Gi/GiBaseVectorizer.h
+		Source/Licensed/DWGdirect/Include/Gi/GiModelToViewProc.h
+		Source/Licensed/DWGdirect/Include/Gs/GsBaseVectorizer.h
+		Source/Licensed/DWGdirect/Include/Reg/RegExport.h
+		Source/Licensed/DWGdirect/Include/Reg/Registrar.h
+		Source/Licensed/DWGdirect/Include/Si/BBox.h
+		Source/Licensed/DWGdirect/Include/Si/SiSpatialIndex.h
+		Source/Licensed/DWGdirect/Include/Sm/SmSheetView.h
+		Source/Licensed/DWGdirect/Include/Ve/AveRender.h
+		Source/Licensed/DWGdirect/ThirdParty/Jpeg-6b/Jamfile
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisBuilder.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_AcisRenderer.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Alloc.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Br.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Db.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfExport.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfImport.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_DwfToolkit.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_FT.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ge.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gi.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Gs.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Jpeg.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ModelerGeometry.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Ole.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Root.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_RxPlotStyleServices.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_RxRasterServices.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Sm.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SpatialIndex.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_SvgExport.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_ZLib.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/DD_VC6MD_Zip.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinGDI.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinOpenGL.lib
+		Source/Licensed/DWGdirect/lib/VC6MD/Gs_WinOpenGL_WithWorldDispList.lib
+		Source/Regress/OdReadEx.exe
+		Source/Regress/OdaMfcApp.exe
+		Source/Regress/SingleDoc.exe
+		Source/prj/lib/DRW/DWGdirectReader.cpp
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

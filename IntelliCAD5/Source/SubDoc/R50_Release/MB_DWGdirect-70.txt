@@ -1,0 +1,61 @@
+Engineer(s):		Mark Barrow
+Date:				07/20/2004 10:11am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+                    source/prj/lib/cmds/todo.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectconverter.h
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/drw.h
+                    source/prj/lib/drw/utilities.cpp
+                    source/prj/lib/drw/utilities.h
+                    source/prj/lib/drw/dwgsave.cpp
+                    source/prj/lib/drw/dwgload.cpp
+                    source/subdoc/MB_DWGdirect-70.txt
+Change Overview:
+This submission completes the AUDIT command implementation.
+
+Notes to Developers:
+
+Notes to QA:
+
+Overview;
+When auditing the current drawing, I basically take the current
+in-memory drawing, and create an OdDbDatabase from it. I then execute
+a DWGdirect audit on the new OdDbDatabase. If no errors are found, that's
+the end of the processing (a little over-simplified). If however, there
+are errors, and the user has choosen to fix them, the new fixed OdDbDatabase
+is used to create a new db_drawing. The previous version of the document's
+db_drawing is then deleted, some patchwork is performed, and the new 
+db_drawing is substituted into the current document in place of the old 
+db_drawing that had errors in it.
+
+What this means, is that if you perform the Audit multiple times, and the
+same errors reappear, then the problem is in the translation from db_drawing
+to OdDbDatabase or from the OdDbDatabase back to a db_drawing. In any case
+it should be buged if multiple audits on the same drawing result in the 
+same errors.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

@@ -1,0 +1,8 @@
+logfilename log\77816.log
+logfileon
+(load "lisp\77816.lsp")
+frame
+dxfout output_dxf\77816.dxf
+6
+quit
+y

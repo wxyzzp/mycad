@@ -1,0 +1,24 @@
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78236_1.txt
+Date:		08-07-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78236
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/DimLinear.cpp
+Description:	Dimension lines are not extended when dimtext is dragged.
+Comments:	TaL78236
+File by File:	
+*		Source/prj/lib/CMDS/DimLinear.cpp
+		Checked for dimension angle.
+--------------------------------------------------------------------------------
+

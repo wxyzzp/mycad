@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+File:		CYB_78177_1.txt
+Date:		03-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78177
+Affected files:			
+		CvsHist:Source/Source/prj/lib/CMDS/dimensions.cpp
+Description: 	Wrong dimension text is shown when DIMALTU is set to fractional (stacked).
+Comments:	TaL78177
+File by File:
+	*	CvsHist:Source/Source/prj/lib/CMDS/dimensions.cpp
+		By default the inches symbol was appended to the string and was removed only if
+		plinkvar[DIMUNIT].dval.ival == 5. Similary it should also be removed when
+		plinkvar[DIMALTU].dval.ival == 5). Thats all is the fix.
+--------------------------------------------------------------------------------
+				

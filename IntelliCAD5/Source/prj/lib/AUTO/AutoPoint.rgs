@@ -1,0 +1,24 @@
+HKCR
+{
+	IntelliCAD.Point.1 = s 'Point Class'
+	{
+		CLSID = s '{8011c117-7e36-11d1-bc5a-0060089608a4}'
+	}
+	IntelliCAD.Point = s 'Point Class'
+	{
+		CLSID = s '{8011c117-7e36-11d1-bc5a-0060089608a4}'
+		CurVer = s 'IntelliCAD.Point.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8011c117-7e36-11d1-bc5a-0060089608a4} = s 'Point Class'
+		{
+			ProgID = s 'IntelliCAD.Point.1'
+			VersionIndependentProgID = s 'IntelliCAD.Point'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{8011C111-7E36-11D1-BC5A-0060089608A4}'
+			'TypeLib' = s '{77E49E57-976B-11CF-8CCB-00A0245B09EB}'
+		}
+	}
+}

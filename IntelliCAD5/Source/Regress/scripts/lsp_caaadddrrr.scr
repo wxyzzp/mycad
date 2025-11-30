@@ -1,0 +1,32 @@
+Logfilename log\lsp_caaaddd.log
+Logfileon
+(setq Mylist (list 1 2 3 4 5 6 7))
+(princ (cdaddr MYlist))
+(princ (cdadar MYlist))
+(princ (cdaadr MYlist))
+(princ (cdaaar MYlist))
+(princ (cdaar MYlist))
+(princ (cdadr MYlist))
+(princ (caadr MYlist))
+(princ (cadar MYlist))
+(princ (caaadr MYlist))
+(princ (caaaar MYlist))
+(princ (caadar MYlist))
+(princ (cddar MYlist))
+(princ (cdddr MYlist))
+(princ (caar MYlist))
+(princ (cdar MYlist))
+(princ (caaar MYlist))
+(princ (cddr MYlist))
+(princ (cddaar MYlist))
+(princ (cddadr MYlist))
+(princ (cdddar MYlist))
+(princ (cddddr MYlist))
+(princ (caddar MYlist))
+(princ (cadadr MYlist))
+(princ (cadaar MYlist))
+(princ (caaddr MYlist))
+Dxfout output_dxf\lsp_caaaddd.dxf
+6
+Quit
+y

@@ -1,0 +1,74 @@
+
+Document Title:  SD_20AUG04.txt	
+Product Version: ICAD 5
+Date:  20 August 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+	This Change provides a fix for the ASSERTS in Debug Build when DIMSTYLE 
+Pane of Statusbar is ON and any command is invoked from the command line.
+The problem was that in the function, "SetToolBarToCurrentStyle" in the file
+"Source\prj\ICAD\icadapi.cpp", the dimension pane of Status bar was being 
+updated, which is not at all necessary.
+Following was the line that did the job:
+	SDS_CMainWindow->m_StatusBar.UpdateCurDimSt();
+
+	The above line has been removed. The code works fine now.
+
+
+
+4.  Notes to Docs: N.
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: SD_20Aug04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/ICAD/icadapi.cpp?rev=1.64.2.29.2.7 
+Description: 
+	Fix for the ASSERTS in Debug Build when DIMSTYLE Pane of Statusbar is 
+	on and any command is invoked from the command line.
+Reviewer's Name and Comments:
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be checked for the following cases:
+1. Run the Debug Build Version of Icad.
+2. Right-Click the Status Bar.
+3. In the Popup menu that appears. Ensure that the "Current Dim Style" Menu 
+	is Checked. If it is not Checked, click that option.
+4. The Dimension Style Pane should appear in the StatusBar with the Current 
+	Dimension Style shown on it.
+5. Give the line command.
+6. Draw the line.
+7. After the line is drawn, you should not get any ASSERTS.
+
+
+
+
+9.  Installation Issues:
+

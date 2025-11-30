@@ -1,0 +1,20 @@
+logfilename log\cmdactive_2.log
+logfileon
+;_______________________
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+(getvar "cmdactive")
+(if (/= (getvar "cmdactive")4)  (alert "err"));;;;;;;;
+;_________________________
+dxfout output_dxf\cmdactive_2.dxf
+6
+quit
+y

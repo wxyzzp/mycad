@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78336_1.txt
+Date:		03-03-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78336
+Added files:     	
+Affected files:	
+		Source/ThirdParty/DCL_Components/Source/ImageButton.cpp
+Description:	Tile handling does not work correctly with imagebuttons
+Comments:		TaL78336
+Problem Analysis:
+		The attribute value in the attribute list was not getting set properly.
+Proposed Solution:
+		The attribute list should be correct.
+File by File:	
+*		Source/ThirdParty/DCL_Components/Source/ImageButton.cpp
+		In OnLButtonDown( ), first called CButton::OnLButtonDown( ) and then processed the OnLButtonDown( ) for the image tag.
+--------------------------------------------------------------------------------
+
+
+

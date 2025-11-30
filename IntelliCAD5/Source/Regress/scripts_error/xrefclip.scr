@@ -1,0 +1,22 @@
+Logfilename log\xrefclip.log
+logfileon
+;_____________
+xref
+a
+dwg\snctrophy.dwg
+0,0
+
+
+
+;_____________
+xclip
+all
+n
+r
+0,0
+5,3
+;_________
+dxfout output_dxf\xrefclip.dxf
+6
+exit
+y

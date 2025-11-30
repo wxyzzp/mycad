@@ -1,0 +1,31 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_250603_3.txt
+Date:		25/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78549   
+
+Description:	This submission fixes the bug #78549 - Elliptical arc is not 
+                created correctly. In the case given in the bug report, the 
+                elliptic arc created is supposed to have start angle as 270 but 
+                actual result has start angle as 90. The problem is in cmd_ellipse(),
+                the start angle returned by sds_getangle() was used as the start 
+                angle of elliptic arcs, which is wrong. The value returned by 
+                sds_getangle() is w.r.t. UCS but not ECS. It needs to plus the 
+                axis angle(the angle between zero axis of ellipse and UCS' x- 
+                axis) before it is used to create elliptical arc. This problem 
+                is fixed.
+                
+		
+Added files:    None
+
+Affected files: Source/prj/lib/cmds/ellipse.cpp:  Modified cmd_ellipse().
+
+
+
+                

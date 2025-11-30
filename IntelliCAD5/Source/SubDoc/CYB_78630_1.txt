@@ -1,0 +1,240 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78630_1.txt	
+Product Version:		ICAD 4
+Date:			09/12/2003 (DD/MM/YYYY)
+Engineer(s):		Vishwanath Burkule
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded	*			
+3. Engineer Tested	*		
+4. Engineer Source Diff
+5. Code Reviewed *
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/ICAD/Preferences.h?rev=1.6.6.9 		==> ICAD
+Source/prj/ICAD/Preferences.cpp?rev=1.12.6.12 	==> ICAD
+Source/prj/ICAD/mtextpropsheet.h?rev=1.3.10.4 	==> ICAD
+Source/prj/ICAD/mtextpropsheet.cpp?rev=1.10.8.7 	==> ICAD
+Source/prj/ICAD/IcadMTextDia.cpp?rev=1.3.8.5 		==> ICAD
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+Mtext dialog was not designed to be resizable. Previously maybe some values were hardcoded and could have affect the 
+text displayed in mtext dialog. Currently I could not find any reason why Mtext dialog should not be resizable like 
+AutoCAD.
+
+What have been fixed here is:
+1. changed mtext dialog to be resizeable.
+2. changed system menu for size option for mtext dialog.
+3. added code for resizing mtext dialog controls on resizing mtext dialog.
+4. preserving the dialog size of last resized mtext dialog.
+5. fixed minimum size of dialog
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+1. Source/prj/ICAD/Mtextpropsheet.h	==> ICAD
+
+Added CRect variable namely m_mtextWindowRect. Mtext window rect is stored in this variable before the Mtext window is destroyed.
+
+Added message map entries for OnSize() and OnGetMinMaxInfo()
+
+2. Source/prj/ICAD/Mtextpropsheet.cpp	==> ICAD
+
+In MtextPropSheet::OnInitDialog() added code toget "size" option in System Menu. Changed the dialog style by adding WS_THICKFRAME. This made it resizeable.
+UserPreference::s_MtextPosition has string which stores Mtext dialog position. When OK is pressed the value mtext window rectangle is stored in this  variables which are used next time.
+
+In MtextPropSheet::OnDestroy() value of Mtext window is stored in m_mtextWindowRect variable. If OK is pressed then these will be stored in UserPreference::s_MtextPosition  otherwise will not be stored.
+
+Added member functions for OnSize() where controls are resized.  Also added OnGetMinMaxInfo() and specified the minimum value for the mtext dialog. So now Mtext dialog cannot be resized to below one limit.
+
+3. Source/prj/ICAD/IcadMtextDia.cpp 	==> ICAD
+Stored valued from m_mtextWindowRect to UserPreference::s_MtextPosition. These are used next time while initialization of mtext dialog. This is done in IDOK. On IDCANCEL value is not stored.
+
+4. Source/prj/ICAD/Preferences.h?rev=1.6.6.9 		==> ICAD
+Declaraion of staic StringPreference variable s_MtextPosition
+
+5. Source/prj/ICAD/Preferences.cpp?rev=1.12.6.12 	==> ICAD
+Its default initialization and calling of readfromRegistry() to initialise it from registry.
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> YES
+
+WNDPTMTEXTLT & WNDPTMTEXTBR, these two configuation variables are added.
+
+Should icad.dwg be regenerated?
+==> No
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1  Engineers Unit Verification
+--------------------------------------------
+1. Check mtext dialog  -resizeable, 
+2. Checked system menu  - for size option for mtext dialog.
+3. Check added code for resizing mtext dialog controls on resizing mtext dialog.
+4. Check preserving the dialog size of last resized mtext dialog.
+5. Check the fixed, minimum size of Mtext dialog.
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+========================================================================
+Section 11 Approvals
+========================================================================
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+QA Manager (optional)
+
+Code Reviewed by Denis
+

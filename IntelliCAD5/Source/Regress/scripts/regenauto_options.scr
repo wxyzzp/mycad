@@ -1,0 +1,23 @@
+logfilename log\regenauto_options.log
+logfileon
+;_________1
+regenauto
+on
+(if (/= (getvar "regenmode") 1) (alert "regenauto not set correctly"))
+;_________2
+regenauto
+t
+(if (/= (getvar "regenmode") 0) (alert "regenauto not set correctly"))
+;_________3
+regenauto
+t
+(if (/= (getvar "regenmode") 1) (alert "regenauto not set correctly"))
+;_________4
+regenauto
+off
+(if (/= (getvar "regenmode") 0) (alert "regenauto not set correctly"))
+;_________
+dxfout output_dxf\regenauto_options.dxf
+6
+quit
+y

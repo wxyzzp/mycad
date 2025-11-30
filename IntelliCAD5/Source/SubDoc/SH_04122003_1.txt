@@ -1,0 +1,26 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04122003_1.txt
+Date:		04-12-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Changed files: 	
+		Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/nurbs.h?rev=1.1.1.1.12.2
+		Source/ThirdParty/geo/ctrlpts.cpp?rev=1.1.1.1.12.1
+		Source/ThirdParty/geo/ctrlpts.h?rev=1.1.1.1.12.1
+
+Description:	This submission implements CNURBS::GetPiece() function 
+                to get a sub NURBS curve at specified parameter range
+                and CControlPoints::IsPlanar() function to test if 
+                NURBS curve is in a plane. This submission also fixed
+                some problems in CNURBS class.
+                
+Comments        None.
+

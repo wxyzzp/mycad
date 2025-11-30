@@ -1,0 +1,26 @@
+HKCR
+{
+	Visio.DB.DBDLLLoadInfo.1 = s 'DBDLLLoadInfo Class'
+	{
+		CLSID = s '{EE82A59E-CDCD-11D2-B17B-00104B22E914}'
+	}
+	Visio.DB.DBDLLLoadInfo = s 'DBDLLLoadInfo Class'
+	{
+		CLSID = s '{EE82A59E-CDCD-11D2-B17B-00104B22E914}'
+		CurVer = s 'Visio.DB.DBDLLLoadInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EE82A59E-CDCD-11D2-B17B-00104B22E914} = s 'DBDLLLoadInfo Class'
+		{
+			ProgID = s 'Visio.DB.DBDLLLoadInfo.1'
+			VersionIndependentProgID = s 'Visio.DB.DBDLLLoadInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{EE82A591-CDCD-11D2-B17B-00104B22E914}'
+		}
+	}
+}

@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+Date:		17-02-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78444
+Affected files:			
+		Source/prj/lib/CMDS/purge.cpp?rev=1.6.6.1 
+Description:	Purge all command would crash IntelliCAD.
+Comments:	TaL78444
+
+Problem analysis:	Opening attached drawing and then giving purge all command, crashes IntelliCAD. Actaully the attched drawing has ATT block, whcih is an unreferenced block and hence should get purged on purge all command. But as ATT is xref block, IntelliCAD calls Detach command on purge of ATT block. The detach command removes the xref layer, xref style etc before deleting the block defination of ATT. But in this case, detach of  ATT does not removes the block defination. This is different problem with Detach command IntelliCAD and should be looked into. So now the result should have been that after purge, ATT block defination still should have been in block defination. But should not have crashes / hanged IntelliCAD. The reason of IntelliCAD crashing or hanging on purge all command is that dp->tblnext(DB_BLOCKTABREC,0) would NOT return the expected next block in the block record. This was as xref_uncouple() would change the ptr of record in block table and when it returned dp->tblnext(DB_BLOCKTABREC,0) would again come to ATT block defination which would again call  xref_uncouple(). This would go in infinite loop and would crash / hang intellicad.
+
+Proposed Solution:  Maintain a list of all the block name which needs to be xref detached. Do not detach the xref block as and when found in table record. So the ptr to next block defination would not change and hence would not go into the infinite loop. We should NOT use the MFC dependant code in CMDS project so should use maintain your own list of resbuf.
+
+File By File :
+		Source/prj/lib/CMDS/purge.cpp
+		Declare the varibales needed.
+		Following hold the xref block names which are to be detached.
+		struct resbuf *rbpXref_Detach_List = NULL;		
+
+		Following hold the newly created node containing the block name
+		struct resbuf *rbpNew= NULL;
+
+		Following is temp pointer used to traverse the rbpXref_Detach_List
+		struct resbuf *rbpTemp= NULL;
+
+		sds_buildlist() is used to create a new resbuf block for the block name which is later added into the link list.
+		
+		Later this list is traversed and for every block name xref_uncouple is called.
+
+		Once all the work is completed the list maintained is freed.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

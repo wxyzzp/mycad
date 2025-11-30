@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+File:		CYB_54233_1.txt
+Date:		22-04-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:54233
+Affected files:			
+		CvsHist:Source/ThirdParty/DCL_Components/Source/Dialog.cpp
+		CvsHist:Source/ThirdParty/DCL_Components/Source/Main.cpp
+Description:	Crash on Win98 machine for Nested DCL Dialogs. Modified code
+		for setting DIASTAT variable through DCL.		
+Comments:	TaL54233
+--------------------------------------------------------------------------------
+File by File:
+	*	CvsHist:Source/ThirdParty/DCL_Components/Source/Dialog.cpp
+		
+		Deleted code for DIASTAT checked in by Cybage on 17-12-01 for bug 54233. Found a better way of setting DIASTAT varibale 	in DCL component. This code was crashing on Win98 for Nested Dialogs.So removed the previous code. New code is place in Source/ThirdParty/DCL_Components/Source/Main.cpp.
+
+	*	CvsHist:Source/ThirdParty/DCL_Components/Source/Main.cpp
+
+		Added a funciotn "SetDiaStatVariable()" to which an int is passed which tells whether OK or Cancel is pressed. Depending on this 1 or 0 is set in DIASTAT variable. DIASTAT is get to 1 when SDS_DLGOK is passed to this funciton, in rest all cases 0 is set. DIASTAT variable is set using sds_setvar fucntion pointer. This function pointer is stored in function static variable so we need not call RetFunctionAddr() again and again to get the sds_setvar function pointer. "SetDiaStatVariable()" is called from "Main::dlg_done_dialog()" and "Main::dlg_done_positioned_dialog"
+
+--------------------------------------------------------------------------------

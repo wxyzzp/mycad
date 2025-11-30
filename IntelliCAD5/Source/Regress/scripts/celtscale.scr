@@ -1,0 +1,26 @@
+logfilename log\celtscale.log
+logfileon
+;_______________
+ltscale
+.5
+line
+1,1
+3,3
+
+;____________
+celtscale
+2
+line
+3,1
+5,3
+
+;_______________
+time
+display
+reset
+
+;_____________
+dxfout output_dxf\celtscale.dxf
+6
+quit
+y

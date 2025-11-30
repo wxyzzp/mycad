@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------------
+Date:		23-09-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:75763
+Affected files:			
+		Source/prj/lib/GR/mtextgen.cpp
+Description:	Mtext sequence: \S;10^11 did some odd formatting of text.It should do nothing.  
+Comments:	TaL75763
+File by File:
+	*	Source/prj/lib/GR/mtextgen.cpp
+		IntelliCAD used to parse the data and format it to some odd fashion in case of 		\S;10^11. Actually it should not do anything after ";" character. No care was 		taken for this odd condition. We safe return from parsing code for \S in such 		conditions to prevent this problem.
+------------------------------------------------------------------------------------------------

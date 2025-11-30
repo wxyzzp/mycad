@@ -1,0 +1,92 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4252002_1.txt
+Date:		25-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/regress.cpp
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/regress.h
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/regress_benchmark.dsp
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/StdAfx.h
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/StdAfx.cpp
+		CvsHist:Source/Regress_apps/Benchmark_icad_14/Debug/regress_icad_acad_bench.exe
+
+Changed files:	
+		None
+
+Deleted files:	
+		None
+
+Description:	This submission adds the source for regress_icad_acad_bench application.
+Comments:	This regress application benchmarks icad and acad for 2 cases -- open of dwg files and open followed by save of
+		dwg files. If the third argument is set to 0, the benchmark performs open of dwg files only. Setting it to 1
+		performs open and save.
+
+		Usage is 
+
+		regress_icad_acad_bench "Directory_to_process" "Output_Directory" 0
+
+		The benchmark executable process all dwg files in the "Directory_to_process". It recurses to find all
+		dwg files in the hierarchy and processes them. It writes the output files in the same directory structure
+		under "Output_Directory". 
+
+		It is IMPORTANT that "Output_Directory" be not present under "Directory_to_process". If it is, the processing
+		will never end.
+
+		The regress_icad_acad_bench executable saves dwg files and dxf files with the same prefix as the dwg
+		file it is processing. For each directory under "Directory_to_process" it processes, it creates 2 directories 
+		output_R14 and output_acad_R14. The saved dwg files (if optin is set to 1) are placed here.
+
+		Required system variables :-
+
+		ICAD_REGRESS_EXE_PATH -- This has the complete path (including icad.exe) to the icad executable.
+		ACAD_REGRESS_EXE_PATH -- This has the complete path (including acad.exe) to the acad executable.
+		The following are optional --
+		TT_EXE -- True Time executable
+		ICAD_TT_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueTime.
+		BC_EXE -- Boundschecker executable.
+		TC_EXE -- Truecoverage executable.
+		ICAD_COV_REGRESS_EXE_PATH -- ICAD executable instrumented with TrueCoverage.
+		PURIFY_EXE -- Purify executable.
+		ICAD_PURIFY_EXE -- Icad executable instrumented by Purify.
+
+		Output file :-
+
+		c:/icadregress.log
+
+
+
+File by File:	
+		Source/Regress_apps/Benchmark_icad_14/regress.cpp
+			
+			This file contains the source for the regress_scr application.
+
+		Source/Regress_apps/Benchmark_icad_14/regress.h
+
+			This header file pulls in MFC structures like CString.
+
+		Source/Regress_apps/Benchmark_icad_14/regress_benchmark.dsp
+
+			This is the project file for regress.
+
+		Source/Regress_apps/Benchmark_icad_14/StdAfx.h
+
+			This is a placeholder. Nothing much is in here.
+
+		Source/Regress_apps/Benchmark_icad_14/StdAfx.cpp
+
+
+			This is a placeholder for future code.
+
+		Source/Regress_apps/Benchmark_icad_14/Debug/regress_icad_acad_bench.exe
+
+			The benchmark executable.
+
+------------------------------------------------------------------------------

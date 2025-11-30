@@ -1,0 +1,352 @@
+;=====================================================================
+;;$Workfile: AccTest-util.scr $
+; Lisp Utility Tests.
+; Copyright (C) 1998 Visio Corporation. All rights reserved.
+;
+;
+; ABSTRACT
+;	This routine tests the utility functions.
+;
+;	VERIFICATION:  Compare the LispAccTest.log created by this run
+;	with \\audrey\qa\automate\API Testing\Lisp\Utility\LispAccTest_acad.log.
+;    
+;
+; RELATED FILES
+;	//audrey/qa/automate/api testing/lisp/Utility/*
+;	//audrey/qa/automate/api testing/lisp/doslib14.arx & .dll
+;	//audrey/qa/automate/api testing/lisp/acctest.lsp
+;	//audrey/qa/automate/api testing/lisp/common.lsp
+;	//audrey/qa/automate/api testing/lisp/error.lsp
+;
+;=====================================================================
+; REVISION HISTORY
+;
+;;$Log: AccTest-util.scr,v $
+;;Revision 1.1.4.1  2003/03/09 00:06:28  master
+;;Build 17 Part 1
+;;
+;;Revision 1.1.6.1  2002/12/23 10:59:43  cyberage
+;;ACIS Scripts
+;;
+;;Revision 1.1  2002/04/21 11:11:07  vittals
+;;no message
+;;
+ * 
+ * 3     9/25/98 2:54p Michaelhu
+ * Added header and verification instructions.
+; 
+;
+;=====================================================================
+;;;
+;;; ----------------------------------------------------------------------
+;;; prepare for the test.
+;;; ----------------------------------------------------------------------
+;;;
+logfilename log\AccTest-util.log
+logfileon
+(setq errloc "Before load")
+(setq logfilnam "Utility")
+(load "Lisp/acctest")
+(setq errloc "Before init")
+(init)
+(setq errloc "Before header info")
+(logmsg (strcat "Lisp acceptance test run at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+;;;
+;;; ----------------------------------------------------------------------
+;;; run the tests.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "Begin tests")
+(logmsg "\nStarting tests...")
+;;;
+;;; -----------------------------------------------
+;;; acad_colordlg.
+;;; this test is manual.
+(logmsg "\n--- acad_colordlg ---")
+(logmsg "acad_colordlg done manually")
+;;;
+;;; -----------------------------------------------
+;;; acad_helpdlg.
+;;; IntelliCAD don't support this.
+(logmsg "\n--- acad_helpdlg ---")
+(logmsg "acad_helpdlg not supported")
+;;;
+;;; -----------------------------------------------
+;;; command.
+;;; (command) is tested in the brief test, and by everyone else.
+(logmsg "\n--- command ---")
+(logmsg "command tested elsewhere")
+;;;
+;;; -----------------------------------------------
+;;; acad_colordlg.
+;;; this test is manual.
+(logmsg "\n--- acad_colordlg ---")
+(logmsg "acad_colordlg done manually")
+;;;
+;;; -----------------------------------------------
+;;; setcfg.
+(logmsg "\n--- setcfg ---")
+(setq errloc "setcfg load")
+(load (strcat testscrdir logfilnam "/util-setcfg"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "noargs2")
+(noargs2)
+(setq errloc "emptystr")
+(emptystr)
+(setq errloc "spacestr")
+(spacestr)
+(setq errloc "below0str")
+(below0str)
+(setq errloc "0to9str")
+(0to9str)
+(setq errloc "above9str")
+(above9str)
+(setq errloc "bigatozstr")
+(bigatozstr)
+(setq errloc "btwnalphastr")
+(btwnalphastr)
+(setq errloc "abovezstr")
+(abovezstr)
+(setq errloc "nilsymstr")
+(nilsymstr)
+(setq errloc "tsymstr")
+(tsymstr)
+(setq errloc "maxstr")
+(maxstr)
+(setq errloc "maxp1str")
+(maxp1str)
+(setq errloc "zero")
+(zero)
+(setq errloc "nine")
+(nine)
+(setq errloc "minuszero")
+(minuszero)
+(setq errloc "minusnine")
+(minusnine)
+(setq errloc "belownum")
+(belownum)
+(setq errloc "abovenum")
+(abovenum)
+(setq errloc "nilsym")
+(nilsym)
+(setq errloc "tsym")
+(tsym)
+(setq errloc "emptystrpath")
+(emptystrpath)
+(setq errloc "spacestrpath")
+(spacestrpath)
+(setq errloc "below0strpath")
+(below0strpath)
+(setq errloc "0to9strpath")
+(0to9strpath)
+(setq errloc "above9strpath")
+(above9strpath)
+(setq errloc "bigatozstrpath")
+(bigatozstrpath)
+(setq errloc "btwnalphastrpath")
+(btwnalphastrpath)
+(setq errloc "abovezstrpath")
+(abovezstrpath)
+(setq errloc "maxstrpath")
+(maxstrpath)
+(setq errloc "maxp1strpath")
+(maxp1strpath)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; getcfg.
+(logmsg "\n--- getcfg ---")
+(setq errloc "getcfg load")
+(load (strcat testscrdir logfilnam "/util-getcfg"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "noargs2")
+(noargs2)
+(setq errloc "emptystr")
+(emptystr)
+(setq errloc "spacestr")
+(spacestr)
+(setq errloc "below0str")
+(below0str)
+(setq errloc "0to9str")
+(0to9str)
+(setq errloc "above9str")
+(above9str)
+(setq errloc "bigatozstr")
+(bigatozstr)
+(setq errloc "btwnalphastr")
+(btwnalphastr)
+(setq errloc "abovezstr")
+(abovezstr)
+(setq errloc "nilsymstr")
+(nilsymstr)
+(setq errloc "tsymstr")
+(tsymstr)
+(setq errloc "maxstr")
+(maxstr)
+(setq errloc "maxp1str")
+(maxp1str)
+(setq errloc "zero")
+(zero)
+(setq errloc "nine")
+(nine)
+(setq errloc "minuszero")
+(minuszero)
+(setq errloc "minusnine")
+(minusnine)
+(setq errloc "belownum")
+(belownum)
+(setq errloc "abovenum")
+(abovenum)
+(setq errloc "nilsym")
+(nilsym)
+(setq errloc "tsym")
+(tsym)
+(setq errloc "emptystrpath")
+(emptystrpath)
+(setq errloc "spacestrpath")
+(spacestrpath)
+(setq errloc "below0strpath")
+(below0strpath)
+(setq errloc "0to9strpath")
+(0to9strpath)
+(setq errloc "above9strpath")
+(above9strpath)
+(setq errloc "bigatozstrpath")
+(bigatozstrpath)
+(setq errloc "btwnalphastrpath")
+(btwnalphastrpath)
+(setq errloc "abovezstrpath")
+(abovezstrpath)
+(setq errloc "maxstrpath")
+(maxstrpath)
+(setq errloc "maxp1strpath")
+(maxp1strpath)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; getcname.
+(logmsg "\n--- getcname ---")
+(setq errloc "getcname load")
+(load (strcat testscrdir logfilnam "/util-getcname"))
+(setq errloc "noargs")
+(noargs)
+(setq errloc "getlocallwr")
+(getlocallwr)
+(setq errloc "getlocalupr")
+(getlocalupr)
+(setq errloc "getlocalmxdlwr")
+(getlocalmxdlwr)
+(setq errloc "getlocalmxdupr")
+(getlocalmxdupr)
+(setq errloc "getenglishlwr")
+(getenglishlwr)
+(setq errloc "getenglishupr")
+(getenglishupr)
+(setq errloc "getenlishmxdlwr")
+(getenglishmxdlwr)
+(setq errloc "getenglishmxdupr")
+(getenglishmxdupr)
+(setq errloc "getinvalloclwr")
+(getinvalidlwr)
+(setq errloc "getinvallocupr")
+(getinvalidupr)
+(setq errloc "getinvalenglwr")
+(getinvalidmxdlwr)
+(setq errloc "getinvalengupr")
+(getinvalidmxdupr)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "acadhlp2")
+(acadhlp2)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; getenv.
+(logmsg "\n--- getenv ---")
+(setq errloc "getenv load")
+(load (strcat testscrdir logfilnam "/util-getenv"))
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "acadhlp2")
+(acadhlp2)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; getvar.
+(logmsg "\n--- getvar ---")
+(setq errloc "getvar load")
+(load (strcat testscrdir logfilnam "/util-getvar"))
+(setq errloc "tfval")
+(tfval)
+(setq errloc "tfinval")
+(tfinval)
+(setq errloc "intval")
+(intval)
+(setq errloc "intinval")
+(intinval)
+(setq errloc "realval")
+(realval)
+(setq errloc "realinval")
+(realinval)
+(setq errloc "2dptval")
+(2dptval)
+(setq errloc "3dptval")
+(3dptval)
+(setq errloc "rdonly")
+(rdonly)
+(setq errloc "icadhlp1")
+(icadhlp1)
+(setq errloc "icadhlp2")
+(icadhlp2)
+(setq errloc "icadhlp3")
+(icadhlp3)
+(setq errloc "icadhlp4")
+(icadhlp4)
+(setq errloc "icadhlp5")
+(icadhlp5)
+(setq errloc "acadhlp1")
+(acadhlp1)
+(setq errloc "clearing Lisp")
+(load (strcat testscrdir "clearlisp"))
+;;;
+;;; -----------------------------------------------
+;;; ver.
+(logmsg "\n--- ver ---")
+(setq errloc "ver")
+(logall errloc (ver))
+;;;
+;;; ----------------------------------------------------------------------
+;;; clean up.
+;;; ----------------------------------------------------------------------
+;;;
+(setq errloc "End tests")
+(logmsg (strcat "Lisp acceptance test completed at " (dos_date) " " (dos_time) " on version " (getvar "_vernum")))
+(setq errloc "Before deinit")
+(deinit)
+(setq errloc "After deinit")
+(princ)
+dxfout output_dxf\AccTest-util.dxf
+6
+quit _y

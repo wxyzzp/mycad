@@ -1,0 +1,78 @@
+logfilename log\units_aunits_options.log
+logfileon
+(defun toRad(deg) (/ deg 57.295779513082320876798154814105))
+;________aunits_1_
+units
+
+
+1
+
+90
+
+;_________
+(if (/= (getvar "angbase") (torad 90.0)) (alert "angbase 1"))
+;________aunits_2_
+units
+
+
+2
+
+90d0'0"
+
+;_________
+(if (/= (getvar "angbase") (torad 180.0)) (alert "angbase 1"))
+;________aunits_3_
+units
+
+
+3
+
+100g
+
+;_________
+(if (/= (getvar "angbase") (torad 270.0)) (alert "angbase 1"))
+;________aunits_4_
+units
+
+
+4
+
+1.5707963267948966192313216916398
+
+;_________
+(if (/= (getvar "angbase") (torad 360.0)) (alert "angbase 1"))
+;________aunits_5_
+units
+
+
+5
+
+N
+
+;_________
+(if (/= (getvar "angbase") (torad 90.0)) (alert "angbase 1"))
+;________angdir
+units
+
+
+
+
+
+y
+;_________
+(if (/= (getvar "angdir") 1) (alert "aunits 1"))
+;_auprec_8
+units
+
+
+
+
+
+n
+;_________
+(if (/= (getvar "angdir") 0) (alert "aunits 1"))
+;___
+dxfout output_dxf\units_aunits_options.dxf
+6
+quit
+y

@@ -1,0 +1,400 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78756_1.txt	
+Product Version:	ICAD 4
+Date:			10/05/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\lib\SDS\sds_get.cpp		==> SDS_GetFiled(….)
+Source\prj\ICAD\icadinsertdia.cpp	==> ins_CInsert::OnInitDialog()
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding Bugzilla# 78756; ICAD does not use “path setting” for Blocks.
+
+Block file path given in 'Options' dialog box is not used to select the 
+block to be inserted using 'ddinsert' command.
+ 
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+
+File:Source\prj\lib\SDS\sds_get.cpp	
+-----------------------------------
+Function: int SDS_GetFiled(
+	const char *szTitle, const char *szDefaultPath, const char *szExtension, int bsOptions,
+	struct sds_resbuf *prbFileName, const char* lpTemplateName, void (*pOnOkCallback)(HWND))
+-----------------------------------
+
+This function is changed to accept valid file path out of the options given through 
+'Option' dialog box.
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+
+	switch(FileType)
+	{
+		case DWG_DXF :	if(strisame(szTitle, "Insert Block"))
+					thePath = SDS_CMainWindow->m_paths->m_blocksPath;
+				else
+				{
+					thePath = cmd_DwgSavePath ?
+						  cmd_DwgSavePath :
+						  SDS_CMainWindow->m_paths->m_drawingPath;
+				}
+		break;
+		case SHX_SHP :	thePath = SDS_CMainWindow->m_paths->m_fontPath;
+		break;
+		case XREF    :	thePath = SDS_CMainWindow->m_paths->m_xrefPath;
+		break;
+		case MNU_MNS :	thePath = SDS_CMainWindow->m_paths->m_menuPath;
+		break;
+		case PAT     :	thePath = SDS_CMainWindow->m_paths->m_hatchPatPath;
+	}
+
+	while(!thePath.IsEmpty())
+	{
+		int n = thePath.Find(';');
+		if(n != -1)	// Take the first path.
+		{
+			tempPath = thePath.Right(thePath.GetLength() - n - 1);
+			thePath = thePath.Left(n);
+		}
+
+		if(thePath.GetLength() && (thePath.ReverseFind('\\') == -1 || thePath.ReverseFind('\\') != thePath.GetLength() -1))
+		{
+			thePath += "\\";
+		}
+
+		if(access(thePath, 0) != -1)
+		{
+			strcpy(szPath, thePath);
+			break;
+		}
+		else // if first path is not valid; look into remaining path.
+			thePath = tempPath;
+	}
+
+	/-----------------------------------------------------------------/
+
+
+
+
+File: Source\prj\lib\SDS\sds_get.cpp	
+-----------------------------------
+Function: Source\prj\ICAD\icadinsertdia.cpp
+-------------------------------------------
+Removed unnecessary code, as ins_OnFileBlk() is enabling the window, then 
+this code was again disabling the same window !
+
+
+	/-----------------------------------------------------------------/
+	/----------------------------CODE --------------------------------/
+	/-----------------------------------------------------------------/
+	  if (szFileName[0] != '\0')
+		{
+		 ins_OnFileBlk(); 
+	        // ::SetWindowText(::GetDlgItem(m_hWnd,INS_FROM_FILE),szFileName);
+	        // ::EnableWindow(::GetDlgItem(m_hWnd,INS_FROM_FILE),FALSE);
+        	// ::EnableWindow(::GetDlgItem(m_hWnd,INS_BROWSE),FALSE);
+	        // ::EnableWindow(::GetDlgItem(m_hWnd,INS_BLOCK),FALSE);
+	        // ::EnableWindow(::GetDlgItem(m_hWnd,INS_FILE_OR_BLK),FALSE);
+	        // ::EnableWindow(::GetDlgItem(m_hWnd,INS_FILE_OR_BLK1),FALSE);
+		}
+
+	/-----------------------------------------------------------------/
+
+
+void ins_CInsert::ins_OnFileBlk() {
+    if(!UpdateData(true)) return;
+    if(iFile==0) {
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_FROM_FILE),TRUE);
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_BROWSE),TRUE);
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_BLOCK),FALSE);
+		::SetFocus(::GetDlgItem(m_hWnd,INS_FROM_FILE));
+    }else{
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_FROM_FILE),FALSE);
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_BROWSE),FALSE);
+        ::EnableWindow(::GetDlgItem(m_hWnd,INS_BLOCK),TRUE);
+    }
+}
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following:
+
+The code should be tested for the following:
+ 1. Set the path for ‘blocks’ by using ‘pr’ command.
+ 2. Give ‘ddinsert’ command.
+ 3. Select the ‘Browse’ for file.
+ 4. Note that the ‘Insert Block’ dialog box should use the path given in ‘pr’ command.
+
+This fix is ONLY related to ‘ddinsert’ dialog box.
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in progress)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+logfilename log\78442.log
+logfileon
+;_______
+(load "lisp/78442.lsp")
+inters_check
+;_______
+quit

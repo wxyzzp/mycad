@@ -1,0 +1,18 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4182002_1.txt
+Date:		18-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/lib/DRW/drwfns.cpp
+                CvsHist:Source/prj/lib/DRW/drwprots.h
+Description: DXF whth SHAPE can load and save correctly. Now IntelliCAD 
+	searches external shx files and resolves shape name to code.
+--------------------------------------------------------------------------------

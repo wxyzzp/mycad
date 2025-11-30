@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_7854_1.txt
+Date:		12-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78254
+Affected files:			
+		Eng-us/icad.rc2
+		Source/prj/ICAD/res/icadrc2.h
+		Source/prj/lib/CMDS/cmds8.cpp
+		Source/prj/lib/SDS/sds_selectset.cpp
+Description:	initget strings that make for faulty command options
+Comments:	TaL78254
+File_By_File:
+	*	Eng-us/icad.rc2
+	*	Source/prj/ICAD/res/icadrc2.h
+
+		IDC_SDS_SELECTSET__ADD_ADD_T_2
+		IDC_CMDS8_CLIPPING_OFF_OFF_100
+
+
+		The above 2 id's are declared and defined but their usage is commented out. So 		there is no chance that these id's will be used. So now they are commented in 		icadrc2.h and icad.rc2
+
+	*	Source/prj/lib/CMDS/cmds8.cpp
+		IDC_CMDS8_CLIPPING_OFF_OFF_100
+		The above id is used in cmd_dviewclip(void) but this function call is commented. 		So now we have also commented the prototype declaraion and the actual function.
+
+	*	Source/prj/lib/SDS/sds_selectset.cpp
+		IDC_SDS_SELECTSET__ADD_ADD_T_2
+		The above id is used in sds_pmtssget(). We have commented a case statement 		because this case was never been called as the value of SelMode on which a switch 		statement is written is commented in IntellICAD.
+--------------------------------------------------------------------------------

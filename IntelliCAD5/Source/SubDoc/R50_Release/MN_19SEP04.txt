@@ -1,0 +1,112 @@
+Document Title:  MN_19SEP04.txt	
+Product Version: ICAD 5
+Date:  19 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : GR, Cmds, Main
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+      
+	  Dave sent a drawing in which "Zoom Extent" is not working properly. This 
+bug was not reproducible in "ICAD_Cee" branch.
+	Earlier I had modified the files viz:
+		"Source/prj/lib/CMDS/panzoom.cpp"
+		"Source/prj/lib/GR/DoDef.h"
+with the code of BricsCAD to solve this bug. 
+	However Denis suggested a new way to solve the bug. He said that we should be 
+doing a regen, i.e calling the function "SDS_BuildRegenList". He further said 
+that we should modify the section that was originally commented for the case 
+"model space", with the BricsCAD line of code. Then this bug should get fixed.
+	Moreover my changes also did not display the Text in the "Lineweights.dwg"
+file sent by Dave. Now this bug also gets fixed by the changes suggested by Denis,
+and with my earlier changes rolled back.
+	I have done exactly just this and modified the file icadapi.cpp as shown below,
+in the function "SDS_BuildRegenList":
+
+"File : Source\prj\ICAD\icadapi.cpp"
+------------------------------------
+int SDS_BuildRegenList(db_drawing *flp,struct gr_view *view,CIcadView *pView,CIcadDoc *pDoc) {
+
+	...
+	...
+	...
+	...
+
+		if(pspace) {
+			SDS_UpdateEntDisp(ename,FstPSPt ? 15 : 11,view);
+		} else {
+			/*DG*///regen the entity in this case too. otherwise polygonal arcs may show in print/preview viewports 
+			
+			// **************************************************************************
+			//*!!! Added by Mohan : To modify the following line as suggested by Denis.
+			// This solves the "Zoom Extents Bug" reported by Dave.
+			// It also solves the Lineweight related bug that Dave had reported in which 
+			// the text used to disappear in the file "Lineweights.dwg" file.
+			// Copy the modified and uncommented line from the BricsCAD code.
+			// And Remove your earlier changes...The bug should be fixed.
+
+			//*** This line was originally commented...
+			//if(tilemode==0 && cvport==1) continue;
+			
+			//*** These two lines are from the BricsCAD code. We only do this check when we are in model space.  
+			if(!tilemode && cvport == 1 && !pView->IsPrinting() && !SDS_CMainWindow->m_bPrintPreview && !(cmd_InsideRegen && cmd_InsideRedrawAll))
+				continue;
+			// **************************************************************************
+
+			SDS_UpdateEntDisp(ename,FstMSPt ? 15 : 11,view);
+		}
+
+	...
+	...
+	...
+	...
+}
+
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_19SEP04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/lib/CMDS/panzoom.cpp?rev=1.3.8.1.2.2 
+	Source/prj/ICAD/icadapi.cpp?rev=1.64.2.29.2.9 
+	Source/prj/lib/GR/DoDef.h?rev=1.1.4.5.2.3 
+Description:
+	 Applied the fixes for the bug "Zoom Extents not working" reported by Dave.
+	 Also fixes the problem of Text Display in "Lineweights.dwg" sent by Dave.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1. Start IntelliCAD 5.
+2. Open the drawing sent by Dave.
+3. Give "zoom" command.
+4. Select "extent" option.
+5. The drawing gets properly zoomed.
+6. Test for other drawings.    
+
+9.  Installation Issues:
+

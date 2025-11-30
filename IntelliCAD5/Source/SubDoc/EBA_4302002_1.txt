@@ -1,0 +1,48 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+ File Name:	EBA_4302002_1.txt
+ Date:           30-04-2002
+ Developer:      Chikahiro Masami
+ Company:        Ebatech
+ Reference:      
+ Affected files: 
+                CvsHist:Eng-us/IcadRes.rc
+                CvsHist:Eng-us/icad.rc2
+                CvsHist:Source/prj/api/sds/ourbase/OURBASE.CPP
+                CvsHist:Source/prj/ICAD/DialogHyperlink.cpp
+                CvsHist:Source/prj/ICAD/icadappload.cpp
+                CvsHist:Source/prj/ICAD/IcadAttExtDia.cpp
+                CvsHist:Source/prj/ICAD/IcadConfigDia.cpp
+                CvsHist:Source/prj/ICAD/IcadCustom.cpp
+                CvsHist:Source/prj/ICAD/IcadCusToolbar.cpp
+                CvsHist:Source/prj/ICAD/IcadCusToolBarAdvDlg.cpp
+                CvsHist:Source/prj/ICAD/IcadExplorer.cpp
+                CvsHist:Source/prj/ICAD/icadinsertdia.cpp
+                CvsHist:Source/prj/ICAD/IcadNewWiz.cpp
+                CvsHist:Source/prj/ICAD/IcadTBDlg.cpp
+                CvsHist:Source/prj/ICAD/IcadXLink.cpp
+                CvsHist:Source/prj/lib/CMDS/acisInOut.cpp
+                CvsHist:Source/prj/lib/CMDS/block.cpp
+                CvsHist:Source/prj/lib/CMDS/CmdMassprop.cpp
+                CvsHist:Source/prj/lib/CMDS/cmds8.cpp
+                CvsHist:Source/prj/lib/CMDS/dxfInOut.cpp
+                CvsHist:Source/prj/lib/CMDS/insert.cpp
+                CvsHist:Source/prj/lib/CMDS/menu.cpp
+                CvsHist:Source/prj/lib/CMDS/openclose.cpp
+                CvsHist:Source/prj/lib/CMDS/save.cpp
+                CvsHist:Source/prj/lib/CMDS/scripts.cpp
+                CvsHist:Source/prj/lib/CMDS/shape.cpp
+                CvsHist:Source/prj/lib/CMDS/slide.cpp
+                CvsHist:Source/prj/lib/CMDS/todo.cpp
+                CvsHist:Source/prj/lib/CMDS/cmds3.cpp
+                CvsHist:Source/prj/lib/LISP/getters.cpp
+                CvsHist:Source/prj/lib/SDS/sds_get.cpp
+                CvsHist:Source/prj/lib/SDS/sds_xref.cpp
+
+ Description:    Type button in Open/Save file dialog
+ Comments:       TalOpenFileDialog2
+--------------------------------------------------------------------------------

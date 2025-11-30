@@ -1,0 +1,31 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_08012003.txt
+Date:		08-01-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission fixes the bug #78350 - Union operation functions like subtract
+ 	in the case that wedge and torus are united.
+ 	
+ 	The problem is, in the case, the wedge created by WEDGE command is invalied. 
+ 	The WEDGE command was not implemented correctly so it created either incorrect
+ 	result(valid solid with wrong position) or invalid solid(some of faces were not 
+ 	oriented correctly) whenever the any coordinate fo the first input point is 
+ 	smaller than the coordinate of the second inputed corner point. This bug is
+ 	fixed.
+	
+
+CHANGED FILES:	
+	
+	Source/Prj/Lib/ACIS/AsMesh.cpp:       Changed mesh::wedge().
+
+COMMANDS:

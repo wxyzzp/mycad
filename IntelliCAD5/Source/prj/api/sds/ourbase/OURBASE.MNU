@@ -1,0 +1,42 @@
+
+//  OURBASE.MNU                                                      */
+//                                                                   
+// .............................................................................
+//
+// Copyright (c) 1998 by Visio Corporation.  All rights reserved.
+//
+// The Software is subject to the license agreement that accompanies 
+// or is included with the Software, which specifies the permitted 
+// and prohibited uses of the Software. Any unauthorized duplication 
+// or use of Visio Corporation Software, in whole or in part, in print, 
+// or in any other storage and retrieval system is prohibited.
+// 
+// To the maximum extent permitted by applicable law, Visio Corporation
+// and its suppliers disclaim any and all warranties and conditions,
+// either express or implied, including, without limitation, implied
+// warranties of merchantability, fitness for a particular purpose,
+// title, and non-infringement, and those arising out of usage of trade
+// or course of dealing, concerning these materials.  These materials
+// are provided "as is" without warranty of any kind.
+// .............................................................................
+
+
+***SCREEN
+**S
+[        ]
+[        ]
+[        ]
+[    O   ]
+[    U   ]
+[    R   ]
+[    B   ]
+[    A   ]
+[    S   ]
+[    E   ]
+[        ]
+[        ]
+[ Release]
+[  x.x   ]
+[        ]
+[--Quit--]^C^C^P_quit
+

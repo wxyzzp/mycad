@@ -1,0 +1,45 @@
+Document Title:  SH_78799_1.txt	
+Product Version: ICAD 4.0
+Date:  8/8/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/cmds_misc.cpp
+
+3. Overview:
+
+This submission fixes the bug #78799 - "ACIS entities don't display their layers 
+color.".
+
+The problem is the color "BYLAYER" was incorrectly mapped to the color index 0 in 
+getCurrColorIndex() function. It should mapped to the index 256. This problem is 
+fixed.
+
+4.  Notes to Developers:
+
+5.  Notes to QA:
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:
+	Name of Script file: 
+
+8.  Notes to Localization:
+
+
+
+

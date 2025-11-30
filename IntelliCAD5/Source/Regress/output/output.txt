@@ -1,0 +1,3 @@
+All .dwg files created by a script should be written to this directory.
+In addition all output .dwg files should have the name of the script
+that created them incorporated into the file name.

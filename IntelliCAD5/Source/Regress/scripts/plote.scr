@@ -1,0 +1,9 @@
+logfilename log\plote.log
+logfileon
+open dwg\hatch.dwg
+(load "lisp\plote.lsp")
+plote
+dxfout output_dxf\plote.dxf
+6
+close n
+exit

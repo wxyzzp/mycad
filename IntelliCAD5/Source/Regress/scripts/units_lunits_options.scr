@@ -1,0 +1,162 @@
+logfilename log\units_lunits_options.log
+logfileon
+;________lunits_1_
+units
+1
+
+
+
+
+
+;_________
+(if (/= (getvar "lunits") 1) (alert "lunits 1"))
+;________lunits_2_
+units
+2
+
+
+
+
+
+;_________
+(if (/= (getvar "lunits") 2) (alert "lunits 2"))
+;________lunits_3_
+units
+3
+
+
+
+
+
+;_________
+(if (/= (getvar "lunits") 3) (alert "lunits 3"))
+;________lunits_4_
+units
+4
+
+
+
+
+
+;_________
+(if (/= (getvar "lunits") 4) (alert "lunits 4"))
+;________lunits_5_
+units
+5
+
+
+
+
+
+;_________
+(if (/= (getvar "lunits") 5) (alert "lunits 5"))
+;________lunits_1
+;_LUPREC_0
+units
+1
+0
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 0) (alert "lunits 1"))
+;_LUPREC_8
+units
+1
+8
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 8) (alert "lunits 1"))
+;________lunits_2_
+;_LUPREC_0
+units
+2
+0
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 0) (alert "lunits 1"))
+;_LUPREC_8
+units
+2
+8
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 8) (alert "lunits 1"))
+;________lunits_3_
+;_LUPREC_0
+units
+3
+0
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 0) (alert "lunits 1"))
+;_LUPREC_8
+units
+3
+8
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 8) (alert "lunits 1"))
+;________lunits_4_
+;_LUPREC_1
+units
+4
+1
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 0) (alert "lunits 1"))
+;_LUPREC_256
+units
+4
+256
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 8) (alert "lunits 1"))
+;________lunits_5_
+;_LUPREC_1
+units
+4
+1
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 0) (alert "lunits 1"))
+;_LUPREC_256
+units
+4
+256
+
+
+
+
+;_________
+(if (/= (getvar "luprec") 8) (alert "lunits 1"))
+;___
+dxfout output_dxf\units_lunits_options.dxf
+6
+quit
+y

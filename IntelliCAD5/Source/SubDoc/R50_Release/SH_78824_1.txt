@@ -1,0 +1,42 @@
+Document Title:  SH_78824_1.txt	
+Product Version: ICAD 5.0
+Date:  07/10/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/Gr/textgen.cpp
+   
+3. Overview:
+
+This submission fixes the bug #78824 - "TOLERANCE concentricity symbol isn't centered in box".
+The problem was the bounding box of tolerance text was not computeed correctly while the display
+object of the tolerance system was generated.
+   
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

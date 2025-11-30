@@ -1,0 +1,316 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-34.txt
+Produce Version		ICAD 4
+Date:				05/10/2004 18:22pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission updates the ODT DWGdirect libraries.
+Submits regression.exe
+Submits template.lst
+
+It also hooks up the new ODT libraries to the point where
+proxy entities now round trip. Note that they still do
+not display in IntelliCAD, but I have layed the groundwork
+for that to happen soon.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\db\acad_proxy_entity.cpp
+\source\prj\lib\db\acad_proxy_object.cpp
+\source\prj\lib\db\handitem.cpp
+\source\prj\lib\db\layer_index.cpp
+\source\prj\lib\db\object_ptr.cpp
+\source\prj\lib\db\spatial_index.cpp
+\source\prj\lib\db\vbaproject.cpp
+\source\prj\lib\db\wipeout.cpp
+\source\prj\lib\db\entities.h
+\source\prj\lib\db\objects.h
+\source\prj\lib\drw\dwgdirectwritercrypt.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreadercrypt.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\collectionclasses.h
+\source\prj\lib\drw\utilities.cpp
+\source\regress applications\regress app\regression.exe
+\source\regress\scripts\template.lst
+
+
+File: DWGdirect.chm    	Status: Locally Modified
+File: ExGiRasterImage.cpp	Status: Locally Modified
+File: ExGiRasterImage.h	Status: Locally Modified
+File: ExHostAppServices.cpp	Status: Locally Modified
+File: ExHostAppServices.h	Status: Locally Modified
+File: ExSystemServices.cpp	Status: Locally Modified
+File: ExSystemServices.h	Status: Locally Modified
+File: ExUndoController.cpp	Status: Locally Modified
+File: ExUndoController.h	Status: Locally Modified
+File: OdFileBuf.cpp    	Status: Locally Modified
+File: OdFileBuf.h      	Status: Locally Modified
+File: no file AcisData.h		Status: Locally Removed
+File: AcisExport.h     	Status: Locally Added
+File: no file AcisFile.h		Status: Locally Removed
+File: AcisRenderer.h   	Status: Locally Modified
+File: AfTypeVer.h      	Status: Locally Modified
+File: BoolArray.h      	Status: Locally Added
+File: CAseDLPNTableRecord.h	Status: Locally Modified
+File: CmColor.h        	Status: Locally Modified
+File: CmColorArray.h   	Status: Locally Added
+File: CmEntityColorArray.h	Status: Locally Added
+File: DDPackageVersion.h	Status: Locally Modified
+File: DDVersion.h      	Status: Locally Modified
+File: DD_GL.h          	Status: Locally Added
+File: Db2dPolyline.h   	Status: Locally Modified
+File: Db3dPolyline.h   	Status: Locally Modified
+File: Db3dSolid.h      	Status: Locally Modified
+File: DbArcAlignedText.h	Status: Locally Modified
+File: DbAudit.h        	Status: Locally Modified
+File: DbBlockReference.h	Status: Locally Modified
+File: DbBody.h         	Status: Locally Modified
+File: DbCommandContext.h	Status: Locally Modified
+File: DbCurve.h        	Status: Locally Modified
+File: DbDatabase.h     	Status: Locally Modified
+File: DbDatabaseReactor.h	Status: Locally Modified
+File: DbDimStyleTableRecord.h	Status: Locally Modified
+File: DbDimension.h    	Status: Locally Modified
+File: DbEntity.h       	Status: Locally Modified
+File: DbExtents.h      	Status: Locally Modified
+File: DbField.h        	Status: Locally Added
+File: DbFieldValue.h   	Status: Locally Added
+File: DbGraph.h        	Status: Locally Modified
+File: DbHatch.h        	Status: Locally Modified
+File: DbHyperlink.h    	Status: Locally Modified
+File: DbIdMapping.h    	Status: Locally Modified
+File: DbLayerTable.h   	Status: Locally Modified
+File: DbLayerTableRecord.h	Status: Locally Modified
+File: DbLeader.h       	Status: Locally Modified
+File: DbLine.h         	Status: Locally Modified
+File: DbLinetypeTableRecord.h	Status: Locally Modified
+File: DbMText.h        	Status: Locally Modified
+File: DbMaterial.h     	Status: Locally Modified
+File: DbMline.h        	Status: Locally Modified
+File: DbMlineStyle.h   	Status: Locally Modified
+File: DbObject.h       	Status: Locally Modified
+File: DbObjectId.h     	Status: Locally Modified
+File: DbOle2Frame.h    	Status: Locally Modified
+File: DbOleFrame.h     	Status: Locally Modified
+File: DbPlotSettings.h 	Status: Locally Modified
+File: DbPlotSettingsValidator.h	Status: Locally Modified
+File: DbPolyFaceMesh.h 	Status: Locally Modified
+File: DbPolygonMesh.h  	Status: Locally Modified
+File: DbPolyline.h     	Status: Locally Modified
+File: DbProxyEntity.h  	Status: Locally Modified
+File: DbRasterImage.h  	Status: Locally Modified
+File: DbRasterImageDef.h	Status: Locally Modified
+File: DbRay.h          	Status: Locally Modified
+File: DbRegion.h       	Status: Locally Modified
+File: DbSecurity.h     	Status: Locally Modified
+File: DbSortentsTable.h	Status: Locally Modified
+File: DbSpatialFilter.h	Status: Locally Modified
+File: DbSpline.h       	Status: Locally Modified
+File: DbSymUtl.h       	Status: Locally Modified
+File: DbSystemServices.h	Status: Locally Modified
+File: DbTable.h        	Status: Locally Added
+File: DbTableStyle.h   	Status: Locally Added
+File: DbTextStyleTableRecord.h	Status: Locally Modified
+File: DbXline.h        	Status: Locally Modified
+File: DebugStuff.h     	Status: Locally Modified
+File: DoubleArray.h    	Status: Locally Added
+File: DynamicLinker.h  	Status: Locally Modified
+File: no file EdCmd.h		Status: Locally Removed
+File: EdCommandContext.h	Status: Locally Modified
+File: Editor.h         	Status: Locally Modified
+File: EditorImpl.h     	Status: Locally Modified
+File: Entities.h       	Status: Locally Modified
+File: ErrorDefs.h      	Status: Locally Modified
+File: GiStack.h        	Status: Locally Modified
+File: HatchPatternManager.h	Status: Locally Modified
+File: Int16Array.h     	Status: Locally Added
+File: Int64.h          	Status: Locally Modified
+File: Int64Array.h     	Status: Locally Added
+File: Int8Array.h      	Status: Locally Added
+File: LyLayerFilter.h  	Status: Locally Added
+File: MemoryStream.h   	Status: Locally Modified
+File: MessageDefs.h    	Status: Locally Modified
+File: ModelerGeometry.h	Status: Locally Modified
+File: Objects.h        	Status: Locally Modified
+File: OdAlloc.h        	Status: Locally Added
+File: OdAllocExport.h  	Status: Locally Added
+File: OdArray.h        	Status: Locally Modified
+File: OdErrorContext.h 	Status: Locally Modified
+File: OdErrorContextWithId.h	Status: Locally Modified
+File: OdHeap.h         	Status: Locally Added
+File: OdMemory.h       	Status: Locally Modified
+File: OdMutex.h        	Status: Locally Modified
+File: OdPlatform.h     	Status: Locally Modified
+File: OdPlatformSettings.h	Status: Locally Added
+File: OdPlatformStreamer.h	Status: Locally Added
+File: OdRound.h        	Status: Locally Added
+File: OdString.h       	Status: Locally Modified
+File: OdaCommon.h      	Status: Locally Modified
+File: OdaDefs.h        	Status: Locally Modified
+File: OdaSTL.h         	Status: Locally Modified
+File: no file OdaToolkit.h		Status: Locally Removed
+File: no file OdaToolkit_i.c		Status: Locally Removed
+File: OdaX.h           	Status: Locally Modified
+File: OdaX_i.c         	Status: Locally Modified
+File: OdaxMath.h       	Status: Locally Modified
+File: OleStorage.h     	Status: Locally Modified
+File: RawByteData.h    	Status: Locally Added
+File: RefCountImpl.h   	Status: Locally Added
+File: RxDictionary.h   	Status: Locally Modified
+File: RxDispatchImpl.h 	Status: Locally Modified
+File: RxDynamicModule.h	Status: Locally Modified
+File: RxEvent.h        	Status: Locally Modified
+File: RxIterator.h     	Status: Locally Modified
+File: RxModule.h       	Status: Locally Modified
+File: RxModuleDefs.h   	Status: Locally Modified
+File: RxObject.h       	Status: Locally Modified
+File: RxObjectImpl.h   	Status: Locally Modified
+File: RxVariant.h      	Status: Locally Added
+File: RxVariantValue.h 	Status: Locally Modified
+File: SmartPtr.h       	Status: Locally Modified
+File: StaticRxObject.h 	Status: Locally Modified
+File: StringArray.h    	Status: Locally Added
+File: SysVarDefs.h     	Status: Locally Modified
+File: ThumbnailImage.h 	Status: Locally Modified
+File: UInt64Array.h    	Status: Locally Added
+File: no file ViewX.h		Status: Locally Removed
+File: no file ViewX_i.c		Status: Locally Removed
+File: no file dlldata.c		Status: Locally Removed
+File: BrBrep.h         	Status: Locally Modified
+File: BrBrepComplexTraverser.h	Status: Locally Modified
+File: BrBrepEdgeTraverser.h	Status: Locally Modified
+File: BrBrepFaceTraverser.h	Status: Locally Modified
+File: BrBrepShellTraverser.h	Status: Locally Modified
+File: BrBrepVertexTraverser.h	Status: Locally Modified
+File: no file BrCoEdge.h		Status: Locally Removed
+File: BrComplex.h      	Status: Locally Modified
+File: BrComplexShellTraverser.h	Status: Locally Modified
+File: BrEdge.h         	Status: Locally Modified
+File: no file BrEdgeCoEdgeTraverser.h		Status: Locally Removed
+File: BrEdgeLoopTraverser.h	Status: Locally Modified
+File: BrEntity.h       	Status: Locally Modified
+File: no file BrEnumToString.h		Status: Locally Removed
+File: BrEnums.h        	Status: Locally Modified
+File: BrExport.h       	Status: Locally Modified
+File: BrFace.h         	Status: Locally Modified
+File: BrFaceLoopTraverser.h	Status: Locally Modified
+File: BrLoop.h         	Status: Locally Modified
+File: no file BrLoopCoEdgeTraverser.h		Status: Locally Removed
+File: BrLoopEdgeTraverser.h	Status: Locally Added
+File: BrLoopVertexTraverser.h	Status: Locally Modified
+File: BrShell.h        	Status: Locally Modified
+File: BrShellFaceTraverser.h	Status: Locally Modified
+File: BrSystemInternals.h	Status: Locally Added
+File: BrTraverser.h    	Status: Locally Modified
+File: BrVertex.h       	Status: Locally Modified
+File: BrVertexEdgeTraverser.h	Status: Locally Modified
+File: BrVertexLoopTraverser.h	Status: Locally Modified
+File: EdCommandStack.h 	Status: Locally Added
+File: EdUserIO.h       	Status: Locally Added
+File: no file CmColorArray.h		Status: Locally Removed
+File: no file CmEntityColorArray.h		Status: Locally Removed
+File: GeCircArc3d.h    	Status: Locally Modified
+File: GeCone.h         	Status: Locally Modified
+File: GeCylinder.h     	Status: Locally Modified
+File: GeEllipArc3d.h   	Status: Locally Modified
+File: GeEllipCone.h    	Status: Locally Modified
+File: GeEllipCylinder.h	Status: Locally Modified
+File: GeEntity2d.h     	Status: Locally Modified
+File: GeEntity3d.h     	Status: Locally Modified
+File: GeExtents2d.h    	Status: Locally Modified
+File: GeExtents3d.h    	Status: Locally Modified
+File: GeFiler.h        	Status: Locally Modified
+File: GeKnotVector.h   	Status: Locally Modified
+File: GeLine3d.h       	Status: Locally Modified
+File: GeNurbCurve2d.h  	Status: Locally Modified
+File: GeNurbCurve3d.h  	Status: Locally Modified
+File: GeNurbSurface.h  	Status: Locally Modified
+File: GePlanarEnt.h    	Status: Locally Modified
+File: GePlane.h        	Status: Locally Modified
+File: GeScale2d.h      	Status: Locally Modified
+File: GeShell.h        	Status: Locally Modified
+File: GeSphere.h       	Status: Locally Modified
+File: GeSurface.h      	Status: Locally Modified
+File: GeTol.h          	Status: Locally Modified
+File: GeTorus.h        	Status: Locally Modified
+File: Gi.h             	Status: Locally Modified
+File: GiAbstractDrawObject.h	Status: Locally Modified
+File: GiBaseDrawObject.h	Status: Locally Modified
+File: GiBaseTraits.h   	Status: Locally Added
+File: GiBaseVectorizer.h	Status: Locally Modified
+File: GiCommonDraw.h   	Status: Locally Modified
+File: GiContextForDbDatabase.h	Status: Locally Modified
+File: GiConveyorGeometry.h	Status: Locally Modified
+File: GiConveyorNode.h 	Status: Locally Modified
+File: GiEmptyGeometry.h	Status: Locally Modified
+File: no file GiEnhancedMetafile.h		Status: Locally Removed
+File: GiExtentser.h    	Status: Locally Added
+File: GiGeometry.h     	Status: Locally Modified
+File: GiGeometrySimplifier.h	Status: Locally Modified
+File: GiLinetype.h     	Status: Locally Modified
+File: GiLinetypeGenerator.h	Status: Locally Modified
+File: GiMaterial.h     	Status: Locally Modified
+File: GiMaterialData.h 	Status: Locally Modified
+File: GiMetafile.h     	Status: Locally Added
+File: GiNonEntityTraits.h	Status: Locally Added
+File: GiOrthoClipper.h 	Status: Locally Modified
+File: GiPolyline.h     	Status: Locally Modified
+File: GiRasterImage.h  	Status: Locally Modified
+File: GiSegTaker.h     	Status: Locally Modified
+File: GiShellFaceIterator.h	Status: Locally Modified
+File: GiShellFaceWithHolesIterator.h	Status: Locally Modified
+File: GiSmartDrawObject.h	Status: Locally Modified
+File: GiSubEntityTraitsData.h	Status: Locally Modified
+File: GiUtils.h        	Status: Locally Added
+File: GiViewportGeometry.h	Status: Locally Modified
+File: OdPolyPolygon3d.h	Status: Locally Modified
+File: Gs.h             	Status: Locally Modified
+File: GsBase.h         	Status: Locally Modified
+File: GsBaseModel.h    	Status: Locally Modified
+File: GsBaseOpenGL.h   	Status: Locally Modified
+File: GsBaseVectorizer.h	Status: Locally Modified
+File: no file GsDeviceManager.h		Status: Locally Removed
+File: GsLight.h        	Status: Locally Modified
+File: GsOpenGLVectorizer.h	Status: Locally Modified
+File: PlotStyle.h      	Status: Locally Modified
+File: AveDefs.h        	Status: Locally Modified
+File: AveLight.h       	Status: Locally Modified
+File: wrExport.h       	Status: Locally Added
+File: wrTriangulationParams.h	Status: Locally Modified
+File: no file DD_VC6MD_Acis.lib		Status: Locally Removed
+File: DD_VC6MD_AcisBuilder.lib	Status: Locally Modified
+File: DD_VC6MD_AcisRenderer.lib	Status: Locally Modified
+File: DD_VC6MD_Alloc.lib	Status: Locally Added
+File: DD_VC6MD_Br.lib  	Status: Locally Added
+File: DD_VC6MD_Db.lib  	Status: Locally Modified
+File: DD_VC6MD_DwfExport.lib	Status: Locally Modified
+File: DD_VC6MD_DwfImport.lib	Status: Locally Modified
+File: DD_VC6MD_DwfToolkit.lib	Status: Locally Modified
+File: DD_VC6MD_FT.lib  	Status: Locally Modified
+File: DD_VC6MD_Ge.lib  	Status: Locally Modified
+File: DD_VC6MD_Gi.lib  	Status: Locally Modified
+File: DD_VC6MD_Gs.lib  	Status: Locally Modified
+File: DD_VC6MD_Jpeg.lib	Status: Locally Modified
+File: DD_VC6MD_ModelerGeometry.lib	Status: Locally Modified
+File: DD_VC6MD_Root.lib	Status: Locally Modified
+File: DD_VC6MD_SpatialIndex.lib	Status: Locally Modified
+File: DD_VC6MD_SvgExport.lib	Status: Locally Modified
+File: DD_VC6MD_ZLib.lib	Status: Locally Modified
+File: DD_VC6MD_Zip.lib 	Status: Locally Modified
+File: no file ExCustObjs.lib		Status: Locally Removed
+

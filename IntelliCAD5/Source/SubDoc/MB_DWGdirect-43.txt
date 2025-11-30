@@ -1,0 +1,24 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-43.txt
+Produce Version		ICAD 4
+Date:				06/02/2004 06:27am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+I somehow missed export of arcalignedtext entities.
+This submission fixes that.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h

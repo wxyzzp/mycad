@@ -1,0 +1,50 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_16072002_1.txt
+Date:		16-07-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		Source/Regress_apps/regress_dwg_dxf/reg.frx
+		Source/Regress_apps/roundtrip_dwg_dxf/reg.frm
+		Source/Regress_apps/roundtrip_dwg_dxf/DialogFrm.frm
+		Source/Regress_apps/roundtrip_dwg_dxf/Module1.bas
+		Source/Regress_apps/roundtrip_dwg_dxf/ModuleHelper.bas
+		Source/Regress_apps/roundtrip_dwg_dxf/Project_reg.vbp
+
+
+Changed files: 	
+		None
+
+Deleted files:	
+		None
+
+Description:	Roundtrip application to test dwg and dxf operations between Icad and Acad.
+Comments:	This roundtrip application allows users to test different versions of Icad and Acad
+		for roundtrip compatibility. This allows an user to select Icad or Acad for any step,
+		choose different executables for each step (Icad 2001, ACAD R14, etc.), decide on the
+		either dxf or dwg as output format. In addition the version to either do a dxfout or
+		saveas can be chosen. The output of one step in the input to the next step and a 
+		maximum of five steps can be chosen.
+
+File by File:	
+		Source/Regress_apps/regress_dwg_dxf/reg.frx
+			compiled file with control data.
+		Source/Regress_apps/roundtrip_dwg_dxf/reg.frm
+			UI portion of application.
+		Source/Regress_apps/roundtrip_dwg_dxf/DialogFrm.frm
+			Form for dialog entry of directory name
+		Source/Regress_apps/roundtrip_dwg_dxf/Module1.bas
+			Processing of roundtrip
+		Source/Regress_apps/roundtrip_dwg_dxf/ModuleHelper.bas
+			Declarations of Win32 API functions/structures.
+		Source/Regress_apps/roundtrip_dwg_dxf/Project_reg.vbp
+			Project file.
+
+-----------------------------------------------------------------------------

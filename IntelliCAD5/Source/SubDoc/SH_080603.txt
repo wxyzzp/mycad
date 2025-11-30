@@ -1,0 +1,94 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_080603.txt
+Date:		08/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Added files:    None
+
+Affected files: Source/prj/lib/cmds/3dsolids.cpp
+                Source/prj/icad/res/icadrc2.h
+                Eng-us/icad.rc2
+
+Description:	This submission fixes the following problems that have not been reported
+                by QAs.
+                
+                1) The CYLINDER command with ELLIPTIC>CENTER options creates elliptic cylinder 
+                   at the origin. The problem is in the cmd_cylinder() function the 
+                   center variable is declared twice inside and outside a block that get 
+                   the value of center from the user. The outer centers is never assigned 
+                   any value before it is used to create cylinder so the cylinder is 
+                   positioned at the origin(0,0,0). The problem is fixed by declaring center
+                   variable outside of any block and removing all declaration inside the block.
+                   
+                2) The CYLINDER command with ELLIPTIC>CENTER option creates elliptic
+                   cylinders with wrong axis directions. The problem is the code in cmd_cylinder()
+                   incorrectly uses axis_end to compute the angle to project axis_end1 to the
+                   UCS plane(see line #4215 or line below), which never be assigned with any 
+                   value. The problem is fixed by replacing the axis_end at the code below
+                   
+                   
+                       sds_polar(center, sds_angle(center, axis_end), dist1, axis_end1);
+                   
+                
+		   with axis_end1. 
+		   
+		3) The dragging images of cones and cylinders are wrong when the center or axis 
+		   point is not located on the UCS plane(the Z coordinates is not 0.0). The 
+		   problem is the value of the elevation variable is not set before 
+		   sds_dragobject() is called so the coordinates of mouse location returned 
+		   by SDS is on the UCS plane and used to compute the radius of circular 
+		   cylinder and the axis of elliptic cylinder while the image is dragging. 
+		   The problem is fixed by adding the following code to cmd_cone() and 
+		   cmd_cylinder() to temporarily elevate the UCS plane before sds_dragobject() 
+		   is called:
+		   
+				if (!icadRealEqual(center[2], curelev)){
+					SDS_CorrectElevation = curelev;
+					SDS_ElevationChanged = TRUE;
+					newelev = rb.resval.rreal = center[2];
+					rb.restype=RTREAL;
+					sds_setvar("ELEVATION"/*DNT*/,&rb);
+				}
+				
+		4) The temporary image of pyramid is not erased from the screen after the PYRAMID
+		   command is cancelled. This problem is fixed by modifying cmd_pyramid() to 
+		   comment out "#if 0" and "#endif" at the end of the function and move bpt1, 
+		   bpt2, bpt3, bpt4, tpt1, tpt2, tpt3, tpt4 declaration to outside of the outer 
+		   block.
+		   
+		5) The temporary image of wedge is not erased from the screen after the WEDGE 
+		   command is cancelled. This problem is fixed by adding the following code 
+		   to catch block in cmd_wedge():
+		   
+		   		if (rc == RTCAN) {
+		   			//undraw
+		   			point corner;
+		   			corner.x() = corner1.x();
+		   			corner.y() = corner2.y();
+		   			sds_grdraw(corner1, corner, -1, 0);
+		   			sds_grdraw(corner2, corner, -1, 0);
+		   			corner.x() = corner2.x();
+		   			corner.y() = corner1.y();
+		   			sds_grdraw(corner1, corner, -1, 0);
+		   			sds_grdraw(corner2, corner, -1, 0);
+				}
+				
+		6) For the PYRAMID and other solid primitive creation commands, the existing 
+		   implementation doesn't verify the user inputs at the top level and give 
+		   users a chance to specify the data again after they make a mistake. Also 
+		   the commands do not give any error message if they fail to create solids.
+		   
+		   The cmd_pyramid(), cmd_dome(), cmd_disk(), cmd_sphere(), cmd_torus(), 
+		   cmd_cone_solid_elp(), cmd_cone(), and cmd_cylinder() functions in 3dsolids.cpp
+		   are modified to verify each input data and print out error messages. If the data 
+		   given by users are invalid, the commands will error out and prompt users to 
+		   input data again. 
+		   
+

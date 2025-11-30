@@ -1,0 +1,29 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-42.txt
+Produce Version		ICAD 4
+Date:				05/28/2004 06:17am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fix for script 78417.scr (USEDDWGDIRECT) and its variants.
+
+Turns out there was a call to gather handseeds without
+first checking to see that there were some.
+
+Also fixe export of a test drawing Dave sent me, called
+car render test.dwg. Note it now round trips correctly.
+
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp

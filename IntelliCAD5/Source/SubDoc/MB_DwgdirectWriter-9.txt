@@ -1,0 +1,32 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DwgdirectWriter-9.txt
+Produce Version		ICAD 4
+Date:				02/12/2004 10:24am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added code to round trip hatches, then had to turn it off because
+of DWGdirect problems I'm working with the ODT guys on.
+
+Added code to support round tripping of;
+blocks
+attribute definitions
+persistant reactors
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+

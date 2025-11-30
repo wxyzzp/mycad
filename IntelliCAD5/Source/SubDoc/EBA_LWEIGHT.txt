@@ -1,0 +1,391 @@
+--------------------------------------------------------------------------------
+Date:		03-Apr-2003
+Developer:	Chikahiro Masami
+Company: 	Ebatech
+Reference:	BugZilla:78471
+Affected files:	
+		Source/prj/lib/CMDS/DimAngA3P.cpp 
+		Source/prj/lib/CMDS/DimDiaMain.cpp 
+		Source/prj/lib/CMDS/dimensions.cpp 
+		Source/prj/lib/CMDS/DimLinear.cpp 
+		Source/prj/lib/CMDS/DimMakeDim.cpp 
+		Source/prj/lib/CMDS/DimOrdinate.cpp 
+		Source/prj/ICAD/IcadToleranceDia.cpp 
+		Source/prj/lib/GR/tolerancegen.cpp 
+Description:	
+	When editing dimension, dimension text set wrong line weight. 
+	Correct Arrow head as same manner to A2K.
+	Correct linear dimension's extension lines use DIMLWE.
+	TOLERANCE have XDATA just lik DIMENSION.
+	TOLERANCE DXF=62 and 370 for text color and lweight.
+	TOLERANCE also uses DIMCLRD and DIMLWD for frame color and lweight.
+	TOLERANCE frame can override. But IcadToleranceDia? didn't.
+	BugZilla:78471 is over, expect Automation.
+	I suspend modifying Automation now, due to automation versioning issue.
+Comments: TaLLineWeight
+--------------------------------------------------------------------------------
+Date:		01-Apr-2003
+Developer:	Chikahiro Masami
+Company: 	Ebatech
+Reference:	BugZilla:78471
+Affected files:	
+		Source/prj/ICAD/icadEntPropMain.cpp 
+		Source/prj/lib/GR/dispobjs.cpp 
+Description:	Now nested block show correctly line weight.
+                Properties dialog box rise assert when Various line weight.
+Comments:
+--------------------------------------------------------------------------------
+Date:		31-03-2003
+Developer:	Chikahiro Masami
+Company: 	Ebatech
+Reference:	BugZilla:78471
+Affected files:	
+		Eng-us/IcadRes.rc 
+		Eng-us/icad.rc2 
+		Source/ThirdParty/DCL_Components/Include/sds.h 
+		Source/prj/ICAD/Change.cpp 
+		Source/prj/ICAD/IcadApi.h 
+		Source/prj/ICAD/IcadExplorer.cpp 
+		Source/prj/ICAD/IcadRes.h 
+		Source/prj/ICAD/IcadSetVarsDia.cpp 
+		Source/prj/ICAD/IcadStatusBar.cpp 
+		Source/prj/ICAD/IcadStatusBar.h 
+		Source/prj/ICAD/ListCtrlEx.cpp 
+		Source/prj/ICAD/ListCtrlEx.h 
+		Source/prj/ICAD/explorersubdlg.h 
+		Source/prj/ICAD/icadEntPropMain.cpp 
+		Source/prj/ICAD/icadEntPropTabs.h 
+		Source/prj/ICAD/icadapi.cpp 
+		Source/prj/ICAD/icadentprop.cpp 
+		Source/prj/ICAD/icadexplorer.h 
+		Source/prj/ICAD/icadmain.cpp 
+		Source/prj/ICAD/icadview.cpp 
+		Source/prj/ICAD/icadwndaction.cpp 
+		Source/prj/ICAD/res/icadrc2.h 
+		Source/prj/api/sds/sds.h 
+		Source/prj/lib/CMDS/DimAngA3P.cpp 
+		Source/prj/lib/CMDS/DimContinue.cpp 
+		Source/prj/lib/CMDS/DimDiaCenterMark.cpp 
+		Source/prj/lib/CMDS/DimDiaFunc.cpp 
+		Source/prj/lib/CMDS/DimDiaMain.cpp 
+		Source/prj/lib/CMDS/DimLinear.cpp 
+		Source/prj/lib/CMDS/DimLinearFunc.cpp 
+		Source/prj/lib/CMDS/DimMakeDim.cpp 
+		Source/prj/lib/CMDS/DimOrdinate.cpp 
+		Source/prj/lib/CMDS/Leader.cpp 
+		Source/prj/lib/CMDS/cmds.h 
+		Source/prj/lib/CMDS/cmds9.cpp 
+		Source/prj/lib/CMDS/cmdsDimBlock.cpp 
+		Source/prj/lib/CMDS/cmdsDimBlock.h 
+		Source/prj/lib/CMDS/cmdsDimVars.cpp 
+		Source/prj/lib/CMDS/cmdsDimVars.h 
+		Source/prj/lib/CMDS/dimensions.cpp 
+		Source/prj/lib/CMDS/dimensions.h 
+		Source/prj/lib/CMDS/dxfInOut.cpp 
+		Source/prj/lib/CMDS/layer.cpp 
+		Source/prj/lib/DB/db1.cpp 
+		Source/prj/lib/DB/db_util.cpp 
+		Source/prj/lib/DB/dbdefines.h 
+		Source/prj/lib/DB/dbprotos.h 
+		Source/prj/lib/DB/dimstyletabrec.cpp 
+		Source/prj/lib/DB/dimstyletabrec.h 
+		Source/prj/lib/DB/drawing.cpp 
+		Source/prj/lib/DB/drawing.h 
+		Source/prj/lib/DB/handitem.cpp 
+		Source/prj/lib/DB/handitem.h 
+		Source/prj/lib/DB/sysvarlink.h 
+		Source/prj/lib/DRW/dwgload.cpp 
+		Source/prj/lib/DRW/dwgsave.cpp 
+		Source/prj/lib/ICADLIB/Resbuf.cpp 
+		Source/prj/lib/SDS/sds_apis.cpp 
+		Source/prj/lib/SDS/sds_conversion.cpp 
+		Source/prj/lib/SDS/sds_engine.h 
+		Source/prj/lib/SDS/sds_vars.cpp 
+		Source/prj/make/icad.dsp 
+		Source/prj/ICAD/printerdrawdevice.cpp 
+Added Files:
+		Source/prj/ICAD/IcadLWCombo.cpp 
+		Source/prj/ICAD/IcadLWCombo.h 
+Description:
+		Now we can load/save drawing with lineweight correctly.
+		Line weight status bar is available.
+		Properties dialog changes line weight.
+		IntelliCAD? Explorer changes Layer's line weight and Plottable flag.
+		Don't support plotting with scaled line weight.
+		Nested blocks can not see right weight although properties are okay.
+		(New) means New Feature, no titles are internal modification..
+File by Files:
+		Source/prj/ICAD/IcadExplorer.cpp 
+		Source/prj/ICAD/icadexplorer.h 
+		Source/prj/ICAD/explorersubdlg.h 
+			(New) Add LAYER Lineweight and Plottable columns.
+			(Readaility) Replace DXF=70 bitmask to IC_LAYER_OFF, IC_LAYER_FROZEN.
+			(Bugfix) When remove DIMSTYLE, forget to RENAME/ERASE DIMSTYLE Related entities in BLOCK Section.
+			(Bugfix) Protect to remove MTEXT DXF=3 is same as DIMSTYLE name.
+		Source/prj/ICAD/IcadSetVarsDia.cpp 
+			(New) Add DIMALTRND,DIMDSEP,DIMLWD,DIMLWE to DDIM dialog box.
+			(Cosmetic) Replace svar_DlgItemList20?. to GetPos?(nID)-> to ease to maintain.
+			(Memory leak) if remove DIMSTYLE and fail to get valid DIMSTYLE result buffer.
+			(Bugfix) When remove DIMSTYLE forget to RENAME/ERASE LEADER and TOLERANCE with removed style.
+				It is corrupted drawing, fail to save Drawing!!
+			(Bugfix) When remove DIMSTYLE, forget to RENAME/ERASE DIMSTYLE Related entities in BLOCK Section.
+			(Memory leak) Use IC_FREE(rb.resbal.rstring) instead delete rb.resval.rstring
+				When Save current dimension system variables to DIMSTYLE record.
+		Source/prj/ICAD/IcadStatusBar.cpp 
+		Source/prj/ICAD/IcadStatusBar.h 
+			(New) Add Lineweight status bar.
+				LWDISPLAY On/Off, LWUNITS Inch/mm, Set CELWEIGHT to const(0.00-2.11 mm), BYLAYER, BYBLOCK, DEFAULT.
+				Lineweight status bar also display CELWEIGHT value.
+		Source/prj/ICAD/icadEntPropMain.cpp 
+		Source/prj/ICAD/icadEntPropTabs.h 
+			(New) Add PROPERTY dialog box line weight drop-down listbox to edit entities lineweight property.
+		Source/prj/ICAD/icadapi.cpp 
+		Source/prj/ICAD/IcadApi.h 
+		Source/prj/ICAD/icadmain.cpp 
+		Source/prj/ICAD/icadview.cpp 
+		Source/prj/ICAD/icadwndaction.cpp 
+		Source/prj/lib/CMDS/dxfInOut.cpp 
+			Update Lineweight status bar
+		Eng-us/IcadRes.rc 
+		Eng-us/icad.rc2 
+		Source/prj/ICAD/IcadRes.h 
+		Source/prj/ICAD/res/icadrc2.h 
+			Add status bar strings, dialog controls, error messages.
+		Source/prj/ICAD/Change.cpp 
+			(New) To UNDO/REDO DIMSTYLE keep A2K member: DIMAZIN,DIMALTRND,DIMADEC,DIMDSEP,DIMLDRBLK,DIMLWD,DIMLWE.
+		Source/prj/ICAD/ListCtrlEx.cpp 
+		Source/prj/ICAD/ListCtrlEx.h 
+		Source/prj/ICAD/IcadLWCombo.cpp 
+		Source/prj/ICAD/IcadLWCombo.h 
+		Source/prj/make/icad.dsp 
+			Implement Line weight drop-down listbox. It uses by Explorer list control, property sheet, DDIM dialog.
+		Source/prj/ICAD/icadentprop.cpp 
+			(Cosmetic) It is obsolute.commented out.
+		Source/prj/lib/CMDS/cmds9.cpp 
+			(New) LIST dimension display orverride  DIMALTRND, DIMDSEP, DIMLWD, DIMLWE.
+		Source/prj/lib/CMDS/DimAngA3P.cpp 
+		Source/prj/lib/CMDS/DimContinue.cpp 
+		Source/prj/lib/CMDS/DimDiaCenterMark.cpp 
+		Source/prj/lib/CMDS/DimDiaFunc.cpp 
+		Source/prj/lib/CMDS/DimDiaMain.cpp 
+		Source/prj/lib/CMDS/DimLinear.cpp 
+		Source/prj/lib/CMDS/DimLinearFunc.cpp 
+		Source/prj/lib/CMDS/DimMakeDim.cpp 
+		Source/prj/lib/CMDS/DimOrdinate.cpp 
+		Source/prj/lib/CMDS/Leader.cpp 
+		Source/prj/lib/CMDS/cmdsDimBlock.cpp 
+		Source/prj/lib/CMDS/cmdsDimBlock.h 
+		Source/prj/lib/CMDS/dimensions.cpp 
+		Source/prj/lib/CMDS/dimensions.h 
+			(New) Creating dimension entities uses DIMALTRND, DIMDSEP, DIMLWD, DIMLWE, CELWEIGHT.
+		Source/ThirdParty/DCL_Components/Include/sds.h 
+		Source/prj/api/sds/sds.h 
+		Source/prj/lib/CMDS/cmds.h 
+		Source/prj/lib/SDS/sds_apis.cpp 
+		Source/prj/lib/SDS/sds_conversion.cpp 
+		Source/prj/lib/SDS/sds_engine.h 
+		Source/prj/lib/SDS/sds_vars.cpp 
+			ANGTOS and RTOS for dimension text needs DIMDSEP from orverride table.
+		Source/prj/lib/CMDS/cmdsDimVars.cpp 
+		Source/prj/lib/CMDS/cmdsDimVars.h 
+			Dimension variable helper functions support A2K Dimension variable: DIMALTRND, DIMDSEP, DIMLWD, DIMLWE.
+			Entity XDATA from/to entity variable table(plinkvar).
+			Initialize current variable table from dimension system variable.
+		Source/prj/lib/CMDS/layer.cpp 
+			(Readaility) Replace DXF=70 bitmask to IC_LAYER_OFF, IC_LAYER_FROZEN.
+		Source/prj/lib/DB/dbdefines.h 
+		Source/prj/lib/DB/db1.cpp 
+		Source/prj/lib/DB/sysvarlink.h 
+		Source/prj/lib/DB/drawing.cpp 
+		Source/prj/lib/DB/drawing.h 
+			Implement DIMALTRND and DIMDSEP header variables.
+			Set special bit on -- changing LWUNITS and LWDISPLAY needs to update line weight status bar.
+		Source/prj/lib/DB/db_util.cpp 
+		Source/prj/lib/DB/dbprotos.h 
+			Add lineweight more helper function.
+		Source/prj/lib/DB/dimstyletabrec.cpp 
+		Source/prj/lib/DB/dimstyletabrec.h 
+		Source/prj/lib/DB/handitem.cpp 
+		Source/prj/lib/DB/handitem.h 
+			Add DIMSTYLE record DIMALTRND, DIMDSEP, DIMLWD, DIMLWE.
+			get_148() DIMALTRND, get_278() DIMDSEP, get_371/372() DIMLWD/DIMLWE.
+		Source/prj/lib/DRW/dwgload.cpp 
+		Source/prj/lib/DRW/dwgsave.cpp 
+			DIMSTYLE record also load/save DIMALTRND, DIMDSEP, DIMLWD, DIMLWE.
+		Source/prj/lib/ICADLIB/Resbuf.cpp 
+			result buffer helper function suports lineweight, too.
+Comments:	TaLLineWeight
+--------------------------------------------------------------------------------
+Date:		28-03-2003
+Developer:	Chikahiro Masami
+Company: 	Ebatech
+Reference:	BugZilla:78471
+Affected files:	
+		Eng-us/IcadRes.rc 
+		Source/prj/ICAD/DDOpenGL.cpp 
+		Source/prj/ICAD/DDOpenGL.h 
+		Source/prj/ICAD/DDPlaneBuffer.cpp 
+		Source/prj/ICAD/DDPlaneBuffer.h 
+		Source/prj/ICAD/DrawDevice.cpp 
+		Source/prj/ICAD/DrawDevice.h 
+		Source/prj/ICAD/IcadEntityRenderer.h 
+		Source/prj/ICAD/IcadRes.h 
+		Source/prj/ICAD/PrinterDrawDevice.h 
+		Source/prj/ICAD/entityrenderer.cpp 
+		Source/prj/ICAD/icadapi.cpp 
+		Source/prj/ICAD/icadentityrenderer.cpp 
+		Source/prj/ICAD/icadview.cpp 
+		Source/prj/ICAD/printadvancedtab.cpp 
+		Source/prj/ICAD/printadvancedtab.h 
+		Source/prj/ICAD/printerdrawdevice.cpp 
+		Source/prj/lib/AUTO/PlotProperties.cpp 
+		Source/prj/lib/AUTO/PlotProperties.h 
+		Source/prj/lib/AUTO/PlotSupport.idl 
+		Source/prj/lib/AUTO/icadplotcfg.cpp 
+		Source/prj/lib/AUTO/icadplotcfg.h 
+		Source/prj/lib/DB/db_util.cpp 
+		Source/prj/lib/GR/DoBase.cpp 
+		Source/prj/lib/GR/DoDef.cpp 
+		Source/prj/lib/GR/DoDef.h 
+		Source/prj/lib/GR/Gr.h 
+		Source/prj/lib/GR/dispobjs.cpp 
+		Source/prj/lib/GR/gr_DisplaySurface.cpp 
+		Source/prj/lib/GR/gr_DisplaySurface.h 
+		Source/prj/lib/GR/gr_splines.cpp 
+		Source/prj/lib/GR/gr_view.cpp 
+		Source/prj/lib/GR/gr_view.h 
+		Source/prj/lib/GR/leadergen.cpp 
+		Source/prj/lib/GR/mtextgen.cpp 
+		Source/prj/lib/GR/pc2dispobj.cpp 
+		Source/prj/lib/GR/tolerancegen.cpp 
+		Source/prj/lib/GR/truetypeutils.cpp 
+Description:	Support HATCH, MLINE, INSERT and DIMENSION(excepct LEADER). 
+		Support Plotting using actual line weight.
+		Don't support plotting with scaled line weight.
+		Not support PROPERTIES, EXP_LAYERS, DDIM dialog box.
+File by Files:
+		Fixed:
+		Source/prj/ICAD/IcadRes.h 
+		Eng-us/IcadRes.rc 
+		Source/prj/ICAD/printadvancedtab.cpp 
+		Source/prj/ICAD/printadvancedtab.h 
+			Add 2 check box, Use LWeight? and Scale LWeight?.
+		Source/prj/lib/AUTO/PlotProperties.cpp 
+		Source/prj/lib/AUTO/PlotProperties.h 
+		Source/prj/lib/AUTO/PlotSupport.idl 
+		Source/prj/lib/AUTO/icadplotcfg.cpp 
+		Source/prj/lib/AUTO/icadplotcfg.h 
+			Communication between print dialog box and printer draw device.
+		Source/prj/ICAD/DrawDevice.cpp 
+		Source/prj/ICAD/DrawDevice.h 
+		Source/prj/ICAD/DDOpenGL.cpp 
+		Source/prj/ICAD/DDOpenGL.h 
+		Source/prj/ICAD/DDPlaneBuffer.cpp 
+		Source/prj/ICAD/DDPlaneBuffer.h 
+		Source/prj/ICAD/PrinterDrawDevice.h 
+		Source/prj/ICAD/printerdrawdevice.cpp 
+			Draw device classes, make entity with line weight as bold.
+		Source/prj/ICAD/IcadEntityRenderer.h 
+		Source/prj/ICAD/icadentityrenderer.cpp 
+			Remove test program.
+		Source/prj/ICAD/entityrenderer.cpp 
+			read lineweight from each display objects and call CDrawDevice?->SetLineWeight?()
+		Source/prj/ICAD/icadapi.cpp 
+			Modify initialize CPrinterDrawDevice?.
+		Source/prj/ICAD/icadview.cpp 
+		Source/prj/lib/DB/db_util.cpp 
+			line weight helper function more quickly.
+		Source/prj/lib/GR/DoBase.cpp 
+		Source/prj/lib/GR/DoDef.cpp 
+		Source/prj/lib/GR/DoDef.h 
+		Source/prj/lib/GR/Gr.h 
+		Source/prj/lib/GR/dispobjs.cpp 
+		Source/prj/lib/GR/gr_DisplaySurface.cpp 
+		Source/prj/lib/GR/gr_DisplaySurface.h 
+		Source/prj/lib/GR/gr_splines.cpp 
+		Source/prj/lib/GR/gr_view.cpp 
+		Source/prj/lib/GR/gr_view.h 
+		Source/prj/lib/GR/leadergen.cpp 
+		Source/prj/lib/GR/mtextgen.cpp 
+		Source/prj/lib/GR/pc2dispobj.cpp 
+		Source/prj/lib/GR/tolerancegen.cpp 
+		Source/prj/lib/GR/truetypeutils.cpp 
+			Display objects take line weight value.
+Comments:	TaLLineWeight
+--------------------------------------------------------------------------------
+Date:		27-03-2003
+Developer:	Chikahiro Masami
+Company:	Ebatech
+Reference:
+Affected files:	Source/prj/lib/CMDS/DimAng.cpp
+		Source/prj/lib/CMDS/DimAngA3P.cpp
+Description:	Creating and Move home angular dimension generates dimension text
+                  at wrong position. 
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Date:		24-03-2003
+Developer:	Chikahiro Masami
+Company: 	Ebatech
+Reference:	BugZilla:78471
+Affected files:	
+		Eng-us/icad.rc2 
+		Source/prj/ICAD/Change.cpp 
+		Source/prj/ICAD/IcadEntityRenderer.h 
+		Source/prj/ICAD/icadentityrenderer.cpp 
+		Source/prj/ICAD/res/icadrc2.h 
+		Source/prj/lib/CMDS/changeprop.cpp 
+		Source/prj/lib/CMDS/cmds.h 
+		Source/prj/lib/CMDS/cmds3.cpp 
+		Source/prj/lib/CMDS/cmds9.cpp 
+		Source/prj/lib/CMDS/layer.cpp 
+		Source/prj/lib/DB/db1.cpp 
+		Source/prj/lib/DB/dbdefines.h 
+		Source/prj/lib/DB/drawing.cpp 
+		Source/prj/lib/DB/drawing.h 
+		Source/prj/lib/DB/entity.cpp 
+		Source/prj/lib/DB/entity.h 
+		Source/prj/lib/DB/oldvars.cpp 
+		Source/prj/lib/DRW/dwgload.cpp 
+		Source/prj/lib/DRW/dwgsave.cpp 
+		Source/prj/lib/GR/explodemtext.cpp 
+		Source/prj/lib/SDS/sds_db.cpp 
+		Source/prj/lib/SDS/sds_vars.cpp 
+Description:	Support Line Weight.
+File by Files:
+		Fixed:
+		Source/prj/ICAD/Change.cpp 
+			Line weight for all entities can undo/redo.
+		Source/prj/lib/CMDS/changeprop.cpp 
+			CHANGE command modify line weight of any existing entities.
+		Source/prj/lib/CMDS/cmds3.cpp 
+			STATUS command list CELWEIGHT and LWDISPLAY.
+		Source/prj/lib/CMDS/cmds9.cpp 
+			LIST command list line weight, DIMLWD and DIMLWE property.
+		Source/prj/lib/CMDS/layer.cpp 
+			-LAYER command modify line weight of any existing layers.
+		Source/prj/lib/DB/db1.cpp 
+		Source/prj/lib/DB/drawing.cpp 
+		Source/prj/lib/DB/oldvars.cpp 
+			Introduce CELWEIGHT, LWDEFAULT, LWDISPLAY, LWUNITS, DIMLWD, DIMLWE.
+		Source/prj/lib/DB/entity.cpp 
+			db_entity constructor initialize line weight property with CELWEIGHT.
+		Source/prj/lib/DRW/dwgload.cpp 
+		Source/prj/lib/DRW/dwgsave.cpp 
+			Keep line weight and header variable during save/load drawing.
+		Source/prj/lib/GR/explodemtext.cpp 
+			Keep line weight to explode mtext to text.
+		Source/prj/lib/SDS/sds_db.cpp 
+			Changing line weight needs redrawing that entity.
+		Source/prj/lib/SDS/sds_vars.cpp 
+			Changing LWDISPLAY or LWDEFAULT needs redrawing all views.
+
+		Modify for Test only:
+
+		Source/prj/ICAD/IcadEntityRenderer.h 
+		Source/prj/ICAD/icadentityrenderer.cpp 
+			Display Line weight.
+		I will move displaying line weihgt feature from CIcadEntityRenderer? to something else.
+		It is need to diplay complex entities such as block and dimensions.
+		I am going to work for Plotting, Display blocks, GUI command( PROPERTIES and EXP_LAYERS )...
+Comments:	TaLLineWeight
+--------------------------------------------------------------------------------

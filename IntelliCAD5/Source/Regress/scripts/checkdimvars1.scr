@@ -1,0 +1,9 @@
+logfilename log\checkdimvars1.log
+logfileon
+;_______
+(load "lisp\checkDimVars1.lsp")
+;________
+dxfout output\output_checkdimvars1.dxf
+6
+quit
+y

@@ -1,0 +1,37 @@
+logfilename log\78441_setq.log
+logfileon
+;_________1
+(setq a 5 b (+ a -14.0) c (* a b))
+(if (/= c -45.0) (alert "__1__"))
+;Gives_a=5;b=-9.0;c=-45.0.Result:-45.0
+;_________2
+(setq nil 5)
+;Bad_arg
+;_________3
+(setq 5 6)
+;Bad_arg
+;__________4
+(setq "abc" 6)
+;Bad_arg
+;_________5
+(setq (strcat "abc") 6)
+;Bad_arg
+;_________6
+(setq (quote a) 6)
+;Bad_arg
+;_________7
+(setq a 5)
+(setq a 4 b a)
+(if (/= b 4) (alert "__7__"))
+;Sets_a_and_b_to_4;result:4
+;_________8
+(setq b '(+ 1 2))
+(setq a b)
+;Sets_a_and_b_to_the_list_(+_1_2)
+(setq a nil)
+;Removes a from atoms llist
+;_________9
+;(setq a (alert "__9__"))
+;(setq a nil)
+;_________
+quit

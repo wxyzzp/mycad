@@ -1,0 +1,18 @@
+;___Created_by_Stephen_Hou_on_06/05/2003______
+logfilename log\78364.log
+logfileon
+;___________
+circle
+3,3
+4
+;___________
+extrude
+last
+
+5
+1
+;___________
+dxfout output_dxf\78364.dxf
+6
+quit
+y

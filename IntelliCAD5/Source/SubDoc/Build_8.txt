@@ -1,0 +1,42 @@
+Notes for Build_8:
+
+CHANGELOG:
+
+User: master
+Description: Change for build date for Build 8.
+Modified IntelliCAD/Source/prj/ICAD/blddate.h 
+--------------------------------------------------------------------------------
+
+User: master
+Description: Add buildnotes for Build 7
+Added IntelliCAD/Source/SubDoc/Build_7.txt
+--------------------------------------------------------------------------------
+IntelliCAD/Eng-us/IcadRes.rc
+IntelliCAD/Source/prj/ICAD/blddate.h
+IntelliCAD/Source/prj/ICAD/icadEntPropMain.cpp
+IntelliCAD/Source/prj/ICAD/icadEntPropTabs.cpp
+IntelliCAD/Source/prj/ICAD/icadEntPropTabs.h
+IntelliCAD/Source/prj/ICAD/IcadExplorer.cpp
+IntelliCAD/Source/prj/ICAD/IcadRes.h
+IntelliCAD/Source/prj/ICAD/printscaleviewtab.cpp
+IntelliCAD/Source/prj/lib/CMDS/CmdFilletChamfer.cpp
+IntelliCAD/Source/prj/lib/CMDS/DimMakeDim.cpp
+IntelliCAD/Source/prj/lib/DB/dimension.cpp
+IntelliCAD/Source/prj/lib/DB/entities.h
+IntelliCAD/Source/prj/lib/DB/reactor.cpp
+IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+IntelliCAD/Source/prj/lib/flyoversnap/OsnapModeDefTan.cpp
+IntelliCAD/Source/prj/lib/flyoversnap/OsnapModeDefTan.h
+IntelliCAD/Source/Regress/acis/acis6_speaker.scr
+IntelliCAD/Source/Regress/LISP/78310.lsp
+IntelliCAD/Source/Regress/scripts/78310_1.scr
+IntelliCAD/Source/Regress/scripts/78310_2.scr
+IntelliCAD/Source/SubDoc/Build_7.txt
+IntelliCAD/Source/SubDoc/CYB_7219_1.txt
+IntelliCAD/Source/SubDoc/CYB_78172_1.txt
+IntelliCAD/Source/SubDoc/CYB_78310_1.txt
+IntelliCAD/Source/SubDoc/CYB_78323_1.txt
+IntelliCAD/Source/SubDoc/EBA_78329_1.txt
+IntelliCAD/Source/SubDoc/VS_05102002_1.txt
+

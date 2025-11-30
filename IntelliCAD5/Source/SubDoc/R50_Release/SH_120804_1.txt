@@ -1,0 +1,48 @@
+Document Title:  SH_120804_1.txt	
+Product Version: ICAD 4.0
+Date:  8/12/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/cmds4.cpp
+
+3. Overview:
+
+This submission fix the following the problem:
+
+The Undo option in TRIM command did not earse the one of ellipses or splines 
+after an open ellipse or spline curve was trimmed to become two separated pieces.
+
+When a open curve is trimme and broken down to two separated pieces, one of the 
+pieces is a new entity. In cmd_trim_object(), the name of the new entity was not 
+passed back to caller so it never be earsed by the code of the UNDO option. This 
+bug is fixed.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: 
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: Y
+	File Name:
+	Name of Script file:   undo_trim.scr
+
+8.  Notes to Localization:
+
+
+
+

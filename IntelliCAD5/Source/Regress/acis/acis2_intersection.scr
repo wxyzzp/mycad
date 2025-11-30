@@ -1,0 +1,34 @@
+;_Created_by_Cybage_on_9/19/2002_________
+logfilename log\acis2_intersection.log
+logfileon
+;___________
+box
+0,0,0
+10,10,10
+;___________
+sphere
+5,5,0
+7.071
+;___________
+intersect
+all
+
+;___________
+box
+0,0,0
+10,10,-10
+;___________
+union
+all
+
+;___________
+vpoint
+1,1,1
+;___________
+zoom
+extents
+;___________
+dxfout output_dxf\acis2_intersection.dxf
+6
+quit
+y

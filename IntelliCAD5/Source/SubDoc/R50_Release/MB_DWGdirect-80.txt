@@ -1,0 +1,50 @@
+Document Title:		MB_DWGdirect-80.txt
+Product Version:	ICAD 5
+Date:  				08/09/2004 12:25pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	DB
+	DWGdirect
+
+3.  Overview:
+Just general error handling cleanup. 
+Also commented out some as yet unused code.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       	    
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/lib/db/dictionary.cpp
+                    source/prj/lib/db/hireflink.cpp
+                    source/prj/lib/db/insert.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectconverter.h
+                    source/subdoc/MB_DWGdirect-80.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+
+

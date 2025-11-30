@@ -1,0 +1,6 @@
+logfilename log\78442_1.log
+logfileon
+;_______
+(load "lisp/78442_1.lsp")
+;_______
+quit

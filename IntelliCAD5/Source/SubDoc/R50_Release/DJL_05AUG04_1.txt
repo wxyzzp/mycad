@@ -1,0 +1,86 @@
+Document Title:  DJL_05AUG03_1.txt
+Product Version: ICAD 5
+Date:  2 August 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: No
+* Submitted to branch(es):
+R50_Release
+R40_Dev
+
+2. Modules Affected :
+Not Sure
+
+3.  Overview:
+Various Bug Fixes:
+Bugzilla 77801: Infinite loop in Bhatch in certain drawing file.
+
+This bug was caused by an infinite loop in CNURBS::NextCusp() GEO function.
+
+Bugzilla 78512: Group Entities dialog does not support help.
+
+Also fixed some misspelled items in some dialogs and prompts: Anglar vs. Angular
+
+--------------------------------------------------------------------------------
+Reference:   djl_04AUG04_1.txt; Bugzilla 77801
+Changed files:
+Looking for modified files...
+	Nurbs.cpp
+
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_04AUG04_1.txt
+
+Description:
+Bugzilla 77801: Infinite loop in Bhatch in certain drawing file.
+
+This bug was caused by an infinite loop in CNURBS::NextCusp() GEO function.
+
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Reference:   djl_04AUG04_1.txt; Bugzilla 78512
+Changed files:
+Looking for modified files...
+	Nurbs.cpp
+
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_04AUG04_1.txt
+
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Eng-us :
+    modified: icad.rc2
+              IcadRes.rc
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/ICAD :
+    modified: DialogGroup.cpp
+              DialogGroup.h
+              dialoggrouporder.cpp
+              dialoggrouporder.h
+              icadmain.cpp
+              resource.hm
+
+Description:
+Bugzilla 78512: Group Entities dialog does not support help.
+
+Also fixed some misspelled items in some dialogs and prompts: Anglar vs. Angular
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Just retest the items specfified in the bug numbers.
+
+9.  Installation Issues:
+None
+

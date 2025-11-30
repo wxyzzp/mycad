@@ -1,0 +1,35 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-35.txt
+Produce Version		ICAD 4
+Date:				05/11/2004 16:35pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission allows proxy entities to display in IntelliCAD.
+It is a partial implementation at this point, because currently
+only polylines and circular arcs have their callback functions filled
+in, but it is a major step toward full display support for proxies.
+
+In addition, I fixed a couple of typos I found in curve.cpp which 
+were causing me to get some bogus data back.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\thirdparty\geo\curve.cpp
+\source\prj\icad\icadapi.cpp
+\source\prj\lib\db\acad_proxy_entity.cpp
+\source\prj\lib\db\entities.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\giworlddrawvectors.h
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\make\db.dsp

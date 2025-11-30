@@ -1,0 +1,53 @@
+Lisp acceptance test run at 07-28-1998 08:04:05a on version P.0.31
+
+Starting tests...
+
+--- angle ---
+
+zero = 0.0000
+icadhlp1 = 0.7854
+icadhlp2 = 1.0517
+acadhlp1 = 1.5708
+acadhlp2 = 3.1416
+
+--- distance ---
+
+zero = 0.0000
+icadhlp1 = 3.6056
+acadhlp1 = 6.7000
+acadhlp2 = 2.8284
+
+--- inters ---
+
+zero = nil
+icadhlp1:
+	 = 2.0000
+	 = 1.0000
+icadhlp2 = nil
+icadhlp3:
+	 = 2.0000
+	 = 1.0000
+icadhlp4 = nil
+icadhlp5 = nil
+acadhlp1 = nil
+acadhlp2 = nil
+acadhlp3:
+	 = 4.0000
+	 = 4.0000
+
+--- polar ---
+
+zero:
+	 = 0.0000
+	 = 0.0000
+icadhlp1:
+	 = 1.0000
+	 = 4.0000
+icadhlp2:
+	 = 4.0000
+	 = 1.5000
+acadhlp1:
+	 = 2.0000
+	 = 2.0000
+	 = 3.5000
+Lisp acceptance test completed at 07-28-1998 08:04:06a on version P.0.31

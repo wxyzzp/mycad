@@ -1,0 +1,6 @@
+	(defun onemaxp1real ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc (foreach x (append '(1 9.9e308)) (logflt x)))
+		(setq *error* prverr)
+	)

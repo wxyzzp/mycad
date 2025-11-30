@@ -1,0 +1,835 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78647_1.txt	
+Product Version:	ICAD 4
+Date:			09/12/2003 (DD/MM/YYYY)
+Engineer(s):		Sachin Dange
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/prj/lib/AUTO/icadplotcfg.cpp ==> IcadAuto.dll
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is related to Bugzilla# 78647: ICAD does not use default Windows 
+printer for printing operations.
+	The necessary requirement for this bug to be produced is that one 
+needs to have more than 1 printer installed on his machine.
+	After running IntelliCAD, Choose "File | Print Setup..." from the 
+menu. This will invoke the Print Setup Dialog Box. We note the selected 
+printer. Then we close IntelliCAD. Now from the "Control Panel", we change 
+the default Printer. Next we start IntelliCAD again, and invoke the 
+"Print Setup" dialog as before. IntelliCAD is expected to show the default 
+printer selected in the Combo-Box like other Windows applications. But this
+does not happen.
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+	After looking at the code, I found that IntelliCAD uses the Registry to
+read and write the Printer information for the Print Setup dialog box. The 
+information about the last selected printer in the "Print Setup" dialog box
+is stored in the registry on closing IntelliCAD application. On starting 
+IntelliCAD the saved settings are again read from the registry and 
+transferred to the "Print Setup" dialog.
+	The solution is to avoid this by stopping the Printer-related Info from 
+the DEVMODE structure to go In and Out from the Registry.
+	Actually the default Printer settings are obtained initially. This can
+be seen from the constructor call of class "PlotCfg", which calls the 
+function "getSystemDefaultPrinterSettings" as the code shows below: 
+
+File: Source\prj\lib\AUTO\icadplotcfg.cpp
+-----------------------------------------
+PlotCfg::PlotCfg()
+{
+	...
+	...
+	...
+
+        centerOnPage = FALSE;
+		// EBATECH(CNBR) 24-03-2003 Bugzilla#78471 Support Line Weight
+		useLWeight = FALSE;
+		scaleLWeight = FALSE;
+
+	*m_printerName = 0;
+	// Invalid value -1 indicates that we don't override the according value in DEVMODE structure,
+	// see CIcadApp::getPrinterSettingsFromPlotcfg.
+	m_paperOrientation = m_paperSize = m_paperWidth = m_paperLength = m_paperSource = -1;
+	getSystemDefaultPrinterSettings();
+}
+
+	The "getSystemDefaultPrinterSettings()" function initialises the 6 
+member variables of our intrest from the DEVMODE structure as follows:
+
+File: Source\prj\lib\AUTO\icadplotcfg.cpp
+-----------------------------------------
+bool PlotCfg::getSystemDefaultPrinterSettings()	
+{
+	...
+	...
+	...
+
+	strcpy(m_printerName, (char*)pPI2->pDevMode->dmDeviceName);
+	if(pPI2->pDevMode->dmFields & DM_ORIENTATION)
+		m_paperOrientation = pPI2->pDevMode->dmOrientation;
+	if(pPI2->pDevMode->dmFields & DM_PAPERSIZE)
+		m_paperSize = pPI2->pDevMode->dmPaperSize;
+	if(pPI2->pDevMode->dmFields & DM_PAPERLENGTH)
+		m_paperLength = pPI2->pDevMode->dmPaperLength;
+	if(pPI2->pDevMode->dmFields & DM_PAPERWIDTH)
+		m_paperWidth = pPI2->pDevMode->dmPaperWidth;
+	if(pPI2->pDevMode->dmFields & DM_DEFAULTSOURCE)
+		m_paperSource = pPI2->pDevMode->dmDefaultSource;
+
+	GlobalFree(pPI2);
+
+	return true;
+}
+
+	This entire process is done by the class "PlotManager" in its 
+constructor. The constructor of "PlotManager" initialises its member object
+of type "PlotCfg" by calling the "PlotCfg" constructor as the code shows 
+below:
+
+File: Source\prj\lib\AUTO\plotproperties.cpp
+--------------------------------------------
+PlotManager::PlotManager() : m_plotConfig(PlotCfg()), m_properties(NULL)
+	{
+
+	HRESULT	result =  ImportRegPlotProperties();
+
+	//	ASSERT( SUCCEEDED( result) );
+	}
+
+	As seen from the above code after initializing the "m_plotConfig", the 
+constructor also calls the function, "ImportRegPlotProperties". 
+This function in turn calls the function "readPlotConfigFromReg" of 
+"m_plotConfig" as shown below:
+
+File: Source\prj\lib\AUTO\plotproperties.cpp
+--------------------------------------------
+STDMETHODIMP PlotManager::ImportRegPlotProperties()
+	{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState())
+
+	if ( m_plotConfig->readPlotConfigFromReg() != RTNORM )
+		return E_FAIL;
+
+	return S_OK;
+	}
+
+
+The "readPlotConfigFromReg" function overwrites those 6 member variables  
+with the values from the registry. Thus to fix this problem, I have just 
+commented out the related code as follows: (The commented part of the code 
+is within the following Bugzilla comments
+	// Bugzilla:78647;	Date:12-11-03.)
+
+File: Source\prj\lib\AUTO\icadplotcfg.cpp
+-----------------------------------------
+int PlotCfg::readPlotConfigFromReg()
+{
+    HKEY hKey;
+    char key[10];
+    DWORD retType;
+    unsigned long nStrLen;
+    char tmpBuffer[IC_PENSBUF], *loc;
+    char delimiter[] = " \n"/*DNT*/;
+	...
+	...
+	...
+
+    nStrLen=sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "CenterOnPage"/*DNT*/,NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		centerOnPage = atoi(tmpBuffer);
+
+
+    // Bugzilla:78647;	Date:12-11-03.
+	/*!!!
+	//-----------------------------------------------------------------------------
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PrinterName"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		_tcscpy(m_printerName, tmpBuffer);
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PaperOrientation"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		m_paperOrientation = atoi(tmpBuffer);
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PaperSize"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		m_paperSize = atoi(tmpBuffer);
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PaperLength"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		m_paperLength = atoi(tmpBuffer);
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PaperWidth"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		m_paperWidth = atoi(tmpBuffer);
+
+    nStrLen = sizeof(tmpBuffer);
+    if(RegQueryValueEx(hKey, "PaperSource"/*DNT* /, NULL, &retType, (unsigned char*)tmpBuffer, &nStrLen) == ERROR_SUCCESS)
+		m_paperSource = atoi(tmpBuffer);
+
+	//-----------------------------------------------------------------------------
+	//!!!*/
+	// Bugzilla:78647;	Date:12-11-03.
+
+	...
+	...
+	...
+
+    RegCloseKey(hKey);
+
+    return RTNORM;
+}
+
+
+	And since these 6 variables are not read from the registry, I think 
+that they should not be saved in the registry either. Therefore I have 
+commented out the related code in "writePlotConfigToReg" also as follows: 
+(The commented part of the code is within the following Bugzilla comments
+	// Bugzilla:78647;	Date:12-11-03.)
+
+File: Source\prj\lib\AUTO\icadplotcfg.cpp
+-----------------------------------------
+int PlotCfg::writePlotConfigToReg()
+{
+    HKEY hKey;
+    DWORD retval;
+    char key[10];
+    char tmpBuffer[IC_PENSBUF*2];
+
+	...
+	...
+	...
+
+    // Bugzilla:78647;	Date:12-11-03.
+	/*!!!
+	//-----------------------------------------------------------------------------
+    sprintf(tmpBuffer, "%s", m_printerName);
+    RegSetValueEx(hKey, "PrinterName"/*DNT* /, 0, REG_SZ , (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+    sprintf(tmpBuffer, "%d", (int)m_paperOrientation);
+    RegSetValueEx(hKey, "PaperOrientation"/*DNT* /, 0, REG_SZ, (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+    sprintf(tmpBuffer, "%d", (int)m_paperSize);
+    RegSetValueEx(hKey, "PaperSize"/*DNT* /, 0, REG_SZ, (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+    sprintf(tmpBuffer, "%d", (int)m_paperLength);
+    RegSetValueEx(hKey, "PaperLength"/*DNT* /, 0, REG_SZ, (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+    sprintf(tmpBuffer, "%d", (int)m_paperWidth);
+    RegSetValueEx(hKey, "PaperWidth"/*DNT* /, 0, REG_SZ, (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+    sprintf(tmpBuffer, "%d", (int)m_paperSource);
+    RegSetValueEx(hKey, "PaperSource"/*DNT* /, 0, REG_SZ, (const unsigned char*)tmpBuffer, strlen(tmpBuffer) + 1);
+
+	//-----------------------------------------------------------------------------
+	//!!!*/
+	// Bugzilla:78647;	Date:12-11-03.
+
+	...
+	...
+	...
+
+    return RTNORM;
+}
+
+
+Scenario 2:
+~~~~~~~~~~~
+Now consider another following scenario in which the above behavior should 
+take place:
+	1. Start IntelliCAD.
+	2. Type pSetup at the command prompt.
+	3. Note down the selected default Printer.
+	4. Close the Print Setup Dialog Box.
+	5. Now without shutting down IntelliCAD application, go to 
+	   Control Panel.
+	6. Change the default printer to some other printer.
+	7. Switch back to IntelliCAD again.
+	8. Type pSetup at the command prompt.
+	9. Like other Windows applications, the Print Setup Dialog Box should 
+	   show the currently selected default Printer in the Control Panel.
+
+
+When "pSetup" command is issued at the command prompt, the control passes to
+the function "CIcadApp::InitPrintDialog ()" in "Source\prj\Icad\IcadApp.cpp".
+After starting IntelliCAD, when "pSetup" is issued for the first time, 
+"((CMainWindow*)m_pIcadMainWnd)->m_pIcadPrintDlg" in this function is NULL. 
+Therefore, the PlotManager Object is created through the constructor of 
+"CPrintDialogSheet". During the creation of PlotManager object, the function 
+"getSystemDefaultPrinterSettings" gets called for the PlotConfig Object in 
+PlotManager Object.
+But after the first call, whenever "pSetup" command is issued, 
+"((CMainWindow*)m_pIcadMainWnd)->m_pIcadPrintDlg" is not NULL in the function
+"CIcadApp::InitPrintDialog()". Thus it uses the Plotmanager Object that's 
+already initialized.
+I have modified the function "CIcadApp::getPrinterSettingsFromPlotcfg()" which 
+gets called in "InitPrintDialog", to solve this problem.
+
+I have come up with 2 solutions for this:
+
+
+Method 1: Without Modification through Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the first method, I just typecast the interface pointer obtained to the 
+"PlotManager*" and call the "getSystemDefaultPrinterSettings()" method of 
+PlotManager. This method in turn calls the "getSystemDefaultPrinterSettings()"
+method of the underlying PlotConfig Object. The modified code for this 
+has been done as follows: (modified code is within Bugzilla Comments).
+
+File: Source\prj\Icad\IcadApp.cpp
+---------------------------------
+bool CIcadApp::getPrinterSettingsFromPlotcfg()
+{
+	IIcadPlotManager*	pPlotMgr = ((CMainWindow*)m_pIcadMainWnd)->m_pIcadPrintDlg->GetPlotManager();
+
+#ifdef USE_PLOTCFG_DIRECTLY
+	// Bugzilla:78647;	Date:17-11-03.
+	((PlotManager*)pPlotMgr)->getSystemDefaultPrinterSettings();
+	// Bugzilla:78647;	Date:17-11-03.
+	CString	printerName(((PlotManager*)pPlotMgr)->m_plotConfig->m_printerName);
+#else
+	BSTR	bstrPrinterName;
+	if(FAILED(pPlotMgr->get_PrinterName(&bstrPrinterName))
+		return false;
+
+	CString	printerName(bstrPrinterName);
+	SysFreeString(bstrPrinterName);
+#endif
+
+	// open printer
+    HANDLE	hPrinter;
+    if(!OpenPrinter((LPTSTR)(LPCTSTR)printerName, &hPrinter, NULL))
+        return false;
+
+	// obtain PRINTER_INFO_2 structure
+	DWORD	dwBytesReturned, dwBytesNeeded;
+
+
+	...
+	...
+	...
+	...
+
+
+	return true;
+}
+
+
+Method 2: Modification through Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Even though the above method works flawlessly, the above code depends on the
+conditional macro definition "USE_PLOTCFG_DIRECTLY". Further to this, I would
+like to draw your attention to the following statements in the class declaration
+of "PlotManager" in the header file "AUTO\PlotProperties.h". The section of the 
+code that needs attention is shown as follows:
+
+File: Source\prj\lib\AUTO\PlotProperties.h
+------------------------------------------
+class ATL_NO_VTABLE PlotManager : 
+	public CComObjectRootEx<CComSingleThreadModel>,
+	public CComCoClass<PlotProperties, &CLSID_PlotProperties>,
+	public IDispatchImpl<IIcadPlotManager, &IID_IIcadPlotManager, &LIBID_IntelliCAD>,
+	public IIcadPlotRegManager
+	{
+
+	#define USE_PLOTCFG_DIRECTLY							// TO DO: add/implement according props of IIcadPlotManager,
+	friend bool CIcadApp::getPrinterSettingsFromPlotcfg();	// remove this ugly friendship and remove this define of
+	friend bool CIcadApp::putPrinterSettingsToPlotcfg();	// USE_PLOTCFG_DIRECTLY (changing the friends too, of course)
+
+public:
+	PlotManager();
+	~PlotManager();
+
+	...
+	...
+	...
+	}
+
+As shown above, the comments clearly indicate that the implementer of the 
+class is going to remove the friend declarations of the functions and this 
+macro definition, some time in the future.
+
+Therefore I think a better way is to provide an method in interface
+"IIcadPlotManager" and provide the implementation of this method in class 
+"PlotManager", because "PlotManager" implements "IIcadPlotManager".
+But this solution is provided within conditional macro (after discussion
+with Denis), called "USE_DEFAULT_PRINTER_THROUGH_INTERFACE". This 
+macro has been defined within comments in two places viz:
+
+	"AUTO\PlotSupport.idh", and "AUTO\PlotProperties.h"
+as follows (within Bugzilla comments):
+	
+
+File: Source\prj\lib\AUTO\PlotSupport.idh
+-----------------------------------------
+// interface declarations
+
+// Bugzilla:78647;	Date:05-12-03
+//---------------------------------------------
+//******* Modified by Sachin Dange.
+//*** Uncomment the following line if you want the call through the interface "IIcadPlotManager".
+//#define USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+//---------------------------------------------
+// Bugzilla:78647;	Date:05-12-03
+
+
+interface IIcadPlotterPen;
+interface IIcadPlotterPens;
+...
+...
+...
+
+
+
+File: Source\prj\lib\AUTO\PlotProperties.h
+------------------------------------------
+
+...
+...
+/////////////////////////////////////////////////////////////////////////////
+// PlotManager
+
+
+// Bugzilla:78647;	Date:05-12-03
+//-----------------------------------------
+//******* Modified by Sachin Dange 
+//*** Uncomment the following line, if you want the call through the interface "IIcadPlotManager".
+//#define USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+//-----------------------------------------
+// Bugzilla:78647;	Date:05-12-03
+
+class ATL_NO_VTABLE PlotManager :
+...
+...
+...
+
+
+With respect to this I have added a method called "GetDefaultPrinterSettings"
+to the respective interface declaration, class declaration and implemented 
+that method, in the following files: 
+
+	"AUTO\PlotSupport.idl",
+	"AUTO\PlotProperties.h"
+	"AUTO\PlotProperties.cpp".
+The modifications are within the Bugzilla comments, and are as follows:
+
+File: Source\prj\lib\AUTO\PlotSupport.idl
+-----------------------------------------
+	interface IIcadPlotManager : IDispatch
+	{
+		typedef [uuid(8011c0db-7e36-11d1-bc5a-0060089608a4)] enum PrintArea
+		{
+			CurrentView,
+			SavedView,
+			Extents,
+			Limits,
+			Window
+		} PrintArea;
+
+		...
+		...
+		...
+		...
+
+		[propget, id(17), helpstring("property CenterOnPage")] HRESULT CenterOnPage([out, retval] BOOL *pVal);
+		[propput, id(17), helpstring("property CenterOnPage")] HRESULT CenterOnPage([in] BOOL newVal);
+
+		// Bugzilla:78647;	Date:05-12-03.
+#ifdef USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+		[id(18), helpstring("method GetDefaultPrinterSettings")] HRESULT GetDefaultPrinterSettings();
+#endif		
+		// Bugzilla:78647;	Date:05-12-03.
+	};
+
+
+
+File: Source\prj\lib\AUTO\PlotProperties.h
+------------------------------------------
+/////////////////////////////////////////////////////////////////////////////
+// PlotManager
+class ATL_NO_VTABLE PlotManager : 
+	public CComObjectRootEx<CComSingleThreadModel>,
+	public CComCoClass<PlotProperties, &CLSID_PlotProperties>,
+	public IDispatchImpl<IIcadPlotManager, &IID_IIcadPlotManager, &LIBID_IntelliCAD>,
+	public IIcadPlotRegManager
+	{
+
+	#define USE_PLOTCFG_DIRECTLY							// TO DO: add/implement according props of IIcadPlotManager,
+	friend bool CIcadApp::getPrinterSettingsFromPlotcfg();	// remove this ugly friendship and remove this define of
+	friend bool CIcadApp::putPrinterSettingsToPlotcfg();	// USE_PLOTCFG_DIRECTLY (changing the friends too, of course)
+
+public:
+
+	...
+	...
+	...
+	...
+
+	STDMETHOD(Preview)();
+	STDMETHOD(Print)();
+
+	// Bugzilla:78647;	Date:17-11-03.
+#ifdef USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+	STDMETHOD(GetDefaultPrinterSettings)();
+#endif
+	// Bugzilla:78647;	Date:17-11-03.
+
+	// IIcadPlotRegManager
+	STDMETHOD(get_RegPlotProperties)(IIcadPlotProperties* *pVal);
+	STDMETHOD(ImportRegPlotProperties)();
+	STDMETHOD(ExportRegPlotProperties)();
+
+	AUTO_DECLSPEC bool getSystemDefaultPrinterSettings();
+
+protected:
+	SmartPointer<PlotCfg>			m_plotConfig;
+	CComPtr< IIcadPlotProperties>	m_properties;
+	};
+
+
+
+File: Source\prj\lib\AUTO\PlotProperties.cpp
+--------------------------------------------
+// Bugzilla:78647;	Date:17-11-03.
+#ifdef USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+STDMETHODIMP PlotManager::GetDefaultPrinterSettings()
+{
+	bool bReturnValue = m_plotConfig->getSystemDefaultPrinterSettings();
+
+	return bReturnValue ? S_OK : E_FAIL;
+}
+#endif
+// Bugzilla:78647;	Date:17-11-03.
+
+
+
+After this I just call the interface method through the obtained 
+"IIcadPlotManager" interface pointer in "IcadApp.cpp" as follows:
+(The modifications are within Bugzilla comments):
+
+File: Source\prj\Icad\IcadApp.cpp
+---------------------------------
+bool CIcadApp::getPrinterSettingsFromPlotcfg()
+{
+	IIcadPlotManager*	pPlotMgr = ((CMainWindow*)m_pIcadMainWnd)->m_pIcadPrintDlg->GetPlotManager();
+
+// Bugzilla:78647;	Date:05-12-03.
+#ifndef USE_DEFAULT_PRINTER_THROUGH_INTERFACE
+	((PlotManager*)pPlotMgr)->getSystemDefaultPrinterSettings();
+#else
+	pPlotMgr->GetDefaultPrinterSettings();
+#endif
+// Bugzilla:78647;	Date:05-12-03.
+
+
+#ifdef USE_PLOTCFG_DIRECTLY
+	CString	printerName(((PlotManager*)pPlotMgr)->m_plotConfig->m_printerName);
+#else
+	BSTR	bstrPrinterName;
+	if(FAILED(pPlotMgr->get_PrinterName(&bstrPrinterName))
+		return false;
+
+	CString	printerName(bstrPrinterName);
+	SysFreeString(bstrPrinterName);
+#endif
+
+	// open printer
+    HANDLE	hPrinter;
+    if(!OpenPrinter((LPTSTR)(LPCTSTR)printerName, &hPrinter, NULL))
+        return false;
+
+	// obtain PRINTER_INFO_2 structure
+	DWORD	dwBytesReturned, dwBytesNeeded;
+
+
+	...
+	...
+	...
+	...
+
+
+	return true;
+}
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> Yes
+Following entries will not be saved now:
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PrinterName
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PaperOrientation
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PaperSize
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PaperLength
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PaperWidth
+HKEY_CURRENT_USER\Software\ITC\IntelliCAD\Profiles\Default\Config\plot\PaperSource
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+The code should be checked for the following cases:
+	1. The default Printer selected in Control Panel, should always
+	   appear as the selected Printer in the "Print Setup", dialog box,
+	   when Psetup is first issued after starting the IntelliCAD application.
+	2. When IntelliCAD is in progress of execution, and Print Setup Dialog is 
+	   not displayed, and at that time if the Default printer is changed 
+	   through the Control Panel, then the next time when the Print Setup 
+	   dialog Box is invoked, it should show the default printer.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+

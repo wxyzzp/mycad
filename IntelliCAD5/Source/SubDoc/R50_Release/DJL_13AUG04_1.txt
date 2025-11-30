@@ -1,0 +1,97 @@
+Document Title:  DJL_14AUG04_1.txt	
+Product Version: ICAD 5
+Date:  August 14, 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: Y
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+Eg: DB, CMDS.  Leave empty if unsure.
+
+3.  Overview:
+Fixed various bugs in Bugzilla:
+
+78281  The 3 icons for the Dimension Settings Arrow types(accompanied by combo's) were distorted. They were 
+square and should be rectangular to make the arrows aspect ratio appropriate.
+
+78831  Hatch filename pulldown in BHATCH dialog is too small, shoul  
+78834  HATCH dialog has no default focus for controls (should have  
+78836  Tab order problem in BHATCH dialog, many controls are skippe  
+78837  Many ALT-key shortcuts in BHATCH dialog don't work  
+78838  FIXE Tab order problems in DDINSERT dialog (strange order)  
+78839  Several ALT-key shortcut problems in DDINSERT dialog  
+78850  Edit Hyperlink button cannot be reached via TAB key in ENTPR  
+78851  ALT-E brings up explorer from ENTPROP dialog (it shouldn't)  
+78852  ALT-K brings up "Edit Hyperlink" dialog from ENTPROP dialog  
+78892  OPEN & SAVE dialogs should be resizable  
+
+Removed a couple of lines of code accidentally left in icadapi.cpp for debugging that should have been removed before checkin.
+
+4.  Notes to Docs:
+Need to re-shoot the Dimensions Settings->Arrows dialog.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: None
+
+Script Change required: None
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:
+78281  The 3 icons for the Dimension Settings Arrow types(accompanied by combo's) were distorted. They were 
+square and should be rectangular to make the arrows aspect ratio appropriate.
+78831  Hatch filename pulldown in BHATCH dialog is too small, shoul  
+78834  HATCH dialog has no default focus for controls (should have  
+78836  Tab order problem in BHATCH dialog, many controls are skippe  
+78837  Many ALT-key shortcuts in BHATCH dialog don't work  
+78838  FIXE Tab order problems in DDINSERT dialog (strange order)  
+78839  Several ALT-key shortcut problems in DDINSERT dialog  
+78850  Edit Hyperlink button cannot be reached via TAB key in ENTPR  
+78851  ALT-E brings up explorer from ENTPROP dialog (it shouldn't)  
+78852  ALT-K brings up "Edit Hyperlink" dialog from ENTPROP dialog  
+78892  OPEN & SAVE dialogs should be resizable  
+
+Added files: 
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/SubDoc/R50_Release :
+    added:    DJL_13AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Eng-us :
+    modified: IcadRes.rc
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/ICAD :
+    modified: icadapi.cpp
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/SDS :
+    modified: sds_get.cpp
+
+Description:
+The 3 icons for the Dimension Settings Arrow types(accompanied by combo's) were distorted. They were 
+square and should be rectangular to make the arrows aspect ratio appropriate.
+
+In addition, I removed a couple of lines of code accidentally left in icadapi.cpp for debugging that should have been removed before checkin.
+
+Fixed a bunch of dialog problems.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Nothing special, just test the affected commands above.
+
+9.  Installation Issues:
+None
+
+

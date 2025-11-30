@@ -1,0 +1,56 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect 107
+Product Version:        IntelliCAD 5
+Date:                   10/02/2004 05:45am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release & Icad_cee.
+
+2.  Modules Affected:
+	DWGDIRECT
+
+3.  Overview:
+	Added test for NULL handitem pointer in DWGdirectConverter.cpp.
+	Uncommented BUILD_WITH_RENDERING_SUPPORT for lightworks support in 
+	configure.h.
+	Cleaned up code to delete Layout1 to include deleting the Block and
+	viewport associated with it.
+	Fixed a problem with XREFS where I was trying to add them to the 
+	database twice. Also made a call on output to set XREF pathnames correctly.
+	Fixed a block ID lookup problem I was having with anonymous blocks.
+	I have changed the code to look up the block by name in the ICAD data
+	base, get its handle, then use that handle to look up the block's ID
+	in the OdDbDatabase. Because anyonumous blocks can change based on the
+	order in which they are added to the block table, using names was
+	not reliable. Now it is. This fixes an ARCHT problem we have seen.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/lib/drw/utilities.cpp
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/prj/icad/configure.h
+        source/prj/lib/drw/dwgdirectconverter.cpp
+        source/subdoc/R50_Release/MB_DWGdirect 107.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

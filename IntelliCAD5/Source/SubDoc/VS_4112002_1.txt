@@ -1,0 +1,90 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_4112002_1.txt
+Date:		11-04-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files:	
+		CvsHist:Source/prj/lib/flyoversnap/OsnapHelpers.cpp
+		CvsHist:Source/prj/lib/flyoversnap/OsnapModeStd.cpp
+		CvsHist:Source/prj/lib/SDS/sds_vars.cpp
+		CvsHist:Source/prj/lib/SDS/sds_findfile.cpp
+		CvsHist:Source/prj/lib/ICADLIB/icadlib.h
+		CvsHist:Source/prj/lib/DB/setfont.cpp
+		CvsHist:Source/prj/lib/CMDS/dimensions.cpp
+		CvsHist:Source/prj/lib/CMDS/cmdsDimVars.cpp
+		CvsHist:Source/prj/lib/DB/styletabrec.cpp
+
+Deleted files:	
+		None
+
+Description:	This submission fixes memory problems and bugs in ICAD.
+Comments:	This submission fixes memory problems and bugs in ICAD.
+		Per osnap for lines was crashing ICAD in some cases. That is fixed in 
+		function osnap_helper_elist in OsnapHelpers.cpp. Unitiialised memory read
+		leading to unpredictable behavior is fixed for setting sysvars. Fixed
+		memory corruption problem when directory path is found.
+
+File by File:	
+		Source/prj/lib/flyoversnap/OsnapHelpers.cpp 			New Rev. 1.13
+
+			In function osnap_helper_elist, there is a divide by zero to calculate a point if the
+			line we are snapping to is perpendicular to the plane. This calculation is redundant and
+			gives incorrect values in all cases. This has been removed.	
+
+		Source/prj/lib/flyoversnap/OsnapModeStd.cpp 			New Rev. 1.3
+
+			Removed an ASSERT which was invalid in COsnapModeStd constructor.
+
+		Source/prj/lib/SDS/sds_vars.cpp		 			New Rev. 1.7
+
+			Fixed logic error in sdsengine_setvar(). We need to check is the sysvar is of type
+			RTSTR before assuming it is a RTPOINT.
+
+		Source/prj/lib/SDS/sds_findfile.cpp		 		New Rev. 1.11
+
+			Added a new default argument to ic_findinpath() which holds the size of the buffer passed in to
+			hold the path. The call to GetCurrentDirectory() and SearchPath() take an argument which is
+			the size of the buffer passed in and we were always passing in IC_ACADBUF as the size. Now the
+			correct size is passed in and this avoids overwriting memory by the Windows system call. This should
+			fix the problem of the GetCurrentDirectory()  call failing in Windows 95 noted in the code.
+
+		Source/prj/lib/ICADLIB/icadlib.h		 		New Rev. 1.14
+
+			Change in declaration of ic_findinpath() for fix listed above.
+
+		Source/prj/lib/DB/setfont.cpp		 			New Rev. 1.7
+
+			Added a new argument bufSize() to findfont() which is passed to ic_findinpath(). Call to findfont()
+			in db_setfont() sets this argument.
+
+		Source/prj/lib/CMDS/dimensions.cpp				New Rev. 1.36
+
+			Fixed a delete problem in cmd_doverride(). Called delete [] instead of delete on string
+			being deleted.
+
+		Source/prj/lib/CMDS/cmddimvars.cpp				New Rev. 1.10
+
+			Fixed problem in DIMAPOST 1)Give DDim Command at command prompt.
+				2) In  "Alternate Units" Tab, check "Enable Alternate Units" check-box and
+				3) write some text in "Prefix" & "Suffix" text field in the same tab and then click OK button
+				4) Now draw a linear dimension
+ 
+				Actual Result     : Prefix / Suffix is not shown along with dimension Text.
+
+				This is fixed by calling copyStrToPlinkVar() with argument doStrUpr set to false.
+
+		Source/prj/lib/DB/styletabrec.cpp		 			New Rev. 1.4
+
+				Fixed memory mismatch in freeing globalName in db_styletabrec::setFontFamilyEED().
+
+------------------------------------------------------------------------------

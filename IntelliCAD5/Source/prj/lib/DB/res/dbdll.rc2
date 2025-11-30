@@ -1,0 +1,25 @@
+/* G:\ICADDEV\PRJ\LIB\DB\RES\DBDLL.RC2
+ * Copyright (C) 1997-1998 Visio Corporation. All rights reserved.
+ * 
+ * Abstract
+ * 
+ * Binary data resources for the database dll
+ * 
+ */ 
+
+/*	Default font.
+ *	If all else fails, this font will be used
+ */
+
+#include "..\dbdll.h"
+//WITHODT IDR_ADINIT		RT_BINDATA	"..\\..\\..\\Licensed\\ODTBIN\\adinit.dat"		// ODT data
+IDR_GDTSHX      RT_BINDATA	"ic-gdt.shx"	// dimensioning font
+IDR_ICADFMP     RT_BINDATA	icad.fmp		// font map table
+IDR_ICADFNT     RT_BINDATA	icad.fnt		// default font
+IDR_ICADISOLIN  RT_BINDATA	icadiso.lin		// ISO linestyles
+IDR_ICADISOPAT  RT_BINDATA	icadiso.pat		// ISO patterns
+IDR_ICADLIN     RT_BINDATA	icad.lin		// standard linestyles
+IDR_ICADPAT		RT_BINDATA	icad.pat		// standard patterns
+IDR_ICADUNT     RT_BINDATA	icad.unt		// standard unit definitions
+
+

@@ -1,0 +1,107 @@
+Document Title:  SD_23SEP04.txt	
+Product Version: ICAD 5
+Date:  23 September 2004
+Engineer: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+		Dave reported the problem related to the "Color Control" of the "Entity
+Properties" toolbar. The problem was that color control was not working correctly.
+Initial color palette was incorrect and the toolbar color control did not stay 
+in sync with the status bar color control. The first problem i.e related to color
+palette was due to a boolean variable "m_bMapToRGBColor" of CMainWindow class.
+This variable should be set before the creation of the combo boxes present on the 
+"Entity Properties" toolbar. I set that variable before the creation of the 
+combo boxes. The second problem was present in "SetToolBarToCurrentStyle" 
+function present in "IcadApi.cpp" file in ICAD module. The problem was when we 
+selected any entity and then pressed "Escape" to deselect the selected entity,
+the color of previously selected entity was set in "Color Control" list. I added
+the fixes in this function to solve this problem.
+       Gabrile Agostini also reported the problem to the "Layer Combo box" of
+"Entity Properties" toolbar. The problem was that suppose we selected the entity
+and changed the layer. Then after if we deselected the entity, the current layer
+should be set in "Layer Combo Box". But the layer of previouslt selected entity
+was set in that combo box. This was the problem again found in the function
+"SetToolBarToCurrentStyle" in the file "IcadApi.cpp" of ICAD module. In that 
+function, there was no code written previously to set this "Layer Combo Box" to
+current layer. I added the code to fix this problem.
+
+      
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: SD_23SEP04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/ICAD/icadmain.cpp?rev=1.18.4.11.2.11 
+	Source/prj/ICAD/icadapi.cpp?rev=1.64.2.29.2.10 
+
+	
+Description:
+	Applied the fixes to solve the problems reported by Dave and Gabriel related
+	to the "Entity Properties" toolbar.
+	 
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+Problem 1:Color control is not working correctly (reported by Dave).
+1. Start the IntelliCAD.
+2. Check that "Entity Properties" toolbar is present.
+3. Enable the "Color Control" tab on the status bar.
+4. Check the "Color Control".
+5. Color palette should be proper. 
+6. Select any color from drop down list of "Color Control".
+7. Check the color on the status bar.
+8. It should be same.
+9. Select any color from this list again.
+10. Draw some entities like circles, lines etc.
+11. Change the current color again.
+12. Select any previously drawn entity and check the color control.
+13. It should show the color of selected the entities and status bar should
+show the current color.
+14. Press "Escape" to deselect the entity.
+15. Check the color again.
+16. The "color Control" should show the current color same as present on 
+the status bar.
+
+
+Problem 1:Layer control is not working correctly (reported by Gabriele)
+1. Start the IntelliCAD.
+2. Open a new drawing
+3. Check that "Entity Properties" toolbar is present.
+4. Create a line.
+5. Create a layer (with a different color to highlight the differences) named 
+as "1".
+6. Select the line. 
+7. Select layer "1" from "Layer Combo Box" in properties bar.
+8. Press "ESC" two times.
+9. The "Layer Combo Box" should display layer "0" as active layer.
+10. Check the result with AutoCAD.
+
+
+
+9.  Installation Issues:
+

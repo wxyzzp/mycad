@@ -1,0 +1,356 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "ACIS"=.\ACIS.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Authenticate"=.\Authenticate.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "AutoDLL"=.\AutoDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name db
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gr
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Geo
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "BuildAll"=.\BuildAll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name icad
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name invoke
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ourbase
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sds LIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ACIS
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "DCL"=..\..\ThirdParty\DCL_Components\DCL\DCL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Ge"=.\Ge.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "IcadUtils"=.\IcadUtils.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "cmds"=.\cmds.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Geo
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name AutoDLL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name IcadUtils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "db"=.\db.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name dbprebuild
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Geo
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dbprebuild"=.\dbprebuild.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "flyoversnap"=.\flyoversnap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "geo"=.\Geo.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gr"=.\gr.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name db
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Geo
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "icad"=.\icad.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Authenticate
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cmds
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name icadlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name lisp
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name db
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gr
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name AutoDLL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DCL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name IcadUtils
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name flyoversnap
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "icadlib"=.\icadlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "imagemenu"=..\..\ThirdParty\ImageMenu\imagemenu.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "invoke"=..\api\sds\ourbase\invoke.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name sds LIB
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "lisp"=.\lisp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name AutoDLL
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ourbase"=..\api\sds\ourbase\ourbase.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name sds LIB
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sds LIB"=.\sdslib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name DCL
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,63 @@
+logfilename log\trace_options.log
+logfileon
+;____________
+(defun comparePoint (ptAct ptExp) (and (equal (car ptAct) (car ptExp) 0.00001) (equal (cadr ptAct) (cadr ptExp) 0.00001) (equal (caddr ptAct) (caddr ptExp) 0.00001)))
+(defun chk10(exppt) (if (comparepoint exppt (cdr (assoc 10 (entget (entlast))))) (princ "OK") (alert "Err")))
+(defun chk11(exppt) (if (comparepoint exppt (cdr (assoc 11 (entget (entlast))))) (princ "OK") (alert "Err")))
+(defun chk12(exppt) (if (comparepoint exppt (cdr (assoc 12 (entget (entlast))))) (princ "OK") (alert "Err")))
+(defun chk13(exppt) (if (comparepoint exppt (cdr (assoc 13 (entget (entlast))))) (princ "OK") (alert "Err")))
+;________
+trace
+.5
+0,0
+1,0
+1,1
+0,1
+
+(if (/= (getvar "tracewid") 0.5) (alert "Tracewid er"))
+;_________1
+(chk10 (list 0.75 0.75 0.0))
+(chk11 (list 1.25 1.25 0.0))
+(chk12 (list 0.0 0.75 0.0))
+(chk13 (list 0.0 1.25 0.0))
+;_________
+erase
+last
+
+;_________2
+(chk10 (list 0.75 0.25 0.0))
+(chk11 (list 1.25 -0.25 0.0))
+(chk12 (list 0.75 0.75 0.0))
+(chk13 (list 1.25 1.25 0.0))
+;_________
+erase
+last
+
+;_________3
+(chk10 (list 0.0 0.25 0.0))
+(chk11 (list 0.0 -0.25 0.0))
+(chk12 (list 0.75 0.25 0.0))
+(chk13 (list 1.25 -0.25 0.0))
+;_________
+erase
+all
+
+;_________
+tracewid
+1
+;_________
+trace
+
+0,1
+1,1
+
+;_________
+(chk10 (list 0.0 1.5 0.0))
+(chk11 (list 0.0 0.5 0.0))
+(chk12 (list 1.0 1.5 0.0))
+(chk13 (list 1.0 0.5 0.0))
+;________--
+dxfout output_dxf\trace_options.dxf
+6
+quit
+y

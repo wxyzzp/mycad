@@ -1,0 +1,47 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_27112002_1.txt
+Date:		27-11-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/db/handtable.h
+		Source/prj/lib/db/handtable.cpp
+                Source/prj/lib/db/objhandle.h
+                Source/prj/lib/db/objhandle.cpp
+ 
+Deleted files:	
+		None
+
+Description:	Reworked fix made for performance improvement in HandleTable::Find().
+Comments:	This submission redoes the fix made in VS_02092002_1.txt for HandleTable::Find(),
+		The old fix used db_objhandle as a key into an STL map storing db_handitem records.
+		Using a class as a key was not a good choice -- the destructor was called on the 
+		class on each access. The fix was to create an __int64 representation of the handle
+		and use this as a key.
+
+
+File by File:	
+		Source/prj/lib/db/handtable.h			Version: 1.1.1.1.14.4
+			Modified m_map to be a map of __int64, db_handitem.
+		Source/prj/lib/db/handtable.cpp			Version:1.2.6.3
+			In Add and Find, call method to the hanlde's ToHugeInt method and pass this to 
+			the map methods.
+                Source/prj/lib/db/objhandle.h                         Version:1.1.1.1.14.1
+                        Added declaration of new method ToHugeInt() which returns an __int64 representaion of
+			the handle.
+                Source/prj/lib/db/objhandle.cpp                         Version:1.1.1.1.14.1
+                        Added code for new method ToHugeInt() which returns an __int64 representaion of
+			the handle.
+
+
+-----------------------------------------------------------------------------

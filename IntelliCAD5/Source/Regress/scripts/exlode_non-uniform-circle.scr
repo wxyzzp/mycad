@@ -1,0 +1,28 @@
+logfilename log\explode_non-uniform-circle.log
+logfileon
+;;;;;;;;;
+;_______create_circle_______
+circle
+3,3
+1
+;_______create_block_________
+block
+circle
+0,0
+last
+
+;_______insert_block______
+insert
+circle
+0,0
+1
+2
+0
+;_______explode_______
+explode
+last
+;;;;;;;;;;;;;;
+dxfout output_dxf\explode_non-uniform-circle.dxf
+6
+quit
+y

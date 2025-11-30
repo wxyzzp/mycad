@@ -1,0 +1,10 @@
+logfilename log\scr4.log
+logfileon
+filedia 0
+open
+DWG/Iso hatch patterns.dwg
+(load "lisp\scr4.lsp")
+isonhpatt
+dxfout output_dxf\scr4.dxf
+6
+exit y

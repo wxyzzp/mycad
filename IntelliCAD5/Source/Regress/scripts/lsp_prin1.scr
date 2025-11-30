@@ -1,0 +1,13 @@
+Logfilename log\lsp_prin1.log
+Logfileon
+(setq v1 222)
+(prin1 v1)
+(prin1 'v1)
+(prin1 "Thank You")
+(setq f (open "output\prin1.txt" "w"))
+(prin1 "Sample" f)
+(prin1 "\nName:")
+Dxfout output_dxf\lsp_prin1.dxf
+6
+Quit
+y

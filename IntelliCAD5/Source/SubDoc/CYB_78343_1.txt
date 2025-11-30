@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+File:		CYB_78343_1.txt
+Date:		28-04-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78343
+Affected files:	
+		Source/prj/lib/GR/mtextgen.cpp?rev=1.15.4.6
+Description:	Format Code \Q does not generate mtext correctly
+Comments:	TaL78343
+Problem Analysis:
+		IntelliCAD did not restrict some angles which AutoCAD did.
+Problem Solution:
+		Compared with AutoCAD and came to conclusion that format only when angle is between 0 - 85 and 275 to 360.		
+
+File by file:
+	*	Source/prj/lib/GR/mtextgen.cpp?rev=1.15.4.6
+		It's observed that AutoCAD uses oblique angle if angle is less than 85 and greater than 275. It's onserved that AutoCAD 		uses oblique angle for 85 and not for 445 ( which is actaully 85 ). In IntelliCAD is coded such that 85 and 445 both have 			oblique angle. We have NOT #defined 85.0 and 274.9 as they are not reused. We see values used similar way in 		IntelliCAD.
+--------------------------------------------------------------------------------

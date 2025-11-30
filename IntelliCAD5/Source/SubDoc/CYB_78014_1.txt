@@ -1,0 +1,23 @@
+
+
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78014_1.txt
+Date:		15-07-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78014
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/cmdsDim.cpp
+Description:	Rearranged the code to improve readability.
+Comments:	TaL78014
+File by File:	
+*		Source/prj/lib/CMDS/cmdsDim.cpp
+		Moved whole of the code into the Else case.
+--------------------------------------------------------------------------------
+

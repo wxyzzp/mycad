@@ -1,0 +1,48 @@
+///////////////////////////////////////////////////////////////////////////////
+// Copyright © 2002, Open Design Alliance Inc. ("Open Design") 
+// 
+// This software is owned by Open Design, and may only be incorporated into 
+// application programs owned by members of Open Design subject to a signed 
+// Membership Agreement and Supplemental Software License Agreement with 
+// Open Design. The structure and organization of this Software are the valuable 
+// trade secrets of Open Design and its suppliers. The Software is also protected 
+// by copyright law and international treaty provisions. You agree not to 
+// modify, adapt, translate, reverse engineer, decompile, disassemble or 
+// otherwise attempt to discover the source code of the Software. Application 
+// programs incorporating this software must include the following statement 
+// with their copyright notices:
+//
+//      DWGdirect © 2002 by Open Design Alliance Inc. All rights reserved. 
+//
+// By use of this software, you acknowledge and accept the terms of this 
+// agreement.
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef _SmResources_h_Included_
+#define _SmResources_h_Included_
+
+#include "SmFileReference.h"
+#include "SmComponent.h"
+
+namespace dst
+{
+  typedef OdSmEnum<OdSmFileReference>OdSmEnumFileReference;
+  typedef OdSmartPtr<OdSmEnumFileReference>OdSmEnumFileReferencePtr;
+  
+  /** Description:
+
+      {group:OdSm_Classes} 
+  */
+  struct SMDLL_EXPORT OdSmResources : OdSmComponent
+  {
+    ODRX_DECLARE_MEMBERS(OdSmResources);
+    virtual void add( OdSmFileReference* pResource ) = 0;
+    virtual void remove( OdSmFileReference* pResource ) = 0;
+    virtual OdSmEnumFileReferencePtr getEnumerator() const = 0;
+  };
+
+  typedef OdSmartPtr<OdSmResources> OdSmResourcesPtr;
+}
+#endif //_SmResources_h_Included_

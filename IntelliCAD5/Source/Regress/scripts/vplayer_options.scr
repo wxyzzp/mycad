@@ -1,0 +1,34 @@
+logfilename log\vplayer_options.log
+logfileon
+;_______
+layer
+m
+la1
+
+;__________
+tilemode
+0
+mview
+4
+0,0
+10,10
+;__________?_
+vplayer
+?
+6,5
+n
+fr1
+?
+4,5
+
+;__________freeze_
+vplayer
+f
+la1
+
+
+;________
+dxfout output_dxf\vplayer_options.dxf
+6
+quit
+y

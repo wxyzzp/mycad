@@ -1,0 +1,44 @@
+Document Title:		MB_DWGdirect-78.txt
+Product Version:	ICAD 5
+Date:  				08/05/2004 09:15pm
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	DWGdirect
+
+3.  Overview:
+Fix for maintaining the original file version on open.
+This is to help revent a version change during a qsave
+or autosave.
+
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       	    
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/subdoc/MB_DWGdirect-78.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+
+
+

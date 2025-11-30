@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+Date:		21-10-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78300
+Affected files:			
+		Source/prj/lib/GR/mtextgen.cpp
+Description:	Some problems in format codes of mtext
+		1. Format code '\H0;' or '\H;' , should have height of textSize variable
+		2. Format code '\H0x;' or '\Hx;, does not behave as expected.
+		3. Format code '\H2X;' ,does not work due to capital 'X'. 
+		4. Format code '\W2x' should be same as '\W2'and it sometimes shows ';' in 		ouputin ouput
+Comments:	TaL78300
+File_by_File :
+
+	*	Source/prj/lib/GR/mtextgen.cpp
+		1. We have modified the function getvalue() to return value correctly in 				case of format code like '\H-2.4;'. Also IntelliCAD used to compare for only 'x' 			in case of '\H2.4x;' but AutoCAD seems to work with 'X' also. So its modification 		is done in getvalue, case "H' and also for case 'W' of format codes.
+
+		2. In Case format code 'H' we have added a condition before setting the value of 			height in currentMtextFragment.m_style.m_height. We have check for positive value 		only.
+
+		3. In Case format code 'W' we have added a condition before setting the value of 			width in currentMtextFragment.m_style.m_widthFactor. We have check for positive 			value only. Also in case of format code 'W', '\W2x' is same as '\W2'. This 				condition is added in code and hence it prevents the output unnecessary ';'.		
+
+--------------------------------------------------------------------------------

@@ -1,0 +1,82 @@
+Engineer(s):		Mark Barrow
+Date:				06/27/2004 05:39am
+
+
+1. Process Checklist:
+	Regress run without new filures: Y (regress.lst)
+	Did you test it?: Y
+	Code reviewed by:
+	Doc Changes Required: N
+	Submitted to branch(es) R50_Release & R40_Dev
+Modules Affected:
+		    Eng-us\icad.rc2
+                    source/prj/lib/cmds/save.cpp
+                    source/prj/icad/icadapp.cpp
+                    source/prj/icad/layouttabs.cpp
+                    source/prj/icad/res/icadrc2.h
+                    source/prj/lib/cmds/block.cpp
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectwriter.h
+                    source/prj/make/db.dsp
+                    source/prj/make/icad.dsw
+                    source/prj/make/icad.dsp
+                    source/prj/icad/icadview.cpp
+                    source/prj/icad/dropactions.cpp
+                    source/prj/icad/dropactions.h
+                    source/subdoc/MB_DWGdirect-55.txt
+
+Modules Added:
+                    source/licensed/dwgdirect/exports/svgexport/source/stdafx.cpp
+                    source/licensed/dwgdirect/exports/svgexport/source/svgexport.cpp
+                    source/licensed/dwgdirect/exports/svgexport/source/stdafx.h
+                    source/licensed/dwgdirect/exports/svgexport/include/svgexport.h
+                    source/licensed/dwgdirect/exports/svgexport/source/svgshxembedding.h
+                    source/licensed/dwgdirect/exports/svgexport/source/svgwrappers.h
+
+Change Overview:
+Added support for svg export.  *1 
+Added iDrop interface code supplied from an ITC member. *2 
+
+Made some minor changes to the code to prevent Purify from complaining.
+Also commented out some OLD Visio code that was still doing a LoadLibrary on the 
+Visio DWG display ActiveX control.
+
+Notes to Developers:
+
+Notes to QA:
+*1	Currently the entire drawing is being exported. I am researching a problem
+    that causes the drawing to shift radically if I try to only export a selection
+	set as the other export formats (.bmp, .wmf, .emf) do. I will be making this behave
+	like the rest soon.
+	Currently there is a DWGdirect bug (that has already been fixed) that prevents 
+	files with polylines in them from exporting. The next ODT code drop should fix this.
+	In addition, dimensions seem to be missing from the svg file too. I have notified ODT
+	of this.
+
+*2	I have added the code supplied by stabiplan.nl which is for supporting AutoCAD's iDrop
+	interface. It appears to be doing all the right things, but I have not been able to 
+	successfully test it. The file that gets downloaded is in fact a .html file that says
+	something to the affect that the file or site could not be opened.
+	I have noticed (in the debuger) that the output file name has a couple of tildes in the
+	file path. Which may be part of the problem.
+	However, I believe it to be a permissions issue on my machine. For that reason, I have
+	left in the code even though I have not been able to test it. It is easy to remove if
+	we decide to. Note that it is NOT a valid test to say that AutoCAD works, but IntelliCAD
+	doesn't - because AutoCAD doesn't actually download the .dwg file the way the IntelliCAD
+	code does. I'm researching, and would appreciate QA testing it too.
+
+
+Notes to Docs:
+
+Notes to Localization:
+
+Notes to Regress/Benchmarks:
+	New script(s) submitted: N
+	File Name:
+	Name of Script file:
+
+Script change required: N
+
+New script(s) submitted: N
+	File Name:
+	Name of Script file:

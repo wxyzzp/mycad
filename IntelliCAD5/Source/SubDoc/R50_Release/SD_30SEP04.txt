@@ -1,0 +1,108 @@
+Document Title:  SD_30SEP04.txt	
+Product Version: ICAD 5
+Date:  30 September 2004
+Engineer: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+		Dave reported a bug related to the "Color Control" of the "Entity
+Properties" toolbar. The problem was that when we double clicked the color 
+control on the status bar and set the color to any color over 7, that selected
+color was not updated in the "Color Control" of "Entity Properties" toolbar i.e
+the selected color over 7 was not added in the "Color Control" of "Entity 
+Properties" toolbar.
+		This problem was present in the "ColorComboBox.cpp" file of ICAD module.
+I did not find any function there which would update the "Color Combo Box" and
+add new color entries in the list so as to work in sync with "Color Control" 
+present on the status bar. The status bar color control did stay in sync with
+the toolbar color control only for colors 1-7 previously as these color 
+entries(1-7) were alrady present in the list. So we need to add the new color
+entry in the color list when we select the color over 7. To solve this problem,
+I added a new function "UpdateColorList" in "CColorComboBox" class in the file 
+"ColorComboBox.h" of ICAD module. In this function, first I checked which color
+was selected. Then if that selected color was not found in the list, I added 
+this new entry in the list and set this color as current color to work in sync
+with status bar color control. I removed the previous code present in the function
+"SetToolBarToCurrentStyle" in the file "IcadApi.cpp", which set the color control
+of toolbar to the same color as of color control in status bar. Instead of that
+code, I called the newly written function i.e "UpdateColorList" which did 
+the same job.
+    	I found one more problem related to the "Color Control" of "Entity 
+Properties" toolbar. Suppose we draw some entities with different color and set
+the current color to some different color. Then if we select the entities one by 
+one, the color control behaves correctly. After that if we deselect the entities
+one by one and at the end when there is no selected entity, the color combo box
+shows the wrong color. It should show the current color. This problem was present
+in the file "IcadApi.cpp" in the loop which was written to set the combo boxes 
+present on the "entity Properties" as well as "Dimension" toolbar correctly as
+per the selected entities. There I called the newly added fuction "UpdateColorList"
+to solve this problem.
+      
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: SD_30SEP04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Source/prj/ICAD/icadapi.cpp?rev=1.64.2.29.2.14 
+	Source/prj/ICAD/ColorComboBox.h?rev=1.1.4.3.2.1 
+	Source/prj/ICAD/ColorComboBox.cpp?rev=1.1.4.4.2.2 
+Description:
+	Applied the fixes to solve the bug related to "Color Control" of "Properties
+	Toolbar ", reported by Dave and fixed the relative cases.
+	 
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+Bug 1 : Color control is not working correctly (reported by Dave).
+1. Start the IntelliCAD.
+2. Check that "Entity Properties" toolbar is present.
+3. Enable the "Color Control" tab on the status bar.
+4. Double click on the color control on the status bar 
+5. Set the color to any color over 7.
+6. Check the "Color Control" of "Entity Properties" toolbar.
+7. It should show the same color. 
+
+
+
+Problem 1:Color control is not working correctly(found) . 
+1. Open IntelliCAD.
+2. Draw any two entities, for example, circle, line etc.
+3. Change the color of entities.Give different colors.
+4. Select new color as "current color".
+5. Select previously drawn any entities.
+6. Check the color of entity in the color combo box.
+7. Select second entity and check the color again.
+8. This time the combo box should be blank.
+9.  Deselect first entity and check the color.
+10. Deselect second entity and check the color again
+11. The "Color Control" of "Entity Properties" toolbar should show the current color.
+12. Check the result with AutoCAD.
+
+
+
+9.  Installation Issues:
+

@@ -1,0 +1,76 @@
+logfilename log\vports_options.log
+logfileon
+
+;_________2_h
+viewports
+2
+h
+;__________single
+viewports
+si
+;_________2_v
+viewports
+2
+v
+;__________save_
+viewports
+s
+view1
+;(tblnext "vport" T)
+;(tblnext "vport")
+;delay
+;1000
+(setq vpname (cdr (assoc 2 (tblsearch "vport" "view1" T))))
+(if (= vpname nil) (alert "save failed") (princ vpname))
+;__________3_h
+viewports
+3
+h
+;__________single
+viewports
+si
+;__________3_v
+viewports
+3
+v
+;__________3_a
+viewports
+3
+a
+;__________3_b
+viewports
+3
+b
+;__________single
+viewports
+si
+;__________3_l
+viewports
+3
+l
+;__________3_r
+viewports
+3
+r
+;__________restore
+viewports
+r
+view1
+;__________4
+viewports
+3
+r
+;__________single
+viewports
+si
+;__________delete
+viewports
+d
+view1
+(setq vpname (cdr (assoc 2 (tblsearch "vport" "view1" T))))
+(if (/= vpname nil) (alert "save failed") (princ vpname))
+;__________
+dxfout output_dxf\vports_options.dxf
+6
+quit
+y

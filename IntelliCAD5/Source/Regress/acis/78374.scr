@@ -1,0 +1,30 @@
+logfilename log\78374.log
+logfileon
+;_______Created_By_Cybage_______
+;This_script_is_a_minimal_check_for_the_fix_78374
+;It_covers_only_the_box_object
+;_______
+box
+0,0,0
+1,1,1
+;_______
+box
+2,2,2
+3,3,3
+;_______
+1,1,1
+1,1,1
+end
+2,2,2
+;_______
+vpoint
+1,2,1
+;_______
+(setq a (entsel))
+1,2,2
+(if (= a nil) (alert "Error") (princ "OK"))
+;_______
+dxfout output_dxf\78374.dxf
+6
+quit
+y

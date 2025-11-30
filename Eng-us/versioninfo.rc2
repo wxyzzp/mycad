@@ -1,0 +1,53 @@
+#ifndef _MAC
+#include "..\Source\prj\ICAD\blddate.h"
+
+#ifndef VERSIONINFO_FILEDESCRIPTION
+#define VERSIONINFO_FILEDESCRIPTION "ITC IntelliCAD® 5 Application\0"
+#endif
+
+#ifndef VERSIONINFO_INTERNALNAME
+#define VERSIONINFO_INTERNALNAME "ICAD\0"
+#endif
+
+#ifndef VERSIONINFO_ORIGINALNAME
+#define VERSIONINFO_ORIGINALNAME "ICAD.EXE\0"
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSIONINFO_FILEVERSION
+ PRODUCTVERSION VERSIONINFO_FILEVERSION
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", VERSIONINFO_COMMENTS
+            VALUE "CompanyName", VERSIONINFO_COMPANY
+            VALUE "FileDescription", VERSIONINFO_FILEDESCRIPTION
+            VALUE "FileVersion", VERSIONINFO_FILEVERSION_STR
+            VALUE "InternalName", VERSIONINFO_INTERNALNAME
+            VALUE "LegalCopyright", VERSIONINFO_COPYRIGHT
+            VALUE "LegalTrademarks", VERSIONINFO_TRADEMARK
+            VALUE "OriginalFilename", VERSIONINFO_ORIGINALNAME
+            VALUE "PrivateBuild", VERSIONINFO_PRIVATEBUILD
+            VALUE "ProductName", VERSIONINFO_MAINPRODUCT
+            VALUE "ProductVersion", MLBLDVERS
+            VALUE "SpecialBuild",  VERSIONINFO_BUILDTYPE
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC

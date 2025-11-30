@@ -1,0 +1,28 @@
+logfilename log\spcad.log
+logfileon
+;___________
+filedia
+off
+(load "lisp\spcad.lsp")
+spcad
+1,1
+sri
+1
+1
+1
+71
+71
+23
+24
+21
+3
+2
+
+;_____________
+zoom
+all
+;____________
+dxfout output_dxf\spcad.dxf
+6
+quit
+y

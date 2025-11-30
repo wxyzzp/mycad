@@ -1,0 +1,56 @@
+
+
+--------------------------------------------------------------------------------
+
+	             Submission Document for IntelliCAD
+	              
+
+File Name:	SH_21112002.txt
+Date:		21-11-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Description:	This submission fixes bugs #78359, #78355, #78364, and #78357. This 
+                submission also fixed some of memory leaks.
+
+Comments:	BUG #78359 - Full ACIS-ICAD crashes on cancelling chamfer command
+
+                RESOLUTION: It crashed because the implementation for UNDO for solid 
+                            operations was based on wrong assumption that data size 
+                            will not change after an operation. This is fixed by 
+                            re-implementing UNDO functions.
+                            
+                BUG #78355 - (Full ACIS)-Moving a newly created solid using grips 
+                              moves the entity multiple times.
+                              
+                RESOLUTION: The reason that solids were moved multi-times distance 
+                            because it was implemented to take an action for each 
+                            grip point. This is incorrect for selecting a grip point 
+                            to move solid. This is fixed.
+                            
+                BUG #78364 - Full Acis - Extrude does not work
+                BUG #78357 - (ACIS) Revolve command does not work.
+                
+                RESOLUTION: They didn't work because they were not implemented for
+                            LINE,ARC,ELLIPSE,CIRCLE,POLYLINE,LWPOLYLINE,SPLINE. The
+                            implementation for those entities has been added.
+               
+
+Changed files:	
+
+		CvsHist:Source/Prj/Lib/CMDS/CmdExtrude.cpp
+		CvsHist:Source/Prj/Lib/CMDS/CmdRevolve.cpp
+		CvsHist:Source/Prj/Lib/DB/DbAcisEntityData.cpp
+		CvsHist:Source/Prj/Lib/DB/DbAcisEntityData.h
+		CvsHist:Source/Prj/Lib/DB/Modeler.cpp
+		CvsHist:Source/Prj/Lib/ICADLIB/allocator.cpp
+		CvsHist:Source/Prj/ICAD/binchange.cpp
+		CvsHist:Source/Prj/ICAD/binchange.h
+		CvsHist:Source/Prj/ICAD/Change.cpp
+		CvsHist:Source/Prj/ICAD/icadapi.cpp
+
+		
+
+--------------------------------------------------------------------------------

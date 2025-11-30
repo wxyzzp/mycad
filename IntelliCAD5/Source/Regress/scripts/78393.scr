@@ -1,0 +1,45 @@
+logfilename log\78393.log
+logfileon
+;___________
+filedia
+0
+open dwg\78393.dwg
+;___________
+mirror
+all
+
+0,0
+1,0
+
+;__________
+mirror
+all
+
+30,0
+30,1
+
+;__________
+mirror
+all
+
+0,0
+1,0
+
+;__________
+mirror
+all
+
+30,0
+30,1
+
+;___________
+zoom
+extents
+;__________
+filedia
+1
+;___________
+dxfout output_dxf\78393.dxf
+6
+quit
+y

@@ -1,0 +1,8 @@
+Logfilename log\lsp_exit.log
+Logfileon
+(defun c:exittest() (princ "before exit") (exit) (princ "after exit"))
+exittest
+Dxfout output_dxf\lsp_exit.dxf
+6
+Quit
+y

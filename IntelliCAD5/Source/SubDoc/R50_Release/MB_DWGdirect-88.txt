@@ -1,0 +1,41 @@
+Document Title:		MB_DWGdirect-88.txt
+Product Version:	ICAD 5
+Date:  				08/28/2004 09:29am
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	DWGdirect
+
+3.  Overview:
+This submission makes use of the new functions added by the ODT team
+to support DRAWORDER.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/subdoc/R50_Release/MB_DWGdirect-88.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

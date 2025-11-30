@@ -1,0 +1,36 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-8.txt
+Produce Version		ICAD 4
+Date:				02/10/2004 06:19am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Completed round trip support for;
+Text, mtext OleFrame, ACIS entities (3DSolid, Body, Region).
+
+Finally got handles round tripping correctly now.
+
+Removed several const strings in favor of using DbSymUtl:: strings.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgsave.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\db\entities.h
+

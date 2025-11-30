@@ -1,0 +1,21 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_03312003_1.txt
+Date:		03-31-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	#6542
+
+
+Changed files:  Source/prj/lib/CMDS/3dsolids.cpp?rev=1.9.6.3
+
+Description:	This submission fixes the problem: elliptical cylinder 
+                with each axis at a different Z  draws at incorrect 
+                elevation
+
+Comments        Tal6542

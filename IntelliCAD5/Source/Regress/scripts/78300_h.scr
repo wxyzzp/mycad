@@ -1,0 +1,10 @@
+logfilename log\78300_h.log
+logfileon
+;____________
+(load "lisp\mtext_h.lsp")
+test_h
+;____________
+dxfout output_dxf\78300_h.dxf
+6
+quit
+y

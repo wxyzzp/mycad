@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------------
+Date:		11-11-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78142
+Affected files:			
+		Source/prj/lib/CMDS/text.cpp
+Description:	"DText" command does not work correctly when selecting new location for 		 text by clickingin ouput.
+Comments:	TaL78142
+File_BY_File:
+	*	Source/prj/lib/CMDS/text.cpp
+		This bug fixed was tried to be fixed by 4M Item:145. But this does not seem to 		work as expected in the current developement branch. 
+		
+		There were two problems:
+		1. On redraw the entity drawn were erased and only one text entity was drawn with 		all inputs.
+		2. ortho on/off the point selected used to move.
+
+		To solve the first problem, SDS_cmdcharbuf which is an extern variable and has 		the keyboard typed buffer was used and was cleared after taking the input.
+
+		Ortho On / off should not make any difference in Dtext. So its current value was 		saved and it was reset to 0 and then after the work done its originl value was 		again restored.
+--------------------------------------------------------------------------------

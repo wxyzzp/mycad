@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+File:		CYB_78005_1.txt
+Date:		09-12-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78005
+Affected files:			
+		Source/prj/ICAD/icadapi.cpp 
+Description:	After gripping a LEADER, the start point is not asked by LEADER command. This was a sideeffect of 
+		previous check-in from 4m Item 27. This Submission is also provided by Mina Polemi of 4m. 
+Comments:	TaL78005
+Problem Analysis:
+		Due to fix of item 27 of 4M, the last point was used by leader command after grip editing the leader. 
+		The culprit was the variable "GripRClickedFlag"
+Proposed Solution:
+		The proposed solution is by Mina Polemi of 4M. Currently "GripRClickedFlag" fixes this problem of leader 
+		but the original fix of 4M item 27 does not work. But as this is basic fucntionality which is expected to work
+		this submisssion is accepted and sometime later the fix of item 27 of 4m can be fixed.
+File By File:
+	* 	Source/prj/ICAD/icadapi.cpp 
+		GripRClickedFlag =0. Now the last point is not used by leader.		
+		
+--------------------------------------------------------------------------------

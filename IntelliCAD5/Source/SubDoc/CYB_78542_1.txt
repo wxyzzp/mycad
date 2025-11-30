@@ -1,0 +1,363 @@
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78542_1.txt	
+Product Version:	ICAD 4
+Date:			05/04/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)     
+
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source/Prj/ICAD/IcadUcspDia.cpp     ==> ICAD
+
+
+
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================      
+
+	This is related to Bugzilla# 78542: 'User Coordinate Systems' dialog does 
+not set the 'Bottom' option correctly.
+
+
+Problem Analysis:
+-----------------
+	As per the Bugzilla report,the user types 'setucs' command to invoke 
+the 'User Coordinate System' dialog and clicks on the button corresponding  
+to the 'Bottom' option.
+	After this, if the user queries for the system variables UCSXDIR
+and UCSYDIR at the command prompt, the user gets the wrong values of these 
+variables. 
+
+
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+	The problem lies in the file "Source/Prj/ICAD/IcadUcspDia.cpp". 
+On checking this file, I found that "void ucsp_CUcsp::OnBottomClicked()"
+function sets the x,y,z directions of UcsXDIR and UcsYDIR system variables. 
+So I have modified the file as shown below (modifications are within 
+Bugzilla comments):
+
+FILE: Source/Prj/ICAD/IcadUcspDia.cpp                    
+---------------------------------------------------------
+void ucsp_CUcsp::OnBottomClicked()
+	{
+	 UpdateData(TRUE);
+     if(iRel) { //Relative to WCS
+        bSetOrg=true;
+		// Bugzilla#78542 Date:16 Mar 2004
+		//dUcsXDir[0]=1.0;
+        dUcsXDir[0]=-1.0;
+        dUcsXDir[1]=0.0;
+        dUcsXDir[2]=0.0;
+        dUcsYDir[0]=0.0;
+		//dUcsYDir[1]=-1.0;
+        dUcsYDir[1]=1.0;
+        dUcsYDir[2]=0.0;
+		// Bugzilla#78542 Date:16 Mar 2004
+    }else{     //Relative to UCSdth ;
+
+	...
+	...
+	...
+	...
+	...
+	
+	
+	}
+
+         This function is called when the user clicks the "Bottom" button in 
+the "User Coordinate System" Dialog. This function sets the x,y,z directions of
+UCSXDIR and UCSYDIR system varibles. For this purpose, the variables used in 
+the function mentioned above are dUcsXDir, and dUcsYDir. The first variable
+i.e dUcsXDir sets the x,y,z directions of UCSXDIR system variable and the 
+second variable i.e dUcsYDir sets the x,y,z directions of UCSYDIR system 
+variable. When the "Bottom" button is clicked,UCSXDIR should be -1.0000,0.0000,
+0.0000 and UCSYDIR should be 0.0000,1.0000,0.0000.
+	So I have modified varibles accordingly.
+ 	
+	Please find the related modifications in the following file:
+		==> Source/Prj/ICAD/IcadUcspDia.cpp 
+	
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No 
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following commands:
+
+1.  Give the 'setucs' command to invoke the 'User Coordinate System' dialog.
+2.  On the dialog, click on the button corresponding to the 'Bottom' option.
+3.  Query for the system varibles namely UCSXDIR and UCSYDIR by typing ucsxdir
+    and ucsydir at the command prompt and note the values of these variables.
+4.  Compare results with AutoCAD. 
+5.  Results should be same.
+6.  Repeat the above steps for other options like 'Top','Front','Back','Left,
+    'Right' present in the 'User Coordinate System' dialog.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+      
+

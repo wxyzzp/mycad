@@ -1,0 +1,55 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_3102002_2.txt
+Date:		3/10/2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	None
+
+Changed files:	
+		Source/prj/ICAD/framebuffer.cpp
+		Source/prj/lib/CMDS/circle.cpp
+		Source/prj/lib/CMDS/text.cpp
+		Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/SDS/sds_findfile.cpp
+		Source/prj/lib/SDS/sds_get.cpp
+
+
+Deleted files:	None
+
+Description:	This submission fixes memory problems and improves performance.
+Comments:	This submission fixes some of the memory problems identified when
+		I ran BoundsChecker on the automate.lsp file in the QA test suite.
+		This submission also fixes performance problems highlighted by TrueTime
+		when it was run against automate.lsp
+
+
+File by File:	Source/prj/ICAD/framebuffer.cpp
+			OffscreenFrameBuffer::Clear() code is now optimised. Using
+					for (i = 0; i < iSize / 2; i++, *(pLocPtr++) = color)
+						;
+			instead of a while loop to set the value, improves automate.lsp performace
+			by 10%.
+		Source/prj/lib/CMDS/circle.cpp
+			In cmd_circle() the wrong resbuf was passed to SDS_Setvar() for DB_QLASTCMDPT,
+			DB_QLASTCMDANG and DB_QISLASTCMDPT.
+		Source/prj/lib/CMDS/text.cpp
+			Fixed uninitialised memory read in cmd_textdtext().
+		Source/prj/lib/DB/db_util.cpp
+			Changed resbufStaticCache size from 20 to 200. This improves LISP performance.
+		Source/prj/lib/SDS/sds_findfile.cpp
+			constructpathandfname() could have origpath as NULL -- in this case pathbuf[0] should
+			have \\ character added.
+		Source/prj/lib/SDS/sds_get.cpp
+			If findosnap() if the input is not a character then it will not be an osnap like
+			CEN. This prevents checking of point input for osnap modes like CEN.
+			SDS_SetKeyWord() can have input of NULL. In this cse the first character of 
+			inputPrependedWithUnderscore should be EOS.
+
+--------------------------------------------------------------------------------

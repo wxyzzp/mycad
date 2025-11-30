@@ -1,0 +1,55 @@
+logfilename log\-linetype_options.log
+logfileon
+;_________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+(setvar "useri2" (getvar "expert"))
+expert
+5
+;_________
+-linetype
+l
+center
+icad.lin
+s
+center
+
+;_________
+line
+0,0
+1,1
+
+;_________
+(setq lntyp (cdr (assoc 6 (entget (entlast)))))
+(if (/= lntyp "CENTER") (alert "Error"))
+;_________
+-linetype
+c
+sncltype
+output\sncltype.lin
+ltype created by Srinivas
+3,-1,2,-1
+l
+sncltype
+output\sncltype.lin
+s
+sncltype
+
+;_________
+line
+1,1
+1,0
+
+;_________
+(setq lntyp nil)
+(setq lntyp (cdr (assoc 6 (entget (entlast)))))
+(if (/= lntyp "SNCLTYPE") (alert "Error"))
+;_________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;_________
+dxfout output_dxf\-linetype_options.dxf
+6
+quit
+y

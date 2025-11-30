@@ -1,0 +1,9 @@
+logfilename log\Hyper005.log
+logfileon
+circle
+10,10
+20,20
+(xload "Sds\hyper001")
+(command "hyper005" "scripts\script2\hyper005.scr")
+ 
+ 

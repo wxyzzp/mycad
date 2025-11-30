@@ -1,0 +1,23 @@
+logfilename log\scrollbar_options.log
+logfileon
+;_________1
+scrollbar
+on
+(if (/= (getvar "wndlscrl") 1) (alert "scrollbar not set correctly"))
+;_________2
+scrollbar
+t
+(if (/= (getvar "wndlscrl") 0) (alert "scrollbar not set correctly"))
+;_________3
+scrollbar
+t
+(if (/= (getvar "wndlscrl") 1) (alert "scrollbar not set correctly"))
+;_________4
+scrollbar
+off
+(if (/= (getvar "wndlscrl") 0) (alert "scrollbar not set correctly"))
+;_________
+dxfout output_dxf\scrollbar_options.dxf
+6
+quit
+y

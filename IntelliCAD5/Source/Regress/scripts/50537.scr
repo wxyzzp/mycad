@@ -1,0 +1,14 @@
+logfilename log\50537.log
+logfileon
+;___
+open
+dwg\50537.dwg
+(xload "sds\50537.dll")
+;(command "functest" "all" "" "quit")
+(load "lisp\50537.lsp")
+myfunc
+;__-_
+dxfout output_dxf\50537.dxf
+6
+quit
+y

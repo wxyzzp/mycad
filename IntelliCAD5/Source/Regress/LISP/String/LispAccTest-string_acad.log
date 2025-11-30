@@ -1,0 +1,468 @@
+Lisp acceptance test run at 07-20-1998 04:11:34p on version P.0.31
+
+Starting tests...
+String tests:
+
+--- strcase ---
+
+***Error (noargs): too few arguments
+emptystrl = 
+emptystru = 
+spacestrl =  
+spacestru =  
+below0strls = !
+below0strle = /
+below0strus = !
+below0strue = !
+below0strlrng = !"#$%&'()*+,-./
+below0strurng = !"#$%&'()*+,-./
+0to9strls = 0
+0to9strle = 9
+0to9strus = 0
+0to9strue = 9
+0to9strlrng = 0123456789
+0to9strurng = 0123456789
+above9strls = :
+above9strle = @
+above9strus = :
+above9strue = @
+above9strlrng = :;<=>?@
+above9strurng = :;<=>?@
+bigatozstrls = A
+bigatozstrle = Z
+bigatozstrus = a
+bigatozstrue = z
+bigatozstrlrng = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+bigatozstrurng = abcdefghijklmnopqrstuvwxyz
+btwnalphastrls = [
+btwnalphastrle = `
+btwnalphastrus = [
+btwnalphastrue = [
+smallatozstrlrng = [\]^_`
+btwnalphastrurng = [\]^_`
+smallatozstrls = A
+smallatozstrle = Z
+smallatozstrus = a
+smallatozstrue = z
+smallatozstrlrng = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+smallatozstrurng = abcdefghijklmnopqstuvwxyz
+abovezstrls = {
+abovezstrle = ~
+abovezstrus = {
+abovezstrue = ~
+abovezstrlrng = {|}~
+abovezstrurng = {|}~
+***Error (nilsymstrl): bad argument type
+***Error (nilsymstru): bad argument type
+***Error (tsymstrl): bad argument type
+***Error (tsymstru): bad argument type
+maxstrl = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstru = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1strl = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1stru = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+vari1 = SAMPLE
+vari2 = SAMPLE
+vari3 = SAMPLE
+vari4 = SAMPLE
+vari5 = sample
+vari6 = sample
+vari7 = sample
+vari8 = sample
+icadhlp1 = YES
+icadhlp2 = no
+acadhlp1 = SAMPLE
+acadhlp2 = sample
+
+--- strcat ---
+
+noargs = 
+emptystr = 
+emptyemptystr = 
+emptystrtxt = hi
+txtemptystr = hi
+spacestr =  
+spacestrtxt =  hi
+txtspacestr = hi 
+below0strs = !
+below0stre = /
+below0strtxt = !"#$%&'()*+,-./hi
+txtbelow0str = hi!"#$%&'()*+,-./
+0to9strs = 0
+0to9stre = 9
+0to9strtxt = 0123456789hi
+txt0to9str = hi0123456789
+above9strs = :
+above9stre = @
+above9strtxt = :;<=>?@hi
+txtabove9str = hi:;<=>?@
+bigatozstrs = A
+bigatozstre = Z
+bigatozstrtxt = ABCDEFGHIJKLMNOPQRSTUVWXYZhi
+txtbigatozstr = hiABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastrs = [
+btwnalphastre = `
+btwnalphastrtxt = [\]^_`hi
+txtbtwnalphastr = hi[\]^_`
+abovezstrs = {
+abovezstre = ~
+abovezstrtxt = {|}~hi
+txtabovezstr = hi{|}~
+***Error (nilsymstr): bad argument type
+***Error (nilsymstrtxt): bad argument type
+***Error (txtnilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+***Error (tsymstrtxt): bad argument type
+***Error (txttsymstr): bad argument type
+maxstr = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstrtxt = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012hi
+txtmaxstr = hi123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1strtxt = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123hi
+txtmaxp1str = hi1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+plusedgestr = 1234567890123456789012345678901234567890123456789012345678901234561234567890123456789012345678901234567890123456789012345678901234567
+plusoverstr = 12345678901234567890123456789012345678901234567890123456789012345671234567890123456789012345678901234567890123456789012345678901234567
+icadhlp1 = Jack and Jillwent up the hill
+icadhlp2 = The radius is 7.0000
+acadhlp1 = about
+acadhlp2 = abc
+acadhlp3 = ac
+
+--- strlen ---
+
+noargs = 0
+emptystr = 0
+emptyemptystr = 0
+emptystrtxt = 2
+txtemptystr = 2
+spacestr = 1
+spacestrtxt = 3
+txtspacestr = 3
+below0str = 15
+below0strtxt = 17
+txtbelow0str = 17
+0to9str = 10
+0to9strtxt = 12
+txt0to9str = 12
+above9str = 7
+above9strtxt = 9
+txtabove9str = 9
+bigatozstr = 26
+bigatozstrtxt = 28
+txtbigatozstr = 28
+btwnalphastr = 6
+btwnalphastrtxt = 8
+txtbtwnalphastr = 8
+abovezstr = 4
+abovezstrtxt = 6
+txtabovezstr = 6
+***Error (nilsymstr): bad argument type
+***Error (nilsymstrtxt): bad argument type
+***Error (txtnilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+***Error (tsymstrtxt): bad argument type
+***Error (txttsymstr): bad argument type
+maxstr = 132
+maxstrtxt = 134
+txtmaxstr = 134
+maxp1str = 133
+maxp1strtxt = 135
+txtmaxp1str = 135
+plusedgestr = 133
+plusoverstr = 134
+icadhlp1 = 9
+icadhlp2 = 11
+icadhlp3 = 0
+icadhlp4 = 0
+acadhlp1 = 4
+acadhlp2 = 2
+acadhlp3 = 10
+acadhlp4 = 0
+acadhlp5 = 0
+
+--- substr ---
+
+***Error (noargs): too few arguments
+emptystr = 
+emptystrs = 
+emptystre = 
+emptystrrng = 
+spacestr =  
+spacestrs =  
+spacestre =  
+spacestrrng = 
+below0str = !"#$%&'()*+,-./
+below0strs = !
+below0stre = /
+below0strrng = $%&
+0to9str = 0123456789
+0to9strs = 0
+0to9stre = 9
+0to9strrng = 345
+above9str = :;<=>?@
+above9strs = :
+above9stre = @
+above9strrng = =>?
+bigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+bigatozstrs = A
+bigatozstre = Z
+bigatozstrrng = DEF
+btwnalphastr = [\]^_`
+btwnalphastrs = [
+btwnalphastre = `
+btwnalphastrrng = ^_`
+abovezstr = {|}~
+abovezstrs = {
+abovezstre = ~
+abovezstrrng = ~
+***Error (nilsymstr): bad argument type
+***Error (nilsymstrs): bad argument type
+***Error (nilsymstre): bad argument type
+***Error (nilsymstrrng): bad argument type
+***Error (tsymstr): bad argument type
+***Error (tsymstrs): bad argument type
+***Error (tsymstre): bad argument type
+***Error (tsymstrrng): bad argument type
+maxstr = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxstrs = 1
+maxstre = 2
+maxstrrng = 456
+maxp1str = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+maxp1strs = 1
+maxp1stre = 3
+maxp1strrng = 456
+icadhlp1 = ifo
+icadhlp2 = xas
+icadhlp3 = 
+acadhlp1 = bcde
+acadhlp2 = b
+acadhlp3 = cd
+
+--- wcmatch ---
+
+***Error (noargs): too few arguments
+emptystrnil = T
+emptystrspc = nil
+emptystr# = nil
+emptystr@ = nil
+emptystrdot = nil
+emptystr* = T
+emptystr? = nil
+emptystr~ = nil
+emptystr[] = nil
+emptystr[~] = nil
+spacestrnil = nil
+spacestrspc = T
+spacestr# = nil
+spacestr@ = nil
+spacestrdot = T
+spacestr* = T
+spacestr? = T
+spacestr~ = nil
+spacestr[] = T
+spacestr[~] = nil
+below0strnil = nil
+below0strspcs = nil
+below0strspce = nil
+below0str#s = nil
+below0str#e = nil
+below0str@s = nil
+below0str@e = nil
+below0strdots = T
+below0strdote = T
+below0str* = T
+below0str?s = T
+below0str?e = T
+below0str~s = nil
+below0str~e = nil
+below0str[]s = T
+below0str[]e = T
+below0str[~]s = nil
+below0str[~]e = nil
+0to9strnil = nil
+0to9strspcs = nil
+0to9strspce = nil
+0to9str#s = T
+0to9str#e = T
+0to9str@s = nil
+0to9str@e = nil
+0to9strdots = nil
+0to9strdote = nil
+0to9str* = T
+0to9str?s = T
+0to9str?e = T
+0to9str~s = nil
+0to9str~e = nil
+0to9str[]s = T
+0to9str[]e = T
+0to9str[~]s = nil
+0to9str[~]e = nil
+above9strnil = nil
+above9strspcs = nil
+above9strspce = nil
+above9str#s = nil
+above9str#e = nil
+above9str@s = nil
+above9str@e = nil
+above9strdots = T
+above9strdote = T
+above9str* = T
+above9str?s = T
+above9str?e = T
+above9str~s = nil
+above9str~e = nil
+above9str[]s = T
+above9str[]e = T
+above9str[~]s = nil
+above9str[~]e = nil
+bigatozstrnil = nil
+bigatozstrspcs = nil
+bigatozstrspce = nil
+bigatozstr#s = nil
+bigatozstr#e = nil
+bigatozstr@s = T
+bigatozstr@e = T
+bigatozstrdots = nil
+bigatozstrdote = nil
+bigatozstr* = T
+bigatozstr?s = T
+bigatozstr?e = T
+bigatozstr~s = nil
+bigatozstr~e = nil
+bigatozstr[]s = T
+bigatozstr[]e = T
+bigatozstr[~]s = nil
+bigatozstr[~]e = nil
+btwnalphastrnil = nil
+btwnalphastrspcs = nil
+btwnalphastrspce = nil
+btwnalphastr#s = nil
+btwnalphastr#e = nil
+btwnalphastr@s = nil
+btwnalphastr@e = nil
+btwnalphastrdots = T
+btwnalphastrdote = T
+btwnalphastr* = T
+btwnalphastr?s = T
+btwnalphastr?e = T
+btwnalphastr~s = nil
+btwnalphastr~e = nil
+btwnalphastr[]s = T
+btwnalphastr[]e = T
+btwnalphastr[~]s = nil
+btwnalphastr[~]e = nil
+smallatozstrnil = nil
+smallatozstrspcs = nil
+smallatozstrspce = nil
+smallatozstr#s = nil
+smallatozstr#e = nil
+smallatozstr@s = T
+smallatozstr@e = T
+smallatozstrdots = nil
+smallatozstrdote = nil
+smallatozstr* = T
+smallatozstr?s = T
+smallatozstr?e = T
+smallatozstr~s = nil
+smallatozstr~e = nil
+smallatozstr[]s = T
+smallatozstr[]e = T
+smallatozstr[~]s = nil
+smallatozstr[~]e = nil
+abovezstrnil = nil
+abovezstrspcs = nil
+abovezstrspce = nil
+abovezstr#s = nil
+abovezstr#e = nil
+abovezstr@s = nil
+abovezstr@e = nil
+abovezstrdots = T
+abovezstrdote = T
+abovezstr* = T
+abovezstr?s = T
+abovezstr?e = T
+abovezstr~s = nil
+abovezstr~e = nil
+abovezstr[]s = T
+abovezstr[]e = T
+abovezstr[~]s = nil
+abovezstr[~]e = nil
+***Error (nilsymstrnil): bad argument type
+***Error (nilsymstrspcs): bad argument type
+***Error (nilsymstrspce): bad argument type
+***Error (nilsymstr#s): bad argument type
+***Error (nilsymstr#e): bad argument type
+***Error (nilsymstr@s): bad argument type
+***Error (nilsymstr@e): bad argument type
+***Error (nilsymstrdots): bad argument type
+***Error (nilsymstrdote): bad argument type
+***Error (nilsymstr*): bad argument type
+***Error (nilsymstr?s): bad argument type
+***Error (nilsymstr?e): bad argument type
+***Error (nilsymstr~s): bad argument type
+***Error (nilsymstr~e): bad argument type
+***Error (nilsymstr[]s): bad argument type
+***Error (nilsymstr[]e): bad argument type
+***Error (nilsymstr[~]s): bad argument type
+***Error (nilsymstr[~]e): bad argument type
+***Error (tsymstrnil): bad argument type
+***Error (tsymstrspcs): bad argument type
+***Error (tsymstrspce): bad argument type
+***Error (tsymstr#s): bad argument type
+***Error (tsymstr#e): bad argument type
+***Error (tsymstr@s): bad argument type
+***Error (tsymstr@e): bad argument type
+***Error (tsymstrdots): bad argument type
+***Error (tsymstrdote): bad argument type
+***Error (tsymstr*): bad argument type
+***Error (tsymstr?s): bad argument type
+***Error (tsymstr?e): bad argument type
+***Error (tsymstr~s): bad argument type
+***Error (tsymstr~e): bad argument type
+***Error (tsymstr[]s): bad argument type
+***Error (tsymstr[]e): bad argument type
+***Error (tsymstr[~]s): bad argument type
+***Error (tsymstr[~]e): bad argument type
+maxstrnil = nil
+maxstrspcs = nil
+maxstrspce = nil
+maxstr#s = T
+maxstr#e = T
+maxstr@s = nil
+maxstr@e = nil
+maxstrdots = nil
+maxstrdote = nil
+maxstr* = T
+maxstr?s = T
+maxstr?e = T
+maxstr~s = nil
+maxstr~e = nil
+maxstr[]s = T
+maxstr[]e = T
+maxstr[~]s = nil
+maxstr[~]e = nil
+maxp1strnil = nil
+maxp1strspcs = nil
+maxp1strspce = nil
+maxp1str#s = T
+maxp1str#e = T
+maxp1str@s = nil
+maxp1str@e = nil
+maxp1strdots = nil
+maxp1strdote = nil
+maxp1str* = T
+maxp1str?s = T
+maxp1str?e = T
+maxp1str~s = nil
+maxp1str~e = nil
+maxp1str[]s = T
+maxp1str[]e = T
+maxp1str[~]s = nil
+maxp1str[~]e = nil
+icadhlp1 = T
+icadhlp2 = nil
+icadhlp3 = nil
+icadhlp4 = T
+acadhlp1 = T
+acadhlp2 = T
+acadhlp3 = nil
+Lisp acceptance test completed at 07-20-1998 04:11:39p on version P.0.31

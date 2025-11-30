@@ -1,0 +1,10 @@
+logfilename log\3dface_vba.log
+logfileon
+open
+dwg/3dface.dwg
+-vbarun
+Module1.Main
+dxfout output_dxf\3dface_vba.scr
+6
+quit
+y

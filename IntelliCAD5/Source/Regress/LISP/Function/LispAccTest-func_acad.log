@@ -1,0 +1,205 @@
+Lisp acceptance test run at 07-21-1998 03:48:02p on version P.0.31
+
+Starting tests...
+
+--- apply ---
+
+***Error (noargs): too few arguments
+emptystr = 
+emptyemptystr = 
+emptystrtxt = hi
+txtemptystr = hi
+spacestr =  
+spacestrtxt =  hi
+txtspacestr = hi 
+below0str = /.-,+*)('&%$#"!
+below0strtxt = !"#$%&'()*+,-./hi
+txtbelow0str = hi!"#$%&'()*+,-./
+0to9str = 9876543210
+0to9strtxt = 0123456789hi
+txt0to9str = hi0123456789
+above9str = @?>=<;:
+above9strtxt = :;<=>?@hi
+txtabove9str = hi:;<=>?@
+bigatozstr = ZYXWVUTSRQPONMLKJIHGFEDCBA
+bigatozstrtxt = ABCDEFGHIJKLMNOPQRSTUVWXYZhi
+txtbigatozstr = hiABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = `_^]\[
+btwnalphastrtxt = [\]^_`hi
+txtbtwnalphastr = hi[\]^_`
+abovezstr = ~}|{
+abovezstrtxt = {|}~hi
+txtabovezstr = hi{|}~
+***Error (nilsymstr): bad argument type
+***Error (nilsymstrtxt): bad argument type
+***Error (txtnilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+***Error (tsymstrtxt): bad argument type
+***Error (txttsymstr): bad argument type
+maxstr = 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123567890123456789012
+maxstrtxt = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012hi
+txtmaxstr = hi123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901235678901234567890123
+maxp1strtxt = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123hi
+txtmaxp1str = hi1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = /
+abovenum = :
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0
+zerominint = -2147483648
+minzeroint = -2147483648
+zeromaxint = 2147483647
+maxzeroint = 2147483647
+oneminint = -2147483647
+minoneint = -2147483647
+onemaxint = -2147483648
+maxoneint = -2147483648
+zerominp1int = 2147483647
+minp1zeroint = 2147483647
+zeromaxp1int = -2147483648
+maxp1zeroint = -2147483648
+oneminp1int = -2147483648
+minp1oneint = -2147483648
+onemaxp1int = -2147483647
+maxp1oneint = -2147483647
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 0.0000
+zeromaxreal = 9.9000E+99
+maxzeroreal = 9.9000E+99
+oneminreal = 1.0000
+minonereal = 1.0000
+onemaxreal = 9.9000E+99
+maxonereal = 9.9000E+99
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1.0000
+minp1onereal = 1.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1 = 15
+icadhlp2 = nil
+acadhlp1 = 6
+acadhlp2 = abc
+
+--- eval ---
+
+***Error (noargs): too few arguments
+emptystr = 
+emptyemptystr = 
+emptystrtxt = hi
+txtemptystr = hi
+spacestr =  
+spacestrtxt =  hi
+txtspacestr = hi 
+below0str = /.-,+*)('&%$#"!
+below0strtxt = !"#$%&'()*+,-./hi
+txtbelow0str = hi!"#$%&'()*+,-./
+0to9str = 9876543210
+0to9strtxt = 0123456789hi
+txt0to9str = hi0123456789
+above9str = @?>=<;:
+above9strtxt = :;<=>?@hi
+txtabove9str = hi:;<=>?@
+bigatozstr = ZYXWVUTSRQPONMLKJIHGFEDCBA
+bigatozstrtxt = ABCDEFGHIJKLMNOPQRSTUVWXYZhi
+txtbigatozstr = hiABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = `_^]\[
+btwnalphastrtxt = [\]^_`hi
+txtbtwnalphastr = hi[\]^_`
+abovezstr = ~}|{
+abovezstrtxt = {|}~hi
+txtabovezstr = hi{|}~
+***Error (nilsymstr): bad argument type
+***Error (nilsymstrtxt): bad argument type
+***Error (txtnilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+***Error (tsymstrtxt): bad argument type
+***Error (txttsymstr): bad argument type
+maxstr = 12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123567890123456789012
+maxstrtxt = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012hi
+txtmaxstr = hi123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+maxp1str = 123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901235678901234567890123
+maxp1strtxt = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123hi
+txtmaxp1str = hi1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+zero = 0
+nine = 9
+minuszero = 0
+minusnine = -9
+belownum = /
+abovenum = :
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+zerozeroint = 0
+zerominint = -2147483648
+minzeroint = -2147483648
+zeromaxint = 2147483647
+maxzeroint = 2147483647
+oneminint = -2147483647
+minoneint = -2147483647
+onemaxint = -2147483648
+maxoneint = -2147483648
+zerominp1int = 2147483647
+minp1zeroint = 2147483647
+zeromaxp1int = -2147483648
+maxp1zeroint = -2147483648
+oneminp1int = -2147483648
+minp1oneint = -2147483648
+onemaxp1int = -2147483647
+maxp1oneint = -2147483647
+zerozeroreal1 = 0.0000
+zerozeroreal2 = 0.0000
+zerominreal = 0.0000
+minzeroreal = 0.0000
+zeromaxreal = 9.9000E+99
+maxzeroreal = 9.9000E+99
+oneminreal = 1.0000
+minonereal = 1.0000
+onemaxreal = 9.9000E+99
+maxonereal = 9.9000E+99
+zerominp1real = 0.0000
+minp1zeroreal = 0.0000
+***Error (zeromaxp1real): Invalid floating point value
+***Error (zeromaxp1real): null function
+***Error (maxp1zeroreal): Invalid floating point value
+***Error (maxp1zeroreal): null function
+oneminp1real = 1.0000
+minp1onereal = 1.0000
+***Error (onemaxp1real): Invalid floating point value
+***Error (onemaxp1real): null function
+***Error (maxp1onereal): Invalid floating point value
+***Error (maxp1onereal): null function
+***Error (invalidrealnum1): invalid dotted pair
+***Error (invalidrealnum1): null function
+***Error (invalidrealnum2): invalid dotted pair
+***Error (invalidrealnum2): null function
+icadhlp1 = 98
+acadhlp1 = 4.0000
+acadhlp2 = 10
+
+--- lambda ---
+
+icadhlp1 = 11
+acadhlp1 = 30
+acadhlp2:
+	 = 10
+	 = 20
+	 = -30
+	 = 51.0000
+Lisp acceptance test completed at 07-21-1998 03:48:09p on version P.0.31

@@ -1,0 +1,26 @@
+
+
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78204_1.txt
+Date:		29-07-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78204
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/DimDiaMain.cpp
+		Source/prj/lib/CMDS/DimDiaRad4.cpp
+Description:	When the circle is not located on the current UCS ,the radial dimensions are not drawn properly
+Comments:	TaL78204
+File by File:	
+*		Source/prj/lib/CMDS/DimDiaMain.cpp
+		Made the z-coordinate of both textmidpt and 14[2] equal to zero.
+*		Source/prj/lib/CMDS/DimDiaRad4.cpp
+		Firstly set the z-coordinate of pt[15] to zero, do all the calculations and then retrieve its value befor exiting the function. 
+--------------------------------------------------------------------------------
+

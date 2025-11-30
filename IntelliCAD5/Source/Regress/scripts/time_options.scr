@@ -1,0 +1,20 @@
+logfilename log\time_options.log
+logfileon
+;_______
+time
+on
+
+time
+off
+
+time
+d
+
+time
+r
+
+;________
+dxfout output_dxf\time_option.dxf
+6
+quit
+y

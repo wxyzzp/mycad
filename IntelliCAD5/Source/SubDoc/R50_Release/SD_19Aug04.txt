@@ -1,0 +1,126 @@
+Document Title:  SD_19AUG04.txt	
+Product Version: ICAD 5
+Date:  19 August 2004
+Engineers: Sachin Dange
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : CMDS, ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+
+	An earlier implementation of "lineweight" and "lweight" command involved
+a Lineweight dialog that was shown when the command was executed. From this 
+Dialog, the Lineweight settings could be modified such as "Default Lineweight",
+"Current Lineweight", "Display Scale" etc. I had done this implementation and it 
+was accepted as it was according to the then latest specification for 
+IntelliCAD 5.0.
+	When Dave had looked at the BricsCAD code, he saw that the Lineweight settings
+were present in the Drawing Settings Dialog under the Display Tab with a seperate 
+section for Lineweights through the combo-box. Dave liked the idea and copied all 
+the stuff from the Lineweight Dialog under a seperate section for the Display tab.
+	However Dave also wanted to modify the behaviour of "lweight" command. He wanted 
+to invoke the Drawing Settings dialog with Lineweight settings rather than the 
+original Lineweight dialog, when the command "lweight" was executed.
+	This is what I have provided, I have changed the route to invoke this Drawing 
+Settings dialog with the Lineweight section rather than the Lineweight Dialog present
+earlier. I have also removed the existence of this dialog from the RC files and 
+the files that included the code for the dialog and the file where it was invoked from. 
+The three files that I have deleted are given in the Change Log below.
+	Thus the new behaviour is reflected in 3 places:
+		1. Implementation of "lweight" command.
+		2. Implementation of "lineweight" command.
+		3. Right-Click the "LWT" button and Choose "Settings" from the pop-up menu that
+			comes up.
+
+
+
+4.  Notes to Docs: N.
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+Reference: SD_19Aug04.txt	
+Engineer: Sachin Dange
+Added files:     
+Affected files:
+	Eng-us/IcadRes.rc?rev=1.28.2.21.2.23 
+	Source/prj/ICAD/IcadApi.h?rev=1.20.4.12.2.3 
+	Source/prj/ICAD/icadmain.h?rev=1.8.4.5.2.4 
+	Source/prj/ICAD/IcadRes.h?rev=1.21.2.16.2.11 
+	Source/prj/ICAD/IcadSetVarsDia.cpp?rev=1.30.2.10.2.4
+	Source/prj/ICAD/icadwndaction.cpp?rev=1.22.2.12.2.4 
+	Source/prj/lib/CMDS/cmds8.cpp?rev=1.15.4.11.2.1 
+	Source/prj/make/icad.dsp?rev=1.23.2.17.2.3 
+Deleted files:
+	Source/prj/ICAD/icadLineWeightDia.cpp?rev=1.1
+	Source/prj/ICAD/LineweightDlg.cpp?rev=1.1 
+	Source/prj/ICAD/LineweightDlg.h?rev=1.1 
+Description: 
+	Code Changes to change the behaviour of "Lweight" and "Lineweight" commands. 
+	Now the Drawing Settings Dialog with Display Tab containing Lineweight section 
+	is shown instead of the earlier Lineweight Dialog. The Lineweight Dialog has 
+	been removed.
+Reviewer's Name and Comments:
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+
+8.  Testing Considerations:
+
+The code should be checked for the following cases:
+1. Invoke "lweight" command. The "Drawing Settings" dialog with "Display" Tab 
+	containing "Lineweight" section is shown instead of the earlier 
+	Lineweight Dialog.
+2. Invoke "lineweight" command. The "Drawing Settings" dialog with "Display" Tab 
+	containing "Lineweight" section is shown instead of the earlier 
+	Lineweight Dialog.
+3. Right-Click the "LWT" button and Choose "Settings" from the pop-up menu that
+	comes up. The "Drawing Settings" dialog with "Display" Tab 
+	containing "Lineweight" section is shown instead of the earlier 
+	Lineweight Dialog.
+
+
+
+
+
+
+9.  Installation Issues:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

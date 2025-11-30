@@ -1,0 +1,20 @@
+logfilename log\78425.log
+logfileon
+;_________
+(command "_circle" "2000,1100,0" "20")
+(setvar "insbase" '(2000 1100 0))
+(setvar "expert" 3)
+(command "_wblock" "dwg/circle.dwg" "*")
+(setvar "insbase" '(0 0 0))
+(command "viewpoint" "1,-1,1")
+(command "ucs" "view")
+(command "_insert" "dwg/circle.dwg" "2000,1100,0" "1" "1" "0")
+(setq insertionpt (cdr (assoc 10 (entget(entlast)))))
+(command "explode" "all")
+(setq centerpt (cdr (assoc 10 (entget(entlast)))))
+(if (> (distance centerpt insertionpt) 0.01) (entsel))
+;________
+dxfout output_dxf\78425.dxf
+6
+quit
+y

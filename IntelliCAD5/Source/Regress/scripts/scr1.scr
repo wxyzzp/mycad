@@ -1,0 +1,9 @@
+logfilename log\scr1.log
+logfileon
+open
+DWG/acis solids.dwg
+(load "lisp\scr1.lsp")
+mkbox
+dxfout output_dxf\scr1.dxf 
+6 
+exit y

@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78253_1.txt
+Date:		12-08-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78253
+Affected files:			
+		Eng-us/icad.rc2
+		Source/prj/ICAD/res/icadrc2.h
+		Source/prj/lib/CMDS/insert.cpp
+Description:	initget strings that probably have errors in them
+Comments:	TaL78253
+File_By_File:
+	*	Eng-us/icad.rc2
+	*	Source/prj/ICAD/res/icadrc2.h
+		IDC_CMDS3_EDIT_CONTROL_DAT_570__part1 etc
+		IDC_CMDS3_EDIT_CONTROL_DAT_574__part1 etc
+
+		The above 2 id's are declared and defined but not used anywhere. So now they are 			commented in icadrc2.h and icad.rc2
+		IDC_INSERT_INITGET_CORNER_S_36 
+		Modified the initget string.
+	
+	*	Source/prj/lib/CMDS/insert.cpp
+		IDC_INSERT_INITGET_CORNER_S_36 
+		For the above id, previously there we were accepting input like y and z which 				AutoCAD does not accept. So now we have removed this part in IntelliCAD. Note 				that there is one in-compatibility between IntelliCAD and AutoCAD and that is for 		capital letters. In this case if we have XYZ in initget string, then AutoCAD 				accepts x, Xy and XYZ but in IntelliCAD it will accept X and XYZ but not XY.			
+--------------------------------------------------------------------------------

@@ -1,0 +1,29 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-36.txt
+Produce Version		ICAD 4
+Date:				05/13/2004 10:15am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission makes use of the pre-existing PROXYSHOW
+system variable.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\icad\entityrenderer.cpp
+\source\prj\lib\db\acad_proxy_entity.cpp
+\source\prj\lib\db\entities.h
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\lib\drw\giworlddrawvectors.h
+\source\prj\lib\drw\dwgdirectreader.cpp

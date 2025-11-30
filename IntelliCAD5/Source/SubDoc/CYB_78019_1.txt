@@ -1,0 +1,29 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78019_1.txt
+Date:		03-06-2002
+Developer:      	Mohit Mehta
+Company:        	Cybage Software
+Reference:	BugZilla:78019
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/arc.cpp
+		CvsHist:Eng-us/icad.rc2
+		CvsHist:Source/prj/ICAD/res/icadrc2.h
+
+Description: 	Arc in Center-Start-Angle form with 360 deg-included angles is incorrect.
+Comments:	TaL78019
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/arc.cpp
+		Checked to see if the start angle and end angle are same.
+*		CvsHist:Eng-us/icad.rc2
+		defination of CMD_ERR_INVALID
+*		CvsHist:Source/prj/ICAD/res/icadrc2.h
+		declaration of CMD_ERR_INVALID
+
+--------------------------------------------------------------------------------
+

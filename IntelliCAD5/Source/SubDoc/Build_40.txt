@@ -1,0 +1,725 @@
+Notes for Build_40:
+To reproduce this build in R40_Dev, checkout tag For_Build_40 
+
+In R40_Integration, checkout tag Build_40.
+
+Error-free regress!  Three scripts failed, but ran fine when run seperately.
+
+CHANGED FILES:
+The following files were changed in R40_Dev during this build period:
+M	2004-02-09:08:21	cyberage	1.7.6.11	IntelliCAD/Source/prj/lib/DB/drawing.h
+M	2004-02-09:08:21	cyberage	1.25.4.19	IntelliCAD/Source/prj/lib/DB/drawing.cpp
+M	2004-02-09:08:28	cyberage	1.7.6.3	IntelliCAD/Source/prj/ICAD/icad.h
+M	2004-02-09:08:28	cyberage	1.64.4.46	IntelliCAD/Source/prj/ICAD/icadapi.cpp
+M	2004-02-09:08:28	cyberage	1.28.6.24	IntelliCAD/Source/prj/ICAD/IcadApp.cpp
+M	2004-02-09:08:28	cyberage	1.6.6.1	IntelliCAD/Source/prj/ICAD/IcadColorDia.cpp
+M	2004-02-09:08:28	cyberage	1.10.6.8	IntelliCAD/Source/prj/ICAD/icaddrawapi.cpp
+M	2004-02-09:08:28	cyberage	1.5.6.10	IntelliCAD/Source/prj/ICAD/icaddrawbitmap.cpp
+M	2004-02-09:08:28	cyberage	1.15.6.26	IntelliCAD/Source/prj/ICAD/icadentityrenderer.cpp
+M	2004-02-09:08:28	cyberage	1.3.8.2	IntelliCAD/Source/prj/ICAD/icadform.cpp
+M	2004-02-09:08:28	cyberage	1.2.6.4	IntelliCAD/Source/prj/lib/CMDS/entitydata.cpp
+M	2004-02-09:08:28	cyberage	1.24.4.14	IntelliCAD/Source/prj/lib/CMDS/explode.cpp
+M	2004-02-09:08:28	cyberage	1.22.6.9	IntelliCAD/Source/prj/lib/CMDS/insert.cpp
+M	2004-02-09:08:28	cyberage	1.4.6.2	IntelliCAD/Source/prj/lib/CMDS/mail.cpp
+M	2004-02-09:08:28	cyberage	1.8.6.4	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-02-09:08:28	cyberage	1.3.6.1	IntelliCAD/Source/prj/lib/CMDS/tablet.cpp
+M	2004-02-09:08:28	cyberage	1.25.6.8	IntelliCAD/Source/prj/lib/CMDS/todo.cpp
+M	2004-02-09:08:28	cyberage	1.8.4.7	IntelliCAD/Source/prj/lib/DB/db.h
+M	2004-02-09:08:28	cyberage	1.33.4.14	IntelliCAD/Source/prj/lib/DB/db1.cpp
+M	2004-02-09:08:28	cyberage	1.8.6.2	IntelliCAD/Source/prj/lib/SDS/sds_alert.cpp
+M	2004-02-09:08:28	cyberage	1.40.6.18	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+M	2004-02-09:08:28	cyberage	1.7.10.7	IntelliCAD/Source/prj/lib/SDS/sds_misc.cpp
+M	2004-02-09:08:28	cyberage	1.3.12.2	IntelliCAD/Source/prj/lib/SDS/sds_printf.cpp
+M	2004-02-09:08:31	cyberage	1.13.4.16	IntelliCAD/Source/prj/lib/DB/db_util.cpp
+M	2004-02-09:08:31	cyberage	1.7.6.12	IntelliCAD/Source/prj/lib/DB/drawing.h
+M	2004-02-09:08:32	cyberage	1.2.8.1	IntelliCAD/Source/prj/ICAD/penmaplistctrl.cpp
+M	2004-02-09:08:32	cyberage	1.1.1.1.12.1	IntelliCAD/Source/prj/ICAD/penmaplistctrl.h
+M	2004-02-09:08:32	cyberage	1.2.8.10	IntelliCAD/Source/prj/ICAD/printdialog.cpp
+M	2004-02-09:08:32	cyberage	1.2.8.7	IntelliCAD/Source/prj/ICAD/printpenmaptab.cpp
+M	2004-02-09:08:32	cyberage	1.4.6.7	IntelliCAD/Source/prj/lib/AUTO/icadplotcfg.cpp
+A	2004-02-09:09:58	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78404_2.txt
+A	2004-02-09:09:58	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78600_2.txt
+A	2004-02-09:09:58	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78698_2.txt
+A	2004-02-09:09:58	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78719_1.txt
+A	2004-02-09:09:58	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78720_1.txt
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/acis/elevation_option.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/78720.lsp
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/unnamedblock.lsp
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78118.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78118a.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78720.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/arr_pmove.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/bhatch_rotate.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimrnd.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/dimzin.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/donutod.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/hpscale.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/plinewid.scr
+A	2004-02-09:09:59	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/unnamedblock.scr
+M	2004-02-12:20:08	denisp	1.1.2.3	IntelliCAD/Source/prj/lib/CMDS/cmdsViewport.cpp
+A	2004-02-14:20:44	denisp	1.1.2.1	IntelliCAD/Source/prj/ICAD/LayoutTabs.h
+A	2004-02-14:20:44	denisp	1.1.2.1	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+M	2004-02-14:20:44	denisp	1.22.4.10	IntelliCAD/Source/prj/ICAD/icadwndaction.cpp
+M	2004-02-14:20:44	denisp	1.30.4.28	IntelliCAD/Source/prj/ICAD/icadview.cpp
+M	2004-02-14:20:44	denisp	1.2.6.1	IntelliCAD/Source/prj/ICAD/icadchildwnd.h
+M	2004-02-14:20:44	denisp	1.4.6.3	IntelliCAD/Source/prj/ICAD/icadchildwnd.cpp
+M	2004-02-14:20:44	denisp	1.20.6.10	IntelliCAD/Source/prj/ICAD/IcadApi.h
+M	2004-02-14:20:44	denisp	1.1.2.17	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-02-14:20:45	denisp	1.7.6.9	IntelliCAD/Source/prj/lib/SDS/sds_vars.cpp
+M	2004-02-14:20:47	denisp	1.23.4.19	IntelliCAD/Source/prj/make/icad.dsp
+A	2004-02-10:14:31	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-8.txt
+M	2004-02-10:14:31	markba	1.13.6.15	IntelliCAD/Source/prj/lib/DB/entities.h
+M	2004-02-10:14:31	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-02-10:14:31	markba	1.1.2.4	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-02-10:14:31	markba	1.1.2.18	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-02-10:14:31	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-02-10:14:31	markba	1.1.2.6	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-02-10:14:31	markba	1.1.2.8	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-02-10:14:31	markba	1.1.2.8	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-02-10:14:31	markba	1.47.4.30	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+A	2004-02-12:18:36	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DwgdirectWriter-9.txt
+M	2004-02-12:18:36	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-02-12:18:36	markba	1.1.2.5	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-02-12:18:36	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-02-12:18:36	markba	1.1.2.9	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+A	2004-02-09:07:02	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_39.txt
+M	2004-02-15:02:35	master	1.4.8.46	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-02-10:07:42	stephenh	1.63.4.47	IntelliCAD/Eng-us/icad.rc2
+M	2004-02-10:07:44	stephenh	1.59.4.37	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-02-10:07:53	stephenh	1.9.6.9	IntelliCAD/Source/prj/lib/CMDS/3dsolids.cpp
+A	2004-02-10:08:12	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_020204_1.doc
+M	2004-02-10:08:27	stephenh	1.1.2.11	IntelliCAD/Source/prj/lib/CMDS/CmdFilletChamfer.cpp
+A	2004-02-10:08:39	stephenh	1.1.2.1	IntelliCAD/Source/SubDoc/SH_030204_1.doc
+
+
+CHANGELOG:
+
+------------------------------------------------------------------------------------ 
+Date: 09-02-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78719 
+Affected files: 
+Source/prj/ICAD/penmaplistctrl.cpp 
+Source/prj/ICAD/penmaplistctrl.h 
+Source/prj/ICAD/printdialog.cpp 
+Source/prj/ICAD/printpenmaptab.cpp 
+Source/prj/lib/AUTO/icadplotcfg.cpp 
+Description: Inaccuracy in line width on conversion of units from mm to inches and back to mm. 
+Comments: TaL78719 CYB_78719_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 09-02-2004 
+Developer: Mohan Nayak 
+Company: Cybage 
+Reference: BugZilla:78720 
+Affected files: 
+Source/prj/lib/DB/db_util.cpp 
+Source/prj/lib/DB/drawing.h 
+Description: Unnamed block cannot be redefined in ICAD. 
+Comments: TaL78720 CYB_78720_1.txt 
+------------------------------------------------------------------------------------ 
+Date: 09-02-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78404 
+Affected files: 
+Source/prj/ICAD/icad.h 
+Source/prj/ICAD/icadapi.cpp 
+Source/prj/ICAD/IcadApp.cpp 
+Source/prj/ICAD/IcadColorDia.cpp 
+Source/prj/ICAD/icaddrawapi.cpp 
+Source/prj/ICAD/icaddrawbitmap.cpp 
+Source/prj/ICAD/icadentityrenderer.cpp 
+Source/prj/ICAD/icadform.cpp 
+Source/prj/lib/CMDS/entitydata.cpp 
+Source/prj/lib/CMDS/explode.cpp 
+Source/prj/lib/CMDS/insert.cpp 
+Source/prj/lib/CMDS/mail.cpp 
+Source/prj/lib/CMDS/save.cpp 
+Source/prj/lib/CMDS/tablet.cpp 
+Source/prj/lib/CMDS/todo.cpp 
+Source/prj/lib/DB/db.h 
+Source/prj/lib/DB/db1.cpp 
+Source/prj/lib/SDS/sds_alert.cpp 
+Source/prj/lib/SDS/sds_get.cpp 
+Source/prj/lib/SDS/sds_misc.cpp 
+Source/prj/lib/SDS/sds_printf.cpp 
+Description: (alert "hello") is modal and can get behind intellicad. 
+Comments: TaL78404 CYB_78404_2.txt 
+Implemented the modifed changes after code Review from Denis. 
+------------------------------------------------------------------------------------ 
+Date: 09-02-2004 
+Developer: Sachin Dange 
+Company: Cybage 
+Reference: BugZilla:78600 + BugZilla:78698 
+Affected files: 
+Source/prj/lib/DB/drawing.h 
+Source/prj/lib/DB/drawing.cpp 
+Description: 
+Bugzilla# 78600 -- R13/R14 DXF saved by A2K or later loose LAYOUT. 
+Bugzilla# 78698 -- ICAD crashes while printing attached dxf file. 
+Comments: TaL78600 TaL78698 CYB_78600_2.txt CYB_78698_2.txt 
+Implemented the modifed changes after code Review from Denis. 
+------------------------------------------------------------------------------------ 
+Date: 10-02-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Source/prj/lib/CMDS/CmdFilletChamfer.cpp 
+Description: Fixes problems - CHAMFER and FILLET did not take ACIS bodies. 
+Comments: SH_030204_1.doc 
+------------------------------------------------------------------------------------ 
+Date: 10-02-2004 
+Developer: Stephen Hou 
+Company: Nd Space 
+Reference: 
+Affected files: 
+Eng-us/icad.rc2 
+Source/prj/ICAD/res/icadrc2.h 
+Source/prj/lib/CMDS/3dsolids.cpp 
+Description: Fixes some globalization problems. 
+Comments: SH_020204_1.doc 
+------------------------------------------------------------------------------------ 
+
+REGRESS:
+
+Script Name 	Time	Memory
+2-D.scr	2283	13258752
+2-D_entityEMF.scr	2663	13402112
+2-D_entityEMF95.scr	2663	13389824
+2-D_entityEMFNT.scr	2673	13389824
+2-D_entitySLD.scr	2623	13324288
+2-D_entitySLD95.scr	2543	13312000
+2-D_entitySLDNT.scr	2623	13316096
+2-D_entity_color_layer.scr	2283	13271040
+2dintersection_options.scr	1451	12767232
+3d.scr	2533	13279232
+3darray_c_options.scr	5116	13660160
+3darray_p_options.scr	5106	13664256
+3darray_r_options.scr	91570	58003456
+3dface_vba.scr	1861	14262272
+3dintersection_options.scr	1551	12750848
+3dmeshes2.scr	5386	17977344
+3dpoly_options.scr	1611	12984320
+3dpoly_vba.scr	1771	14245888
+3dspiral_3dspiral.scr	2422	13508608
+3dspiral_spiral.scr	2232	13312000
+3d_box_options.scr	1701	13041664
+3d_cone_options.scr	1741	13225984
+3d_cylinder_Options.scr	3064	17264640
+3d_dish_Options.scr	7169	29999104
+3d_dome_Options.scr	7310	29999104
+3d_entities.scr	3453	15470592
+3d_mesh_options.scr	30473	69382144
+3d_pyramid_options.scr	1811	13000704
+3d_sphere_Options.scr	7350	30408704
+3d_torus_Options.scr	4415	20611072
+3d_wedge_options.scr	1751	13008896
+50537.scr	1791	14843904
+60619.scr	2883	13258752
+60681_1.scr	1902	13307904
+60914.scr	1721	13152256
+60918.scr	2452	13262848
+61474.scr	3093	13352960
+64188_Base.scr	2011	13201408
+64188_Cont.scr	2021	13193216
+6542.scr	1461	12886016
+68870.scr	1961	13598720
+70921.scr	2673	13455360
+70921_1.scr	3083	13492224
+72001.scr	1341	12251136
+73862.scr	1581	12972032
+75763.scr	1491	12853248
+75883.scr	1821	12996608
+76186.scr	14170	13803520
+76526.scr	1962	12951552
+77456.scr	4185	26161152
+77770_Aligned.scr	3784	13524992
+77770_Linear.scr	3844	13545472
+77770_Rotated.scr	3924	13520896
+77816.scr	1561	12955648
+77848.scr	3585	13225984
+77860.scr	24875	36204544
+77887.scr	2573	13373440
+77888.scr	2953	13864960
+77892.scr	1781	12972032
+77907.scr	2182	12996608
+77943.scr	1561	13127680
+77947.scr	1811	12935168
+77972.scr	3134	13266944
+78005.scr	1972	13168640
+78010.scr	2613	13144064
+78034.scr	1541	12931072
+78036.scr	1721	13987840
+78037.scr	2643	13803520
+78047.scr	2062	14639104
+78057.scr	1551	13332480
+78069_78002.scr	3184	13942784
+78075.scr	1992	13250560
+78075_1.scr	1461	13008896
+78075_2.scr	2072	13254656
+78079.scr	4795	14000128
+78090.scr	1591	13160448
+78092.scr	5367	18464768
+78105.scr	1861	13201408
+78110.scr	1621	13078528
+78118.scr	2092	13074432
+78118a.scr	1431	12935168
+78119.scr	1561	13320192
+78120.scr	1461	12996608
+78120_test.scr	2232	13406208
+78130.scr	1962	13471744
+78135.scr	2612	12943360
+78136.scr	1601	13103104
+78140.SCR	3084	13443072
+78149.scr	1611	13053952
+78151.scr	2082	13201408
+78153.scr	2473	13336576
+78155.scr	2773	13344768
+78165.scr	1761	13062144
+78165_1.scr	1741	13053952
+78165_2.scr	1861	13082624
+78165_3.scr	1962	13086720
+78167.scr	1961	13176832
+78168_attdef.scr	1681	12881920
+78168_attedit.scr	1922	13062144
+78168_dimstyle.scr	2012	12898304
+78168_insert.scr	1591	13012992
+78168_layer.scr	2152	12861440
+78168_layout.scr	1681	12881920
+78168_minsert.scr	1621	13029376
+78168_mtext.scr	1711	12873728
+78168_rename.scr	2272	13225984
+78168_style.scr	1581	12804096
+78168_text.scr	1701	12873728
+78168_toolbars.scr	3905	13111296
+78168_ucs.scr	1571	13017088
+78168_view.scr	1611	13021184
+78168_xref.scr	2583	14024704
+78175.scr	1541	13258752
+78177.scr	1471	13201408
+78179.scr	2112	13357056
+78181.scr	1751	13307904
+78182.scr	2843	13557760
+78183.scr	1921	13422592
+78195.scr	4896	13639680
+78197.scr	2863	13901824
+78198.scr	2303	13504512
+78199_1.scr	1931	13275136
+78203.scr	1891	13361152
+78204.scr	4135	13578240
+78205.scr	2072	13242368
+78222.scr	4445	14794752
+78222_1.scr	2252	13266944
+78236.scr	3654	13537280
+78238.scr	5677	13967360
+78238_1.scr	21029	15159296
+78243.scr	2123	14045184
+78248.scr	2443	13127680
+78250.scr	1621	13312000
+78260_78273.scr	6188	13828096
+78260_78273_1.scr	6398	14573568
+78265.scr	3764	13389824
+78277.scr	1851	13328384
+78284.scr	2603	13565952
+78287.scr	1491	13008896
+78300_a.scr	78412	17588224
+78300_c.scr	72423	15970304
+78300_h.scr	46716	15568896
+78300_t.scr	46866	15626240
+78300_w.scr	46546	15581184
+78305.scr	31905	14401536
+78310_1.scr	2893	13619200
+78310_2.scr	2773	13611008
+78331.scr	1581	13287424
+78339.scr	1531	12648448
+78343.scr	199416	19267584
+78346a.scr	1891	14675968
+78376_1.scr	2642	13217792
+78377.scr	2202	17092608
+78393_T1fts011.scr	47758	36159488
+78395.scr	1401	12468224
+78410.scr	5837	19865600
+78411_defaultcommands.scr	1701	13107200
+78411_s.scr	1641	12468224
+78414.scr	1621	13246464
+78417.scr	2973	17321984
+78417_1.scr	2933	17367040
+78418.scr	78932	14553088
+78419.scr	3084	13869056
+78419_1.scr	158617	15630336
+78419_leamitest.scr	3173	13860864
+78425.scr	1811	13672448
+78440_checkcond.scr	1341	12476416
+78440_icad.scr	1421	12468224
+78441_setq.scr	1391	12468224
+78441_v.scr	1431	12468224
+78442.scr	1501	12472320
+78442_1.scr	1371	12468224
+78444_misc.scr	4065	14786560
+78444_purge_all.scr	5627	15609856
+78444_xref_detach.scr	4446	15167488
+78476.scr	1671	13152256
+78476_entmake.scr	1451	13070336
+78476_vba.scr	1731	14426112
+78508.scr	1641	13344768
+78518_lisp.scr	2964	13287424
+78536.scr	1621	13238272
+78538.scr	1481	13168640
+78548.scr	2363	14852096
+78549.scr	1421	13086720
+78556.scr	1531	13172736
+78558.scr	1771	13369344
+78564.scr	3875	25468928
+78577.scr	1801	13336576
+78593_vba.scr	1721	14172160
+78600.scr	1781	14557184
+78604.scr	1531	13115392
+78619.scr	1451	13144064
+78620.scr	1751	13316096
+78648.scr	1481	13107200
+78651.scr	1401	13045760
+78686.scr	1541	13107200
+78700.scr	1471	13156352
+78708.scr	1581	13168640
+78720.scr	1391	12984320
+AccTest-cond.scr	104740	13926400
+AccTest-conv.scr	10654	13815808
+AccTest-function.scr	7049	13795328
+AccTest-geo.scr	2923	13393920
+AccTest-list.scr	81226	14680064
+AccTest-math.scr	16763	13860864
+AccTest-string.scr	15661	14036992
+AccTest-sym.scr	85362	13819904
+AccTest-symtbl2.scr	6338	13754368
+AccTest-util.scr	5567	13557760
+AI_3d_entities.SCR	4636	15720448
+ai_box_options.scr	1901	13242368
+ai_cone_options.scr	2102	13815808
+ai_cylinder_Options.scr	2042	13615104
+ai_dish_Options.scr	7390	30216192
+ai_dome_Options.scr	7400	30216192
+ai_pyramid_options.scr	1931	13205504
+align_options.scr	3104	13565952
+alloc.scr	1401	12963840
+angtos.scr	1771	12996608
+aperture_options.scr	1511	12972032
+application_vba.scr	1721	14491648
+approved.scr	1731	13332480
+arc.scr	3764	13697024
+arcs.scr	5506	13586432
+arctex_at.scr	1421	13148160
+arc_vba.scr	1711	14512128
+array_r_options.scr	2263	13561856
+arryc2.scr	5437	13684736
+arryp2.scr	5556	13688832
+arr_pmove.scr	5477	13688832
+attdef_options.scr	1971	13148160
+attdisp.scr	1721	13246464
+attdisp_options.scr	2743	13369344
+attedit_options.scr	3033	13430784
+attext.scr	1741	13279232
+attext_options.scr	2423	13406208
+ATTRIButes1.SCR	4536	13668352
+aunitformats.scr	1571	13127680
+aunits.scr	1661	13103104
+B4.SCR	1831	13352960
+base_options.scr	1561	13000704
+bhatch_options.scr	2663	13438976
+bhatch_options_2.scr	3034	13524992
+bhatch_rotate.scr	2323	13492224
+blipmode_options.scr	1521	12976128
+blockexp.scr	16362	32583680
+block_options.scr	2102	13484032
+bmpout_options.scr	1711	13807616
+break_options.scr	2462	13340672
+Cardiod.scr	6708	13516800
+celtscale.scr	1621	13115392
+center_snap_options.scr	1431	12955648
+Chair_rarray.scr	3373	19922944
+chamfer_options.scr	2793	13328384
+change_options.scr	3324	13512704
+checkdimvars1.scr	193317	21454848
+checkVars_intbool.scr	31725	14872576
+checkVars_real.scr	15451	14761984
+child_windows_options.scr	1771	12898304
+chprop_options.scr	1731	13238272
+Circles.scr	1802	13496320
+circlesEntity.scr	3444	13541376
+cmdbar_options.scr	1611	12541952
+color_options.scr	2102	13041664
+CONCIRCLEADD.scr	1751	13201408
+CONCIRCLESUB.scr	1811	13164544
+Conference.scr	26096	37986304
+coordinate_options.scr	1611	12955648
+copy2d.scr	4245	13643776
+copyclip_options.scr	2152	14589952
+copyedata_options.scr	1571	13176832
+Copymove.scr	2633	13414400
+cursorsize.scr	1992	12996608
+cutclip_options.scr	2102	14569472
+cutube.scr	1501	13295616
+cvport_options.scr	1691	13045760
+deledata_options.scr	1591	13168640
+dictadd.scr	1471	12992512
+dictnext.scr	1511	12988416
+dictremove.scr	1521	12992512
+dictrename.scr	1511	13000704
+dictsearch.scr	1531	12988416
+dim1_options.scr	4816	13709312
+dimclrt.scr	1481	12677120
+dimedit_oblique.scr	5837	13987840
+dimedit_rotate.scr	5957	14057472
+dimfit_vars_check.scr	1561	12955648
+dimrnd.scr	2182	13389824
+dimtad.scr	2193	13418496
+dimtedit.scr	5647	14049280
+dimtedit_RotatedDim.scr	5547	13979648
+dimtext.scr	1971	13307904
+dimtim.scr	1821	13373440
+dimtol.scr	1771	13365248
+DimUpdateAll.scr	4295	14073856
+dimzin.scr	2061	13361152
+Dim_ArrowHeads.SCR	16763	18231296
+Dim_DIMFIT.SCR	27228	20340736
+dist_options.scr	1671	12996608
+divide_options.scr	2783	13287424
+dlength.scr	1931	13205504
+donutod.scr	1871	13168640
+donuts.scr	2924	13672448
+dragmode_options.scr	1431	12951552
+dview_options.scr	2072	13185024
+dwgcodepage_options.scr	2352	13029376
+dxfin_options.scr	1441	12963840
+edgesurf_options.scr	6538	17498112
+editlen_arc_options.scr	2432	13254656
+editlen_line_options.scr	2393	13230080
+editpline_options.scr	2272	13283328
+editpline_vertices_options.scr	2692	13213696
+elevation.scr	2472	17268736
+elev_options.scr	1621	12967936
+ellipse1.scr	2193	13733888
+ellipse_option.scr	13208	22614016
+ellipticalarc.scr	1912	13275136
+endpoint_options.scr	1431	12951552
+Entities.scr	8692	25346048
+erase.scr	3534	13369344
+esnap_options.scr	2462	13049856
+exlode_non-uniform-circle.scr	1581	13295616
+extend_options.scr	2422	13209600
+ezoom_cir.scr	307371	17551360
+ezoom_ellipse.scr	210992	15327232
+ezoom_polygon.scr	97619	15179776
+ezoom_xline.scr	68718	15122432
+face_options.scr	2953	13258752
+Fillet.scr	5698	13778944
+fill_options.scr	1521	12980224
+flatten_lne_options.scr	2353	13242368
+graphscr.scr	1361	12480512
+gridmode.scr	1571	12984320
+grid_options.scr	1591	13000704
+gripcolor.scr	1971	13201408
+group_options.scr	1551	13201408
+grTest1.scr	2303	13344768
+grTest2.scr	3644	13180928
+handles_options.scr	1281	12472320
+hidetext.scr	1341	12963840
+hpscale.scr	2313	13488128
+Hyper001.scr	1411	13688832
+Hyper002.scr	1411	13586432
+Hyper003.scr	1411	13590528
+Hyper004.scr	1451	13590528
+Hyper005.scr	1461	13676544
+hyperlink.scr	1391	13148160
+hyperlinkoptions.scr	1331	12955648
+idpoint_options.scr	1441	12992512
+infline_options.scr	1731	13156352
+Insertf.scr	57272	67837952
+insertion_options.scr	1641	12955648
+inters.scr	1341	12955648
+intersection_options.scr	1391	12951552
+isoplane_options.scr	1371	12959744
+join_options.scr	1801	13246464
+knuckle.scr	4906	13930496
+lastangle.scr	1361	13070336
+Layers.scr	2292	13377536
+layer_options.scr	1651	13045760
+layouts1.scr	2503	13148160
+layouts2.scr	2493	13148160
+layouts3.scr	1491	13058048
+LCREA.scr	4546	18137088
+leader_options.scr	1891	13246464
+lgrid.scr	10163	13557760
+limits_options.scr	1411	13008896
+Lines.scr	2082	13471744
+lisp1.scr	1411	13139968
+lisp2.scr	1511	13160448
+list_options.scr	5196	14020608
+lsp_caaadddrrr.scr	2032	12984320
+lsp_eq.scr	1431	12963840
+lsp_exit.scr	1391	12951552
+lsp_getcorner.scr	1461	12972032
+lsp_getorient.scr	1401	12972032
+lsp_logical.scr	1421	12963840
+lsp_math.scr	1481	12967936
+lsp_nentsel.scr	1411	13099008
+lsp_nentselp.scr	1431	13090816
+lsp_prin1.scr	1451	12972032
+lsp_quit.scr	1431	12951552
+lsp_trace_untrace.scr	1361	12955648
+matchprop_lineweight.scr	1521	13189120
+matchprop_options.scr	1861	13246464
+maxsort.scr	1701	12988416
+measure_options.scr	2964	13291520
+menuload_options.scr	4415	13291520
+menuunload_options.scr	5717	13496320
+menu_options.scr	5257	13029376
+mesh_options.scr	2272	13086720
+midpoint_options.scr	2042	12955648
+minsert.scr	2623	13455360
+minsert_options.scr	3895	14041088
+MIRROR2D.SCR	4315	13602816
+mirror3d_options.scr	11025	13733888
+mirror_options.scr	2833	13344768
+Misc.scr	4024	13676544
+moveedata_options.scr	2072	13164544
+move_2d.scr	3604	13561856
+msnapshot_options.scr	1971	13074432
+mspace_options.scr	2112	13115392
+mtext_options.scr	3044	13250560
+nearest_options.scr	1952	12951552
+node_options.scr	1972	12951552
+none_options.scr	1912	12951552
+oops.scr	9252	16461824
+orthogonal_options.scr	1992	12951552
+osmode.scr	2082	12955648
+pan.scr	2102	13074432
+parallel_options.scr	2172	13291520
+pdmode.scr	2633	13119488
+pdsize.scr	2022	13021184
+perpendicular_options.scr	1972	12951552
+pface_options.scr	2002	13049856
+pickdrag.scr	1952	12951552
+pickstyle.scr	2082	13168640
+plane_options.scr	2533	13156352
+planviewint_options.scr	1942	12951552
+plan_options.scr	2052	13103104
+Pline.scr	4466	14340096
+plinedist.scr	2203	13139968
+PLINELengthen1.SCR	3404	13553664
+plinewid.scr	2482	13230080
+pline_trim.scr	1961	13193216
+plotc.scr	5006	19140608
+plote.scr	4486	17797120
+PlotManager.scr	1981	12996608
+pl_elp.scr	20739	19611648
+pmthist.scr	2352	13049856
+pmthist_options.scr	1832	12443648
+point_options.scr	2152	13086720
+polararray2d.scr	4005	13918208
+Polygon2.scr	4525	13983744
+POLYGONS1.SCR	6488	14012416
+polygon_options.scr	2022	12931072
+Polyline.scr	6899	14110720
+polysides.scr	2493	13189120
+pspace_options.scr	2302	13123584
+purge_options.scr	2954	13271040
+qtext_options.scr	2272	13086720
+quadrant_options.scr	2072	12947456
+quick_options.scr	2001	12955648
+ray_options.scr	2743	13156352
+readaccelerators_options.scr	2042	12951552
+recarray.scr	4546	14155776
+RecPgonDonTrace.scr	2303	13361152
+rectangle_options.scr	3664	13332480
+redefine_options.scr	2032	13070336
+redo_options.scr	2102	13066240
+regenauto_options.scr	2112	12976128
+rename_options.scr	2793	13422592
+reverse_polyline.scr	2492	13156352
+Revsurf.scr	5787	15933440
+rotate2d.scr	5257	13561856
+rotate3d_options.scr	2413	13156352
+RotateMirror.scr	4325	13647872
+rotate_options.scr	2332	13156352
+Roughen.scr	38805	50151424
+Roughen_err.scr	33036	50135040
+rtrot_1.scr	2523	13328384
+RULESURF1.SCR	9342	14495744
+rulesurf_maxent_options.scr	7770	38797312
+rulesurf_options.scr	2273	13189120
+scale_circle_options.scr	2422	13160448
+scale_line_options.scr	2493	13156352
+scr1.scr	2573	14798848
+scr2.scr	3664	19255296
+scr3.scr	11306	35328000
+scr4.scr	3083	15585280
+scr5.scr	2533	14479360
+scrollbar_options.scr	2262	12972032
+select_options.scr	2092	13144064
+selgrips_options.scr	2142	13144064
+selgrip_options.scr	4155	13393920
+setlayer_options.scr	2322	13115392
+setvar.scr	4145	13262848
+shapelister.scr	2122	13148160
+shape_options.scr	2102	13131776
+SineCos.scr	27389	14192640
+skpoly.scr	2102	12959744
+snap_options.scr	2663	13033472
+solids.scr	2863	14143488
+sphere.scr	2112	13291520
+Spline.scr	3965	14098432
+statbar_options.scr	2402	12984320
+status_options.scr	1962	12451840
+stretch_dim_options.scr	2703	13295616
+stretch_line_options.scr	2583	13160448
+syswindows_options.scr	4405	14585856
+tablet_options.scr	1902	12451840
+tangent_options.scr	2002	12947456
+test_array1_no.scr	16884	34357248
+Textgrid.scr	3003	13516800
+text_options.scr	2553	13160448
+Theatre.scr	85442	57548800
+Thick_text.scr	19668	18206720
+time_options.scr	2382	12992512
+toolbars_command.scr	8742	13225984
+trace_options.scr	2302	13328384
+trim.scr	3804	13742080
+ucsicon_options.scr	2082	13201408
+ucs_options.scr	3685	13471744
+undelete_options.scr	2042	13377536
+undo_options.scr	2362	13406208
+units_aunits_auprec_options.scr	3725	13275136
+units_aunits_options.scr	2733	13238272
+units_lunits_options.scr	3675	13275136
+unnamedblock.scr	1952	13217792
+verify.scr	2152	13549568
+View.scr	2673	13586432
+viewpoint.scr	32375	37302272
+viewpoint_options.scr	2142	13275136
+viewports.scr	7790	21012480
+viewres_options.scr	2012	13185024
+view_options.scr	1972	13250560
+visible_options.scr	1911	13185024
+vmlout_options.scr	1902	13361152
+vplayer_options.scr	2312	13328384
+vports_options.scr	4595	14712832
+vsnapshot_options.scr	1921	13197312
+wblock_options.scr	4296	15118336
+wmfout_options.scr	1922	13303808
+xformssTest.scr	1962	13520896
+Xline_ray.scr	2783	13533184
+Xmastree.scr	5006	21270528
+xref_options.scr	2593	14385152
+zoom_options.scr	2563	13361152
+
+
+Error Script
+F:\Build_40\IntelliCAD\Source\Regress\scripts\77888.scr
+F:\Build_40\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build_40\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+
+BUGS ADDRESSED IN THIS BUILD:
+
+78720, 78719, 78404, 78600, 78698

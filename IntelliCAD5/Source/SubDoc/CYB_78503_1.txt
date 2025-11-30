@@ -1,0 +1,44 @@
+--------------------------------------------------------------------------------
+File:		CYB_78503_1.txt
+Date:		28-04-2003
+Developer:	Vishwanath S Burkule
+Company:		Cybage Software
+Reference:	BugZilla:78503
+Affected files:	
+		Source/prj/ICAD/icadapi.cpp?rev=1.64.4.23 
+		Source/prj/lib/CMDS/todo.cpp?rev=1.25.6.2 
+		Source/prj/lib/CMDS/cmds.h?rev=1.20.4.7 
+		Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.15 
+		Eng-us/icad.rc2?rev=1.63.4.23 		
+Description:	In ICAD with Imageenabler, scripts do not run when passed as command line parameter 
+Comments:	TaL78503
+Problem Analysis:	
+		In short, the reason is - synchronization of input events. ( but solution can be simple ) 
+		
+		In file IcadApi.cpp, if the build is with Raster Support, we load sdsImage.dll and hiisras.dll using sds_xload() which is nothing 		but loadlibrary. No problem here. Next we have to load a spenable.lsp program which will just define _iehelp command for 		launching ImageEnabler help. But this loading of spenable.lsp is done through SDS_ProcessInputEvent(). 		SDS_ProcessInputEvent() function actually post the event on the input queue. ( does not complete the execution ).
+ 
+		Now, when we run the script, in command quit ( CMDS\todo.cpp ) we have checked 		GetActiveCommandQueue()->IsNotEmpty() and then given a call to cmd_open(). 
+		As the above SDS_ProcessInputEvent() is NOT complete the GetActiveCommandQueue is NOT empty and cmd_open() is 		called. So the drawing name asked again and the garbage value is taken as file name.
+Problem Solution:
+		1. Do not post event to command queue ( using SDS_ProcessInputEvent())  instead executed it immediately.
+		2. Remove complete dependency of spenable.lsp from Icad.
+ 
+		We feel the  #2 solution is more appropriate. Its just adding a command  ( _iehelp ) to IntelliCAD and completely removing 		the dependency of spenable.lsp . This command will be in #define Build_With_Raster_Support and so no problems for 		Standard builds of Icad. Most of the previous dependency of spenable.lsp is already moved to Icad. ( like loading of bitmaps 		/ toolbars for Image Enabler ).
+
+File by File:
+	*	Source/prj/ICAD/icadapi.cpp?rev=1.64.4.23 
+		Commented the code which "used to load spenable.lsp and woould generate an event which would execute it.". Add a new 		entry for ieHelp in Command Array.
+
+	*	Source/prj/lib/CMDS/todo.cpp?rev=1.25.6.2 
+		Added functionality for displaying ieHelp by finding winhelp.exe and spenable.hlp file.
+
+	*	Source/prj/lib/CMDS/cmds.h?rev=1.20.4.7 
+		Declaraion for ieHelp()
+
+	*	Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.15 
+		#define CMDSTRING_IEHELP		
+
+	*	Eng-us/icad.rc2?rev=1.63.4.23 	
+		Defination of CMDSTRING_IEHELP as ieHelp 
+
+--------------------------------------------------------------------------------

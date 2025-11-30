@@ -1,0 +1,49 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_02022003_1.txt
+Date:		02-02-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/SDS/sds_get.cpp?rev=1.40.4.1.2.2
+		Source/prj/lib/db/db.h?rev=1.8.2.1.2.2
+		Source/prj/lib/CMDS/listcoll.cpp?rev=1.3.8.2
+		Source/prj/lib/DRW/dwgload.cpp?rev=1.48.2.5.2.4
+		Source/prj/ICAD/mtextpropsheet.cpp?rev=1.10.6.1.2.3 
+		Source/prj/ICAD/mtextpropsheet.h?rev=1.3.12.2
+		Source/prj/ICAD/mtextrichedit.cpp?rev=1.1.1.1.14.3 
+		Eng-us/IcadRes.rc?rev=1.28.2.4.2.3  
+		Source/prj/ICAD/bhatchpatproptab.cpp?rev=1.5.8.1  
+		Source/prj/ICAD/icadboundarydia.cpp?rev=1.4.8.1  
+		Source/prj/ICAD/IcadRes.h?rev=1.21.2.3.2.3  
+		Source/prj/lib/CMDS/bhatch.cpp?rev=1.2.2.1.2.1  
+		Source/prj/lib/CMDS/BHatchBuilder.cpp?rev=1.4.10.1  
+		Source/prj/lib/CMDS/BHatchBuilder.h?rev=1.1.1.1.16.1  
+		Source/prj/lib/CMDS/BoundaryBuilder.cpp?rev=1.1.1.1.16.1  
+		Source/prj/lib/CMDS/BoundaryBuilder.h?rev=1.2.14.1  
+		Source/prj/lib/CMDS/BPolyBuilder.cpp?rev=1.1.1.1.16.1  
+		Source/prj/lib/CMDS/BPolyBuilder.h?rev=1.1.1.1.16.1  
+		Source/prj/lib/CMDS/cmds8.cpp?rev=1.15.4.4.2.3  
+		Source/prj/lib/CMDS/hatch.cpp?rev=1.8.8.2  
+		Source/prj/lib/ICADLIB/IcadDef.h?rev=1.4.8.2  
+ 
+Deleted files:	
+		None
+
+Description:	This submission merges changes made to R40_Dev stream to R40_from_11 stream.
+Comments:	This submission describes changes made to the R40_from_11 stream. Details of
+		the changes are in the individual subdocs. 
+
+
+
+
+-----------------------------------------------------------------------------

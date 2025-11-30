@@ -1,0 +1,404 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78738_1.txt	
+Product Version:	ICAD 4
+Date:			19/04/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\ICAD\icadapi.cpp  ==>  Source\prj\ICAD\icadapi.cpp
+			     ==>  SDS_getvar(const char *vname, short qidx, struct resbuf *res, db_drawing *flp, 					     db_charbuflink *configsv, db_charbuflink *sessionsv)
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding Bugzilla# 78738; CADR in RECTANG does not work. 
+
+
+If (cadr xx) is used to pass the co-ordinates for any command, it fails. 
+But (car (cdr xx)) works. I have fixed three cases here: 
+
+  1. (cadr xx) problem : (cadr xx) failed, but (car (cdr xx)) is working. 
+  2. Following script is working: 
+
+	rect 
+	(car xx) 
+	(cadr xx) 
+
+	but, 
+
+	rect 
+	(cadr xx) 
+	(car xx) 
+	was not working. (lisp commands are swapped.) 
+
+  3. CMDACTIVE for script is set to 4, previously it was set to 0, if a 
+script is active. This is not related to this bug in anyway. But this is 
+a script related issue, so I looked into it.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+1.  (cadr xx) problem : 
+This bug was introduced because of Alexey's changes for Bugzilla# 78250. 
+
+He had changed the following lines in doLispCode(char* cmd, int pushlsp) 
+(File: Source\prj\ICAD\icadapi.cpp) 
+
+        // GetActiveCommandQueue()->AddItem( evres ); 
+        // Modified ALM 20/06/2003 [ Fix for Bugzilla 78250 
+                GetActiveCommandQueue()->AddItemToFront( evres ); 
+        // Modified ALM 20/06/2003 ] 
+
+Because of his changes, which were used to push the lisp result to the 
+front of command queue. This is  needed only in  case of scripts. But, 
+for other cases such as using (cadr xx) in any other command (e.g. in 
+'rect' command ), the result from lisp command should not be added to 
+the front of command queue. It should be checked whether the lisp command 
+is from the script or from the command prompt. Following is the code that 
+I have changed:
+
+File: Source\prj\ICAD\icadapi.cpp 
+----------------------------------
+Function: doLispCode(char* cmd, int pushlsp) 
+--------------------------------------------
+                // Push the lisp result onto the command stack. 
+                if(pushlsp && pushlsp != -1) 
+                { 
+                        if(GetScriptQueue()->IsEmpty()) // NO script 
+                            GetActiveCommandQueue()->AddItem( evres ); 
+                        else 
+                        // Modified ALM 20/06/2003 [ Fix for Bugzilla 78250 
+                            GetActiveCommandQueue()->AddItemToFront( evres ); 
+                        // Modified ALM 20/06/2003 ] 
+                } 
+
+
+
+
+2. In case of calling (cadr xx) first, the coordinate list is not converted 
+into point list, as ' LSP_ConvertToPoint ' is ' 0 ' for ' cadr '. Hence 
+the invalid list is added into the command queue. Actually, lsp_convptlist(evres, 0) 
+should be called in this case. Following is the code that I have changed:
+
+
+File: Source\prj\ICAD\icadapi.cpp 
+----------------------------------
+Function: doLispCode(char* cmd, int pushlsp) 
+--------------------------------------------
+       
+      if(LSP_ConvertToPoint || (pushlsp && pushlsp != -1)) // Reason: Fix for bug no. 57282 
+            lsp_convptlist(evres, 0); 
+
+
+
+3. CMDACTIVE value while script is running: 
+
+I have set it's value to 4 (As given in ICAD 4 help). 
+File: Source\prj\ICAD\icadapi.cpp 
+
+Function: int SDS_getvar(const char *vname, short qidx, struct resbuf *res, db_drawing *flp, db_charbuflink *configsv, db_charbuflink *sessionsv)
+
+if((GetScriptQueue()->IsNotEmpty()) && (GetActiveCommandQueue()->IsNotEmpty())) 
+        { 
+                res->resval.rint |= 0x04;               // inside script. 
+        } 
+  
+Issue:
+ One thing I would like to point out here is that this solution does not 
+ work ONLY in case, if CMDACTIVE command is given at the end of script. 
+ In that case, it shows 0, as the Active Command Queue gets empty before 
+ actually the last command is executed. (Looking at the Active Command 
+ Queue contents we can check this). So the check fails. But if CMDACTIVE 
+ is called in between the script, it works fine.
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following:
+
+The code should be tested for the following:
+ 1. The script, given in Bugzilla should run properly.  
+ 2. The following sequences should generate the same output for a given list ‘y’.
+
+  a. rect
+     (car y)
+     (cadr y)
+  b. rect
+     (cadr y)
+     (car y)
+  c. rect
+     (car y)
+     (cdr y)
+  d. rect
+     (cdr y)
+     (car y)
+
+ 3. In above case the rectangles should be drawn with correct co-ordinates.
+ 4. Check the value of CMDACTIVE variable inside a script; it should be 4, as mentioned in ICAD help.
+
+ This fix is ONLY related to cadr and CMDACTIVE for script.
+
+
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis (in progress)
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

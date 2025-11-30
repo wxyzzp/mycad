@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78035_1.txt
+Date:		19-08-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78035
+Added files:     	
+Affected files: 
+		Source/prj/lib/CMDS/DimTedit.cpp
+Description: 	While moving a dimension having "Dimscale" greater than one, using "Dimtedit" the dimension is temporarily shown with different scale.
+Comments:	TaL78035
+File by File:	
+*		Source/prj/lib/CMDS/DimTedit.cpp
+		Commented out the lines creating and deleting new dimension.
+--------------------------------------------------------------------------------
+

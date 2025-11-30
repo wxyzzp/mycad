@@ -1,0 +1,23 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-25.txt
+Produce Version		ICAD 4
+Date:				04/06/2004 05:51am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fix for script 78444_purge_all.scr and 78444_xref_detach.scr
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\cmds\purge.cpp
+

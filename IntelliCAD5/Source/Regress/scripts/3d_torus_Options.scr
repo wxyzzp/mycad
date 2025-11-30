@@ -1,0 +1,98 @@
+logfilename log/3d_torus_Options.log
+logfileon
+;_________
+color 1
+;_________1
+3d
+torus
+1,1,0
+1
+.5
+3
+4
+color 2
+;_________2
+3d
+t
+3,3,0
+diameter
+2
+.5
+2
+4
+color 3
+;_________3
+3d
+torus
+5,5,0
+1
+5,5,.5
+56
+2
+color 4
+;_________4
+3d
+torus
+6,7
+8,7
+.4
+10
+2
+color 5
+;_________5
+3d
+torus
+8,9
+10,9
+8,9.5
+100
+4
+color 6
+;_________6
+3d torus
+11,11,0
+12,11,0
+.1
+4
+6
+color 7
+;_________7
+3d torus
+13,13,0
+diameter
+15,13
+.3
+50
+30
+color 8
+;_________8
+3d torus
+15,15,0
+17,15
+.8
+2
+100
+color 9
+;_________9
+3d torus
+16,17
+18,17
+16,17.5
+9
+200
+color 10
+;_________10
+3d torus
+18,19
+20,19
+1
+200
+16
+;__________
+vpoint
+0.5,2,1.5
+;__________
+dxfout output_dxf\3d_torus_Options.dxf
+6
+quit
+y

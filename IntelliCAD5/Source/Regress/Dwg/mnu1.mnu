@@ -1,0 +1,757 @@
+***MENUGROUP=ICAD1
+***TOOLBARS
+**TOOL1
+TBAR_Standard [_Toolbar("TOOL1", _Top, _Show, -2, 41, 1)]
+ID_New [_Button("New", ICON_16_NEW, ICON_16_NEW)]^C^C^C_NEW
+ID_Open [_Button("Open", ICON_16_OPEN, ICON_16_OPEN)]^C^C^C_OPEN
+ID_Save [_Button("Save", ICON_16_SAVE, ICON_16_SAVE)]^C^C^C_QSAVE
+ID_Acis_In___ [_Button("Acis In...", 2952, 2953)]^C^C^C_acisin
+ID_Acis_Out [_Button("Acis Out", 2956, 2957)]^C^C^C_acisout
+[--]
+ID_Print [_Button("Print", ICON_16_PRINT, ICON_16_PRINT)]^C^C^C_QPRINT
+ID_Print_Preview [_Button("Print Preview", ICON_16_PREVIEW, ICON_16_PREVIEW)]^C^C^C_PPREVIEW
+ID_Check_Spelling [_Button("Check Spelling", ICON_16_SPELL, ICON_16_SPELL)]^C^C^C_SPELL
+[--]
+ID_Cut [_Button("Cut", ICON_16_CUT, ICON_16_CUT)]^C^C^C_CUTCLIP
+ID_Copy [_Button("Copy", ICON_16_COPY, ICON_16_COPY)]^C^C^C_COPYCLIP
+ID_Paste [_Button("Paste", ICON_16_PASTE, ICON_16_PASTE)]^C^C^C_PASTECLIP
+ID_Copy_Entity_Formatting [_Button("Copy Entity Formatting", ICON_16_MATCH, ICON_16_MATCH)]^C^C^C_MATCHPROP
+[--]
+ID_Undo [_Button("Undo", ICON_16_UNDO, ICON_16_UNDO)]^C^C^C_U
+ID_Redo [_Button("Redo", ICON_16_REDO, ICON_16_REDO)]^C^C^C_REDO
+[--]
+ID_Delete [_Button("Delete", ICON_16_ERASE, ICON_16_ERASE)]^C^C^C_DELETE
+[--]
+ID_Help [_Button("Help", ICON_16_HELP, ICON_16_HELP)]'_HELP
+**TOOL2
+TBAR_Draw_2D [_Toolbar("TOOL2", _Top, _Show, -2, 71, 1)]
+ID_Line [_Flyout("Line", ICON_16_LINE, ICON_16_LINE, _OtherIcon, TBAR_LINE)]^C^C^C_LINE
+ID_Polyline [_Flyout("Polyline", ICON_16_PLINE, ICON_16_PLINE, _OtherIcon, TBAR_POLYLINE)]^C^C^C_POLYLINE
+ID_Spline [_Button("Spline", ICON_16_SPLINE, ICON_16_SPLINE)]^C^C^C_SPLINE
+ID_Draw_Freehand [_Button("Draw Freehand", ICON_16_SKETCH, ICON_16_SKETCH)]^C^C^C_FREEHAND
+[--]
+ID_Circle_Center-Radius [_Flyout("Circle Center-Radius", ICON_16_CIRRAD, ICON_16_CIRRAD, _OtherIcon, TBAR_CIRCLE_CENTER-RADIUS)]^C^C^C_CIRCLE;\\
+ID_3-Point_Arc [_Flyout("3-Point Arc", ICON_16_ARC3PT, ICON_16_ARC3PT, _OtherIcon, TBAR_3-POINT_ARC)]^C^C^C_ARC;\\\
+ID_Ellipse_Axis-Axis [_Flyout("Ellipse Axis-Axis", ICON_16_ELLCEN, ICON_16_ELLCEN, _OtherIcon, TBAR_ELLIPSE_AXIS-AXIS)]^C^C^C_ELLIPSE;\\\
+ID_Elliptical_Arc_Axis-Axis [_Flyout("Elliptical Arc Axis-Axis", ICON_16_ELLARC, ICON_16_ELLARC, _OtherIcon, TBAR_ELLIPTICAL_ARC_AXIS-AXIS)]^C^C^C_ELLIPSE;_A;\\\\\
+[--]
+ID_Point [_Button("Point", ICON_16_POINT, ICON_16_POINT)]^C^C^C_POINT
+[--]
+ID_Rectangle [_Button("Rectangle", ICON_16_RECTAN, ICON_16_RECTAN)]^C^C^C_RECTANGLE
+ID_Polygon__Center-Vertex [_Flyout("Polygon, Center-Vertex", ICON_16_POLYGO, ICON_16_POLYGO, _OtherIcon, TBAR_POLYGON__CENTER-VERTEX)]^C^C^C_POLYGON;\\\
+[--]
+ID_Donut [_Button("Donut", ICON_16_DONUT, ICON_16_DONUT)]^C^C^C_DONUT
+ID_Plane [_Button("Plane", ICON_16_SOLID, ICON_16_SOLID)]^C^C^C_PLANE
+[--]
+ID_Insert_Block___ [_Button("Insert Block...", ICON_16_DINSER, ICON_16_DINSER)]^C^C^C_DDINSERT
+[--]
+ID_Boundary_Hatch [_Button("Boundary Hatch", ICON_16_BHATCH, ICON_16_BHATCH)]^C^C^C_BHATCH
+ID_Text [_Button("Text", 118, 473)]^C^C^C_DTEXT
+ID_Multiline_Text [_Button("Multiline Text", ICON_16_MTEXT, ICON_16_MTEXT)]^C^C^C_MTEXT
+**TOOL3
+TBAR_Modify [_Toolbar("TOOL3", _Top, _Show, -2, 101, 1)]
+ID_Move [_Button("Move", ICON_16_MOVE, ICON_16_MOVE)]^C^C^C_MOVE
+ID_Copy [_Button("Copy", ICON_16_COPYOB, ICON_16_COPYOB)]^C^C^C_COPY
+ID_Parallel [_Button("Parallel", ICON_16_OFFSET, ICON_16_OFFSET)]^C^C^C_PARALLEL
+ID_Scale [_Button("Scale", ICON_16_SCALE, ICON_16_SCALE)]^C^C^C_SCALE
+[--]
+ID_Rotate [_Button("Rotate", ICON_16_ROTATE, ICON_16_ROTATE)]^C^C^C_ROTATE
+ID_3D_Rotate [_Button("3D Rotate", 1701, 1704)]^C^C^C_ROTATE3D
+[--]
+ID_Mirror [_Button("Mirror", ICON_16_MIRROR, ICON_16_MIRROR)]^C^C^C_MIRROR
+ID_3D_Mirror [_Button("3D Mirror", ICON_16_MIR3D, ICON_16_MIR3D)]^C^C^C_MIRROR3D
+[--]
+ID_Array [_Button("Array", ICON_16_ARRREC, ICON_16_ARRREC)]^C^C^C_ARRAY
+ID_3D_Array [_Button("3D Array", 1077, 1078)]^C^C^C_3DARRAY
+[--]
+ID_Break [_Button("Break", ICON_16_BRE2PT, ICON_16_BRE2PT)]^C^C^C_BREAK
+ID_Join [_Button("Join", 1523, 1526)]^C^C^C_JOIN
+ID_Trim [_Button("Trim", ICON_16_TRIM, ICON_16_TRIM)]^C^C^C_TRIM
+[--]
+ID_Flatten [_Button("Flatten", 1522, 1525)]^C^C^C_FLATTEN
+[--]
+ID_Align [_Button("Align", ICON_16_ALIGN, ICON_16_ALIGN)]^C^C^C_ALIGN
+[--]
+ID_Extend [_Flyout("Extend", ICON_16_EXTEND, ICON_16_EXTEND, _OtherIcon, TBAR_EXTEND)]^C^C^C_EXTEND
+[--]
+ID_Measure [_Flyout("Measure", ICON_16_MEASUR, ICON_16_MEASUR, _OtherIcon, TBAR_MEASURE)]^C^C^C_MEASURE
+[--]
+ID_Chamfer [_Flyout("Chamfer", ICON_16_CHAMFE, ICON_16_CHAMFE, _OtherIcon, TBAR_CHAMFER)]^C^C^C_CHAMFER
+[--]
+ID_Edit_Polyline [_Button("Edit Polyline", ICON_16_PEDIT, ICON_16_PEDIT)]^C^C^C_EDITPLINE
+ID_Edit_Text___ [_Button("Edit Text...", ICON_16_TEXEDI, ICON_16_TEXEDI)]^C^C^C_DDEDIT
+[--]
+ID_Explode [_Button("Explode", ICON_16_EXPLOD, ICON_16_EXPLOD)]^C^C^C_EXPLODE
+[--]
+ID_Region [_Button("Region", ICON_16_REGION, ICON_16_REGION)]^C^C^C_region
+[--]
+ID_Change [_Button("Change", ICON_16_CHANGE, ICON_16_CHANGE)]^C^C^C_CHANGE
+ID_Properties___ [_Button("Properties...", ICON_16_MODIFY, ICON_16_MODIFY)]^C^C^C_ENTPROP
+**DIMENSIONING
+TBAR_Dimensioning [_Toolbar("Dimensioning", _Top, _Show, -2, 131, 1)]
+ID_Linear [_Button("Linear", ICON_16_DIMLIN, ICON_16_DIMLIN)]^C^C^C_DIMLINEAR
+[--]
+ID_Aligned [_Button("Aligned", ICON_16_DIMALI, ICON_16_DIMALI)]^C^C^C_DIMALIGNED
+ID_Angular [_Button("Angular", ICON_16_DIMANG, ICON_16_DIMANG)]^C^C^C_DIMANGULAR
+ID_Leader [_Button("Leader", ICON_16_DIMLEA, ICON_16_DIMLEA)]^C^C^C_DIMLEADER
+ID_Rotated [_Button("Rotated", ICON_16_DIMLIN, ICON_16_DIMLIN)]^C^C^C_DIMLINEAR;\\_ROTATED
+[--]
+ID_Center_Lines [_Flyout("Center Lines", ICON_16_DIMCEN, ICON_16_DIMCEN, _OtherIcon, TBAR_CENTER_LINES)]^C^C^C_DIMCENTER
+[--]
+ID_Baseline [_Button("Baseline", ICON_16_DIMBAS, ICON_16_DIMBAS)]^C^C^C_DIMBASELINE
+ID_Continue [_Button("Continue", ICON_16_DIMCON, ICON_16_DIMCON)]^C^C^C_DIMCONTINUE
+ID_Ordinate [_Button("Ordinate", ICON_16_DIMORD, ICON_16_DIMORD)]^C^C^C_DIMORDINATE
+[--]
+ID_Tolerance [_Button("Tolerance", ICON_16_TOLERA, ICON_16_TOLERA)]^C^C^C_TOLERANCE
+[--]
+ID_Make_Oblique [_Button("Make Oblique", 145, 335)]^C^C^C_DIMEDIT;_OBLIQUE
+[--]
+ID_Edit_Dimension_Text [_Button("Edit Dimension Text", ICON_16_DIMNEW, ICON_16_DIMNEW)]^C^C^C_DIMEDIT;_NEW
+ID_Rotate_Dimension_Text [_Button("Rotate Dimension Text", ICON_16_DIMTRO, ICON_16_DIMTRO)]^C^C^C_DIMEDIT;_ROTATE
+ID_Reposition_Dimension_Text [_Button("Reposition Dimension Text", ICON_16_DIMHOM, ICON_16_DIMHOM)]^C^C^C_DIMTEDIT
+ID_Restore_Text_Postion [_Button("Restore Text Postion", 141, 331)]^C^C^C_DIMEDIT;_HOME
+[--]
+ID_Apply_Style [_Button("Apply Style", ICON_16_DIMUPD, ICON_16_DIMUPD)]^C^C^C_DIMSTYLE;_APPLY
+ID_Save_Style [_Button("Save Style", 151, 367)]^C^C^C_DIMSTYLE;_SAVE
+ID_Restore_Style [_Button("Restore Style", 150, 366)]^C^C^C_DIMSTYLE;_RESTORE
+**DRAW_3D
+TBAR_Draw_3D [_Toolbar("Draw 3D", _Top, _Show, -2, 161, 1)]
+ID_Wedge [_Button("Wedge", ICON_16_SURWED, ICON_16_SURWED)]^C^C^C_AI_WEDGE
+ID_Pyramid [_Button("Pyramid", ICON_16_SURPYR, ICON_16_SURPYR)]^C^C^C_AI_PYRAMID
+ID_Box [_Button("Box", ICON_16_SURBOX, ICON_16_SURBOX)]^C^C^C_AI_BOX
+[--]
+ID_Cone [_Button("Cone", ICON_16_SURCON, ICON_16_SURCON)]^C^C^C_AI_CONE
+ID_Cylinder [_Button("Cylinder", 163, 337)]^C^C^C_AI_CYLINDER
+ID_Sphere [_Button("Sphere", ICON_16_SURSPH, ICON_16_SURSPH)]^C^C^C_AI_SPHERE
+[--]
+ID_Dish [_Button("Dish", ICON_16_SURDIS, ICON_16_SURDIS)]^C^C^C_AI_DISH
+ID_Dome [_Button("Dome", ICON_16_SURDOM, ICON_16_SURDOM)]^C^C^C_AI_DOME
+ID_Torus [_Button("Torus", ICON_16_SURTOR, ICON_16_SURTOR)]^C^C^C_AI_TORUS
+[--]
+ID_Mesh [_Button("Mesh", ICON_16_3DMESH, ICON_16_3DMESH)]^C^C^C_3D;_MESH
+[--]
+ID_Polyface_Mesh [_Flyout("Polyface Mesh", 167, 443, _OtherIcon, TBAR_POLYFACE_MESH)]^C^C^C_PFACE
+[--]
+ID_Revolved_Surface [_Flyout("Revolved Surface", ICON_16_REVSUR, ICON_16_REVSUR, _OtherIcon, TBAR_REVOLVED_SURFACE)]^C^C^C_REVSURF
+**INQUIRY
+TBAR_Inquiry [_Toolbar("Inquiry", _Top, _Show, -2, 191, 1)]
+ID_Distance [_Button("Distance", ICON_16_DIST, ICON_16_DIST)]^C^C^C_DIST
+ID_Area [_Button("Area", ICON_16_AREA, ICON_16_AREA)]^C^C^C_AREA
+ID_ID_Coordinates [_Button("ID Coordinates", ICON_16_ID, ICON_16_ID)]^C^C^C_IDPOINT
+[--]
+ID_List_Entity_Info [_Button("List Entity Info", ICON_16_LIST, ICON_16_LIST)]^C^C^C_LIST
+ID_Time_Variables [_Button("Time Variables", 178, 474)]^C^C^C_TIME
+**ENTITY_SNAPS
+TBAR_Entity_Snaps [_Toolbar("Entity Snaps", _Top, _Show, -2, 221, 1)]
+ID_Set_Nearest_Snap [_Button("Set Nearest Snap", ICON_16_OSNNEA, ICON_16_OSNNEA)]'_NEAREST
+ID_Set_Endpoint_Snap [_Button("Set Endpoint Snap", ICON_16_OSNEND, ICON_16_OSNEND)]'_ENDPOINT
+ID_Set_Midpoint_Snap [_Button("Set Midpoint Snap", ICON_16_OSNMID, ICON_16_OSNMID)]'_MIDPOINT
+ID_Set_Center_Snap [_Button("Set Center Snap", ICON_16_OSNCEN, ICON_16_OSNCEN)]'_CENTER
+ID_Set_Perpendicular_Snap [_Button("Set Perpendicular Snap", ICON_16_OSNPER, ICON_16_OSNPER)]'_PERPENDICULAR
+ID_Set_Tangent_Snap [_Button("Set Tangent Snap", ICON_16_OSNTAN, ICON_16_OSNTAN)]'_TANGENT
+ID_Set_Quadrant_Snap [_Button("Set Quadrant Snap", ICON_16_OSNQUA, ICON_16_OSNQUA)]'_QUADRANT
+ID_Set_Insertion_Point_Snap [_Button("Set Insertion Point Snap", ICON_16_OSNINS, ICON_16_OSNINS)]'_INSERTION
+ID_Set_Point_Snap [_Button("Set Point Snap", ICON_16_OSNNOD, ICON_16_OSNNOD)]'_NODE
+[--]
+ID_Set_Intersection_Snap [_Button("Set Intersection Snap", ICON_16_OSNINT, ICON_16_OSNINT)]'_INTERSECTION
+ID_Set_Plan_View_Intersection_Snap [_Button("Set Plan View Intersection Snap", 1401, 1399)]'_PLANVIEWINT
+[--]
+ID_Clear_Entity_Snaps [_Button("Clear Entity Snaps", ICON_16_OSNNON, ICON_16_OSNNON)]'_NONE
+**SETTINGS
+TBAR_Settings [_Toolbar("Settings", _Top, _Show, -2, 251, 1)]
+ID_Reference_Grid [_Button("Reference Grid", 202, 401)]'_GRID;_T
+ID_Snap [_Button("Snap", 209, 464)]'_SNAP;_T
+ID_Draw_Orthogonal [_Button("Draw Orthogonal", 206, 425)]'_ORTHOGONAL;_T
+[--]
+ID_Entity_Snap_Settings [_Button("Entity Snap Settings", ICON_16_OSNAP, ICON_16_OSNAP)]^C^C^C_SETESNAP
+ID_Entity_Snap_Precision [_Button("Entity Snap Precision", 208, 292)]'_APERTURE
+[--]
+ID_Select_Color___ [_Flyout("Select Color...", 197, 313, _OtherIcon, TBAR_SELECT_COLOR___)]'_SETCOLOR
+ID_Fill [_Button("Fill", 201, 419)]^C^C^C_FILL;_T
+[--]
+ID_Drawing_Limits [_Button("Drawing Limits", 204, 409)]^C^C^C_LIMITS;_T
+ID_Elevation [_Button("Elevation", 200, 392)]^C^C^C_ELEVATION
+ID_Thickness [_Button("Thickness", 1539, 1532)]^C^C^C_THICKNESS
+[--]
+ID_User_Coordinate_Systems___ [_Button("User Coordinate Systems...", ICON_16_UCS, ICON_16_UCS)]^C^C^C_SETUCS
+[--]
+ID_Set_Layer_by_Entity [_Button("Set Layer by Entity", ICON_16_MOLC, ICON_16_MOLC)]^C^C^C_SETLAYER
+[--]
+ID_Explore_Layers___ [_Button("Explore Layers...", ICON_16_LAYERS, ICON_16_LAYERS)]^C^C^C_EXPLAYERS
+ID_Explore_Blocks___ [_Button("Explore Blocks...", 1750, 1749)]^C^C^C_EXPBLOCKS
+ID_Explore_Views___ [_Button("Explore Views...", ICON_16_DDVIEW, ICON_16_DDVIEW)]^C^C^C_EXPVIEWS
+ID_Explore_Coordinate_Systems___ [_Button("Explore Coordinate Systems...", ICON_16_DDUCS, ICON_16_DDUCS)]^C^C^C_EXPUCS
+ID_Explore_Linetypes___ [_Button("Explore Linetypes...", ICON_16_LINETY, ICON_16_LINETY)]^C^C^C_EXPLTYPES
+ID_Explore_Text_Styles___ [_Button("Explore Text Styles...", 210, 469)]^C^C^C_EXPFONTS
+ID_Explore_Dimension_Styles___ [_Button("Explore Dimension Styles...", 25067, 25068)]^C^C^C_EXPDIMSTYLES
+[--]
+ID_Drawing_Settings___ [_Button("Drawing Settings...", 194, 461)]^C^C^C_SETTINGS
+ID_Dimension_Settings___ [_Button("Dimension Settings...", ICON_16_DIMSTY, ICON_16_DIMSTY)]^C^C^C_SETDIM
+**TOOLS
+TBAR_Tools [_Toolbar("Tools", _Top, _Show, -2, 281, 1)]
+ID_IntelliCAD_Explorer___ [_Button("IntelliCAD Explorer...", 25072, 25071)]^C^C^C_EXPLAYERS
+[--]
+ID_Visual_Basic_for_Applications [_Button("Visual Basic for Applications", 1540, 1533)]^C^C^C_VBA
+[--]
+ID_Group___ [_Button("Group...", ICON_16_GROUP, ICON_16_GROUP)]^C^C^C_GROUP
+[--]
+ID_Record_Script___ [_Button("Record Script...", 1385, 1382)]^C^C^C_RECSCRIPT
+ID_Stop_Recording [_Button("Stop Recording", 1383, 1380)]^C^C^C_STOPSCRIPT
+ID_Run_Script___ [_Button("Run Script...", 1384, 1381)]^C^C^C_SCRIPT
+[--]
+ID_Create_Block [_Button("Create Block", ICON_16_BLOCK, ICON_16_BLOCK)]^C^C^C_BLOCK
+ID_Save_Block_to_Disk___ [_Button("Save Block to Disk...", 226, 487)]^C^C^C_WBLOCK
+[--]
+ID_Make_Snapshot___ [_Button("Make Snapshot...", 221, 418)]^C^C^C_MSNAPSHOT
+ID_View_Snapshot___ [_Button("View Snapshot...", 225, 486)]^C^C^C_VSNAPSHOT
+[--]
+ID_Define_Attributes___ [_Button("Define Attributes...", 246, 298)]^C^C^C_DDATTDEF
+ID_Edit_Block_Attributes [_Button("Edit Block Attributes", 218, 318)]^C^C^C_DDATTE
+ID_Attribute_Display [_Button("Attribute Display", 222, 299)]^C^C^C_ATTDISP
+ID_Edit_Attributes [_Button("Edit Attributes", ICON_16_ATTEDI, ICON_16_ATTEDI)]^C^C^C_ATTEDIT
+ID_Extract_Attributes [_Button("Extract Attributes", 1741, 1739)]^C^C^C_DDATTEXT
+[--]
+ID_External_Reference [_Button("External Reference", ICON_16_XREATT, ICON_16_XREATT)]^C^C^C_XREF
+**VIEW
+TBAR_View [_Toolbar("View", _Top, _Show, 994, 586, 21)]
+ID_Redraw [_Flyout("Redraw", ICON_16_REDRAW, ICON_16_REDRAW, _OtherIcon, TBAR_REDRAW)]'_REDRAW
+[--]
+ID_Pan [_Button("Pan", ICON_16_PAN, ICON_16_PAN)]'_PAN
+[--]
+ID_Zoom_In [_Button("Zoom In", ICON_16_ZOOIN, ICON_16_ZOOIN)]'_ZOOM;2x
+ID_Zoom_Out [_Button("Zoom Out", ICON_16_ZOOOUT, ICON_16_ZOOOUT)]'_ZOOM;.5x
+ID_Zoom_Window [_Button("Zoom Window", ICON_16_ZOOWIN, ICON_16_ZOOWIN)]'_ZOOM;_W
+ID_Zoom_Extents [_Button("Zoom Extents", ICON_16_ZOOEXT, ICON_16_ZOOEXT)]'_ZOOM;_E
+ID_Zoom_Previous [_Flyout("Zoom Previous", ICON_16_ZOOPRE, ICON_16_ZOOPRE, _OtherIcon, TBAR_ZOOM_PREVIOUS)]'_ZOOM;_P
+[--]
+ID_Real-Time_Pan [_Flyout("Real-Time Pan", 1934, 1913, _OtherIcon, TBAR_REAL-TIME_PAN)]'_RTPAN
+ID_Dynamic_View_Control___ [_Button("Dynamic View Control...", 1443, 1441)]^C^C^C_VIEWCTL
+ID_Preset_Viewpoints___ [_Button("Preset Viewpoints...", 234, 502)]^C^C^C_SETVPOINT
+ID_Plan_View [_Button("Plan View", ICON_16_VIETOP, ICON_16_VIETOP)]^C^C^C_PLAN
+[--]
+ID_Define_View [_Button("Define View", ICON_16_DDVIEW, ICON_16_DDVIEW)]^C^C^C_DVIEW
+ID_Save/Restore_View [_Button("Save/Restore View", 233, 463)]^C^C^C_VIEW
+[--]
+ID_Workspaces___ [_Button("Workspaces...", 1576, 1575)]^C^C^C_PMSPACE
+ID_Viewports [_Button("Viewports", 1581, 1603)]^C^C^C_VIEWPORTS
+ID_Paper_Space_Views [_Button("Paper Space Views", 1580, 1579)]^C^C^C_MVIEW
+**ENTITY_DATA
+TBAR_Entity_Data [_Toolbar("Entity Data", _Top, _Show, -2, 311, 1)]
+ID_Create_or_Edit_Entity_Data [_Button("Create or Edit Entity Data", 1521, 1524)]^C^C^C_EDITEDATA
+ID_Copy_Entity_Data [_Button("Copy Entity Data", 1113, 1109)]^C^C^C_COPYEDATA
+ID_Move_Entity_Data [_Button("Move Entity Data", 1115, 1107)]^C^C^C_MOVEEDATA
+ID_Delete_Entity_Data [_Button("Delete Entity Data", 1114, 1108)]^C^C^C_DELEDATA
+ID_Reassociate_Entity_Data [_Button("Reassociate Entity Data", 1116, 1111)]^C^C^C_REASSOCAPP
+**RENDERING
+TBAR_Rendering [_Toolbar("Rendering", _Top, _Show, -2, 341, 1)]
+ID_Hide [_Button("Hide", ICON_16_HIDE, ICON_16_HIDE)]^C^C^C_HIDE
+ID_Shade [_Button("Shade", ICON_16_SHADE, ICON_16_SHADE)]^C^C^C_SHADE
+[--]
+ID_Render [_Button("Render", 1769, 1771)]^C^C^C_RENDER
+ID_Full_Render [_Button("Full Render", 1764, 1765)]^C^C^C_FULLRENDER
+ID_Materials___ [_Button("Materials...", 1775, 1774)]^C^C^C_MATERIALS
+ID_Backgrounds___ [_Button("Backgrounds...", 1776, 1781)]^C^C^C_BACKGROUNDS
+ID_Lighting___ [_Button("Lighting...", 1760, 1782)]^C^C^C_LIGHTING
+ID_Render_Settings___ [_Button("Render Settings...", 1787, 1786)]^C^C^C_SETRENDER
+**LAYOUTS
+TBAR_Layouts [_Toolbar("Layouts", _Top, _Show, -2, 371, 1)]
+ID_New_Layout [_Button("New Layout", 3084, 3085)]^C^C^C_Layout _new
+ID_Layout_from_Template [_Button("Layout from Template", 3088, 3089)]^C^C^C_Layout _template
+ID_Page_Setup [_Button("Page Setup", 3092, 3093)]^C^C^C_pagesetup
+ID_Viewports [_Button("Viewports", 3096, 3097)]^C^C^C_vports
+**ENTITY_PROPERTIES
+TBAR_Entity_Properties [_Toolbar("Entity Properties", _Top, _Show, -2, 401, 1)]
+ID_Attach_Raster_Image [_Button("Attach Raster Image", 3052, 3053)]^C^C^C_ieimage
+ID_Image_Management [_Button("Image Management", 3056, 3057)]^C^C^C_iemanage
+[--]
+ID_Image_Adjust [_Button("Image Adjust", 3060, 3061)]^C^C^C_ieadjust
+ID_Image_Transparency [_Button("Image Transparency", 3064, 3065)]^C^C^C_ietransparency
+ID_Image_Quality [_Button("Image Quality", 3068, 3069)]^C^C^C_iequality
+ID_Display_Image_Frame [_Button("Display Image Frame", 3072, 3073)]^C^C^C_ieframe
+ID_Draw_Order [_Button("Draw Order", 3076, 3077)]^C^C^C_DrawOrder
+**IMAGE_ENABLER
+TBAR_Image_Enabler [_Toolbar("Image Enabler", _Top, _Show, -2, 431, 1)]
+ID_Wedge [_Button("Wedge", ICON_16_SURWED, ICON_16_SURWED)]^C^C^C_WEDGE
+ID_Pyramid [_Button("Pyramid", ICON_16_SURPYR, ICON_16_SURPYR)]^C^C^C_PYRAMID
+ID_Box [_Button("Box", ICON_16_SURBOX, ICON_16_SURBOX)]^C^C^C_BOX
+[--]
+ID_Cone [_Button("Cone", ICON_16_SURCON, ICON_16_SURCON)]^C^C^C_CONE
+ID_Cylinder [_Button("Cylinder", 2916, 2917)]^C^C^C_CYLINDER
+ID_Sphere [_Button("Sphere", ICON_16_SURSPH, ICON_16_SURSPH)]^C^C^C_SPHERE
+[--]
+ID_Dish [_Button("Dish", ICON_16_SURDIS, ICON_16_SURDIS)]^C^C^C_DISH
+ID_Dome [_Button("Dome", ICON_16_SURDOM, ICON_16_SURDOM)]^C^C^C_DOME
+ID_Torus [_Button("Torus", ICON_16_SURTOR, ICON_16_SURTOR)]^C^C^C_TORUS
+[--]
+ID_Revolve [_Button("Revolve", ICON_16_REVOLV, ICON_16_REVOLV)]^C^C^C_revolve
+ID_Extrude [_Button("Extrude", ICON_16_EXTRUD, ICON_16_EXTRUD)]^C^C^C_extrude
+[--]
+ID_Slice [_Button("Slice", ICON_16_SLICE, ICON_16_SLICE)]^C^C^C_slice
+ID_Section [_Button("Section", ICON_16_SECTIO, ICON_16_SECTIO)]^C^C^C_section
+ID_Interfere [_Button("Interfere", ICON_16_INTERF, ICON_16_INTERF)]^C^C^C_interfere
+**SOLIDS
+TBAR_Solids [_Toolbar("Solids", _Top, _Show, -2, 461, 1)]
+ID_Union [_Button("Union", ICON_16_UNION, ICON_16_UNION)]^C^C^C_union
+ID_Subtract [_Button("Subtract", ICON_16_SUBTRA, ICON_16_SUBTRA)]^C^C^C_subtract
+ID_Intersect [_Button("Intersect", ICON_16_INTERS, ICON_16_INTERS)]^C^C^C_intersect
+[--]
+ID_Extrude_Face [_Button("Extrude Face", ICON_16_EXTRUD, ICON_16_EXTRUD)]^C^C^C_solidedit _face _extrude
+ID_Move_Faces [_Button("Move Faces", ICON_16_MOVEFACE, ICON_16_MOVEFACE)]^C^C^C_solidedit _face _move
+ID_Offset_Faces [_Button("Offset Faces", ICON_16_OFFSETFACE, ICON_16_OFFSETFACE)]^C^C^C_solidedit _face _offset
+ID_Delete_Faces [_Button("Delete Faces", ICON_16_DELFACE, ICON_16_DELFACE)]^C^C^C_solidedit _face _delete
+ID_Rotate_Faces [_Button("Rotate Faces", ICON_16_ROTATEFACE, ICON_16_ROTATEFACE)]^C^C^C_solidedit _face _rotate
+ID_Taper_Faces [_Button("Taper Faces", ICON_16_TAPER, ICON_16_TAPER)]^C^C^C_solidedit _face _taper
+[--]
+ID_Copy_edges [_Button("Copy edges", ICON_16_COPYEDGE, ICON_16_COPYEDGE)]^C^C^C_solidedit _edge _copy
+ID_Copy_Faces [_Button("Copy Faces", ICON_16_COPYFACE, ICON_16_COPYFACE)]^C^C^C_solidedit _face _copy
+[--]
+ID_Color_Edges [_Button("Color Edges", ICON_16_COLOREDGE, ICON_16_COLOREDGE)]^C^C^C_solidedit _edge _color
+ID_Color_Faces [_Button("Color Faces", ICON_16_COLORFACE, ICON_16_COLORFACE)]^C^C^C_solidedit _face _color
+[--]
+ID_Clean [_Button("Clean", ICON_16_CLEAN, ICON_16_CLEAN)]^C^C^C_solidedit _body _clean
+ID_Check [_Button("Check", ICON_16_CHECK, ICON_16_CHECK)]^C^C^C_solidedit _body _check
+ID_Separate [_Button("Separate", ICON_16_SEPARATE, ICON_16_SEPARATE)]^C^C^C_solidedit _body _separate
+ID_Imprint [_Button("Imprint", ICON_16_IMPRINT, ICON_16_IMPRINT)]^C^C^C_solidedit _body _imprint
+ID_Shell [_Button("Shell", ICON_16_SHELL, ICON_16_SHELL)]^C^C^C_solidedit _body _shell
+**SOLIDS_EDITING
+TBAR_Solids_Editing [_Toolbar("Solids Editing", _Top, _Show, -2, 491, 1)]
+ID_MOLC [_Button("MOLC", ICON_16_MOLC, ICON_16_MOLC)]^C^C^C_SETLAYER
+ID_LAYERS [_Button("LAYERS", ICON_16_LAYERS, ICON_16_LAYERS)]^C^C^C_EXPLAYERS
+[--]
+[--]
+[--]
+[--]
+[--]
+[--]
+[--]
+ID_IntelliCAD_Explorer___ [_Button("IntelliCAD Explorer...", 25072, 25071)]^C^C^C_EXPLORER
+
+**TBAR_LINE
+TBAR_Line [_Toolbar("Line", _Floating, _Hide, -2, 71, 1)]
+ID_Line [_Button("Line", ICON_16_LINE, ICON_16_LINE)]^C^C^C_LINE
+ID_Ray [_Button("Ray", ICON_16_RAY, ICON_16_RAY)]^C^C^C_RAY
+ID_Infinite_Line [_Button("Infinite Line", ICON_16_XLINE, ICON_16_XLINE)]^C^C^C_INFLINE
+**TBAR_POLYLINE
+TBAR_Polyline [_Toolbar("Polyline", _Floating, _Hide, -2, 71, 1)]
+ID_Polyline [_Button("Polyline", ICON_16_PLINE, ICON_16_PLINE)]^C^C^C_POLYLINE
+ID_Boundary_Polyline [_Button("Boundary Polyline", ICON_16_BPOLY, ICON_16_BPOLY)]^C^C^C_BPOLY
+**TBAR_CIRCLE_CENTER-RADIUS
+TBAR_Circle_Center-Radius [_Toolbar("Circle Center-Radius", _Floating, _Hide, -2, 71, 1)]
+ID_Circle_Center-Radius [_Button("Circle Center-Radius", ICON_16_CIRRAD, ICON_16_CIRRAD)]^C^C^C_CIRCLE;\\
+ID_Circle_Center-Diameter [_Button("Circle Center-Diameter", ICON_16_CIRDIA, ICON_16_CIRDIA)]^C^C^C_CIRCLE;\_D;
+ID_Circle_2-points [_Button("Circle 2-points", ICON_16_CIR2PT, ICON_16_CIR2PT)]^C^C^C_CIRCLE;_2P;
+ID_Circle_3-points [_Button("Circle 3-points", ICON_16_CIR3PT, ICON_16_CIR3PT)]^C^C^C_CIRCLE;_3P;
+ID_Circle_Radius-Tangents [_Button("Circle Radius-Tangents", ICON_16_CIRTTR, ICON_16_CIRTTR)]^C^C^C_CIRCLE;_RTT;
+ID_Convert_Arc_to_Circle [_Button("Convert Arc to Circle", 1796, 1794)]^C^C^C_CIRCLE;_A;
+**TBAR_3-POINT_ARC
+TBAR_3-Point_Arc [_Toolbar("3-Point Arc", _Floating, _Hide, -2, 71, 1)]
+ID_3-Point_Arc [_Button("3-Point Arc", ICON_16_ARC3PT, ICON_16_ARC3PT)]^C^C^C_ARC;\\\
+ID_Arc_Center-Start-End [_Button("Arc Center-Start-End", ICON_16_ARCCSE, ICON_16_ARCCSE)]^C^C^C_ARC;_C;\\\
+ID_Arc_Start-Center-End [_Button("Arc Start-Center-End", ICON_16_ARCSCE, ICON_16_ARCSCE)]^C^C^C_ARC;\_C;\\
+ID_Arc_Start-End-Center [_Button("Arc Start-End-Center", 1253, 1273)]^C^C^C_ARC;\_E;\\
+ID_Tangent_Arc [_Button("Tangent Arc", 893, 905)]^C^C^C_ARC;;
+ID_Arc_Center-Start-Angle [_Button("Arc Center-Start-Angle", ICON_16_ARCCSA, ICON_16_ARCCSA)]^C^C^C_ARC;_C;\\_A;
+ID_Arc_Start-Center-Angle [_Button("Arc Start-Center-Angle", ICON_16_ARCSCA, ICON_16_ARCSCA)]^C^C^C_ARC;\_C;\_A;
+ID_Arc_Start-Angle-Center [_Button("Arc Start-Angle-Center", 1255, 1267)]^C^C^C_ARC;\_A;\_C;
+ID_Arc_Start-End-Angle [_Button("Arc Start-End-Angle", ICON_16_ARCSEA, ICON_16_ARCSEA)]^C^C^C_ARC;\_E;\_A;
+ID_Arc_Start-Angle-End [_Button("Arc Start-Angle-End", 1256, 1268)]^C^C^C_ARC;\_A;\\
+ID_Arc_Center-Start-Length [_Button("Arc Center-Start-Length", ICON_16_ARCCSL, ICON_16_ARCCSL)]^C^C^C_ARC;_C;\\_L;
+ID_Arc_Start-Center-Length [_Button("Arc Start-Center-Length", ICON_16_ARCSCL, ICON_16_ARCSCL)]^C^C^C_ARC;\_C;\_L;
+ID_Arc_Start-Direction-End [_Button("Arc Start-Direction-End", 1254, 1270)]^C^C^C_ARC;\_D;\\
+ID_Arc_Start-End-Direction [_Button("Arc Start-End-Direction", ICON_16_ARCSED, ICON_16_ARCSED)]^C^C^C_ARC;\_E;\_D;
+ID_Arc_Start-Radius-End [_Button("Arc Start-Radius-End", 1252, 1271)]^C^C^C_ARC;\_R;\\
+ID_Arc_Start-End-Radius [_Button("Arc Start-End-Radius", ICON_16_ARCSER, ICON_16_ARCSER)]^C^C^C_ARC;\_E;\_R;
+ID_Arc_Start-Radius-Angle [_Button("Arc Start-Radius-Angle", 1251, 1272)]^C^C^C_ARC;\_R;\_A;
+**TBAR_ELLIPSE_AXIS-AXIS
+TBAR_Ellipse_Axis-Axis [_Toolbar("Ellipse Axis-Axis", _Floating, _Hide, -2, 71, 1)]
+ID_Ellipse_Axis-Axis [_Button("Ellipse Axis-Axis", ICON_16_ELLCEN, ICON_16_ELLCEN)]^C^C^C_ELLIPSE;\\\
+ID_Ellipse_Axis-Rotation [_Button("Ellipse Axis-Rotation", 972, 983)]^C^C^C_ELLIPSE;\\_R
+ID_Ellipse_Center-Axes [_Button("Ellipse Center-Axes", ICON_16_ELLCEN, ICON_16_ELLCEN)]^C^C^C_ELLIPSE;_C;\\\
+ID_Ellipse_Center-Rotation [_Button("Ellipse Center-Rotation", 1316, 1312)]^C^C^C_ELLIPSE;_C;\\_R
+**TBAR_ELLIPTICAL_ARC_AXIS-AXIS
+TBAR_Elliptical_Arc_Axis-Axis [_Toolbar("Elliptical Arc Axis-Axis", _Floating, _Hide, -2, 71, 1)]
+ID_Elliptical_Arc_Axis-Axis [_Button("Elliptical Arc Axis-Axis", ICON_16_ELLARC, ICON_16_ELLARC)]^C^C^C_ELLIPSE;_A;\\\\\
+ID_Elliptical_Arc_Axis-Rotation [_Button("Elliptical Arc Axis-Rotation", 986, 982)]^C^C^C_ELLIPSE;_A;\\_R;\\\
+ID_Elliptical_Arc_Center-Axes [_Button("Elliptical Arc Center-Axes", 1324, 1319)]^C^C^C_ELLIPSE;_A;_C;\\\\\
+ID_Elliptical_Arc_Center-Rotation [_Button("Elliptical Arc Center-Rotation", 1323, 1320)]^C^C^C_ELLIPSE;_A;_C;\\_R;\\\
+**TBAR_POLYGON__CENTER-VERTEX
+TBAR_Polygon__Center-Vertex [_Toolbar("Polygon, Center-Vertex", _Floating, _Hide, -2, 71, 1)]
+ID_Polygon__Center-Vertex [_Button("Polygon, Center-Vertex", ICON_16_POLYGO, ICON_16_POLYGO)]^C^C^C_POLYGON;\\\
+ID_Polygon__Center-Side [_Button("Polygon, Center-Side", 1306, 1307)]^C^C^C_POLYGON;\\_S;\
+ID_Polygon__Edge [_Button("Polygon, Edge", 1305, 1309)]^C^C^C_POLYGON;\_E;\\
+**TBAR_EXTEND
+TBAR_Extend [_Toolbar("Extend", _Floating, _Hide, -2, 101, 1)]
+ID_Extend [_Button("Extend", ICON_16_EXTEND, ICON_16_EXTEND)]^C^C^C_EXTEND
+ID_Edit_Length [_Button("Edit Length", ICON_16_LENGTH, ICON_16_LENGTH)]^C^C^C_EDITLEN
+ID_Stretch [_Button("Stretch", ICON_16_STRETC, ICON_16_STRETC)]^C^C^C_STRETCH
+**TBAR_MEASURE
+TBAR_Measure [_Toolbar("Measure", _Floating, _Hide, -2, 101, 1)]
+ID_Measure [_Button("Measure", ICON_16_MEASUR, ICON_16_MEASUR)]^C^C^C_MEASURE
+ID_Divide [_Button("Divide", ICON_16_DIVIDE, ICON_16_DIVIDE)]^C^C^C_DIVIDE
+**TBAR_CHAMFER
+TBAR_Chamfer [_Toolbar("Chamfer", _Floating, _Hide, -2, 101, 1)]
+ID_Chamfer [_Button("Chamfer", ICON_16_CHAMFE, ICON_16_CHAMFE)]^C^C^C_CHAMFER
+ID_Fillet [_Button("Fillet", ICON_16_FILLET, ICON_16_FILLET)]^C^C^C_FILLET
+**TBAR_CENTER_LINES
+TBAR_Center_Lines [_Toolbar("Center Lines", _Floating, _Hide, -2, 131, 1)]
+ID_Center_Lines [_Button("Center Lines", ICON_16_DIMCEN, ICON_16_DIMCEN)]^C^C^C_DIMCENTER
+ID_Diameter [_Button("Diameter", ICON_16_DIMDIA, ICON_16_DIMDIA)]^C^C^C_DIMDIAMETER
+ID_Radius [_Button("Radius", ICON_16_DIMRAD, ICON_16_DIMRAD)]^C^C^C_DIMRADIUS
+**TBAR_POLYFACE_MESH
+TBAR_Polyface_Mesh [_Toolbar("Polyface Mesh", _Floating, _Hide, -2, 161, 1)]
+ID_Polyface_Mesh [_Button("Polyface Mesh", 167, 443)]^C^C^C_PFACE
+ID_3D_Face [_Button("3D Face", ICON_16_3DFACE, ICON_16_3DFACE)]^C^C^C_FACE
+ID_Polygon_Mesh [_Button("Polygon Mesh", ICON_16_MESH, ICON_16_MESH)]^C^C^C_MESH
+**TBAR_REVOLVED_SURFACE
+TBAR_Revolved_Surface [_Toolbar("Revolved Surface", _Floating, _Hide, -2, 161, 1)]
+ID_Revolved_Surface [_Button("Revolved Surface", ICON_16_REVSUR, ICON_16_REVSUR)]^C^C^C_REVSURF
+ID_Ruled_Surface [_Button("Ruled Surface", ICON_16_RULESU, ICON_16_RULESU)]^C^C^C_RULESURF
+ID_Extruded_Surface [_Button("Extruded Surface", ICON_16_TABSUR, ICON_16_TABSUR)]^C^C^C_TABSURF
+ID_Coons_Surface [_Button("Coons Surface", ICON_16_EDGESU, ICON_16_EDGESU)]^C^C^C_EDGESURF
+**TBAR_SELECT_COLOR___
+TBAR_Select_Color___ [_Toolbar("Select Color...", _Floating, _Hide, -2, 251, 1)]
+ID_Select_Color___ [_Button("Select Color...", 197, 313)]'_SETCOLOR
+ID_White [_Button("White", 992, 991)]'_Color;_White
+ID_Blue [_Button("Blue", 1003, 998)]'_Color;_Blue
+ID_Cyan [_Button("Cyan", 1004, 996)]'_Color;_Cyan
+ID_Green [_Button("Green", 1002, 995)]'_Color;_Green
+ID_Yellow [_Button("Yellow", 1000, 994)]'_Color;_Yellow
+ID_Red [_Button("Red", 1001, 997)]'_Color;_Red
+ID_Magenta [_Button("Magenta", 999, 993)]'_Color;_Magenta
+ID_BYLAYER [_Button("BYLAYER", 1298, 1297)]'_Color;_BYLAYER
+ID_BYBLOCK [_Button("BYBLOCK", 1294, 1293)]'_Color;_BYBLOCK
+**TBAR_REDRAW
+TBAR_Redraw [_Toolbar("Redraw", _Floating, _Hide, 994, 586, 21)]
+ID_Redraw [_Button("Redraw", ICON_16_REDRAW, ICON_16_REDRAW)]'_REDRAW
+ID_Redraw_All [_Button("Redraw All", 1687, 1686)]'_REDRAWALL
+ID_Regen [_Button("Regen", ICON_16_REGEN, ICON_16_REGEN)]'_REGEN
+ID_Regen_All [_Button("Regen All", 1690, 1689)]'_REGENALL
+**TBAR_ZOOM_PREVIOUS
+TBAR_Zoom_Previous [_Toolbar("Zoom Previous", _Floating, _Hide, 994, 586, 21)]
+ID_Zoom_Previous [_Button("Zoom Previous", ICON_16_ZOOPRE, ICON_16_ZOOPRE)]'_ZOOM;_P
+ID_Zoom_All [_Button("Zoom All", ICON_16_ZOOALL, ICON_16_ZOOALL)]'_ZOOM;_A
+ID_Zoom_Left [_Button("Zoom Left", ICON_16_ZOOLEF, ICON_16_ZOOLEF)]'_ZOOM;_L
+ID_Zoom_Center [_Button("Zoom Center", ICON_16_ZOOCEN, ICON_16_ZOOCEN)]'_ZOOM;_C
+**TBAR_REAL-TIME_PAN
+TBAR_Real-Time_Pan [_Toolbar("Real-Time Pan", _Floating, _Hide, 994, 586, 21)]
+ID_Real-Time_Pan [_Button("Real-Time Pan", 1934, 1913)]'_RTPAN
+ID_Real-Time_Zoom [_Button("Real-Time Zoom", 1939, 1933)]'_RTZOOM
+ID_Real-Time_Sphere [_Button("Real-Time Sphere", 1935, 1914)]'_RTROT
+ID_Real-Time_X [_Button("Real-Time X", 1936, 1915)]'_RTROTX
+ID_Real-Time_Y [_Button("Real-Time Y", 1937, 1931)]'_RTROTY
+ID_Real-Time_Z [_Button("Real-Time Z", 1938, 1932)]'_RTROTZ
+
+***HELPSTRINGS
+TBAR_Standard [Standard]
+ID_New [Creates a new drawing]
+ID_Open [Opens an existing drawing]
+ID_Save [Saves the current drawing]
+ID_Acis_In___ [Imports an ACIS file]
+ID_Acis_Out [Exports an ACIS file]
+ID_Print [Prints the current drawing]
+ID_Print_Preview [Shows how the printed page will look]
+ID_Check_Spelling [Checks the spelling in selected text entities]
+ID_Cut [Cuts the selection and puts it on the clipboard]
+ID_Copy [Copies the selection to the Clipboard]
+ID_Paste [Pastes the contents of the Clipboard into the drawing]
+ID_Copy_Entity_Formatting [Copies the formatting of one entity to another]
+ID_Undo [Undoes the last action]
+ID_Redo [Redoes the last action to be undone]
+ID_Delete [Deletes the selection]
+ID_Help [Opens the help file]
+TBAR_Draw_2D [Draw 2D]
+TBAR_Line [Draws a line]
+ID_Line [Draws a line]
+ID_Ray [Draws a line of infinite length in one direction from starting point]
+ID_Infinite_Line [Draws a line of infinite length in both directions from starting point]
+TBAR_Polyline [Draws a polyline, including straight and arc segments]
+ID_Polyline [Draws a polyline, including straight and arc segments]
+ID_Boundary_Polyline [Draws a polyline matching the enclosed area around the selected point]
+ID_Spline [Creates a new spline, or modifies an existing polyline]
+ID_Draw_Freehand [Draws unconstrained shapes, following your mouse movements]
+TBAR_Circle_Center-Radius [Draws a circle given a center point and radius]
+ID_Circle_Center-Radius [Draws a circle given a center point and radius]
+ID_Circle_Center-Diameter [Draws a circle given a center point and diameter]
+ID_Circle_2-points [Draws a circle given 2 end points of the diameter]
+ID_Circle_3-points [Draws a circle given 3 points on the circle]
+ID_Circle_Radius-Tangents [Draws a circle of the given radius, tangent to 2 entities]
+ID_Convert_Arc_to_Circle [Turns an existing arc into a complete circle]
+TBAR_3-Point_Arc [Draws an arc through 3 points]
+ID_3-Point_Arc [Draws an arc through 3 points]
+ID_Arc_Center-Start-End [Draws an arc given center, start, and end]
+ID_Arc_Start-Center-End [Draws an arc given start, center, and end]
+ID_Arc_Start-End-Center [Draws an arc given start, end, and center]
+ID_Tangent_Arc [Draws an arc continuing from the previous entity]
+ID_Arc_Center-Start-Angle [Draws an arc given center, start, and included angle]
+ID_Arc_Start-Center-Angle [Draws an arc given start, center, and included angle]
+ID_Arc_Start-Angle-Center [Draws an arc given start, included angle, and center]
+ID_Arc_Start-End-Angle [Draws an arc given start, end, and included angle]
+ID_Arc_Start-Angle-End [Draws an arc given start, included angle, and end]
+ID_Arc_Center-Start-Length [Draws an arc given center, start, and chord length]
+ID_Arc_Start-Center-Length [Draws an arc given start, center, and chord length]
+ID_Arc_Start-Direction-End [Draws an arc given start, starting direction, and end]
+ID_Arc_Start-End-Direction [Draws an arc given start, end, and starting direction]
+ID_Arc_Start-Radius-End [Draws an arc given start, radius, and end]
+ID_Arc_Start-End-Radius [Draws an arc given start, end, and radius]
+ID_Arc_Start-Radius-Angle [Draws an arc given start, radius, and included angle]
+TBAR_Ellipse_Axis-Axis [Draws an ellipse given both axes]
+ID_Ellipse_Axis-Axis [Draws an ellipse given both axes]
+ID_Ellipse_Axis-Rotation [Draws an ellipse given major axis and rotation]
+ID_Ellipse_Center-Axes [Draws an ellipse given center and axes]
+ID_Ellipse_Center-Rotation [Draws an ellipse given center and rotation]
+TBAR_Elliptical_Arc_Axis-Axis [Draws an elliptical arc given major and minor axes, and angles]
+ID_Elliptical_Arc_Axis-Axis [Draws an elliptical arc given major and minor axes, and angles]
+ID_Elliptical_Arc_Axis-Rotation [Draws an elliptical arc given major axis, rotation, and angles]
+ID_Elliptical_Arc_Center-Axes [Draws an elliptical arc given center, axes, and angles]
+ID_Elliptical_Arc_Center-Rotation [Draws an elliptical arc given center, rotation, and angles]
+ID_Point [Draws a point]
+ID_Rectangle [Draws a rectangle]
+TBAR_Polygon__Center-Vertex [Draws a polygon using the center point and a vertex]
+ID_Polygon__Center-Vertex [Draws a polygon using the center point and a vertex]
+ID_Polygon__Center-Side [Draws a polygon using center point and distance to side]
+ID_Polygon__Edge [Draws a polygon using the length and orientation of an edge]
+ID_Donut [Draws a donut]
+ID_Plane [Draws a filled plane]
+ID_Insert_Block___ [Brings up the dialog for inserting existing blocks]
+ID_Boundary_Hatch [Hatches the selection with a pattern of your choosing]
+ID_Text [Creates a single line of text]
+ID_Multiline_Text [Creates a multiple-line block of text]
+TBAR_Modify [Modify]
+ID_Move [Moves the selection]
+ID_Copy [Draws one, or several, duplicates of the selection]
+ID_Parallel [Copies the selection through a point, or by a given distance]
+ID_Scale [Changes the size of the selection, without changing the aspect ratio]
+ID_Rotate [Rotates the selection about a point]
+ID_3D_Rotate [Rotates the selection about a line]
+ID_Mirror [Mirrors the selection about a line]
+ID_3D_Mirror [Mirrors the selection through a plane]
+ID_Array [Creates a polar or rectangular array of entities]
+ID_3D_Array [Creates polar or rectangular arrays of entities in 3 dimensions]
+ID_Break [Breaks a linear entity at the specified point]
+ID_Join [Joins selected co-linear entities into a single entity]
+ID_Trim [Cuts parts off the selection, using other entities as a die]
+ID_Flatten [Sets elevation of selection, and changes thickness to zero]
+ID_Align [Aligns entities with other entities]
+TBAR_Extend [Extends the selection to intersect with a specified entity]
+ID_Extend [Extends the selection to intersect with a specified entity]
+ID_Edit_Length [Edits the length of the selection]
+ID_Stretch [Stretches (or displaces) the selection without disrupting connections]
+TBAR_Measure [Marks off segments at a specified distance]
+ID_Measure [Marks off segments at a specified distance]
+ID_Divide [Marks off a specified number of segments of equal length]
+TBAR_Chamfer [Breaks a corner and connects the sides with an angled line]
+ID_Chamfer [Breaks a corner and connects the sides with an angled line]
+ID_Fillet [Breaks a corner and connects the sides with a smooth arc]
+ID_Edit_Polyline [Edits the properties of polylines]
+ID_Edit_Text___ [Edits the content of text entities]
+ID_Explode [Separates complex entities to the next simpler level of components]
+ID_Region [Creates a region object from a selection set of existing objects]
+ID_Change [Changes the properties of the selection, including elevation]
+ID_Properties___ [Displays and edits the properties of selected entities]
+TBAR_Dimensioning [Dimensioning]
+ID_Linear [Draws a horizontal or vertical dimension]
+ID_Aligned [Draws the dimension parallel to the selected entity]
+ID_Angular [Dimensions angles]
+ID_Leader [Draws leader lines]
+ID_Rotated [Draws a dimension at a specified angle]
+TBAR_Center_Lines [Places center lines in circle or arc]
+ID_Center_Lines [Places center lines in circle or arc]
+ID_Diameter [Dimensions circle or arc by diameter]
+ID_Radius [Dimensions circle or arc by radius]
+ID_Baseline [Draws multiple dimensions from a single extension line]
+ID_Continue [Draws dimensions one after another along a line or arc]
+ID_Ordinate [Draws ordinate dimensions off the entity]
+ID_Tolerance [Inserts tolerance symbols and values]
+ID_Make_Oblique [Changes an existing dimension to an oblique dimension]
+ID_Edit_Dimension_Text [Replaces existing dimension text with new text]
+ID_Rotate_Dimension_Text [Rotates selected dimension text to a specified angle]
+ID_Reposition_Dimension_Text [Moves or rotates the selected dimension text]
+ID_Restore_Text_Postion [Restores selected dimension text to its default position]
+ID_Apply_Style [Applies the current style to selected dimensions]
+ID_Save_Style [Saves the current dimensioning style]
+ID_Restore_Style [Restores the dimensioning style]
+TBAR_Draw_3D [Draw 3D]
+ID_Wedge [Draws a wedge]
+ID_Pyramid [Draws a pyramid, or tetrahedron]
+ID_Box [Draws a box]
+ID_Cone [Draws a cone]
+ID_Cylinder [Draws a cylinder]
+ID_Sphere [Draws a sphere]
+ID_Dish [Draws the lower half of a sphere]
+ID_Dome [Draws the upper half of a sphere]
+ID_Torus [Draws a torus]
+ID_Mesh [Draws a mesh of evenly spaced lines between 4 corner points in 3 dimensions]
+TBAR_Polyface_Mesh [Creates a 3D polyface mesh with any number of vertices and faces]
+ID_Polyface_Mesh [Creates a 3D polyface mesh with any number of vertices and faces]
+ID_3D_Face [Creates one or more 3D faces having 3 or 4 sides each]
+ID_Polygon_Mesh [Creates a 3D polygon mesh given an array of vertices]
+TBAR_Revolved_Surface [Creates a 3D surface by revolving a linear entity around a line]
+ID_Revolved_Surface [Creates a 3D surface by revolving a linear entity around a line]
+ID_Ruled_Surface [Creates a 3D surface by connecting 2 separate linear entities]
+ID_Extruded_Surface [Creates a 3D surface by projecting an entity along a path]
+ID_Coons_Surface [Creates a 3D Coons surface patch between 4 lines forming a closed shape]
+TBAR_Inquiry [Inquiry]
+ID_Distance [Finds the distance between two points]
+ID_Area [Finds the area inside a closed entity]
+ID_ID_Coordinates [Gives the X, Y, and Z coordinates of the selected point]
+ID_List_Entity_Info [Lists information about the selected entity]
+ID_Time_Variables [Lists the time-related variable information]
+TBAR_Entity_Snaps [Entity Snaps]
+ID_Set_Nearest_Snap [Sets snap to the nearest point on an entity]
+ID_Set_Endpoint_Snap [Sets snap to the end of a linear entity]
+ID_Set_Midpoint_Snap [Sets snap to the midpoint of a linear entity]
+ID_Set_Center_Snap [Sets snap to the center point]
+ID_Set_Perpendicular_Snap [Sets snap perpendicular to selected entity]
+ID_Set_Tangent_Snap [Sets snap tangent to selected entity]
+ID_Set_Quadrant_Snap [Sets snap to the nearest quadrant of a circle]
+ID_Set_Insertion_Point_Snap [Sets snap to the insertion point of a block]
+ID_Set_Point_Snap [Sets snap to the nearest Point entity]
+ID_Set_Intersection_Snap [Sets snap to the point in space where entities actually intersect]
+ID_Set_Plan_View_Intersection_Snap [Sets snap to where entities would intersect, if they were at current elevation]
+ID_Clear_Entity_Snaps [Turns all entity snaps off]
+TBAR_Settings [Settings]
+ID_Reference_Grid [Makes the reference grid visible]
+ID_Snap [Aligns new entities according to Snap spacing]
+ID_Draw_Orthogonal [Constrains lines to horizontal or vertical]
+ID_Entity_Snap_Settings [Sets modes for snapping to entities]
+ID_Entity_Snap_Precision [Sets selection area for snapping to entities]
+TBAR_Select_Color___ [Opens the Color dialog box]
+ID_Select_Color___ [Opens the Color dialog box]
+ID_White [Sets the current color to white]
+ID_Blue [Sets the current color to blue]
+ID_Cyan [Sets the current color to cyan]
+ID_Green [Sets the current color to green]
+ID_Yellow [Sets the current color to yellow]
+ID_Red [Sets the current color to red]
+ID_Magenta [Sets the current color to magenta]
+ID_BYLAYER [Adopts the color of the layer on which it is used]
+ID_BYBLOCK [Adopts the color of the block in which it is used]
+ID_Fill [When on, planar entities are drawn filled with color]
+ID_Drawing_Limits [Sets the drawing limits, and turns them on or off]
+ID_Elevation [Sets elevation and thickness]
+ID_Thickness [Sets thickness for new entities]
+ID_User_Coordinate_Systems___ [Selects a User Coordinate System in which to display drawing]
+ID_Set_Layer_by_Entity [Sets the current layer to that of the selected entity]
+ID_Explore_Layers___ [Opens the IntelliCAD Explorer for layers]
+ID_Explore_Blocks___ [Opens the IntelliCAD Explorer for blocks and externally referenced drawings]
+ID_Explore_Views___ [Opens the IntelliCAD Explorer for views]
+ID_Explore_Coordinate_Systems___ [Opens the IntelliCAD Explorer for coordinate systems]
+ID_Explore_Linetypes___ [Opens the IntelliCAD Explorer for linetypes]
+ID_Explore_Text_Styles___ [Opens the IntelliCAD Explorer for text styles]
+ID_Explore_Dimension_Styles___ [Opens the IntelliCAD Explorer for dimension styles]
+ID_Drawing_Settings___ [Opens the Drawing Settings dialog box]
+ID_Dimension_Settings___ [Opens the Dimension Settings dialog box]
+TBAR_Tools [Tools]
+ID_IntelliCAD_Explorer___ [Opens the IntelliCAD Explorer]
+ID_Visual_Basic_for_Applications [Launches the Visual Basic for Applications editor]
+ID_Group___ [Creates named selection sets of entities]
+ID_Record_Script___ [Asks for a name, then begins recording a command line script]
+ID_Stop_Recording [Stops recording the script]
+ID_Run_Script___ [Runs a previously saved command line script]
+ID_Create_Block [Saves a block that you can reuse within this drawing ]
+ID_Save_Block_to_Disk___ [Saves a block as an independent drawing]
+ID_Make_Snapshot___ [Makes a snapshot image of the current window]
+ID_View_Snapshot___ [Views a previously saved snapshot]
+ID_Define_Attributes___ [Defines how a block's attributes will be created]
+ID_Edit_Block_Attributes [Edits one or more attributes of a block]
+ID_Attribute_Display [Shows all attributes, none, or those normally visible]
+ID_Edit_Attributes [Edits attributes, either all, or just those on-screen]
+ID_Extract_Attributes [Copies data from attributes to a text file]
+ID_External_Reference [Associates another drawing with the current one for reference]
+TBAR_View [View]
+TBAR_Redraw [Refreshes the display of the current window]
+ID_Redraw [Refreshes the display of the current window]
+ID_Redraw_All [Refreshes the display of the all windows for the current drawing]
+ID_Regen [Recalculates display coordinates for the current window]
+ID_Regen_All [Recalculates display coordinates for all windows for the current drawing]
+ID_Pan [Pans from side to side, or up and down]
+ID_Zoom_In [Zooms in on the center of the window by a factor of 2]
+ID_Zoom_Out [Zooms out from the center of the window by a factor of 1/2]
+ID_Zoom_Window [Zooms to a window that you specify]
+ID_Zoom_Extents [Zooms to the extents of the drawing]
+TBAR_Zoom_Previous [Zooms to the previous view]
+ID_Zoom_Previous [Zooms to the previous view]
+ID_Zoom_All [Zooms All]
+ID_Zoom_Left [Zooms in - you specify lower-left corner]
+ID_Zoom_Center [Zooms in, centered on a point you specify]
+TBAR_Real-Time_Pan [Real-time panning]
+ID_Real-Time_Pan [Real-time panning]
+ID_Real-Time_Zoom [Real-time zooming]
+ID_Real-Time_Sphere [Real-time spherical rotation]
+ID_Real-Time_X [Real-time cylindrical X-rotation]
+ID_Real-Time_Y [Real-time cylindrical Y-rotation]
+ID_Real-Time_Z [Real-time cylindrical Z-rotation]
+ID_Dynamic_View_Control___ [Brings up the real-time Viewpoint Control dialog box]
+ID_Preset_Viewpoints___ [Opens the Viewpoint dialog box]
+ID_Plan_View [Shows the top view of the User Coordinate System you specify]
+ID_Define_View [Displays a perspective view from a given point]
+ID_Save/Restore_View [Saves the current view. Loads or deletes a saved view]
+ID_Workspaces___ [Brings up a choice of workspaces:  Paper Space, Model Space, or Tiled]
+ID_Viewports [Defines and saves multiple-window arrangements for the current drawing]
+ID_Paper_Space_Views [Creates multiple views in paper space for the current drawing]
+TBAR_Entity_Data [Entity Data]
+ID_Create_or_Edit_Entity_Data [Creates or edits Entity Data associated with the selected entity]
+ID_Copy_Entity_Data [Copies the Entity Data from one entity to another]
+ID_Move_Entity_Data [Moves the Entity Data from one entity to another]
+ID_Delete_Entity_Data [Deletes the Entity Data from selected entities]
+ID_Reassociate_Entity_Data [Associates existing Entity Data with a new application]
+TBAR_Rendering [Rendering]
+ID_Hide [Displays the drawing with hidden lines removed]
+ID_Shade [Displays the drawing as solids filled with color]
+ID_Render [Displays the drawing as solids with shading and highlights]
+ID_Full_Render [Displays the drawing as solids with materials and lighting]
+ID_Materials___ [Brings up a choice of materials for entities when rendering]
+ID_Backgrounds___ [Brings up a choice of backgrounds for rendering]
+ID_Lighting___ [Brings up dialog box to control position and intensity of lighting]
+ID_Render_Settings___ [Brings up the Render Settings dialog box]
+TBAR_Layouts [Layouts]
+ID_New_Layout [Creates a new layout]
+ID_Layout_from_Template [Creates a new layout from Template]
+ID_Page_Setup [Displays page setup dialog]
+ID_Viewports [Displays the Viewports dialog]
+TBAR_Entity_Properties [Entity Properties]
+ID_Attach_Raster_Image [Attach raster image to current drawing]
+ID_Image_Management [Manage raster images]
+ID_Image_Adjust [Adjust raster image properties]
+ID_Image_Transparency [Turn on/off raster transparency]
+ID_Image_Quality [Change image quality between high/draft]
+ID_Display_Image_Frame [Turn on/off image frame]
+ID_Draw_Order [Set IntelliCAD entities draworder]
+TBAR_Image_Enabler [Image Enabler]
+ID_Wedge [Draws a wedge]
+ID_Pyramid [Draws a pyramid, or tetrahedron]
+ID_Box [Draws a box]
+ID_Cone [Draws a cone]
+ID_Cylinder [Draws a cylinder]
+ID_Sphere [Draws a sphere]
+ID_Dish [Draws the lower half of a sphere]
+ID_Dome [Draws the upper half of a sphere]
+ID_Torus [Draws a torus]
+ID_Revolve [Creates a solid by revolving a two-dimensional object about an axis]
+ID_Extrude [Creates unique solid primitives by extruding existing two-dimensional objects]
+ID_Slice [Slices a set of solids with a plane]
+ID_Section [Uses the intersection of a plane and solids to create a region]
+ID_Interfere [Creates a composite 3D solid from the common volume of two or more solids]
+TBAR_Solids [Solids]
+ID_Union [Creates a composite region or solid by addition]
+ID_Subtract [Creates a composite region or solid by subtraction]
+ID_Intersect [Creates solids or regions from the intersection of solids or regions]
+ID_Extrude_Face [Extrudes selected faces on a solid object to a specified height or along a path]
+ID_Move_Faces [Moves selected faces on a solid object to a specified height or distance]
+ID_Offset_Faces [Equally offsets faces on a solid object by a specified distance or point]
+ID_Delete_Faces [Deletes or removes faces, including fillets or chamfers on a solid object]
+ID_Rotate_Faces [Rotates one or more faces on a solid object around a specified axis]
+ID_Taper_Faces [Tapers faces on a solid object with a specified angle]
+ID_Copy_edges [Copies 3D edges on a solid object as an arc, circle, ellipse, line, or spline]
+ID_Copy_Faces [Copies faces on a solid object as a region or a solid body]
+ID_Color_Edges [Changes the color of individual edges on a solid object]
+ID_Color_Faces [Changes the color of individual faces on a solid object]
+ID_Clean [Removes all reduntant edges and vertices on a solid object]
+ID_Check [Validates a 3D solid object as a valid ACIS solid]
+ID_Separate [Separates 3D solid objects with disjointed volumes into independent 3D solid objects]
+ID_Imprint [Imprints geometry on a face of a solid object]
+ID_Shell [Creates a hollow, thin wall with a specified thickness on a solid object]
+TBAR_Solids_Editing [Solids Editing]
+ID_MOLC [Set Layer by Entity]
+ID_LAYERS [Explore Layers...]
+ID_IntelliCAD_Explorer___ [Opens the IntelliCAD Explorer]

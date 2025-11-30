@@ -1,0 +1,380 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\Source\ThirdParty\DCL_Components\DCL\resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "..\Source\prj\ICAD\blddate.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+//#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define VERSIONINFO_FILEDESCRIPTION ""IntelliCAD® 5 DCL DLL\\0""\r\n"
+    "#define VERSIONINFO_INTERNALNAME ""DCL\\0""\r\n"
+    "#define VERSIONINFO_ORIGINALNAME ""DCL.DLL\\0""\r\n"
+    "#include ""versioninfo.rc2""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DCL
+//
+
+IDR_DCL_BASE            DCL     DISCARDABLE     "base.dcl"
+IDR_DCL_PRIMITIVES      DCL     DISCARDABLE     "..\\Source\\ThirdParty\\DCL_Components\\include\\primitives.dcl"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ERROR_DIALOG DIALOG DISCARDABLE  0, 0, 239, 92
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "IntelliCAD Message"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,86,62,50,14
+    LTEXT           "Static",IDC_MESSAGE,46,17,179,33
+    ICON            IDI_ERRORICON,IDC_STATIC,15,17,21,20
+END
+
+IDD_DIALOGTEMPLATE DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "System"
+BEGIN
+END
+
+IDD_DIALOG3 DIALOG DISCARDABLE  0, 0, 233, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_LIST_ATTRIBUTES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | 
+                    WS_TABSTOP,3,10,219,115
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 262, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_STATICEDGE
+CAPTION "ListOfAttributes"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,107,114,50,14
+    EDITTEXT        IDC_EDIT_LABEL,63,24,40,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_ALIGNMENT,63,85,40,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_KEY,63,56,40,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Label",IDC_LABEL,23,25,38,8
+    LTEXT           "Key",IDC_STATIC,23,58,38,8
+    LTEXT           "Alignment",IDC_STATIC,23,85,38,8
+    LTEXT           "LayOut",IDC_STATIC,137,25,38,8
+    EDITTEXT        IDC_EDIT_MNEMONIC,183,21,40,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "FixedHeight",IDC_STATIC,138,58,38,8
+    EDITTEXT        IDC_EDIT_FHEIGHT,184,56,40,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "FixedWidth",IDC_STATIC,138,85,38,8
+    EDITTEXT        IDC_EDIT_FWIDTH,184,85,40,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ERROR_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 85
+    END
+
+    IDD_DIALOGTEMPLATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ERRORICON           ICON    DISCARDABLE     "..\\Source\\ThirdParty\\DCL_Components\\DCL\\res\\Error.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "DCL\n\nDCL\n\n\nDCL.Document\nDCL Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "DCL.dll"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    ID_DCL_MSGBOX_TITLE     "DCL Component"
+    ID_DCL_CHECK_ERROR_FILE "An error occured while generating tree. Please check the %s for details."
+    ID_DCL_LOGFILE_PROBLEM  "Error opening log file."
+    ID_DCL_DLGTOOLARGE      "The dialog is too large to be shown on the screen."
+    IDS_TILE_UNDEFINED      "%s: line %d:Undefined tile "" %s "" \n"
+    IDS_TILE_CANNOT_HAVE_CHILDREN 
+                            "%s: line %d:Tile ""%s"" cannot have children\n"
+    IDS_DCL_FILE_NOT_FOUND_IN_SEARCH_PATH 
+                            "The file : %s was not found in the search path."
+    IDS_DCL_FILE_NOT_FOUND  "The DCL file: %s was not found"
+    ID_DCL_DEFAULT_FONTFACE	"MS Sans Serif"
+    ID_DCL_FIXED_PITCH_FONTFACE	"Fixedsys"
+    ID_DCL_PARSER_AUDIT_MESSAGE	"*** DCL semantic audit of %s ***\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDMNU_SHOW_DIALOG       "Select to see the dialog."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DCL_LOGFILE_PROBLEM2 "Error opening log file."
+    IDS_SYNTAX_ERROR        "\n%s:  line %d: syntax error at ""%s"""
+    IDS_TILE_REDEFINITION   "%s: line %d:Redefinition of ""%s"" \n"
+    IDS_MISSING_KEYWORD     " missing  "
+    IDS_INVALID_STRING      ": ""%s"" not "
+    IDS_IN                  " in"
+    IDS_INVALID_END_OF_FILE "\n%s: line %d:Invalid end of file \n"
+    IDS_ERROR_LOG_PATH_NOT_FOUND 
+                            "The path given for the Error.log was not found.\nThe Error.log  will be generated in the application directory. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ATTRIBUTE_VALUE_REQUIRED 
+                            "true  , false,  centered,  horizontal, vertical .... }  or  an attribute value of integer, string or  float."
+    IDS_COLOR_DATATYPE_REQUIRED "     It should be a COLOR or INTEGER.\n\n"
+    IDS_IMAGE_NEED_HT_WIDTH_OR_ASPRATIO 
+                            "    This widget needs both a width and height, or one of these and an aspect ratio.\n\n"
+    IDS_ONLY_RADIO_SPACER_IN_CLUSTER 
+                            "     Only radio buttons and spacers can be in radio clusters.\n\n"
+    IDS_TEXT_NEED_LABEL_OR_WIDTH 
+                            "    Text widgets need  a 'label' or a 'width'.\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEYWORD             "  keyword \n { "
+    IDS_INVALID_TOKEN       " Invalid Character "
+    IDS_INVALID_CHAR_NEAR_LINE " line %d  : %s  '%s' "
+    IDS_FILE_NAME           "\n%s:"
+    IDS_WIDGET_CANNOT_HAVE_CHILDREN 
+                            "      Widgets of this type cannot have children \n\n"
+    IDS_CIRCULAR_REFERENCE  "Error in %s.\n    The definition of  this widget's prototype is circular.\n\n"
+    IDS_STRING_DATATYPE_REQUIRED "     It should be a quoted STRING\n\n"
+    IDS_REAL_DATATYPE_REQUIRED "     It should be an INTEGER or a REAL.\n\n"
+    IDS_INT_DATATYPE_REQUIRED "     It should be an INTEGER. \n\n"
+    IDS_KEYWORD_DATATYPE_REQUIRED "****'"
+    IDS_ATTRIBUTE_INFO      "     Attribute '%s'  has a value of the wrong type.\n"
+    IDS_ATTRIBUTE_SHOULD_BE "     It should be"
+    IDS_WARNING_HEADER      "Warning in ""%s"". (widget type = %s, key = ""%s"")\n"
+    IDS_ALLOW_ACCEPT_NOT_ALLOWED 
+                            "    This type of widget may not have 'allow_accept' set.\n\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BUTTON_NEED_LABEL_OR_WIDTH 
+                            "    Buttons need either a 'label' or a 'width'.\n\n"
+    IDS_KEY_NEEDED          "    This widget needs a 'key' attribute.\n\n"
+    IDS_BOXED_TO_BE_LABELLED 
+                            "    A cluster must be 'boxed' if it is to be labelled.\n\n"
+    IDS_MORE_THAN_ONE_DEFAULT 
+                            "    This dialog has more than one tile with is_default set.\n\n"
+    IDS_MORE_THAN_ONE_CANCEL 
+                            "    This dialog has more than one tile with is_cancel set.\n\n"
+    IDS_HINT_HEADER         "Hint in ""%s"". (widget type = %s, key = ""%s"")\n"
+    IDS_REDUNDANT_ASSIGNMENT "    %s = %s is probably redundant.\n\n"
+    IDS_ERROR_HEADER        "Error in ""%s"". (widget type =%s, key = ""%s"")\n"
+    IDS_NONDEFINED_TILE     "Error. Widget named ""%s"" is undefined.\n\n"
+    IDS_PARENT_MUST_BE_RADIO_CLUSTER 
+                            "    A radio button's parent must be a radio cluster.\n\n"
+    IDS_UNABLE_TO_OPEN_FILE "   Unable to open file  : %s"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define VERSIONINFO_FILEDESCRIPTION "IntelliCAD® 5 DCL DLL\0"
+#define VERSIONINFO_INTERNALNAME "DCL\0"
+#define VERSIONINFO_ORIGINALNAME "DCL.DLL\0"
+#include "versioninfo.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

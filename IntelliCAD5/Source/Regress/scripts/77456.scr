@@ -1,0 +1,17 @@
+logfilename log\77456.log
+logfileon
+
+filedia
+off
+xref
+attach
+dwg/77456.dwg
+0,0
+1
+1
+0
+zoom
+e
+dxfout output_dxf\77456.dxf
+6
+exit y

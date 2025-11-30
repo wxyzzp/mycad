@@ -1,0 +1,61 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_01102002.txt
+Date:		01-10-2002
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission adds the fillet and chamfer for ACIS solids.
+ 	
+
+COMMANDS:
+
+        The fillet and chamfer commands for solids allow users to chamfer and fillet the edges
+        of ACIS solids. They have the same command syntax and functionality as ones in AutoCAD 
+        R14. The commands are only available if IntelliCAD is built with ACIS DLLs.
+	
+
+CHANGED FILES:	
+
+	CvsHist:Source/Prj/Lib/DB/DbAcisEntity.h:  Added CDbAcisEntityData& getData() to 
+						   the CDbAcisEntity class.
+		
+	CvsHist:Source/Prj/Lib/DB/Modeler.h:
+	CvsHist:Source/Prj/Lib/DB/ModelerStub.h:
+	CvsHist:Source/Prj/Lib/ACIS/AsModeler.h:
+	CvsHist:Source/Prj/Lib/ACIS/AsModeler.cpp: Added createEdgeChamfer(), createEdgeFillet(),
+		                                   getSmoothConnnectedEdges(), getAdjacentFaces(),
+		                                   getEdgesOfFace(), getEdgeLoop(), isEdgeOnFace()
+		                                   to those classes.
+		
+	CvsHist:Source/Prj/Lib/CMDS/cmds4.cpp:     Added getSystemInfo(), updateDisplayOfSolidEdges(),
+						   setChamferDistance(), setFilletRadius(), and 
+						   added code to cmd_fillet() and cmd_chamfer() to 
+						   fillet and chamfer solid edges.
+						   
+	CvsHist:Source/Prj/ICAD/ICADApp.cpp:       Modified CIcadApp::~CIcadApp() to call 
+	                                           CModeler::stop().	   
+	
+	CvsHist:Source/Prj/ICAD/res/Icadrc2.h:     Added resource ID for strings.
+	
+	
+	
+	CvsHist:Eng-us/icad.rc2:                   Added strings to string table.
+
+
+		
+KNOWN PROBLEMS:  As other commands for solids, the UNDO and REDO also don't work for fillet and 
+                 chamfer for solids. This issue will be addressed later because it requires to 
+                 make some changes to the architecture for solids.
+
+
+--------------------------------------------------------------------------------

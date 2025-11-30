@@ -1,0 +1,9 @@
+Logfilename log\lsp_trace_untrace.log
+Logfileon
+(defun c:ForTrace() (princ "Hi from ForTrace"))
+(trace fortrace)
+(untrace fortrace)
+Dxfout output_dxf\lsp_trace_untrace.dxf
+6
+Quit
+y

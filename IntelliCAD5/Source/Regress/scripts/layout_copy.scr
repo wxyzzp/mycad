@@ -1,0 +1,50 @@
+new
+
+layout
+set
+Layout1
+; check INSERT with ATTRIB
+polyline
+1,1
+1,5
+5,5
+
+attdef
+
+attrib1
+prompt1
+deftext1
+4,4
+0.4
+
+block
+block1
+1,1
+all
+
+insert
+block1
+2,2
+; X scale
+
+; Y scale
+
+; Rotation
+
+; ATTRIB prompt
+
+; check POLYLINE
+plinetype
+0
+polyline
+8,5
+12,5
+12,1
+
+plinetype
+2
+layout
+copy
+Layout1
+Layout1_copy
+exit y

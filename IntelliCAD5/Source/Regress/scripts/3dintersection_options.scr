@@ -1,0 +1,18 @@
+logfilename log\3dintersection_options.log
+logfileon
+;_______
+osmode
+0
+3dintersection
+(if (/= (getvar "osmode") 32) (alert "3dintersection did not work!"))
+3dintersection
+(if (/= (getvar "osmode") 0) (alert "3dintersection did not work!"))
+intersection
+(if (/= (getvar "osmode") 32) (alert "intersection did not work!"))
+intersection
+(if (/= (getvar "osmode") 0) (alert "intersection did not work!"))
+;_______
+dxfout output_dxf\3dintersection_options.dxf
+6
+quit
+y

@@ -1,0 +1,68 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_3252002_2.txt
+Date:		25-03-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		Source/regress/base/dimedit_oblique.dxf
+		Source/regress/base/dimedit_rotate.dxf
+		Source/regress/base/dimtedit.dxf
+		Source/regress/base/DimUpdateAll.dxf
+		Source/regress/base/Dim_ArrowHeads.dxf
+		Source/regress/base/Dim_DIMFIT.dxf
+		Source/regress/scripts/dimedit_oblique.scr
+		Source/regress/scripts/dimedit_rotate.scr
+		Source/regress/scripts/dimtedit.scr
+		Source/regress/scripts/DimUpdateAll.scr
+		Source/regress/scripts/Dim_ArrowHeads.scr
+		Source/regress/scripts/Dim_DIMFIT.scr
+		Source/regress/results
+Changed files:	
+		Source/regress/regress_scr.exe
+Deleted files:	
+
+Description:	This submission adds dimension scripts to the IntelliCAD regress suite.
+Comments:	The regress suite has been updated. The dimension scripts created by Cybage have
+		been modified to fit the regress criteria and added to the regress suite.
+
+		The regress_scr.exe now supports running with TrueTime, TrueCoverage and BoundsChecker.
+		If an argument (time, mem or cov) is present, the appropriate application is run and the
+		result files saved to the results directory. System environment variables TT_EXE, 
+		ICAD_TT_REGRESS_EXE_PATH, BC_EXE, TC_EXE and ICAD_COV_REGRESS_EXE_PATH have to be set.
+
+File by File:	Source/regress/base/dimedit_oblique.dxf
+			Base files for the regress script.
+		Source/regress/base/dimedit_rotate.dxf
+			Base files for the regress script.
+		Source/regress/base/dimtedit.dxf
+			Base files for the regress script.
+		Source/regress/base/DimUpdateAll.dxf
+			Base files for the regress script.
+		Source/regress/base/Dim_ArrowHeads.dxf
+			Base files for the regress script.
+		Source/regress/base/Dim_DIMFIT.dxf
+			Base files for the regress script.
+		Source/regress/scripts/dimedit_oblique.scr
+			Regress script file.
+		Source/regress/scripts/dimedit_rotate.scr
+			Regress script file.
+		Source/regress/scripts/dimtedit.scr
+			Regress script file.
+		Source/regress/scripts/DimUpdateAll.scr
+			Regress script file.
+		Source/regress/scripts/Dim_ArrowHeads.scr
+			Regress script file.
+		Source/regress/scripts/Dim_DIMFIT.scr
+			Regress script file.
+		Source/regress/results
+			Directory to store Performace, coverage and memory analysis results.
+		Source/regress/regress_scr.exe
+			Executable to run regress has been updated to support the NuMega tools.
+------------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-49.txt
+Produce Version		ICAD 4
+Date				06/11/2004 06:09am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Changes made to fix a couple of regression script failures.
+Fixes 77860.scr, 78393.scr, Spline.scr.
+
+utilities.cpp - added three missing group code numbers in ReadWriteUtils::getOdResBufPtrFromSdsResBufPtr().
+giworlddrawvectors.cpp - Filled in a bit more of the vector retrieval function OdGiEntityGeometry::mesh().
+dwgdirectreader.cpp - Changed the function making sortents to actually make the entity. This was causeing a
+					  script to crash upon dwg cleanup/distruction. Sortents is still not fully implemented,
+					  I have information requests in to the ODT guys on this issue. Also removed a call to
+					  set a given CDbPlotSettings's name member, because it was stepping on the name that was
+					  alread correct and in the dictionary record for it.
+dwgdirectconverter.cpp - Added an argument to let the vertex creation function know which type of vertex to create.
+					  I could not rely on the 70 group code for the information because there can be 8 and 16 group
+					  code vertices for both 2D and 3D vertices.
+
+Code reformatting only no code change on the following files;
+drawing.cpp
+hireflink.cpp
+objects.h
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\db\hireflink.cpp
+\source\prj\lib\db\drawing.cpp
+\source\prj\lib\db\objects.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp

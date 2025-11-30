@@ -1,0 +1,154 @@
+logfilename log\attdisp_options.log
+logfileon
+;_________
+color 1
+pickbox 4
+;________1
+attdef
+i
+p
+v
+
+Oattdef_name_1
+Oattdef_prompt_1
+Oattdef_default_text_1
+0,0
+
+
+color 2
+;________2
+attdef
+c
+
+Oattdef_name_2
+Oattdef_prompt_2
+2,0
+.3
+
+color 3
+;________3
+attdef
+c
+i
+
+Oattdef_name_3
+Oattdef_prompt_3
+Oattdef_default_text_3
+4,0
+.18
+15
+color 4
+;________4
+attdef
+p
+
+Oattdef_name_4
+Oattdef_prompt_4
+Oattdef_default_text_4
+0,1
+.2
+-15
+color 5
+;________5
+attdef
+v
+
+Oattdef_name_5
+Oattdef_prompt_5
+Oattdef_default_text_5
+2,1
+.5
+345
+;________
+block
+a
+0,0
+all
+
+;________
+insert
+a
+0,0
+
+
+
+
+
+
+;________
+zoom
+extents
+;________
+attdisp
+off
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,0
+(if (/= en nil) (alert "attdef off err 1"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2,0
+(if (/= en nil) (alert "attdef off err 2"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,0
+(if (/= en nil) (alert "attdef off err 3"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,1
+(if (/= en nil) (alert "attdef off err 4"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2,1
+(if (/= en nil) (alert "attdef off err 5"))
+;________
+attdisp
+normal
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,0
+(if (/= en nil) (alert "attdef normal err 1"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2,0
+(if (/= en nil) (alert "attdef normal err 2"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,0
+(if (= en nil) (alert "attdef normal err 3"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,1
+(if (= en nil) (alert "attdef normal err 4"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2,1
+(if (= en nil) (alert "attdef normal err 5"))
+;________
+attdisp
+on
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,0
+(if (= en nil) (alert "attdef off err 6"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2.05,0
+(if (= en nil) (alert "attdef off err 7"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+4,0
+(if (= en nil) (alert "attdef off err 8"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+0,1
+(if (= en nil) (alert "attdef off err 9"))
+(setq en nil)
+(setq en (entget (car (entsel))))
+2,1
+(if (= en nil) (alert "attdef off err 10"))
+;_________
+dxfout output_dxf\attdisp_options.dxf
+6
+quit
+y

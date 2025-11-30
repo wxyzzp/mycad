@@ -1,0 +1,40 @@
+logfilename log\elev_options.log
+logfileon
+;_________
+(defun checkelev (exp) (if (/= exp (getvar "elevation")) (alert "Err")))
+(defun checkthk (exp) (if (/= exp (getvar "thickness")) (alert "Err")))
+;_________
+elev
+0
+0
+(checkelev 0.0)
+(checkelev 0.0)
+;__________
+elev
+-70000
+-70000
+(checkelev -70000.0)
+(checkthk -70000.0)
+;___________
+elev
+700000
+700000
+(checkelev 700000.0)
+(checkthk 700000.0)
+;___________
+elev
+-0.50
+-0.50
+(checkelev -0.50)
+(checkthk -0.50)
+;___________
+elev
+0.5
+0.5
+(checkelev 0.50)
+(checkthk 0.50)
+;___________
+dxfout output_dxf\elev_options.dxf
+6
+quit
+y

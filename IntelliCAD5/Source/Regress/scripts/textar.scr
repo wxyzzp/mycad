@@ -1,0 +1,23 @@
+logfilename log\Textar.log
+logfileon
+text
+0,0
+1
+0
+IntelliCAD
+array
+l
+
+r
+100
+100
+0,0
+8,1.5
+zoom
+e
+(load "lisp\findtxt.lsp")
+(findtxt "IntelliCAD" "CADopia")
+re
+dxfout output_dxf\Textar.dxf
+6
+exit y

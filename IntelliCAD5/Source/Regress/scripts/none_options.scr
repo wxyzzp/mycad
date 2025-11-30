@@ -1,0 +1,16 @@
+logfilename log\none_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+none
+(if (/= (getvar "osmode") 0) (alert "none did not work!"))
+;__________
+none
+(if (/= (getvar "osmode") 0) (alert "none did not work!"))
+;__________
+dxfout output_dxf\none_options.dxf
+6
+quit
+y

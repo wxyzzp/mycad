@@ -1,0 +1,13 @@
+logfilename log\78564.log
+logfileon
+filedia 0
+open
+DWG/78564.dwg
+exit y
+;				If we make it to this we have a successfult result.
+;				Failure would cause an unhandled exception and hang.
+;
+;				NOTE: At the time of this writing, there is a memory
+;				leak, that this bug submission did NOT cause, that will
+;				cause an alert box to be displayed affectively stopping 
+;				the script. 

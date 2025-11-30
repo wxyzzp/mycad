@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+File:		CYB_78482_1.txt
+Date:  		14-04-2003
+Developer: 	Vishwanath S Burkule
+Company: 	Cybage Software
+Reference: 	BugZilla:78482
+Affected files: 
+		Source/prj/lib/AUTO/PlotProperties.cpp?rev=1.2.6.3
+Description: 	Implementation of VBA plot routines PaperOrientation, PaperSize and HideLines. Reported by R&C Task
+HideLines true/false can set but the effect will not be seen. Its provided to avoid the error while using it. Currently there is no implementation through PrintDialog. 
+Comments: 	TaL78482
+Probem Analysis:
+		There was no implementation of PaperOrientation, PaperSize and Hidelines.
+Problem Solution:
+		Implement PaperOrientation, PaperSize and Hidelines.		
+File by File:
+	*	Source/prj/lib/AUTO/PlotProperties.cpp?rev=1.2.6.3	
+		Implementation of routines for PaperOrientation, PaperSize and Hidelines.		
+		No problem for implementing PaperOrientation. The value is set properly and effect is also seen.
+		There is no method exported for PaperSize in AutoCAD. But IntelliCAD has and so we are implementing it. Unless one 			change the papersize ( A4, A5 etc ) the preview does not change. By changing the length and width of paper does not have 			the effect on preview. 
+		Hideline effect is not implemented in IntelliCAD. There is no way we can set it through print dialog. The Hideline method is 			exported. We have just implemented it but there will be no effect in preview.
+--------------------------------------------------------------------------------

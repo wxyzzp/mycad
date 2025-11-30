@@ -1,0 +1,38 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04302003.txt
+Date:		04-30-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78470
+
+Changed files: 	
+		Source/prj/lib/CMDS/CmdFilletChamfer.cpp?rev=1.1.2.7 
+		Source/prj/ICAD/res/icadrc2.h?rev=1.59.4.16
+		Eng-us/icad.rc2?rev=1.63.4.24
+
+Description:	This submission fixed polyline fillet and chamfer problem
+                reported in #78470 and other polyline releated problems 
+                memtioned at below, which have not been reported.
+                
+		1) FILLET/CHAMFER incorectly allowed the selected lines to 
+		   be seaprated by more than one polyline segment.
+
+		2) They incorrectly filleted and chamfered all vertices 
+		   between selected edges.
+
+		3) For the case the lines are separated by one polyline segment, 
+		   they didn't replace the segment with fillet a chamfer line 
+		   or fillet.
+
+		4) For the closed polylines, which vertex would be chamfered 
+		   or filleted was incorrectly depending on the selected order.
+
+
+                
+
+

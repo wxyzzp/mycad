@@ -1,0 +1,30 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DwgDirect-41.txt
+Produce Version		ICAD 4
+Date:				05/27/2004 13:10pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Proxy object output work,
+Finished RasterVariables output.
+Fixed _vernum problem.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\giworlddrawvectors.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\regress applications\regress app\regression.exe

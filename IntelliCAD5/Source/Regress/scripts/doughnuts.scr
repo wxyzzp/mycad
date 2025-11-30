@@ -1,0 +1,225 @@
+CMDECHO
+1
+logfilename log\doughnuts.log
+logfileon
+;_______________________
+PICKBOX
+3
+APERTURE
+10
+;----------------------------------------------------------------------
+;----------------------------------------------------------------------
+;
+;;;pM(if (/= (getenv "UTEST") nil) (LOAD "UCSLOAD"))
+;
+;;;;; End of Setup for LOADING of UCS testing
+;
+; Erase anything that's there already.
+erase
+all
+
+; Turn blips off
+blipmode
+off
+; Show prompts and input at the command line.
+setvar
+cmdecho
+1
+; Set the current layer to zero.
+layer
+s
+0
+
+color
+bylayer
+; Setting all the other necessary system variables:
+vpoint
+0,0,1
+; Zoom to a window at least 100 x 100 (if it were square).
+zoom
+c
+75,50
+110
+elev
+0
+0
+gridmode
+0
+fillmode
+1
+snapmode
+0
+linetype
+s
+bylayer
+
+; Draw a red grid for reference
+layer
+m
+redcircle
+c
+red
+
+
+line
+0,0
+0,100
+150,100
+150,0
+0,0
+
+line
+0,50
+150,50
+
+line
+50,0
+50,100
+
+line
+100,0
+100,100
+
+layer
+s
+0
+
+; Draw doughnuts with values rather than points
+layer
+m
+doughnuts
+c
+yellow
+
+
+text
+1,50
+2.5
+
+Using values
+doughnut
+10
+20
+11,88
+36,78,5
+14,66,-5
+
+; Draw doughnuts using points rather than values
+color
+blue
+text
+51,50
+2.5
+
+Using points
+doughnut
+65,80
+70,80
+60,80
+70,80
+59,90
+73,90,3
+87,90,-3
+66,71,6
+81,71,-6
+
+; Draw doughnuts with zero inner diameter
+color
+magenta
+text
+101,50
+2.5
+
+zero inner diameter
+doughnut
+0
+20
+116,84
+134,78,5
+117,69,-5
+
+; Draw doughnuts mixing points and values, plus with thickness
+color
+green
+text
+1,0
+2.5
+
+Mixed values, thickness
+text
+1,5
+1.5
+
+Change view to see thickness
+thickness
+3
+doughnut
+5
+6,38
+18,38
+7,43
+19,43,5
+31,43,-5
+
+doughnut
+18,29,3
+27,29,5
+15
+8,27
+24,27,5
+40,27,-5
+
+; Change the elevation, color, entity snaps, etc.
+text
+51,0
+2.5
+
+Elev, color, snaps
+elev
+3
+3
+color
+cyan
+line
+53,14
+93,42
+
+line
+55,42
+94,14
+
+; Commented out for bug #4388
+doughnut
+3
+6
+end
+57,39
+int
+73.1,29
+mid
+54,14.7
+nea
+86,21
+
+;Change vpoint
+vpoint
+1,-1,1
+;----------------------------------------------------------------------
+;grand finale
+thickness
+0
+text
+115,21
+4
+
+Done!
+;text
+;
+;Active bug #4388
+;----------------------------------------------------------------------
+(if (/= (getenv "itest") nil) (command "dxfout" "doughnuts" "6" "quit" "y"))
+;________________
+dxfout output_dxf\doughnuts.dxf
+6
+quit
+y

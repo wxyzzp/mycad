@@ -1,0 +1,24 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_03042003.txt
+Date:		03-04-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Changed files: 	
+		Source/prj/lib/CMDS/CmdQueryTools.h?rev=1.4.6.6
+		Source/prj/lib/CMDS/CmdQueryTools.tpl?rev=1.4.6.1
+		Source/prj/icad/res/icadrc2.h
+		Eng-us/icad.rc2
+
+Description:	This submission fixes the command prompt problems of the EDHE sub-command of
+                SOLIDEDIT command.
+
+Comments        None.
+

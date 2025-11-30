@@ -1,0 +1,90 @@
+Document Title:  MN_08OCT04.txt	
+Product Version: ICAD 5
+Date:  08 October 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+		This is related to Bugzilla 78995: "Color applied to the selected entities
+from the Color Combo-Box using "Select Color..." option is not reflected properly".
+Following is the link for it :
+http://www.itcdevelopment.org/bugzilla/show_bug.cgi?id=78995
+
+		Gabriele Agostini reported one problem related to "Color Control"
+of "Entity Properties" toolbar. Following are the steps to reproduce the 
+problem: 
+	1. Start IntelliCAD.
+	2. Draw a line.
+	3. Select "select color..." from "Color Control" in properties toolbar. 
+	4. Choose color 140 (for example).
+	5. The "Color 140" is the active color.
+	6. Select previously drawn line.
+	7. Select "color 140" from "Color Control" in properties toolbar.
+	8. The line's color should be changed to "140", but it is changed to BYBLOCK. 
+
+    When we "Select color..." (say 150), from the Drop down "Color Combo-box",
+the string "color 150" is added in the "Color Combo Box". 
+	In the code, the function "ic_colornum" present in the file 
+"Source\prj\lib\Icadlib\Convcolr.cpp" is used to convert any color string to 
+a corresponding color number. But when we make a call to "ic_colornum" function 
+with the string "color ***", it always returns 0.
+	That was the main root of this problem. But if we remove the string "Color" from
+the color string "Color ***" and make a call to the function "ic_colornum" with
+"***" part of the color string, this function works perfect. 
+	So I applied this solution in the function "OnSelchange" of "CColorComboBox" 
+class in the file "ColorComboBox.cpp" of ICAD module. I have used the "Replace" function 
+of "CString" class to remove the string "Color" from the string "Color ***". 
+
+      
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: Bugzilla# 78995; MN_08OCT04.txt	
+Engineer: Mohan Nayak.
+Added files:     
+Affected files:
+	Source/prj/ICAD/ColorComboBox.cpp?rev=1.1.4.4.2.4 
+
+Description:
+	Color applied to the selected entities from the Color Combo-Box using 
+	"Select Color..." option is not reflected properly.
+	Applied the fixes to solve the bug reported by Gabriele Agostini.
+			 
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+
+1. Start IntelliCAD.
+2. Draw a line.
+3. Select "select color..." from "Color Control" in properties toolbar. 
+4. Choose color 140 (for example).
+5. The "Color 140" is the active color.
+6. Select previously drawn line.
+7. Select "color 140" from "Color Control" in properties toolbar.
+8. The line's color should be changed to "140". 
+
+ 
+
+9.  Installation Issues:
+

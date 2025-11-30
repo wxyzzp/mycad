@@ -1,0 +1,368 @@
+
+	interface IIcadApplication;
+	interface IIcadDocument;
+	interface IIcadLibrary;
+	interface IIcadPoints;
+	interface IIcadDbItem;
+	interface IIcadEntity;
+	interface IIcadSelectionSet;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoPoint
+
+	[	object
+		, uuid(8011c107-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadPoint
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadPoint : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the library object.")]
+		HRESULT Parent([out, retval] IIcadLibrary** ppParent);
+
+		[propget, helpstring("Returns the owning Points collection object if it belongs to a collection; else returns nothing.")]
+		HRESULT PointsCollection([out, retval] IIcadPoints** ppPoints);
+
+		[propget, helpstring("Sets or returns the point's X value.")]
+		HRESULT x([out,retval] double *pX);
+		[propput]  
+		HRESULT x([in] double X1);
+
+		[propget, helpstring("Sets or returns the point's Y value.")]
+		HRESULT y([out,retval] double *pY);
+		[propput]  
+		HRESULT y([in] double Y1);
+
+		[propget, helpstring("Sets or returns the point's Z value.")]
+		HRESULT z([out,retval] double *pZ);
+		[propput]  
+		HRESULT z([in] double Z1);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoPoints
+
+	[	object
+		, uuid(8011c10c-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadPoints
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadPoints : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the parent library object.")]
+		HRESULT Parent([out, retval] IIcadLibrary** ppParent);
+
+		[propget, helpstring("Returns the number of Point objects in the collection.")]
+		HRESULT Count([out, retval] long* pCount);
+
+		[propget, restricted, id(-4)]
+		HRESULT	_NewEnum([out, retval] IUnknown** ppUnk);
+
+		// *** Methods
+		[helpstring("Insert a Point object into the Points collection at the specified Index. If no Index is specified, the Point is added to the end of the collection.")]
+		HRESULT Add ([in, optional] double x, [in, optional] double y, [in, optional] double z, [in, optional] long Index, [out, retval] IIcadPoint **Point);
+
+		[id(0), helpstring("Given the index, returns the Point object in the collection")]
+		HRESULT Item([in] long Index, [out, retval] IIcadPoint** ppItem);
+
+		[helpstring("Removes a Point object from the Points collection, but does not delete the Point.")]
+		HRESULT Remove ([in, optional] long Index, [out, retval] IIcadPoint **Point);
+
+		[helpstring("Removes all the points from a Points collection.")]
+		HRESULT RemoveAll();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoVector
+
+	[	object
+		, uuid(8011c108-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadVector
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadVector : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the parent (Library) object.")]
+		HRESULT Parent([out, retval] IIcadLibrary** ppParent);
+
+		[propget, helpstring("Sets or returns the vector's X value.")]
+		HRESULT x([out,retval] double *pX);
+		[propput]  
+		HRESULT x([in] double X1);
+
+		[propget, helpstring("Sets or returns the vector's Y value.")]
+		HRESULT y([out,retval] double *pY);
+		[propput]  
+		HRESULT y([in] double Y1);
+
+		[propget, helpstring("Sets or returns the vector's Z value.")]
+		HRESULT z([out,retval] double *pZ);
+		[propput]  
+		HRESULT z([in] double Z1);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoMatrix
+
+	[	object
+		, uuid(8011c109-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadMatrix
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadMatrix : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** ppApp);
+
+		[propget, helpstring("Returns the library object.")]
+		HRESULT Parent([out, retval] IIcadLibrary** ppParent);
+
+		//*** Methods
+		[helpstring("Returns the value at a given row and column of the matrix.")]
+		HRESULT GetValue ([in] int Row, [in] int Column, [out,retval] double *pValue);
+
+		[helpstring("Sets the value at a given row and column of the matrix.")]
+		HRESULT SetValue ([in] int Row, [in] int Column, [in] double Value);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoLib
+	
+	[	object
+		, uuid(8011c106-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadLibrary
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadLibrary : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** Application);
+
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Parent([out, retval] IIcadApplication** Application);
+
+		// *** Methods
+		[helpstring("Creates a new point object.")]
+		HRESULT CreatePoint([in, optional, defaultvalue(0.0)] double X1, [in, optional, defaultvalue(0.0)] double Y1, [in, optional, defaultvalue(0.0)] double Z1, [out, retval] IIcadPoint** ppPoint);
+
+		[helpstring("Creates a new, empty points collection object.")]
+		HRESULT CreatePoints([out, retval] IIcadPoints** ppPoints);
+
+		[helpstring("Calculates the distance between two user specified points.")]
+		HRESULT CalculateDistance ([in] IIcadPoint* Point1, [in] IIcadPoint* Point2, [out, retval] double *pDistance);
+
+		[helpstring("Returns a Vector object based on (X2-X1), Y2-Y1), (Z2-Z1). X1,Y1,Z1 default to 0,0,0.")]
+		HRESULT CreateVector([in] double X2, [in] double Y2, [in, optional, defaultvalue(0.0)] double Z2, [in, optional, defaultvalue(0.0)] double X1, [in, optional, defaultvalue(0.0)] double Y1, [in, optional, defaultvalue(0.0)] double Z1, [out, retval] IIcadVector** ppVector);
+
+		[helpstring("Adds two vectors.")]
+		HRESULT AddVectors ([in] IIcadVector* Vector1, [in] IIcadVector *Vector2, [out, retval] IIcadVector **ppVector);
+
+		[helpstring("Subtracts two vectors (Vector1 - Vector2).")]
+		HRESULT SubtractVectors ([in] IIcadVector* Vector1, [in] IIcadVector *Vector2, [out, retval] IIcadVector **ppVector);
+
+		[helpstring("Calculates the dot product of two vectors.")]
+		HRESULT VectorDotProduct ([in] IIcadVector* Vector1, [in] IIcadVector *Vector2, [out, retval] double *pVal);
+
+		[helpstring("Calculates the cross product of two vectors (Vector1 X Vector2).")]
+		HRESULT VectorCrossProduct ([in] IIcadVector* Vector1, [in] IIcadVector *Vector2, [out, retval] IIcadVector **ppVector);
+
+		[helpstring("Multiplies a vector with a scalar value.")]
+		HRESULT VectorScalarMultiply ([in] IIcadVector* Vector, [in] double Scale, [out, retval] IIcadVector **ppVector);
+
+		[helpstring("Makes a vector into a Unit vector.")]
+		HRESULT VectorUnitize ([in] IIcadVector* Vector, [out, retval] IIcadVector **ppVector);
+
+		[helpstring("Calculates the length of a vector.")]
+		HRESULT VectorLength ([in] IIcadVector* Vector, [out, retval] double *pLength);
+
+		[helpstring("Calculates the distance between two vectors.")]
+		HRESULT DistanceBetweenVectors ([in] IIcadVector* Vector1, [in] IIcadVector *Vector2, [out, retval] double *pVal);
+
+		[helpstring("Returns an identity matrix.")]
+		HRESULT CreateIdentityMatrix ([out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Returns a matrix equivalent to a rotation of angle radians about an axis specified by two points.")]
+		HRESULT CreateRotationMatrix ([in] double Angle, [in] IIcadPoint *AxisEnd, [in, optional] IIcadPoint *AxisStart, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Returns the resulting matrix  object with a translation of  x, y, and z along the axes.")]
+		HRESULT CreateTranslationMatrix ([in, optional, defaultvalue(0.0)] double x, [in, optional, defaultvalue(0.0)] double y, [in, optional, defaultvalue(0.0)] double z, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Returns the resulting matrix  object scaled about the  x, y, or z axes.")]
+		HRESULT CreateScaleMatrix ([in, optional, defaultvalue(1.0)] double x, [in, optional, defaultvalue(1.0)] double y, [in, optional, defaultvalue(1.0)] double z, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Returns the resulting matrix  object with a reflection along the x, y, or z.")]
+		HRESULT CreateMirrorMatrix ([in, optional] VARIANT_BOOL MirrorX, [in, optional] VARIANT_BOOL MirrorY, [in, optional] VARIANT_BOOL MirrorZ, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Composes the results of two matrices matrix1 and matrix2 into the resulting matrix. ")]
+		HRESULT ComposeMatrix ([in] IIcadMatrix* Matrix1, [in] IIcadMatrix* Matrix2, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Applies the matrix to a point.")]
+		HRESULT ApplyMatrix ([in] IIcadMatrix* Matrix, [in] IIcadPoint* Point, [out, retval] IIcadPoint** ppPoint);
+
+		[helpstring("Finds the inverse of the matrix.")]
+		HRESULT InvertMatrix ([in] IIcadMatrix* Matrix, [out, retval] IIcadMatrix** ppMatrix);
+
+		[helpstring("Converts an array of doubles to a Point object.")]
+		HRESULT ConvertArrayToPoint ([in] VARIANT ArrayOfDoubles, [in] VARIANT_BOOL Is3DPoint, [out, retval] IIcadPoint **Point);
+
+		[helpstring("Converts an array of doubles to a collection of Points.")]
+		HRESULT ConvertArrayToPoints  ([in] VARIANT ArrayOfDoubles, [in] VARIANT_BOOL Is3DPoint, [out, retval] IIcadPoints **Points);
+		
+		[helpstring("Converts an array of doubles to a Vector object.")]
+		HRESULT ConvertArrayToVector ([in] VARIANT ArrayOfDoubles, [in] VARIANT_BOOL Is3DVector, [out, retval] IIcadVector **Vector);
+
+		[helpstring("Converts an array of doubles to a Matrix object.")]
+		HRESULT ConvertArrayToMatrix ([in] VARIANT ArrayOf16Doubles, [out, retval] IIcadMatrix **Matrix);
+
+		[helpstring("Converts a Point object to an Array of doubles.")]
+		HRESULT ConvertPointToArray ([in] IIcadPoint *Point, [in] VARIANT_BOOL Is3DPoint, [out, retval] VARIANT *ArrayOfDoubles);
+
+		[helpstring("Converts a Points collection object to an Array of doubles.")]
+		HRESULT ConvertPointsToArray ([in] IIcadPoints *Points, [in] VARIANT_BOOL Is3DPoint, [out, retval] VARIANT *ArrayOfDoubles);
+
+		[helpstring("Converts a Vector object to an Array of doubles.")]
+		HRESULT ConvertVectorToArray ([in] IIcadVector *Vector, [in] VARIANT_BOOL Is3DVector, [out, retval] VARIANT *ArrayOfDoubles);
+
+		[helpstring("Converts a Matrix object to an Array of doubles.")]
+		HRESULT ConvertMatrixToArray ([in] IIcadMatrix *Matrix, [out, retval] VARIANT *ArrayOf16Doubles);
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//  Primary dispatch interface for CIcadAutoUtility
+	
+	[	object
+		, uuid(8011c10d-7e36-11d1-bc5a-0060089608a4)	// *** IID_IIcadUtility
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadUtility : IDispatch
+	{
+		// *** Properties
+		[propget, helpstring("Returns the application object.")]
+		HRESULT Application([out, retval] IIcadApplication** Application);
+
+		[propget, helpstring("Returns the document object.")]
+		HRESULT Parent([out, retval] IIcadDocument** Document);
+
+		// *** Methods
+		[helpstring("Displays an alert box on the screen containing a user specified string.")]
+		HRESULT Alert([in] BSTR message);
+
+		[helpstring("Returns the angle of a line from the X-axis; The angle is measured counterclockwise.")]
+		HRESULT AngleFromXAxis([in] IIcadPoint* Point1, [in] IIcadPoint* Point2, [out, retval] double *pAngle);
+
+		[helpstring("Converts a string to an angle - Equivalent to angtof in Lisp.")]
+		HRESULT AngleToReal ([in] BSTR Angle, [in, optional] AngleUnits Unit, [out, retval] double *pAngle);
+
+		[helpstring("Converts a distance to a real.  Equivalent to distof in Lisp.")]
+		HRESULT DistanceToReal ([in] BSTR Distance, [in, optional] DistanceUnits Unit, [out, retval] double *pDistance);
+
+		[helpstring("Converts a real or double value to a string")]
+		HRESULT RealToString ([in] double Value, [in, optional] DistanceUnits Unit, [in] long Precision, [out, retval] BSTR *Distance);
+
+		[helpstring("Converts an angle to a string - Equivalent to angtos in Lisp.")]
+		HRESULT AngleToString ([in] double Angle, [in, optional] AngleUnits Unit, [in] long Precision, [out, retval] BSTR *str);
+
+		[helpstring("Prints a prompt to the command line.")]
+		HRESULT Prompt ([in] BSTR TextString);
+
+		[helpstring("Translates one unit of measure to another")]
+		HRESULT ConvertUnit ([in] double Value, [in] BSTR From, [in] BSTR To, [out, retval] double *ConvertedValue);
+
+		[helpstring("Finds a point by means of an entity snap.")]
+		HRESULT EntitySnap ([in] IIcadPoint *InputPoint, [in] ObjectSnapMode SnapMode, [out, retval] IIcadPoint **ppPoint);
+
+		[helpstring("Searches for the specified filename, and returns the full path of the file or an empty string if it was not found.")]
+		HRESULT FindFile ([in] BSTR Name, [out, retval] BSTR *FullPath);
+
+		[helpstring("Equivalent to the Lisp GetAngle function, allows the user to specify the angle on the graphics window.")]
+		HRESULT GetAngle([in, optional] IIcadPoint* Point, [in, optional] BSTR Prompt, [out, retval] double *pAngle);
+
+		[helpstring("Equivalent to the Lisp GetCorner function, allows the user to specify a point as the corner of a rectangle on the graphics window.")]
+		HRESULT GetCorner([in] IIcadPoint* Point, [in, optional] BSTR Prompt, [out, retval] IIcadPoint** ppCorner);
+
+		[helpstring("Equivalent to the Lisp GetDistance function, allows the user to specify a distance on the graphics window.")]
+		HRESULT GetDistance([in, optional] IIcadPoint* Point, [in, optional] BSTR Prompt, [out, retval] double *pDistance);
+
+		[helpstring("Equivalent to the Lisp entsel function, allows the user to pick on the graphics window, and returns the object picked and the picked point in WCS.")]
+		HRESULT GetEntity([in, out] IDispatch **Object, [in, out] IIcadPoint** PickedPoint, [in, optional] BSTR Prompt);
+
+		[helpstring("Equivalent to the Lisp nentsel function, allows the user to pick on the graphics window, and returns the object picked and the picked point in WCS.")]
+		HRESULT GetSubEntity([in, out] IDispatch **Object, [in, out] IIcadPoint** PickedPoint, [in, out] IIcadMatrix **TransMatrix, [in, out] VARIANT *ContextData, [in, optional] BSTR Prompt);
+
+		[helpstring("Returns all data input by the user as a string")]
+		HRESULT GetInput ([out, retval] BSTR* InputString);
+
+		[helpstring("Returns an integer value input by the user")]
+		HRESULT GetInteger([in, optional] BSTR Prompt, [out, retval] long *Value);
+
+		[helpstring("Equivalent to the Lisp GetOrient function, allows the user to specify the orientation on the graphics window.")]
+		HRESULT GetOrientation([in, optional] IIcadPoint* Point, [in, optional] BSTR Prompt, [out, retval] double *pOrientation);
+
+		[helpstring("Equivalent to the Lisp GetPoint function, allows the user to specify a point on the graphics window.")]
+		HRESULT GetPoint([in, optional] IIcadPoint* Point, [in, optional] BSTR Prompt, [out, retval] IIcadPoint** ppPoint);
+
+		[helpstring("Returns an double value input by the user")]
+		HRESULT GetReal([in, optional] BSTR Prompt, [out, retval] double *Value);
+
+		[helpstring("Returns a string input by the user")]
+		HRESULT GetString([in] VARIANT_BOOL HasSpaces, [in, optional] BSTR Prompt, [out, retval] BSTR *String);
+
+		[helpstring("Equivalent to sds_trans function, allows the user to translate coordinates from one system to another.")]
+		HRESULT TranslateCoordinates([in] IIcadPoint* OriginPoint, [in] CoordinateSystemTypes From, [in] CoordinateSystemTypes To, [in] VARIANT_BOOL Disp, [out, retval] IIcadPoint** ppPoint);
+
+		[helpstring("Equivalent to initget function in Lisp.")]
+		HRESULT InitializeUserInput([in] UserInputType Bits, [in, optional] VARIANT Keywords);
+
+		[helpstring("Gets a keyword from the user.  Equivalent to getkword function in Lisp.")]
+		HRESULT GetKeyword ([in, optional] BSTR Prompt, [out, retval] BSTR *String);
+
+		[helpstring("Returns a point at a user specified angle and distance from a given point")]
+		HRESULT PolarPoint([in] IIcadPoint* Point, [in] double Angle, [in] double Distance, [out, retval] IIcadPoint** ppPoint);
+
+		[helpstring("Paints a temporary line in the graphics window. ")]
+		HRESULT PaintLine ([in] IIcadPoint* StartPoint, [in] IIcadPoint* EndPoint, [in, optional] Colors Color, [in, optional] VARIANT_BOOL HighlightFlag);
+
+		[helpstring("Displays the graphics window.")]
+		HRESULT ShowGraphicScreen ();
+
+		[helpstring("Displays the text window, and optionally clears it.")]
+		HRESULT ShowTextScreen ();
+
+		[helpstring("Matches a wild-card pattern to a string.")]
+		HRESULT WildCardMatch ([in] BSTR Pattern, [in] BSTR String, [out, retval] VARIANT_BOOL *Match);
+	}
+
+

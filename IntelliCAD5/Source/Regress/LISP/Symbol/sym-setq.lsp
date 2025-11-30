@@ -1,0 +1,88 @@
+;;;
+;;; Lisp Acceptance Test
+;;;	Symbol functions
+;;;		quote
+;;;
+;;; 17 Jun 98	MichaelHu
+;;;
+;;; quote is mostly tested in the list tests.
+;;;
+	(logmsg "")
+	(load (strcat testscrdir "error"))
+
+;;; ---------------------------------------------
+;;; IntelliCAD help tests.
+	(defun icadhlp1 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc 10)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp2 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq x 10 rc x)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp3 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc "Mom")
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp4 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc '(5 3))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp5 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc 5 x 6)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun icadhlp6 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc 1.0 y 2.0 z 3.0)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+
+;;; ---------------------------------------------
+;;; AutoCAD help tests.
+	(defun acadhlp1 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc 5.0)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun acadhlp2 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc 123 x 4.7)
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun acadhlp3 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc "it")
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+	(defun acadhlp4 ( / prverr )
+		(setq prverr *error*)
+		(setq *error* silent_err)
+		(setq rc '("a" "b"))
+		(logall errloc rc)
+		(setq *error* prverr)
+	)
+

@@ -1,0 +1,24 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_07012003.txt
+Date:		07-01-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+DESCRIPTIONS:	
+ 
+ 	This submission changes SHADE/HIDE to prevent processing polylines.
+	
+
+CHANGED FILES:	
+	
+	Source/Prj/Lib/cmd/HideAndShade.cpp:    Modifed CGLObject::CreateDisplayList().
+
+COMMANDS:

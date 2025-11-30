@@ -1,0 +1,23 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78043_1.txt
+Date:		06-01-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78043
+Added files:     	
+Affected files:	
+		Source/prj/lib/CMDS/DimLinear.cpp
+Description:	The "Dimtedit" command causes a horizontal dimension to get converted to vertical dimension. The fix has been removed as per Denis's code-review suggestions.
+Comments:		TaL78043
+Problem Analysis:
+		The bug is not reproducible even after commenting-out the fix put for this bug.	
+Proposed Solution:
+		Remove the fix.		
+File by File:	
+*		Source/prj/lib/CMDS/DimLinear.cpp
+		Removed the earlier fix.
+--------------------------------------------------------------------------------

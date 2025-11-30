@@ -1,0 +1,49 @@
+Document Title:  SH_220804_1.txt	
+Product Version: ICAD 5.0
+Date:  8/22/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R50_Release
+
+2. Modules Affected : 
+   
+   Source/Prj/lib/cmds/CmdQueryTools.h
+   Source/Prj/lib/cmds/CmdQueryTools.tpl
+   Source/Prj/lib/CmdSolidedit.cpp
+   Source/Prj/lib/cmds/CmdSolidedit.h
+   Source/Prj/Icad/res/icadrc2.h
+   Eng-us/icad.rc2
+   
+3. Overview:
+
+All the options under the Face and Edge sub-commands of SOLIDEDIT command should 
+not have ALL option on "Select a face" and "Select an edge" prompts if no face or 
+edge has been selected. But the option incorrectly showed up always and the command
+did no thing when ALL option was selected before a face or edge had been seleted.
+The problems are fixed.
+
+4.  Notes to Developers:
+
+5.  Notes to QA: N
+
+6.  Notes to Docs: N
+
+7.  Notes for Regress/Benchmarks: N
+
+    * Script change required: N
+
+    * New script(s) submitted: N
+	File Name:                  
+	Name of Script file:  
+
+8.  Notes to Localization: 
+
+
+
+

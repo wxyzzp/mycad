@@ -1,0 +1,33 @@
+-------------------------------------------------------------------------------
+File:		CYB_78070_1.txt
+Date:		17-06-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78070
+Affected files:			
+		CvsHist:Source/prj/ICAD/IcadExplorer.cpp
+		CvsHist:Source/prj/ICAD/IcadSetVarsDia.cpp
+		CvsHist:Source/prj/lib/DB/drawing.cpp
+Description: 	All dimension styles can be deleted.
+		a) Should delete and rename STANDARD dimstyle. 
+		b) Should not show xrefed dimstyle in delete combo box of delete dialog box of 		DDIM command.
+		c) Should  update the DIMSTYLE combo box after deletion of dimension style.
+		d) Should be able to RENAME a dimension style to name of deleted dimension style.	
+		e) Should use CMD_XREF_TBLDIVIDER instead of '|'/*DNT*/  in code.
+Comments:	TaL78070
+File By File :
+	*	CvsHist:Source/prj/ICAD/IcadExplorer.cpp
+		Commented the code in IntelliCAD which did'nt allow to delete the first table record of dimension style. The first table record can not always be standard so this as a bug. 		AutoCAD allows to delete the standard dimension style.
+	*	CvsHist:Source/prj/ICAD/IcadSetVarsDia.cpp
+		1. In many places Intellicad had '|'/*DNT*/ when we already have a #define 				CMD_XREF_TBLDIVIDER.
+		2. Previous to this fix, xrefed style were displayed in delete dialog box but not 		allowed to delete. Now we are stopping xref style to be shown in delete dialog 				box.
+		3. Previous to this fix, one could not rename a style which was just deleted as
+		SDS_tblmesser(rb,IC_TBLMESSER_RENAME,SDS_CURDWG); code was used where the last 				parameter which is default parameter is false which says that check in deleted 				records also. So when we used to rename to a style just deleted we were not 				allowed as it was considering it a duplicate name. Passing last parameter to true 
+		solves the problem which states search in not deleted records.
+		4. Commented code which would pop message saying that  we cannot delete standard 			style.
+		5. Previous to this fix, the combo box was not updating on deleting a dimension 			style. We just have to clear all the dimension style and refill them as done in 			other cases in same file.
+		
+	*	CvsHist:Source/prj/lib/DB/drawing.cpp
+		Comment preventing deleting of standard dimension style. As we have now decided 			to be compatible with AutoCAD in this case also.
+
+-------------------------------------------------------------------------------

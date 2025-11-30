@@ -1,0 +1,16 @@
+logfilename log\78600.log
+logfileon
+;__________
+filedia
+0
+expert
+5
+;___________
+open
+dwg/78600.dxf
+;__________
+save
+output/78600.dwg
+;________
+quit
+y

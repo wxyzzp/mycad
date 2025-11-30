@@ -1,0 +1,30 @@
+logfilename log\export_options.log
+logfileon
+;_________
+(setvar "useri1" (getvar "filedia"))
+(setvar "useri2" (getvar "expert"))
+filedia
+0
+expert
+5
+;____________
+arc
+c
+0,0
+1<0r
+1<1r
+zoom
+extents
+export output\export_options.dwg
+close
+n
+open
+output\export_options.dwg
+;__________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2" ))
+;_________
+dxfout output_dxf\export_options.dxf
+6
+quit
+y

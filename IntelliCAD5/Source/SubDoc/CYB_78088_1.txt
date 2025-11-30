@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78088_1.txt
+Date:		29-04-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78088
+Affected files:	
+		CvsHist:Source/prj/ICAD/IcadExplorer.cpp
+		CvsHist:Source/prj/lib/CMDS/DimStyle.cpp
+		CvsHist:Eng-us/icad.rc2
+		CvsHist:Source/prj/Icad/res/icadrc2.h
+Description:	Dimstyles from Xrefed drawing can be set active.
+Comments:	TaL78088.
+File by File:	
+		* CvsHist:Source/prj/ICAD/IcadExplorer.cpp
+
+		IEXP_CdetailView::CurrentItem()
+		Added a case in this function to restrict Xrefed Dimstyle's being set active 
+		through Icad Explorer.
+		Also changed the resource string for Cut/copy of xrefed dimstyle.
+
+		* CvsHist:Source/prj/lib/CMDS/DimStyle.cpp
+		Xrefed Dimstyle cannot be set active now through dimstyle - restore.
+		Also we cannot get the status or diffrence (~style ) of a xrefed dimstyle.	
+
+		* CvsHist:Eng-us/icad.rc2
+		* CvsHist:Source/prj/Icad/res/icadrc2.h
+		Added resource strings 
+		Cannot set a XREF Dimension style current.
+		Cannot Copy/Cut an XREF dimension style.
+--------------------------------------------------------------------------------            

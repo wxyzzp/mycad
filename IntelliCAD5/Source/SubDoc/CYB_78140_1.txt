@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78140_1.txt
+Date:		20-05-2002
+Developer:      	Avinash Kulkarni
+Company:        	Cybage Software
+Reference:	BugZilla:78140
+Added files:     	
+Affected files: 
+		CvsHist:Source/prj/lib/CMDS/Leader.cpp
+Description: 	Leader is not drawn according to COLOR value.
+Comments:	TaL78140
+File by File:	
+*		CvsHist:Source/prj/lib/CMDS/Leader.cpp
+		Commented out Ebatech's changes. Used DB_QCECOLOR to set the color variable if it is zero. No need of passing color in sds_buildlist.
+--------------------------------------------------------------------------------
+

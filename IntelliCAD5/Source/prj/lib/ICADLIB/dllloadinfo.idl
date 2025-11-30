@@ -1,0 +1,21 @@
+// DLLLoadInfo.idl : IDL source for DLLLoadInfo.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DLLLoadInfo.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(B8094F9D-D014-11D2-B17B-00104B22E914),
+		dual,
+		helpstring("IVisioDLLLoadInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IVisioDLLLoadInfo : IDispatch
+	{
+		[id(1), helpstring("method GetModule")] 
+		HRESULT GetModule([out, retval]long *pModuleHandle);
+	};
+

@@ -1,0 +1,32 @@
+logfilename log\ucsicon_options.log
+logfileon
+(setvar "ucsicon" 3)
+;________0
+ucsicon
+c
+ucsicon
+off
+(if (/= (getvar "ucsicon") 0) (alert "0"))
+(getvar "ucsicon")
+;________1
+ucsicon
+on
+(if (/= (getvar "ucsicon") 1) (alert "1"))
+;________2
+ucsicon
+or
+ucsicon
+off
+;________
+(if (/= (getvar "ucsicon") 2) (alert "2"))
+(getvar "ucsicon")
+;________3
+ucsicon
+on
+;________
+(if (/= (getvar "ucsicon") 3) (alert "3"))
+;___
+dxfout output_dxf\ucsicon_options.dxf
+6
+quit
+y

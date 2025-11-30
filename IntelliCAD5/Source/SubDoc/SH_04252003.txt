@@ -1,0 +1,33 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_04252003.txt
+Date:		04-25-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+Changed files: 	
+		Source/ThirdParty/geo/array.cpp?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/array.h?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/array2d.cpp?rev=1.1.1.1.12.2 
+		Source/ThirdParty/geo/array2d.h?rev=1.1.1.1.12.2 
+		Source/ThirdParty/geo/ctrlpts.cpp?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/ctrlpts.h?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/knots.cpp?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/knots.h?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/point.h?rev=1.1.1.1.12.2 
+		Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.12.5 
+		Source/ThirdParty/geo/nurbs.h?rev=1.1.1.1.12.4 
+		Source/ThirdParty/geo/ptarray.cpp?rev=1.3.8.2
+		Source/ThirdParty/geo/nurbs.cpp?rev=1.1.1.1.12.6
+
+Description:	This submission implements new geometry functionality 
+                to split, join, elevate, and rationalize NURBS curves,
+                compute curve length, and sort array. 
+                
+
+

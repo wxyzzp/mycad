@@ -1,0 +1,37 @@
+logfilename log\78135.log
+logfileon
+dimldrblk
+oblique
+dimstyle
+s
+sd
+dimstyle
+v
+?
+*
+~sd
+~standard
+dimstyle
+r
+?
+*
+standard
+dimstyle
+
+sd
+dimstyle
+v
+sd
+
+v
+standard
+
+v
+@standard
+dfdf
+
+
+dxfout output_dxf\78135.dxf
+6
+quit
+y

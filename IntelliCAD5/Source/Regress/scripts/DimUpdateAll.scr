@@ -1,0 +1,274 @@
+logfilename log\DimUpdateAll.log
+logfileon
+zoom
+w
+-50,100
+350,250
+color
+1
+;;;;;;;;;;;;dim Type ;;;;;;;;;;;;;;;
+text
+0,255
+5
+0
+Vertical
+text
+50,255
+5
+0
+Horizontal
+text
+100,255
+5
+0
+Diameter
+text
+150,255
+5
+0
+Radius
+text
+200,255
+5
+0
+Ordinate
+text
+250,255
+5
+0
+Angular
+text
+300,255
+5
+0
+Aligned
+;;;;;;;;;;;options;;;;;;;;;;;;;
+text
+-50,225
+5
+0
+Normal
+text
+-50,175
+5
+0
+Overridden
+text
+-50,125
+5
+0
+Updated dimension
+color
+cyan
+;;;;;;;;;;;;;;;;;;;;;;;;;Grid;;;;;;;;;;;;;;;;;;;;;;;
+line
+0,100
+350,100
+350,250
+0,250
+C
+
+50,100
+50,250
+
+
+100,100
+100,250
+
+
+150,100
+150,250
+
+
+200,100
+200,250
+
+
+250,100
+250,250
+
+
+300,100
+300,250
+
+
+0,150
+350,150
+
+
+0,200
+350,200
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;overrides;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimasz
+2
+dimclrd
+2
+dimclre
+4
+dimclrt
+3
+dimtxt
+3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;vert;;;;;;;;;;;;;;;;;;;;;
+dimlinear
+10,210
+30,240
+40,225
+color
+cyan
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;hori;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+dimlinear
+60,210
+90,240
+75,215
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;dia;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+color
+blue
+dimfit
+0
+circle
+125,225
+140,225
+dimdiameter
+140,225
+140,225
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;radius;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+color
+blue
+dimfit
+0
+circle
+175,225
+190,225
+Dimradius
+190,225
+190,225
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;dimordinate;;;;;;;;;;;;;;;;;;
+color
+green
+Dimordinate
+210,210
+230,240
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;angular;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+line
+290,240
+260,225
+290,210
+
+dimangular
+290,240
+290,210
+290,225
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;aligned;;;;;;;;;;;;;;;;;;;;;
+dimaligned
+310,210
+330,240
+340,225
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;copy the dimension for overriding;;;;;;;;;;;;;;
+copy
+40,225
+75,215
+140,225
+125,240
+190,225
+175,240
+230,240
+290,240
+290,210
+290,225
+340,225
+
+0,50
+0,0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Override dimension varibles for dimensions;;;;;;;;;;;;
+dimoverride
+dimtad 1
+dimscale 0.5
+dimapost
+ap[]as
+dimtoh 0
+dimalt 1
+dimclre cyan
+dimclrd red
+dimclrt green
+dimblk1 oblique
+dimblk2 none
+dimsah 1
+
+all
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;copy overridden dimensions to third row;;;;;;;;;;;;;;;;;
+copy
+40,175
+75,165
+140,175
+125,190
+190,175
+175,190
+230,190
+290,190
+290,160
+290,175
+340,175
+
+0,50
+0,0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;change system variables;;;;;;;;;;;;;;;;;;
+dimadec 2
+dimalt on
+DIMALTD 4
+DIMALTF 26.4
+DIMALTTD 4
+DIMALTTZ 0
+DIMALTU 3
+dIMALTZ 1
+DIMAPOST p<>s
+DIMASO 1
+DIMRND 0.02000
+DIMSAH 1
+DIMSCALE 1.25
+DIMSHO 1
+DIMSOXD 0
+DIMTAD 2
+DIMTDEC 5
+DIMTFAC 11.0000
+DIMTIH 1
+DIMTIX 0
+DIMTM 0.023
+DIMTOFL 1
+DIMTOH 0
+DIMTOL 1
+DIMTOLJ 2
+DIMTP 0.0000
+DIMTSZ 0.20000
+DIMTVP 0.0000
+DIMTXSTY STANDARD
+DIMTXT 0.200
+DIMZIN 2
+DIMUNIT 2
+DIMUPT 1
+DIMTZIN 0
+DIMFRAC 0
+DIMLUNIT 2
+DIMATFIT 3
+DIMTMOVE 0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;updated dimensions;;;;;;;;;;;;;;;;;;;;;;;;;
+dim
+update
+40,125
+75,115
+140,125
+125,140
+190,125
+175,140
+230,140
+290,140
+290,110
+290,125
+340,125
+
+exit
+dxfout output_dxf\DimUpdateAll.dxf
+6
+quit _y

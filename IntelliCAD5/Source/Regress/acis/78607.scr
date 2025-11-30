@@ -1,0 +1,25 @@
+logfilename log\78607.log
+logfileon
+;_________create_a_torus___________________
+torus
+0,0,0
+3
+1
+vpoint
+1,-1,1
+;_________create_a_shell____________________
+solidedit
+b
+s
+4,0,0
+
+-0.4
+
+
+zoom
+extents
+;_________
+dxfout output_dxf\78607.dxf
+6
+quit
+y

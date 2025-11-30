@@ -1,0 +1,15 @@
+logfilename log\78603.log
+logfileon
+;_______
+cmddia
+0
+(command "_.insert" "$$$tmp2=dwg\snctrophy.dwg" "0,0" "" "" "")
+(command "_.insert" "$$$tmp2=dwg\snctrophy.dwg" "0,0" "" "" "")
+(command "_.insert" "$$$tmp2=dwg\snctrophy.dwg" "0,0" "" "" "")
+cmddia
+1
+;___________
+dxfout output_dxf\78603.dxf
+6
+quit
+y

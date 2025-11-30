@@ -1,0 +1,79 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_17022003_1.txt
+Date:		17-02-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/ThirdParty/DCL_Components/DCL/dcl.dsp?rev=1.6.2.1.2.1
+		Source/prj/lib/GR/2D.CPP?rev=1.1.4.1.2.1
+		Source/prj/lib/CMDS/purge.cpp?rev=1.6.8.1
+		Source/prj/ICAD/IcadMenuTBDef.h?rev=1.19.6.3
+		Source/prj/lib/CMDS/cmds3.cpp?rev=1.17.4.2.2.4
+ 
+Deleted files:	
+		None
+
+Description:	This submission merges changes made to R40_Dev stream to R40_from_11 stream.
+Comments:	In this submission changes from R40_Dev are merged into R40_from_11
+
+		Date:  			07-01-2003
+		Developer: 		Pieter Clarysse
+		Company: 		BricsCad?
+		Reference: 		fix Pieter Clarysse 23-09-2002
+		Affected files: 
+  			Source/ThirdParty/DCL_Components/DCL/dcl.dsp
+		Description: 		Switched on rtti to use dynamic caset in main.cpp.  This fixes crashes    when editboxes or textboxes are used as imagebutton.  previously a static cast was used. 
+		Comments: 		this completes the 23-9-2002 fix
+
+		Date:			09-02-2003
+		Developer:		DenisPetrov
+		Company:		ITC
+		Affected files:	
+			Source/prj/lib/GR/2D.CPP 
+		Description:		Fixed methods for checking intersections.
+
+		Date:  			17-02-2003
+		Developer: 		Vishwanath S Burkule
+		Company:  		Cybage Software
+		Reference: 		BugZilla: 78444
+		Affected files:   
+			Source/prj/lib/CMDS/purge.cpp 
+		Description: 		Crash on Purge > all command for given drawing
+		Comments: 		TaL78444
+
+		Date:  		17-02-2003
+		Developer: 	Vishwanath S Burkule
+		Company:  	Cybage Software
+		Reference: 	BugZilla: 78430
+		Affected files:   
+			Source/prj/ICAD/IcadMenuTBDef.h
+		Description: 	Bug revisited. Wrong tile for toolbars in Professional build of IntelliCAD. No problem in standard build (without licensed components)
+		Comments: 	TaL78430
+
+		Date:			21-11-2002
+		Developer:		Dmitry Gavrilov
+		Company:		BricsCad?
+		Reference:
+		Affected files:	
+			Source/prj/lib/CMDS/cmds3.cpp
+		Description:		added param in cmds_xref_edit for partial filenames
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------

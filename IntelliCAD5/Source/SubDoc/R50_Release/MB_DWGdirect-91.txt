@@ -1,0 +1,59 @@
+Document Title:		MB_DWGdirect-91.txt
+Product Version:	ICAD 5
+Date:  				09/04/2004 05:51am
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & Icad_cee
+
+2.  Modules Affected : 
+	DWGdirect
+	ICAD
+	DB
+
+3.  Overview:
+This submission fixes a problem where in IntelliCAD Pro, a .vbi file is ALWAYS create
+upon save of a drawing. I have made use of a preexisting flag to prevent that when either
+there was no .vbi file when the drawing was loaded, or the (Alt-F11) or the command vba is
+never executed for a given drawing.
+
+Fixe a small memory leak in exhostappservices.cpp.
+
+Fixed a problem where a save/qsave on a file that has never been saved will result in that
+drawing being saved as an R14 drawing.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    source/licensed/dwgdirect/exservices/exhostappservices.cpp
+                    source/prj/icad/icaddoc.cpp
+                    source/prj/icad/icadwndaction.cpp
+                    source/prj/lib/cmds/save.cpp
+                    source/prj/lib/db/drawing.h
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/subdoc/R50_Release/MB_DWGdirect-91.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+On vbi file creations: Note that simply executing Alt-F11 or the vba command will trigger
+saving a .vbi file even if that file is completely empty. I'm not convinced it is worth the
+effort, or even possible to tell if the vba project is in fact empty. So if either of the 
+commands are executed a .vbi file will be created. SaveAs of a file that has a vb project,
+will make an exact copy of the project for the new file.
+
+9.  Installation Issues:
+

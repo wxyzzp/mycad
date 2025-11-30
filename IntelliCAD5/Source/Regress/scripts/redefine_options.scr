@@ -1,0 +1,29 @@
+logfilename log\redefine_options.log
+logfileon
+;_________
+undefine
+line
+;________
+;line
+;1,1
+;2,2
+;
+;(setq en nil)
+;(Setq en (entlast))
+;(if (/= en nil) (alert "Err") (princ "OK"))
+;________
+redefine
+line
+;________
+line
+1,1
+2,2
+
+(setq en nil)
+(Setq en (entlast))
+(if (= en nil) (alert "Err") (princ "OK"))
+;__________
+dxfout output_dxf\redefine_options.dxf
+6
+quit
+y

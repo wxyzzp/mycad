@@ -1,0 +1,64 @@
+logfilename log\78168_layer.log
+logfileon
+;_______new
+expert
+0
+-layer
+n     la a1 
+
+;_______make
+-layer
+m   la b1 
+
+;_______set
+-layer
+s     la a1 
+
+;_______color
+-layer
+c
+1     la a1 
+
+;_______ltype
+-layer
+l
+hidden
+
+   la a1   
+
+
+;_______off
+-layer
+off   la b1 
+
+;_______off
+-layer
+off   la a1    
+y
+
+;_______on__
+-layer on   la b1 
+
+;_______on__
+-layer on   la a1 
+
+;______freeze
+-layer f   la b1 
+
+;_______thaw
+-layer
+t   la b1 
+
+;_______lock
+-layer
+lo   la b1 
+
+;_______unlock
+-layer
+u   la b1 
+
+;__________
+dxfout output_dxf\78168_layer.dxf
+6
+quit
+y

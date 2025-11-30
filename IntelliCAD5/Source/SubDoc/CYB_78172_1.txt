@@ -1,0 +1,21 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	CYB_78172_1.txt
+Date:		07-10-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:	BugZilla:78172
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/IcadExplorer.cpp
+Description: 	ICAD crashes when trying to rename Item types in the Explorer.
+Comments:	TaL78172
+File by File:	
+*		Source/prj/ICAD/IcadExplorer.cpp
+		Checked the value of the current index i.e. IEXP_CurrentIndx. If the value is  7, it means that the current element in the left pane of the explorer is the name of the drawing and one of the items from the right pane is selected. In this case simply return. Also before using pEdit to call the SetLimitText( ) make sure that pEdit is not NULL.
+
+--------------------------------------------------------------------------------

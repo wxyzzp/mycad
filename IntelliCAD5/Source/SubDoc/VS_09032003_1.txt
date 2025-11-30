@@ -1,0 +1,62 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_09032003_1.txt
+Date:		09-03-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Eng-us/versioninfo.rc2?rev=1.1.6.2
+		Eng-us/AuthenticateRes.rc?rev=1.3.10.2 
+		Eng-us/DCLRes.rc?rev=1.1.10.2
+		Eng-us/icad.rc2?rev=1.63.2.4.2.4 
+		Eng-us/ICAD.TIP?rev=1.2.12.2 
+		Eng-us/IcadRes.rc?rev=1.28.2.4.2.4 
+		Source/prj/lib/AUTO/AutoDLL.rc?rev=1.5.8.2 
+		Source/prj/lib/DB/dbdll.rc?rev=1.3.14.2 
+		Source/prj/lib/GR/grdll.rc?rev=1.3.14.2 
+		Source/prj/lib/MARCOMP/dwgex.rc?rev=1.2.14.2 
+		Source/prj/ICAD/AppAuthenticate.cpp?rev=1.8.8.2 
+		Source/prj/ICAD/blddate.h?rev=1.4.6.11.2.3 
+		Source/prj/ICAD/IcadApp.cpp?rev=1.28.4.3.2.2 
+		Source/prj/ICAD/IcadHelp.h?rev=1.3.12.2  
+Deleted files:	
+		None
+
+Description:	This submission merges changes made by Cybage to change references to IntelliCAD 2003 to IntelliCAD 4.
+Comments:	This submission merges changes made by Cybage to change references to IntelliCAD 2003 to IntelliCAD 4. 
+
+				Date:		07-03-2003
+				Developer:		Sachin Dange
+				Company:		Cybage Software
+				Reference:	
+				Affected files:	
+						Eng-us/versioninfo.rc2
+						Eng-us/AuthenticateRes.rc 
+						Eng-us/DCLRes.rc 
+						Eng-us/icad.rc2 
+						Eng-us/ICAD.TIP 
+						Eng-us/IcadRes.rc 
+						Source/prj/lib/AUTO/AutoDLL.rc 
+						Source/prj/lib/DB/dbdll.rc 
+						Source/prj/lib/GR/grdll.rc 
+						Source/prj/lib/MARCOMP/dwgex.rc 
+						Source/prj/ICAD/AppAuthenticate.cpp 
+						Source/prj/ICAD/blddate.h 
+						Source/prj/ICAD/IcadApp.cpp 
+						Source/prj/ICAD/IcadHelp.h 
+				Added Files:	
+						Source/res/Icadsplash_4.bmp	
+				Description:	1. Changing resource strings from IntelliCAD 2003 to IntelliCAD 4.		
+				Comments:	
+
+
+-----------------------------------------------------------------------------

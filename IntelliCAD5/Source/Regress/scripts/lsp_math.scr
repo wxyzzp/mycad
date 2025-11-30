@@ -1,0 +1,16 @@
+Logfilename log\lsp_math.log
+Logfileon
+(princ "log 5")
+(princ (log 5.0))
+(princ "log10 5")
+(princ (log10 5.0))
+(princ "exp 5")
+(princ (exp 5.0))
+(princ "min 5 3")
+(princ (min 5 3))
+(princ "tan 5")
+(princ (tan 5.0))
+Dxfout output_dxf\lsp_math.dxf
+6
+Quit
+y

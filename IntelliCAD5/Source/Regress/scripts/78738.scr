@@ -1,0 +1,20 @@
+logfilename log\78738.log
+logfileon
+;______________
+TEXT
+0,0
+0.2
+0
+ABCDEFG
+(setq xx (textbox (entget (entlast))))
+RECTANG
+(car xx)
+(cadr xx)
+;________________
+zoom
+e
+;________________
+dxfout output_dxf\78738.dxf
+6
+quit
+y

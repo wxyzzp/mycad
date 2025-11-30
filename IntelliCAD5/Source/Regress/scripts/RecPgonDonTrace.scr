@@ -1,0 +1,177 @@
+;---------------------------------------------
+;File name: RecpgonDonTrace.SCR
+;Purpose: Demonstrate 
+;
+;Last Modified: 3/18/98
+;---------------------------------------------
+CMDECHO
+0
+PICKBOX
+3
+APERTURE
+10
+;----------------------------------------------------------------------
+; This script file tests the Rectangle, polygon, 
+; Last Modified on 3/18/98
+;
+; Erase anything that's there already.
+erase
+all
+
+; Turn blips off
+blipmode
+off
+; Set the current layer to zero.
+layer
+s
+0
+
+color
+bylayer
+; Setting all the other necessary system variables:
+vpoint
+0,0,1
+; Zoom to a window at least 100 x 100 (if it were square).
+zoom
+w
+-1,-1
+@150<45
+elev
+0
+0
+gridmode
+0
+fillmode
+1
+snapmode
+0
+linetype
+s
+bylayer
+
+;set grid and snap
+snap
+5
+Grid
+snap
+Limits
+0,0
+100,100
+redraw
+linetype
+s
+continuous
+
+;two rectangles (section 1)
+rectang
+10,100
+40,70
+rectang
+15,95
+35,75
+color
+red
+;normal polygon (section 2)
+polygon
+5
+25,85
+i
+25,75
+;
+;polygon using side (section 3)
+polygon
+8
+25,85
+c
+25,70
+;
+color
+yellow
+;
+;polygons using edge and side (section 4)
+polygon
+4
+edge
+65,100
+50,85
+;
+polygon
+16
+65,85
+c
+55,75
+;
+polygon
+3
+e
+55,80
+75,80
+;
+color
+green
+;
+;donuts (section 5)
+donut
+5
+15
+20,50
+35,50
+
+;donuts w/outer diameter smaller than the inner. 
+donut
+5
+1
+20,35
+
+;this donut should be solid
+donut
+0
+5
+35,35
+
+color
+magenta
+;
+;trace (section 6)
+trace
+.2
+65,65
+75,50
+75,25
+
+trace
+3
+65,65
+65,25
+
+;solids (section 7)
+solid
+85,35
+100,35
+100,5
+85,0
+
+;80,10
+;80,20
+color
+blue
+;
+solid
+85,35
+100,35
+85,60
+100,60
+
+grid
+off
+;----------------------------------------------------------------------
+;Now for the grand finale
+text
+20,15,0
+3
+
+Done!
+;----------------------------------------------------------------------
+dxfout output_dxf\RecPgonDonTrace.dxf
+6
+quit _y

@@ -1,0 +1,23 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4292002_2.txt
+Date:		29-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/lib/CMDS/cmds3.cpp
+                CvsHist:Source/prj/lib/CMDS/purge.cpp
+                CvsHist:Source/prj/lib/DRW/dwgload.cpp
+Description: PURGE, XREF /BIND /XREF with SHAPE object
+Comments: 
+	dwgload.cpp can set reference to shape style.
+	cmds3.cpp can bind/insert xrefed drawings with shape and/or complex linetype.
+	purge.cpp can purge unused shape style and linetype with shape.
+
+--------------------------------------------------------------------------------

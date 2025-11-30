@@ -1,0 +1,43 @@
+Document Title:  SH_080704_1.txt	
+Product Version: ICAD 4.0
+Date:  7/8/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : CMDS
+
+3. Overview:
+
+This submission fixes the bug of the LIST command, which dosn't show the data 
+of the minor axes of ellipse correctly when the current UCS is different than 
+one the ellipse was created. The problem was the minor axis was computed
+incorrectly by using the data w.r.t. entitity coordinate system.
+
+4.  Notes to Docs: N
+
+5.  Notes for Regress/Benchmarks: N
+
+6.  Change Log: 
+
+Affected files: 
+
+		Source/prj/lib/cmds/cmd9.cpp
+
+
+7.  System file - Component Changes and Additions: N
+
+8.  Testing Considerations:
+* Unit Test Description: Tested LIST command with ellipses created in differnt UCS'.
+* Notes for QA Testing: N
+
+9.  Installation Issues: N.
+
+
+

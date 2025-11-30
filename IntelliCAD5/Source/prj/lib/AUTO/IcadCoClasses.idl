@@ -1,0 +1,831 @@
+// Icad CoClass definitions
+
+#include "IcadEnums.idh"
+#include "IcadLibrary.idh"
+#include "PlotSupport.idh"
+#include "IcadGlobal.idh"
+#include "IcadTables.idh"
+#include "IcadEntity.idh"
+#include "IcadDimensions.idh"
+#include "IcadDocument.idh"
+
+
+	// *** Class information for CIcadAutoDimension
+
+	[ uuid(8011c19a-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Dimension
+		,helpstring("Dimension Object.")
+		,noncreatable
+	]
+	coclass Dimension
+	{
+		[default] interface IIcadDimension;
+	}
+
+	// *** Class information for CIcadAutoDimAngular
+
+	[ uuid(8011c1b4-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimAngular
+		,helpstring("Angular Dimension Object.")
+		,noncreatable
+	]
+	coclass DimAngular
+	{
+		[default] interface IIcadDimAngular;
+	}
+
+	// *** Class information for CIcadAutoDimAligned
+
+	[ uuid(8011c1b5-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimAligned
+		,helpstring("Aligned Dimension Object.")
+		,noncreatable
+	]
+	coclass DimAligned
+	{
+		[default] interface IIcadDimAligned;
+	}
+
+	// *** Class information for CIcadAutoDimDiametric
+
+	[ uuid(8011c1b6-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimDiametric
+		,helpstring("Diametric Dimension Object.")
+		,noncreatable
+	]
+	coclass DimDiametric
+	{
+		[default] interface IIcadDimDiametric;
+	}
+
+	// *** Class information for CIcadAutoDimOrdinate
+
+	[ uuid(8011c1b7-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimOrdinate
+		,helpstring("Ordinate Dimension Object.")
+		,noncreatable
+	]
+	coclass DimOrdinate
+	{
+		[default] interface IIcadDimOrdinate;
+	}
+
+	// *** Class information for CIcadAutoDimRadial
+
+	[ uuid(8011c1b8-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimRadial
+		,helpstring("Radial Dimension Object.")
+		,noncreatable
+	]
+	coclass DimRadial
+	{
+		[default] interface IIcadDimRadial;
+	}
+
+	// *** Class information for CIcadAutoDimRotated
+
+	[ uuid(8011c1b9-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimRotated
+		,helpstring("Rotated Dimension Object.")
+		,noncreatable
+	]
+	coclass DimRotated
+	{
+		[default] interface IIcadDimRotated;
+	}
+
+	// *** Class information for CIcadAutoDim3PointAngular
+
+	[ uuid(8011c1ba-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Dim3PointAngular
+		,helpstring("3PointAngular Dimension Object.")
+		,noncreatable
+	]
+	coclass Dim3PointAngular
+	{
+		[default] interface IIcadDim3PointAngular;
+	}
+
+	// *** Class information for CIcadModelSpace
+
+	[ uuid(8011c190-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_ModelSpace
+		,helpstring("Model Space Entities Collection Object.")
+		,noncreatable
+	]
+	coclass ModelSpace
+	{
+		[default] interface IIcadModelSpace;
+	}
+
+	// *** Class information for CIcadPaperSpace
+
+	[ uuid(8011c191-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_PaperSpace
+		,helpstring("Paper Space Entities Collection Object.")
+		,noncreatable
+	]
+	coclass PaperSpace
+	{
+		[default] interface IIcadPaperSpace;
+	}
+
+	//  Class information for CIcadAutoDoc
+
+	[ uuid(000D0E00-0000-0000-C000-000000000046)	// *** CLSID_Document
+		, helpstring("Visio IntelliCAD Document Object")
+	]
+	coclass Document
+	{
+       [default] interface IIcadDocument;
+       [default, source] dispinterface _EIcadDocument;
+	}
+
+	[ uuid(8011c11f-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DocumentPreferences
+		,helpstring("Document Preferences Object.")
+		,noncreatable
+	]
+	coclass DocumentPreferences
+	{
+		[default] interface IIcadDocumentPreferences;
+	}
+	// *** Class information for CIcadAutoEntity
+
+	[ uuid(8011c1bf-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Entity
+		,helpstring("Generic Entity Object.")
+		,noncreatable
+	]
+	coclass Entity
+	{
+		[default] interface IIcadEntity;
+	}
+
+	// *** Class information for CIcadAuto3DFace
+
+	[ uuid(8011c192-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_3DFace
+		,helpstring("3DFace Object.")
+		,noncreatable
+	]
+	coclass Face3D
+	{
+		[default] interface IIcad3DFace;
+	}
+
+	// *** Class information for CIcadAuto3DPoly
+
+	[ uuid(8011c193-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_3DPoly
+		,helpstring("3DPoly Object.")
+		,noncreatable
+	]
+	coclass Polyline3D
+	{
+		[default] interface IIcad3DPoly;
+	}
+
+	// *** Class information for CIcadAutoArc
+
+	[ uuid(8011c195-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Arc
+		,helpstring("Arc Object.")
+		,noncreatable
+	]
+	coclass Arc
+	{
+		[default] interface IIcadArc;
+	}
+
+	// *** Class information for CIcadAutoAttributeDef
+
+	[ uuid(8011c196-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_AttributeDef
+		,helpstring("AttributeDef Object.")
+		,noncreatable
+	]
+	coclass AttributeDef
+	{
+		[default] interface IIcadAttributeDef;
+	}
+
+	// *** Class information for CIcadAutoAttribute
+
+	[ uuid(8011c197-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Attribute
+		,helpstring("Attribute Object.")
+		,noncreatable
+	]
+	coclass Attribute
+	{
+		[default] interface IIcadAttribute;
+	}
+
+	// *** Class information for CIcadAutoAttributes
+
+	[ uuid(8011c1b2-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Attributes
+		,helpstring("Attribute Collection Object.")
+		,noncreatable
+	]
+	coclass Attributes
+	{
+		[default] interface IIcadAttributes;
+	}
+
+	// *** Class information for CIcadAutoBlockInsert
+
+	[ uuid(8011c198-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_BlockInsert
+		,helpstring("Block Insertion Object.")
+		,noncreatable
+	]
+	coclass BlockInsert
+	{
+		[default] interface IIcadBlockInsert;
+	}
+
+	// *** Class information for CIcadAutoCircle
+
+	[ uuid(8011c199-7e36-11d1-bc5a-0060089608a4),	// *** CLSID_Circle
+		,helpstring("Circle entity Object.")
+		,noncreatable
+	]
+	coclass Circle
+	{
+		[default] interface IIcadCircle;
+	}
+
+	// *** Class information for CIcadAutoEllipse
+
+	[ uuid(8011c19b-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Ellipse
+		,helpstring("Ellipse Object.")
+		,noncreatable
+	]
+	coclass Ellipse
+	{
+		[default] interface IIcadEllipse;
+	}
+
+	// *** Class information for CIcadAutoHatch
+
+	[ uuid(8011c19c-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Hatch
+		,helpstring("Hatch Object.")
+		,noncreatable
+	]
+	coclass Hatch
+	{
+		[default] interface IIcadHatch;
+	}
+
+	// *** Class information for CIcadAutoLeader
+
+	[ uuid(8011c19d-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Leader
+		,helpstring("Leader Object.")
+		,noncreatable
+	]
+	coclass Leader
+	{
+		[default] interface IIcadLeader;
+	}
+
+	// *** Class information for CIcadAutoLine
+
+	[ uuid(8011c19f-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Line
+		,helpstring("Line Object.")
+		,noncreatable
+	]
+	coclass Line
+	{
+		[default] interface IIcadLine;
+	}
+
+	// *** Class information for CIcadAutoLightWeightPolyline
+
+	[ uuid(8011c19e-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_LightWeightPolyline
+		,helpstring("LightWeightPolyline Object.")
+		,noncreatable
+	]
+	coclass LWPolyline
+	{
+		[default] interface IIcadLightWeightPolyline;
+	}
+
+	// *** Class information for CIcadAutoMText
+
+	[ uuid(8011c1a0-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_MText
+		,helpstring("MText Object.")
+		,noncreatable
+	]
+	coclass MText
+	{
+		[default] interface IIcadMText;
+	}
+
+	// *** Class information for CIcadAutoPointEntity
+
+	[ uuid(8011c1a1-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_PointEntity
+		,helpstring("PointEntity Object.")
+		,noncreatable
+	]
+	coclass PointEntity
+	{
+		[default] interface IIcadPointEntity;
+	}
+
+	// *** Class information for CIcadAutoPolyline
+
+	[ uuid(8011c1a2-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Polyline
+		,helpstring("Polyline Object.")
+		,noncreatable
+	]
+	coclass Polyline
+	{
+		[default] interface IIcadPolyline;
+	}
+
+	// *** Class information for CIcadAutoPolygonMesh
+
+	[ uuid(8011c1a3-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_PolygonMesh
+		,helpstring("PolygonMesh Object.")
+		,noncreatable
+	]
+	coclass PolygonMesh
+	{
+		[default] interface IIcadPolygonMesh;
+	}
+
+	// *** Class information for CIcadAutoPolyfaceMesh
+
+	[ uuid(8011c1b3-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_PolyfaceMesh
+		,helpstring("PolyfaceMesh Object.")
+		,noncreatable
+	]
+	coclass PolyfaceMesh
+	{
+		[default] interface IIcadPolyfaceMesh;
+	}
+
+	// *** Class information for CIcadAutoPViewport
+
+	[ uuid(8011c1a4-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_PViewport
+		,helpstring("Paperspace Viewport Object.")
+		,noncreatable
+	]
+	coclass PViewport
+	{
+		[default] interface IIcadPViewport;
+	}
+
+	// *** Class information for CIcadAutoImage
+
+	[ uuid(8011c1a5-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Image
+		,helpstring("Image Object.")
+		,noncreatable
+	]
+	coclass Image
+	{
+		[default] interface IIcadImage;
+	}
+
+	// *** Class information for CIcadAutoRay
+
+	[ uuid(8011c1a6-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Ray
+		,helpstring("Ray Object.")
+		,noncreatable
+	]
+	coclass Ray
+	{
+		[default] interface IIcadRay;
+	}
+
+	// *** Class information for CIcadAutoShape
+	// EBATECH(CNBR) 2002/4/24 Support SHAPE
+
+	[ uuid(8011c1a8-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Shape
+		,helpstring("Shape Object.")
+		,noncreatable
+	]
+	coclass Shape
+	{
+		[default] interface IIcadShape;
+	}
+
+	// *** Class information for CIcadAutoSolid
+
+	[ uuid(8011c1a9-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Solid
+		,helpstring("Solid Object.")
+		,noncreatable
+	]
+	coclass Solid
+	{
+		[default] interface IIcadSolid;
+	}
+
+	// *** Class information for CIcadAutoSpline
+
+	[ uuid(8011c1aa-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Spline
+		,helpstring("Spline Object.")
+		,noncreatable
+	]
+	coclass Spline
+	{
+		[default] interface IIcadSpline;
+	}
+
+	// *** Class information for CIcadAutoText
+
+	[ uuid(8011c1ab-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Text
+		,helpstring("Text Object.")
+		,noncreatable
+	]
+	coclass Text
+	{
+		[default] interface IIcadText;
+	}
+
+	// *** Class information for CIcadAutoTolerance
+
+	[ uuid(8011c1ac-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Tolerance
+		,helpstring("Tolerance Object.")
+		,noncreatable
+	]
+	coclass Tolerance
+	{
+		[default] interface IIcadTolerance;
+	}
+
+	// *** Class information for CIcadAutoTrace
+
+	[ uuid(8011c1ad-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Trace
+		,helpstring("Trace Object.")
+		,noncreatable
+	]
+	coclass Trace
+	{
+		[default] interface IIcadTrace;
+	}
+
+	// *** Class information for CIcadAutoInfiniteLine
+
+	[ uuid(8011c1ae-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_InfiniteLine
+		,helpstring("InfiniteLine Object.")
+		,noncreatable
+	]
+	coclass InfiniteLine
+	{
+		[default] interface IIcadInfiniteLine;
+	}
+
+	// *** Class information for CIcadAutoExternalReference
+
+	[ uuid(8011c1af-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_ExternalReference
+		,helpstring("External Reference Object.")
+		,noncreatable
+	]
+	coclass ExternalReference
+	{
+		[default] interface IIcadExternalReference;
+	}
+
+	//  Class information for CIcadAutoDocs
+	[ uuid(8011c112-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Documents
+		,helpstring("Document Collection Class")
+		,noncreatable
+	]
+	coclass Documents
+	{
+		[default] interface IIcadDocuments;
+	}
+
+	//  Class information for CIcadAutoWnds
+
+	[ uuid(8011c114-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Windows
+		,helpstring("Window Collection Object.")
+		,noncreatable
+	]
+	coclass Windows
+	{
+		[default] interface IIcadWindows;
+	}
+
+	//  Class information for CIcadAutoWnd
+
+	[ uuid(8011c115-7e36-11d1-bc5a-0060089608a4),	// *** CLSID_Window
+		,helpstring("Window Object.")
+		,noncreatable
+	]
+	coclass Window
+	{
+		[default] interface IIcadWindow;
+	}
+
+	//  Class information for CIcadAutoApp
+
+	[ uuid(8011c111-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Application
+		,helpstring("Visio IntelliCAD Application Object")
+		,appobject
+	]
+	coclass Application
+	{
+		[default] interface IIcadApplication;
+	}
+
+	[	uuid(8011c1e0-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Workspace
+		,helpstring("Workspace Object")
+	]
+	coclass Workspace
+	{
+		[default] interface IIcadWorkspace;
+		[default, source] dispinterface _IcadWorkspaceEvents;
+	}
+
+	[ uuid(8011c11e-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_ApplicationPreferences
+		,helpstring("Application Preferences Object.")
+		,noncreatable
+	]
+	coclass ApplicationPreferences
+	{
+		[default] interface IIcadApplicationPreferences;
+	}
+	//  Class information for CIcadAutoPoint
+
+	[ uuid(8011c117-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Point
+		,helpstring("Point Object.")
+	]
+	coclass Point
+	{
+		[default] interface IIcadPoint;
+	}
+
+	//  Class information for CIcadPoints
+
+	[ uuid(8011c11c-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Points
+		,helpstring("Window Collection Object.")
+	]
+	coclass Points
+	{
+		[default] interface IIcadPoints;
+	}
+
+	//  Class information for CIcadAutoVector
+
+	[ uuid(8011c118-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Vector
+		,helpstring("Vector Object.")
+	]
+	coclass Vector
+	{
+		[default] interface IIcadVector;
+	}
+
+	//  Class information for CIcadAutoMatrix
+
+	[ uuid(8011c119-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Matrix
+		,helpstring("Matrix Object.")
+	]
+	coclass Matrix
+	{
+		[default] interface IIcadMatrix;
+	}
+
+	//  Class information for CIcadAutoLib
+
+	[ uuid(8011c116-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Library
+		,helpstring("Library Object.")
+		,noncreatable
+	]
+	coclass Library
+	{
+		[default] interface IIcadLibrary;
+	}
+
+	[ uuid(8011c11d-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Utility
+		,helpstring("Utility Object.")
+		,noncreatable
+	]
+	coclass Utility
+	{
+		[default] interface IIcadUtility;
+	}
+
+	//  Class information for CIcadRegisteredApplication
+
+	[ uuid(8011c143-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_RegisteredApplication
+		, helpstring("Registered Application Object")
+	]
+	coclass RegisteredApplication
+	{
+		[default] interface IIcadRegisteredApplication;
+	}
+
+	//  Class information for CIcadRegisteredApplications
+
+	[ uuid(8011c144-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_RegisteredApplications
+		, helpstring("Registered Applications Collection Object")
+	]
+	coclass RegisteredApplications
+	{
+		[default] interface IIcadRegisteredApplications;
+	}
+
+	//  Class information for CIcadAutoBlock
+
+	[ uuid(8011c145-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Block
+		, helpstring("Block Object")
+	]
+	coclass Block
+	{
+		[default] interface IIcadBlock;
+	}
+
+	//  Class information for CIcadAutoBlocks
+
+	[ uuid(8011c146-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Blocks
+		, helpstring("Block Collection Object")
+	]
+	coclass Blocks
+	{
+		[default] interface IIcadBlocks;
+	}
+
+	//  Class information for CIcadAutoDimensionStyle
+
+	[ uuid(8011c147-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimensionStyle
+		, helpstring("Dimension Style Object")
+	]
+	coclass DimensionStyle
+	{
+		[default] interface IIcadDimensionStyle;
+	}
+
+	//  Class information for CIcadAutoDimStyles
+
+	[ uuid(8011c148-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_DimensionStyles
+		, helpstring("Dimension Style Collection Object")
+	]
+	coclass DimensionStyles
+	{
+		[default] interface IIcadDimensionStyles;
+	}
+
+	//  Class information for CIcadAutoLayer
+
+	[ uuid(8011c149-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Layer
+		, helpstring("Layer Object")
+	]
+	coclass Layer
+	{
+		[default] interface IIcadLayer;
+	}
+
+	//  Class information for CIcadAutoLayers
+
+	[ uuid(8011c14a-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Layers
+		, helpstring("Layer Collection Object")
+	]
+	coclass Layers
+	{
+		[default] interface IIcadLayers;
+	}
+
+	//  Class information for CIcadAutoLinetype
+
+	[ uuid(8011c14b-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Linetype
+		, helpstring("Linetype Object")
+	]
+	coclass Linetype
+	{
+		[default] interface IIcadLinetype;
+	}
+
+	//  Class information for CIcadAutoLinetypes
+
+	[ uuid(8011c14c-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Linetypes
+		, helpstring("Linetype Collection Object")
+	]
+	coclass Linetypes
+	{
+		[default] interface IIcadLinetypes;
+	}
+
+	//  Class information for CIcadAutoTextStyle
+
+	[ uuid(8011c14d-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_TextStyle
+		, helpstring("Text Style Object")
+	]
+	coclass TextStyle
+	{
+		[default] interface IIcadTextStyle;
+	}
+
+	//  Class information for CIcadAutoTextStyles
+
+	[ uuid(8011c14e-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_TextStyles
+		, helpstring("Text Style Collection Object")
+	]
+	coclass TextStyles
+	{
+		[default] interface IIcadTextStyles;
+	}
+
+	//  Class information for CIcadAutoUserCoordSystem
+
+	[ uuid(8011c14f-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_UserCoordSystem
+		, helpstring("User Coordinate System Object")
+	]
+	coclass UserCoordSystem
+	{
+		[default] interface IIcadUserCoordSystem;
+	}
+
+	//  Class information for CIcadAutoUserCoordSystems
+
+	[ uuid(8011c150-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_UserCoordSystems
+		, helpstring("UserCoordSystem Collection Object")
+	]
+	coclass UserCoordSystems
+	{
+		[default] interface IIcadUserCoordSystems;
+	}
+
+	//  Class information for CIcadAutoView
+
+	[ uuid(8011c151-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_View
+		, helpstring("View Object")
+	]
+	coclass View
+	{
+		[default] interface IIcadView;
+	}
+
+	//  Class information for CIcadAutoViews
+
+	[ uuid(8011c152-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Views
+		, helpstring("View Collection Object")
+	]
+	coclass Views
+	{
+		[default] interface IIcadViews;
+	}
+
+	//  Class information for CIcadAutoViewport
+
+	[ uuid(8011c153-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Viewport
+		, helpstring("Viewport Object")
+	]
+	coclass Viewport
+	{
+		[default] interface IIcadViewport;
+	}
+
+	//  Class information for CIcadAutoViewports
+
+	[ uuid(8011c154-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_Viewports
+		, helpstring("Viewport Collection Object")
+	]
+	coclass Viewports
+	{
+		[default] interface IIcadViewports;
+	}
+
+	//  Class information for CIcadAutoSelectionSet
+
+	[ uuid(8011c11a-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_SelectionSet
+		,helpstring("SelectionSet Object.")
+		,noncreatable
+	]
+	coclass SelectionSet
+	{
+		[default] interface IIcadSelectionSet;
+	}
+
+	//  Class information for CIcadAutoSelectionSets
+
+	[ uuid(8011c11b-7e36-11d1-bc5a-0060089608a4)	// *** CLSID_SelectionSets
+		,helpstring("SelectionSets Collection Object.")
+		,noncreatable
+	]
+	coclass SelectionSets
+	{
+		[default] interface IIcadSelectionSets;
+	}
+
+	[
+		uuid(8011c1e4-7e36-11d1-bc5a-0060089608a4),
+		helpstring("PlotterPen Object")
+	]
+	coclass PlotterPen
+	{
+		[default] interface IIcadPlotterPen;
+	};
+
+	[
+		uuid(8011c1e3-7e36-11d1-bc5a-0060089608a4),
+		helpstring("PlotterPen Collection Object")
+	]
+	coclass PlotterPens
+	{
+		[default] interface IIcadPlotterPens;
+	};
+
+	[
+		uuid(8011c1e2-7e36-11d1-bc5a-0060089608a4),
+		helpstring("PlotProperties Object")
+	]
+	coclass PlotProperties
+	{
+		[default] interface IIcadPlotProperties;
+	};
+
+	[
+
+		uuid(8011c1e1-7e36-11d1-bc5a-0060089608a4),
+		helpstring("Plot Manager Object")
+	]
+	coclass PlotManager
+	{
+		[default] interface IIcadPlotManager;
+	};
+

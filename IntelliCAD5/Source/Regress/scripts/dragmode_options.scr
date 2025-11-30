@@ -1,0 +1,19 @@
+logfilename log\dragmode_options.log
+logfileon
+;_________
+dragmode
+OFF
+(if (/= (getvar "dragmode") 0) (alert "error 0"))
+;_________
+dragmode
+on
+(if (/= (getvar "dragmode") 1) (alert "error 1"))
+;_________
+dragmode
+auto
+(if (/= (getvar "dragmode") 2) (alert "error 2"))
+;_________
+dxfout output_dxf\dragmode_options.dxf
+6
+quit
+y

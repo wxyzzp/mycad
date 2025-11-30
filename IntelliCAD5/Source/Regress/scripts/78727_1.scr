@@ -1,0 +1,10 @@
+logfilename log\78727.log
+logfileon
+;_________________
+(xload "sds\78727.dll")
+(if (= (c:functest) nil) (princ "error"))
+;__________
+dxfout output_dxf\78727.dxf
+6
+quit
+y

@@ -1,0 +1,116 @@
+Document Title:  DJL_10AUG04_1.txt	
+Product Version: ICAD 5
+Date:  August 10, 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: None
+* Docs Changes Required: N
+* Submitted to branch(es):
+R50_Release
+
+2. Modules Affected :
+Available modules: Cmds
+
+3.  Overview:
+Vairous Bug Fixes to enable regression script runs.  See check-in logs below for full details.
+
+4.  Notes to Docs:
+None
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		Module Name.
+Name of Script file     Name of the module the script tests.
+
+Script Change required: Y
+I modified the following scripts in the Scripts error directory to make them work again:
+
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/Regress/scripts_error :
+              78168_linetype.scr
+              78328.scr
+              78346j.scr
+              bhatch_options_1.scr
+              bhatch_options_3.scr
+              boundary_options_1.scr
+              Break.scr
+              colcir.scr
+              draworder_options.scr
+              drhatch.scr
+              Ellipse.scr
+
+Once these are OKed by the build manager they should be placed back into the scripts directory and removed from the scripts error directory.
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference: DJL_10AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/Regress/scripts_error :
+              78168_linetype.scr
+              78328.scr
+              78346j.scr
+              bhatch_options_1.scr
+              bhatch_options_3.scr
+              boundary_options_1.scr
+              Break.scr
+              colcir.scr
+              draworder_options.scr
+              drhatch.scr
+              Ellipse.scr
+
+Description:
+I modified the previous scripts in the Scripts error directory to make them work again. Once these are OKed by the build manager 
+they should be placed back into the scripts directory and removed from the scripts error directory.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference: DJL_10AUG04_1.txt
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmds3.cpp
+
+Description:
+The linetype create feature was not writing out the new linetype correctly.  This was causing a couple of linetype creation scripts to fail
+every second time the scripts were run.  I also threw in a little extra error checking in a spot that concerned me.
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+Reference: DJL_10AUG04_1.txt Bugzilla: 75159
+
+Affected files:
+In C:/Project/IntelliCAD/R50_Dev/IntelliCAD/Source/prj/lib/CMDS :
+    modified: cmds3.cpp
+
+Description:
+Using the Pedit select feature did not return the correct vertext point (closest to the point selected)
+
+Reviewer's Name and Comments:
+David Lorenzo
+--------------------------------------------------------------------------------
+
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Re-test all the new scripts by placing them in the scripts directory and running the entire regression set.
+
+The linetype creation feature needs to be tested for four situations:
+  Creating a new linetype file
+  Appending a new linetype to an existing linetype file
+  Replacing an existing linetype in an existing linetype file
+  Replacing the only linetype in a linetype file
+
+Re-test pedit edit vertext select - be sure to try to get the first and last vertex points
+
+9.  Installation Issues:
+Anything the members need to be aware of when creating their installers for the product.
+

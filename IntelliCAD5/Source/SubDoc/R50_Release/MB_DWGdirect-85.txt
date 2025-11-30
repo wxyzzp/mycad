@@ -1,0 +1,58 @@
+Document Title:		MB_DWGdirect-85.txt
+Product Version:	ICAD 5
+Date:  				08/25/2004 07:17am
+Engineer:			Mark Barrow
+
+1.  Process Checklist :
+* Regress run without new failures: Y (regress.lst)
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):	R50_Release & R40_Dev
+
+2.  Modules Affected : 
+	DWGdirect
+	CMDS
+
+3.  Overview:
+Added a collection class to allow me to delay conversion of proxy object references.
+Only to find that there is no way for me to assign references to OdDbProxyObjects.
+I have contacted ODT on the problem.
+
+Changed the return value of makeHatchBoundaryAssociations() so I could detect
+if there was a problem with the boundary. If a problem is found, I simply make the
+hatch non-associative. 
+
+Fixed a memory leak in cleaning up resbuf chains created by converting OdResbuf data
+to IntelliCAD's sds_resbuf data and back.
+
+Turned script 78393_T1fts011.scr back on in regress.lst. This submission fixes it.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name 		
+Name of Script file     
+
+Script Change required: N
+File Name       		
+Name of Script File     N
+
+6.  Change Log:
+                    source/prj/lib/drw/utilities.cpp
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.h
+                    source/prj/lib/drw/collectionclasses.h
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/prj/lib/cmds/copy_and_move.cpp
+					Source/Regress/scripts/regress.lst
+                    source/subdoc/R50_Release/MB_DWGdirect-85.txt
+
+7.  System file:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

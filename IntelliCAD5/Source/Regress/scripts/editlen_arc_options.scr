@@ -1,0 +1,148 @@
+logfilename log\editlen_arc_options.log
+logfileon
+;_________
+(defun compareAng (ptAct ptExp) (equal (/ (- (* 2.0 pi) ptAct) (* 2.0 pi)) (/ (- (* 2.0 pi)ptExp )(* 2.0 pi)) 0.00001))
+(defun chkst(expang) (if (compareang expang (cdr (assoc 50 (entget (entlast))))) (princ "OK") (alert "Err")))
+(defun chken(expang) (if (compareang expang (cdr (assoc 51 (entget (entlast))))) (princ "OK") (alert "Err")))
+(defun dtor(d) (* 0.0174533 d))
+(defun rtod(d) (/ d 0.0174533))
+;__Delta
+arc
+c
+0,0
+1<0r
+1<1r
+zoom
+extents
+;________
+editlen
+del
+a
+(rtod 1.0)
+1<1r
+
+;________
+(chkst 0.0)
+(chken 2.0)
+;________
+editlen
+del
+a
+(rtod 1.0)
+1<0
+
+;________
+(chkst (- (* 2.0 pi) 1.0))
+(chken 2.0)
+;__Percent
+erase
+all
+
+arc
+c
+0,0
+1<0r
+1<1r
+;________
+editlen
+p
+150
+1<1r
+
+editlen
+p
+150
+1<0
+
+;________
+(chkst (- (* 2.0 pi) 0.75))
+(chken 1.5)
+;________
+editlen
+p
+50
+1<0
+
+;________
+(chkst 0.375)
+(chken 1.5)
+;__total__________________
+erase
+all
+
+arc
+c
+0,0
+1<0
+1<1r
+;________
+editlen
+t
+a
+(rtod 2.0)
+1<1r
+
+;________
+(chkst 0.0)
+(chken 2.0)
+;__dynamic
+erase
+all
+
+arc
+c
+0,0
+1<0
+1<1r
+;________
+editlen
+dy
+1<1r
+1<2r
+
+;________
+(chkst 0.0)
+(chken 2.0)
+;________
+editlen
+dy
+1<0
+1<-1r
+
+;________
+(chkst (- (* 2.0 pi) 1.0))
+(chken 2.0)
+;__Increment
+erase
+all
+
+arc
+c
+0,0
+1<0r
+1<1r
+;________
+editlen
+del
+a
+(rtod 1.0)
+1<1r
+
+;________
+(chkst 0.0)
+(chken 2.0)
+;________
+editlen
+del
+a
+(rtod 1.0)
+1<0
+
+;________
+(chkst (- (* 2.0 pi) 1.0))
+(chken 2.0)
+;_________
+dxfout output_dxf\editlen_arc_options.dxf
+6
+quit
+y

@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------------
+Filename:	EBA_78329_1.txt
+Date:		03-10-2002
+Developer:	Chikahiro Masami
+Company:	Ebatech
+Reference:	BugZilla:78329
+
+Changed files:
+		Source/prj/lib/DRW/dwgsave.cpp?rev=1.47.4.6
+Description:	LIMMAX for model space set wrong value if the drawing save as paper space is active.
+Comments:	TaL78329
+

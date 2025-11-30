@@ -1,0 +1,10 @@
+
+        Submission Document for IntelliCAD
+File Name:      EBA_10062002_2.txt
+Date:           10-06-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech
+Reference:      TalDwgTitled
+Changed files:  
+                CvsHist:Source/prj/lib/DB/db1.cpp
+Description:    System variable DWGTITLED is read only.

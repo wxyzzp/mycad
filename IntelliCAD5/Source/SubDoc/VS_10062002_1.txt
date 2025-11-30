@@ -1,0 +1,35 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_10062002_1.txt
+Date:		10-06-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		CvsHist:Source/Regress/output
+		CvsHist:Source/Regress/output_dxf
+		CvsHist:Source/Regress/results
+
+Changed files:	
+		CvsHist:Source/prj/ICAD/icadmain.cpp
+
+Deleted files:	
+		None
+
+Description:	Added directories for regress where output files are saved.
+Comments:	This submission adds directories to the Regress structure where output files are written out.
+
+
+File by File:	
+		CvsHist:Source/Regress/output
+			Directory for output dwg files.
+		CvsHist:Source/Regress/output_dxf
+			Directory for output dxf files.
+		CvsHist:Source/Regress/results
+			Directory for Purify output.
+-----------------------------------------------------------------------------

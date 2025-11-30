@@ -1,0 +1,173 @@
+Lisp acceptance test run at 07-23-1998 02:29:37p on version P.0.31
+
+Starting tests...
+
+--- acad_colordlg ---
+acad_colordlg done manually
+
+--- acad_helpdlg ---
+acad_helpdlg not supported
+
+--- command ---
+command tested elsewhere
+
+--- acad_colordlg ---
+acad_colordlg done manually
+
+--- setcfg ---
+
+***Error (noargs): too few arguments
+***Error (noargs2): too few arguments
+emptystr = 
+spacestr =  
+below0str = !"#$%&'()*+,-./
+0to9str = 0123456789
+above9str = :;<=>?@
+bigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = [\]^_`
+abovezstr = {|}~
+***Error (nilsymstr): bad argument type
+***Error (tsymstr): bad argument type
+maxstr = 123456789a123456789b123456789c123456789d123456789e123456789f123456789g123456789h123456789i123456789j123456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I123456789J123456789a123456789b123456789c123456789d123456789e123456789f123456789g123456789h123456789i123456789j123456789a123456789b123456789c12345
+***Error (maxp1str): string too long
+***Error (zero): bad argument type
+***Error (nine): bad argument type
+***Error (minuszero): bad argument type
+***Error (minusnine): bad argument type
+belownum = /
+abovenum = :
+***Error (nilsym): bad argument type
+***Error (tsym): bad argument type
+***Error (emptystrpath): bad configuration variable name
+***Error (spacestrpath): bad configuration variable name
+***Error (below0strpath): bad configuration variable name
+0to9strpath = 0to9str
+above9strpath = above9str
+bigatozstrpath = bigatozstr
+***Error (btwnalphastrpath): bad configuration variable name
+abovezstrpath = abovezstr
+maxstrpath = maxstr
+***Error (maxp1strpath): string too long
+icadhlp1 = 1
+acadhlp1 = 8
+
+--- getcfg ---
+
+***Error (noargs): too few arguments
+noargs2 = 
+emptystr = 
+spacestr =  
+below0str = !"#$%&'()*+,-./
+0to9str = 0123456789
+above9str = :;<=>?@
+bigatozstr = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+btwnalphastr = [\]^_`
+abovezstr = {|}~
+nilsymstr = 
+tsymstr = 
+maxstr = 123456789a123456789b123456789c123456789d123456789e123456789f123456789g123456789h123456789i123456789j123456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I123456789J123456789a123456789b123456789c123456789d123456789e123456789f123456789g123456789h123456789i123456789j123456789a123456789b123456789c12345
+maxp1str = 
+zero = 
+nine = 
+minuszero = 
+minusnine = 
+belownum = /
+abovenum = :
+nilsym = 
+tsym = 
+***Error (emptystrpath): bad configuration variable name
+***Error (spacestrpath): bad configuration variable name
+***Error (below0strpath): bad configuration variable name
+0to9strpath = 0to9str
+above9strpath = above9str
+bigatozstrpath = bigatozstr
+***Error (btwnalphastrpath): bad configuration variable name
+abovezstrpath = abovezstr
+maxstrpath = maxstr
+maxp1strpath = 
+icadhlp1 = 1
+acadhlp1 = 8
+
+--- getcname ---
+
+***Error (noargs): too few arguments
+getlocallwr = _LINE
+getlocalupr = _LINE
+getlocalmxdlwr = _LINE
+getlocalmxdupr = _LINE
+getenglishlwr = LINE
+getenglishupr = LINE
+getenlishmxdlwr = LINE
+getenglishmxdupr = LINE
+***Error (getinvalloclwr): null function
+***Error (getinvallocupr): null function
+***Error (getinvalenglwr): null function
+***Error (getinvalengupr): null function
+icadhlp1 = ZOOM
+icadhlp2 = _ZOOM
+acadhlp1 = _STRETCH
+acadhlp2 = STRETCH
+
+--- getenv ---
+
+icadhlp1 = C:\Program Files\AutoCAD R14;C:\Program Files\AutoCAD R14\SUPPORT;C:\Program Files\AutoCAD R14\FONTS;C:\Program Files\AutoCAD R14\bonus\cadtools;C:\Program Files\Microsoft Office\Office;C:\WINNT\system32;C:\WINNT;d:\program files\devstudio\sharedide\bin\ide;d:\program files\devstudio\sharedide\bin;d:\program files\devstudio\vc\bin
+icadhlp2 = nil
+acadhlp1 = C:\Program Files\AutoCAD R14\support;C:\Program Files\AutoCAD R14\fonts;C:\Program Files\AutoCAD R14\help;C:\Program Files\AutoCAD R14\bonus\cadtools;C:\temp;E:\tools\dcl
+acadhlp2 = nil
+
+--- getvar ---
+
+tfval = 0
+tfval = 1
+tfinval = 0
+***Error (tfinval): AutoCAD rejected function
+intval = 10
+intval = 42
+intinval = 10
+***Error (intinval): AutoCAD rejected function
+realval = 1.0000
+realval = 42
+realinval = 1.0000
+***Error (realinval): AutoCAD rejected function
+2dptval:
+	 = 12.0000
+	 = 9.0000
+2dptval:
+	 = 42
+	 = 42
+3dptval:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+3dptval:
+	 = 42
+	 = 42
+	 = 42
+rdonly = C:\Program Files\AutoCAD R14\
+***Error (rdonly): AutoCAD rejected function
+icadhlp1 = 0
+icadhlp1 = 0
+icadhlp2 = 1
+icadhlp2 = 0
+icadhlp3:
+	 = 0.5000
+	 = 0.5000
+icadhlp3:
+	 = 1
+	 = 1
+icadhlp4:
+	 = 0.0000
+	 = 0.0000
+	 = 0.0000
+icadhlp4:
+	 = 1
+	 = 2
+	 = 3
+icadhlp5 = Drawing.dwg
+***Error (icadhlp5): AutoCAD rejected function
+acadhlp1 = 0.5000
+acadhlp1 = 0.5000
+
+--- ver ---
+ver = AutoLISP Release 14.0 (en)
+Lisp acceptance test completed at 07-23-1998 02:29:41p on version P.0.31

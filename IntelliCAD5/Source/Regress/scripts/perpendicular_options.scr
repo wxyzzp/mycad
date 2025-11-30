@@ -1,0 +1,16 @@
+logfilename log\perpendicular_options.log
+logfileon
+;__________
+osmode
+0
+;__________
+perpendicular
+(if (/= (getvar "osmode") 128) (alert "perpendicular did not work!"))
+;__________
+perpendicular
+(if (/= (getvar "osmode") 0) (alert "perpendicular did not work!"))
+;__________
+dxfout output_dxf\perpendicular_options.dxf
+6
+quit
+y

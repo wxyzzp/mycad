@@ -1,0 +1,27 @@
+new
+
+layout
+; switch between model and paper; paper space viewport should be created
+set
+layout1
+
+; switch between two paper; paper space viewport should be created
+set
+layout2
+
+; switch between paper and model
+set
+model
+
+; switch between model and paper; paper space viewport exists
+set
+layout2
+
+; switch between two paper; paper space viewport exists
+set
+layout1
+
+; switch between paper and model
+set
+model
+exit y

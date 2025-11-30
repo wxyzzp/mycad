@@ -1,0 +1,31 @@
+logfilename log\-pan.log
+logfileon
+;________
+rectangle
+5,4
+6,5
+;________
+-pan
+l
+-pan
+r
+-pan
+u
+-pan
+d
+-pan
+pgl
+-pan
+pgr
+-pan
+pgu
+-pan
+pgd
+-pan
+0,0
+1,1
+;________
+dxfout output_dxf\-pan.dxf
+6
+quit
+y

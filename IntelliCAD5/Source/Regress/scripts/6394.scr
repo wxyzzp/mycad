@@ -1,0 +1,23 @@
+logfilename log\6394.log
+logfileon
+;_________create_xlines___________________
+xline
+1,1
+2,1
+1,0
+
+;_________create_chamfer____________________
+chamfer
+a
+1.0
+45
+
+2,1
+1,2
+zoom
+extents
+;_________
+dxfout output_dxf\6394.dxf
+6
+quit
+y

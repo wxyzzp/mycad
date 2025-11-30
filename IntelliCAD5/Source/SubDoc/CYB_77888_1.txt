@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_77888_1.txt
+Date:		08-07-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:77888
+Affected files:	Source/prj/lib/GR/tolerancegen.cpp
+		
+Description:	Tolerance dim is not applied dimscale.
+Comments:	TaL77888.
+
+File By File:   * Source/prj/lib/GR/tolerancegen.cpp
+		
+		Dimscale was not being considered while calulating the 
+		height of the tolerance text. The following line was
+		commented, but there was no comments indicating what
+		was being fixed by commenting that line of code. now 
+		uncommented that line
+
+		defpar.ht*=dimscale;  
+		 
+
+--------------------------------------------------------------------------------

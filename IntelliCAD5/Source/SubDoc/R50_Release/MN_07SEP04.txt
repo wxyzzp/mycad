@@ -1,0 +1,85 @@
+Document Title:  MN_07SEP04.txt	
+Product Version: ICAD 5
+Date:  07 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : ICAD
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+	
+	I have added the fixes given by Kartik Iyer in the files "LayerComboBox.cpp"
+and "ColorComboBox.cpp" present in ICAD module.
+	According to Kartik's description, when the current layer is changed, the 
+current color and current line type combo box displays get reset to BYLAYER, but
+actually the color and line type remain as the original settings (as they should). 
+	For this bug, he applied the fixes in the file "LayerComboBox.cpp" in the 
+function "OnSelchange()". The other bug is that if you select a custom color from
+the "Color Combo Box", it appears in the "Color Combo Box" and you can use it for 
+drawing. If you select a custom color in the "Color Combo box" it does not actually 
+select the color in the dropdown but defaults to "BYBLOCK"  instead. 
+	For this bug, Kartik has applied the fixes in the file "ColorComboBox.cpp" in the 
+function "OnSelchange()".
+	I have added these fixes in both files to solve these two bugs.
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_07SEP04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	 Source/prj/ICAD/LayerComboBox.cpp?rev=1.1.4.6.2.1 
+	 Source/prj/ICAD/ColorComboBox.cpp?rev=1.1.4.4.2.1 
+Description:
+	 Added the fixes of Kartik to solve the couple of bugs related to "Color
+	 Combo Box" and "Layer Combo Box" of "Entity Properties. 
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+A. For the bug related to changing of layers from "Layer Combo Box".
+	1. Start IntelliCAD 5.
+	2. Create a new layer.
+	3. Set it as current.
+	4. Change the color from "Color Combo Box".
+	5. Change the line type from "Line-type Combo Box".
+	6. Now change the layer from "Layer Combo Box".
+	7. There should not be any changes in "Color Combo Box" and "Line type Combo Box".
+	8. Check the result with AutoCAD.
+
+B. For the bug related to "Color Combo Box".
+	1. Start IntelliCAD 5.
+	2. Select the custom color from "Color Combo Box".
+	3. Draw some entities.
+	4. Change the color from "Color Combo Box" to previous color.
+	5. Draw some entities.
+	6. Change the color from "Color Combo Box" to previous custom color.
+	7. Draw some entities.
+	8. Entities are drawn with the selected custom color and the "Color Combo Box"
+	   shows the right color.
+	9. Check the result with AutoCAD.
+
+
+9.  Installation Issues:
+

@@ -1,0 +1,19 @@
+logfilename log\cmdbar_options.log
+logfileon
+;_______
+cmdbar
+h
+cmdbar
+s
+cmdbar
+f
+cmdbar
+u
+cmdbar
+l
+cmdbar
+
+cmdbar
+
+;________
+quit

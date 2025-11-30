@@ -1,0 +1,13 @@
+------------------------------------------------------------------------------------------------
+Date:		23-09-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78305
+Affected files:			
+		Source/prj/lib/GR/mtextgen.cpp
+Description:	ICAD crashes when \f format code for mtext has no font name.  
+Comments:	TaL78305
+File by File:
+	*	Source/prj/lib/GR/mtextgen.cpp
+		\F;Text. This condition was not handled properly. It was assumed that fontname 		cannot be NULL. But AutoCAD accepts this case and hence also have now taken 		proper care to return safely when there is no fontname.
+--------------------------------------------------------------------------------

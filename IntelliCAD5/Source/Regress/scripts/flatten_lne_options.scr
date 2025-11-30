@@ -1,0 +1,117 @@
+logfilename log\flatten_line_options.log
+logfileon
+;_________flatten_line_____1
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 0.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 0.0) (alert "Flatten error"))
+;_________flatten_line_____2
+erase
+all
+
+;_________
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+1
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 1.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 1.0) (alert "Flatten error"))
+;_________flatten_line_____3
+erase
+all
+
+;_________
+ucs
+o
+1,1,1
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 1.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 1.0) (alert "Flatten error"))
+;_________flatten_line_____4
+erase
+all
+
+;_________
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+1
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 2.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 2.0) (alert "Flatten error"))
+;_________flatten_line_____5
+erase
+all
+
+;_________
+ucs
+z
+45
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 1.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 1.0) (alert "Flatten error"))
+;_________flatten_line_____6
+erase
+all
+
+;_________
+line
+1,1,1
+4,4,4
+
+;______
+flatten
+all
+
+1
+;______
+(setq en (entget (entlast)))
+(if (/= (cadddr (assoc 10 en)) 2.0) (alert "Flatten error"))
+(if (/= (cadddr (assoc 11 en)) 2.0) (alert "Flatten error"))
+;__________
+dxfout output_dxf\flatten_line_options.dxf
+6
+quit
+y

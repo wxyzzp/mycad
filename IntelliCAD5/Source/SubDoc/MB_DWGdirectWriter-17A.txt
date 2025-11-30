@@ -1,0 +1,21 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-17a.txt
+Produce Version		ICAD 4
+Date:			03/15/2004 4:30Pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Integrated the new code drop from the ODT guys.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:

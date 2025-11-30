@@ -1,0 +1,23 @@
+logfilename log\78604.log
+logfileon
+;_________
+peditaccept
+0
+pline
+0,0
+2,2
+2,1
+3,1
+
+(if (/= (cdr (assoc 70 (entget (Entlast)))) 0) (alert "Err"))
+pedit
+l
+l
+on
+x
+(if (/= (cdr (assoc 70 (entget (Entlast)))) 128) (alert "Err"))
+;___________
+dxfout output_dxf\78604.dxf
+6
+quit
+y

@@ -1,0 +1,88 @@
+Document Title:  DJL_31.txt	
+Product Version: ICAD 5
+Date:  31 July 2004
+Engineer: David Lorenzo
+
+1. Process Checklist :
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: Dan/Allison reviewed the UI
+* Docs Changes Required: Y
+* Submitted to branch(es):
+R50_Release
+R40_Dev
+
+2. Modules Affected :
+Not Sure
+
+3.  Overview:
+In general, this was a complete UI review and Fix:
+	Check new command additions for capitolization, spelling, proper use of terminology
+	Review and fix existing dialogs for the following:
+		Proper layout
+		Consistency of interface
+		Proper spelling
+		Proper use of terminology
+		Proper use of tab stops
+		Proper use of mneumonics
+		Proper tab order
+
+Specific changes:
+
+a) Changed capitolization on Draworder menu and toolbar commands to Draw Order. Changed use of "objects" to "entities"
+
+b) Changed capitolization of Paper/Model on status bar to be PAPER/MODEL to match other toolbar controls.
+
+c) Added lineweight control to Drawing Settings->Creation tab.
+
+d) Added all lineweight settings to Drawing Settings->Display tab
+
+e) New layout for most of Drawing Settings dialog
+
+f) New layout for most of Dimension Settings dialog
+
+g) New layout for DWF export dialog
+
+h) Fix overlapping buttons in the Print dialog
+
+i) Change "Print Dialog" to "Print"
+
+j) Changed various command prompts that discussed tilemode setting to discuss proper tab settings (Layout vs. Model)
+
+k) Fix overlapping controls on the top of the Print dialog
+
+l) Add "Are you sure.." yes/no dialog when deleting toolbars in the View Toolbars dialog
+
+m) Enabled the "Scale Lineweight" check box in the Print->Advanced tab.
+
+n) Options->Snapping tab had "osnap" and I changed it to "snap" to match the rest of the dialog.
+
+
+4.  Notes to Docs:
+Recheck and recapture all the dialog screen shots. I was a madman.
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: None
+
+Script Change required: None
+
+6.  Change Log:
+For a list of changed files, please look in http://www.itcdevelopment.org:8080/DEV/Fishbowl/CvsCommitList.  You will need a Zope id and password to access this site.
+--------------------------------------------------------------------------------
+Reference:      bugzilla number.  If it is not a bugfix, skip this field or better yet, provide the name of the design doc..  
+Added files:     list of new files added to source code. If no files are added then skip this field
+Affected files:   list of affected files
+Description:     description of submission. 
+Reviewer's Name and Comments:
+--------------------------------------------------------------------------------
+Add similar sections for each bug or feature.  Please note submissions for different bug fixes should NOT be clubbed together into one changelog entry. In such cases it is difficult to rollback any one fix or to merge code into release branch for one of the fixes separately.
+
+7.  System file - Component Changes and Additions
+None
+
+8.  Testing Considerations:
+Extensive work has been done to all dialogs, they should all be reviewed and tested.
+
+9.  Installation Issues:
+None
+

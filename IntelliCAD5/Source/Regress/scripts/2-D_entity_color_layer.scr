@@ -1,0 +1,238 @@
+logfilename log\2-D_entity_color_layer.log
+logfileon
+;                               *************
+;**************** Creates one of each standard 2-d Entity **************
+;
+;****************** Then draws each entity on a separate layer  ********
+;                               *************
+grid
+on
+zoom
+extents
+;*** CREATE A CIRCLE ***
+circle
+1,1
+.5
+;*** CHANGE COLOR TO RED  ***
+color
+red
+;***  CREATE A LINE  ***
+line
+.5,2
+1.5,2
+
+;***  CHANGE THE COLOR TO BLUE  ***
+color
+blue
+;***  CREATE A POLYLINE ARC ***
+pline
+.5,2.5
+arc
+1,3
+
+;***  CHANGE THE COLOR TO CYAN  ***
+color
+cyan
+;***  CREATE A SPLINE  ***
+spline
+.5,3.5
+1,4
+1,3.5
+1.5,4
+
+0,3.5
+2,4
+;***  CHANGE THE COLOR TO YELLOW  ***
+color
+yellow
+;***  CREATE AN ARC  ***
+arc
+.5,4.5
+1.5,4.5
+1.5,5
+;***  CHANGE COLOR TO WHITE  ***
+color
+white
+;***  CREATE AN ELLIPSE  *** 
+ellipse
+.5,5.5
+1.5,5.5
+.6
+;***  CHANGE COLOR TO 191  ***
+color
+191
+;***  CREATE AN ELIPTICAL ARC  ***
+ellipse
+a
+.5,7
+1.5,7
+.4
+.5,7.5
+359
+;***  CHANGE COLOR TO GREEN  ***
+color
+green
+;***  CREATE A RECTANGLE  ***
+rectangle
+.5,7.5
+1.5,8
+;***  CHANGE COLOR TO MAGENTA  ***
+color
+magenta
+;***  CREATE A POLYGON  ***
+polygon
+5
+3,1.5
+.5
+;***  CHANGE COLOR TO 121
+color
+121
+;***  CREATE A DONUT  ***
+donut
+
+
+3,3
+
+;***  CHANGE COLOR BACK TO BYLAYER  ***
+color
+bylayer
+;***  CREATE A BLUE LAYER-CURRENT  ***
+layer
+m
+blue
+color
+blue
+
+
+;***  CREATE A CIRCLE  ***
+circle
+5,1
+.5
+;***  CREATE A RED LAYER-CURRENT  ***
+Layer
+m
+red
+color
+red
+
+
+;***  CREATE A LINE  ***
+line
+4.5,2
+5.5,2
+
+;***  CREATE A GREEN LAYER-CURRENT  ***
+Layer
+m
+Green
+color
+Green
+
+
+;***  CREATE A POLYLINE  ***
+pline
+4.5,2.5
+arc
+5,3
+
+;***  CREATE A CYAN LAYER-CURRENT  ***
+layer
+m
+cyan
+color
+cyan
+
+
+;***  CREATE A SPLINE  ***
+spline
+4.5,3.5
+5,4
+5,3.5
+5.5,4
+
+4,3.5
+6,4
+;***  CREATE A YELLOW LAYER-CURRENT  ***
+Layer
+m
+yellow
+color
+yellow
+
+
+;***  CREATE AN ARC  ***
+arc
+4.5,4.5
+5.5,4.5
+5.5,5
+;*** CREATE A WHITE LAYER-CURRENT  ***
+Layer
+m
+white
+color
+white
+
+
+;***  CREATE AN ELLIPSE  ***
+ellipse
+4.5,5.5
+5.5,5.5
+.6
+;***  CREATE A COLOR 191 LAYER-CURRENT  ***
+layer
+m
+191
+color
+191
+
+
+;***  CREATE AND ELLIPSE  ***
+ellipse
+a
+4.5,7
+5.5,7
+.4
+4.5,7.5
+359
+;***  CREATE A COLOR 230 LAYER  ***
+layer
+m
+230
+color
+230
+
+
+;***  CREATE A RECTANGLE  ***
+rectangle
+4.5,7.5
+5.5,8
+;***  CREATE A MAGENTA LAYER-CURRENT  ***
+layer
+m
+magenta
+color
+magenta
+
+
+;***  CREATE A POLYGON  ***
+polygon
+5
+8,1.5
+.5
+;***  CREATE A COLOR 121 LAYER-CURRENT  ***
+Layer
+m
+121
+color
+121
+
+
+;***  CREATE A DONUT  ***
+donut
+
+
+8,3
+
+dxfout output_dxf\2-D_entity_color_layer.dxf
+6
+quit _y

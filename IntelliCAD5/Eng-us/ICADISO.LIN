@@ -1,0 +1,102 @@
+; IntelliCAD Linetypes
+;
+; icadiso.lin
+; Release 1.0   
+; .............................................................................
+;
+; Copyright (c) 1998 by Visio Corporation.  All rights reserved.
+;
+; The Software is subject to the license agreement that accompanies 
+; or is included with the Software, which specifies the permitted 
+; and prohibited uses of the Software. Any unauthorized duplication 
+; or use of Visio Corporation Software, in whole or in part, in print, 
+; or in any other storage and retrieval system is prohibited.
+; 
+; To the maximum extent permitted by applicable law, Visio Corporation
+; and its suppliers disclaim any and all warranties and conditions,
+; either express or implied, including, without limitation, implied
+; warranties of merchantability, fitness for a particular purpose,
+; title, and non-infringement, and those arising out of usage of trade
+; or course of dealing, concerning these materials.  These materials
+; are provided "as is" without warranty of any kind.
+; .............................................................................
+
+
+
+*BORDER,Border __ __ . __ __ . __ __ . __ __ . __ __ .
+A, 12.700, -6.350, 12.700, -6.350, 0, -6.350 
+*BORDER2,Border (0.5x) __.__.__.__.__.__.__.__.__.__.__.
+A, 6.350, -3.175, 6.350, -3.175, 0, -3.175 
+*BORDERX2,Border (2.0x) ____  ____  .  ____  ____  .  ___
+A, 25.400, -12.700, 25.400, -12.700, 0, -12.700
+
+*CENTER,Center ____ _ ____ _ ____ _ ____ _ ____ _ ____
+A, 31.750, -6.350, 6.350, -6.350 
+*CENTER2,Center (0.5x) ___ _ ___ _ ___ _ ___ _ ___ _ ___
+A, 19.050, -3.175, 3.175, -3.175 
+*CENTERX2,Center (2x) ________  __  ________  __  _____
+A, 63.500, -12.700, 12.700, -12.700 
+
+*DASHDOT,Dash dot __ . __ . __ . __ . __ . __ . __ . __
+A, 12.700, -6.350, 0, -6.350 
+*DASHDOT2,Dash dot (0.5x) _._._._._._._._._._._._._._._.
+A, 6.350, -3.175, 0, -3.175 
+*DASHDOTX2,Dash dot (2.0x) ____  .  ____  .  ____  .  ___
+A, 25.400, -12.700, 0, -12.700 
+
+*DASHED,Dashed __ __ __ __ __ __ __ __ __ __ __ __ __ _
+A, 12.700, -6.350 
+*DASHED2,Dashed (0.5x) _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+A, 6.350, -3.175 
+*DASHEDX2,Dashed (2.0x) ____  ____  ____  ____  ____  ___
+A, 25.400, -12.700 
+
+*DOT,Dot . . . . . . . . . . . . . . . . . . . . . . . .
+A, 0, -6.350 
+*DOT2,Dot (0.5x) ........................................
+A, 0, -3.175 
+*DOTX2,Dot (2.0x) .  .  .  .  .  .  .  .  .  .  .  .  .  .
+A, 0, -12.700 
+
+*HIDDEN,Hidden __ __ __ __ __ __ __ __ __ __ __ __ __ __
+A, 6.350, -3.175 
+*HIDDEN2,Hidden (0.5x) _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+A, 3.175, -1.5875 
+*HIDDENX2,Hidden (2.0x) ____ ____ ____ ____ ____ ____ ____ 
+A, 12.700, -6.350 
+
+*PHANTOM,Phantom ______  __  __  ______  __  __  ______ 
+A, 31.750, -6.350, 6.350, -6.350, 6.350, -6.350 
+*PHANTOM2,Phantom (0.5x) ___ _ _ ___ _ _ ___ _ _ ___ _ _
+A, 15.875, -3.175, 3.175, -3.175, 3.175, -3.175 
+*PHANTOMX2,Phantom (2.0x) ____________    ____    ____   _
+A, 63.500, -12.700, 12.700, -12.700, 12.700, -12.700 
+;;
+*ICAD_ISO02W100,ISO dash __ __ __ __ __ __ __ __ __ __ __ __ __
+A,12,-3
+*ICAD_ISO03W100,ISO dash space __    __    __    __    __    __
+A,12,-18
+*ICAD_ISO04W100,ISO long dash, dot ____ . ____ . ____ . ____ . _
+A,24,-3,.500,-3
+*ICAD_ISO05W100,ISO long dash, double dot ____ .. ____ .. ____ . 
+A,24,-3,.500,-3,.500,-3,.500,-3
+*ICAD_ISO06W100,ISO long dash, triple dot ____ ... ____ ... ____
+A,24,-3,.500,-3,.500,-3,.500,-3
+*ICAD_ISO07W100,ISO dot . . . . . . . . . . . . . . . . . . . . 
+A,.500,-3
+*ICAD_ISO08W100,ISO long dash, short dash ____ __ ____ __ ____ _
+A,24,-3,6,-3
+*ICAD_ISO09W100,ISO long dash, double short dash ____ __ __ ____
+A,24,-3,6,-3,6,-3
+*ICAD_ISO10W100,ISO dash, dot __ . __ . __ . __ . __ . __ . __ . 
+A,12,-3,.500,-3
+*ICAD_ISO11W100,ISO double, dash dot __ __ . __ __ . __ __ . __ _
+A,12,-3,12,-3,.500,-3
+*ICAD_ISO12W100,ISO dash, double dot __ . . __ . . __ . . __ . . 
+A,12,-3,.500,-3,.500,-3
+*ICAD_ISO13W100,ISO double dash, double dot __ __ . . __ __ . . _
+A,12,-3,12,-3,.500,-3,.500,-3
+*ICAD_ISO14W100,ISO dash, triple dot __ . . . __ . . . __ . . . _
+A,12,-3,.500,-3,.500,-3,.500,-3
+*ICAD_ISO15W100,ISO double dash, triple dot __ __ . . . __ __ . .
+A,12,-3,12,-3,.500,-3,.500,-3,.500,-3

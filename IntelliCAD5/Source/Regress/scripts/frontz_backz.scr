@@ -1,0 +1,42 @@
+logfilename log\frontz_backz.log
+logfileon
+;______________
+Open DWG\Chair.dwg
+viewpoint
+-1,-1,1
+hide
+(Load "lisp\Theatre.lsp")
+Theatre
+viewpoint
+0,0,1
+viewpoint
+0,-1,0
+viewpoint
+-1,0,0
+viewpoint
+-1,-1,1
+;_______________
+vpoint
+perspective
+on
+front
+on
+20
+back
+on
+10
+off
+off
+;______________
+backz
+(getvar "backz")
+(if (/= (getvar "backz") 10) (alert "error"))
+;______________
+frontz
+(getvar "frontz")
+(if (/= (getvar "frontz") 20) (alert "error"))
+;________________
+dxfout output_dxf\frontz_backz.dxf
+6
+quit
+y

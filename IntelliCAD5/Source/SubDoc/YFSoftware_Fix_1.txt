@@ -1,0 +1,133 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	YFSoftware_Fix_1.txt
+Date:		04/011/26
+Developer:	Zhifeng.Cheng
+Company:	YFSoftware
+Reference:	
+
+Description:	This submission fixes the entity property toolbar.Sorry I can't find the bug #,
+				But I think It's useful to IntelliCAD.
+                
+				I complete the class CColorComboBox/CLayerComboBox/CLTypeComboBox,let them work like AutoCAD's behavior.
+				I aslo modify Icadapi.cpp to make them work fine.
+		
+Added files:    None
+Affected files: Source/prj/icad/Icadapi.cpp:  Modified Cmd_thread(),Add code 1270-1302:
+					//Zhifeng.Cheng:Add the following code to deal with Entity property toolbar;
+					int nSel=0;
+					resbuf rb;
+					sds_getvar("CLAYER"/*DNT*/,&rb);	
+					nSel=SDS_CMainWindow->m_wndLayers.FindString(0,rb.resval.rstring);
+					SDS_CMainWindow->m_wndLayers.SetCurSel(nSel);
+					IC_FREE(rb.resval.rstring);
+					sds_getvar("CECOLOR"/*DNT*/,&rb);	
+					nSel=SDS_CMainWindow->m_wndColor.FindString(0,rb.resval.rstring);
+					if(nSel!=-1)
+						SDS_CMainWindow->m_wndColor.SetCurSel(nSel);
+					else
+					{
+						nSel=SDS_CMainWindow->m_wndColor.FindString(0,ic_colorstr(atoi(rb.resval.rstring),NULL));
+						if(nSel!=-1)
+							SDS_CMainWindow->m_wndColor.SetCurSel(nSel);
+						else
+						{
+							CString str;
+							str.Format("Color %s",rb.resval.rstring);
+							nSel=SDS_CMainWindow->m_wndColor.FindString(0,str);
+							if(nSel!=-1)
+								SDS_CMainWindow->m_wndColor.SetCurSel(nSel);
+						}
+					}
+					IC_FREE(rb.resval.rstring);
+					sds_getvar("CELTYPE"/*DNT*/,&rb);	
+					nSel=SDS_CMainWindow->m_wndLType.FindString(0,rb.resval.rstring);
+					if(nSel!=-1)
+						SDS_CMainWindow->m_wndLType.SetCurSel(nSel);
+					IC_FREE(rb.resval.rstring);
+					//zhifeng.cheng:Add end.
+				//SDS_CmdThread():Add line 1586-1644:
+				//Zhifeng.Cheng :Add Code to deal with Entity property toolbar
+				{
+					char *pLayer=NULL,*pLType=NULL,*pColor=NULL;
+					int bIsLA=1,bIsLT=1,bIsCo=1,nColor=-1,nSel=-1;
+					for(fl1 = 0L; sds_ssname(pDoc->m_pGripSelection, fl1, ename) == RTNORM; ++fl1)
+					{
+						resbuf *rb=sds_entget(ename);
+						ic_assoc(rb,8);
+						if(!pLayer)
+							pLayer=strdup(ic_rbassoc->resval.rstring);
+						else
+						{
+							if(bIsLA && !strisame(pLayer,ic_rbassoc->resval.rstring))
+								bIsLA=0;
+						}
+						ic_assoc(rb,6);
+						if(!pLType)
+							pLType=strdup(ic_rbassoc->resval.rstring);
+						else
+						{
+							if(bIsLT && !strisame(pLType,ic_rbassoc->resval.rstring))
+								bIsLT=0;
+						}
+						ic_assoc(rb,62);
+						if(nColor==-1)
+							nColor=ic_rbassoc->resval.rint;
+						else
+						{
+							if(bIsCo && nColor!=ic_rbassoc->resval.rint)
+								bIsCo=0;
+						}
+						IC_RELRB(rb);
+						if(!bIsLA && !bIsLT && !bIsCo)	//如果三个均不一致,我们直接退出,不需要再循环
+							break;
+					}
+					nSel=bIsLA ? SDS_CMainWindow->m_wndLayers.FindString(-1,pLayer):-1;
+					SDS_CMainWindow->m_wndLayers.SetCurSel(nSel);
+					nSel=bIsLT ? SDS_CMainWindow->m_wndLType.FindString(-1,pLType):-1;
+					SDS_CMainWindow->m_wndLType.SetCurSel(nSel);
+					SDS_CMainWindow->m_wndLType.UpdateWindow();
+					CString str=ic_colorstr(nColor,NULL);
+					nSel=bIsCo? SDS_CMainWindow->m_wndColor.FindString(-1,str):-1;
+					if(nSel==-1 && bIsCo)
+					{
+						str.Format("Color %d",nColor);
+						nSel=SDS_CMainWindow->m_wndColor.FindString(-1,str);
+						if(nSel==-1)
+						{//总是把选择颜色摆到最后一个
+							int nCount=SDS_CMainWindow->m_wndColor.GetCount();
+							nSel=SDS_CMainWindow->m_wndColor.InsertString(nCount-1,str);
+							SDS_CMainWindow->m_wndColor.SetItemData(nSel,SDS_BrushColorFromACADColor(nColor));
+						}
+					} 
+					SDS_CMainWindow->m_wndColor.SetCurSel(nSel);
+					SDS_CMainWindow->m_wndColor.UpdateWindow();
+					free(pLayer);
+					free(pLType);
+				}
+				//Add End.
+
+			Source/prj/icad/IcadToolBarMain.cpp:Line 2421-2428:
+
+				//Zhifeng.Cheng Add:Make them gray If no drawing
+				if(SDS_CMainWindow->m_wndLayers.m_hWnd)
+					SDS_CMainWindow->m_wndLayers.EnableWindow(!bGray);
+				if(SDS_CMainWindow->m_wndColor.m_hWnd)
+					SDS_CMainWindow->m_wndColor.EnableWindow(!bGray);
+				if(SDS_CMainWindow->m_wndLType.m_hWnd)
+					SDS_CMainWindow->m_wndLType.EnableWindow(!bGray);
+				//Add End
+
+			Source/prj/icad/IcadToolBar.cpp:Line 124: Modify to the follwing:
+			if(ct > 2 && ct != 9 && ct != 13)
+
+			Source/prj/icad/LayerComboBox.cpp/h,ColorComboBox.cpp/h,LTypeComboBox.cpp/h:
+			Modify them to make entity property works.
+Comments:	
+
+
+                

@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------------
+Date:		23-09-2002
+Developer:	Vishwanath S Burkule
+Company:	Cybage Software
+Reference:	BugZilla:78284
+Affected files:			
+		Source/prj/lib/CMDS/cmdsDim.cpp
+Description:	ICAD crashes on Baseline/Continue at Dim prompt after creating Center dimension  
+Comments:	TaL78284
+File By File :
+	*	Source/prj/lib/CMDS/cmdsDim.cpp
+		Previously cmd_dimcenter() was being called which used to call 				cmd_DimArcOrCircleFunc(0, SDS_CURDWG ) and then cmd_CleanUpDimVarStrings(). Now 		any other DIM->command would crash IntellICAD as the memory allocated for 		plinkvar is freed. So now we have directly used cmd_DimArcOrCircleFunc(0, 		SDS_CURDWG ) call from DDIM command. cmd_dimcenter() should be called from 				DIMCENTER command from command prompt and not from DDim command.		
+		
+--------------------------------------------------------------------------------

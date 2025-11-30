@@ -1,0 +1,17 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+ File Name:	EBA_5172002_1.txt
+ Date:           17-05-2002
+ Developer:      Y.Futagami
+ Company:        Ebatech
+ Reference:      
+ Affected files: 
+                CvsHist:Source/prj/ICAD/icaddragging.cpp
+                CvsHist:Source/prj/lib/CMDS/polyline.cpp
+Description:    FIX:draw POLYGON with Edge option.
+Comments:       TalJ205171
+--------------------------------------------------------------------------------

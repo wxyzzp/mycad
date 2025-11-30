@@ -1,0 +1,14 @@
+logfilename log\hlremove_options.log
+logfileon
+;__________
+box
+0,0,0
+1,1,1
+vpoint
+-1,-1,1
+hlremove
+;__________
+dxfout output_dxf\hlremove_options.dxf
+6
+quit
+y

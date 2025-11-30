@@ -1,0 +1,47 @@
+(defun c:ccol()
+(command "viewres" "y" "20000")
+(setq ss1 (ssget "X" '((0 . "CIRCLE")))n 0)
+(setq totalCnt (sslength ss1))
+(setq startTime (getvar "DATE"))
+(princ (strcat "\n Started at " (rtos startTime)))
+(setq s (getvar "DATE"))
+(setq startSeconds (* 86400.0 (- s (fix s))))
+(princ startSeconds)
+(command "cmdecho" "off")
+(setq cnt 0)
+(repeat (fix (sslength ss1))
+(setq ent (entget (ssname ss1 n)))
+(setq rad (cdr (assoc 40 ent)))
+(setq cpt (cdr (assoc 10 ent)))
+(command "zoom" "c" cpt "4")
+(if (< rad 0.7)
+(progn
+(setq ent (subst (cons 62 1) (assoc 62 ent) ent))
+(entmod ent)
+)
+(progn
+(setq ent (subst (cons 62 3) (assoc 62 ent) ent))
+(entmod ent)
+)
+);if
+(setq n (1+ n))
+(setq cnt (1+ cnt))
+(if (= cnt 10)
+(progn
+(setq cnt 0)
+(princ "\n")
+(princ "Processing")
+(princ n)
+(princ "/")
+(princ totalCnt)
+(princ "\n")
+(princ "\n")
+(setq s (getvar "DATE"))
+(setq endSeconds (* 86400.0 (- s (fix s))))
+(princ (- endSeconds startSeconds))
+(princ "\n")
+)
+);if
+
+);repeat
+);defun

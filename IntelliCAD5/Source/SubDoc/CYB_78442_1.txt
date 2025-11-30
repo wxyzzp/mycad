@@ -1,0 +1,26 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78442_1.txt
+Date:		18-03-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78442
+Added files:     	
+Affected files:	
+		Source/prj/lib/LISP/geom.cpp
+Description:	Inters function sometimes returns wrong values.
+Comments:		TaL78442
+Problem Analysis:
+		When you try to find the intersection of a line and a point (line having starting and ending point same) then the "inters" command is not working properly.		
+Proposed Solution:
+		While trying to find the intersection of a line and a point "Nil" should be returned.		
+File by File:	
+*		Source/prj/lib/LISP/geom.cpp
+		Compared the end-points of the first line as well as that of the second line. If any of the lines is a point then simply exit.
+--------------------------------------------------------------------------------
+
+
+

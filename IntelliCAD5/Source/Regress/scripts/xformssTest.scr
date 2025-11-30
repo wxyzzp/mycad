@@ -1,0 +1,9 @@
+logfilename log\xformssTest.log
+logfileon
+(load "Lisp\xformssTest.lsp")
+circle 1,1 2
+pline 3,3 3,5 5,5 5,7  
+test all  8,1 8,3 45
+dxfout output_dxf\xformssTest.dxf
+6
+quit _y

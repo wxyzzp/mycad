@@ -1,0 +1,12 @@
+logfilename log\vsnapshot_options.log
+logfileon
+;______
+(setvar "useri1" (getvar "filedia"))
+vsnapshot
+dwg\b24
+(setvar "filedia" (getvar "useri1"))
+;_______
+dxfout output_dxf\vsnapshot_options.dxf
+6
+quit
+y

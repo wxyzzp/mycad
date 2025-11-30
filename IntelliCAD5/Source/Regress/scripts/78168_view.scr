@@ -1,0 +1,26 @@
+logfilename log\78168_view.log
+logfileon
+;___________view_save_
+view
+s     vi ew     
+(if (/= (cdr (assoc 2 (tblnext "VIEW"))) "VI EW") (alert " err") (princ "OK"))
+;___________view_restore_
+view
+s     vi eww
+view
+r     vi ew     
+;___________view_delete_
+view
+d     vi eww     
+(if (= (cdr (assoc 2 (tblnext "VIEW"))) "VI EWW") (alert "err") (princ "OK"))
+;___________view_window_
+view
+w     vi ewww   
+0,0
+1,2
+(if (/= (cdr (assoc 2 (tblnext "VIEW"))) "VI EWWW") (alert " err") (princ "OK"))
+;__________
+dxfout output_dxf\78168_view.dxf
+6
+quit
+y

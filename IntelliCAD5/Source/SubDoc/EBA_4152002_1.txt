@@ -1,0 +1,18 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	EBA_4152002_1.txt
+Date:		15-04-2002
+Developer:      Chikahiro Masami
+Company:        Ebatech Inc.
+Reference:
+Added files:     
+Affected files: 
+                CvsHist:Source/prj/lib/DRW/drwfns.cpp
+                CvsHist:Source/prj/lib/DRW/dwgsave.cpp
+Description: DDCHPROP in AutoCAD R14/LT97 is hangup when compile with
+             ODT 2.007 or higher.
+--------------------------------------------------------------------------------

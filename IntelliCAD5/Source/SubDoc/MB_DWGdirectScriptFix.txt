@@ -1,0 +1,35 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectScriptFix.txt
+Produce Version		ICAD 4
+Date:				04/14/2004 11:36am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This fixes three regress script failures;
+Source\Regress\scripts\68870.scr
+Source\Regress\scripts\78243.scr
+Source\Regress\scripts\78417.scr
+
+All three now run to completion.
+
+68870.scr and 78417.scr were because of a difference in running it 
+under DWGdirect and not running it under DWGdirect.
+78243.scr was because of accessing a NULL pointer. I added code to 
+avoid this in ucsicon.cpp.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\regress\scripts\68870.scr
+\source\prj\lib\cmds\dxfinout.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\icad\ucsicon.cpp

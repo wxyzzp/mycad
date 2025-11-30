@@ -1,0 +1,12 @@
+logfilename log\blockexp.log
+logfileon
+insert
+dwg\circles.dwg
+0,0
+1
+1
+0
+explode l 
+dxfout output_dxf\blockexp.dxf
+6
+exit y

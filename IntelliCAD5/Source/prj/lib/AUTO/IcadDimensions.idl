@@ -1,0 +1,1447 @@
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimension
+	
+	[	object
+		, uuid(8011c16a-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimension
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimension : IIcadEntity
+	{
+		// *** Properties
+		[propget, helpstring("Sets or returns the size of dimension line arrowheads.")]
+		HRESULT ArrowheadSize ([out, retval] double *ArrowheadSize);	
+		[propput]
+		HRESULT ArrowheadSize ([in] double ArrowheadSize);	
+
+		[propget, helpstring("Sets or returns the character to be used as the decimal separator in decimal dimension and tolerance values")]
+		HRESULT DecimalSeparator ([out, retval] BSTR *DecimalSeparator );
+		[propput]
+		HRESULT DecimalSeparator ([in] BSTR DecimalSeparator);
+
+		[propget, helpstring("Sets or returns  the distance the extension lines are offset from the origin points.")]
+		HRESULT ExtensionLineOffset ([out, retval] double *Offset);	
+		[propput]
+		HRESULT ExtensionLineOffset ([in] double Offset);	
+
+		[propget, helpstring("Sets or returns the measurement for the dimension.")]
+		HRESULT Measurement ([out, retval] double *Value);	
+		[propput]
+		HRESULT Measurement ([in] double Value);	
+
+		[propget, helpstring("Returns the Extrusion Direction vector for the dimension.")]
+		HRESULT Normal ([out, retval] IIcadVector** ppExtrusionDirection);
+		[propput]
+		HRESULT Normal ([in] IIcadVector* ppExtrusionDirection);	
+
+		[propget, helpstring("Sets or returns the rotation angle in radians for the dimension.")]
+		HRESULT Rotation ([out, retval] double *Rotation);	
+		[propput]
+		HRESULT Rotation ([in] double Rotation);	
+
+		[propget, helpstring("Sets or returns the scale factor for the dimension.")]
+		HRESULT ScaleFactor	([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT ScaleFactor	([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the name of the dimension style")]
+		HRESULT StyleName ([out, retval] BSTR *StyleName );
+		[propput]
+		HRESULT StyleName ([in] BSTR StyleName);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in dimension values.")]
+		HRESULT SuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in dimension values..")]
+		HRESULT SuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the color of the dimension text.")]  
+		HRESULT TextColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT TextColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance between the dimension text and the dimension line when the dimension line is broken to accommodate dimension text.")]
+		HRESULT TextGap ([out, retval] double *Gap);	
+		[propput]
+		HRESULT TextGap ([in] double Gap);	
+
+		[propget, helpstring("Sets or returns the height for the dimension text")]
+		HRESULT TextHeight ([out, retval] double *Height);	
+		[propput]
+		HRESULT TextHeight ([in] double Height);	
+
+		[propget, helpstring("Sets or returns  how dimension text is drawn when text is moved.")]  
+		HRESULT TextMovement ([out,retval] DimTextMovement *Movement);
+		[propput]  
+		HRESULT TextMovement ([in] DimTextMovement Movement);
+
+		[propget, helpstring("Sets or returns the dimension text position.")]
+		HRESULT TextPosition ([out, retval] IIcadPoint **Position);	
+		[propput]
+		HRESULT TextPosition ([in] IIcadPoint *Position);	
+
+		[propget, helpstring("Sets or returns the text string of the dimension style")]
+		HRESULT TextOverride ([out, retval] BSTR *String );
+		[propput]
+		HRESULT TextOverride ([in] BSTR String);
+
+		[propget, helpstring("Sets or returns the dimension value prefix")]
+		HRESULT TextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT TextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the dimension text string.")]
+		HRESULT TextString ([out, retval] BSTR *String );
+		[propput]
+		HRESULT TextString ([in] BSTR String);
+
+		[propget, helpstring("Sets or returns the rotation angle for the dimension text.")]
+		HRESULT TextRotation ([out, retval] double *Rotation);	
+		[propput]
+		HRESULT TextRotation ([in] double Rotation);	
+
+		[propget, helpstring("Sets or returns the name of the dimension text style")]
+		HRESULT TextStyle ([out, retval] BSTR *StyleName );
+		[propput]
+		HRESULT TextStyle ([in] BSTR StyleName);
+
+		[propget, helpstring("Sets or returns the dimension value suffix")]
+		HRESULT TextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT TextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns how tolerances are displayed with the dimension text.")]  
+		HRESULT ToleranceDisplay ([out,retval] DimToleranceMethod *TolDisplay);
+		[propput]  
+		HRESULT ToleranceDisplay ([in] DimToleranceMethod TolDisplay);
+
+		[propget, helpstring("Sets or returns the scale factor for the text height of tolerance values relative to the dimension text height.")]
+		HRESULT ToleranceHeightScale ([out, retval] double *HeightScale);	
+		[propput]
+		HRESULT ToleranceHeightScale ([in] double HeightScale);	
+
+		[propget, helpstring("Sets or returns the vertical justification of tolerance values relative to the nominal dimension text.")]  
+		HRESULT ToleranceJustification ([out,retval] DimToleranceJustify *TolJustify);
+		[propput]  
+		HRESULT ToleranceJustification ([in] DimToleranceJustify TolJustify);
+
+		[propget, helpstring("Sets or returns the minimum tolerance limit for dimension text.")]
+		HRESULT ToleranceLowerLimit ([out, retval] double *Limit);	
+		[propput]
+		HRESULT ToleranceLowerLimit ([in] double Limit);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in tolerance values.")]
+		HRESULT ToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in tolerance values.")]
+		HRESULT ToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in tolerance values.")]
+		HRESULT ToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in tolerance values.")]
+		HRESULT ToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the maximum tolerance limit for dimension text.")]
+		HRESULT ToleranceUpperLimit ([out, retval] double *Limit);	
+		[propput]
+		HRESULT ToleranceUpperLimit ([in] double Limit);	
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in primary dimensions.")]  
+		HRESULT TolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the unit format for all dimensions except angular")]  
+		HRESULT UnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT UnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the vertical position of text in relation to the dimension line.")]  
+		HRESULT VerticalTextPosition ([out,retval] DimVerticalJustification *Position);
+		[propput]  
+		HRESULT VerticalTextPosition ([in] DimVerticalJustification Position);
+
+		// *** Methods
+	}
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimAngular
+	
+	[	object
+		, uuid(8011c184-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimAngular
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimAngular : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the unit format for angular dimensions.")]  
+		HRESULT AngleFormat ([out,retval] AngleUnits *Movement);
+		[propput]  
+		HRESULT AngleFormat ([in] AngleUnits Movement);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead1Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead1Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead2Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead2Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns whether to suppress the first dimension line.")]
+		HRESULT DimLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the second dimension line.")]
+		HRESULT DimLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to display the dimension line inside the extension lines.")]
+		HRESULT DimLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT DimLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the color of the dimension extension line.")]  
+		HRESULT ExtensionLineColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT ExtensionLineColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the extension line extends beyond the dimension line.")]
+		HRESULT ExtensionLineExtend ([out, retval] double *Extension);
+		[propput]
+		HRESULT ExtensionLineExtend ([in] double Extension);
+
+		[propget, helpstring("Sets or returns the start point of the first extension line.")]
+		HRESULT ExtLine1StartPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine1StartPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns the end point of the first extension line.")]
+		HRESULT ExtLine1EndPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine1EndPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the end point of the first extension line.")]
+		HRESULT ExtLine2EndPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine2EndPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns the start point of the first extension line.")]
+		HRESULT ExtLine2StartPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine2StartPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of angular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimAligned
+	
+	[	object
+		, uuid(8011c185-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimAligned
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimAligned : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the rounding of alternate units.")]
+		HRESULT AltRoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT AltRoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimension values.")]
+		HRESULT AltSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimension values..")]
+		HRESULT AltSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the alternate dimension value prefix")]
+		HRESULT AltTextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT AltTextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the alternate dimension value suffix")]
+		HRESULT AltTextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT AltTextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in alternate dimensions.")]  
+		HRESULT AltTolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltTolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Enables or disables alternate units dimensioning.")]
+		HRESULT AltUnits ([out, retval] VARIANT_BOOL *Enable);
+		[propput]
+		HRESULT AltUnits ([in] VARIANT_BOOL Enable);
+
+		[propget, helpstring("Sets or returns the unit format for alternate dimensions.")]  
+		HRESULT AltUnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT AltUnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the number of decimal places in alternate units.")]  
+		HRESULT AltUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the scale factor for alternate units.")]
+		HRESULT AltUnitsScale ([out, retval] double *Scale);	
+		[propput]
+		HRESULT AltUnitsScale ([in] double Scale);	
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead1Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead1Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead2Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead2Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the dimension line extends beyond the extension line when oblique strokes are drawn instead of arrowheads.")]
+		HRESULT DimensionLineExtend ([out, retval] double *pScaleFactor);
+		[propput]
+		HRESULT DimensionLineExtend ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns whether to suppress the first dimension line.")]
+		HRESULT DimLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the second dimension line.")]
+		HRESULT DimLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to display the dimension line inside the extension lines.")]
+		HRESULT DimLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT DimLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the color of the dimension extension line.")]  
+		HRESULT ExtensionLineColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT ExtensionLineColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the extension line extends beyond the dimension line.")]
+		HRESULT ExtensionLineExtend ([out, retval] double *Extension);
+		[propput]
+		HRESULT ExtensionLineExtend ([in] double Extension);
+
+		[propget, helpstring("Sets or returns the origin of the first extension line.")]
+		HRESULT ExtLine1Point ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine1Point ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the origin of the first extension line.")]
+		HRESULT ExtLine2Point ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine2Point ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns the  format of fractional values in dimensions and tolerances")]
+		HRESULT FractionFormat ([out, retval] DimFractionType *Format);
+		[propput]
+		HRESULT FractionFormat ([in] DimFractionType Format);
+
+		[propget, helpstring("Sets or returns the global scale factor for linear dimensioning measurements.")]
+		HRESULT LinearScaleFactor ([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT LinearScaleFactor ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the number of decimal places in primary units of a dimension.")]  
+		HRESULT PrimaryUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT PrimaryUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the rounding of dimension units.")]
+		HRESULT RoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT RoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in dimension values.")]
+		HRESULT SuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in dimension values.")]
+		HRESULT SuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of angular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimDiametric
+	
+	[	object
+		, uuid(8011c186-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimDiametric
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimDiametric : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the rounding of alternate units.")]
+		HRESULT AltRoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT AltRoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimension values.")]
+		HRESULT AltSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimension values..")]
+		HRESULT AltSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the alternate dimension value prefix")]
+		HRESULT AltTextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT AltTextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the alternate dimension value suffix")]
+		HRESULT AltTextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT AltTextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in alternate dimensions.")]  
+		HRESULT AltTolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltTolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Enables or disables alternate units dimensioning.")]
+		HRESULT AltUnits ([out, retval] VARIANT_BOOL *Enable);
+		[propput]
+		HRESULT AltUnits ([in] VARIANT_BOOL Enable);
+
+		[propget, helpstring("Sets or returns the unit format for alternate dimensions.")]  
+		HRESULT AltUnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT AltUnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the number of decimal places in alternate units.")]  
+		HRESULT AltUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the scale factor for alternate units.")]
+		HRESULT AltUnitsScale ([out, retval] double *Scale);	
+		[propput]
+		HRESULT AltUnitsScale ([in] double Scale);	
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead1Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead1Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead2Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead2Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the size of the center mark for radial and diameter dimensions.")]
+		HRESULT CenterMarkSize ([out, retval] double *Size);
+		[propput]
+		HRESULT CenterMarkSize ([in] double Size);
+
+		[propget, helpstring("Sets or returns the type of center mark for radial and diameter dimensions.")]
+		HRESULT CenterType ([out, retval] DimCenterType *Type);
+		[propput]
+		HRESULT CenterType ([in] DimCenterType Type);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns whether to suppress the first dimension line.")]
+		HRESULT DimLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the second dimension line.")]
+		HRESULT DimLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the  format of fractional values in dimensions and tolerances")]
+		HRESULT FractionFormat ([out, retval] DimFractionType *Format);
+		[propput]
+		HRESULT FractionFormat ([in] DimFractionType Format);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns the the length of the leader on the diameter or radius dimension.")]
+		HRESULT LeaderLength ([out, retval] double *LeaderLength);
+		[propput]
+		HRESULT LeaderLength ([in] double LeaderLength);
+
+		[propget, helpstring("Sets or returns the global scale factor for linear dimensioning measurements.")]
+		HRESULT LinearScaleFactor ([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT LinearScaleFactor ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the number of decimal places in primary units of a dimension.")]  
+		HRESULT PrimaryUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT PrimaryUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the rounding of dimension units.")]
+		HRESULT RoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT RoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in dimension values.")]
+		HRESULT SuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in dimension values.")]
+		HRESULT SuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of angular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimOrdinate
+	
+	[	object
+		, uuid(8011c187-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimOrdinate
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimOrdinate : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the rounding of alternate units.")]
+		HRESULT AltRoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT AltRoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimension values.")]
+		HRESULT AltSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimension values..")]
+		HRESULT AltSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the alternate dimension value prefix")]
+		HRESULT AltTextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT AltTextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the alternate dimension value suffix")]
+		HRESULT AltTextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT AltTextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in alternate dimensions.")]  
+		HRESULT AltTolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltTolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Enables or disables alternate units dimensioning.")]
+		HRESULT AltUnits ([out, retval] VARIANT_BOOL *Enable);
+		[propput]
+		HRESULT AltUnits ([in] VARIANT_BOOL Enable);
+
+		[propget, helpstring("Sets or returns the unit format for alternate dimensions.")]  
+		HRESULT AltUnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT AltUnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the number of decimal places in alternate units.")]  
+		HRESULT AltUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the scale factor for alternate units.")]
+		HRESULT AltUnitsScale ([out, retval] double *Scale);	
+		[propput]
+		HRESULT AltUnitsScale ([in] double Scale);	
+
+		[propget, helpstring("Sets or returns the color of the dimension extension line.")]  
+		HRESULT ExtensionLineColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT ExtensionLineColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the  format of fractional values in dimensions and tolerances")]
+		HRESULT FractionFormat ([out, retval] DimFractionType *Format);
+		[propput]
+		HRESULT FractionFormat ([in] DimFractionType Format);
+
+		[propget, helpstring("Sets or returns the global scale factor for linear dimensioning measurements.")]
+		HRESULT LinearScaleFactor ([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT LinearScaleFactor ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the number of decimal places in primary units of a dimension.")]  
+		HRESULT PrimaryUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT PrimaryUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the rounding of dimension units.")]
+		HRESULT RoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT RoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in dimension values.")]
+		HRESULT SuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in dimension values.")]
+		HRESULT SuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimRadial
+	
+	[	object
+		, uuid(8011c188-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimRadial
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimRadial : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the rounding of alternate units.")]
+		HRESULT AltRoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT AltRoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimension values.")]
+		HRESULT AltSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimension values..")]
+		HRESULT AltSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the alternate dimension value prefix")]
+		HRESULT AltTextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT AltTextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the alternate dimension value suffix")]
+		HRESULT AltTextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT AltTextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in alternate dimensions.")]  
+		HRESULT AltTolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltTolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Enables or disables alternate units dimensioning.")]
+		HRESULT AltUnits ([out, retval] VARIANT_BOOL *Enable);
+		[propput]
+		HRESULT AltUnits ([in] VARIANT_BOOL Enable);
+
+		[propget, helpstring("Sets or returns the unit format for alternate dimensions.")]  
+		HRESULT AltUnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT AltUnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the number of decimal places in alternate units.")]  
+		HRESULT AltUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the scale factor for alternate units.")]
+		HRESULT AltUnitsScale ([out, retval] double *Scale);	
+		[propput]
+		HRESULT AltUnitsScale ([in] double Scale);	
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the dimension line.")]
+		HRESULT ArrowheadBlock ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT ArrowheadBlock ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the dimension line.")]
+		HRESULT ArrowheadType ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT ArrowheadType ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the size of the center mark for radial and diameter dimensions.")]
+		HRESULT CenterMarkSize ([out, retval] double *Size);
+		[propput]
+		HRESULT CenterMarkSize ([in] double Size);
+
+		[propget, helpstring("Sets or returns the type of center mark for radial and diameter dimensions.")]
+		HRESULT CenterType ([out, retval] DimCenterType *Type);
+		[propput]
+		HRESULT CenterType ([in] DimCenterType Type);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns whether to suppress the dimension line.")]
+		HRESULT DimLineSuppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLineSuppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the  format of fractional values in dimensions and tolerances")]
+		HRESULT FractionFormat ([out, retval] DimFractionType *Format);
+		[propput]
+		HRESULT FractionFormat ([in] DimFractionType Format);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns the the length of the leader on the diameter or radius dimension.")]
+		HRESULT LeaderLength ([out, retval] double *LeaderLength);
+		[propput]
+		HRESULT LeaderLength ([in] double LeaderLength);
+
+		[propget, helpstring("Sets or returns the global scale factor for linear dimensioning measurements.")]
+		HRESULT LinearScaleFactor ([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT LinearScaleFactor ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the number of decimal places in primary units of a dimension.")]  
+		HRESULT PrimaryUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT PrimaryUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the rounding of dimension units.")]
+		HRESULT RoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT RoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in dimension values.")]
+		HRESULT SuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in dimension values.")]
+		HRESULT SuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of angular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDimRotated
+	
+	[	object
+		, uuid(8011c189-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDimRotated
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDimRotated : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the rounding of alternate units.")]
+		HRESULT AltRoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT AltRoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimension values.")]
+		HRESULT AltSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressLeadingZeroes ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimension values..")]
+		HRESULT AltSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimension values.")]
+		HRESULT AltSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns the alternate dimension value prefix")]
+		HRESULT AltTextPrefix ([out, retval] BSTR *PrefixString );
+		[propput]
+		HRESULT AltTextPrefix ([in] BSTR PrefixString);
+
+		[propget, helpstring("Sets or returns the alternate dimension value suffix")]
+		HRESULT AltTextSuffix ([out, retval] BSTR *SuffixString );
+		[propput]
+		HRESULT AltTextSuffix ([in] BSTR SuffixString);
+
+		[propget, helpstring("Sets or returns the precision of tolerance values in alternate dimensions.")]  
+		HRESULT AltTolerancePrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltTolerancePrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns whether to suppress leading zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressLeadingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressLeadingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress trailing zeros in alternate dimensions.")]
+		HRESULT AltToleranceSuppressTrailingZeroes ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressTrailingZeroes ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in alternate dimensions.")]
+		HRESULT AltToleranceSuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT AltToleranceSuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Enables or disables alternate units dimensioning.")]
+		HRESULT AltUnits ([out, retval] VARIANT_BOOL *Enable);
+		[propput]
+		HRESULT AltUnits ([in] VARIANT_BOOL Enable);
+
+		[propget, helpstring("Sets or returns the unit format for alternate dimensions.")]  
+		HRESULT AltUnitsFormat ([out,retval] DimLUnits *Units);
+		[propput]  
+		HRESULT AltUnitsFormat ([in] DimLUnits Units);
+
+		[propget, helpstring("Sets or returns the number of decimal places in alternate units.")]  
+		HRESULT AltUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT AltUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the scale factor for alternate units.")]
+		HRESULT AltUnitsScale ([out, retval] double *Scale);	
+		[propput]
+		HRESULT AltUnitsScale ([in] double Scale);	
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead1Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead1Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead2Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead2Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the dimension line extends beyond the extension line when oblique strokes are drawn instead of arrowheads.")]
+		HRESULT DimensionLineExtend ([out, retval] double *Distance);
+		[propput]
+		HRESULT DimensionLineExtend ([in] double Distance);
+
+		[propget, helpstring("Sets or returns whether to suppress the first dimension line.")]
+		HRESULT DimLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the second dimension line.")]
+		HRESULT DimLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to display the dimension line inside the extension lines.")]
+		HRESULT DimLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT DimLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the color of the dimension extension line.")]  
+		HRESULT ExtensionLineColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT ExtensionLineColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the extension line extends beyond the dimension line.")]
+		HRESULT ExtensionLineExtend ([out, retval] double *Extension);
+		[propput]
+		HRESULT ExtensionLineExtend ([in] double Extension);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the  format of fractional values in dimensions and tolerances")]
+		HRESULT FractionFormat ([out, retval] DimFractionType *Format);
+		[propput]
+		HRESULT FractionFormat ([in] DimFractionType Format);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns the global scale factor for linear dimensioning measurements.")]
+		HRESULT LinearScaleFactor ([out, retval] double *ScaleFactor);
+		[propput]
+		HRESULT LinearScaleFactor ([in] double ScaleFactor);
+
+		[propget, helpstring("Sets or returns the number of decimal places in primary units of a dimension.")]  
+		HRESULT PrimaryUnitsPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT PrimaryUnitsPrecision ([in] DimPrecision Precision);
+
+		[propget, helpstring("Sets or returns the rounding of dimension units.")]
+		HRESULT RoundDistance ([out, retval] double *Round);	
+		[propput]
+		HRESULT RoundDistance ([in] double Round);	
+
+		[propget, helpstring("Sets or returns whether to suppress zero inch measurements in dimension values.")]
+		HRESULT SuppressZeroInches ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroInches ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to suppress zero foot measurements in dimension values.")]
+		HRESULT SuppressZeroFeet ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT SuppressZeroFeet ([in] VARIANT_BOOL Supress);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of angular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	// *** Primary dispatch interface for CIcadAutoDim3PointAngular
+	
+	[	object
+		, uuid(8011c18a-7e36-11d1-bc5a-0060089608a4) 	// *** IID_IIcadDim3PointAngular
+		, oleautomation
+		, dual
+		, hidden
+		, pointer_default(unique)
+	]
+	interface IIcadDim3PointAngular : IIcadDimension 
+	{
+		[propget, helpstring("Sets or returns the unit format for 3PointAngular dimensions.")]  
+		HRESULT AngleFormat ([out,retval] AngleUnits *Movement);
+		[propput]  
+		HRESULT AngleFormat ([in] AngleUnits Movement);
+
+		[propget, helpstring("Sets or returns the angle vertex point for the 3 point angular dimension.")]
+		HRESULT AngleVertex ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT AngleVertex ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead1Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the first end of the dimension line.")]
+		HRESULT Arrowhead1Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead1Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns the block to use as the custom arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Block ([out, retval] BSTR *BlockName );
+		[propput]
+		HRESULT Arrowhead2Block ([in] BSTR BlockName);
+
+		[propget, helpstring("Sets or returns the type of arrowhead for the second end of the dimension line.")]
+		HRESULT Arrowhead2Type ([out, retval] DimArrowheadType *ArrowheadType );
+		[propput]
+		HRESULT Arrowhead2Type ([in] DimArrowheadType ArrowheadType);
+
+		[propget, helpstring("Sets or returns dimension line color.")]
+		HRESULT DimensionLineColor ([out, retval] Colors * Color);
+		[propput]
+		HRESULT DimensionLineColor ([in] Colors Color);
+
+		[propget, helpstring("Sets or returns whether to suppress the first dimension line.")]
+		HRESULT DimLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to suppress the second dimension line.")]
+		HRESULT DimLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT DimLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns whether to display the dimension line inside the extension lines.")]
+		HRESULT DimLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT DimLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the color of the dimension extension line.")]  
+		HRESULT ExtensionLineColor([out,retval] Colors * Color);
+		[propput]  
+		HRESULT ExtensionLineColor([in] Colors Color);
+
+		[propget, helpstring("Sets or returns the distance the extension line extends beyond the dimension line.")]
+		HRESULT ExtensionLineExtend ([out, retval] double *Extension);
+		[propput]
+		HRESULT ExtensionLineExtend ([in] double Extension);
+
+		[propget, helpstring("Sets or returns the start point of the first extension line.")]
+		HRESULT ExtLine1StartPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine1StartPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns the end point of the first extension line.")]
+		HRESULT ExtLine1EndPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine1EndPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine1Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine1Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the end point of the first extension line.")]
+		HRESULT ExtLine2EndPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine2EndPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns the start point of the first extension line.")]
+		HRESULT ExtLine2StartPoint ([out, retval] IIcadPoint **Point );
+		[propput]
+		HRESULT ExtLine2StartPoint ([in] IIcadPoint *Point);
+
+		[propget, helpstring("Sets or returns whether to suppress the first extension line.")]
+		HRESULT ExtLine2Suppress ([out, retval] VARIANT_BOOL *Supress);
+		[propput]
+		HRESULT ExtLine2Suppress ([in] VARIANT_BOOL Suppress);
+
+		[propget, helpstring("Sets or returns the placement of text and arrowheads inside or outside extension lines.")]
+		HRESULT Fit ([out, retval] DimFit *Fit);
+		[propput]
+		HRESULT Fit ([in] DimFit Fit);
+
+		[propget, helpstring("Sets or returns if a dimension line is drawn between the extension lines even when the text is placed outside the extension lines.")]
+		HRESULT ForceLineInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT ForceLineInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the Horizontal justification of dimension test.")]  
+		HRESULT HorizontalTextPosition ([out,retval] DimHorizontalJustification *Position);
+		[propput]  
+		HRESULT HorizontalTextPosition ([in] DimHorizontalJustification Position);
+
+		[propget, helpstring("Sets or returns whether to display the text inside the extension lines.")]
+		HRESULT TextInside ([out, retval] VARIANT_BOOL *Inside);
+		[propput]
+		HRESULT TextInside ([in] VARIANT_BOOL Inside);
+
+		[propget, helpstring("Sets or returns the position of text inside the extension lines.")]
+		HRESULT TextInsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextInsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the position of text outside the extension lines.")]
+		HRESULT TextOutsideAlign ([out, retval] VARIANT_BOOL *Alignment);
+		[propput]
+		HRESULT TextOutsideAlign ([in] VARIANT_BOOL Alignment);
+
+		[propget, helpstring("Sets or returns the precision of 3PointAngular dimension text.")]  
+		HRESULT TextPrecision ([out,retval] DimPrecision *Precision);
+		[propput]  
+		HRESULT TextPrecision ([in] DimPrecision Precision);
+	}
+
+

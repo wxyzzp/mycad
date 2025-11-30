@@ -1,0 +1,128 @@
+--------------------------------------------------------------------------------
+File:		EBA_78218_1.txt
+Date:		10-07-2002
+Developer:	Chikahiro MASAMI
+Company:	Ebatech
+Reference:	BugZilla:78218
+Added files:
+		Source/prj/lib/DB/dimassoc.cpp
+Affected files:
+		Create entget_object branch and store them to branch.
+		Source/prj/ICAD/icadmspacedia.cpp
+		Source/prj/lib/CMDS/mpspace.cpp
+		Source/prj/lib/DB/acad_proxy_object.cpp
+		Source/prj/lib/DB/db.h
+		Source/prj/lib/DB/db1.cpp
+		Source/prj/lib/DB/db_util.cpp
+		Source/prj/lib/DB/dbdefines.h
+		Source/prj/lib/DB/dictionaryvar.cpp
+		Source/prj/lib/DB/dictionarywdflt.cpp
+		Source/prj/lib/DB/drawing.cpp
+		Source/prj/lib/DB/handitem.h
+		Source/prj/lib/DB/idbuffer.cpp
+		Source/prj/lib/DB/layer_index.cpp
+		Source/prj/lib/DB/layout.cpp
+		Source/prj/lib/DB/objects.h
+		Source/prj/lib/DB/oldvars.cpp
+		Source/prj/lib/DB/placeholder.cpp
+		Source/prj/lib/DB/plotsettings.cpp
+		Source/prj/lib/DB/sortentstable.cpp
+		Source/prj/lib/DB/spatial_filter.cpp
+		Source/prj/lib/DB/spatial_index.cpp
+		Source/prj/lib/DB/vbaproject.cpp
+		Source/prj/lib/DRW/dwgload.cpp
+		Source/prj/lib/DRW/dwgsave.cpp
+		Source/prj/make/db.dsp
+
+Description: 	All objects list object specific properties.
+		Some objects allow to update using (entmod).
+		Now preparing undo/redo system and more.
+Comments:	TaL78218?
+File by File:
+Added files:
+	*	Source/prj/ICAD/lib/db/dimassoc.cpp
+		Implemente DIMASSOC object. allow to get entitly list. deny to update.
+
+Affected files:
+	*	Source/prj/ICAD/icadmspacedia.cpp
+		Rename db_layout methods. ret/set_PropertyName to ret/set_999(Group code).
+
+	*	Source/prj/ICAD/cmds/mpspace.cpp
+		Rename db_layout methods. ret/set_PropertyName to ret/set_999(Group code).
+
+	*	Source/prj/ICAD/lib/db/acad_proxy_object.cpp
+		ACAD_PROXY_OBJECT allow to get/set properties via lisp.
+
+	*	Source/prj/ICAD/lib/db/db.h
+		Increse DB_NUMSTOCKCLASSES to 25 for CLASS/DIMASSOC record.
+
+	*	Source/prj/ICAD/lib/db/db1.cpp
+		Add DIMASSOC entry into global variable db_hitypeinfo.
+
+	*	Source/prj/ICAD/lib/db/db_util.cpp
+		Add DIMASSOC case into helper function db_makehip.
+
+	*	Source/prj/ICAD/lib/db/dbdefines.h
+		Add DB_DIMASSOC definition for identify objects/entities.
+
+	*	Source/prj/ICAD/lib/db/dictionaryvar.cpp
+		justify CRLF only.
+
+	*	Source/prj/ICAD/lib/db/dictionarywdflt.cpp
+		ACDBDICTIONARYWDFLT allow to get/set properties via lisp.
+
+	*	Source/prj/ICAD/lib/db/drawing.cpp
+		Add CLASS/DIMASSOC record into variable stockclass.
+
+	*	Source/prj/ICAD/lib/db/handitem.h
+		Add get_148,set_148,get_149,set_149 virtual function for PLOTSETTINGS object.
+
+	*	Source/prj/ICAD/lib/db/idbuffer.cpp
+		IDBUFFER allow to get/set properties via lisp.
+
+	*	Source/prj/ICAD/lib/db/layer_index.cpp
+		LAYER_INDEX allow to get properties via lisp, or deny to modify now.
+
+	*	Source/prj/ICAD/lib/db/layout.cpp
+		LAYOUT allow to get/set properties via lisp.
+
+	*	Source/prj/ICAD/lib/db/objects.h
+		All objects allow to get properties via lisp.
+		Some objects allow to update via lisp.
+		Some objects introduce entmod function, another override get/set_999 function.
+
+	*	Source/prj/ICAD/lib/db/oldvars.cpp
+		Rename db_dictionaryvar methods acoording to group code.
+
+	*	Source/prj/ICAD/lib/db/placeholder.cpp
+		justify CRLF only.
+
+	*	Source/prj/ICAD/lib/db/plotsettings.cpp
+		Change string member data type from char[] to *char.
+		PLOTSETTINGS introduce own entgetspecific method.
+		PLOTSETTINGS no needs own entmod for modifing properties.
+
+	*	Source/prj/ICAD/lib/db/sortentstable.cpp
+		SORTENTSTABLE allow to get properties via lisp, or deny to modify now.
+
+	*	Source/prj/ICAD/lib/db/spatial_filter.cpp
+		SPATIAL_FILTER allow to get/set properties via lisp.
+
+	*	Source/prj/ICAD/lib/db/spatial_index.cpp
+		Fixed: Some member of SPATIAL_INDEX is lost.
+		SPATIAL_INDEX allow to get properties via lisp, or deny to modify now.
+
+	*	Source/prj/ICAD/lib/db/vbaproject.cpp
+		VBAPROJECT allow to get properties via lisp, or deny to modify now.
+
+	*	Source/prj/ICAD/lib/drw/dwgload.cpp
+		Introduce new DIMASSOC object.
+		Fixed: Some member of SPATIAL_INDEX is lost.
+
+	*	Source/prj/ICAD/lib/drw/dwgsave.cpp
+		Introduce new DIMASSOC object.
+		Fixed: Some member of SPATIAL_INDEX is lost.
+
+	*	Source/prj/ICAD/make/db.dsp
+		add dimassoc.cpp
+

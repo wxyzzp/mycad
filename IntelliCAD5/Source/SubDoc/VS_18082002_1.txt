@@ -1,0 +1,30 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_18082002_1.txt
+Date:		18-08-2002
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/CMDS/layer.cpp
+
+Deleted files:	
+		None
+
+Description:	Fixed memory problem in cmd_layer_list().
+Comments:	A local string (lstate) was being overwritten past its bounds. Fixed by increasing size of buffer.
+
+
+File by File:	
+		Source/prj/lib/CMDS/layer.cpp				Rev 1.7
+			A local string (lstate) was being overwritten past its bounds. Fixed by increasing size of buffer.
+
+-----------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+logfilename log\78648.log
+logfileon
+;________________________
+ellipse
+arc
+0,1
+8,8
+r
+45
+5,10
+7,0
+;_________________________
+ellipse
+arc
+3,5.5
+9,5.5
+2
+6,8
+9,5.5
+;____________
+dxfout output_dxf\78648.dxf
+6
+quit
+y

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------------------
+Document Title:         MB_DWGdirect-94
+Product Version:        IntelliCAD 5
+Date:                   09/12/2004 08:53am
+Engineer(s):            Mark Barrow
+
+1.  Process Checklist:
+       *Regress run without new filures: Y (regress.lst)
+       *Did you test it?: Y
+       *Code reviewed by:
+       *Doc Changes Required: N
+       *Submitted to branch(es) R50_Release To be merged with Icad_cee.
+
+2.  Modules Affected:
+	DWGdirect
+	ICAD
+
+3.  Overview:
+	This submission removes some unnecessary code related to creating
+	bitmap previews. I have also hooked up the creation of previews to
+	the  RASTERPREVIEW system variable.
+
+4.  Notes to Docs:
+
+5.  Notes for Regress/Benchmarks:
+New script(s) submitted: N
+File Name:
+Name of Script file:
+
+Script change required: N
+File Name:
+Name of Script file:
+
+6.  Change Log:
+
+        source/prj/icad/icaddoc.cpp
+        source/prj/lib/db/db1.cpp
+        source/prj/lib/db/sysvar.h
+        source/prj/lib/db/sysvar_ctor_dtor.cpp
+        source/prj/lib/db/sysvar_search.h
+        source/prj/lib/drw/drw.h
+        source/prj/lib/drw/dwgdirectwriter.cpp
+        source/prj/lib/drw/dwgdirectwriter.h
+        source/prj/lib/drw/dwgsave.cpp
+        source/subdoc/R50_Release/MB_DWGdirect-94.txt
+
+7.  System file - Component Changes and Additions:
+
+8.  Testing Considerations:
+
+9.  Installation Issues:
+

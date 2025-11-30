@@ -1,0 +1,84 @@
+Document Title:  SH_290704_1.txt	
+Product Version: ICAD 4.0
+Date:  7/29/2004
+Engineer: Stephen Hou
+
+1 Process Checklist :
+
+* Regress run without new failures: Y
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es): R40_Dev, R50_Release
+
+2. Modules Affected : CMDS, GEO, ICADLIB
+
+3. Overview:
+
+This submission makes the following changes to the code:
+
+* Implement the projection option of TRIM command (projmode = 1 & 2) to trim 
+  polylines and light weight polylines with lines, xlines, rays, arcs, circles, 
+  ellipses, lypolylines, polylines, texts, splines. 
+  
+* Reimplement underlying EXTEND functionality for EXTEND command. The original 
+  implementation of EXTEND command only consider projmode = 0 but not 
+  projmode = 1 & 2 cases, and only work in the cases the current UCS is the same
+  as the UCS that entities were created.
+  
+* Added the implementation of ray-hitting test functions for CLine, CEllipArc, 
+  CCompositeCurve to GEO library to test if a ray along an arbitrary direction in 
+  3D can hit a line or ellipse within specified tolerance. Changed the cmd_trim_object() 
+  to use those functions to find the pick point on the curve in 3D.
+
+* Add a new CXYPullBack and CCurveXYDistance classes to GEO library for finding the 
+  nearest point on a curve from a point within tolerance on X-Y range and computing 
+  the curve intersections within tolerance on X-Y plane.
+  
+* Add new functions to CCurve, CLine, CEllipArc, CCompositeCurve, CSurface, CPath, 
+  CPlane classes in GEO library.
+
+* Fix the bugs in CLineLine::Intersect() and CLineEllipArc::Intersect() functions 
+  in GEO library, which was mathematically correct in 2D but not 3D.
+ 
+* Fix the bug in CDWGToGeo:: ExtractEllipse() function, which did not take the 
+  consideration of the normal of ellipses.
+
+
+4.  Notes to Docs: N
+
+5.  Notes for Regress/Benchmarks: N
+
+6.  Change Log: 
+
+Affected files: 
+
+    Source/prj/lib/cmds/cmd4.cpp
+    Source/prj/lib/icadlib/EntConversion.h
+    Source/prj/lib/icadlib/EntConversion.cpp    
+    Source/ThirdParty/Geo/2CurveSolver.cpp
+    Source/ThirdParty/Geo/2CurveSolver.h
+    Source/ThirdParty/Geo/compcrvs.h
+    Source/ThirdParty/Geo/compcrvs.cpp
+    Source/ThirdParty/Geo/crvpair.cpp
+    Source/ThirdParty/Geo/curve.h
+    Source/ThirdParty/Geo/curve.cpp
+    Source/ThirdParty/Geo/elliparc.h
+    Source/ThirdParty/Geo/elliparc.cpp
+    Source/ThirdParty/Geo/line.h
+    Source/ThirdParty/Geo/line.cpp
+    Source/ThirdParty/Geo/plane.h
+    Source/ThirdParty/Geo/plane.cpp
+    Source/ThirdParty/Geo/Surface.h
+
+
+7.  System file - Component Changes and Additions: N
+
+8.  Testing Considerations:
+* Unit Test Description: Test TRIM and EXTEND command in projmode = 0, 1, and 2.
+* Notes for QA Testing: N
+
+9.  Installation Issues: N.
+
+
+

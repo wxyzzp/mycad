@@ -1,0 +1,41 @@
+logfilename log\bmpout_options.log
+logfileon
+;_________
+(setvar "useri1" (getvar "filedia"))
+filedia
+0
+(setvar "useri2" (getvar "expert"))
+expert
+5
+;________
+cylinder
+3,1,0
+3.5,-.25,0
+c
+3,1,4
+;___________
+box
+0,0,0
+3,2,3
+;___________
+cylinder
+0,1,3
+1
+c
+3,1,3
+;___________
+vpoint
+1,1,1
+;___________
+zoom
+extents
+;_________
+bmpout output\bmpout.bmp
+;________
+(setvar "filedia" (getvar "useri1"))
+(setvar "expert" (getvar "useri2"))
+;________
+dxfout output_dxf\bmpout_options.dxf
+6
+quit
+y

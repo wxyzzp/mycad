@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78195_1.txt
+Date:		10-06-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78195
+Affected files:	
+		CvsHist:Source/prj/lib/CMDS/ucs.cpp
+Description:	Dimensions cannot be used to define UCS.
+Comments:	TaL78195
+
+File by File:  
+		*CvsHist:Source/prj/lib/CMDS/ucs.cpp
+		Now enabled Usage of a dimension entity to define a UCS
+		The dimension text midpoint is used to define the UCS origin
+		( According to ACAD2002 help )
+		The direction of the UCS axes are calculated based on the group 
+		code 51.The function "db_initdimucs" is used for doing this.
+		the function gives 4 things
+		1 UCS org
+		2 UCS x
+		2 UCS y
+		2 UCS z
+		
+		The UCS org returened by "db_initdimucs" is not used as it is 
+		not completly implemented for this and returns (0,0,0)
+--------------------------------------------------------------------------------

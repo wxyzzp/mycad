@@ -1,0 +1,70 @@
+Document Title:  MN_12SEP04.txt	
+Product Version: ICAD 5
+Date:  12 September 2004
+Engineer: Mohan Nayak
+
+1. Process Checklist :
+* Regress run without new failures: N
+* Did you test it? : Y
+* Code Reviewed By: 
+* Docs Changes Required: N
+* Submitted to branch(es):R50_Release
+
+2. Modules Affected : GR,Cmds
+Available modules: SDS, ACIS, Cmds, DB, Drw, Lisp, Ge, GR, Auto, Snap, Main
+
+
+3.  Overview:
+      
+	  Dave sent a drawing in which "Zoom Extent" is not working properly. This 
+bug is not reproducable in "ICAD_Cee" branch. I have looked the code of "ICAD_cee"
+branch and I have found that there is a class "CChainIterator" present in "GR"
+module in the file "DoDef.h". This class is helpful in calcalating the drawing 
+extents. I have added the definition of this class in the file "DeDef.h".
+	There is algorithm present in the file "Panzoom.cpp" in "CMD module" of "ICAD_cee"
+branch to calculate the drawing extents instead of regenerating the entities 
+in "ZOOM/Extents" case. This algorithm significantly reduces calculations. I 
+have added this algorithm in "panzoom.cpp" file in the function "cmd_zoom_extents".
+	For this algorithm to work properly, I have added "isMultichain" function in 
+"gr_displayobject" class present in the file "DoDef.h" in GR module.
+I changed the definition of an existing constant viz: "DISP_OBJ_HIGHLIGHTED"
+to have the value of 256.
+I have also added a new constant integer variable viz: "DISP_OBJ_MULTI_CHAIN"
+in this file. This constane now has a value of 32. 
+
+
+4.  Notes to Docs:N
+
+
+5.  Notes for Regress/Benchmarks:N
+
+
+6.  Change Log:
+
+--------------------------------------------------------------------------------
+
+Reference: MN_12SEP04.txt	
+Engineer: Mohan Nayak
+Added files:     
+Affected files:
+	Source/prj/lib/CMDS/panzoom.cpp?rev=1.3.8.1.2.1 
+	Source/prj/lib/GR/DoDef.h?rev=1.1.4.5.2.2 
+Description:
+	 Applied the fixes for the bug "Zoom Extents not working" reported by Dave.
+--------------------------------------------------------------------------------
+
+
+7.  System file - Component Changes and Additions
+
+
+8.  Testing Considerations:
+The code should be tested for the following steps:
+1. Start IntelliCAD 5.
+2. Open the drawing sent by Dave.
+3. Give "zoom" command.
+4. Select "extent" option.
+5. The drawing gets properly zoomed.
+6. Test for other drawings.    
+
+9.  Installation Issues:
+

@@ -1,0 +1,22 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             
+	              
+
+File Name:	SH_03312003_2.txt
+Date:		03-31-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	78417
+
+
+Changed files:  Source/prj/lib/DRW/dwgload.cpp?rev=1.48.4.24
+                Source/prj/lib/DRW/dwgsave.cpp?rev=1.47.4.16
+
+Description:	This submission fixes the problem that caused ICAD to
+                crash while trying to save drawing containing layouts
+                that are not in the dictionary.
+
+Comments        Tal78417

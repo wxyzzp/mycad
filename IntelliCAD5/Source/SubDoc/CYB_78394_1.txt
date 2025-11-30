@@ -1,0 +1,28 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78394_1.txt
+Date:		09-12-2002
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78394
+Added files:     	
+Affected files: 
+		Source/prj/ICAD/mtextpropsheet.cpp
+		Source/prj/ICAD/IcadMtextDia.cpp
+Description:	Cancel button on Mtext dialog not working.
+Comments:		TaL78394
+Problem Analysis:
+		In either cases i.e. when the user presses OK or Cancel, the flow was through CMTextPropSheet::OnDestroy( ). In this function, the code for changing text height, text width, rotation angle, alignment, text style and the text  itself were making the changes permanent.
+
+Proposed Solution:
+		Move the code for changing text height, text width, rotation angle, alignment, text style and the text to the function void CMainWindow::IcadMTextDia( ), inside the case if(ret == IDOK).  				
+File by File:	
+*		Source/prj/ICAD/mtextpropsheet.cpp
+		Commented code which was setting the text properties as listed in the problem analysis above.
+*		Source/prj/ICAD/IcadMtextDia.cpp
+		Added code for setting these text properties.
+--------------------------------------------------------------------------------

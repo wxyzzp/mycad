@@ -1,0 +1,22 @@
+;Created by Stephen Hou  date
+;This script tests the chamfer of polyline with a short vertex
+logfilename log\78538.log
+logfileon
+;
+;____create a polyline for chamfering
+pline
+0,0
+0.5,0.5
+2,.5
+2,-1
+0,-1
+0,-.7
+
+;__Create a chamfer for this polyline
+chamfer
+p
+2,.5
+dxfout output\78075.dxf
+6
+exit 
+y

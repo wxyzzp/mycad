@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------
+File Name:	CYB_78173_1.txt
+Date:		28-05-2002
+Developer:	Sachin Dange
+Company:	Cybage Software
+Reference:	BugZilla:78173
+Affected files:	
+		Source/prj/ICAD/IcadApi.h                   
+		Source/prj/ICAD/IcadDoc.h               
+		Source/prj/lib/CMDS/dimensions.h      
+		Source/prj/lib/CMDS/DimAng.cpp    
+		Source/prj/lib/CMDS/DimContinue.cpp       
+		Source/prj/lib/CMDS/dimensions.cpp       
+		Source/prj/lib/CMDS/DimLinearFunc.cpp  
+		Source/prj/lib/CMDS/DimOrdinate.cpp   
+		Source/prj/lib/CMDS/DimTEdit.cpp   
+Description:	The Behavior of DimContinue is incorrect when the last Continued 
+		dimension is deleted.
+Comments:	TAL78173
+File by File:  
+		* Source/prj/ICAD/IcadApi.h                   
+		Added the definition of cmd_dimlastpt	
+
+		* Source/prj/ICAD/IcadDoc.h               
+		Included a member "struct cmd_dimlastpt lastdimpts" to CIcadDoc
+
+		* Source/prj/lib/CMDS/dimensions.h      
+		added the following preprocessor directive
+		#define lastdimpts SDS_CURDOC->lastdimpts
+		to avoid changes to usage of lastdimpts in various .cpp files
+		(the global structure - lastdimpts , is now a member of CIcadDoc)	
+
+		* Source/prj/lib/CMDS/DimAng.cpp    
+		* Source/prj/lib/CMDS/dimensions.cpp       
+		* Source/prj/lib/CMDS/DimLinearFunc.cpp  
+		* Source/prj/lib/CMDS/DimOrdinate.cpp   
+		added the include "IcadDoc.h" and commented out the extern struct 
+		cmd_dimlastpt lastdimp			
+
+		* Source/prj/lib/CMDS/DimTEdit.cpp   		
+		commented out the extern struct cmd_dimlastpt lastdimp	and
+		memcpy(lastdimpts.ename, ename, sizeof(sds_name));
+		Not required now lastdimpts already being saved through cmd_makedimension
+
+		* Source/prj/lib/CMDS/DimContinue.cpp       		
+		Addition in code was required to check if a previously drwan dimension was 
+		being deleted. This was possible by directly using ret_deleted() which returs 
+		if the entity was marked for deletion and not usable now. There was a catch
+		here, we were using a global structure to hold the ename. the "ename" was 
+		valid  even when the drawing contaning the entity was closed and this would crash
+		ICAD after the code change when the drwaing was closed and continue issued frome 				
+		some other drwaing. There were some other problems with "lastdimpts" being 				
+		global. 
+			One could draw a dim in one doc and a conitnuous dimenssion to that dim
+		in other drwaing. To fix all these problems the global structure - lastdimpts , 				was made a member of CIcadDoc
+		Lastdimpts (the global structure) was being referred dirctly at many locations
+		.To avoid a code change at all these locations a preprocessor directive was used
+		 
+		#define lastdimpts SDS_CURDOC->lastdimpts 	
+		
+		this can be removed after a few days when the code is working fine for all cases
+--------------------------------------------------------------------------------

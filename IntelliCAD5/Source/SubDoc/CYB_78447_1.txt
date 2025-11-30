@@ -1,0 +1,32 @@
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:		CYB_78447_1.txt
+Date:		18-03-2003
+Developer:      	Sachin Dange
+Company:        	Cybage Software
+Reference:		BugZilla:78447
+Added files:     	
+Affected files:	
+		Source/prj/lib/SDS/sds_get.cpp
+		Source/prj/lib/ICADLIB/icadlib.h
+		Source/prj/ICAD/IcadStatusBar.cpp
+Description:	Snapping does not work on first use after activation.
+Comments:		TaL78447
+Problem Analysis:
+		Even though the snapping is enabled, but the old value of OSMODE is being used.
+Proposed Solution:
+		The current value of snapping should be checked and depending on that the snapping should be enabled / disabled. Only in cases when temporary entity snap is being used, the old value of OSMODE should be used.
+File by File:	
+*		Source/prj/lib/SDS/sds_get.cpp
+		setOsnapMode is set to FALSE if temporary entity snap is being used otherwise it is set to TRUE. If it is TRUE then get the current OSMODE and set it into osnapmode.
+*		Source/prj/lib/ICADLIB/icadlib.h
+		Defined IC_SNAPSTR.  
+*		Source/prj/ICAD/IcadStatusBar.cpp
+		While switching ESNAP to ON / OFF (from the Status Bar), if SDS_AtCmdLine is false (i.e. some command is active) then set the cursor depending on the value of OSMODE.  
+--------------------------------------------------------------------------------
+
+
+

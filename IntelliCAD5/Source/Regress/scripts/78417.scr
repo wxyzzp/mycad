@@ -1,0 +1,12 @@
+logfilename log\78417.log
+logfileon
+;_________
+expert
+5
+open
+dwg\78417.dwg
+saveas
+
+output\78417.dwg
+quit
+y

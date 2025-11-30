@@ -1,0 +1,30 @@
+
+
+--------------------------------------------------------------------------------
+
+	Submission Document for IntelliCAD
+
+File Name:	VS_06022003_1.txt
+Date:		06-02-2003
+Developer:	Vittalbabu Srinivasan
+Company:	Mantra Software
+Reference:	
+
+New files:	
+		None
+
+Changed files: 	
+		Source/prj/lib/DRW/dwgload.cpp?rev=1.48.2.5.2.5
+ 
+Deleted files:	
+		None
+
+Description:	This submission merges changes made to R40_Dev stream to R40_from_11 stream.
+Comments:	This submission describes changes made to the R40_from_11 stream. Details of
+		the changes are in the individual subdocs. In this submission changes made by
+		Cybage on Feb. 6 , 2003 are merged.
+
+
+
+
+-----------------------------------------------------------------------------

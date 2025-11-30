@@ -1,0 +1,48 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_01212003.txt
+Date:		21-01-2003
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	
+
+
+Affected files: Source/prj/lib/ACIS/AsConstructor.cpp?rev=1.6.6.3 
+		Source/prj/lib/ACIS/AsModeler.cpp?rev=1.9.6.4 
+		Source/prj/lib/ACIS/AsModeler.h?rev=1.8.6.3 
+		Source/prj/lib/CMDS/CmdQueryTools.cpp?rev=1.5.6.5 
+		Source/prj/lib/CMDS/CmdQueryTools.h?rev=1.4.6.5 
+		Source/prj/lib/CMDS/CmdRegion.cpp?rev=1.5.6.3 
+		Source/prj/lib/CMDS/CmdSolidedit.cpp?rev=1.5.6.3 
+		Source/prj/lib/CMDS/CmdSolidedit.h?rev=1.4.6.2 
+		Source/prj/lib/CMDS/CmdSolidedit.inl?rev=1.3.6.2 
+		Source/prj/lib/CMDS/CmdSolidedit.tpl?rev=1.3.6.1 
+		Source/prj/lib/DB/Modeler.h?rev=1.9.6.4
+		Source/prj/lib/DB/ModelerStub.h?rev=1.2.6.4
+		
+
+Description:    This submission fixes the following SOLIDEDIT bugs:
+
+                1) IMPRINT was not able to imprint the curves to the
+                   faces of solids because it was implemented to imprint
+                   intersection graph of the bodies to the bodies. 
+                   
+                2) Hiting the return key while IMPRINT is prompting
+                   users to select the curves automatically terminated
+                   SOLIDEDIT command.
+                   
+                3) The solids were not hightighted after they were 
+                   selected at IMPRINT.
+                   
+                4) UNDO command was not able to undo changes made by 
+                   SOLIDEDIT command.
+                   
+                5) ALl default options of SOLIDEDIT command were not 
+                   set correctly.
+                   
+                
+

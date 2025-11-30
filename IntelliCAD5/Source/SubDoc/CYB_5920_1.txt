@@ -1,0 +1,342 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_5920_1.txt	
+Product Version:	ICAD 4
+Date:			24/12/2003 (DD/MM/YYYY)
+Engineer(s):		Vishwanath Burkule.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+Source\prj\ICAD\icadmain.h	==> class CMainWindow
+Source\prj\ICAD\icadmain.cpp	==> CMainWindow::OnCopyData(CWnd* pWnd, 
+					COPYDATASTRUCT* pCopyDataStruct)
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+	This is regarding bugzilla :: 5920 ;Used by ADS,ADSRX,ARX external 
+windows programs to send commands to ACAD prompt. 
+	Unlike AutoCAD,  IntelliCAD did not handle WM_COPYDATA message.
+ WM_COPYDATA  is  used  to  send data  across processes. So an external 
+application can send data to AutoCAD but not to IntelliCAD. When WM_COPYDATA 
+tried with IntelliCAD it returned FALSE.
+
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+Implement WM_COPYDATA message handler in IntelliCAD. WM_COPYDATA give 
+COPYDATASTRUCT which has pointer to data and the size of data it points 
+to. When behaviour checked with AutoCAD it was found that its output is 
+similar of  typing data at command prompt of AutoCAD. 
+ 
+eg. if "LINE" ( without a space at end of string ) data is sent to AutoCAD
+using  WM_COPYDATA, the line string was just printed at command prompt, it
+was not  executed. whereas, "LINE " ( with a space at end of string ) data 
+is sent to AutoCAD using WM_COPYDATA, the line was executed. 
+ 
+So we came up with logic of creating an character event for all the input 
+characters from COPYDATASTRUCT  and dispatching it for processing. Trying 
+to  make the it compatible  with AutoCAD we have to take special care for 
+characters  like  '13' ( carriage return ) and '10' ( line feed). We have 
+converted them to '  ' ( space ) character.
+ 
+File: IcadMain.h
+---------------------------------
+
+afx_msg BOOL OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct);
+---------------------------------
+
+
+
+File: IcadMain.cpp
+-----------------------------------
+
+afx_msg BOOL CMainWindow::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
+{
+	if(pCopyDataStruct->cbData>=IC_ACADBUF)
+		return FALSE;
+	int    charCount   = 0;
+
+	while( ( (char*)(pCopyDataStruct->lpData) )[charCount] !='\0' && charCount < pCopyDataStruct->cbData )
+	{
+		if(((char *)(pCopyDataStruct->lpData))[charCount]==13 || ((char *)(pCopyDataStruct->lpData))[charCount]==10)
+			((char *)(pCopyDataStruct->lpData))[charCount]=' ';
+		InputEvent Event(SDS_EVM_KEYCHAR,((char *)(pCopyDataStruct->lpData))[charCount++]);
+		SDS_PostInputEvent( Event );
+	}
+
+    return TRUE;
+}
+---------------------------------
+	
+
+
+
+
+
+
+
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+  1. Send a command to ICAD through a SDS dll.
+  2. Send a command to ICAD through an external program, compare the results 
+     with ACAD. The result should be comparable with ACAD. (it is NOT necessary
+     that the output sould match in case of failure of the command).
+  3. Test for any gurbage text of any size. (Send the gurbae data through SDS 
+     dll or an external program.)
+  4. Try running a valid ICAD script through the external program.(send a valid
+     script as a data.)
+
+  This change affects ONLY to the WM_COPYDATA message.
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional) : JK
+
+QA Manager (optional) : 
+
+
+
+Code Reviewed by : Denis
+
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

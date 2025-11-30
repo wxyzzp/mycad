@@ -1,0 +1,21 @@
+logfilename log\shapelister.log
+logfileon
+;_____________
+load
+dwg\es.shx
+;________
+shape
+box
+1,1
+2
+0
+;________
+(if (/= (cdr (assoc 0 (entget (entlast)))) "SHAPE") (alert "ERR"))
+(if (/= (cdr (assoc 2 (entget (entlast)))) "box") (alert "ERR"))
+shape
+?
+;__________
+dxfout output_dxf\shapelister.dxf
+6
+quit
+y

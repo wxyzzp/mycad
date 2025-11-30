@@ -1,0 +1,44 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-31.txt
+Produce Version		ICAD 4
+Date:				04/20/2004 07:49am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Completes code to round trip minserts.
+
+In addition, I came across a problem with CDbLayout and CDbPlotSettings
+which CDbLayout is derived from.
+Both contain a flags variable that is set/get via the set_70() and get_70()
+calls. The one in CDbLayout was commented out with a note that the CDbPlotSettings
+flag would be used. The problem is that both of these classes us bits 0x1 and 0x2
+for different things. I checked with Denis, and he actually convinced me that
+the fix I proposed (uncomment the set_70()/get_70() of CDbLayout) would overwrite
+the ones for CDbPlotSettings. However, the ones in CDbPlotSettings have overwritten
+the ones in CDbLayout.
+I have implemented a (possibly) temporary fix by renaming the CDbLayout set/get_70() 
+functions to set_Layout70() and get_Layout70(). This allows both flags to exist 
+independant of one another. There may be some entget ramifications that I need to
+ponder, and I am awaiting Denis' input. However, I am making this change to allow
+Denis and me to proceed.
+
+Note: I don't anticipate any problems, because the CDbLayout 70 group accessors have
+been commented out for some time.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\db\dblayout.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+

@@ -1,0 +1,34 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-5.txt
+Produce Version		ICAD 4
+Date:				02/02/2004 07:56am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Added framework for exporting entities.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgload.cpp
+\source\prj\lib\drw\dwgsave.cpp
+\source\prj\make\db.dsp
+
+Files Added:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectconverter.h

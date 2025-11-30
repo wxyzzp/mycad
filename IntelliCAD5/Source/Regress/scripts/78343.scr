@@ -1,0 +1,12 @@
+logfilename log\78343.log
+logfileon
+CMDECHO
+0
+;____________
+(load "lisp/78343.lsp")
+test_q
+;____________
+dxfout output_dxf\78343.dxf
+6
+quit
+y

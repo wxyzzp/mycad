@@ -1,0 +1,47 @@
+logfilename log\78168_linetype.log
+logfileon
+;_________
+(setvar "useri1" (getvar "expert"))
+expert
+5
+-linetype
+l   center       
+icad.lin
+s center 
+
+;_________
+line
+0,0
+1,1
+
+;_________
+(setq lntyp (cdr (assoc 6 (entget (entlast)))))
+(if (/= lntyp "CENTER") (alert "Error"))
+;_________
+-linetype
+c
+snc line type      
+output\sncltype.lin
+ltype created by Srinivas
+3,-1,2,-1
+l
+snc line type 
+output\sncltype.lin
+s
+snc line type 
+
+;_________
+line
+1,1
+1,0
+
+;_________
+(setq lntyp nil)
+(setq lntyp (cdr (assoc 6 (entget (entlast)))))
+(if (/= lntyp "SNC LINE TYPE") (alert "snc ltype Error"))
+(setvar "expert" (getvar "useri1"))
+;__________
+dxfout output_dxf\78168_linetype.dxf
+6
+quit
+y

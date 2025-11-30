@@ -1,0 +1,39 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWriter-32.txt
+Produce Version		ICAD 4
+Date:				04/30/2004 05:41am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+This submission does a lot of cleanup work.
+In addition, it turns on code for reading the objects
+that have binary data in them. Reading them seems to work fine,
+but writing it back out is still waiting on the ODT solution for
+registering proxy objects in new databases.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectfiler.h
+\source\prj\lib\drw\dwgdirectfiler.cpp
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\db\acad_proxy_object.cpp
+\source\prj\lib\db\db_util.cpp
+\source\prj\lib\db\objects.h
+

@@ -1,0 +1,435 @@
+
+
+
+********************************
+Project: IntelliCAD Development
+********************************
+
+============================================
+Document Title:		CYB_78725_1.txt	
+Product Version:	ICAD 4
+Date:			23/03/2004 (DD/MM/YYYY)
+Engineer(s):		Mohan Nayak.
+============================================
+
+
+
+============================================
+Change History (optional)
+============================================
+
+Version:
+--------
+
+Section/Page Affected:
+----------------------
+
+Change Description:
+-------------------
+
+Engineer(s):
+------------
+
+
+Date:
+-----
+
+
+
+
+
+
+
+============================================
+
+
+========================================================================
+Process Checklist (* Indicates action required in Section 11 Approvals)
+
+1. EDD Reviewed *		
+2. Coded				
+3. Engineer Tested			
+4. Engineer Source Diff
+5. Code Reviewed 
+6. Release Notes
+7. Bugzilla Updated
+8. Checked-In
+9. Docs Notified
+========================================================================
+
+
+========================================================================
+Files, modules (gr, cmd, etc.)
+========================================================================
+
+Files Affected ==> Modules Affected.
+------------------------------------
+
+Source\prj\lib\SDS\sds_misc.cpp  ==> int sdsengine_help(char *szHelpFile, char *szContextID, int nMapNumber) 
+Source\prj\ICAD\icadmain.cpp	 ==> bool CMainWindow::IcadHelp( LPCTSTR pszFile, UINT uCommand, DWORD dwData ) 
+Source\prj\ICAD\IcadHelp.h 	 
+
+
+
+========================================================================
+Related Documents (Includes scripts)
+Date
+Document Name
+Document Description
+
+
+
+
+
+
+
+
+========================================================================
+
+
+
+
+
+========================================================================
+Section 1 Overview
+========================================================================
+
+This is regarding Bugzilla# 78725;  ArchT Affected:  ads_help() does not 
+work properly. 
+
+1. When ads_help(fullpath, topic, 0) is called with a valid help path and 
+   topic, IntelliCAD fails to call up help. 
+2. If we call help from ArchT on any topic, IntelliCAD was not doing anything, 
+   whereas AutoCAD opens that particular topic correctly.
+ 
+
+The reasons for above points are: 
+ 
+1. When a  HTML help  is called for a particular topic,  a proper flag 
+   should be mentioned to open  that topic. In the current code,  when 
+   we call ads_help() with last parameter as  '0',  internally ICADHELP_COMMAND 
+   was passed which is defined to HH_DISPLAY_TOPIC. As HH_DISPLAY_TOPIC 
+   is defined to 0, pfnHelp() in icadmain.cpp was called with uCommand 
+   as 0,  which was wrong. Actually ICADHELP_KEY  should be passed for 
+   HTML help. I have added the code for this in Source\prj\lib\SDS\sds_misc.cpp.
+2. The second problem was regarding ArchT. ArchT help is a 'Windows Help', 
+   and this  case was  not properly handled in  IcadHelp(). When ArchT 
+   was passing the  path of  ".hlp" file to  IcadHelp(), pfnHelp() was 
+   getting called with uCommand as 0. I have added a call to WinHelp() 
+   in  Source\prj\ICAD\icadmain.cpp. Previously,  in  sdsengine_help() 
+   for nMapNumber=0, IcadHelp( ) was getting called with ICADHELP_COMMAND. 
+   When BUILD_WITH_HTMLHELP is defined, ICADHELP_COMMAND was defined to 0. 
+   For WinHelp, that should be HELP_COMMAND.
+
+   As, ICADHELP_COMMAND was NOT used anywhere else, I have removed it 
+   from Source\prj\ICAD\IcadHelp.h
+
+========================================================================
+Section 2 Related Documentation Comments
+========================================================================
+
+========================================================================
+Section 3 Design (Code) Overview
+========================================================================
+
+========================================================================
+Section 4 Design (Code) Considerations
+========================================================================
+
+4.1 Risks & Assumptions
+-----------------------
+None
+
+4.2 Dependencies
+----------------
+None
+
+4.3 What other parts of the code have the same defect or are affected in the same way?
+--------------------------------------------------------------------------------------
+None
+
+
+
+========================================================================
+Section 5 Change Description
+========================================================================
+
+
+File: Source\prj\lib\SDS\sds_misc.cpp. 
+-------------------------------------------------------- 
+ 
+Function: int sdsengine_help(char *szHelpFile, char *szContextID, int nMapNumber) 
+---------------------------------------------------------------------------------
+
+int sdsengine_help(char *szHelpFile, char *szContextID, int nMapNumber) 
+{ 
+        if(szHelpFile==NULL || *szHelpFile==0) 
+                return(RTERROR); 
+        char fs1[IC_ACADBUF]; 
+        if( sds_findfile(szHelpFile,fs1) != RTNORM ) 
+                return(RTERROR); 
+                                                // map to Windows help call 
+        int     ret; 
+        if ( !szContextID )                     // if bogus context, just bring up contents 
+                ret = CMainWindow::IcadHelp( fs1,ICADHELP_CONTENTS,0); 
+        else if ( nMapNumber )                  // map directly to Windows arguments 
+                ret = CMainWindow::IcadHelp( fs1, nMapNumber, (DWORD)szContextID); 
+                                                // Use Help macro to Jump to topic ID 
+                                                // "JumpID( "<filepath>", "<topicID")" 
+                                                // (slashes in path must be escaped, \\) 
+        else 
+                { 
+                        char ext[IC_ACADNMLEN]; 
+                        ic_getext((char*)szHelpFile,Ext); 
+                        /***************************************************************************************************************/       
+                        If the file is a WinHelp file, as provided by ArchT, ICADHELP_COMMAND should be passed to 
+                        WinHelp() with macro JumpID 
+/***************************************************************************************************************/       
+                        if(strisame(Ext,".hlp")) // call for .hlp file 
+                        { 
+                                CString command( "JumpID(\""); 
+                                LPTSTR  doubleSlash = new char[ _tcslen( fs1) * 2]; 
+                                ktiEscapeSlashDelimStr( fs1, '\\', doubleSlash); 
+                                command += doubleSlash; 
+                                delete doubleSlash; 
+                                command += "\",\""; 
+                                command += szContextID; 
+                                command += "\")"; 
+                                /***************************************************************************************************************/       
+                      Here IcadHelp() should work for WinHelp(). Previously ICADHELP_COMMAND was 
+		      defined to 0 when BUILD_WITH_HTMLHELP is defined, which was NOT working. Now it becomes 					      0x0102L. 
+ /***************************************************************************************************************/       
+                                ret = CMainWindow::IcadHelp( fs1, HELP_COMMAND, (DWORD)(LPCTSTR)command); 
+                        } 
+                        /***************************************************************************************************************/       
+                          HTML help should be called with ICADHELP_KEY. JumpID should NOT be there 
+/***************************************************************************************************************/       
+                        else 
+                                ret = CMainWindow::IcadHelp( fs1, ICADHELP_KEY, (DWORD)szContextID); 
+                } 
+        
+    if(ret==0) 
+                return(RTERROR); 
+        return(RTNORM); 
+}
+
+
+
+File: Source\prj\ICAD\icadmain.cpp. 
+--------------------------------------------------- 
+Function: bool CMainWindow::IcadHelp( LPCTSTR pszFile, UINT uCommand, DWORD dwData ) 
+-------------------------------------------------------------------------------------------------------------------------------------------
+bool CMainWindow::IcadHelp( LPCTSTR pszFile, UINT uCommand, DWORD dwData ) 
+        { 
+        
+                char ext[IC_ACADNMLEN]; 
+                ic_getext((char*)pszFile,Ext); 
+
+                /***************************************************************************************************************/       
+                If the file is a WinHelp file, as provided by ArchT: 
+                /***************************************************************************************************************/       
+                if(strisame(ext,".hlp")) // call for .hlp file 
+                        return !!::WinHelp( SDS_CMainWindow->GetSafeHwnd(), pszFile, uCommand, dwData); 
+ 
+                // use the HTML help control if found, otherwise default to WinHelp 
+                #ifdef  BUILD_WITH_HTMLHELP 
+                        // load the HTML help OCX and get a ptr to the HTMLHelp() function. 
+                        if ( ordinalHTMLhelp && !m_hInstHTMLHelp ) 
+                                m_hInstHTMLHelp = AfxLoadLibrary( "HHCTRL.OCX" );       /*D.G.*/// Use AfxLoadLibrary instead of LoadLibrary.
+                        typedef HWND (WINAPI *PFNHTMLHELP)(HWND hWndCaller, LPCTSTR pszFile, UINT uCommand, DWORD dwData);
+                        PFNHTMLHELP pfnHelp = m_hInstHTMLHelp ? ( PFNHTMLHELP ) GetProcAddress( m_hInstHTMLHelp, ordinalHTMLhelp ) :
+                                                                                                        NULL; 
+                        if ( pfnHelp ) 
+                        { 
+                                HH_AKLINK link; 
+                                if ( uCommand EQ ICADHELP_PARTIALKEY || uCommand EQ ICADHELP_KEY) 
+                                { 
+                                        link.cbStruct =         sizeof(HH_AKLINK) ; 
+                                        link.fReserved =        FALSE ; 
+                                        link.pszKeywords =      (LPCTSTR)dwData ; 
+                                        link.pszUrl =           NULL ; 
+                                        link.pszMsgText =       NULL ; 
+                                        link.pszMsgTitle =      NULL ; 
+                                        link.pszWindow =        NULL ; 
+                                        link.fIndexOnFail = TRUE ; 
+                                        dwData = (DWORD)&link; 
+                                } 
+                                if(uCommand == ICADHELP_QUIT)           /*D.G.*/// They say the 2st two pars must be NULL in this case.
+                                        return !!pfnHelp(NULL, NULL, uCommand, dwData); 
+                                else 
+                                        return !!pfnHelp( SDS_CMainWindow->GetSafeHwnd(), pszFile, uCommand, dwData ); 
+                        } 
+                        else 
+                #endif 
+                         return false;  
+        } 
+
+========================================================================
+Section 6 Reviewer's Comments 
+========================================================================
+
+
+
+
+========================================================================
+Section 7 System file - Component Changes and Additions
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Are there any new menu/toolbar entries? If so, please list them:
+==> No
+
+Have any existing registry entries changed? If so, please list them:
+==> No
+
+Are there any new registry entries? If so, please list them:
+==> No
+
+Should icad.dwg be regenerated?
+==> No
+
+
+
+
+
+========================================================================
+Section 8 Testing Considerations
+========================================================================
+
+8.1 Engineers Unit Verification
+-------------------------------
+
+The code should be tested for the following commands:
+	1. Load 78725.dll.
+	2. Call ‘functest’.
+	3. Enter any command.
+	4. Check that proper help is opened.
+	5. The command name should be exact (it should NOT contain spaces).
+	   If the command or the help topic is not there in the help file, the starting page of IntelliCAD help will be 	   	   shown.
+	6. Start ArchT.
+	7. Open any dialog from ArchT.
+	8. Click on ‘Help’ button.
+	9. Proper help should be displayed.
+	10.Help on any other topic from ArchT, should be displayed correctly after invoking it through the corresponding 		   dialogs.
+
+
+8.2  Engineers Integration Verification
+---------------------------------------
+Same as above in 8.1
+
+
+8.3 QA Testing
+--------------
+Same as above in 8.1
+
+
+
+
+========================================================================
+Section 9 Installation Issues (optional)
+========================================================================
+
+Question
+==> Check (Yes / No)
+
+Does this change require icad.dwg to be regenerated?
+==> No
+
+Other?
+==> No
+
+
+========================================================================
+Section 10 Open Issues
+========================================================================
+
+Issue
+Responsible
+Date Closed
+Resolution
+Section Added To
+
+
+
+
+
+
+
+
+
+
+========================================================================
+Section 11 Approvals
+========================================================================
+
+Check
+Title
+Name
+Date 
+
+Development Manager (optional)
+JK
+
+
+QA Manager (optional)
+
+
+
+Code Reviewed by
+Denis.
+
+
+
+
+
+
+
+
+
+??
+
+??
+
+??
+
+??
+
+
+
+
+
+
+
+
+
+
+INTUIT CONFIDENTIAL: INTERNAL DISTRIBUTION ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+CBS Engineering Design Document
+	 
+
+
+
+
+
+
+
+
+
+

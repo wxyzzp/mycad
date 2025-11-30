@@ -1,0 +1,37 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirectWRiter-22.txt
+Produce Version		ICAD 4
+Date:				03/25/2004 10:30am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Another visit to layouts.
+
+Added code to honor frozen layers in mview viewports, but IntelliCAD
+has a bug which prevents it from working. Note round trip works via
+DWGdirect. However, displaying viewports with frozen layers in XFEF
+drawings isn't working. 
+
+Notes to Developers:
+
+Notes to QA:
+I emailed bugs@IntelliCAD.org.
+
+IntelliCAD isn't honoring frozen layers in mview viewports when
+the layer belongs to an xref'd drawing.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp

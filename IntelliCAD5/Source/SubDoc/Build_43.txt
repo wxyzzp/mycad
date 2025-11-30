@@ -1,0 +1,426 @@
+Notes for Build_43:
+To reproduce this build in R40_Dev, checkout tag For_Build_40, For_Build_41, 
+For_Build_42 and then For_Build_43.
+
+In R40_Integration, checkout tag Build_43.
+
+ucs_options.scr fails regress.  I am unable to isolate the submission that 
+causes this error.  All other scripts pass when run individually
+
+CHANGED FILES:
+M	2004-03-25:07:58	chikahirom	1.14.6.8	IntelliCAD/Source/prj/lib/GR/textgen.cpp
+M	2004-03-23:06:46	cyberage	1.7.10.8	IntelliCAD/Source/prj/lib/SDS/sds_misc.cpp
+M	2004-03-23:06:47	cyberage	1.33.4.16	IntelliCAD/Source/prj/lib/DB/db1.cpp
+M	2004-03-23:06:48	cyberage	1.1.1.1.12.2	IntelliCAD/Source/ThirdParty/DCL_Components/Include/EditBox.h
+M	2004-03-23:06:59	cyberage	1.7.10.9	IntelliCAD/Source/prj/lib/SDS/sds_misc.cpp
+M	2004-03-23:06:59	cyberage	1.18.6.10	IntelliCAD/Source/prj/ICAD/icadmain.cpp
+M	2004-03-23:06:59	cyberage	1.3.10.3	IntelliCAD/Source/prj/ICAD/IcadHelp.h
+M	2004-03-23:07:06	cyberage	1.22.6.10	IntelliCAD/Source/prj/lib/CMDS/insert.cpp
+M	2004-03-23:07:06	cyberage	1.10.6.1	IntelliCAD/Source/prj/lib/CMDS/cmdsError.cpp
+M	2004-03-23:07:06	cyberage	1.59.4.44	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-03-23:07:06	cyberage	1.63.4.55	IntelliCAD/Eng-us/icad.rc2
+M	2004-03-23:07:14	cyberage	1.7.6.6	IntelliCAD/Source/prj/lib/CMDS/Leader.cpp
+M	2004-03-23:07:21	cyberage	1.28.4.32	IntelliCAD/Eng-us/IcadRes.rc
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78733_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78732_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78730_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78727_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78725_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78722_1.txt
+A	2004-03-23:09:24	cyberage	1.1.2.1	IntelliCAD/Source/SubDoc/CYB_78705_2.txt
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/viewdir_one.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/svstrt.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/layercolor.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/frontz_backz.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/ellipse_vpoint.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/different_layer.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/backz_vpoint.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/annoation.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/scripts/78730.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/acis/view_vpoint.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/acis/dview_vpoint.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/acis/78333.scr
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/LISP/svstrt.lsp
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/SDS/78727.dll
+A	2004-03-23:09:36	cyberage	1.1.2.1	IntelliCAD/Source/Regress/SDS/78722.dll
+M	2004-02-29:11:02	denisp	1.1.2.2	IntelliCAD/Source/prj/ICAD/LayoutTabs.h
+M	2004-02-29:11:02	denisp	1.1.2.2	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+A	2004-02-29:11:04	denisp	1.1.2.1	IntelliCAD/Source/SubDoc/DP_LayoutTabs.doc
+M	2004-03-08:08:32	denisp	1.7.6.10	IntelliCAD/Source/prj/lib/SDS/sds_vars.cpp
+M	2004-03-08:08:33	denisp	1.9.4.6	IntelliCAD/Source/prj/ICAD/IcadStatusBar.cpp
+M	2004-03-08:08:33	denisp	1.3.6.9	IntelliCAD/Source/prj/ICAD/IcadPMSpaceDia.cpp
+M	2004-03-08:08:33	denisp	1.15.6.27	IntelliCAD/Source/prj/ICAD/icadentityrenderer.cpp
+M	2004-03-08:08:33	denisp	1.28.6.26	IntelliCAD/Source/prj/ICAD/IcadApp.cpp
+M	2004-03-08:08:33	denisp	1.15.6.12	IntelliCAD/Source/prj/ICAD/Change.cpp
+M	2004-03-08:08:36	denisp	1.59.4.42	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-03-08:08:36	denisp	1.1.2.18	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-03-08:08:39	denisp	1.15.6.9	IntelliCAD/Source/prj/lib/DB/oldvars.cpp
+M	2004-03-08:08:39	denisp	1.4.6.2	IntelliCAD/Source/prj/lib/DB/layertabrec.h
+M	2004-03-08:08:39	denisp	1.4.6.2	IntelliCAD/Source/prj/lib/DB/layertabrec.cpp
+M	2004-03-08:08:39	denisp	1.17.6.13	IntelliCAD/Source/prj/lib/DB/handitem.cpp
+M	2004-03-08:08:39	denisp	1.3.6.6	IntelliCAD/Source/prj/lib/DB/entity.h
+M	2004-03-08:08:39	denisp	1.4.6.4	IntelliCAD/Source/prj/lib/DB/entity.cpp
+M	2004-03-08:08:39	denisp	1.5.6.6	IntelliCAD/Source/prj/lib/DB/dbprotos.h
+M	2004-03-08:08:39	denisp	1.22.4.13	IntelliCAD/Source/prj/lib/DB/dbdefines.h
+M	2004-03-08:08:39	denisp	1.13.4.17	IntelliCAD/Source/prj/lib/DB/db_util.cpp
+M	2004-03-08:08:39	denisp	1.33.4.15	IntelliCAD/Source/prj/lib/DB/db1.cpp
+M	2004-03-08:08:42	denisp	1.47.4.32	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-08:08:42	denisp	1.48.4.50	IntelliCAD/Source/prj/lib/DRW/dwgload.cpp
+M	2004-03-08:08:42	denisp	1.21.6.19	IntelliCAD/Source/prj/lib/GR/dispobjs.cpp
+M	2004-03-08:08:46	denisp	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-08:17:18	denisp	1.7.6.11	IntelliCAD/Source/prj/lib/SDS/sds_vars.cpp
+M	2004-03-08:17:19	denisp	1.1.2.6	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+M	2004-03-08:17:19	denisp	1.1.2.19	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-03-08:17:20	denisp	1.1.2.3	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+M	2004-03-08:17:20	denisp	1.3.6.10	IntelliCAD/Source/prj/ICAD/IcadPMSpaceDia.cpp
+M	2004-03-08:19:31	denisp	1.1.2.20	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-03-11:20:13	denisp	1.28.4.31	IntelliCAD/Eng-us/IcadRes.rc
+M	2004-03-11:20:15	denisp	1.63.4.52	IntelliCAD/Eng-us/icad.rc2
+M	2004-03-11:20:21	denisp	1.1.2.3	IntelliCAD/Source/prj/ICAD/LayoutTabs.h
+M	2004-03-11:20:21	denisp	1.1.2.4	IntelliCAD/Source/prj/ICAD/LayoutTabs.cpp
+A	2004-03-11:20:21	denisp	1.1.2.1	IntelliCAD/Source/prj/ICAD/LayoutRename.h
+A	2004-03-11:20:21	denisp	1.1.2.1	IntelliCAD/Source/prj/ICAD/LayoutRename.cpp
+M	2004-03-11:20:21	denisp	1.21.4.22	IntelliCAD/Source/prj/ICAD/IcadRes.h
+M	2004-03-11:20:23	denisp	1.59.4.43	IntelliCAD/Source/prj/ICAD/res/icadrc2.h
+M	2004-03-11:20:30	denisp	1.1.2.7	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+M	2004-03-11:20:30	denisp	1.1.2.21	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-03-11:20:31	denisp	1.23.4.20	IntelliCAD/Source/prj/make/icad.dsp
+M	2004-03-23:20:13	denisp	1.1.2.8	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.h
+M	2004-03-23:20:13	denisp	1.1.2.22	IntelliCAD/Source/prj/lib/CMDS/cmdsLayout.cpp
+M	2004-03-29:19:21	denisp	1.47.4.34	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-17:15:38	markba	1.63.4.53	IntelliCAD/Eng-us/icad.rc2
+A	2004-03-17:15:38	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-19.txt
+M	2004-03-17:15:38	markba	1.18.6.5	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-03-17:15:38	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-17:15:38	markba	1.1.2.25	IntelliCAD/Source/prj/lib/DRW/DWGdirectProtocolExtension.cpp
+M	2004-03-17:15:38	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-17:15:38	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+A	2004-03-18:19:59	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-20.txt
+M	2004-03-18:19:59	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-18:19:59	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-18:19:59	markba	1.1.2.22	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-18:19:59	markba	1.1.2.19	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-18:20:05	markba	1.18.6.6	IntelliCAD/Source/prj/ICAD/Configure.h
+M	2004-03-22:16:06	markba	1.63.4.54	IntelliCAD/Eng-us/icad.rc2
+M	2004-03-23:14:01	markba	1.63.4.56	IntelliCAD/Eng-us/icad.rc2
+M	2004-03-23:21:19	markba	1.28.4.33	IntelliCAD/Eng-us/IcadRes.rc
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWriter-21.txt
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/ICAD/DialogPassword.cpp
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/ICAD/DialogPassword.h
+M	2004-03-23:21:19	markba	1.20.6.11	IntelliCAD/Source/prj/ICAD/IcadApi.h
+M	2004-03-23:21:19	markba	1.21.4.15	IntelliCAD/Source/prj/ICAD/IcadDoc.cpp
+M	2004-03-23:21:19	markba	1.21.4.23	IntelliCAD/Source/prj/ICAD/IcadRes.h
+M	2004-03-23:21:19	markba	1.18.6.11	IntelliCAD/Source/prj/ICAD/icadmain.cpp
+M	2004-03-23:21:19	markba	1.8.6.4	IntelliCAD/Source/prj/ICAD/icadmain.h
+M	2004-03-23:21:19	markba	1.20.4.16	IntelliCAD/Source/prj/lib/CMDS/cmds.h
+M	2004-03-23:21:19	markba	1.8.6.7	IntelliCAD/Source/prj/lib/CMDS/save.cpp
+M	2004-03-23:21:19	markba	1.25.6.9	IntelliCAD/Source/prj/lib/CMDS/todo.cpp
+M	2004-03-23:21:19	markba	1.1.2.16	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-23:21:19	markba	1.1.2.13	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-23:21:19	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.cpp
+M	2004-03-23:21:19	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectReaderCrypt.cpp
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectReaderCrypt.h
+M	2004-03-23:21:19	markba	1.1.2.23	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-23:21:19	markba	1.1.2.20	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriterCrypt.cpp
+A	2004-03-23:21:19	markba	1.1.2.1	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriterCrypt.h
+M	2004-03-23:21:19	markba	1.1.1.1.14.4	IntelliCAD/Source/prj/lib/DRW/Drw.h
+M	2004-03-23:21:19	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-03-23:21:19	markba	1.47.4.33	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-23:21:19	markba	1.40.6.19	IntelliCAD/Source/prj/lib/SDS/sds_get.cpp
+M	2004-03-23:21:19	markba	1.13.4.19	IntelliCAD/Source/prj/make/db.dsp
+M	2004-03-23:21:19	markba	1.23.4.21	IntelliCAD/Source/prj/make/icad.dsp
+A	2004-03-25:18:25	markba	1.1.2.1	IntelliCAD/Source/SubDoc/MB_DWGdirectWRiter-22.txt
+M	2004-03-25:18:25	markba	1.1.2.17	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.cpp
+M	2004-03-25:18:25	markba	1.1.2.14	IntelliCAD/Source/prj/lib/DRW/DWGdirectConverter.h
+M	2004-03-25:18:25	markba	1.1.2.15	IntelliCAD/Source/prj/lib/DRW/DWGdirectReader.h
+M	2004-03-25:18:25	markba	1.1.2.24	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.cpp
+M	2004-03-25:18:25	markba	1.1.2.21	IntelliCAD/Source/prj/lib/DRW/DWGdirectWriter.h
+M	2004-03-25:18:25	markba	1.1.2.3	IntelliCAD/Source/prj/lib/DRW/Utilities.cpp
+M	2004-03-25:18:25	markba	1.1.2.2	IntelliCAD/Source/prj/lib/DRW/Utilities.h
+M	2004-03-29:18:26	markba	1.13.4.20	IntelliCAD/Source/prj/make/db.dsp
+M	2004-03-30:00:05	markba	1.47.4.35	IntelliCAD/Source/prj/lib/DRW/dwgsave.cpp
+M	2004-03-31:20:59	markba	1.63.4.57	IntelliCAD/Eng-us/icad.rc2
+A	2004-03-22:07:08	master	1.1.2.1	IntelliCAD/Source/SubDoc/Build_42.txt
+M	2004-03-29:05:56	master	1.4.8.49	IntelliCAD/Source/prj/ICAD/blddate.h
+M	2004-03-30:05:40	master	1.4.8.50	IntelliCAD/Source/prj/ICAD/blddate.h
+
+CHANGELOG:
+I don't have change notification entries from Masami and Denis. I have extracted
+change notes from Mark's subdocs.
+-----------------------------------------------------------------------------------
+Date: 08-03-2004
+Developer: DenisPetrov
+Company: ITC
+Reference:
+Affected files:
+Source/prj/lib/SDS/sds_vars.cpp
+Source/prj/lib/CMDS/cmdsLayout.h
+Source/prj/lib/CMDS/cmdsLayout.cpp
+Source/prj/ICAD/LayoutTabs.cpp
+Source/prj/ICAD/IcadPMSpaceDia.cpp
+Description: 1) Introduced layout manager class which encapsulates routines to manipulate layouts
+2) Fixed setting of CTAB system variable.
+Comments:
+------------------------------------------------------------------------------------
+Date: 08-03-2004
+Developer: DenisPetrov
+Company: ITC
+Reference:
+Affected files:
+Source/prj/lib/SDS/sds_vars.cpp
+Source/prj/ICAD/IcadStatusBar.cpp
+Source/prj/ICAD/IcadPMSpaceDia.cpp
+Source/prj/ICAD/icadentityrenderer.cpp
+Source/prj/ICAD/IcadApp.cpp
+Source/prj/ICAD/Change.cpp
+Source/prj/ICAD/res/icadrc2.h
+Source/prj/lib/CMDS/cmdsLayout.cpp
+Source/prj/lib/DB/oldvars.cpp
+Source/prj/lib/DB/layertabrec.h
+Source/prj/lib/DB/layertabrec.cpp
+Source/prj/lib/DB/handitem.cpp
+Source/prj/lib/DB/entity.h
+Source/prj/lib/DB/entity.cpp
+Source/prj/lib/DB/dbprotos.h
+Source/prj/lib/DB/dbdefines.h
+Source/prj/lib/DB/db_util.cpp
+Source/prj/lib/DB/db1.cpp
+Source/prj/lib/DRW/dwgsave.cpp
+Source/prj/lib/DRW/dwgload.cpp
+Source/prj/lib/GR/dispobjs.cpp
+Source/prj/lib/DRW/DWGdirectWriter.cpp
+Description: Clean-up of the preprocessor directive BUILD_WITH_ACAD2002_SUPPORT:
+1) Directives were removed around the code of CTAB system variable since it is existing since ACAD2000
+2) Commented out directives with BUILD_WITH_ACAD2002_SUPPORT were removed from the code
+3) Compile error was fixed when BUILD_WITH_ACAD2002_SUPPORT is undefined
+Comments:
+------------------------------------------------------------------------------------ 
+-----------------------------------------------------------------------------------
+Date: 11-03-2004
+Developer: DenisPetrov
+Company: ITC
+Reference:
+Added files:
+Source/prj/ICAD/LayoutRename.h
+Source/prj/ICAD/LayoutRename.cpp
+Affected files:
+Eng-us/IcadRes.rc
+Eng-us/icad.rc2
+Source/prj/ICAD/LayoutTabs.h
+Source/prj/ICAD/LayoutTabs.cpp
+Source/prj/ICAD/IcadRes.h
+Source/prj/ICAD/res/icadrc2.h
+Source/prj/make/icad.dsp
+Description: Implementation of context menu for layout tabs
+------------------------------------------------------------------------------------
+Date: 11-03-2004
+Developer: DenisPetrov
+Company: ITC
+Reference:
+Affected files:
+Source/prj/lib/CMDS/cmdsLayout.h
+Source/prj/lib/CMDS/cmdsLayout.cpp
+Description: Minor correction in the interface of layout manager class
+------------------------------------------------------------------------------------ 
+Date: 23-03-2004
+Developer: Sachin Dange
+Company: Cybage
+Reference: BugZilla:78705
+Affected files:
+Source/ThirdParty/DCL_Components/Include/EditBox.h
+Description: ArchT? Blocker: Return does not fire CBR_SELECT in DCL edit box control
+Comments: TaL78705 CYB_78705_2.txt
+Made the function "ProcessCALLBACKFunction?", 'protected' instead of 'public'
+------------------------------------------------------------------------------------
+Date: 23-03-2004
+Developer: Sachin Dange
+Company: Cybage
+Reference: BugZilla:78733
+Affected files:
+Source/prj/lib/DB/db1.cpp
+Description: Frontz system variable is not implemented through command prompt.
+Comments: TaL78733 CYB_78733_1.txt
+------------------------------------------------------------------------------------
+Date: 23-03-2004
+Developer: Sachin Dange
+Company: Cybage
+Reference: BugZilla:78727
+Affected files:
+Source/prj/lib/SDS/sds_misc.cpp
+Description: ArchT? Affected: ads_setview does not change lenslength for perspective views
+Comments: TaL78727 CYB_78727_1.txt
+------------------------------------------------------------------------------------
+Date: 23-03-2004.
+Developer: Mohan Nayak.
+Company: Cybage.
+Reference: BugZilla:78722
+Affected files:
+Source/prj/lib/CMDS/insert.cpp
+Source/prj/lib/CMDS/cmdsError.cpp
+Source/prj/ICAD/res/icadrc2.h
+Eng-us/icad.rc2
+Description: ArchT? Affected: ads_command fails to add blocks to the block table
+Comments: TaL78722 CYB_78722_1.txt
+------------------------------------------------------------------------------------
+Date: 23-03-2004.
+Developer: Mohan Nayak.
+Company: Cybage.
+Reference: BugZilla:78725
+Affected files:
+Source/prj/lib/SDS/sds_misc.cpp
+Source/prj/ICAD/icadmain.cpp
+Source/prj/ICAD/IcadHelp.h
+Description: ArchT? Affected: ads_help() does not work properly
+Comments: TaL78725 CYB_78725_1.txt
+Removed #define ICADHELP_COMMAND from IcadHelp?.h, as it was not used anywhere.
+------------------------------------------------------------------------------------
+Date: 23-03-2004.
+Developer: Mohan Nayak.
+Company: Cybage.
+Reference: BugZilla:78730
+Affected files:
+Source/prj/lib/CMDS/Leader.cpp
+Description: Annotation color property of leader is set as BYBLOCK instead of BYLAYER.
+Comments: TaL78730 CYB_78730_1.txt
+------------------------------------------------------------------------------------
+Date: 23-03-2004.
+Developer: Mohan Nayak.
+Company: Cybage.
+Reference: BugZilla:78732
+Affected files:
+Eng-us/IcadRes.rc
+Description: Entity property dialog box labels are confusing.
+Comments: TaL78732 CYB_78732_1.txt
+------------------------------------------------------------------------------------ 
+Date: 3/17/2004
+Developer: Mark Barrow
+Affected files:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectprotocolextension.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+Description:
+Fix for dimensions in blocks. This truned out to be a 
+dimension block lookup problem that is now fixed.
+------------------------------------------------------------------------------------ 
+Date: 3/18/2004
+Developer: Mark Barrow
+Affected files:
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectconverter.cpp
+Description:
+Finalized round tripping dimassoc. AutoCAD's 2004 associative
+dimensions now round trip correctly.
+
+Note there is a bug in AutoCAD that exhibits strange behavior when one of
+the associated entities is an xref intersected with another entity. 
+This strange behavior is still present and the same when we round trip a dimension.
+
+Notes to Developers:
+
+Notes to QA:
+AutoCAD BUG reproduction steps:
+
+Draw a line, and save it.
+Open a new drawing and xref in the first.
+Draw another line that crosses the line in the xref'd drawing
+------------------------------------------------------------------------------------ 
+Date: 3/23/2004
+Developer: Mark Barrow
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectreader.cpp
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\cmds\todo.cpp
+\source\prj\lib\cmds\save.cpp
+\source\prj\icad\icaddoc.cpp
+\source\prj\icad\icadmain.cpp
+\source\prj\lib\cmds\cmds.h
+\source\prj\lib\drw\drw.h
+\source\prj\lib\drw\dwgsave.cpp
+\source\prj\make\icad.dsp
+\source\prj\make\db.dsp
+\source\prj\lib\sds\sds_get.cpp
+\source\prj\icad\icadmenu.h
+\source\prj\icad\icadapi.h
+\source\prj\icad\icadres.h
+\source\prj\icad\icadmain.h
+\source\subdoc\mb_dwgdirectwriter-21.txt
+
+Files Added:
+\source\prj\icad\dialogpassword.h
+\source\prj\icad\dialogpassword.cpp
+\source\prj\lib\drw\dwgdirectwritercrypt.h
+\source\prj\lib\drw\dwgdirectwritercrypt.cpp
+\source\prj\lib\drw\dwgdirectreadercrypt.h
+\source\prj\lib\drw\dwgdirectreadercrypt.cpp
+
+Description:
+Added support for password encryped drawing read. Note I added a
+dialog box to resources to get/set the password from the user. It has
+its short commings, because I have no way to hook the process to handle
+users putting in the wrong password. Currently it just leaves the dialog
+up until either the valid password is entered, or the cancel button is pressed.
+If the password is correct, the drawing is opened.
+
+Note: to save a file with a password. You'll of course need to be using the
+DWGdirect save code path. Once you select AutoCAD 2004 as the ouput format
+on the SaveAs dialog, the 'Password protect' check box will activate. If you
+then select (check) it, you will be prompted for a pass word which will then
+be imbedded in the .dwg. Note .DWG is the only file format that has password
+protection.
+	
+Added some code to handle Proxy Objects. It is currently
+commented out while I communicate with the ODT guys on some data
+I don't seem to have access to.
+
+Notes to Localization:
+I have added a new dialog and supporting #defines. Particular attention
+needs to be given when translating to another language.
+------------------------------------------------------------------------------------ 
+Date: 3/23/2004
+Developer: Mark Barrow
+Files Affected:
+\source\prj\lib\drw\dwgdirectwriter.cpp
+\source\prj\lib\drw\utilities.h
+\source\prj\lib\drw\utilities.cpp
+\source\prj\lib\drw\dwgdirectwriter.h
+\source\prj\lib\drw\dwgdirectreader.h
+\source\prj\lib\drw\dwgdirectconverter.h
+\source\prj\lib\drw\dwgdirectconverter.cpp
+Change Description:
+Another visit to layouts.
+
+Added code to honor frozen layers in mview viewports, but IntelliCAD
+has a bug which prevents it from working. Note round trip works via
+DWGdirect. However, displaying viewports with frozen layers in XFEF
+drawings isn't working. 
+
+Notes to QA:
+I emailed bugs@IntelliCAD.org.
+
+IntelliCAD isn't honoring frozen layers in mview viewports when
+the layer belongs to an xref'd drawing.
+------------------------------------------------------------------------------------ 
+
+REGRESS:
+The following scripts failed during the regress run. Running them individually 
+showed no problems.  Please look for performance data on performance.xls 
+(location tbd on itcmembers.org).
+F:\Build-43\IntelliCAD\Source\Regress\scripts\78346a.scr
+F:\Build-43\IntelliCAD\Source\Regress\scripts\dimclrd_extn.scr
+F:\Build-43\IntelliCAD\Source\Regress\scripts\dimclrt.scr
+F:\Build-43\IntelliCAD\Source\Regress\scripts\rulesurf_maxent_options.scr
+F:\Build-43\IntelliCAD\Source\Regress\scripts\ucs_options.scr
+
+BUGZILLA:
+The following bugs were addressed in this build:
+78705, 78733, 78727, 78722, 78725, 78730, 78732

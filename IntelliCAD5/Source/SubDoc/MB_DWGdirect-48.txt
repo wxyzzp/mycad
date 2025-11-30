@@ -1,0 +1,29 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-48.txt
+Produce Version		ICAD 4
+Date:				06/08/2004 17:04pm
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+Fix for two more failing scripts
+export_options.scr
+edgesurf_options.scr
+
+Updated regress.lst.
+
+Notes to Developers:
+
+Notes to QA:
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+\source\prj\lib\drw\dwgdirectconverter.cpp
+\source\prj\lib\cmds\clonehelper.cpp
+\source\regress\scripts\regress.lst
+\source\regress\scripts\export_options.scr

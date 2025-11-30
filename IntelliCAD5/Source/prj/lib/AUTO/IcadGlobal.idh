@@ -1,0 +1,10 @@
+// interface declarations
+
+interface IIcadDocuments;
+interface IIcadWindows;
+interface IIcadWindow;
+interface IIcadApplication;
+interface IIcadWorkspace;
+interface IIcadApplicationPreferences;
+
+dispinterface _IcadWorkspaceEvents;

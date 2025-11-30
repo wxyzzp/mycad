@@ -1,0 +1,30 @@
+
+
+	             Submission Document for IntelliCAD
+	             
+	             	              
+
+File Name:	SH_250603_2.txt
+Date:		25/06/03
+Developer:	Stephen Hou
+Company:	Nd Space
+Reference:	BugZilla:78487  
+
+Description:	This submission fixes the bug #78487 - Region uniting with 
+                a solid results in a region rather than a body. The problem 
+                is the UNION operation modifies the first entity to replace 
+                its ACIS data with the data of the resulting model and destroys
+                the second one. Although this behaves the same as UNION operation 
+                in AutoCAD, it causes the problem above when the first selected 
+                entity is a region and the second selected is a solid.The problem 
+                is fixed by modifying cmd_union() to create a new body entity for 
+                the resultant solid if two entities are different types.
+
+		
+Added files:    None
+
+Affected files: Source/prj/lib/cmds/cmds8.cpp:  Modified cmd_union().
+
+
+
+                

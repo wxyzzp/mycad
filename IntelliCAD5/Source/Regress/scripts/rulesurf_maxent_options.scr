@@ -1,0 +1,23 @@
+logfilename log\rulesurf_maxent_options.log
+logfileon
+;_____________
+surftab1
+31500
+surftab2
+31500
+line
+0,0,-0.5
+2,0,0.5
+
+
+0,2,0.5
+2,2,-0.5
+
+rulesurf
+0.5,0
+0.5,2
+;__________
+dxfout output_dxf\rulesurf_maxent_options.dxf
+6
+quit
+y

@@ -1,0 +1,31 @@
+logfilename log\isoplane_options.log
+logfileon
+;__________
+isoplane
+l
+(if (/= (getvar "snapisopair") 0) (alert "isoplane error"))
+;_______
+isoplane
+t
+(if (/= (getvar "snapisopair") 1) (alert "isoplane error"))
+;_______
+isoplane
+r
+(if (/= (getvar "snapisopair") 2) (alert "isoplane error"))
+;_______
+isoplane
+
+(if (/= (getvar "snapisopair") 0) (alert "isoplane error"))
+;_______
+isoplane
+
+(if (/= (getvar "snapisopair") 1) (alert "isoplane error"))
+;_______
+isoplane
+
+(if (/= (getvar "snapisopair") 2) (alert "isoplane error"))
+;_________
+dxfout output_dxf\isoplane_options.dxf
+6
+quit
+y

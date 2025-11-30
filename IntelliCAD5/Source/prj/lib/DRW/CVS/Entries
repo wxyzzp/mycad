@@ -1,0 +1,26 @@
+/CollectionClasses.h/1.1.4.1.2.2/Thu Oct 14 07:24:59 2004//TICAD_50
+/DWGdirectConverter.cpp/1.1.4.13.2.22/Thu Oct 14 07:24:59 2004//TICAD_50
+/DWGdirectConverter.h/1.1.4.13.2.10/Thu Oct 14 07:24:59 2004//TICAD_50
+/DWGdirectFiler.cpp/1.1.4.4/Tue Jun 01 20:59:04 2004//TICAD_50
+/DWGdirectFiler.h/1.1.4.4/Tue Jun 01 20:59:04 2004//TICAD_50
+/DWGdirectProtocolExtension.cpp/1.1.4.20.2.8/Tue Oct 12 18:57:28 2004//TICAD_50
+/DWGdirectProtocolExtension.h/1.1.4.8.2.1/Tue Oct 12 18:57:28 2004//TICAD_50
+/DWGdirectReader.cpp/1.1.4.15.2.24/Tue Oct 12 18:57:28 2004//TICAD_50
+/DWGdirectReader.h/1.1.4.13.2.12/Sat Oct 02 15:17:55 2004//TICAD_50
+/DWGdirectReaderCrypt.cpp/1.1.4.1.2.2/Fri Sep 10 17:23:25 2004//TICAD_50
+/DWGdirectReaderCrypt.h/1.1.4.2/Tue Jun 01 20:59:05 2004//TICAD_50
+/DWGdirectWriter.cpp/1.1.4.16.2.29/Thu Oct 14 07:24:59 2004//TICAD_50
+/DWGdirectWriter.h/1.1.4.11.2.16/Tue Oct 12 18:57:28 2004//TICAD_50
+/DWGdirectWriterCrypt.cpp/1.1.4.1.2.2/Fri Sep 10 17:23:25 2004//TICAD_50
+/DWGdirectWriterCrypt.h/1.1.4.2/Tue Jun 01 20:59:06 2004//TICAD_50
+/Drw.h/1.1.1.1.12.5.2.7/Sun Sep 26 21:08:54 2004//TICAD_50
+/GiWorldDrawVectors.cpp/1.1.4.2.2.3/Sun Sep 26 21:08:54 2004//TICAD_50
+/GiWorldDrawVectors.h/1.1.4.2.2.1/Sat Sep 04 20:52:04 2004//TICAD_50
+/Utilities.cpp/1.1.4.8.2.12/Thu Oct 14 07:24:59 2004//TICAD_50
+/Utilities.h/1.1.4.4.2.4/Thu Oct 14 07:24:59 2004//TICAD_50
+/drwfns.cpp/1.11.4.5.2.3/Sun Sep 26 21:08:54 2004//TICAD_50
+/drwprotos.h/1.3.4.1.2.2/Sun Sep 26 21:08:54 2004//TICAD_50
+/dwgload.cpp/1.48.2.27.2.8/Tue Oct 12 18:57:28 2004//TICAD_50
+/dwgsave.cpp/1.47.2.23.2.6/Sun Sep 26 21:08:55 2004//TICAD_50
+/odtver.h/1.1.4.2/Sun Mar 09 00:06:37 2003//TICAD_50
+D

@@ -1,0 +1,39 @@
+Project IntelliCAD development
+
+
+Document Title		MB_DWGdirect-51.txt
+Produce Version		ICAD 4
+Date:				06/16/2004 07:04am
+Engineer(s):		Mark Barrow
+
+
+Change Description:
+					Removed some unused vars
+					Fixed error in view center harvesting.
+					Fixed some sysvars that were not being imported/exported correctly.
+
+Notes to Developers:
+
+Notes to QA:
+					I added three utility functions that come with the DWGdirect libraries.
+					These will be indispensible for testing. For example, odamfcapp.exe is
+					great for opening the original (acad created) file, and the file that
+					icad creates by saving the acad file and comparing the two. You'll see
+					when you first launch it. The other two have their uses too, and are
+					very intuitive.
+
+Notes to Docs:
+
+Notes to Localization:
+
+Files Affected:
+                    source/prj/lib/drw/dwgdirectwriter.cpp
+                    source/prj/lib/drw/dwgdirectreader.h
+                    source/prj/lib/drw/dwgdirectreader.cpp
+                    source/prj/lib/drw/dwgdirectconverter.cpp
+                    source/regress applications/odreadex.exe
+                    source/regress applications/odamfcapp.exe
+                    source/regress applications/singledoc.exe
+                    source/prj/lib/db/object_ptr.cpp
+                    source/prj/lib/db/objects.h
+                    source/subdoc/MB_DWGdirect-51.txt
